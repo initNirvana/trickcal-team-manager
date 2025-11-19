@@ -1,5 +1,6 @@
-import React from 'react';
-import type { Personality } from '../../types/apostle';
+import React from "react";
+import type { Personality } from "../../types/apostle";
+import { getSynergyOnIconPath } from "../../utils/apostleUtils";
 
 interface SynergyDisplayProps {
   synergies: Array<{
@@ -27,11 +28,18 @@ const SynergyDisplay: React.FC<SynergyDisplayProps> = ({ synergies }) => {
       ) : (
         <div className="space-y-2">
           {activeSynergies.map((synergy) => (
-            <div 
+            <div
               key={synergy.personality}
               className="box-subtitle border-l-4 border-blue-500 pl-3"
             >
-              <p className="font-bold">{synergy.personality} ({synergy.count}명)</p>
+              <img
+                src={getSynergyOnIconPath(synergy.personality)}
+                alt={synergy.personality}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src =
+                    "/src/assets/placeholder.png";
+                }}
+              />
               {synergy.bonus && (
                 <div className="text-xs text-gray-600 mt-1">
                   HP: +{synergy.bonus.hp}% | 피해: +{synergy.bonus.damage}%

@@ -1,10 +1,10 @@
-import React from 'react';
-import type { Personality } from '../../types/apostle';
-import { getPersonalityIconPath } from '../../utils/personalityColorUtils';
+import React from "react";
+import type { Personality } from "../../types/apostle";
+import { getPersonalityIconPath } from "../../utils/apostleUtils";
 
 interface PersonalityIconProps {
   personality: Personality;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   className?: string;
 }
 
@@ -14,13 +14,13 @@ interface PersonalityIconProps {
  */
 const PersonalityIcon: React.FC<PersonalityIconProps> = ({
   personality,
-  size = 'md',
-  className = '',
+  size = "md",
+  className = "",
 }) => {
   const sizeMap = {
-    sm: 'w-6 h-6',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12',
+    sm: "w-6 h-6",
+    md: "w-8 h-8",
+    lg: "w-12 h-12",
   };
 
   return (

@@ -1,7 +1,10 @@
 import React, { useState, useMemo } from "react";
 import type { Apostle } from "../../types/apostle";
 import { getPersonalities, isValidPosition } from "../../types/apostle";
-import { getPersonalityBackgroundClass } from "../../utils/personalityColorUtils";
+import {
+  getPersonalityBackgroundClass,
+  getPersonalityIconPath,
+} from "../../utils/apostleUtils";
 import {
   Button,
   Navbar,
@@ -71,10 +74,6 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
     return "전열";
   };
 
-  const getPersonalityIconPath = (personality: string): string => {
-    return `/src/assets/personalities/${personality}.png`;
-  };
-
   const getRankIconPath = (rank: number): string => {
     return `/src/assets/icon/${rank}성.webp`;
   };
@@ -84,7 +83,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
   };
 
   // 가능한 성격 목록
-  const personalities = ["광기", "우울", "순수", "활발", "냉정"];
+  const personalities = ["Mad", "Gloomy", "Naive", "Jolly", "Cool"];
 
   // 가능한 랭크 목록
   const ranks = [3, 2, 1];

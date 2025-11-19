@@ -1,7 +1,8 @@
 import React from "react";
 import type { Apostle } from "../../types/apostle";
 import type { PartyAnalysis } from "../../utils/partyAnalysisUtils";
-import DamageReductionDisplay from "./DamageReductionDisplay";
+import DamageReductionSkillDisplay from "./DamageReductionSkillDisplay";
+import DamageReductionAsideDisplay from "./DamageReductionAsideDisplay";
 import SynergyDisplay from "./SynergyDisplay";
 
 interface PartyAnalysisPanelProps {
@@ -25,11 +26,16 @@ export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
 
   return (
     <div className="space-y-4">
-      <DamageReductionDisplay
+      <DamageReductionSkillDisplay
         apostles={filledParty}
         skillsData={skillsData}
         skillLevels={{}}
       />
+      {/* <DamageReductionAsideDisplay
+        apostles={filledParty}
+        skillsData={skillsData}
+        skillLevels={{}}
+      /> */}
       <SynergyDisplay synergies={analysis.synergies} />
     </div>
   );

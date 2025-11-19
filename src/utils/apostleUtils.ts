@@ -1,0 +1,32 @@
+import type { Personality } from "../types/apostle";
+
+export function getPersonalityBackgroundClass(
+  personality: Personality
+): string {
+  switch (personality) {
+    case "Jolly":
+      return "bg-yellow-300";
+    case "Mad":
+      return "bg-red-500";
+    case "Naive":
+      return "bg-green-500";
+    case "Gloomy":
+      return "bg-purple-500";
+    case "Cool":
+      return "bg-blue-500";
+    default:
+      return "bg-gray-800 ";
+  }
+}
+
+export function getPersonalityIconPath(personality: Personality): string {
+  return `/src/assets/icon/Common_UnitPersonality_${personality}.png`;
+}
+
+export function getSynergyOnIconPath(personality: Personality): string {
+  return `/src/assets/icon/Synergy_Icon_${personality}_On.png`;
+}
+
+export function getSynergyOffIconPath(personality: Personality): string {
+  return `/src/assets/icon/Synergy_Icon_${personality}_Off.png`;
+}

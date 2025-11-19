@@ -3,6 +3,7 @@ import PartySimulator from "./components/party/PartySimulator";
 import type { Apostle } from "./types/apostle";
 import apostlesData from "./data/apostles.json";
 import skillsData from "./data/skills.json";
+import Layout from "./components/layout/Layout";
 
 function App() {
   const [apostles, setApostles] = useState<Apostle[]>([]);
@@ -37,9 +38,9 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-800 ">
+    <Layout>
       <PartySimulator apostles={apostles} skillsData={skillsData} />
-    </div>
+    </Layout>
   );
 }
 

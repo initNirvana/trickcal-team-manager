@@ -1,7 +1,7 @@
 import React from "react";
 import type { Apostle } from "../../types/apostle";
 import { getPersonalities } from "../../types/apostle";
-import { getPersonalityBackgroundClass } from "../../utils/personalityColorUtils";
+import { getPersonalityBackgroundClass } from "../../utils/apostleUtils";
 import { Button } from "flowbite-react";
 
 interface ApostleSlotProps {

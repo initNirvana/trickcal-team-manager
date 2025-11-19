@@ -1,5 +1,5 @@
-import type { Apostle, Personality } from '../types/apostle';
-import { getPersonalities } from '../types/apostle';
+import type { Apostle, Personality } from "../types/apostle";
+import { getPersonalities } from "../types/apostle";
 
 export interface Synergy {
   personality: Personality;
@@ -11,7 +11,10 @@ export interface Synergy {
   };
 }
 
-export function calculateSynergyBonus(count: number): { hp: number; damage: number } {
+export function calculateSynergyBonus(count: number): {
+  hp: number;
+  damage: number;
+} {
   if (count < 2) return { hp: 0, damage: 0 };
   if (count >= 9) return { hp: 200, damage: 200 };
   if (count >= 7) return { hp: 140, damage: 140 };
@@ -33,7 +36,13 @@ export function analyzeSynergies(apostles: Apostle[]): Synergy[] {
     });
   });
 
-  const personalities: Personality[] = ['활발', '광기', '순수', '우울', '냉정'];
+  const personalities: Personality[] = [
+    "Jolly",
+    "Mad",
+    "Naive",
+    "Gloomy",
+    "Cool",
+  ];
 
   const synergies: Synergy[] = personalities.map((personality) => {
     const count = personalityCounts.get(personality) || 0;
@@ -63,19 +72,19 @@ export function getSynergyLevel(count: number): number {
 export function getSynergyLevelDescription(level: number): string {
   switch (level) {
     case 0:
-      return '미활성';
+      return "미활성";
     case 1:
-      return 'Lv.1 (+20%)';
+      return "Lv.1 (+20%)";
     case 2:
-      return 'Lv.2 (+55%)';
+      return "Lv.2 (+55%)";
     case 3:
-      return 'Lv.3 (+100%)';
+      return "Lv.3 (+100%)";
     case 4:
-      return 'Lv.4 (+140%)';
+      return "Lv.4 (+140%)";
     case 5:
-      return 'Lv.5 (+200%)';
+      return "Lv.5 (+200%)";
     default:
-      return '알 수 없음';
+      return "알 수 없음";
   }
 }
 
