@@ -2719,6 +2719,24 @@
           "value": 50
         }
       ]
+    },
+    {
+      "apostleId": "a111",
+      "name": "베니(베니)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "incomingIncrease": [],
+      "incomingReduction": []
+    },
+    {
+      "apostleId": "a111",
+      "name": "베니(베니)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "incomingIncrease": [],
+      "incomingReduction": []
     }
   ]
 }
