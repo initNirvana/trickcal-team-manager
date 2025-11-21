@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import type { Apostle } from "../../types/apostle";
+import React, { useMemo } from 'react';
+import type { Apostle } from '../../types/apostle';
 import {
   Accordion,
   AccordionPanel,
@@ -7,7 +7,7 @@ import {
   AccordionTitle,
   Badge,
   Tooltip,
-} from "flowbite-react";
+} from 'flowbite-react';
 
 interface DamageReductionDisplayProps {
   apostles: Apostle[];
@@ -36,7 +36,7 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
 }) => {
   const breakdown = useMemo(
     () => calculateDamageReduction(apostles, skillsData, skillLevels),
-    [apostles, skillsData, skillLevels]
+    [apostles, skillsData, skillLevels],
   );
 
   if (apostles.length === 0) {
@@ -51,10 +51,8 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
     <Accordion collapseAll>
       <AccordionPanel>
         <AccordionTitle>
-          <div className="flex items-center justify-between w-full pr-2">
-            <span className="font-semibold text-sm">
-              받는 피해량 감소 현황 (스킬)
-            </span>
+          <div className="flex w-full items-center justify-between pr-2">
+            <span className="text-sm font-semibold">받는 피해량 감소 현황 (스킬)</span>
           </div>
         </AccordionTitle>
 
@@ -63,7 +61,7 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
           {breakdown.details.length > 0 ? (
             <div className="space-y-3">
               {/* 헤더 */}
-              <div className="flex justify-between items-center pb-2 border-b border-gray-200">
+              <div className="flex items-center justify-between border-b border-gray-200 pb-2">
                 <p className="text-xs font-bold text-gray-700">
                   스킬 구성 ({breakdown.details.length}개)
                 </p>
@@ -74,16 +72,14 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
               {breakdown.details.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between p-2 rounded-lg bg-gray-50 hover:bg-gray-100 transition"
+                  className="flex items-center justify-between rounded-lg bg-gray-50 p-2 transition hover:bg-gray-100"
                 >
                   {/* 좌측: 사도명 + 범위 */}
                   <div className="flex-1">
-                    <p className="font-bold text-sm text-gray-900">
+                    <p className="text-sm font-bold text-gray-900">
                       {item.apostleName} {item.skillType}
                     </p>
-                    <p className="text-xs text-gray-500">
-                      범위: {item.appliesTo}
-                    </p>
+                    <p className="text-xs text-gray-500">범위: {item.appliesTo}</p>
                   </div>
 
                   {/* 우측: 감소량 */}
@@ -94,24 +90,18 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
               ))}
 
               {/* 총합 표시 (선택사항) */}
-              <div className="flex justify-between items-center pt-2 border-t border-gray-200">
+              <div className="flex items-center justify-between border-t border-gray-200 pt-2">
                 <p className="text-sm font-bold text-gray-900">총 감소량</p>
                 <Tooltip content="최대 75%">
-                  <Badge
-                    color={
-                      breakdown.totalReduction >= 60 ? "success" : "warning"
-                    }
-                  >
+                  <Badge color={breakdown.totalReduction >= 60 ? 'success' : 'warning'}>
                     {breakdown.totalReduction}%
                   </Badge>
                 </Tooltip>
               </div>
             </div>
           ) : (
-            <div className="text-center py-4">
-              <p className="text-sm text-gray-500">
-                파티에 받는 피해량 감소 효과가 없습니다.
-              </p>
+            <div className="py-4 text-center">
+              <p className="text-sm text-gray-500">파티에 받는 피해량 감소 효과가 없습니다.</p>
             </div>
           )}
         </AccordionContent>
@@ -123,7 +113,7 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
 function calculateDamageReduction(
   apostles: Apostle[],
   skillsData: any,
-  skillLevels: Record<string, number>
+  skillLevels: Record<string, number>,
 ): BreakdownResult {
   const details: BreakdownDetail[] = [];
   let totalReduction = 0;
@@ -133,24 +123,20 @@ function calculateDamageReduction(
   }
 
   for (const apostle of apostles) {
-    const apostaSkills = skillsData.skills.filter(
-      (s: any) => s.apostleId === apostle.id
-    );
+    const apostaSkills = skillsData.skills.filter((s: any) => s.apostleId === apostle.id);
 
     let bestSkill = null;
     let bestReduction = 0;
 
     for (const skill of apostaSkills) {
-      if (!skill.incomingReduction || skill.incomingReduction.length === 0)
-        continue;
+      if (!skill.damage || skill.damage.length === 0) continue;
 
       const currentLevel = skillLevels[apostle.id] || 1;
-      const reductionData = skill.incomingReduction.find(
-        (d: any) => d.level === currentLevel
-      );
 
-      if (reductionData && reductionData.value > bestReduction) {
-        bestReduction = reductionData.value;
+      const reductionData = skill.damage.find((d: any) => d.level === currentLevel);
+
+      if (reductionData && reductionData.Reduction > bestReduction) {
+        bestReduction = reductionData.Reduction;
         bestSkill = skill;
       }
     }
@@ -166,14 +152,15 @@ function calculateDamageReduction(
       details.push({
         apostleName: apostle.name,
         skillName: bestSkill.name,
-        skillType: bestSkill.level === "low" ? "저학년" : "고학년",
+        skillType: bestSkill.level === 'low' ? '저학년' : '고학년',
         skillLevel: currentSkillLevel,
         reduction: bestReduction,
-        appliesTo: isExcludingSelf ? "자신만" : "다수 적용",
+        appliesTo: isExcludingSelf ? '자신만' : '다수 적용',
       });
     }
   }
 
+  // 최대 75%로 제한
   totalReduction = Math.min(totalReduction, 75);
 
   return { totalReduction, details };
