@@ -1,9 +1,9 @@
-import React from "react";
-import type { Apostle } from "../../types/apostle";
-import type { PartyAnalysis } from "../../utils/partyAnalysisUtils";
-import DamageReductionSkillDisplay from "./DamageReductionSkillDisplay";
-import DamageReductionAsideDisplay from "./DamageReductionAsideDisplay";
-import SynergyDisplay from "./SynergyDisplay";
+import React, { useState } from 'react';
+import type { Apostle } from '../../types/apostle';
+import type { PartyAnalysis } from '../../utils/partyAnalysisUtils';
+import DamageReductionSkillDisplay from './DamageReductionSkillDisplay';
+import DamageReductionAsideDisplay from './DamageReductionAsideDisplay';
+import SynergyDisplay from './SynergyDisplay';
 
 interface PartyAnalysisPanelProps {
   analysis: PartyAnalysis;
@@ -16,9 +16,19 @@ export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
   filledParty,
   skillsData,
 }) => {
+  const [selectedApostles, setSelectedApostles] = useState<Apostle[]>([]);
+  const [skillLevels, setSkillLevels] = useState<Record<string, number>>({});
+  // 스킬 레벨 변경 핸들러
+  const handleSkillLevelChange = (apostleId: string, newLevel: number) => {
+    setSkillLevels((prev) => ({
+      ...prev,
+      [apostleId]: newLevel,
+    }));
+  };
+
   if (filledParty.length === 0) {
     return (
-      <div className="box text-center py-8">
+      <div className="box py-8 text-center">
         <p className="text-muted">사도를 배치하면 분석 결과가 표시됩니다.</p>
       </div>
     );
@@ -29,7 +39,8 @@ export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
       <DamageReductionSkillDisplay
         apostles={filledParty}
         skillsData={skillsData}
-        skillLevels={{}}
+        skillLevels={skillLevels}
+        onSkillLevelChange={handleSkillLevelChange}
       />
       {/* <DamageReductionAsideDisplay
         apostles={filledParty}
