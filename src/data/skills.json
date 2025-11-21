@@ -6,8 +6,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a001",
@@ -15,8 +19,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a002",
@@ -24,8 +32,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a002",
@@ -33,8 +45,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a003",
@@ -42,8 +58,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a003",
@@ -51,8 +71,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a004",
@@ -60,8 +84,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a004",
@@ -69,8 +97,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a005",
@@ -78,8 +110,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a005",
@@ -87,8 +123,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a006",
@@ -96,8 +136,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a006",
@@ -105,8 +149,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a007",
@@ -114,8 +162,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a007",
@@ -123,8 +175,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a008",
@@ -132,8 +188,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a008",
@@ -141,8 +201,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a009",
@@ -150,8 +214,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a009",
@@ -159,8 +227,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a010",
@@ -168,8 +240,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a010",
@@ -177,8 +253,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a011",
@@ -186,8 +266,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a011",
@@ -195,8 +279,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a012",
@@ -204,8 +292,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a012",
@@ -213,8 +305,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a013",
@@ -222,8 +318,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a013",
@@ -231,8 +331,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a014",
@@ -240,8 +344,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a014",
@@ -249,8 +357,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a015",
@@ -258,8 +370,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a015",
@@ -267,8 +383,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a016",
@@ -276,8 +396,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a016",
@@ -285,8 +409,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a017",
@@ -294,8 +422,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a017",
@@ -303,8 +435,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a018",
@@ -312,8 +448,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a018",
@@ -321,8 +461,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a019",
@@ -330,8 +474,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a019",
@@ -339,8 +487,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a020",
@@ -348,59 +500,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 2,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 3,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 4,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 5,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 6,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 7,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 8,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 9,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 10,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 11,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 12,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 13,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         }
       ]
     },
@@ -410,8 +574,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a021",
@@ -419,8 +587,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a021",
@@ -428,8 +600,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a022",
@@ -437,8 +613,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a022",
@@ -446,8 +626,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a023",
@@ -455,8 +639,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a023",
@@ -464,8 +652,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a024",
@@ -473,8 +665,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a024",
@@ -482,8 +678,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a025",
@@ -491,8 +691,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a025",
@@ -500,8 +704,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a026",
@@ -509,8 +717,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a026",
@@ -518,8 +730,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a027",
@@ -527,8 +743,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a027",
@@ -536,8 +756,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a028",
@@ -545,59 +769,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 2,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 3,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 4,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 5,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 6,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 7,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 8,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 9,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 10,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 11,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 12,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 13,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         }
       ]
     },
@@ -607,59 +843,71 @@
       "level": "high",
       "description": "",
       "excludeSelf": true,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 40
+          "Increase": 0,
+          "Reduction": 40
         },
         {
           "level": 2,
-          "value": 42
+          "Increase": 0,
+          "Reduction": 42
         },
         {
           "level": 3,
-          "value": 44
+          "Increase": 0,
+          "Reduction": 44
         },
         {
           "level": 4,
-          "value": 46
+          "Increase": 0,
+          "Reduction": 46
         },
         {
           "level": 5,
-          "value": 48
+          "Increase": 0,
+          "Reduction": 48
         },
         {
           "level": 6,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 7,
-          "value": 52
+          "Increase": 0,
+          "Reduction": 52
         },
         {
           "level": 8,
-          "value": 54
+          "Increase": 0,
+          "Reduction": 54
         },
         {
           "level": 9,
-          "value": 56
+          "Increase": 0,
+          "Reduction": 56
         },
         {
           "level": 10,
-          "value": 58
+          "Increase": 0,
+          "Reduction": 58
         },
         {
           "level": 11,
-          "value": 60
+          "Increase": 0,
+          "Reduction": 60
         },
         {
           "level": 12,
-          "value": 62
+          "Increase": 0,
+          "Reduction": 62
         },
         {
           "level": 13,
-          "value": 64
+          "Increase": 0,
+          "Reduction": 64
         }
       ]
     },
@@ -669,8 +917,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a029",
@@ -678,8 +930,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a030",
@@ -687,8 +943,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a030",
@@ -696,8 +956,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a031",
@@ -705,8 +969,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a031",
@@ -714,8 +982,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a032",
@@ -723,8 +995,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a032",
@@ -732,8 +1008,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a033",
@@ -741,8 +1021,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a033",
@@ -750,8 +1034,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a034",
@@ -759,8 +1047,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a034",
@@ -768,8 +1060,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a035",
@@ -777,8 +1073,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a035",
@@ -786,8 +1086,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a036",
@@ -795,8 +1099,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a036",
@@ -804,8 +1112,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a037",
@@ -813,8 +1125,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a037",
@@ -822,8 +1138,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a038",
@@ -831,8 +1151,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a038",
@@ -840,8 +1164,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a039",
@@ -849,8 +1177,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a039",
@@ -858,8 +1190,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a040",
@@ -867,8 +1203,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a040",
@@ -876,8 +1216,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a041",
@@ -885,8 +1229,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a041",
@@ -894,8 +1242,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a042",
@@ -903,8 +1255,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a042",
@@ -912,8 +1268,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a043",
@@ -921,8 +1281,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a043",
@@ -930,8 +1294,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a044",
@@ -939,8 +1307,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a044",
@@ -948,8 +1320,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a045",
@@ -957,8 +1333,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a045",
@@ -966,8 +1346,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a046",
@@ -975,8 +1359,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a046",
@@ -984,8 +1372,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a047",
@@ -993,8 +1385,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a047",
@@ -1002,8 +1398,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a048",
@@ -1011,8 +1411,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a048",
@@ -1020,8 +1424,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a049",
@@ -1029,8 +1437,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a049",
@@ -1038,8 +1450,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a050",
@@ -1047,8 +1463,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a050",
@@ -1056,8 +1476,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a051",
@@ -1065,8 +1489,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a051",
@@ -1074,8 +1502,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a052",
@@ -1083,8 +1515,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a052",
@@ -1092,8 +1528,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a053",
@@ -1101,8 +1541,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a053",
@@ -1110,8 +1554,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a054",
@@ -1119,8 +1567,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a054",
@@ -1128,8 +1580,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a055",
@@ -1137,8 +1593,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a055",
@@ -1146,8 +1606,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a056",
@@ -1155,8 +1619,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a056",
@@ -1164,8 +1632,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a057",
@@ -1173,8 +1645,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a057",
@@ -1182,8 +1658,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a058",
@@ -1191,8 +1671,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a058",
@@ -1200,8 +1684,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a059",
@@ -1209,8 +1697,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a059",
@@ -1218,8 +1710,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a060",
@@ -1227,8 +1723,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a060",
@@ -1236,8 +1736,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a061",
@@ -1245,8 +1749,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a061",
@@ -1254,8 +1762,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a062",
@@ -1263,8 +1775,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a062",
@@ -1272,8 +1788,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a063",
@@ -1281,8 +1801,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a063",
@@ -1290,8 +1814,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a064",
@@ -1299,8 +1827,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a064",
@@ -1308,8 +1840,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a065",
@@ -1317,8 +1853,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a065",
@@ -1326,8 +1866,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a066",
@@ -1335,8 +1879,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a066",
@@ -1344,59 +1892,71 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 2,
-          "value": 51
+          "Increase": 0,
+          "Reduction": 51
         },
         {
           "level": 3,
-          "value": 52
+          "Increase": 0,
+          "Reduction": 52
         },
         {
           "level": 4,
-          "value": 54
+          "Increase": 0,
+          "Reduction": 54
         },
         {
           "level": 5,
-          "value": 56
+          "Increase": 0,
+          "Reduction": 56
         },
         {
           "level": 6,
-          "value": 58
+          "Increase": 0,
+          "Reduction": 58
         },
         {
           "level": 7,
-          "value": 60
+          "Increase": 0,
+          "Reduction": 60
         },
         {
           "level": 8,
-          "value": 62
+          "Increase": 0,
+          "Reduction": 62
         },
         {
           "level": 9,
-          "value": 65
+          "Increase": 0,
+          "Reduction": 65
         },
         {
           "level": 10,
-          "value": 68
+          "Increase": 0,
+          "Reduction": 68
         },
         {
           "level": 11,
-          "value": 71
+          "Increase": 0,
+          "Reduction": 71
         },
         {
           "level": 12,
-          "value": 74
+          "Increase": 0,
+          "Reduction": 74
         },
         {
           "level": 13,
-          "value": 77
+          "Increase": 0,
+          "Reduction": 77
         }
       ]
     },
@@ -1406,8 +1966,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a067",
@@ -1415,8 +1979,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a068",
@@ -1424,8 +1992,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a068",
@@ -1433,8 +2005,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a069",
@@ -1442,8 +2018,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a069",
@@ -1451,8 +2031,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a070",
@@ -1460,8 +2044,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a070",
@@ -1469,8 +2057,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a071",
@@ -1478,8 +2070,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a071",
@@ -1487,8 +2083,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a072",
@@ -1496,8 +2096,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a072",
@@ -1505,59 +2109,71 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 2,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 3,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 4,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 5,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 6,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 7,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 8,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 9,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 10,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 11,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 12,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 13,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         }
       ]
     },
@@ -1567,8 +2183,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a073",
@@ -1576,8 +2196,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a074",
@@ -1585,8 +2209,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a074",
@@ -1594,8 +2222,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a075",
@@ -1603,8 +2235,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a075",
@@ -1612,8 +2248,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a076",
@@ -1621,8 +2261,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a076",
@@ -1630,8 +2274,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a077",
@@ -1639,8 +2287,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a077",
@@ -1648,8 +2300,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a078",
@@ -1657,8 +2313,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a078",
@@ -1666,8 +2326,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a079",
@@ -1675,8 +2339,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a079",
@@ -1684,8 +2352,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a080",
@@ -1693,8 +2365,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a080",
@@ -1702,8 +2378,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a081",
@@ -1711,59 +2391,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 3
+          "Increase": 0,
+          "Reduction": 3
         },
         {
           "level": 2,
-          "value": 3
+          "Increase": 0,
+          "Reduction": 3
         },
         {
           "level": 3,
-          "value": 3
+          "Increase": 0,
+          "Reduction": 3
         },
         {
           "level": 4,
-          "value": 3
+          "Increase": 0,
+          "Reduction": 3
         },
         {
           "level": 5,
-          "value": 3
+          "Increase": 0,
+          "Reduction": 3
         },
         {
           "level": 6,
-          "value": 4
+          "Increase": 0,
+          "Reduction": 4
         },
         {
           "level": 7,
-          "value": 4
+          "Increase": 0,
+          "Reduction": 4
         },
         {
           "level": 8,
-          "value": 4
+          "Increase": 0,
+          "Reduction": 4
         },
         {
           "level": 9,
-          "value": 4
+          "Increase": 0,
+          "Reduction": 4
         },
         {
           "level": 10,
-          "value": 4
+          "Increase": 0,
+          "Reduction": 4
         },
         {
           "level": 11,
-          "value": 5
+          "Increase": 0,
+          "Reduction": 5
         },
         {
           "level": 12,
-          "value": 5
+          "Increase": 0,
+          "Reduction": 5
         },
         {
           "level": 13,
-          "value": 5
+          "Increase": 0,
+          "Reduction": 5
         }
       ]
     },
@@ -1773,8 +2465,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a082",
@@ -1782,59 +2478,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": true,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 11
+          "Increase": 0,
+          "Reduction": 11
         },
         {
           "level": 2,
-          "value": 12
+          "Increase": 0,
+          "Reduction": 12
         },
         {
           "level": 3,
-          "value": 13
+          "Increase": 0,
+          "Reduction": 13
         },
         {
           "level": 4,
-          "value": 14
+          "Increase": 0,
+          "Reduction": 14
         },
         {
           "level": 5,
-          "value": 15
+          "Increase": 0,
+          "Reduction": 15
         },
         {
           "level": 6,
-          "value": 16
+          "Increase": 0,
+          "Reduction": 16
         },
         {
           "level": 7,
-          "value": 17
+          "Increase": 0,
+          "Reduction": 17
         },
         {
           "level": 8,
-          "value": 18
+          "Increase": 0,
+          "Reduction": 18
         },
         {
           "level": 9,
-          "value": 19
+          "Increase": 0,
+          "Reduction": 19
         },
         {
           "level": 10,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 11,
-          "value": 21
+          "Increase": 0,
+          "Reduction": 21
         },
         {
           "level": 12,
-          "value": 22
+          "Increase": 0,
+          "Reduction": 22
         },
         {
           "level": 13,
-          "value": 23
+          "Increase": 0,
+          "Reduction": 23
         }
       ]
     },
@@ -1844,8 +2552,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a083",
@@ -1853,59 +2565,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 6
+          "Increase": 0,
+          "Reduction": 6
         },
         {
           "level": 2,
-          "value": 7
+          "Increase": 0,
+          "Reduction": 7
         },
         {
           "level": 3,
-          "value": 8
+          "Increase": 0,
+          "Reduction": 8
         },
         {
           "level": 4,
-          "value": 9
+          "Increase": 0,
+          "Reduction": 9
         },
         {
           "level": 5,
-          "value": 10
+          "Increase": 0,
+          "Reduction": 10
         },
         {
           "level": 6,
-          "value": 11
+          "Increase": 0,
+          "Reduction": 11
         },
         {
           "level": 7,
-          "value": 12
+          "Increase": 0,
+          "Reduction": 12
         },
         {
           "level": 8,
-          "value": 13
+          "Increase": 0,
+          "Reduction": 13
         },
         {
           "level": 9,
-          "value": 14
+          "Increase": 0,
+          "Reduction": 14
         },
         {
           "level": 10,
-          "value": 15
+          "Increase": 0,
+          "Reduction": 15
         },
         {
           "level": 11,
-          "value": 16
+          "Increase": 0,
+          "Reduction": 16
         },
         {
           "level": 12,
-          "value": 17
+          "Increase": 0,
+          "Reduction": 17
         },
         {
           "level": 13,
-          "value": 18
+          "Increase": 0,
+          "Reduction": 18
         }
       ]
     },
@@ -1915,8 +2639,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a084",
@@ -1924,8 +2652,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a084",
@@ -1933,8 +2665,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a085",
@@ -1942,8 +2678,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a085",
@@ -1951,8 +2691,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a086",
@@ -1960,8 +2704,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a086",
@@ -1969,8 +2717,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a087",
@@ -1978,8 +2730,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a087",
@@ -1987,8 +2743,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a088",
@@ -1996,59 +2756,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 2,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 3,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 4,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 5,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 6,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 7,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 8,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 9,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 10,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 11,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 12,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         },
         {
           "level": 13,
-          "value": 20
+          "Increase": 0,
+          "Reduction": 20
         }
       ]
     },
@@ -2058,8 +2830,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a089",
@@ -2067,8 +2843,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a089",
@@ -2076,8 +2856,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a090",
@@ -2085,8 +2869,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a090",
@@ -2094,8 +2882,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a091",
@@ -2103,8 +2895,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a091",
@@ -2112,8 +2908,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a092",
@@ -2121,59 +2921,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 25
+          "Increase": 0,
+          "Reduction": 25
         },
         {
           "level": 2,
-          "value": 27
+          "Increase": 0,
+          "Reduction": 27
         },
         {
           "level": 3,
-          "value": 29
+          "Increase": 0,
+          "Reduction": 29
         },
         {
           "level": 4,
-          "value": 31
+          "Increase": 0,
+          "Reduction": 31
         },
         {
           "level": 5,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 6,
-          "value": 35
+          "Increase": 0,
+          "Reduction": 35
         },
         {
           "level": 7,
-          "value": 37
+          "Increase": 0,
+          "Reduction": 37
         },
         {
           "level": 8,
-          "value": 39
+          "Increase": 0,
+          "Reduction": 39
         },
         {
           "level": 9,
-          "value": 41
+          "Increase": 0,
+          "Reduction": 41
         },
         {
           "level": 10,
-          "value": 43
+          "Increase": 0,
+          "Reduction": 43
         },
         {
           "level": 11,
-          "value": 45
+          "Increase": 0,
+          "Reduction": 45
         },
         {
           "level": 12,
-          "value": 47
+          "Increase": 0,
+          "Reduction": 47
         },
         {
           "level": 13,
-          "value": 49
+          "Increase": 0,
+          "Reduction": 49
         }
       ]
     },
@@ -2183,8 +2995,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a093",
@@ -2192,8 +3008,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a093",
@@ -2201,8 +3021,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a094",
@@ -2210,8 +3034,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a094",
@@ -2219,8 +3047,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a095",
@@ -2228,8 +3060,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a095",
@@ -2237,8 +3073,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a096",
@@ -2246,58 +3086,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": true,
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 2,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 3,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 4,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 5,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 6,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 7,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 8,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 9,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 10,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 11,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 12,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         },
         {
           "level": 13,
-          "value": 33
+          "Increase": 0,
+          "Reduction": 33
         }
       ]
     },
@@ -2307,8 +3160,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a097",
@@ -2316,8 +3173,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a097",
@@ -2325,59 +3186,71 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 2,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 3,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 4,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 5,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 6,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 7,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 8,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 9,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 10,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 11,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 12,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 13,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         }
       ]
     },
@@ -2387,59 +3260,71 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 2,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 3,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 4,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 5,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 6,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 7,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 8,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 9,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 10,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 11,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 12,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         },
         {
           "level": 13,
-          "value": 30
+          "Increase": 0,
+          "Reduction": 30
         }
       ]
     },
@@ -2449,8 +3334,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a099",
@@ -2458,8 +3347,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a099",
@@ -2467,8 +3360,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a100",
@@ -2476,8 +3373,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a100",
@@ -2485,8 +3386,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a101",
@@ -2494,8 +3399,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a101",
@@ -2503,8 +3412,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a102",
@@ -2512,8 +3425,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a102",
@@ -2521,8 +3438,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a103",
@@ -2530,8 +3451,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a103",
@@ -2539,8 +3464,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a104",
@@ -2548,8 +3477,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a104",
@@ -2557,8 +3490,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a105",
@@ -2566,8 +3503,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a105",
@@ -2575,8 +3516,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a106",
@@ -2584,8 +3529,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a106",
@@ -2593,8 +3542,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a107",
@@ -2602,8 +3555,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a107",
@@ -2611,8 +3568,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a108",
@@ -2620,8 +3581,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a108",
@@ -2629,8 +3594,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a109",
@@ -2638,8 +3607,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a109",
@@ -2647,8 +3620,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a110",
@@ -2656,8 +3633,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a110",
@@ -2665,58 +3646,71 @@
       "level": "high",
       "description": "",
       "excludeSelf": true,
-      "incomingReduction": [
+      "damage": [
         {
           "level": 1,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 2,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 3,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 4,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 5,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 6,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 7,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 8,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 9,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 10,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 11,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 12,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         },
         {
           "level": 13,
-          "value": 50
+          "Increase": 0,
+          "Reduction": 50
         }
       ]
     },
@@ -2726,8 +3720,12 @@
       "level": "low",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     },
     {
       "apostleId": "a111",
@@ -2735,8 +3733,12 @@
       "level": "high",
       "description": "",
       "excludeSelf": false,
-      "incomingIncrease": [],
-      "incomingReduction": []
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     }
   ]
 }
