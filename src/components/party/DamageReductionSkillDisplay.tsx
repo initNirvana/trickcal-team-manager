@@ -112,7 +112,7 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
                           onClick={() => handleLevelChange(apostleId, -1)}
                           color="gray"
                           size="xs"
-                          // disabled={skillLevel === MIN_LEVEL} // 최소값일 때 비활성화
+                          disabled={item.skillLevel === MIN_LEVEL} // 최소값일 때 비활성화
                         >
                           <HiMinus className="h-4 w-4" />
                         </Button>
@@ -121,7 +121,7 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
                           onClick={() => handleLevelChange(apostleId, 1)}
                           color="gray"
                           size="xs"
-                          // disabled={skillLevel === MAX_LEVEL} // 최대값일 때 비활성화
+                          disabled={item.skillLevel === MAX_LEVEL} // 최대값일 때 비활성화
                         >
                           <HiPlus className="h-4 w-4" />
                         </Button>
