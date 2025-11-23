@@ -19,7 +19,7 @@ interface DamageReductionDisplayProps {
   onSkillLevelChange?: (apostleId: string, newLevel: number) => void;
 }
 
-interface BreakdownDetail {
+interface ReductionDetail {
   apostleName: string;
   skillName: string;
   skillType: string;
@@ -28,9 +28,9 @@ interface BreakdownDetail {
   appliesTo: string;
 }
 
-interface BreakdownResult {
+interface ReductionResult {
   totalReduction: number;
-  details: BreakdownDetail[];
+  details: ReductionDetail[];
 }
 
 export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
@@ -42,7 +42,7 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
   const MIN_LEVEL = 1;
   const MAX_LEVEL = 13;
 
-  const breakdown = useMemo(
+  const reduction = useMemo(
     () => calculateDamageReduction(apostles, skillsData, skillLevels),
     [apostles, skillsData, skillLevels],
   );
@@ -76,18 +76,18 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
         </AccordionTitle>
 
         <AccordionContent>
-          {breakdown.details.length > 0 ? (
+          {reduction.details.length > 0 ? (
             <div className="space-y-3">
               {/* 헤더 */}
               <div className="flex items-center justify-between border-b border-gray-200 pb-2">
                 <p className="text-xs font-bold text-gray-700">
-                  스킬 구성 ({breakdown.details.length}개)
+                  스킬 구성 ({reduction.details.length}개)
                 </p>
                 <p className="text-xs text-gray-500">개별 감소량</p>
               </div>
 
               {/* 스킬 리스트 */}
-              {breakdown.details.map((item, idx) => {
+              {reduction.details.map((item, idx) => {
                 const apostle = apostles.find((a) => a.name === item.apostleName);
                 const apostleId = apostle?.id || '';
 
@@ -140,8 +140,8 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
               <div className="flex items-center justify-between border-t border-gray-200 pt-2">
                 <p className="text-sm font-bold text-gray-900">총 감소량</p>
                 <Tooltip content="최대 75%">
-                  <Badge color={breakdown.totalReduction >= 60 ? 'success' : 'warning'}>
-                    {breakdown.totalReduction}%
+                  <Badge color={reduction.totalReduction >= 60 ? 'success' : 'warning'}>
+                    {reduction.totalReduction}%
                   </Badge>
                 </Tooltip>
               </div>
@@ -161,8 +161,8 @@ function calculateDamageReduction(
   apostles: Apostle[],
   skillsData: any,
   skillLevels: Record<string, number>,
-): BreakdownResult {
-  const details: BreakdownDetail[] = [];
+): ReductionResult {
+  const details: ReductionDetail[] = [];
   let totalReduction = 0;
 
   if (!skillsData?.skills) {
