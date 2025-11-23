@@ -1,21 +1,19 @@
-import type { Personality } from "../types/apostle";
+import type { Personality } from '../types/apostle';
 
-export function getPersonalityBackgroundClass(
-  personality: Personality
-): string {
+export function getPersonalityBackgroundClass(personality: Personality): string {
   switch (personality) {
-    case "Jolly":
-      return "bg-yellow-300";
-    case "Mad":
-      return "bg-red-500";
-    case "Naive":
-      return "bg-green-500";
-    case "Gloomy":
-      return "bg-purple-500";
-    case "Cool":
-      return "bg-blue-500";
+    case 'Jolly':
+      return 'bg-yellow-300';
+    case 'Mad':
+      return 'bg-red-500';
+    case 'Naive':
+      return 'bg-lime-500';
+    case 'Gloomy':
+      return 'bg-purple-500';
+    case 'Cool':
+      return 'bg-cyan-300';
     default:
-      return "bg-gray-800 ";
+      return 'bg-slate-100 ';
   }
 }
 
