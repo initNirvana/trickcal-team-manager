@@ -1,6 +1,6 @@
-import React from "react";
-import type { Personality } from "../../types/apostle";
-import { getSynergyOnIconPath } from "../../utils/apostleUtils";
+import React from 'react';
+import type { Personality } from '../../types/apostle';
+import { getSynergyOnIconPath } from '../../utils/apostleUtils';
 
 interface SynergyDisplayProps {
   synergies: Array<{
@@ -16,33 +16,45 @@ const SynergyDisplay: React.FC<SynergyDisplayProps> = ({ synergies }) => {
   const activeSynergies = synergies.filter((s) => s.isActive);
 
   return (
-    <div className="box space-y-2">
-      <div className="section-header ">
-        <h3 className="section-title">성격 시너지</h3>
-      </div>
-
+    <div className="space-y-4">
+      <h3 className="text-sm font-semibold">성격 시너지</h3>
       {activeSynergies.length === 0 ? (
-        <p className="text-muted text-sm">
-          같은 성격의 사도 2명 이상을 배치하세요.
-        </p>
+        <p className="text-center text-sm text-gray-500">같은 성격의 사도 2명 이상을 배치하세요.</p>
       ) : (
-        <div className="space-y-2">
+        <div className="flex flex-wrap justify-center gap-4">
           {activeSynergies.map((synergy) => (
-            <div
-              key={synergy.personality}
-              className="box-subtitle border-l-4 border-blue-500 pl-3"
-            >
-              <img
-                src={getSynergyOnIconPath(synergy.personality)}
-                alt={synergy.personality}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src =
-                    "/src/assets/placeholder.png";
-                }}
-              />
+            <div key={synergy.personality} className="space-y-2">
+              {/* 겹쳐진 아이콘 스택 */}
+              <div className="flex items-center gap-3">
+                <div className="relative inline-flex items-center" style={{ height: '24px' }}>
+                  {Array.from({ length: synergy.count }).map((_, index) => (
+                    <img
+                      key={index}
+                      src={getSynergyOnIconPath(synergy.personality)}
+                      alt={`${synergy.personality}-${index + 1}`}
+                      className="h-6 w-6 rounded-full border-2 border-white"
+                      style={{
+                        marginLeft: index === 0 ? '0' : '-12px',
+                        zIndex: synergy.count - index,
+                        position: 'relative',
+                      }}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* 보너스 정보 */}
               {synergy.bonus && (
-                <div className="text-xs text-gray-600 mt-1">
-                  HP: +{synergy.bonus.hp}% | 피해: +{synergy.bonus.damage}%
+                <div className="ml-2 space-y-1 text-sm">
+                  {synergy.bonus.hp > 0 && (
+                    <div className="inline-flex items-center gap-1 rounded bg-red-100 px-2 py-1 text-center text-red-700">
+                      HP +{synergy.bonus.hp}% <br />
+                      피해량 +{synergy.bonus.damage}%
+                    </div>
+                  )}
                 </div>
               )}
             </div>
