@@ -9,12 +9,16 @@ interface PartyAnalysisPanelProps {
   analysis: PartyAnalysis;
   filledParty: Apostle[];
   skillsData?: any;
+  asidesData?: any;
+  asideSelection?: Record<string, number | null>;
 }
 
 export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
   analysis,
   filledParty,
   skillsData,
+  asidesData,
+  asideSelection,
 }) => {
   const [selectedApostles, setSelectedApostles] = useState<Apostle[]>([]);
   const [skillLevels, setSkillLevels] = useState<Record<string, number>>({});
@@ -42,11 +46,11 @@ export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
         skillLevels={skillLevels}
         onSkillLevelChange={handleSkillLevelChange}
       />
-      {/* <DamageReductionAsideDisplay
+      <DamageReductionAsideDisplay
         apostles={filledParty}
-        skillsData={skillsData}
-        skillLevels={{}}
-      /> */}
+        asidesData={asidesData}
+        asideSelection={asideSelection || {}}
+      />
       <SynergyDisplay synergies={analysis.synergies} />
     </div>
   );

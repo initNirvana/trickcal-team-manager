@@ -1,5 +1,5 @@
-import React from "react";
-import { Footer, FooterTitle } from "flowbite-react";
+import React from 'react';
+import { Footer, FooterTitle } from 'flowbite-react';
 
 export function FooterComp() {
   return (

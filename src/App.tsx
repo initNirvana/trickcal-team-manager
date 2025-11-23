@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import PartySimulator from "./components/party/PartySimulator";
-import type { Apostle } from "./types/apostle";
-import apostlesData from "./data/apostles.json";
-import skillsData from "./data/skills.json";
-import Layout from "./components/layout/Layout";
+import React, { useState, useEffect } from 'react';
+import PartySimulator from './components/party/PartySimulator';
+import type { Apostle } from './types/apostle';
+import apostlesData from './data/apostles.json';
+import skillsData from './data/skills.json';
+import asidesData from './data/asides.json';
+import Layout from './components/layout/Layout';
 
 function App() {
   const [apostles, setApostles] = useState<Apostle[]>([]);
@@ -16,14 +17,14 @@ function App() {
       }
       setIsLoading(false);
     } catch (error) {
-      console.error("사도 데이터 로딩 실패:", error);
+      console.error('사도 데이터 로딩 실패:', error);
       setIsLoading(false);
     }
   }, []);
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-800 text-white flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-gray-800 text-white">
         로딩 중...
       </div>
     );
@@ -31,7 +32,7 @@ function App() {
 
   if (apostles.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-800  text-white flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-gray-800 text-white">
         사도 데이터를 불러올 수 없습니다
       </div>
     );
@@ -39,7 +40,7 @@ function App() {
 
   return (
     <Layout>
-      <PartySimulator apostles={apostles} skillsData={skillsData} />
+      <PartySimulator apostles={apostles} skillsData={skillsData} asidesData={asidesData} />
     </Layout>
   );
 }

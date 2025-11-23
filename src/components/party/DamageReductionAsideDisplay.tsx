@@ -1,48 +1,258 @@
-import React, { useMemo } from "react";
-import type { Apostle } from "../../types/apostle";
-import {
-  Accordion,
-  AccordionPanel,
-  AccordionContent,
-  AccordionTitle,
-  Badge,
-  Tooltip,
-} from "flowbite-react";
+import React, { useMemo } from 'react';
+import type { Apostle } from '../../types/apostle';
+import { Accordion, AccordionPanel, AccordionContent, AccordionTitle, Badge } from 'flowbite-react';
 
-interface DamageReductionDisplayProps {
+// ✅ 올바른 Props 인터페이스
+interface DamageReductionAsideDisplayProps {
   apostles: Apostle[];
-  skillsData?: any;
-  skillLevels?: Record<string, number>;
+  asidesData?: any;
+  asideSelection: Record<string, number | null>;
 }
 
-interface BreakdownDetail {
+// ✅ 어사이드 효과 인터페이스
+interface AsideEffect {
   apostleName: string;
-  skillName: string;
-  skillType: string;
-  skillLevel: number;
-  reduction: number;
-  appliesTo: string;
+  apostleId: string;
+  asideName: string;
+  rankStar: number;
+  type: string;
+  damageIncrease: number;
+  damageReduction: number;
+  description?: string;
 }
 
-interface BreakdownResult {
+// ✅ 열별 그룹 인터페이스
+interface GroupedEffects {
+  all: AsideEffect[];
+  front: AsideEffect[];
+  mid: AsideEffect[];
+  back: AsideEffect[];
+  persona: AsideEffect[];
+}
+
+interface AsideeffectListResult {
+  totalIncrease: number;
   totalReduction: number;
-  details: BreakdownDetail[];
+  increaseEffects: GroupedEffects;
+  reductionEffects: GroupedEffects;
 }
 
-export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
+// ✅ 어사이드 효과 계산 함수
+function calculateAsideEffects(
+  apostles: Apostle[],
+  asidesData: any,
+  asideSelection: Record<string, number | null>,
+): AsideeffectListResult {
+  const increaseEffects: GroupedEffects = {
+    all: [],
+    persona: [],
+    front: [],
+    mid: [],
+    back: [],
+  };
+
+  const reductionEffects: GroupedEffects = {
+    all: [],
+    persona: [],
+    front: [],
+    mid: [],
+    back: [],
+  };
+
+  let totalIncrease = 0;
+  let totalReduction = 0;
+
+  if (!asidesData?.asides) {
+    return {
+      totalIncrease: 0,
+      totalReduction: 0,
+      increaseEffects,
+      reductionEffects,
+    };
+  }
+
+  for (const apostle of apostles) {
+    const selectedRank = asideSelection[apostle.id];
+    if (!selectedRank) continue;
+
+    const aside = asidesData.asides.find(
+      (a: any) => a.apostleId === apostle.id && a.level === selectedRank,
+    );
+
+    if (!aside?.damage) continue;
+
+    const damageData = Array.isArray(aside.damage) ? aside.damage[0] : aside.damage;
+
+    const increase = damageData?.Increase || 0;
+    const reduction = damageData?.Reduction || 0;
+    const asideType = aside.type || 'All';
+
+    const effectBase: AsideEffect = {
+      apostleName: apostle.name,
+      apostleId: apostle.id,
+      asideName: aside.name,
+      rankStar: selectedRank,
+      type: aside.type || 'All',
+      damageIncrease: increase,
+      damageReduction: reduction,
+      description: aside.description,
+    };
+
+    if (increase > 0) {
+      totalIncrease += increase;
+      const increaseEffect = {
+        ...effectBase,
+        damageReduction: 0,
+      };
+
+      switch (asideType[0]) {
+        case 'All':
+          increaseEffects.all.push(increaseEffect);
+          break;
+        case 'Persona':
+          increaseEffects.persona.push(increaseEffect);
+          break;
+        case 'Front':
+          increaseEffects.front.push(increaseEffect);
+          break;
+        case 'Mid':
+          increaseEffects.mid.push(increaseEffect);
+          break;
+        case 'Back':
+          increaseEffects.back.push(increaseEffect);
+          break;
+      }
+    }
+
+    if (reduction > 0) {
+      totalReduction += reduction;
+      const reductionEffect = {
+        ...effectBase,
+        damageIncrease: 0,
+      };
+
+      switch (asideType[0]) {
+        case 'All':
+          reductionEffects.all.push(reductionEffect);
+          break;
+        case 'Persona':
+          reductionEffects.persona.push(reductionEffect);
+          break;
+        case 'Front':
+          reductionEffects.front.push(reductionEffect);
+          break;
+        case 'Mid':
+          reductionEffects.mid.push(reductionEffect);
+          break;
+        case 'Back':
+          reductionEffects.back.push(reductionEffect);
+          break;
+      }
+    }
+  }
+
+  return {
+    totalIncrease,
+    totalReduction,
+    increaseEffects,
+    reductionEffects,
+  };
+}
+
+// ✅ 열 타입별 한글 라벨
+function getPositionLabel(type: 'all' | 'front' | 'mid' | 'back' | 'persona'): string {
+  const labels = {
+    all: '모든 열에 적용',
+    front: '전열',
+    mid: '중열',
+    back: '후열',
+    persona: '동일 성격',
+  };
+  return labels[type];
+}
+
+// ✅ 열별 합계 계산
+function calculatePositionSum(effects: AsideEffect[], isDamageIncrease: boolean): number {
+  return effects.reduce(
+    (sum, e) => sum + (isDamageIncrease ? e.damageIncrease : e.damageReduction),
+    0,
+  );
+}
+
+// ✅ 개별 효과 카드
+const EffectCard: React.FC<{
+  effect: AsideEffect;
+  isDamageIncrease: boolean;
+}> = ({ effect, isDamageIncrease }) => {
+  const value = isDamageIncrease ? effect.damageIncrease : effect.damageReduction;
+  const bgColor = isDamageIncrease
+    ? 'bg-orange-50 hover:bg-orange-100 dark:bg-orange-900/20 dark:hover:bg-orange-900/30'
+    : 'bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30';
+  const badgeColor = isDamageIncrease ? 'warning' : 'info';
+  const sign = isDamageIncrease ? '+' : '-';
+
+  return (
+    <div className={`flex items-center justify-between rounded-lg p-2 transition ${bgColor}`}>
+      <div className="flex-1">
+        <p className="text-sm font-bold text-gray-900 dark:text-white">
+          {effect.apostleName} ({effect.rankStar}성)
+        </p>
+      </div>
+      <Badge color={badgeColor} size="sm">
+        {sign}
+        {value}%
+      </Badge>
+    </div>
+  );
+};
+
+// ✅ 열별 섹션
+const PositionSection: React.FC<{
+  effects: AsideEffect[];
+  positionType: 'all' | 'front' | 'mid' | 'back' | 'persona';
+  isDamageIncrease: boolean;
+}> = ({ effects, positionType, isDamageIncrease }) => {
+  if (effects.length === 0) return null;
+
+  const sum = calculatePositionSum(effects, isDamageIncrease);
+
+  return (
+    <div className="mb-3">
+      <div className="mb-2 flex items-center justify-between">
+        <h5 className="text-xs font-bold text-gray-700 dark:text-gray-300">
+          {getPositionLabel(positionType)}
+        </h5>
+        <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">{sum}%</span>
+      </div>
+
+      <div className="space-y-2">
+        {effects.map((effect, idx) => (
+          <EffectCard
+            key={`${effect.apostleId}-${idx}`}
+            effect={effect}
+            isDamageIncrease={isDamageIncrease}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// ✅ 메인 컴포넌트
+export const DamageReductionAsideDisplay: React.FC<DamageReductionAsideDisplayProps> = ({
   apostles,
-  skillsData,
-  skillLevels = {},
+  asidesData,
+  asideSelection,
 }) => {
-  const breakdown = useMemo(
-    () => calculateDamageReduction(apostles, skillsData, skillLevels),
-    [apostles, skillsData, skillLevels]
+  const effectList = useMemo(
+    () => calculateAsideEffects(apostles, asidesData, asideSelection),
+    [apostles, asidesData, asideSelection],
   );
 
   if (apostles.length === 0) {
     return (
-      <div className="box text-center">
-        <p className="text-muted">파티 분석이 진행 중입니다.</p>
+      <div className="box py-4 text-center">
+        <p className="text-muted">파티에 사도를 추가하세요.</p>
       </div>
     );
   }
@@ -51,67 +261,87 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
     <Accordion collapseAll>
       <AccordionPanel>
         <AccordionTitle>
-          <div className="flex items-center justify-between w-full pr-2">
-            <span className="font-semibold text-sm">
-              받는 피해량 감소 현황 (스킬)
-            </span>
+          <div className="flex w-full items-center justify-between pr-2">
+            <span className="text-sm font-semibold">어사이드 효과</span>
           </div>
         </AccordionTitle>
 
-        {/* Accordion Body */}
         <AccordionContent>
-          {breakdown.details.length > 0 ? (
-            <div className="space-y-3">
-              {/* 헤더 */}
-              <div className="flex justify-between items-center pb-2 border-b border-gray-200">
-                <p className="text-xs font-bold text-gray-700">
-                  스킬 구성 ({breakdown.details.length}개)
-                </p>
-                <p className="text-xs text-gray-500">개별 감소량</p>
-              </div>
-
-              {/* 스킬 리스트 */}
-              {breakdown.details.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-between p-2 rounded-lg bg-gray-50 hover:bg-gray-100 transition"
-                >
-                  {/* 좌측: 사도명 + 범위 */}
-                  <div className="flex-1">
-                    <p className="font-bold text-sm text-gray-900">
-                      {item.apostleName} {item.skillType}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      범위: {item.appliesTo}
-                    </p>
-                  </div>
-
-                  {/* 우측: 감소량 */}
-                  <Badge color="info" size="sm">
-                    {item.reduction}%
-                  </Badge>
-                </div>
-              ))}
-
-              {/* 총합 표시 (선택사항) */}
-              <div className="flex justify-between items-center pt-2 border-t border-gray-200">
-                <p className="text-sm font-bold text-gray-900">총 감소량</p>
-                <Tooltip content="최대 75%">
-                  <Badge
-                    color={
-                      breakdown.totalReduction >= 60 ? "success" : "warning"
-                    }
-                  >
-                    {breakdown.totalReduction}%
-                  </Badge>
-                </Tooltip>
-              </div>
-            </div>
-          ) : (
-            <div className="text-center py-4">
-              <p className="text-sm text-gray-500">
-                파티에 받는 피해량 감소 효과가 없습니다.
+          {effectList.totalIncrease === 0 && effectList.totalReduction === 0 && (
+            <div className="py-6 text-center">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                어사이드 설정에서 사도의 어사이드를 선택해주세요.
               </p>
+            </div>
+          )}
+
+          {/* ✅ 피해량 증가 섹션 */}
+          {effectList.totalIncrease > 0 && (
+            <div className="mb-4">
+              <h4 className="mb-3 text-sm font-bold text-orange-700 dark:text-orange-400">
+                피해량 증가
+              </h4>
+
+              <PositionSection
+                effects={effectList.increaseEffects.all}
+                positionType="all"
+                isDamageIncrease={true}
+              />
+              <PositionSection
+                effects={effectList.increaseEffects.persona}
+                positionType="persona"
+                isDamageIncrease={true}
+              />
+              <PositionSection
+                effects={effectList.increaseEffects.front}
+                positionType="front"
+                isDamageIncrease={true}
+              />
+              <PositionSection
+                effects={effectList.increaseEffects.mid}
+                positionType="mid"
+                isDamageIncrease={true}
+              />
+              <PositionSection
+                effects={effectList.increaseEffects.back}
+                positionType="back"
+                isDamageIncrease={true}
+              />
+            </div>
+          )}
+
+          {/* ✅ 피해량 감소 섹션 */}
+          {effectList.totalReduction > 0 && (
+            <div>
+              <h4 className="mb-3 text-sm font-bold text-blue-700 dark:text-blue-400">
+                피해량 감소
+              </h4>
+
+              <PositionSection
+                effects={effectList.reductionEffects.all}
+                positionType="all"
+                isDamageIncrease={false}
+              />
+              <PositionSection
+                effects={effectList.reductionEffects.persona}
+                positionType="persona"
+                isDamageIncrease={false}
+              />
+              <PositionSection
+                effects={effectList.reductionEffects.front}
+                positionType="front"
+                isDamageIncrease={false}
+              />
+              <PositionSection
+                effects={effectList.reductionEffects.mid}
+                positionType="mid"
+                isDamageIncrease={false}
+              />
+              <PositionSection
+                effects={effectList.reductionEffects.back}
+                positionType="back"
+                isDamageIncrease={false}
+              />
             </div>
           )}
         </AccordionContent>
@@ -120,63 +350,4 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
   );
 };
 
-function calculateDamageReduction(
-  apostles: Apostle[],
-  skillsData: any,
-  skillLevels: Record<string, number>
-): BreakdownResult {
-  const details: BreakdownDetail[] = [];
-  let totalReduction = 0;
-
-  if (!skillsData?.skills) {
-    return { totalReduction: 0, details: [] };
-  }
-
-  for (const apostle of apostles) {
-    const apostaSkills = skillsData.skills.filter(
-      (s: any) => s.apostleId === apostle.id
-    );
-
-    let bestSkill = null;
-    let bestReduction = 0;
-
-    for (const skill of apostaSkills) {
-      if (!skill.incomingReduction || skill.incomingReduction.length === 0)
-        continue;
-
-      const currentLevel = skillLevels[apostle.id] || 1;
-      const reductionData = skill.incomingReduction.find(
-        (d: any) => d.level === currentLevel
-      );
-
-      if (reductionData && reductionData.value > bestReduction) {
-        bestReduction = reductionData.value;
-        bestSkill = skill;
-      }
-    }
-
-    if (bestSkill && bestReduction > 0) {
-      const currentSkillLevel = skillLevels[apostle.id] || 1;
-      const isExcludingSelf = bestSkill.excludeSelf ?? false;
-
-      if (!isExcludingSelf) {
-        totalReduction += bestReduction;
-      }
-
-      details.push({
-        apostleName: apostle.name,
-        skillName: bestSkill.name,
-        skillType: bestSkill.level === "low" ? "저학년" : "고학년",
-        skillLevel: currentSkillLevel,
-        reduction: bestReduction,
-        appliesTo: isExcludingSelf ? "자신만" : "다수 적용",
-      });
-    }
-  }
-
-  totalReduction = Math.min(totalReduction, 75);
-
-  return { totalReduction, details };
-}
-
-export default DamageReductionDisplay;
+export default DamageReductionAsideDisplay;
