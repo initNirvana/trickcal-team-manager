@@ -92,6 +92,7 @@
       "level": 3,
       "description": "후열 아군의 SP 회복량을 증가시킨다.",
       "type": ["Back"],
+      "spRecovery": 4,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     },
     {
@@ -164,6 +165,7 @@
       "level": 3,
       "description": "전열 아군의 기본 SP 회복량이 증가한다.",
       "type": ["Front"],
+      "spRecovery": 4,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     },
     {
@@ -369,6 +371,7 @@
       "level": 3,
       "description": "중열 아군의 SP 회복량을 증가시킨다.",
       "type": ["Mid"],
+      "spRecovery": 4,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     },
     {
@@ -397,6 +400,7 @@
       "level": 3,
       "description": "중열 아군의 SP 회복량을 증가시킨다.",
       "type": ["Mid"],
+      "spRecovery": 4,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     },
     {
@@ -442,6 +446,7 @@
       "level": 3,
       "description": "후열 아군의 SP 회복량을 증가시킨다.",
       "type": ["Back"],
+      "spRecovery": 4,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     },
     {
