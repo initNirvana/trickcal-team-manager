@@ -1,0 +1,809 @@
+{
+  "asides": [
+    {
+      "apostleId": "a001",
+      "apostleName": "다야",
+      "name": "반지 원정대",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a003",
+      "apostleName": "코미",
+      "name": "코미랑 같이 놀자",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a004",
+      "apostleName": "마에스트로 2호",
+      "name": "방화벽",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 8 }]
+    },
+    {
+      "apostleId": "a005",
+      "apostleName": "네르",
+      "name": "세계수의 이름으로!",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a006",
+      "apostleName": "림",
+      "name": "그대들의 눈동자에 치얼스!",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 물리 피해량이 감소한다.",
+      "type": ["All"],
+      "physical": [{ "Increase": 0, "Reduction": 17 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a008",
+      "apostleName": "실라",
+      "name": "정령의 수호자",
+      "level": 3,
+      "description": "모든 아군의 치명타 저항과 치명 피해 저항을 증가시킨다.",
+      "type": ["All"],
+      "critical": [{ "resist": 7.5, "damageResist": 7.5 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a009",
+      "apostleName": "벨벳",
+      "name": "민심을 잡아라",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 물리 피해량이 감소한다.",
+      "type": ["All"],
+      "physical": [{ "Increase": 0, "Reduction": 17 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a010",
+      "apostleName": "빅우드",
+      "name": "피톤치드",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 마법 피해량을 감소시킨다.",
+      "type": ["All"],
+      "magical": [{ "Increase": 0, "Reduction": 14 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a011",
+      "apostleName": "제이드",
+      "name": "마음의 양식",
+      "level": 3,
+      "description": "중열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a012",
+      "apostleName": "아멜리아",
+      "name": "지원 요청의 건",
+      "level": 3,
+      "description": "후열 아군의 SP 회복량을 증가시킨다.",
+      "type": ["Back"],
+      "spRecovery": 4,
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a013",
+      "apostleName": "벨리타",
+      "name": "엘리아스의 수호자들",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a014",
+      "apostleName": "에르핀",
+      "name": "순수 케이크 공격!!!",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a015",
+      "apostleName": "루포",
+      "name": "최고의 전략가인 것이다!",
+      "level": 3,
+      "description": "모든 아군의 공격 속도를 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a016",
+      "apostleName": "에슈르",
+      "name": "빵빵한 브레드",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 10, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a017",
+      "apostleName": "엘레나",
+      "name": "맑은 눈의 엘레나",
+      "level": 3,
+      "description": "모든 아군의 공격 속도를 증가시키고, 모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a018",
+      "apostleName": "프리클",
+      "name": "스승 프리클의 가르침",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a019",
+      "apostleName": "키디언",
+      "name": "내가 빛내줄게…",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a020",
+      "apostleName": "루드",
+      "name": "크로스핏 선발대",
+      "level": 3,
+      "description": "전열 아군의 기본 SP 회복량이 증가한다.",
+      "type": ["Front"],
+      "spRecovery": 4,
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a021",
+      "apostleName": "셰이디",
+      "name": "소악마의 대변인",
+      "level": 3,
+      "description": "전열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a022",
+      "apostleName": "디아나",
+      "name": "자연의 힘",
+      "level": 3,
+      "description": "중열 아군이 적에게 주는 피해량이 증가하며, 중열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a024",
+      "apostleName": "칸나",
+      "name": "후발대 지원 바람",
+      "level": 3,
+      "description": "후열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 0, "Reduction": 18 }]
+    },
+    {
+      "apostleId": "a025",
+      "apostleName": "베니",
+      "name": "나를 따르라 곰",
+      "level": 3,
+      "description": "전열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 0, "Reduction": 18 }]
+    },
+    {
+      "apostleId": "a026",
+      "apostleName": "시스트",
+      "name": "아군 타겟 상품",
+      "level": 3,
+      "description": "모든 아군의 스킬 피해량을 증가시킨다.",
+      "type": ["All"],
+      "skill": [{ "Increase": 33, "Reduction": 0 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a027",
+      "apostleName": "버터",
+      "name": "와아! 만반잘부!",
+      "level": 3,
+      "description": "모든 아군의 치명타와 치명피해를 증가시킨다",
+      "type": ["All"],
+      "critical": [{ "Increase": 7.5, "IncreaseDamage": 7.5 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a028",
+      "apostleName": "페스타",
+      "name": "역조공 이벤트!",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 7, "Reduction": 3.5 }]
+    },
+    {
+      "apostleId": "a031",
+      "apostleName": "멜루나",
+      "name": "멜루나가 쏜다",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 물리 피해량이 감소한다.",
+      "type": ["All"],
+      "physical": [{ "Increase": 0, "Reduction": 17 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a032",
+      "apostleName": "포셔",
+      "name": "신약 혁명",
+      "level": 3,
+      "description": "모든 아군의 치명타 저항과 치명 피해 저항을 증가시킨다",
+      "type": ["All"],
+      "critical": [{ "resist": 7.5, "damageResist": 7.5 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a034",
+      "apostleName": "에스피",
+      "name": "꿈꾸는 모든 자에게!",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 10, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a038",
+      "apostleName": "시온",
+      "name": "어.둠.의.구.원.자★",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a039",
+      "apostleName": "클로에",
+      "name": "런웨이 오프닝",
+      "level": 3,
+      "description": "전열 아군이 적에게 주는 피해량을 증가시키고, 전열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a040",
+      "apostleName": "아야",
+      "name": "만년설의 현자님!",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 6 }]
+    },
+    {
+      "apostleId": "a041",
+      "apostleName": "우이",
+      "name": "장화신은 우이",
+      "level": 3,
+      "description": "중열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 0, "Reduction": 18 }]
+    },
+    {
+      "apostleId": "a041",
+      "apostleName": "우이",
+      "name": "긍정왕 우이",
+      "level": 2,
+      "description": "활발 성격을 1개 더 추가하고, 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "persona": "Jolly",
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a054",
+      "apostleName": "티그",
+      "name": "차기 촌장 티그",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+
+    {
+      "apostleId": "a055",
+      "apostleName": "나이아",
+      "name": "물이 전하는 메시지",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a057",
+      "apostleName": "비비",
+      "name": "명예로운 비비",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시키고, 모든 아군의 공격속도를 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a058",
+      "apostleName": "힐데",
+      "name": "온천의 효능",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 마법 피해량이 감소한다.",
+      "type": ["All"],
+      "magical": [{ "Increase": 0, "Reduction": 14 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a059",
+      "apostleName": "셀리네",
+      "name": "기부 챌린지",
+      "level": 3,
+      "description": "전열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 0, "Reduction": 18 }]
+    },
+    {
+      "apostleId": "a060",
+      "apostleName": "에피카",
+      "name": "아군에게 바칩니다",
+      "level": 3,
+      "description": "중열 아군이 적에게 주는 피해량이 증가하며, 중열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a061",
+      "apostleName": "앨리스",
+      "name": "행운을 빌어요!",
+      "level": 3,
+      "description": "중열 아군의 SP 회복량을 증가시킨다.",
+      "type": ["Mid"],
+      "spRecovery": 4,
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a062",
+      "apostleName": "리츠",
+      "name": "은둔고수 영웅전",
+      "level": 3,
+      "description": "모든 아군의 치명타 저항과 치명 피해 저항을 증가시킨다",
+      "type": ["All"],
+      "critical": [{ "resist": 7.5, "damageResist": 7.5 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a063",
+      "apostleName": "피코라",
+      "name": "모여라 패션 피플",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a064",
+      "apostleName": "블랑셰",
+      "name": "푸른 꽃향기의 힘",
+      "level": 3,
+      "description": "중열 아군의 SP 회복량을 증가시킨다.",
+      "type": ["Mid"],
+      "spRecovery": 4,
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a065",
+      "apostleName": "이드",
+      "name": "함께 꾸는 꿈",
+      "level": 3,
+      "description": "모든 아군의 최대 HP가 증가한다",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a066",
+      "apostleName": "슈팡",
+      "name": "슈팡의 신속배달",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a067",
+      "apostleName": "카롯",
+      "name": "아이스 당근당근",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a068",
+      "apostleName": "롤렛",
+      "name": "피날레",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a070",
+      "apostleName": "리스티",
+      "name": "리스티의 슈퍼 세이브",
+      "level": 3,
+      "description": "후열 아군의 SP 회복량을 증가시킨다.",
+      "type": ["Back"],
+      "spRecovery": 4,
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a071",
+      "apostleName": "코미(수영복)",
+      "name": "조기 매진! 코사장 성공 신화",
+      "level": 3,
+      "description": "중열 아군이 적에게 주는 피해량이 증가하며, 중열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a072",
+      "apostleName": "리뉴아",
+      "name": "우리들의 평화로운 시간",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a073",
+      "apostleName": "헤일리",
+      "name": "아군기지 보호작전",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a075",
+      "apostleName": "모모",
+      "name": "모모~합!",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a076",
+      "apostleName": "바롱",
+      "name": "새로운 큰손",
+      "level": 3,
+      "description": "전열 아군이 적에게 주는 피해량을 증가시키고, 전열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a078",
+      "apostleName": "스노키",
+      "name": "주먹 맛 좀 봐라",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a079",
+      "apostleName": "피라",
+      "name": "반짝반짝 우리 사이",
+      "level": 3,
+      "description": "모든 아군의 치명타와 치명 피해를 증가시킨다",
+      "type": ["All"],
+      "critical": [{ "Increase": 7.5, "IncreaseDamage": 7.5 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a081",
+      "apostleName": "셰럼",
+      "name": "아군관찰일지",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a082",
+      "apostleName": "죠안",
+      "name": "은혜 갚은 죠안",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a083",
+      "apostleName": "그윈",
+      "name": "정복 인증샷",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a084",
+      "apostleName": "폴랑",
+      "name": "에르피엔 진군깃발",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a085",
+      "apostleName": "스피키(메이드)",
+      "name": "대청소의 날",
+      "level": 3,
+      "description": "모든 아군의 치명타 저항과 치명 피해 저항을 증가시킨다",
+      "type": ["All"],
+      "critical": [{ "resist": 7.5, "damageResist": 7.5 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a086",
+      "apostleName": "리온",
+      "name": "히어로 꿈나무",
+      "level": 3,
+      "description": "모든 아군의 최대 HP가 증가한다",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a087",
+      "apostleName": "오팔",
+      "name": "반짝이는 모든 것들",
+      "level": 3,
+      "description": "모든 아군의 치명타 저항과 치명 피해 저항을 증가시킨다",
+      "type": ["All"],
+      "critical": [{ "resist": 7.5, "damageResist": 7.5 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a088",
+      "apostleName": "란",
+      "name": "란과 벗님들",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a089",
+      "apostleName": "림(혼돈)",
+      "name": "소천사의 대변인",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 0, "Reduction": 26 }]
+    },
+    {
+      "apostleId": "a090",
+      "apostleName": "아이시아",
+      "name": "기부천사 아이시아",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a091",
+      "apostleName": "샤샤",
+      "name": "시켜줘 아군 명예소방관",
+      "level": 3,
+      "description": "중열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a092",
+      "apostleName": "슈로",
+      "name": "우리를 기억해",
+      "level": 3,
+      "description": "전열 아군이 적에게 주는 피해량을 증가시키고, 전열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a093",
+      "apostleName": "라이카",
+      "name": "찌릿 시그널",
+      "level": 3,
+      "description": "전열 아군이 적에게 주는 피해량을 증가시키고, 전열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a094",
+      "apostleName": "벨라",
+      "name": "존재란 무엇인가?",
+      "level": 2,
+      "description": "넉백에 면역이 된다. \n 고학년 스킬로 도발에 걸린 대상 수만큼 자신이 받는 피해량이 감소한다. \n 영속 보유 시, 모든 아군의 공격 속도와 스킬 피해량을 증가시킨다. \n 존속 효과 발동 시, 일정 시간 동안 매초 모든 아군의 HP를 회복시키고, 받는 피해량을 감소시킨다. \n 넉백: 행동불가 상태로 뒤로 밀린다. \n 영속: 전투불능이 되면 일정 시간 동안 모든 HP를 회복한다. \n 존속: 물리 공격력, 마법 공격력, 최대 HP가 증가한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 25 }]
+    },
+    {
+      "apostleId": "a094",
+      "apostleName": "벨라",
+      "name": "우린 이미 완전한 존재들",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a095",
+      "apostleName": "네티",
+      "name": "너로 정했다! 초정밀 탐사!",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a096",
+      "apostleName": "리코타",
+      "name": "유미미? 미미!",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a097",
+      "apostleName": "마요(멋짐)",
+      "name": "빨리 나 칭찬해줌",
+      "level": 3,
+      "description": "모든 아군의 스킬 피해량을 증가시킨다.",
+      "type": ["All"],
+      "skill": [{ "Increase": 33, "Reduction": 0 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a098",
+      "apostleName": "오르",
+      "name": "크래커를 깜빡했네",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a099",
+      "apostleName": "디아나(왕년)",
+      "name": "나는 천벌이다",
+      "level": 3,
+      "description": "모든 아군의 스킬 피해량을 증가시킨다.",
+      "type": ["All"],
+      "skill": [{ "Increase": 33, "Reduction": 0 }],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a100",
+      "apostleName": "아르코",
+      "name": "적포도가 근본",
+      "level": 3,
+      "description": "중열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a101",
+      "apostleName": "캐시",
+      "name": "캐시가방에들어가신다",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a102",
+      "apostleName": "아네트",
+      "name": "반칙은 금물",
+      "level": 3,
+      "description": "중열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a103",
+      "apostleName": "로네(시장)",
+      "name": "바삭한 꿈을 꾸었습니다",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a104",
+      "apostleName": "마카샤",
+      "name": "마음에 쏙 들어",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 15, "Reduction": 7.5 }]
+    },
+    {
+      "apostleId": "a105",
+      "apostleName": "시저",
+      "name": "빌런의 품격",
+      "level": 3,
+      "description": "중열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 0, "Reduction": 18 }]
+    },
+    {
+      "apostleId": "a106",
+      "apostleName": "뮤트",
+      "name": "뮤트의 뜻대로",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a107",
+      "apostleName": "우로스",
+      "name": "걸어갈 길",
+      "level": 3,
+      "description": "착용자와 같은 성격인 아군이 적에게 주는 피해량이 증가하고, 착용자와 같은 성격인 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Persona"],
+      "damage": [{ "Increase": 45, "Reduction": 12 }]
+    },
+    {
+      "apostleId": "a108",
+      "apostleName": "티그(영웅)",
+      "name": "그 스승에 그 제자",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 6 }]
+    },
+    {
+      "apostleId": "a109",
+      "apostleName": "미로",
+      "name": "이젠 내가지켜줄거야...!",
+      "level": 3,
+      "description": "모든 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 10 }]
+    },
+    {
+      "apostleId": "a110",
+      "apostleName": "아사나",
+      "name": "24시간 밀착 감시",
+      "level": 3,
+      "description": "전열 아군이 적에게 주는 피해량을 증가시키고, 전열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a111",
+      "apostleName": "베니(베니)",
+      "name": "베니는 멋있어",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 26, "Reduction": 9.75 }]
+    }
+  ]
+}

@@ -1,0 +1,3744 @@
+{
+  "skills": [
+    {
+      "apostleId": "a001",
+      "name": "다야의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a001",
+      "name": "다야의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a002",
+      "name": "이프리트의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a002",
+      "name": "이프리트의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a003",
+      "name": "코미의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a003",
+      "name": "코미의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a004",
+      "name": "마에스트로 2호의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a004",
+      "name": "마에스트로 2호의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a005",
+      "name": "네르의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a005",
+      "name": "네르의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a006",
+      "name": "림의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a006",
+      "name": "림의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a007",
+      "name": "스피키의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a007",
+      "name": "스피키의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a008",
+      "name": "실라의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a008",
+      "name": "실라의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a009",
+      "name": "벨벳의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a009",
+      "name": "벨벳의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a010",
+      "name": "빅우드의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a010",
+      "name": "빅우드의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a011",
+      "name": "제이드의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a011",
+      "name": "제이드의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a012",
+      "name": "아멜리아의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a012",
+      "name": "아멜리아의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a013",
+      "name": "벨리타의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a013",
+      "name": "벨리타의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a014",
+      "name": "에르핀의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a014",
+      "name": "에르핀의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a015",
+      "name": "루포의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a015",
+      "name": "루포의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a016",
+      "name": "에슈르의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a016",
+      "name": "에슈르의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a017",
+      "name": "엘레나의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a017",
+      "name": "엘레나의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a018",
+      "name": "프리클의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a018",
+      "name": "프리클의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a019",
+      "name": "키디언의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a019",
+      "name": "키디언의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a020",
+      "name": "루드의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 30
+        }
+      ]
+    },
+    {
+      "apostleId": "a020",
+      "name": "루드의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a021",
+      "name": "셰이디의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a021",
+      "name": "셰이디의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a022",
+      "name": "디아나의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a022",
+      "name": "디아나의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a023",
+      "name": "가비아의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a023",
+      "name": "가비아의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a024",
+      "name": "칸나의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a024",
+      "name": "칸나의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a025",
+      "name": "베니의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a025",
+      "name": "베니의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a026",
+      "name": "시스트의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a026",
+      "name": "시스트의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a027",
+      "name": "버터의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a027",
+      "name": "버터의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a028",
+      "name": "페스타의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 30
+        }
+      ]
+    },
+    {
+      "apostleId": "a028",
+      "name": "페스타의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": true,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 40
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 42
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 44
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 46
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 48
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 52
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 54
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 56
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 58
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 60
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 62
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 64
+        }
+      ]
+    },
+    {
+      "apostleId": "a029",
+      "name": "레비의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a029",
+      "name": "레비의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a030",
+      "name": "마리의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a030",
+      "name": "마리의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a031",
+      "name": "멜루나의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a031",
+      "name": "멜루나의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a032",
+      "name": "포셔의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a032",
+      "name": "포셔의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a033",
+      "name": "쥬비의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a033",
+      "name": "쥬비의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a034",
+      "name": "에스피의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a034",
+      "name": "에스피의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a035",
+      "name": "마고의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a035",
+      "name": "마고의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a036",
+      "name": "마요의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a036",
+      "name": "마요의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a037",
+      "name": "로네의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a037",
+      "name": "로네의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a038",
+      "name": "시온의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a038",
+      "name": "시온의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a039",
+      "name": "클로에의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a039",
+      "name": "클로에의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a040",
+      "name": "아야의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a040",
+      "name": "아야의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a041",
+      "name": "우이의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a041",
+      "name": "우이의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a042",
+      "name": "레이지의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a042",
+      "name": "레이지의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a043",
+      "name": "메죵의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a043",
+      "name": "메죵의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a044",
+      "name": "밍스의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a044",
+      "name": "밍스의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a045",
+      "name": "베루의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a045",
+      "name": "베루의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a046",
+      "name": "사리의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a046",
+      "name": "사리의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a047",
+      "name": "알레트의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a047",
+      "name": "알레트의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a048",
+      "name": "유미미의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a048",
+      "name": "유미미의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a049",
+      "name": "쵸피의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a049",
+      "name": "쵸피의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a050",
+      "name": "카렌의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a050",
+      "name": "카렌의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a051",
+      "name": "큐이의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a051",
+      "name": "큐이의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a052",
+      "name": "타이다의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a052",
+      "name": "타이다의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a053",
+      "name": "파트라의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a053",
+      "name": "파트라의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a054",
+      "name": "티그의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a054",
+      "name": "티그의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a055",
+      "name": "나이아의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a055",
+      "name": "나이아의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a056",
+      "name": "실피르의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a056",
+      "name": "실피르의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a057",
+      "name": "비비의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a057",
+      "name": "비비의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a058",
+      "name": "힐데의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a058",
+      "name": "힐데의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a059",
+      "name": "셀리네의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a059",
+      "name": "셀리네의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a060",
+      "name": "에피카의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a060",
+      "name": "에피카의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a061",
+      "name": "앨리스의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a061",
+      "name": "앨리스의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a062",
+      "name": "리츠의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a062",
+      "name": "리츠의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a063",
+      "name": "피코라의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a063",
+      "name": "피코라의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a064",
+      "name": "블랑셰의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a064",
+      "name": "블랑셰의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a065",
+      "name": "이드의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a065",
+      "name": "이드의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a066",
+      "name": "슈팡의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a066",
+      "name": "슈팡의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 51
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 52
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 54
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 56
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 58
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 60
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 62
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 65
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 68
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 71
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 74
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 77
+        }
+      ]
+    },
+    {
+      "apostleId": "a067",
+      "name": "캬롯의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a067",
+      "name": "캬롯의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a068",
+      "name": "롤렛의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a068",
+      "name": "롤렛의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a069",
+      "name": "바나의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a069",
+      "name": "바나의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a070",
+      "name": "리스티의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a070",
+      "name": "리스티의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a071",
+      "name": "코미(수영복)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a071",
+      "name": "코미(수영복)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a072",
+      "name": "리뉴아의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a072",
+      "name": "리뉴아의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 30
+        }
+      ]
+    },
+    {
+      "apostleId": "a073",
+      "name": "헤일리의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a073",
+      "name": "헤일리의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a074",
+      "name": "레테의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a074",
+      "name": "레테의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a075",
+      "name": "모모의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a075",
+      "name": "모모의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a076",
+      "name": "바롱의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a076",
+      "name": "바롱의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a077",
+      "name": "바리에의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a077",
+      "name": "바리에의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a078",
+      "name": "스노키의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a078",
+      "name": "스노키의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a079",
+      "name": "피라의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a079",
+      "name": "피라의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a080",
+      "name": "칸타의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a080",
+      "name": "칸타의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a081",
+      "name": "셰럼의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 3
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 3
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 3
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 3
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 3
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 4
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 4
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 4
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 4
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 4
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 5
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 5
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 5
+        }
+      ]
+    },
+    {
+      "apostleId": "a081",
+      "name": "셰럼의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a082",
+      "name": "죠안의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": true,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 11
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 12
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 13
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 14
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 15
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 16
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 17
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 18
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 19
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 21
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 22
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 23
+        }
+      ]
+    },
+    {
+      "apostleId": "a082",
+      "name": "죠안의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a083",
+      "name": "그윈의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 6
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 7
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 8
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 9
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 10
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 11
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 12
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 13
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 14
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 15
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 16
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 17
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 18
+        }
+      ]
+    },
+    {
+      "apostleId": "a083",
+      "name": "그윈의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a084",
+      "name": "폴랑의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a084",
+      "name": "폴랑의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a085",
+      "name": "스피키(메이드)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a085",
+      "name": "스피키(메이드)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a086",
+      "name": "리온의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a086",
+      "name": "리온의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a087",
+      "name": "오팔의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a087",
+      "name": "오팔의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a088",
+      "name": "란의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 20
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 20
+        }
+      ]
+    },
+    {
+      "apostleId": "a088",
+      "name": "란의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a089",
+      "name": "림(혼돈)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a089",
+      "name": "림(혼돈)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a090",
+      "name": "아이시아의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a090",
+      "name": "아이시아의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a091",
+      "name": "샤샤의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a091",
+      "name": "샤샤의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a092",
+      "name": "슈로의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 27
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 29
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 31
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 35
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 37
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 39
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 41
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 43
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 45
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 47
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 49
+        }
+      ]
+    },
+    {
+      "apostleId": "a092",
+      "name": "슈로의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a093",
+      "name": "라이카의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a093",
+      "name": "라이카의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a094",
+      "name": "벨라의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a094",
+      "name": "벨라의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a095",
+      "name": "네티의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a095",
+      "name": "네티의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a096",
+      "name": "리코타의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": true,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 33
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 33
+        }
+      ]
+    },
+    {
+      "apostleId": "a096",
+      "name": "리코타의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a097",
+      "name": "마요(멋짐)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a097",
+      "name": "마요(멋짐)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 30
+        }
+      ]
+    },
+    {
+      "apostleId": "a098",
+      "name": "오르의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 30
+        }
+      ]
+    },
+    {
+      "apostleId": "a098",
+      "name": "오르의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a099",
+      "name": "디아나(왕년)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a099",
+      "name": "디아나(왕년)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a100",
+      "name": "아르코의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a100",
+      "name": "아르코의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a101",
+      "name": "캐시의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a101",
+      "name": "캐시의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a102",
+      "name": "아네트의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a102",
+      "name": "아네트의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a103",
+      "name": "로네(시장)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a103",
+      "name": "로네(시장)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a104",
+      "name": "마카샤의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a104",
+      "name": "마카샤의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a105",
+      "name": "시저의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a105",
+      "name": "시저의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a106",
+      "name": "뮤트의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a106",
+      "name": "뮤트의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a107",
+      "name": "우로스의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a107",
+      "name": "우로스의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a108",
+      "name": "티그(영웅)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a108",
+      "name": "티그(영웅)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a109",
+      "name": "미로의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a109",
+      "name": "미로의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a110",
+      "name": "아사나의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a110",
+      "name": "아사나의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": true,
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 50
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 50
+        }
+      ]
+    },
+    {
+      "apostleId": "a111",
+      "name": "베니(베니)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a111",
+      "name": "베니(베니)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "excludeSelf": false,
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    }
+  ]
+}
