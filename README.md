@@ -1,4 +1,4 @@
-# 파티 빌더
+# 트릭컬 리바이브 파티 빌더
 
 - Last updated 2025/11/25
 - This repo is the source to build the github pages to view related tools for the game Trickcal: Revive.
