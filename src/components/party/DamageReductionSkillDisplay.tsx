@@ -1,3 +1,4 @@
+// src/components/party/DamageReductionSkillDisplay.tsx
 import React, { useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
 import {
@@ -11,26 +12,13 @@ import {
   ButtonGroup,
 } from 'flowbite-react';
 import { HiMinus, HiPlus } from 'react-icons/hi';
+import { calculateSkillDamageReduction } from '../../utils/damageCaculator';
 
 interface DamageReductionDisplayProps {
   apostles: Apostle[];
   skillsData?: any;
   skillLevels?: Record<string, number>;
   onSkillLevelChange?: (apostleId: string, newLevel: number) => void;
-}
-
-interface ReductionDetail {
-  apostleName: string;
-  skillName: string;
-  skillType: string;
-  skillLevel: number;
-  reduction: number;
-  appliesTo: string;
-}
-
-interface ReductionResult {
-  totalReduction: number;
-  details: ReductionDetail[];
 }
 
 export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
@@ -43,16 +31,14 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
   const MAX_LEVEL = 13;
 
   const reduction = useMemo(
-    () => calculateDamageReduction(apostles, skillsData, skillLevels),
+    () => calculateSkillDamageReduction(apostles, skillsData, skillLevels),
     [apostles, skillsData, skillLevels],
   );
 
   const handleLevelChange = (apostleId: string, delta: number) => {
     if (!onSkillLevelChange) return;
-
     const currentLevel = skillLevels[apostleId] || 1;
     const newLevel = Math.max(MIN_LEVEL, Math.min(MAX_LEVEL, currentLevel + delta));
-
     if (newLevel !== currentLevel) {
       onSkillLevelChange(apostleId, newLevel);
     }
@@ -112,7 +98,7 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
                           onClick={() => handleLevelChange(apostleId, -1)}
                           color="gray"
                           size="xs"
-                          disabled={item.skillLevel === MIN_LEVEL} // 최소값일 때 비활성화
+                          disabled={item.skillLevel === MIN_LEVEL}
                         >
                           <HiMinus className="h-4 w-4" />
                         </Button>
@@ -121,7 +107,7 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
                           onClick={() => handleLevelChange(apostleId, 1)}
                           color="gray"
                           size="xs"
-                          disabled={item.skillLevel === MAX_LEVEL} // 최대값일 때 비활성화
+                          disabled={item.skillLevel === MAX_LEVEL}
                         >
                           <HiPlus className="h-4 w-4" />
                         </Button>
@@ -156,61 +142,5 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
     </Accordion>
   );
 };
-
-function calculateDamageReduction(
-  apostles: Apostle[],
-  skillsData: any,
-  skillLevels: Record<string, number>,
-): ReductionResult {
-  const details: ReductionDetail[] = [];
-  let totalReduction = 0;
-
-  if (!skillsData?.skills) {
-    return { totalReduction: 0, details: [] };
-  }
-
-  for (const apostle of apostles) {
-    const apostaSkills = skillsData.skills.filter((s: any) => s.apostleId === apostle.id);
-
-    let bestSkill = null;
-    let bestReduction = 0;
-
-    for (const skill of apostaSkills) {
-      if (!skill.damage || skill.damage.length === 0) continue;
-
-      const currentLevel = skillLevels[apostle.id] || 1;
-
-      const reductionData = skill.damage.find((d: any) => d.level === currentLevel);
-
-      if (reductionData && reductionData.Reduction > bestReduction) {
-        bestReduction = reductionData.Reduction;
-        bestSkill = skill;
-      }
-    }
-
-    if (bestSkill && bestReduction > 0) {
-      const currentSkillLevel = skillLevels[apostle.id] || 1;
-      const isExcludingSelf = bestSkill.excludeSelf ?? false;
-
-      if (!isExcludingSelf) {
-        totalReduction += bestReduction;
-      }
-
-      details.push({
-        apostleName: apostle.name,
-        skillName: bestSkill.name,
-        skillType: bestSkill.level === 'low' ? '저학년' : '고학년',
-        skillLevel: currentSkillLevel,
-        reduction: bestReduction,
-        appliesTo: isExcludingSelf ? '자신만' : '다수 적용',
-      });
-    }
-  }
-
-  // 최대 75%로 제한
-  totalReduction = Math.min(totalReduction, 75);
-
-  return { totalReduction, details };
-}
 
 export default DamageReductionDisplay;
