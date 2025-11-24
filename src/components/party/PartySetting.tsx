@@ -46,6 +46,11 @@ export const PartySetting: React.FC<PartySettingProps> = ({
       <AccordionPanel>
         <AccordionTitle>각종 설정</AccordionTitle>
         <AccordionContent>구현 예정</AccordionContent>
+        <AccordionContent>
+          대충돌/프론티어 관련 기록은 <br />
+          <a href="https://trickcalrecord.pages.dev/">https://trickcalrecord.pages.dev/</a>
+          참고 부탁드립니다~
+        </AccordionContent>
       </AccordionPanel>
 
       <AccordionPanel>
