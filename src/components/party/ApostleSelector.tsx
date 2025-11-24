@@ -1,18 +1,8 @@
-import React, { useState, useMemo } from "react";
-import type { Apostle } from "../../types/apostle";
-import { getPersonalities, isValidPosition } from "../../types/apostle";
-import {
-  getPersonalityBackgroundClass,
-  getPersonalityIconPath,
-} from "../../utils/apostleUtils";
-import {
-  Button,
-  Navbar,
-  NavbarBrand,
-  NavbarCollapse,
-  NavbarLink,
-  NavbarToggle,
-} from "flowbite-react";
+import React, { useState, useMemo } from 'react';
+import type { Apostle, Personality } from '../../types/apostle';
+import { getPersonalities, isValidPosition } from '../../types/apostle';
+import { getPersonalityBackgroundClass, getPersonalityIconPath } from '../../utils/apostleUtils';
+import { Button } from 'flowbite-react';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
@@ -31,12 +21,9 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
   onRemove,
   onClose,
 }) => {
-  const [selectedPersonality, setSelectedPersonality] = useState<string | null>(
-    null
-  );
+  const [selectedPersonality, setSelectedPersonality] = useState<Personality | null>(null);
   const [selectedRank, setSelectedRank] = useState<number | null>(null);
-  const isRemoveButtonEnabled =
-    currentApostle !== undefined && currentApostle !== null;
+  const isRemoveButtonEnabled = currentApostle !== undefined && currentApostle !== null;
 
   const filteredApostles = useMemo(() => {
     return apostles
@@ -63,15 +50,15 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
         return true;
       })
       .sort((a, b) => {
-        return a.name.localeCompare(b.name, "ko");
+        return a.name.localeCompare(b.name, 'ko');
       });
   }, [apostles, selectedSlot, selectedPersonality, selectedRank]);
 
   const getRequiredPosition = (slot: number | null): string => {
-    if (!slot) return "전체";
-    if ([1, 4, 7].includes(slot)) return "후열";
-    if ([2, 5, 8].includes(slot)) return "중열";
-    return "전열";
+    if (!slot) return '전체';
+    if ([1, 4, 7].includes(slot)) return '후열';
+    if ([2, 5, 8].includes(slot)) return '중열';
+    return '전열';
   };
 
   const getRankIconPath = (rank: number): string => {
@@ -83,22 +70,22 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
   };
 
   // 가능한 성격 목록
-  const personalities = ["Mad", "Gloomy", "Naive", "Jolly", "Cool"];
+  const personalities: Personality[] = ['Mad', 'Gloomy', 'Naive', 'Jolly', 'Cool'];
 
   // 가능한 랭크 목록
   const ranks = [3, 2, 1];
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[60vh] overflow-y-auto"
+        className="max-h-[60vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-6"
         onClick={(e) => e.stopPropagation()}
       >
         {/* 헤더 */}
-        <h2 className="text-2xl font-bold whitespace-nowrap min-w-fit">
+        <h2 className="min-w-fit text-2xl font-bold whitespace-nowrap">
           {getRequiredPosition(selectedSlot)} 선택
         </h2>
 
@@ -109,14 +96,12 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
               <button
                 key={personality}
                 onClick={() =>
-                  setSelectedPersonality(
-                    selectedPersonality === personality ? null : personality
-                  )
+                  setSelectedPersonality(selectedPersonality === personality ? null : personality)
                 }
-                className={`relative w-9 h-9 rounded-lg transition transform hover:scale-50 ${
+                className={`relative h-9 w-9 transform rounded-lg transition hover:scale-50 ${
                   selectedPersonality === personality
-                    ? "ring-2 ring-offset-1 ring-blue-500 scale-110"
-                    : "opacity-60 hover:opacity-100 hover:scale-105"
+                    ? 'scale-110 ring-2 ring-blue-500 ring-offset-1'
+                    : 'opacity-60 hover:scale-105 hover:opacity-100'
                 }`}
                 title={personality}
               >
@@ -124,8 +109,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   src={getPersonalityIconPath(personality)}
                   alt={personality}
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      "/src/assets/placeholder.png";
+                    (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
                   }}
                 />
               </button>
@@ -134,13 +118,11 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
             {ranks.map((rank) => (
               <button
                 key={rank}
-                onClick={() =>
-                  setSelectedRank(selectedRank === rank ? null : rank)
-                }
-                className={`relative w-9 h-9 rounded-lg transition transform ${
+                onClick={() => setSelectedRank(selectedRank === rank ? null : rank)}
+                className={`relative h-9 w-9 transform rounded-lg transition ${
                   selectedRank === rank
-                    ? "ring-2 ring-offset-1 ring-blue-500"
-                    : "opacity-60 hover:opacity-100 hover:scale-105"
+                    ? 'ring-2 ring-blue-500 ring-offset-1'
+                    : 'opacity-60 hover:scale-105 hover:opacity-100'
                 }`}
                 title={`${rank}성`}
               >
@@ -148,8 +130,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   src={getRankIconPath(rank)}
                   alt={`${rank}성`}
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      "/src/assets/placeholder.png";
+                    (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
                   }}
                 />
               </button>
@@ -158,7 +139,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
 
           <div className="flex items-center gap-2">
             <Button
-              color={isRemoveButtonEnabled ? "red" : "gray"}
+              color={isRemoveButtonEnabled ? 'red' : 'gray'}
               size="sm"
               disabled={!isRemoveButtonEnabled}
               onClick={() => {
@@ -168,9 +149,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
               }}
               aria-label="Remove apostle from slot"
               className="flex items-center gap-1"
-              title={
-                isRemoveButtonEnabled ? "슬롯 비우기" : "배치된 사도가 없습니다"
-              }
+              title={isRemoveButtonEnabled ? '슬롯 비우기' : '배치된 사도가 없습니다'}
             >
               <span className="hidden sm:inline">그렇게 됐어요</span>
             </Button>
@@ -183,7 +162,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
         {/* 사도 그리드 - 5열 */}
         <div className="grid grid-cols-5 gap-4">
           {filteredApostles.length === 0 ? (
-            <div className="col-span-5 text-center py-12 text-gray-500">
+            <div className="col-span-5 py-12 text-center text-gray-500">
               배치 가능한 사도가 없습니다.
             </div>
           ) : (
@@ -194,22 +173,22 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   key={apostle.id}
                   onClick={() => onSelect(apostle)}
                   className={`${getPersonalityBackgroundClass(
-                    primaryPersonality
-                  )} text-white p-3 rounded-lg cursor-pointer hover:shadow-md transition h-30 flex flex-col items-center justify-between overflow-hidden`}
+                    primaryPersonality,
+                  )} flex h-30 cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg p-3 text-white transition hover:shadow-md`}
                 >
                   {/* 사도 이미지 */}
-                  <div className="w-20 h-20 flex items-center justify-center">
+                  <div className="flex h-20 w-20 items-center justify-center">
                     <img
                       src={getApostleImagePath(apostle.name)}
                       alt={apostle.name}
-                      className="w-full h-full object-cover rounded"
+                      className="h-full w-full rounded object-cover"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = "none";
+                        (e.target as HTMLImageElement).style.display = 'none';
                       }}
                     />
                   </div>
                   {/* 사도 이름 */}
-                  <div className="text-xs font-semibold text-center truncate w-full">
+                  <div className="w-full truncate text-center text-xs font-semibold">
                     {apostle.name}
                   </div>
                 </div>
