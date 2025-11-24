@@ -48,3 +48,7 @@ export function getSynergyOnIconPath(personality: Personality): string {
 export function getSynergyOffIconPath(personality: Personality): string {
   return `/src/assets/icon/Synergy_Icon_${personality}_Off.png`;
 }
+
+export function getRankIconPath(rank: number): string {
+  return `/src/assets/icon/${rank}star.webp`;
+}

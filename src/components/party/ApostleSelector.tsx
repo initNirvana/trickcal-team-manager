@@ -5,6 +5,7 @@ import {
   getPersonalityBackgroundClass,
   getPersonalityIconPath,
   getApostleImagePath,
+  getRankIconPath,
 } from '../../utils/apostleUtils';
 import { Button } from 'flowbite-react';
 
@@ -63,10 +64,6 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
     if ([1, 4, 7].includes(slot)) return '후열';
     if ([2, 5, 8].includes(slot)) return '중열';
     return '전열';
-  };
-
-  const getRankIconPath = (rank: number): string => {
-    return `/src/assets/icon/${rank}성.webp`;
   };
 
   // 가능한 성격 목록
