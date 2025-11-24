@@ -9,6 +9,7 @@ import flowbiteReact from 'flowbite-react/plugin/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [react(), tailwindcss(), tsconfigPaths(), flowbiteReact()],
   test: {
     globals: true,

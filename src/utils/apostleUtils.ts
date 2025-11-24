@@ -16,39 +16,61 @@ export function getPersonalityBackgroundClass(personality: Personality): string 
       return 'bg-slate-100 ';
   }
 }
+const assetPathMap = import.meta.glob<string>(
+  [
+    '/src/assets/apostles/*.{png,webp}', // 사도 이미지
+    '/src/assets/placeholder.webp', // 플레이스홀더
+    '/src/assets/icon/Common_UnitPersonality_*.png', // 성격 아이콘
+    '/src/assets/icon/Synergy_Icon_*_On.png', // 시너지 ON 아이콘
+    '/src/assets/icon/Synergy_Icon_*_Off.png', // 시너지 OFF 아이콘
+    '/src/assets/icon/*star.webp', // 랭크 아이콘
+  ],
+  { eager: true, import: 'default' },
+) as Record<string, string>;
 
-const apostleImages = import.meta.glob('/src/assets/apostles/*.{png,webp}', {
-  eager: true,
-  import: 'default',
-});
+function getAssetPath(originalPath: string): string {
+  const path = assetPathMap[originalPath];
+
+  if (!path) {
+    console.warn(`Asset not found in map for key: ${originalPath}`);
+    return assetPathMap['/src/assets/placeholder.webp'] || originalPath;
+  }
+
+  return path;
+}
 
 export function getApostleImagePath(engName: string): string {
-  if (!engName) return '/src/assets/placeholder.webp';
+  if (!engName) return getAssetPath('/src/assets/placeholder.webp');
 
-  const pngPath = `/src/assets/apostles/${engName}.png`;
-  const webpPath = `/src/assets/apostles/${engName}.webp`;
+  const pngKey = `/src/assets/apostles/${engName}.png`;
+  const webpKey = `/src/assets/apostles/${engName}.webp`;
 
-  if (apostleImages[pngPath]) {
-    return apostleImages[pngPath] as string;
+  if (assetPathMap[pngKey]) {
+    return getAssetPath(pngKey);
   }
-  if (apostleImages[webpPath]) {
-    return apostleImages[webpPath] as string;
+  if (assetPathMap[webpKey]) {
+    return getAssetPath(webpKey);
   }
-  return '/src/assets/placeholder.webp';
+
+  return getAssetPath('/src/assets/placeholder.webp');
 }
 
 export function getPersonalityIconPath(personality: Personality): string {
-  return `/src/assets/icon/Common_UnitPersonality_${personality}.png`;
+  const originalPath = `/src/assets/icon/Common_UnitPersonality_${personality}.png`;
+  return getAssetPath(originalPath);
 }
 
 export function getSynergyOnIconPath(personality: Personality): string {
-  return `/src/assets/icon/Synergy_Icon_${personality}_On.png`;
+  const originalPath = `/src/assets/icon/Synergy_Icon_${personality}_On.png`;
+  return getAssetPath(originalPath);
 }
 
 export function getSynergyOffIconPath(personality: Personality): string {
-  return `/src/assets/icon/Synergy_Icon_${personality}_Off.png`;
+  const originalPath = `/src/assets/icon/Synergy_Icon_${personality}_Off.png`;
+  return getAssetPath(originalPath);
 }
 
 export function getRankIconPath(rank: number): string {
-  return `/src/assets/icon/${rank}star.webp`;
+  const originalPath = `/src/assets/icon/${rank}star.webp`;
+  return getAssetPath(originalPath);
 }
