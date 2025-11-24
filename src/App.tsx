@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PartySimulator from './components/party/PartySimulator';
 import type { Apostle } from './types/apostle';
 import apostlesData from './data/apostles.json';
@@ -7,28 +7,17 @@ import asidesData from './data/asides.json';
 import Layout from './components/layout/Layout';
 
 function App() {
-  const [apostles, setApostles] = useState<Apostle[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
+  const [apostles] = useState<Apostle[]>(() => {
     try {
       if (apostlesData && apostlesData.apostles) {
-        setApostles(apostlesData.apostles as Apostle[]);
+        return apostlesData.apostles as Apostle[];
       }
-      setIsLoading(false);
+      return [];
     } catch (error) {
       console.error('사도 데이터 로딩 실패:', error);
-      setIsLoading(false);
+      return [];
     }
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-800 text-white">
-        로딩 중...
-      </div>
-    );
-  }
+  });
 
   if (apostles.length === 0) {
     return (
