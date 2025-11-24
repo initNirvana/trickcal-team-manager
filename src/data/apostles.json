@@ -5,6 +5,7 @@
     {
       "id": "a001",
       "name": "다야",
+      "engName": "Daya",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -17,6 +18,7 @@
     {
       "id": "a002",
       "name": "이프리트",
+      "engName": "Ifrit",
       "isEldain": false,
       "hasAside": true,
       "rank": 2,
@@ -29,6 +31,7 @@
     {
       "id": "a003",
       "name": "코미",
+      "engName": "Kommy",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -41,6 +44,7 @@
     {
       "id": "a004",
       "name": "마에스트로 2호",
+      "engName": "MaestroMK2",
       "isEldain": false,
       "hasAside": true,
       "rank": 2,
@@ -53,6 +57,7 @@
     {
       "id": "a005",
       "name": "네르",
+      "engName": "Ner",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -65,6 +70,7 @@
     {
       "id": "a006",
       "name": "림",
+      "engName": "Rim",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -77,6 +83,7 @@
     {
       "id": "a007",
       "name": "스피키",
+      "engName": "Speaki",
       "isEldain": false,
       "hasAside": false,
       "rank": 2,
@@ -89,6 +96,7 @@
     {
       "id": "a008",
       "name": "실라",
+      "engName": "Sylla",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -101,6 +109,7 @@
     {
       "id": "a009",
       "name": "벨벳",
+      "engName": "Velvet",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -113,6 +122,7 @@
     {
       "id": "a010",
       "name": "빅우드",
+      "engName": "BigWood",
       "isEldain": false,
       "hasAside": true,
       "rank": 2,
@@ -125,6 +135,7 @@
     {
       "id": "a011",
       "name": "제이드",
+      "engName": "Jade",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -137,6 +148,7 @@
     {
       "id": "a012",
       "name": "아멜리아",
+      "engName": "Amelia",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -149,6 +161,7 @@
     {
       "id": "a013",
       "name": "벨리타",
+      "engName": "Belita",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -161,6 +174,7 @@
     {
       "id": "a014",
       "name": "에르핀",
+      "engName": "Erpin",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -173,6 +187,7 @@
     {
       "id": "a015",
       "name": "루포",
+      "engName": "Rufo",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -196,7 +211,7 @@
     },
     {
       "id": "a017",
-      "name": "엘레나",
+      "name": "Elena",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -209,6 +224,7 @@
     {
       "id": "a018",
       "name": "프리클",
+      "engName": "Fricle",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -221,6 +237,7 @@
     {
       "id": "a019",
       "name": "키디언",
+      "engName": "Kidian",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -233,6 +250,7 @@
     {
       "id": "a020",
       "name": "루드",
+      "engName": "Rude",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -245,6 +263,7 @@
     {
       "id": "a021",
       "name": "셰이디",
+      "engName": "Shady",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -257,6 +276,7 @@
     {
       "id": "a022",
       "name": "디아나",
+      "engName": "Diana",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -269,6 +289,7 @@
     {
       "id": "a023",
       "name": "가비아",
+      "engName": "Gabia",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -281,6 +302,7 @@
     {
       "id": "a024",
       "name": "칸나",
+      "engName": "Canna",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -293,6 +315,7 @@
     {
       "id": "a025",
       "name": "베니",
+      "engName": "Beni",
       "isEldain": false,
       "hasAside": true,
       "rank": 2,
@@ -305,6 +328,7 @@
     {
       "id": "a026",
       "name": "시스트",
+      "engName": "Sist",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -317,6 +341,7 @@
     {
       "id": "a027",
       "name": "버터",
+      "engName": "Butter",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -329,6 +354,7 @@
     {
       "id": "a028",
       "name": "페스타",
+      "engName": "Festa",
       "isEldain": false,
       "hasAside": true,
       "rank": 2,
@@ -341,9 +367,10 @@
     {
       "id": "a029",
       "name": "레비",
+      "engName": "Levi",
       "isEldain": false,
       "hasAside": true,
-      "rank": 3,
+      "rank": 2,
       "race": "마녀",
       "persona": "Gloomy",
       "role": "딜러",
@@ -353,6 +380,7 @@
     {
       "id": "a030",
       "name": "마리",
+      "engName": "Marie",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -365,6 +393,7 @@
     {
       "id": "a031",
       "name": "멜루나",
+      "engName": "Meluna",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -377,6 +406,7 @@
     {
       "id": "a032",
       "name": "포셔",
+      "engName": "Posher",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -389,6 +419,7 @@
     {
       "id": "a033",
       "name": "쥬비",
+      "engName": "Jubee",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -401,6 +432,7 @@
     {
       "id": "a034",
       "name": "에스피",
+      "engName": "Espi",
       "isEldain": false,
       "hasAside": true,
       "rank": 2,
@@ -413,9 +445,10 @@
     {
       "id": "a035",
       "name": "마고",
+      "engName": "Mago",
       "isEldain": false,
       "hasAside": true,
-      "rank": 3,
+      "rank": 2,
       "race": "수인",
       "persona": "Naive",
       "role": "서포터",
@@ -425,6 +458,7 @@
     {
       "id": "a036",
       "name": "마요",
+      "engName": "Mayo",
       "isEldain": false,
       "hasAside": false,
       "rank": 2,
@@ -437,6 +471,7 @@
     {
       "id": "a037",
       "name": "로네",
+      "engName": "Rohne",
       "isEldain": false,
       "hasAside": true,
       "rank": 2,
@@ -449,6 +484,7 @@
     {
       "id": "a038",
       "name": "시온",
+      "engName": "xXionx",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -461,6 +497,7 @@
     {
       "id": "a039",
       "name": "클로에",
+      "engName": "Chloe",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -473,6 +510,7 @@
     {
       "id": "a040",
       "name": "아야",
+      "engName": "Aya",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -485,6 +523,7 @@
     {
       "id": "a041",
       "name": "우이",
+      "engName": "Ui",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -497,6 +536,7 @@
     {
       "id": "a042",
       "name": "레이지",
+      "engName": "Lazy",
       "isEldain": false,
       "hasAside": false,
       "rank": 1,
@@ -509,6 +549,7 @@
     {
       "id": "a043",
       "name": "메죵",
+      "engName": "Maison",
       "isEldain": false,
       "hasAside": false,
       "rank": 1,
@@ -521,6 +562,7 @@
     {
       "id": "a044",
       "name": "밍스",
+      "engName": "Mynx",
       "isEldain": false,
       "hasAside": true,
       "rank": 1,
@@ -533,9 +575,10 @@
     {
       "id": "a045",
       "name": "베루",
+      "engName": "Veroo",
       "isEldain": false,
       "hasAside": true,
-      "rank": 3,
+      "rank": 1,
       "race": "유령",
       "persona": "Gloomy",
       "role": "딜러",
@@ -545,6 +588,7 @@
     {
       "id": "a046",
       "name": "사리",
+      "engName": "Sari",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -557,6 +601,7 @@
     {
       "id": "a047",
       "name": "알레트",
+      "engName": "Allet",
       "isEldain": false,
       "hasAside": true,
       "rank": 1,
@@ -569,6 +614,7 @@
     {
       "id": "a048",
       "name": "유미미",
+      "engName": "Yumimi",
       "isEldain": false,
       "hasAside": false,
       "rank": 1,
@@ -581,6 +627,7 @@
     {
       "id": "a049",
       "name": "쵸피",
+      "engName": "Chopi",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -593,6 +640,7 @@
     {
       "id": "a050",
       "name": "카렌",
+      "engName": "Carren",
       "isEldain": false,
       "hasAside": false,
       "rank": 1,
@@ -605,6 +653,7 @@
     {
       "id": "a051",
       "name": "큐이",
+      "engName": "Cuee",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -617,6 +666,7 @@
     {
       "id": "a052",
       "name": "타이다",
+      "engName": "Taida",
       "isEldain": false,
       "hasAside": false,
       "rank": 1,
@@ -629,6 +679,7 @@
     {
       "id": "a053",
       "name": "파트라",
+      "engName": "Patula",
       "isEldain": false,
       "hasAside": true,
       "rank": 1,
@@ -641,6 +692,7 @@
     {
       "id": "a054",
       "name": "티그",
+      "engName": "Tig",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -653,6 +705,7 @@
     {
       "id": "a055",
       "name": "나이아",
+      "engName": "Naia",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -665,6 +718,7 @@
     {
       "id": "a056",
       "name": "실피르",
+      "engName": "Silphir",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -677,6 +731,7 @@
     {
       "id": "a057",
       "name": "비비",
+      "engName": "Vivi",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -689,6 +744,7 @@
     {
       "id": "a058",
       "name": "힐데",
+      "engName": "Hilde",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -701,6 +757,7 @@
     {
       "id": "a059",
       "name": "셀리네",
+      "engName": "Selline",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -713,6 +770,7 @@
     {
       "id": "a060",
       "name": "에피카",
+      "engName": "Epica",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -725,6 +783,7 @@
     {
       "id": "a061",
       "name": "앨리스",
+      "engName": "Alice",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -737,6 +796,7 @@
     {
       "id": "a062",
       "name": "리츠",
+      "engName": "Leets",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -749,6 +809,7 @@
     {
       "id": "a063",
       "name": "피코라",
+      "engName": "Picora",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -761,6 +822,7 @@
     {
       "id": "a064",
       "name": "블랑셰",
+      "engName": "Blanchet",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -773,6 +835,7 @@
     {
       "id": "a065",
       "name": "이드",
+      "engName": "Ed",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -785,6 +848,7 @@
     {
       "id": "a066",
       "name": "슈팡",
+      "engName": "Shoupan",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -797,6 +861,7 @@
     {
       "id": "a067",
       "name": "캬롯",
+      "engName": "Kyarot",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -809,6 +874,7 @@
     {
       "id": "a068",
       "name": "롤렛",
+      "engName": "Rollet",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -821,6 +887,7 @@
     {
       "id": "a069",
       "name": "바나",
+      "engName": "Bana",
       "isEldain": false,
       "hasAside": false,
       "rank": 2,
@@ -833,6 +900,7 @@
     {
       "id": "a070",
       "name": "리스티",
+      "engName": "Risty",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -845,6 +913,7 @@
     {
       "id": "a071",
       "name": "코미(수영복)",
+      "engName": "KommySwim",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -857,6 +926,7 @@
     {
       "id": "a072",
       "name": "리뉴아",
+      "engName": "Renewa",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -869,6 +939,7 @@
     {
       "id": "a073",
       "name": "헤일리",
+      "engName": "Haley",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -881,6 +952,7 @@
     {
       "id": "a074",
       "name": "레테",
+      "engName": "Lethe",
       "isEldain": false,
       "hasAside": true,
       "rank": 2,
@@ -893,6 +965,7 @@
     {
       "id": "a075",
       "name": "모모",
+      "engName": "Momo",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -905,6 +978,7 @@
     {
       "id": "a076",
       "name": "바롱",
+      "engName": "Barong",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -917,6 +991,7 @@
     {
       "id": "a077",
       "name": "바리에",
+      "engName": "Barie",
       "isEldain": false,
       "hasAside": false,
       "rank": 2,
@@ -929,6 +1004,7 @@
     {
       "id": "a078",
       "name": "스노키",
+      "engName": "Snorky",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -941,6 +1017,7 @@
     {
       "id": "a079",
       "name": "피라",
+      "engName": "Pira",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -953,6 +1030,7 @@
     {
       "id": "a080",
       "name": "칸타",
+      "engName": "Canta",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -965,6 +1043,7 @@
     {
       "id": "a081",
       "name": "셰럼",
+      "engName": "Sherum",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -977,6 +1056,7 @@
     {
       "id": "a082",
       "name": "죠안",
+      "engName": "Joanne",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -989,6 +1069,7 @@
     {
       "id": "a083",
       "name": "그윈",
+      "engName": "Guin",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1001,6 +1082,7 @@
     {
       "id": "a084",
       "name": "폴랑",
+      "engName": "Polan",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1013,6 +1095,7 @@
     {
       "id": "a085",
       "name": "스피키(메이드)",
+      "engName": "SpeakiMaid",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1025,6 +1108,7 @@
     {
       "id": "a086",
       "name": "리온",
+      "engName": "Lion",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1037,6 +1121,7 @@
     {
       "id": "a087",
       "name": "오팔",
+      "engName": "Opal",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1049,6 +1134,7 @@
     {
       "id": "a088",
       "name": "란",
+      "engName": "Ran",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -1061,6 +1147,7 @@
     {
       "id": "a089",
       "name": "림(혼돈)",
+      "engName": "RimChaos",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1073,6 +1160,7 @@
     {
       "id": "a090",
       "name": "아이시아",
+      "engName": "Eisia",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1085,6 +1173,7 @@
     {
       "id": "a091",
       "name": "샤샤",
+      "engName": "Shasha",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1097,6 +1186,7 @@
     {
       "id": "a092",
       "name": "슈로",
+      "engName": "Suro",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1109,6 +1199,7 @@
     {
       "id": "a093",
       "name": "라이카",
+      "engName": "Laika",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1121,6 +1212,7 @@
     {
       "id": "a094",
       "name": "벨라",
+      "engName": "Vela",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -1133,6 +1225,7 @@
     {
       "id": "a095",
       "name": "네티",
+      "engName": "Neti",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1145,6 +1238,7 @@
     {
       "id": "a096",
       "name": "리코타",
+      "engName": "Ricota",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1157,6 +1251,7 @@
     {
       "id": "a097",
       "name": "마요(멋짐)",
+      "engName": "MayoCool",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1169,6 +1264,7 @@
     {
       "id": "a098",
       "name": "오르",
+      "engName": "Orr",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1181,6 +1277,7 @@
     {
       "id": "a099",
       "name": "디아나(왕년)",
+      "engName": "DianaYester",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -1193,6 +1290,7 @@
     {
       "id": "a100",
       "name": "아르코",
+      "engName": "Arco",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1205,6 +1303,7 @@
     {
       "id": "a101",
       "name": "캐시",
+      "engName": "Kathy",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1229,6 +1328,7 @@
     {
       "id": "a103",
       "name": "로네(시장)",
+      "engName": "RohneMayor",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1241,6 +1341,7 @@
     {
       "id": "a104",
       "name": "마카샤",
+      "engName": "Makasha",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1253,6 +1354,7 @@
     {
       "id": "a105",
       "name": "시저",
+      "engName": "Scizor",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1265,6 +1367,7 @@
     {
       "id": "a106",
       "name": "뮤트",
+      "engName": "Mute",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1277,6 +1380,7 @@
     {
       "id": "a107",
       "name": "우로스",
+      "engName": "Uros",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -1289,6 +1393,7 @@
     {
       "id": "a108",
       "name": "티그(영웅)",
+      "engName": "TigHero",
       "isEldain": true,
       "hasAside": true,
       "rank": 3,
@@ -1301,6 +1406,7 @@
     {
       "id": "a109",
       "name": "미로",
+      "engName": "Miro",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1313,6 +1419,7 @@
     {
       "id": "a110",
       "name": "아사나",
+      "engName": "Asana",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1325,6 +1432,7 @@
     {
       "id": "a111",
       "name": "베니(베니)",
+      "engName": "BeniBeni",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,

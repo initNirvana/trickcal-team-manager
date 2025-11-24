@@ -1,7 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import type { Apostle, Personality } from '../../types/apostle';
 import { getPersonalities, isValidPosition } from '../../types/apostle';
-import { getPersonalityBackgroundClass, getPersonalityIconPath } from '../../utils/apostleUtils';
+import {
+  getPersonalityBackgroundClass,
+  getPersonalityIconPath,
+  getApostleImagePath,
+} from '../../utils/apostleUtils';
 import { Button } from 'flowbite-react';
 
 interface ApostleSelectorProps {
@@ -63,10 +67,6 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
 
   const getRankIconPath = (rank: number): string => {
     return `/src/assets/icon/${rank}성.webp`;
-  };
-
-  const getApostleImagePath = (apostleName: string): string => {
-    return `/src/assets/apostles/${apostleName}.webp`;
   };
 
   // 가능한 성격 목록
@@ -179,7 +179,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   {/* 사도 이미지 */}
                   <div className="flex h-20 w-20 items-center justify-center">
                     <img
-                      src={getApostleImagePath(apostle.name)}
+                      src={getApostleImagePath(apostle.engName)}
                       alt={apostle.name}
                       className="h-full w-full rounded object-cover"
                       onError={(e) => {

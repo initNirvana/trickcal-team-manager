@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'flowbite-react';
 import type { Apostle } from '../../types/apostle';
+import { getApostleImagePath } from '../../utils/apostleUtils';
 
 interface PartySettingProps {
   filledParty: Apostle[];
@@ -22,10 +23,6 @@ export const PartySetting: React.FC<PartySettingProps> = ({
       [apostleId]: newValue,
     }));
     onAsideChange?.(apostleId, newValue);
-  };
-
-  const getApostleImage = (apostleName: string) => {
-    return `src/assets/apostles/${apostleName}.webp`;
   };
 
   const getAvailableAsideRanks = (apostleId: string): { has2Star: boolean; has3Star: boolean } => {
@@ -100,7 +97,7 @@ export const PartySetting: React.FC<PartySettingProps> = ({
                         {/* 사도 이미지 (1 col) */}
                         <td className="px-2 py-3">
                           <img
-                            src={getApostleImage(apostle.name)}
+                            src={getApostleImagePath(apostle.engName)}
                             alt={apostle.name}
                             className="h-12 w-12 rounded object-cover"
                             onError={(e) => {

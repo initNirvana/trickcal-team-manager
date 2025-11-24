@@ -17,6 +17,26 @@ export function getPersonalityBackgroundClass(personality: Personality): string 
   }
 }
 
+const apostleImages = import.meta.glob('/src/assets/apostles/*.{png,webp}', {
+  eager: true,
+  import: 'default',
+});
+
+export function getApostleImagePath(engName: string): string {
+  if (!engName) return '/src/assets/placeholder.webp';
+
+  const pngPath = `/src/assets/apostles/${engName}.png`;
+  const webpPath = `/src/assets/apostles/${engName}.webp`;
+
+  if (apostleImages[pngPath]) {
+    return apostleImages[pngPath] as string;
+  }
+  if (apostleImages[webpPath]) {
+    return apostleImages[webpPath] as string;
+  }
+  return '/src/assets/placeholder.webp';
+}
+
 export function getPersonalityIconPath(personality: Personality): string {
   return `/src/assets/icon/Common_UnitPersonality_${personality}.png`;
 }

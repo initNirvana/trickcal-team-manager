@@ -7,6 +7,7 @@ export type Race = '용족' | '정령' | '수인' | '유령' | '마녀' | '요�
 export interface Apostle {
   id: string;
   name: string;
+  engName: string;
   isEldain: boolean;
   hasAside: boolean;
   rank: number;
