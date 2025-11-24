@@ -37,7 +37,6 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
           return false;
         }
 
-        // 성격 필터링
         if (selectedPersonality) {
           const personalities = getPersonalities(apostle);
           if (!personalities.includes(selectedPersonality)) {
@@ -45,7 +44,6 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
           }
         }
 
-        // 랭크 필터링
         if (selectedRank !== null) {
           if (apostle.rank !== selectedRank) {
             return false;
@@ -53,6 +51,23 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
         }
 
         return true;
+      })
+      .map((apostle) => {
+        if (selectedPersonality && getPersonalities(apostle).includes(selectedPersonality)) {
+          const personalities = getPersonalities(apostle);
+
+          const otherPersonalities = personalities.filter((p) => p !== selectedPersonality);
+
+          const newPersonaList = [selectedPersonality, ...otherPersonalities];
+
+          const newPersona =
+            newPersonaList.length === 1 ? newPersonaList[0] : (newPersonaList as Personality[]);
+          return {
+            ...apostle,
+            persona: newPersona,
+          } as Apostle;
+        }
+        return apostle;
       })
       .sort((a, b) => {
         return a.name.localeCompare(b.name, 'ko');
