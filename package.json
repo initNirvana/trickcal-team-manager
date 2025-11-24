@@ -9,6 +9,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
     "flowbite": "^3.1.2",
     "flowbite-react": "^0.12.10",
     "lodash": "^4.17.21",
