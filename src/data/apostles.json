@@ -200,6 +200,7 @@
     {
       "id": "a016",
       "name": "에슈르",
+      "engName": "Ashur",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -211,7 +212,8 @@
     },
     {
       "id": "a017",
-      "name": "Elena",
+      "name": "엘레나",
+      "engName": "Elena",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
@@ -1316,6 +1318,7 @@
     {
       "id": "a102",
       "name": "아네트",
+      "engName": "Arnet",
       "isEldain": false,
       "hasAside": true,
       "rank": 3,
