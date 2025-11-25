@@ -1365,7 +1365,7 @@
       "persona": "Cool",
       "role": "딜러",
       "method": "물리",
-      "position": "전열"
+      "position": "중열"
     },
     {
       "id": "a106",
@@ -1378,7 +1378,7 @@
       "persona": "Naive",
       "role": "딜러",
       "method": "물리",
-      "position": "전열"
+      "position": "후열"
     },
     {
       "id": "a107",
