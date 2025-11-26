@@ -5,7 +5,7 @@ import {
   calculateAsideEffects,
   calculatePositionSum,
   type AsideEffect,
-} from '../../utils/damageCaculator';
+} from '../../utils/damageProcessor';
 
 interface DamageReductionAsideDisplayProps {
   apostles: Apostle[];
