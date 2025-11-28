@@ -106,9 +106,9 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
       )}
 
       {/* 추천 사도 표시 (선택사항) */}
-      <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
+      {/* <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
         <RecommendedApstlesDisplay />
-      </div>
+      </div> */}
     </div>
   );
 };
