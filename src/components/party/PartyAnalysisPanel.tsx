@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { Apostle } from '../../types/apostle';
 import type { PartyAnalysis } from '../../utils/partyAnalysisUtils';
+import { usePartyStore } from '../../stores/partyStore';
 import DamageReductionSkillDisplay from './DamageReductionSkillDisplay';
 import DamageReductionAsideDisplay from './DamageReductionAsideDisplay';
 import SynergyDisplay from './SynergyDisplay';
@@ -10,7 +11,6 @@ interface PartyAnalysisPanelProps {
   filledParty: Apostle[];
   skillsData?: any;
   asidesData?: any;
-  asideSelection?: Record<string, number | null>;
 }
 
 export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
@@ -18,16 +18,14 @@ export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
   filledParty,
   skillsData,
   asidesData,
-  asideSelection,
 }) => {
-  const [selectedApostles, setSelectedApostles] = useState<Apostle[]>([]);
-  const [skillLevels, setSkillLevels] = useState<Record<string, number>>({});
-  // 스킬 레벨 변경 핸들러
+  const skillLevels = usePartyStore((state) => state.skillLevels);
+  const setSkillLevel = usePartyStore((state) => state.setSkillLevel);
+  const asideSelection = usePartyStore((state) => state.asideSelection);
+
+  // ✅ 스킬 레벨 변경 핸들러
   const handleSkillLevelChange = (apostleId: string, newLevel: number) => {
-    setSkillLevels((prev) => ({
-      ...prev,
-      [apostleId]: newLevel,
-    }));
+    setSkillLevel(apostleId, newLevel);
   };
 
   if (filledParty.length === 0) {
@@ -40,17 +38,22 @@ export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
 
   return (
     <div className="space-y-4">
+      {/* 스킬 피해감소 표시 */}
       <DamageReductionSkillDisplay
         apostles={filledParty}
         skillsData={skillsData}
         skillLevels={skillLevels}
         onSkillLevelChange={handleSkillLevelChange}
       />
+
+      {/* 어사이드 피해감소 표시 */}
       <DamageReductionAsideDisplay
         apostles={filledParty}
         asidesData={asidesData}
-        asideSelection={asideSelection || {}}
+        asideSelection={asideSelection}
       />
+
+      {/* 시너지 표시 */}
       <SynergyDisplay synergies={analysis.synergies} />
     </div>
   );

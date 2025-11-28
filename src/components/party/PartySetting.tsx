@@ -2,36 +2,27 @@ import React, { useState } from 'react';
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'flowbite-react';
 import type { Apostle } from '../../types/apostle';
 import { getApostleImagePath } from '../../utils/apostleUtils';
+import { usePartyStore } from '../../stores/partyStore';
 
 interface PartySettingProps {
   filledParty: Apostle[];
   asidesData?: any;
-  onAsideChange?: (apostleId: string, rankStar: number | null) => void;
 }
 
-export const PartySetting: React.FC<PartySettingProps> = ({
-  filledParty,
-  asidesData,
-  onAsideChange,
-}) => {
-  const [asideSelection, setAsideSelection] = useState<Record<string, number | null>>({});
+export const PartySetting: React.FC<PartySettingProps> = ({ filledParty, asidesData }) => {
+  const asideSelection = usePartyStore((state) => state.asideSelection);
+  const setAsideSelection = usePartyStore((state) => state.setAsideSelection);
 
   const handleAsideRankSelect = (apostleId: string, rank: number | null) => {
     const newValue = asideSelection[apostleId] === rank ? null : rank;
-    setAsideSelection((prev) => ({
-      ...prev,
-      [apostleId]: newValue,
-    }));
-    onAsideChange?.(apostleId, newValue);
+
+    setAsideSelection(apostleId, newValue);
   };
 
   const getAvailableAsideRanks = (apostleId: string): { has2Star: boolean; has3Star: boolean } => {
-    if (!asidesData?.asides) {
-      return { has2Star: false, has3Star: false };
-    }
+    if (!asidesData?.asides) return { has2Star: false, has3Star: false };
 
     const apostleAsides = asidesData.asides.filter((aside: any) => aside.apostleId === apostleId);
-
     const has2Star = apostleAsides.some((aside: any) => aside.level === 2);
     const has3Star = apostleAsides.some((aside: any) => aside.level === 3);
 
@@ -53,7 +44,6 @@ export const PartySetting: React.FC<PartySettingProps> = ({
       <AccordionPanel>
         <AccordionTitle>어사이드 설정</AccordionTitle>
         <AccordionContent>
-          {/* 배치된 사도가 없을 때 */}
           {filledParty.length === 0 ? (
             <div className="py-4 text-center">
               <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -61,7 +51,6 @@ export const PartySetting: React.FC<PartySettingProps> = ({
               </p>
             </div>
           ) : (
-            /* 배치된 사도 목록 - 테이블 형태 */
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
                 {/* 헤더 */}
@@ -85,8 +74,6 @@ export const PartySetting: React.FC<PartySettingProps> = ({
                     const apostleKey = apostle.id || apostle.name;
                     const selectedRank = asideSelection[apostleKey];
                     const { has2Star, has3Star } = getAvailableAsideRanks(apostleKey);
-
-                    // 어사이드가 하나도 없는 경우
                     const hasNoAside = !has2Star && !has3Star;
 
                     return (
