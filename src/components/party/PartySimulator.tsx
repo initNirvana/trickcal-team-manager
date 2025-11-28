@@ -7,6 +7,7 @@ import { analyzeParty } from '../../utils/partyAnalysisUtils';
 import { Button, Modal, ModalBody } from 'flowbite-react';
 import RecommendedApstlesDisplay from './RecommendedApstlesDisplay';
 import PartySetting from './PartySetting';
+import { usePartyStore } from '../../stores/partyStore';
 
 interface Props {
   apostles: Apostle[];
@@ -15,7 +16,9 @@ interface Props {
 }
 
 export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesData }) => {
-  const [party, setParty] = React.useState<(Apostle | undefined)[]>(Array(9).fill(undefined));
+  const party = usePartyStore((state) => state.party);
+  const setPartyMember = usePartyStore((state) => state.setPartyMember);
+  const clearParty = usePartyStore((state) => state.clearParty);
   const [selectedSlot, setSelectedSlot] = React.useState<number | null>(null);
   const [showSelector, setShowSelector] = React.useState(false);
   const [asideSelection, setAsideSelection] = React.useState<Record<string, number | null>>({});
@@ -34,29 +37,19 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
 
   const handleAddApostle = (apostle: Apostle) => {
     if (selectedSlot === null) return;
-
-    const newParty = [...party];
-    const existingIndex = newParty.findIndex((a) => a?.name === apostle.name);
-    if (existingIndex !== -1 && existingIndex !== selectedSlot - 1) {
-      newParty[existingIndex] = undefined;
-    }
-
-    newParty[selectedSlot - 1] = apostle;
-    setParty(newParty);
+    setPartyMember(selectedSlot, apostle);
     setShowSelector(false);
   };
 
   const handleRemoveApostle = () => {
     if (selectedSlot === null) return;
-    const newParty = [...party];
-    newParty[selectedSlot - 1] = undefined;
-    setParty(newParty);
+    setPartyMember(selectedSlot, undefined);
     setShowSelector(false);
     setSelectedSlot(null);
   };
 
   const handleReset = () => {
-    setParty(Array(9).fill(undefined));
+    clearParty();
   };
 
   const filledParty = party.filter((a) => a !== undefined) as Apostle[];
@@ -93,11 +86,7 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
 
       {/* 파티 구성 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
-        <PartyGrid
-          party={party}
-          onSelectSlot={handleSlotClick}
-          onRemoveSlot={handleRemoveApostle}
-        />
+        <PartyGrid onSelectSlot={handleSlotClick} />
       </div>
 
       {/* 모달: 사도 선택 - 선택된 열의 모달 */}

@@ -10,7 +10,7 @@ export interface Apostle {
   engName: string;
   isEldain: boolean;
   hasAside: boolean;
-  rank: number;
+  rank: 1 | 2 | 3;
   race: Race;
   persona: Personality | Personality[];
   role: Role;
