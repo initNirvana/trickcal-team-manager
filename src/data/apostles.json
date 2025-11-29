@@ -1059,7 +1059,7 @@
       "id": "a082",
       "name": "죠안",
       "engName": "Joanne",
-      "isEldain": false,
+      "isEldain": true,
       "hasAside": true,
       "rank": 3,
       "race": "요정",
