@@ -24,6 +24,7 @@ const assetPathMap = import.meta.glob<string>(
     '/src/assets/icon/Synergy_Icon_*_On.png', // 시너지 ON 아이콘
     '/src/assets/icon/Synergy_Icon_*_Off.png', // 시너지 OFF 아이콘
     '/src/assets/icon/*star.webp', // 랭크 아이콘
+    '/src/assets/icon/Common_Position*.png', // 위치 아이콘
   ],
   { eager: true, import: 'default' },
 ) as Record<string, string>;
@@ -75,6 +76,7 @@ export function getRankIconPath(rank: number): string {
   return getAssetPath(originalPath);
 }
 
-export const getPositionIconPath = (iconName: string) => {
-  return `/src/assets/icon/${iconName}.png`;
-};
+export function getPositionIconPath(iconName: string): string {
+  const originalPath = `/src/assets/icon/${iconName}.png`;
+  return getAssetPath(originalPath);
+}
