@@ -3,6 +3,7 @@ import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'flo
 import type { Apostle } from '../../types/apostle';
 import { getApostleImagePath } from '../../utils/apostleUtils';
 import { usePartyStore } from '../../stores/partyStore';
+import RecommendedApostlesDisplay from './RecommendedApostlesDisplay';
 
 interface PartySettingProps {
   filledParty: Apostle[];
@@ -34,10 +35,11 @@ export const PartySetting: React.FC<PartySettingProps> = ({ filledParty, asidesD
       <AccordionPanel>
         <AccordionTitle>각종 설정</AccordionTitle>
         <AccordionContent>구현 예정</AccordionContent>
+      </AccordionPanel>
+      <AccordionPanel>
+        <AccordionTitle>추천 사도 티어표</AccordionTitle>
         <AccordionContent>
-          대충돌/프론티어 관련 기록은 <br />
-          <a href="https://trickcalrecord.pages.dev/">https://trickcalrecord.pages.dev/</a>
-          참고 부탁드립니다~
+          <RecommendedApostlesDisplay />
         </AccordionContent>
       </AccordionPanel>
 

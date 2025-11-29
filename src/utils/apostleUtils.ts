@@ -74,3 +74,7 @@ export function getRankIconPath(rank: number): string {
   const originalPath = `/src/assets/icon/${rank}star.webp`;
   return getAssetPath(originalPath);
 }
+
+export const getPositionIconPath = (iconName: string) => {
+  return `/src/assets/icon/${iconName}.png`;
+};

@@ -6,7 +6,7 @@ import PartyAnalysisPanel from './PartyAnalysisPanel';
 import ApostleSelector from './ApostleSelector';
 import { analyzeParty } from '../../utils/partyAnalysisUtils';
 import { Button, Modal, ModalBody } from 'flowbite-react';
-import RecommendedApstlesDisplay from './RecommendedApstlesDisplay';
+import RecommendedApostlesDisplay from './RecommendedApostlesDisplay';
 import PartySetting from './PartySetting';
 
 interface Props {
@@ -104,11 +104,6 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
           </ModalBody>
         </Modal>
       )}
-
-      {/* 추천 사도 표시 (선택사항) */}
-      {/* <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
-        <RecommendedApstlesDisplay />
-      </div> */}
     </div>
   );
 };
