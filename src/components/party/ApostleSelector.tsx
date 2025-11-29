@@ -96,10 +96,30 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
         className="max-h-[60vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-6"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 헤더 */}
-        <h2 className="min-w-fit text-2xl font-bold whitespace-nowrap">
-          {getRequiredPosition(selectedSlot)} 선택
-        </h2>
+        <div className="grid grid-cols-2 items-center gap-2">
+          <h2 className="min-w-fit text-2xl font-bold whitespace-nowrap">
+            {getRequiredPosition(selectedSlot)} 선택
+          </h2>
+
+          <div className="flex items-center justify-end gap-2">
+            <Button
+              color={isRemoveButtonEnabled ? 'red' : 'gray'}
+              size="sm"
+              disabled={!isRemoveButtonEnabled}
+              onClick={() => {
+                if (isRemoveButtonEnabled && onRemove) {
+                  onRemove();
+                }
+              }}
+              title={isRemoveButtonEnabled ? '슬롯 비우기' : '배치된 사도가 없습니다'}
+            >
+              그렇게 됐어요
+            </Button>
+            <Button color="gray" size="sm" onClick={onClose}>
+              닫기
+            </Button>
+          </div>
+        </div>
 
         {/* 성격 필터 | 등급 필터 */}
         <div className="flex items-center justify-between gap-3">
@@ -148,27 +168,6 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
               </button>
             ))}
           </div>
-
-          <div className="flex items-center gap-2">
-            <Button
-              color={isRemoveButtonEnabled ? 'red' : 'gray'}
-              size="sm"
-              disabled={!isRemoveButtonEnabled}
-              onClick={() => {
-                if (isRemoveButtonEnabled && onRemove) {
-                  onRemove();
-                }
-              }}
-              aria-label="Remove apostle from slot"
-              className="flex items-center gap-1"
-              title={isRemoveButtonEnabled ? '슬롯 비우기' : '배치된 사도가 없습니다'}
-            >
-              <span className="hidden sm:inline">그렇게 됐어요</span>
-            </Button>
-            <Button color="gray" size="sm" onClick={onClose}>
-              닫기
-            </Button>
-          </div>
         </div>
 
         {/* 사도 그리드 - 5열 */}
@@ -186,7 +185,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   onClick={() => onSelect(apostle)}
                   className={`${getPersonalityBackgroundClass(
                     primaryPersonality,
-                  )} flex h-30 cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg p-3 text-white transition hover:shadow-md`}
+                  )} flex h-30 cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg p-2 text-white transition hover:shadow-md`}
                 >
                   {/* 사도 이미지 */}
                   <div className="flex h-20 w-20 items-center justify-center">
