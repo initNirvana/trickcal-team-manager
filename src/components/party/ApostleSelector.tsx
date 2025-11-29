@@ -8,6 +8,7 @@ import {
   getRankIconPath,
 } from '../../utils/apostleUtils';
 import { Button } from 'flowbite-react';
+import ApostleImage from '../common/ApostleImage';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
@@ -189,13 +190,10 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                 >
                   {/* 사도 이미지 */}
                   <div className="flex h-20 w-20 items-center justify-center">
-                    <img
+                    <ApostleImage
                       src={getApostleImagePath(apostle.engName)}
                       alt={apostle.name}
                       className="h-full w-full rounded object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                      }}
                     />
                   </div>
                   {/* 사도 이름 */}

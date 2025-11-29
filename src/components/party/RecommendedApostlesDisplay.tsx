@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Badge, Button, List, ListItem } from 'flowbite-react';
 import { getApostleImagePath, getPositionIconPath } from '../../utils/apostleUtils';
 import { HiOutlineExclamation } from 'react-icons/hi';
+import ApostleImage from '../common/ApostleImage';
 
 // ===== 추천 사도 데이터 (위치 정보 추가) =====
 const APOSTLES_BY_PERSONALITY = {
@@ -108,13 +109,10 @@ const positionConfig = {
 const ApostleCard: React.FC<{ apostle: ApostleData }> = ({ apostle }) => (
   <div className="group flex flex-col items-center gap-1">
     <div className="relative h-24 w-20 overflow-hidden rounded-lg border-2 border-gray-300 transition hover:shadow-lg dark:border-gray-600">
-      <img
+      <ApostleImage
         src={getApostleImagePath(apostle.engName)}
         alt={apostle.name}
         className="h-full w-full object-cover"
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).src = '/src/assets/placeholder.png';
-        }}
       />
       {/* 위치 아이콘 배지 */}
       <div className="absolute bottom-1 left-1 h-6 w-6 rounded-full border border-gray-300 bg-white p-0.5 dark:border-gray-600 dark:bg-gray-800">
