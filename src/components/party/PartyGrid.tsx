@@ -1,24 +1,21 @@
-import React from "react";
-import { Card } from "flowbite-react";
-import type { Apostle } from "../../types/apostle";
-import ApostleSlot from "./ApostleSlot";
+import React from 'react';
+import { usePartyStore } from '../../stores/partyStore';
+import ApostleSlot from './ApostleSlot';
 
 interface PartyGridProps {
-  party: (Apostle | undefined)[];
   onSelectSlot: (slotNumber: number) => void;
-  onRemoveSlot: (slotNumber: number) => void;
 }
 
-const PartyGrid: React.FC<PartyGridProps> = ({ party, onSelectSlot }) => {
-  const filledCount = party.filter((a) => a !== undefined).length;
+const PartyGrid: React.FC<PartyGridProps> = ({ onSelectSlot }) => {
+  const party = usePartyStore((state) => state.party);
 
   return (
     <div className="box space-h-4">
       {/* 3개 열 */}
       <div className="grid grid-cols-3 gap-4">
         {/* 후열 */}
-        <div className="space-y-3 p-3 border-2 border-blue-400 rounded-md bg-blue-50">
-          <p className="text-xs font-bold text-center text-blue-700">후열</p>
+        <div className="space-y-3 rounded-md border-2 border-blue-400 bg-blue-50 p-3">
+          <p className="text-center text-xs font-bold text-blue-700">후열</p>
           <div className="space-y-2">
             {[1, 4, 7].map((slot) => (
               <ApostleSlot
@@ -32,8 +29,8 @@ const PartyGrid: React.FC<PartyGridProps> = ({ party, onSelectSlot }) => {
         </div>
 
         {/* 중열 */}
-        <div className="space-y-3 p-3 border-2 border-green-400 rounded-md bg-green-50">
-          <p className="text-xs font-bold text-center text-green-700">중열</p>
+        <div className="space-y-3 rounded-md border-2 border-green-400 bg-green-50 p-3">
+          <p className="text-center text-xs font-bold text-green-700">중열</p>
           <div className="space-y-2">
             {[2, 5, 8].map((slot) => (
               <ApostleSlot
@@ -47,8 +44,8 @@ const PartyGrid: React.FC<PartyGridProps> = ({ party, onSelectSlot }) => {
         </div>
 
         {/* 전열 */}
-        <div className="space-y-3 p-3 border-2 border-red-400 rounded-md bg-red-50">
-          <p className="text-xs font-bold text-center text-red-700">전열</p>
+        <div className="space-y-3 rounded-md border-2 border-red-400 bg-red-50 p-3">
+          <p className="text-center text-xs font-bold text-red-700">전열</p>
           <div className="space-y-2">
             {[3, 6, 9].map((slot) => (
               <ApostleSlot

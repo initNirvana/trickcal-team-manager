@@ -1,11 +1,12 @@
 import React from 'react';
 import type { Apostle } from '../../types/apostle';
+import { usePartyStore } from '../../stores/partyStore'; // ← 추가
 import PartyGrid from './PartyGrid';
 import PartyAnalysisPanel from './PartyAnalysisPanel';
 import ApostleSelector from './ApostleSelector';
 import { analyzeParty } from '../../utils/partyAnalysisUtils';
 import { Button, Modal, ModalBody } from 'flowbite-react';
-import RecommendedApstlesDisplay from './RecommendedApstlesDisplay';
+import RecommendedApostlesDisplay from './RecommendedApostlesDisplay';
 import PartySetting from './PartySetting';
 
 interface Props {
@@ -15,18 +16,17 @@ interface Props {
 }
 
 export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesData }) => {
-  const [party, setParty] = React.useState<(Apostle | undefined)[]>(Array(9).fill(undefined));
+  // ===== Zustand 구독: Party 상태 =====
+  const party = usePartyStore((state) => state.party);
+  const setPartyMember = usePartyStore((state) => state.setPartyMember);
+  const clearParty = usePartyStore((state) => state.clearParty);
+  const resetAll = usePartyStore((state) => state.resetAll);
+
+  // ===== UI 관련 로컬 상태 (useState 유지) =====
   const [selectedSlot, setSelectedSlot] = React.useState<number | null>(null);
   const [showSelector, setShowSelector] = React.useState(false);
-  const [asideSelection, setAsideSelection] = React.useState<Record<string, number | null>>({});
 
-  const handleAsideChange = (apostleId: string, rankStar: number | null) => {
-    setAsideSelection((prev) => ({
-      ...prev,
-      [apostleId]: rankStar,
-    }));
-  };
-
+  // ===== 액션 핸들러 =====
   const handleSlotClick = (slotNumber: number) => {
     setSelectedSlot(slotNumber);
     setShowSelector(true);
@@ -35,101 +35,75 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
   const handleAddApostle = (apostle: Apostle) => {
     if (selectedSlot === null) return;
 
-    const newParty = [...party];
-    const existingIndex = newParty.findIndex((a) => a?.name === apostle.name);
-    if (existingIndex !== -1 && existingIndex !== selectedSlot - 1) {
-      newParty[existingIndex] = undefined;
-    }
-
-    newParty[selectedSlot - 1] = apostle;
-    setParty(newParty);
+    // ✅ Zustand 액션 사용
+    setPartyMember(selectedSlot, apostle);
     setShowSelector(false);
   };
 
   const handleRemoveApostle = () => {
     if (selectedSlot === null) return;
-    const newParty = [...party];
-    newParty[selectedSlot - 1] = undefined;
-    setParty(newParty);
+    setPartyMember(selectedSlot, undefined);
     setShowSelector(false);
     setSelectedSlot(null);
   };
 
   const handleReset = () => {
-    setParty(Array(9).fill(undefined));
+    resetAll();
   };
 
+  // ===== 파생 상태 (계산된 값) =====
   const filledParty = party.filter((a) => a !== undefined) as Apostle[];
   const analysis = analyzeParty(filledParty);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 p-4">
-      {/* 상단: 타이틀 및 버튼 */}
       <h1 className="mb-4 text-2xl font-bold">파티 빌더</h1>
 
-      {/* 설정 관련 */}
+      {/* PartySetting - asideSelection을 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
         <PartySetting
           filledParty={filledParty}
           asidesData={asidesData}
-          onAsideChange={handleAsideChange}
+          // ✅ onAsideChange Props 제거!
         />
       </div>
 
-      {/* 분석 결과 */}
+      {/* PartyAnalysisPanel - skillLevels를 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
         <PartyAnalysisPanel
           analysis={analysis}
           filledParty={filledParty}
           skillsData={skillsData}
           asidesData={asidesData}
-          asideSelection={asideSelection}
+          // ✅ asideSelection Props 제거!
         />
       </div>
 
-      <Button color="red" onClick={handleReset} className="btn-secondary h-full" pill>
-        전체 초기화
+      {/* 초기화 버튼 */}
+      <Button color="red" onClick={handleReset} className="btn-secondary pill h-full">
+        초기화
       </Button>
 
-      {/* 파티 구성 */}
+      {/* PartyGrid - party를 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
-        <PartyGrid
-          party={party}
-          onSelectSlot={handleSlotClick}
-          onRemoveSlot={handleRemoveApostle}
-        />
+        <PartyGrid onSelectSlot={handleSlotClick} />
       </div>
 
-      {/* 모달: 사도 선택 - 선택된 열의 모달 */}
+      {/* Apostle 선택 모달 */}
       {showSelector && selectedSlot !== null && (
-        <Modal
-          show={showSelector}
-          onClose={() => {
-            setShowSelector(false);
-            setSelectedSlot(null);
-          }}
-          size="2xl"
-        >
+        <Modal show={showSelector} onClose={() => setShowSelector(false)} size="2xl">
           <ModalBody>
             <ApostleSelector
               apostles={apostles}
               selectedSlot={selectedSlot}
-              currentApostle={party[selectedSlot - 1]} // ✅ 현재 슬롯의 사도 전달
+              currentApostle={party[selectedSlot - 1]}
               onSelect={handleAddApostle}
-              onRemove={handleRemoveApostle} // ✅ 슬롯 비우기 콜백 추가
-              onClose={() => {
-                setShowSelector(false);
-                setSelectedSlot(null);
-              }}
+              onRemove={handleRemoveApostle}
+              onClose={() => setShowSelector(false)}
             />
           </ModalBody>
         </Modal>
       )}
-
-      {/* 추천 사도 */}
-      {/* <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
-        <RecommendedApstlesDisplay />
-      </div> */}
     </div>
   );
 };

@@ -12,7 +12,7 @@ import {
   ButtonGroup,
 } from 'flowbite-react';
 import { HiMinus, HiPlus } from 'react-icons/hi';
-import { calculateSkillDamageReduction } from '../../utils/damageCaculator';
+import { calculateSkillDamageReduction } from '../../utils/damageProcessor';
 
 interface DamageReductionDisplayProps {
   apostles: Apostle[];
