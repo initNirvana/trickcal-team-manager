@@ -33,7 +33,6 @@ const EffectCard: React.FC<{
     ? 'bg-orange-50 hover:bg-orange-100 dark:bg-orange-900/20 dark:hover:bg-orange-900/30'
     : 'bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30';
   const badgeColor = isDamageIncrease ? 'warning' : 'info';
-  const sign = isDamageIncrease ? '+' : '-';
 
   return (
     <div className={`flex items-center justify-between rounded-lg p-2 transition ${bgColor}`}>
@@ -43,7 +42,6 @@ const EffectCard: React.FC<{
         </p>
       </div>
       <Badge color={badgeColor} size="sm">
-        {sign}
         {value}%
       </Badge>
     </div>
