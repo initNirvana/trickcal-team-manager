@@ -3,72 +3,7 @@ import { Badge, Button, List, ListItem } from 'flowbite-react';
 import { getApostleImagePath, getPositionIconPath } from '../../utils/apostleUtils';
 import { HiOutlineExclamation } from 'react-icons/hi';
 import ApostleImage from '../common/ApostleImage';
-
-// ===== 추천 사도 데이터 (위치 정보 추가) =====
-const APOSTLES_BY_PERSONALITY = {
-  광기: {
-    S: [
-      { name: '리뉴아', engName: 'Renewa', position: '중열' },
-      { name: '아네트', engName: 'Arnet', position: '중열' },
-      { name: '티그(영웅)', engName: 'TigHero', position: '중열' },
-    ],
-    A: [
-      { name: '네티', engName: 'Neti', position: '전열' },
-      { name: '네르', engName: 'Ner', position: '전열' },
-    ],
-    B: [
-      { name: '클로에', engName: 'Chloe', position: '전열' },
-      { name: '림(혼돈)', engName: 'RimChaos', position: '후열' },
-    ],
-  },
-  우울: {
-    S: [],
-    A: [{ name: '죠안', engName: 'Joanne', position: '후열' }],
-    B: [
-      { name: '키디언', engName: 'Kidian', position: '전열' },
-      { name: '시온', engName: 'xXionx', position: '후열' },
-    ],
-  },
-  순수: {
-    S: [],
-    A: [
-      { name: '비비', engName: 'Vivi', position: '전열' },
-      { name: '뮤트', engName: 'Mute', position: '후열' },
-    ],
-    B: [
-      { name: '마요(멋짐)', engName: 'MayoCool', position: '중열' },
-      { name: '란', engName: 'Ran', position: '후열' },
-    ],
-  },
-  활발: {
-    S: [
-      { name: '모모', engName: 'Momo', position: '후열' },
-      { name: '벨라', engName: 'Vela', position: '전열' },
-    ],
-    A: [
-      { name: '슈로', engName: 'Suro', position: '전열' },
-      { name: '에피카', engName: 'Epica', position: '중열' },
-    ],
-    B: [
-      { name: '마카샤', engName: 'Makasha', position: '중열' },
-      { name: '우이', engName: 'Ui', position: '중열' },
-    ],
-  },
-  냉정: {
-    S: [
-      { name: '우로스', engName: 'Uros', position: '후열' },
-      { name: '디아나(왕년)', engName: 'DianaYester', position: '전열' },
-    ],
-    A: [
-      { name: '에스피', engName: 'Espi', position: '후열' },
-      { name: '리코타', engName: 'Ricota', position: '전열' },
-    ],
-    B: [
-      { name: '실라', engName: 'Sylla', position: '후열' },
-      { name: '아야', engName: 'Aya', position: '중열' },
-    ],
-  },
-};
+import apostlesTiersData from '../../data/apostles-recommend.json';
 
 interface ApostleData {
   name: string;
@@ -169,7 +104,7 @@ const TierRow: React.FC<{
 
 // ===== 성격 드롭다운 메뉴 (커스텀) =====
 const PersonalityDropdown: React.FC<{
-  personalities: Array<keyof typeof APOSTLES_BY_PERSONALITY>;
+  personalities: string[];
   selectedPersonalities: Set<string>;
   onToggle: (personality: string) => void;
 }> = ({ personalities, selectedPersonalities, onToggle }) => {
@@ -195,11 +130,6 @@ const PersonalityDropdown: React.FC<{
                 className="cursor-pointer"
               />
               <span className="text-sm text-gray-900 dark:text-white">{personality}</span>
-              <Badge color="gray" size="sm">
-                {(APOSTLES_BY_PERSONALITY[personality].S?.length || 0) +
-                  (APOSTLES_BY_PERSONALITY[personality].A?.length || 0) +
-                  (APOSTLES_BY_PERSONALITY[personality].B?.length || 0)}
-              </Badge>
             </label>
           ))}
         </div>
@@ -213,6 +143,11 @@ const PersonalityDropdown: React.FC<{
 
 // ===== 메인 컴포넌트 =====
 export function RecommendedApostlesDisplay() {
+  const APOSTLES_BY_PERSONALITY = apostlesTiersData.tiers as Record<
+    string,
+    { S: any[]; A: any[]; B: any[] }
+  >;
+
   const personalities = Object.keys(APOSTLES_BY_PERSONALITY) as Array<
     keyof typeof APOSTLES_BY_PERSONALITY
   >;
