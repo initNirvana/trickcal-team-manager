@@ -88,121 +88,114 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
   const ranks = [3, 2, 1];
 
   return (
-    <div
-      className="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black"
-      onClick={onClose}
-    >
-      <div
-        className="max-h-[60vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-6"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="grid grid-cols-2 items-center gap-2">
-          <h2 className="min-w-fit text-2xl font-bold whitespace-nowrap">
-            {getRequiredPosition(selectedSlot)} 선택
-          </h2>
+    <div className="max-h-[60vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-6">
+      {/* 헤더 */}
+      <div className="grid grid-cols-2 items-center gap-2">
+        <h2 className="min-w-fit text-2xl font-bold whitespace-nowrap">
+          {getRequiredPosition(selectedSlot)} 선택
+        </h2>
 
-          <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center justify-end gap-2">
+          <button
+            className={`btn btn-sm ${isRemoveButtonEnabled ? 'btn-error' : 'btn-disabled'}`}
+            disabled={!isRemoveButtonEnabled}
+            onClick={() => {
+              if (isRemoveButtonEnabled && onRemove) {
+                onRemove();
+              }
+            }}
+            title={isRemoveButtonEnabled ? '슬롯 비우기' : '배치된 사도가 없습니다'}
+          >
+            그렇게 됐어요
+          </button>
+          <button className="btn btn-sm" onClick={onClose}>
+            닫기
+          </button>
+        </div>
+      </div>
+
+      {/* 성격 필터 | 등급 필터 */}
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          {personalities.map((personality) => (
             <button
-              className={`btn btn-sm ${isRemoveButtonEnabled ? 'btn-error' : 'btn-disabled'}`}
-              disabled={!isRemoveButtonEnabled}
-              onClick={() => {
-                if (isRemoveButtonEnabled && onRemove) {
-                  onRemove();
-                }
-              }}
-              title={isRemoveButtonEnabled ? '슬롯 비우기' : '배치된 사도가 없습니다'}
+              key={personality}
+              onClick={() =>
+                setSelectedPersonality(selectedPersonality === personality ? null : personality)
+              }
+              className={`relative h-9 w-9 transform rounded-lg transition hover:scale-50 ${
+                selectedPersonality === personality
+                  ? 'ring-primary scale-110 ring-2 ring-offset-1'
+                  : 'opacity-60 hover:scale-105 hover:opacity-100'
+              }`}
+              title={personality}
             >
-              그렇게 됐어요
+              <img
+                src={getPersonalityIconPath(personality)}
+                alt={personality}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                }}
+              />
             </button>
-            <button className="btn btn-sm" onClick={onClose}>
-              닫기
+          ))}
+          {/* 등급 필터 */}
+          {ranks.map((rank) => (
+            <button
+              key={rank}
+              onClick={() => setSelectedRank(selectedRank === rank ? null : rank)}
+              className={`relative h-9 w-9 transform rounded-lg transition ${
+                selectedRank === rank
+                  ? 'ring-2 ring-blue-500 ring-offset-1'
+                  : 'opacity-60 hover:scale-105 hover:opacity-100'
+              }`}
+              title={`${rank}성`}
+            >
+              <img
+                src={getRankIconPath(rank)}
+                alt={`${rank}성`}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                }}
+              />
             </button>
-          </div>
+          ))}
         </div>
+      </div>
 
-        {/* 성격 필터 | 등급 필터 */}
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            {personalities.map((personality) => (
-              <button
-                key={personality}
-                onClick={() =>
-                  setSelectedPersonality(selectedPersonality === personality ? null : personality)
-                }
-                className={`relative h-9 w-9 transform rounded-lg transition hover:scale-50 ${
-                  selectedPersonality === personality
-                    ? 'scale-110 ring-2 ring-blue-500 ring-offset-1'
-                    : 'opacity-60 hover:scale-105 hover:opacity-100'
-                }`}
-                title={personality}
-              >
-                <img
-                  src={getPersonalityIconPath(personality)}
-                  alt={personality}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
-                  }}
-                />
-              </button>
-            ))}
-            {/* 등급 필터 */}
-            {ranks.map((rank) => (
-              <button
-                key={rank}
-                onClick={() => setSelectedRank(selectedRank === rank ? null : rank)}
-                className={`relative h-9 w-9 transform rounded-lg transition ${
-                  selectedRank === rank
-                    ? 'ring-2 ring-blue-500 ring-offset-1'
-                    : 'opacity-60 hover:scale-105 hover:opacity-100'
-                }`}
-                title={`${rank}성`}
-              >
-                <img
-                  src={getRankIconPath(rank)}
-                  alt={`${rank}성`}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
-                  }}
-                />
-              </button>
-            ))}
+      {/* 사도 그리드 - 5열 */}
+      <div className="grid grid-cols-5 gap-4">
+        {filteredApostles.length === 0 ? (
+          <div className="col-span-5 py-12 text-center text-gray-500">
+            배치 가능한 사도가 없습니다.
           </div>
-        </div>
-
-        {/* 사도 그리드 - 5열 */}
-        <div className="grid grid-cols-5 gap-4">
-          {filteredApostles.length === 0 ? (
-            <div className="col-span-5 py-12 text-center text-gray-500">
-              배치 가능한 사도가 없습니다.
-            </div>
-          ) : (
-            filteredApostles.map((apostle) => {
-              const primaryPersonality = getPersonalities(apostle)[0];
-              return (
-                <div
-                  key={apostle.id}
-                  onClick={() => onSelect(apostle)}
-                  className={`${getPersonalityBackgroundClass(
-                    primaryPersonality,
-                  )} flex h-30 cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg p-2 text-white transition hover:shadow-md`}
-                >
-                  {/* 사도 이미지 */}
-                  <div className="flex h-20 w-20 items-center justify-center">
-                    <ApostleImage
-                      src={getApostleImagePath(apostle.engName)}
-                      alt={apostle.name}
-                      className="h-full w-full rounded object-cover"
-                    />
-                  </div>
-                  {/* 사도 이름 */}
-                  <div className="w-full truncate text-center text-xs font-semibold">
-                    {apostle.name}
-                  </div>
+        ) : (
+          filteredApostles.map((apostle) => {
+            const primaryPersonality = getPersonalities(apostle)[0];
+            return (
+              <div
+                key={apostle.id}
+                onClick={() => onSelect(apostle)}
+                className={`${getPersonalityBackgroundClass(
+                  primaryPersonality,
+                )} flex h-30 cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg p-2 text-white transition hover:shadow-md`}
+              >
+                {/* 사도 이미지 */}
+                <div className="flex h-20 w-20 items-center justify-center">
+                  <ApostleImage
+                    src={getApostleImagePath(apostle.engName)}
+                    alt={apostle.name}
+                    className="h-full w-full rounded object-cover"
+                  />
                 </div>
-              );
-            })
-          )}
-        </div>
+                {/* 사도 이름 */}
+                <div className="w-full truncate text-center text-xs font-semibold">
+                  {apostle.name}
+                </div>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

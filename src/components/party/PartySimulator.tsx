@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Apostle } from '../../types/apostle';
 import { usePartyStore } from '../../stores/partyStore'; // ← 추가
 import PartyGrid from './PartyGrid';
@@ -6,6 +6,7 @@ import PartyAnalysisPanel from './PartyAnalysisPanel';
 import ApostleSelector from './ApostleSelector';
 import { analyzeParty } from '../../utils/partyAnalysisUtils';
 import PartySetting from './PartySetting';
+import DeckRecommendationGuide from './DeckRecommendationGuide';
 
 interface Props {
   apostles: Apostle[];
@@ -23,6 +24,8 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
   // ===== UI 관련 로컬 상태 (useState 유지) =====
   const [selectedSlot, setSelectedSlot] = React.useState<number | null>(null);
   const [showSelector, setShowSelector] = React.useState(false);
+
+  const [gameMode, setGameMode] = useState<'pve' | 'pvp'>('pve');
 
   // ===== 액션 핸들러 =====
   const handleSlotClick = (slotNumber: number) => {
@@ -75,6 +78,13 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
           asidesData={asidesData}
           // ✅ asideSelection Props 제거!
         />
+
+        {/* <DeckRecommendationGuide
+          apostles={filledParty}
+          allApostles={apostles}
+          gameMode={gameMode}
+          onGameModeChange={setGameMode}
+        /> */}
       </div>
 
       {/* 초기화 버튼 */}
@@ -90,22 +100,14 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
       {/* Apostle 선택 모달 */}
       {showSelector && selectedSlot !== null && (
         <dialog open className="modal">
-          <div className="modal-box h-[60vh] max-w-2xl">
-            <button
-              className="btn btn-sm btn-circle btn-ghost absolute top-2 right-2"
-              onClick={() => setShowSelector(false)}
-            >
-              ✕
-            </button>
-            <ApostleSelector
-              apostles={apostles}
-              selectedSlot={selectedSlot}
-              currentApostle={party[selectedSlot - 1]}
-              onSelect={handleAddApostle}
-              onRemove={handleRemoveApostle}
-              onClose={() => setShowSelector(false)}
-            />
-          </div>
+          <ApostleSelector
+            apostles={apostles}
+            selectedSlot={selectedSlot}
+            currentApostle={party[selectedSlot - 1]}
+            onSelect={handleAddApostle}
+            onRemove={handleRemoveApostle}
+            onClose={() => setShowSelector(false)}
+          />
           <form method="dialog" className="modal-backdrop">
             <button onClick={() => setShowSelector(false)}>close</button>
           </form>
