@@ -1,7 +1,10 @@
 /* ./src/index.css */
 @import 'tailwindcss';
-@plugin 'flowbite-react/plugin/tailwindcss';
-@source '../.flowbite-react/class-list.json';
+@plugin 'daisyui' {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
 
 /* ONE Mobile POP 폰트 */
 @font-face {
