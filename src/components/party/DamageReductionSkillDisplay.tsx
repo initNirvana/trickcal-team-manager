@@ -1,16 +1,6 @@
 // src/components/party/DamageReductionSkillDisplay.tsx
 import React, { useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
-import {
-  Accordion,
-  AccordionPanel,
-  AccordionContent,
-  AccordionTitle,
-  Badge,
-  Tooltip,
-  Button,
-  ButtonGroup,
-} from 'flowbite-react';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import { calculateSkillDamageReduction } from '../../utils/damageProcessor';
 
@@ -53,93 +43,88 @@ export const DamageReductionDisplay: React.FC<DamageReductionDisplayProps> = ({
   }
 
   return (
-    <Accordion collapseAll>
-      <AccordionPanel>
-        <AccordionTitle>
-          <div className="flex w-full items-center justify-between pr-2">
-            <span className="text-sm font-semibold">받는 피해량 감소 현황 (스킬)</span>
+    <div className="join-item border-base-300 collapse border">
+      <input type="checkbox" />
+      <div className="collapse-title font-semibold">
+        <span className="text-sm font-semibold">받는 피해량 감소 현황 (스킬)</span>
+      </div>
+
+      {reduction.details.length > 0 ? (
+        <ul className="list space-y-1 shadow-md">
+          {/* 헤더 */}
+          <div className="flex justify-between border-b border-gray-200 px-6 pb-2">
+            <li className="text-xs font-semibold opacity-80">
+              스킬 구성 ({reduction.details.length}개)
+            </li>
+            <p className="text-xs text-gray-500">스킬별 감소량</p>
           </div>
-        </AccordionTitle>
 
-        <AccordionContent>
-          {reduction.details.length > 0 ? (
-            <div className="space-y-3">
-              {/* 헤더 */}
-              <div className="flex items-center justify-between border-b border-gray-200 pb-2">
-                <p className="text-xs font-bold text-gray-700">
-                  스킬 구성 ({reduction.details.length}개)
-                </p>
-                <p className="text-xs text-gray-500">개별 감소량</p>
-              </div>
+          {/* 스킬 리스트 */}
+          {reduction.details.map((item, idx) => {
+            const apostle = apostles.find((a) => a.name === item.apostleName);
+            const apostleId = apostle?.id || '';
 
-              {/* 스킬 리스트 */}
-              {reduction.details.map((item, idx) => {
-                const apostle = apostles.find((a) => a.name === item.apostleName);
-                const apostleId = apostle?.id || '';
+            return (
+              <li
+                key={idx}
+                className="list-row flex items-center justify-between rounded-lg bg-gray-50 p-2 px-6 transition hover:bg-gray-100"
+              >
+                {/* 좌측: 사도명 + 범위 */}
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-gray-900">
+                    {item.apostleName} {item.skillType} Lv.{item.skillLevel}
+                  </p>
+                  <p className="text-xs text-gray-500">범위: {item.appliesTo}</p>
+                </div>
 
-                return (
-                  <div
-                    key={idx}
-                    className="flex items-center justify-between rounded-lg bg-gray-50 p-2 transition hover:bg-gray-100"
-                  >
-                    {/* 좌측: 사도명 + 범위 */}
-                    <div className="flex-1">
-                      <p className="text-sm font-bold text-gray-900">
-                        {item.apostleName} {item.skillType} Lv.{item.skillLevel}
-                      </p>
-                      <p className="text-xs text-gray-500">범위: {item.appliesTo}</p>
-                    </div>
-
-                    {/* 사도 스킬 레벨 조정 */}
-                    <Tooltip content="스킬 레벨 조정 1 ~ 13">
-                      <ButtonGroup>
-                        <Button
-                          pill
-                          onClick={() => handleLevelChange(apostleId, -1)}
-                          color="gray"
-                          size="xs"
-                          disabled={item.skillLevel === MIN_LEVEL}
-                        >
-                          <HiMinus className="h-4 w-4" />
-                        </Button>
-                        <Button
-                          pill
-                          onClick={() => handleLevelChange(apostleId, 1)}
-                          color="gray"
-                          size="xs"
-                          disabled={item.skillLevel === MAX_LEVEL}
-                        >
-                          <HiPlus className="h-4 w-4" />
-                        </Button>
-                      </ButtonGroup>
-                    </Tooltip>
-
-                    {/* 우측: 감소량 */}
-                    <Badge color="info" size="sm">
-                      {item.reduction}%
-                    </Badge>
+                {/* 사도 스킬 레벨 조정 */}
+                <div className="tooltip" data-tip="스킬 레벨 조정 1 ~ 13">
+                  <div className="join">
+                    <button
+                      className="btn btn-xs btn-soft join-item"
+                      onClick={() => handleLevelChange(apostleId, -1)}
+                      color="gray"
+                      disabled={item.skillLevel === MIN_LEVEL}
+                    >
+                      <HiMinus className="h-4 w-4" />
+                    </button>
+                    <button
+                      className="btn btn-xs btn-soft join-item"
+                      onClick={() => handleLevelChange(apostleId, 1)}
+                      color="gray"
+                      disabled={item.skillLevel === MAX_LEVEL}
+                    >
+                      <HiPlus className="h-4 w-4" />
+                    </button>
                   </div>
-                );
-              })}
+                </div>
 
-              {/* 총합 표시 (선택사항) */}
-              <div className="flex items-center justify-between border-t border-gray-200 pt-2">
-                <p className="text-sm font-bold text-gray-900">총 감소량</p>
-                <Tooltip content="최대 75%">
-                  <Badge color={reduction.totalReduction >= 60 ? 'success' : 'warning'}>
-                    {reduction.totalReduction}%
-                  </Badge>
-                </Tooltip>
-              </div>
+                {/* 우측: 감소량 */}
+                <span className="badge badge-sm badge-info">{item.reduction}%</span>
+              </li>
+            );
+          })}
+
+          {/* 총합 표시 (선택사항) */}
+          <div className="flex items-center justify-between border-t border-gray-200 px-6 py-1">
+            <p className="text-sm font-bold text-gray-900">총 감소량</p>
+            <div className="tooltip" data-tip="최대 75%">
+              <span
+                className={`badge ${
+                  reduction.totalReduction >= 60 ? 'badge-success' : 'badge-warning'
+                }`}
+              >
+                {reduction.totalReduction}%
+              </span>
             </div>
-          ) : (
-            <div className="py-4 text-center">
-              <p className="text-sm text-gray-500">파티에 받는 피해량 감소 효과가 없습니다.</p>
-            </div>
-          )}
-        </AccordionContent>
-      </AccordionPanel>
-    </Accordion>
+          </div>
+        </ul>
+      ) : (
+        <div className="py-4 text-center">
+          <p className="text-sm text-gray-500">파티에 받는 피해량 감소 효과가 없습니다.</p>
+        </div>
+      )}
+    </div>
   );
 };
 

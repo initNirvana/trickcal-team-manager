@@ -5,8 +5,6 @@ import PartyGrid from './PartyGrid';
 import PartyAnalysisPanel from './PartyAnalysisPanel';
 import ApostleSelector from './ApostleSelector';
 import { analyzeParty } from '../../utils/partyAnalysisUtils';
-import { Button, Modal, ModalBody } from 'flowbite-react';
-import RecommendedApostlesDisplay from './RecommendedApostlesDisplay';
 import PartySetting from './PartySetting';
 
 interface Props {
@@ -80,9 +78,9 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
       </div>
 
       {/* 초기화 버튼 */}
-      <Button color="red" onClick={handleReset} className="btn-secondary pill h-full">
+      <button onClick={handleReset} className="btn btn-error h-full">
         초기화
-      </Button>
+      </button>
 
       {/* PartyGrid - party를 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
@@ -91,8 +89,14 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
 
       {/* Apostle 선택 모달 */}
       {showSelector && selectedSlot !== null && (
-        <Modal show={showSelector} onClose={() => setShowSelector(false)} size="2xl">
-          <ModalBody>
+        <dialog open className="modal">
+          <div className="modal-box h-[60vh] max-w-2xl">
+            <button
+              className="btn btn-sm btn-circle btn-ghost absolute top-2 right-2"
+              onClick={() => setShowSelector(false)}
+            >
+              ✕
+            </button>
             <ApostleSelector
               apostles={apostles}
               selectedSlot={selectedSlot}
@@ -101,8 +105,11 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
               onRemove={handleRemoveApostle}
               onClose={() => setShowSelector(false)}
             />
-          </ModalBody>
-        </Modal>
+          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button onClick={() => setShowSelector(false)}>close</button>
+          </form>
+        </dialog>
       )}
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Badge, Button, List, ListItem } from 'flowbite-react';
 import { getApostleImagePath, getPositionIconPath } from '../../utils/apostleUtils';
 import { HiOutlineExclamation } from 'react-icons/hi';
 import ApostleImage from '../common/ApostleImage';
@@ -112,9 +111,9 @@ const PersonalityDropdown: React.FC<{
 
   return (
     <div className="relative">
-      <Button color="gray" size="sm" onClick={() => setIsOpen(!isOpen)} className="transition">
+      <button onClick={() => setIsOpen(!isOpen)} className="btn transition">
         성격선택 {selectedPersonalities.size > 0 && `(${selectedPersonalities.size})`}
-      </Button>
+      </button>
 
       {isOpen && (
         <div className="absolute top-full right-0 z-50 mt-2 min-w-max rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
@@ -214,12 +213,11 @@ export function RecommendedApostlesDisplay() {
         {/* 위치 선택 버튼 */}
         <div className="flex flex-wrap gap-2">
           {positions.map((position) => (
-            <Button
+            <button
               key={position}
               color={selectedPosition === position ? 'blue' : 'gray'}
-              size="sm"
               onClick={() => setSelectedPosition(position)}
-              className="flex items-center gap-1 transition"
+              className="btn flex items-center gap-1 transition"
             >
               <img
                 src={getPositionIconPath(
@@ -232,7 +230,7 @@ export function RecommendedApostlesDisplay() {
                 }}
               />
               {position}
-            </Button>
+            </button>
           ))}
         </div>
 
@@ -250,14 +248,14 @@ export function RecommendedApostlesDisplay() {
       {selectedPersonalities.size > 0 && (
         <div className="flex flex-wrap gap-2">
           {Array.from(selectedPersonalities).map((personality) => (
-            <Badge
+            <div
               key={personality}
               color="blue"
-              className="cursor-pointer hover:opacity-75"
+              className="badge badge-info cursor-pointer hover:opacity-75"
               onClick={() => togglePersonality(personality)}
             >
               {personality} ✕
-            </Badge>
+            </div>
           ))}
         </div>
       )}
@@ -293,31 +291,29 @@ export function RecommendedApostlesDisplay() {
       {/* 팁 */}
       <div className="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950">
         <div className="text-sm text-green-900 dark:text-green-200">
-          <List>
-            <ListItem icon={HiOutlineExclamation}>
-              9인 PVE의 경우 받는 피해량 감소가 중요합니다.
-            </ListItem>
-            <ListItem>대표적인 피해 감소량 사도는 슈로, 벨라(A2)입니다.</ListItem>
-            <ListItem>
+          <ul>
+            <li>9인 PVE의 경우 받는 피해량 감소가 중요합니다.</li>
+            <li>대표적인 피해 감소량 사도는 슈로, 벨라(A2)입니다.</li>
+            <li>
               티어 선정 기준은 프론티어 공략 글을 참고 했습니다. 자세한 설명은 아래 링크 참고
               부탁드립니다.
-              <List nested>
-                <ListItem>
+              <ul>
+                <li>
                   <a href="https://arca.live/b/trickcal/145428369">
                     https://arca.live/b/trickcal/145428369
                   </a>
-                </ListItem>
-              </List>
-            </ListItem>
-            <ListItem>
+                </li>
+              </ul>
+            </li>
+            <li>
               대충돌/프론티어 관련 기록을 정리해주시는 분이 계십니다. 링크 찹고 부탁드립니다.
-              <List nested>
-                <ListItem>
+              <ul>
+                <li>
                   <a href="https://trickcalrecord.pages.dev/">https://trickcalrecord.pages.dev/</a>
-                </ListItem>
-              </List>
-            </ListItem>
-          </List>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

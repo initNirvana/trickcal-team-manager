@@ -7,7 +7,6 @@ import {
   getApostleImagePath,
   getRankIconPath,
 } from '../../utils/apostleUtils';
-import { Button } from 'flowbite-react';
 import ApostleImage from '../common/ApostleImage';
 
 interface ApostleSelectorProps {
@@ -103,9 +102,8 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
           </h2>
 
           <div className="flex items-center justify-end gap-2">
-            <Button
-              color={isRemoveButtonEnabled ? 'red' : 'gray'}
-              size="sm"
+            <button
+              className={`btn btn-sm ${isRemoveButtonEnabled ? 'btn-error' : 'btn-disabled'}`}
               disabled={!isRemoveButtonEnabled}
               onClick={() => {
                 if (isRemoveButtonEnabled && onRemove) {
@@ -115,10 +113,10 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
               title={isRemoveButtonEnabled ? '슬롯 비우기' : '배치된 사도가 없습니다'}
             >
               그렇게 됐어요
-            </Button>
-            <Button color="gray" size="sm" onClick={onClose}>
+            </button>
+            <button className="btn btn-sm" onClick={onClose}>
               닫기
-            </Button>
+            </button>
           </div>
         </div>
 
