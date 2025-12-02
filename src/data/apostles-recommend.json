@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-29",
+  "tiers": {
+    "광기": {
+      "S": [
+        { "name": "리뉴아", "engName": "Renewa", "position": "중열", "description": "" },
+        { "name": "아네트", "engName": "Arnet", "position": "중열", "description": "" },
+        { "name": "티그(영웅)", "engName": "TigHero", "position": "중열", "description": "" }
+      ],
+      "A": [
+        { "name": "네티", "engName": "Neti", "position": "전열", "description": "" },
+        { "name": "네르", "engName": "Ner", "position": "전열", "description": "" }
+      ],
+      "B": [
+        { "name": "클로에", "engName": "Chloe", "position": "전열", "description": "" },
+        { "name": "림(혼돈)", "engName": "RimChaos", "position": "후열", "description": "" }
+      ]
+    },
+    "우울": {
+      "S": [],
+      "A": [{ "name": "죠안", "engName": "Joanne", "position": "후열", "description": "" }],
+      "B": [
+        { "name": "키디언", "engName": "Kidian", "position": "전열", "description": "" },
+        { "name": "시온", "engName": "xXionx", "position": "후열", "description": "" }
+      ]
+    },
+    "순수": {
+      "S": [],
+      "A": [
+        { "name": "비비", "engName": "Vivi", "position": "전열", "description": "" },
+        { "name": "뮤트", "engName": "Mute", "position": "후열", "description": "" }
+      ],
+      "B": [
+        { "name": "마요(멋짐)", "engName": "MayoCool", "position": "중열", "description": "" },
+        { "name": "란", "engName": "Ran", "position": "후열", "description": "" }
+      ]
+    },
+    "활발": {
+      "S": [
+        { "name": "모모", "engName": "Momo", "position": "후열", "description": "" },
+        { "name": "벨라", "engName": "Vela", "position": "전열", "description": "" }
+      ],
+      "A": [
+        { "name": "슈로", "engName": "Suro", "position": "전열", "description": "" },
+        { "name": "에피카", "engName": "Epica", "position": "중열", "description": "" }
+      ],
+      "B": [
+        { "name": "마카샤", "engName": "Makasha", "position": "중열", "description": "" },
+        { "name": "우이", "engName": "Ui", "position": "중열", "description": "" }
+      ]
+    },
+    "냉정": {
+      "S": [
+        { "name": "우로스", "engName": "Uros", "position": "후열", "description": "" },
+        { "name": "디아나(왕년)", "engName": "DianaYester", "position": "전열", "description": "" }
+      ],
+      "A": [
+        { "name": "에스피", "engName": "Espi", "position": "후열", "description": "" },
+        { "name": "리코타", "engName": "Ricota", "position": "전열", "description": "" }
+      ],
+      "B": [
+        { "name": "실라", "engName": "Sylla", "position": "후열", "description": "" },
+        { "name": "아야", "engName": "Aya", "position": "중열", "description": "" }
+      ]
+    }
+  }
+}

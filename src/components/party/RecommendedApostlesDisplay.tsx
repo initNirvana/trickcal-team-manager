@@ -1,73 +1,8 @@
 import React, { useState } from 'react';
-import { Badge, Button, List, ListItem } from 'flowbite-react';
 import { getApostleImagePath, getPositionIconPath } from '../../utils/apostleUtils';
 import { HiOutlineExclamation } from 'react-icons/hi';
-
-// ===== 추천 사도 데이터 (위치 정보 추가) =====
-const APOSTLES_BY_PERSONALITY = {
-  광기: {
-    S: [
-      { name: '리뉴아', engName: 'Renewa', position: '중열' },
-      { name: '아네트', engName: 'Arnet', position: '중열' },
-      { name: '티그(영웅)', engName: 'TigHero', position: '중열' },
-    ],
-    A: [
-      { name: '네티', engName: 'Neti', position: '전열' },
-      { name: '네르', engName: 'Ner', position: '전열' },
-    ],
-    B: [
-      { name: '클로에', engName: 'Chloe', position: '전열' },
-      { name: '림(혼돈)', engName: 'RimChaos', position: '후열' },
-    ],
-  },
-  우울: {
-    S: [],
-    A: [{ name: '죠안', engName: 'Joanne', position: '후열' }],
-    B: [
-      { name: '키디언', engName: 'Kidian', position: '전열' },
-      { name: '시온', engName: 'xXionx', position: '후열' },
-    ],
-  },
-  순수: {
-    S: [],
-    A: [
-      { name: '비비', engName: 'Vivi', position: '전열' },
-      { name: '뮤트', engName: 'Mute', position: '후열' },
-    ],
-    B: [
-      { name: '마요(멋짐)', engName: 'MayoCool', position: '중열' },
-      { name: '란', engName: 'Ran', position: '후열' },
-    ],
-  },
-  활발: {
-    S: [
-      { name: '모모', engName: 'Momo', position: '후열' },
-      { name: '벨라', engName: 'Vela', position: '전열' },
-    ],
-    A: [
-      { name: '슈로', engName: 'Suro', position: '전열' },
-      { name: '에피카', engName: 'Epica', position: '중열' },
-    ],
-    B: [
-      { name: '마카샤', engName: 'Makasha', position: '중열' },
-      { name: '우이', engName: 'Ui', position: '중열' },
-    ],
-  },
-  냉정: {
-    S: [
-      { name: '우로스', engName: 'Uros', position: '후열' },
-      { name: '디아나(왕년)', engName: 'DianaYester', position: '전열' },
-    ],
-    A: [
-      { name: '에스피', engName: 'Espi', position: '후열' },
-      { name: '리코타', engName: 'Ricota', position: '전열' },
-    ],
-    B: [
-      { name: '실라', engName: 'Sylla', position: '후열' },
-      { name: '아야', engName: 'Aya', position: '중열' },
-    ],
-  },
-};
+import ApostleImage from '../common/ApostleImage';
+import apostlesTiersData from '../../data/apostles-recommend.json';
 
 interface ApostleData {
   name: string;
@@ -108,13 +43,10 @@ const positionConfig = {
 const ApostleCard: React.FC<{ apostle: ApostleData }> = ({ apostle }) => (
   <div className="group flex flex-col items-center gap-1">
     <div className="relative h-24 w-20 overflow-hidden rounded-lg border-2 border-gray-300 transition hover:shadow-lg dark:border-gray-600">
-      <img
+      <ApostleImage
         src={getApostleImagePath(apostle.engName)}
         alt={apostle.name}
         className="h-full w-full object-cover"
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).src = '/src/assets/placeholder.png';
-        }}
       />
       {/* 위치 아이콘 배지 */}
       <div className="absolute bottom-1 left-1 h-6 w-6 rounded-full border border-gray-300 bg-white p-0.5 dark:border-gray-600 dark:bg-gray-800">
@@ -171,7 +103,7 @@ const TierRow: React.FC<{
 
 // ===== 성격 드롭다운 메뉴 (커스텀) =====
 const PersonalityDropdown: React.FC<{
-  personalities: Array<keyof typeof APOSTLES_BY_PERSONALITY>;
+  personalities: string[];
   selectedPersonalities: Set<string>;
   onToggle: (personality: string) => void;
 }> = ({ personalities, selectedPersonalities, onToggle }) => {
@@ -179,9 +111,9 @@ const PersonalityDropdown: React.FC<{
 
   return (
     <div className="relative">
-      <Button color="gray" size="sm" onClick={() => setIsOpen(!isOpen)} className="transition">
+      <button onClick={() => setIsOpen(!isOpen)} className="btn transition">
         성격선택 {selectedPersonalities.size > 0 && `(${selectedPersonalities.size})`}
-      </Button>
+      </button>
 
       {isOpen && (
         <div className="absolute top-full right-0 z-50 mt-2 min-w-max rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
@@ -197,11 +129,6 @@ const PersonalityDropdown: React.FC<{
                 className="cursor-pointer"
               />
               <span className="text-sm text-gray-900 dark:text-white">{personality}</span>
-              <Badge color="gray" size="sm">
-                {(APOSTLES_BY_PERSONALITY[personality].S?.length || 0) +
-                  (APOSTLES_BY_PERSONALITY[personality].A?.length || 0) +
-                  (APOSTLES_BY_PERSONALITY[personality].B?.length || 0)}
-              </Badge>
             </label>
           ))}
         </div>
@@ -215,6 +142,11 @@ const PersonalityDropdown: React.FC<{
 
 // ===== 메인 컴포넌트 =====
 export function RecommendedApostlesDisplay() {
+  const APOSTLES_BY_PERSONALITY = apostlesTiersData.tiers as Record<
+    string,
+    { S: any[]; A: any[]; B: any[] }
+  >;
+
   const personalities = Object.keys(APOSTLES_BY_PERSONALITY) as Array<
     keyof typeof APOSTLES_BY_PERSONALITY
   >;
@@ -281,12 +213,11 @@ export function RecommendedApostlesDisplay() {
         {/* 위치 선택 버튼 */}
         <div className="flex flex-wrap gap-2">
           {positions.map((position) => (
-            <Button
+            <button
               key={position}
               color={selectedPosition === position ? 'blue' : 'gray'}
-              size="sm"
               onClick={() => setSelectedPosition(position)}
-              className="flex items-center gap-1 transition"
+              className="btn flex items-center gap-1 transition"
             >
               <img
                 src={getPositionIconPath(
@@ -299,7 +230,7 @@ export function RecommendedApostlesDisplay() {
                 }}
               />
               {position}
-            </Button>
+            </button>
           ))}
         </div>
 
@@ -317,14 +248,14 @@ export function RecommendedApostlesDisplay() {
       {selectedPersonalities.size > 0 && (
         <div className="flex flex-wrap gap-2">
           {Array.from(selectedPersonalities).map((personality) => (
-            <Badge
+            <div
               key={personality}
               color="blue"
-              className="cursor-pointer hover:opacity-75"
+              className="badge badge-info cursor-pointer hover:opacity-75"
               onClick={() => togglePersonality(personality)}
             >
               {personality} ✕
-            </Badge>
+            </div>
           ))}
         </div>
       )}
@@ -360,31 +291,29 @@ export function RecommendedApostlesDisplay() {
       {/* 팁 */}
       <div className="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950">
         <div className="text-sm text-green-900 dark:text-green-200">
-          <List>
-            <ListItem icon={HiOutlineExclamation}>
-              9인 PVE의 경우 받는 피해량 감소가 중요합니다.
-            </ListItem>
-            <ListItem>대표적인 피해 감소량 사도는 슈로, 벨라(A2)입니다.</ListItem>
-            <ListItem>
+          <ul className="list">
+            <li>9인 PVE의 경우 받는 피해량 감소가 중요합니다.</li>
+            <li>대표적인 피해 감소량 사도는 슈로, 벨라(A2)입니다.</li>
+            <li>
               티어 선정 기준은 프론티어 공략 글을 참고 했습니다. 자세한 설명은 아래 링크 참고
               부탁드립니다.
-              <List nested>
-                <ListItem>
+              <ul>
+                <li className="list-row">
                   <a href="https://arca.live/b/trickcal/145428369">
                     https://arca.live/b/trickcal/145428369
                   </a>
-                </ListItem>
-              </List>
-            </ListItem>
-            <ListItem>
-              대충돌/프론티어 관련 기록을 정리해주시는 분이 계십니다. 링크 찹고 부탁드립니다.
-              <List nested>
-                <ListItem>
+                </li>
+              </ul>
+            </li>
+            <li>
+              대충돌/프론티어 관련 기록을 정리해주시는 분이 계십니다. 링크 참고 부탁드립니다.
+              <ul>
+                <li className="list-row">
                   <a href="https://trickcalrecord.pages.dev/">https://trickcalrecord.pages.dev/</a>
-                </ListItem>
-              </List>
-            </ListItem>
-          </List>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

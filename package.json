@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
-    "flowbite": "^3.1.2",
-    "flowbite-react": "^0.12.10",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -27,6 +25,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^5.1.1",
+    "daisyui": "^5.5.5",
     "jsdom": "^24.1.1",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",

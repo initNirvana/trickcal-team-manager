@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
-import { Accordion, AccordionPanel, AccordionContent, AccordionTitle, Badge } from 'flowbite-react';
 import {
   calculateAsideEffects,
   calculatePositionSum,
@@ -33,7 +32,6 @@ const EffectCard: React.FC<{
     ? 'bg-orange-50 hover:bg-orange-100 dark:bg-orange-900/20 dark:hover:bg-orange-900/30'
     : 'bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30';
   const badgeColor = isDamageIncrease ? 'warning' : 'info';
-  const sign = isDamageIncrease ? '+' : '-';
 
   return (
     <div className={`flex items-center justify-between rounded-lg p-2 transition ${bgColor}`}>
@@ -42,10 +40,7 @@ const EffectCard: React.FC<{
           {effect.apostleName} ({effect.rankStar}성)
         </p>
       </div>
-      <Badge color={badgeColor} size="sm">
-        {sign}
-        {value}%
-      </Badge>
+      <span className="badge badge-sm badge-info">{value}%</span>
     </div>
   );
 };
@@ -100,93 +95,90 @@ export const DamageReductionAsideDisplay: React.FC<DamageReductionAsideDisplayPr
   }
 
   return (
-    <Accordion collapseAll>
-      <AccordionPanel>
-        <AccordionTitle>
-          <div className="flex w-full items-center justify-between pr-2">
-            <span className="text-sm font-semibold">어사이드 효과</span>
+    <div className="collapse-arrow border-base-300 collapse border">
+      <input type="checkbox" name="my-accordion-4" />
+      <div className="collapse-title font-semibold">
+        <div className="flex w-full items-center justify-between pr-2">
+          <span className="text-sm font-semibold">어사이드 효과</span>
+        </div>
+      </div>
+
+      <div className="collapse-content text-sm">
+        {effectList.totalIncrease === 0 && effectList.totalReduction === 0 && (
+          <div className="py-6 text-center">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              어사이드 설정에서 사도의 어사이드를 선택해주세요.
+            </p>
           </div>
-        </AccordionTitle>
+        )}
 
-        <AccordionContent>
-          {effectList.totalIncrease === 0 && effectList.totalReduction === 0 && (
-            <div className="py-6 text-center">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                어사이드 설정에서 사도의 어사이드를 선택해주세요.
-              </p>
-            </div>
-          )}
+        {/* 피해량 증가 섹션 */}
+        {effectList.totalIncrease > 0 && (
+          <div className="mb-4">
+            <h4 className="mb-3 text-sm font-bold text-orange-700 dark:text-orange-400">
+              피해량 증가
+            </h4>
+            <PositionSection
+              effects={effectList.increaseEffects.all}
+              positionType="all"
+              isDamageIncrease={true}
+            />
+            <PositionSection
+              effects={effectList.increaseEffects.persona}
+              positionType="persona"
+              isDamageIncrease={true}
+            />
+            <PositionSection
+              effects={effectList.increaseEffects.front}
+              positionType="front"
+              isDamageIncrease={true}
+            />
+            <PositionSection
+              effects={effectList.increaseEffects.mid}
+              positionType="mid"
+              isDamageIncrease={true}
+            />
+            <PositionSection
+              effects={effectList.increaseEffects.back}
+              positionType="back"
+              isDamageIncrease={true}
+            />
+          </div>
+        )}
 
-          {/* 피해량 증가 섹션 */}
-          {effectList.totalIncrease > 0 && (
-            <div className="mb-4">
-              <h4 className="mb-3 text-sm font-bold text-orange-700 dark:text-orange-400">
-                피해량 증가
-              </h4>
-              <PositionSection
-                effects={effectList.increaseEffects.all}
-                positionType="all"
-                isDamageIncrease={true}
-              />
-              <PositionSection
-                effects={effectList.increaseEffects.persona}
-                positionType="persona"
-                isDamageIncrease={true}
-              />
-              <PositionSection
-                effects={effectList.increaseEffects.front}
-                positionType="front"
-                isDamageIncrease={true}
-              />
-              <PositionSection
-                effects={effectList.increaseEffects.mid}
-                positionType="mid"
-                isDamageIncrease={true}
-              />
-              <PositionSection
-                effects={effectList.increaseEffects.back}
-                positionType="back"
-                isDamageIncrease={true}
-              />
-            </div>
-          )}
-
-          {/* 피해량 감소 섹션 */}
-          {effectList.totalReduction > 0 && (
-            <div>
-              <h4 className="mb-3 text-sm font-bold text-blue-700 dark:text-blue-400">
-                피해량 감소
-              </h4>
-              <PositionSection
-                effects={effectList.reductionEffects.all}
-                positionType="all"
-                isDamageIncrease={false}
-              />
-              <PositionSection
-                effects={effectList.reductionEffects.persona}
-                positionType="persona"
-                isDamageIncrease={false}
-              />
-              <PositionSection
-                effects={effectList.reductionEffects.front}
-                positionType="front"
-                isDamageIncrease={false}
-              />
-              <PositionSection
-                effects={effectList.reductionEffects.mid}
-                positionType="mid"
-                isDamageIncrease={false}
-              />
-              <PositionSection
-                effects={effectList.reductionEffects.back}
-                positionType="back"
-                isDamageIncrease={false}
-              />
-            </div>
-          )}
-        </AccordionContent>
-      </AccordionPanel>
-    </Accordion>
+        {/* 피해량 감소 섹션 */}
+        {effectList.totalReduction > 0 && (
+          <div>
+            <h4 className="mb-3 text-sm font-bold text-blue-700 dark:text-blue-400">피해량 감소</h4>
+            <PositionSection
+              effects={effectList.reductionEffects.all}
+              positionType="all"
+              isDamageIncrease={false}
+            />
+            <PositionSection
+              effects={effectList.reductionEffects.persona}
+              positionType="persona"
+              isDamageIncrease={false}
+            />
+            <PositionSection
+              effects={effectList.reductionEffects.front}
+              positionType="front"
+              isDamageIncrease={false}
+            />
+            <PositionSection
+              effects={effectList.reductionEffects.mid}
+              positionType="mid"
+              isDamageIncrease={false}
+            />
+            <PositionSection
+              effects={effectList.reductionEffects.back}
+              positionType="back"
+              isDamageIncrease={false}
+            />
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

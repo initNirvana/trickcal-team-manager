@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'flowbite-react';
+import React from 'react';
 import type { Apostle } from '../../types/apostle';
 import { getApostleImagePath } from '../../utils/apostleUtils';
 import { usePartyStore } from '../../stores/partyStore';
@@ -31,21 +30,23 @@ export const PartySetting: React.FC<PartySettingProps> = ({ filledParty, asidesD
   };
 
   return (
-    <Accordion collapseAll>
-      <AccordionPanel>
-        <AccordionTitle>각종 설정</AccordionTitle>
-        <AccordionContent>구현 예정</AccordionContent>
-      </AccordionPanel>
-      <AccordionPanel>
-        <AccordionTitle>추천 사도 티어표</AccordionTitle>
-        <AccordionContent>
-          <RecommendedApostlesDisplay />
-        </AccordionContent>
-      </AccordionPanel>
+    <div className="collapse-arrow bg-base-100 border-base-300 collapse border">
+      <input type="checkbox" name="my-accordion-4" />
+      <div className="collapse-title font-semibold">각종 설정</div>
+      <div className="collapse-content text-sm">구현 예정</div>
 
-      <AccordionPanel>
-        <AccordionTitle>어사이드 설정</AccordionTitle>
-        <AccordionContent>
+      <div className="collapse-arrow bg-base-100 border-base-300 collapse border">
+        <input type="checkbox" name="my-accordion-4" />
+        <div className="collapse-title font-semibold">추천 사도 티어표</div>
+        <div className="collapse-content text-sm">
+          <RecommendedApostlesDisplay />
+        </div>
+      </div>
+
+      <div className="collapse-arrow join-item border-base-300 collapse border">
+        <input type="checkbox" name="my-accordion-4" />
+        <div className="collapse-title font-semibold">어사이드 설정</div>
+        <div className="collapse-content text-sm">
           {filledParty.length === 0 ? (
             <div className="py-4 text-center">
               <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -160,9 +161,9 @@ export const PartySetting: React.FC<PartySettingProps> = ({ filledParty, asidesD
               </table>
             </div>
           )}
-        </AccordionContent>
-      </AccordionPanel>
-    </Accordion>
+        </div>
+      </div>
+    </div>
   );
 };
 

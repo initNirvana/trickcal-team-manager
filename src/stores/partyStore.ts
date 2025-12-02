@@ -31,6 +31,16 @@ export const usePartyStore = create<PartyState>((set) => ({
   setPartyMember: (slot, apostle) =>
     set((state) => {
       const newParty = [...state.party];
+
+      // 기존에 배치된 사도 배치 시도시
+      if (apostle) {
+        newParty.forEach((existingApostle, index) => {
+          if (existingApostle && existingApostle.name === apostle.name && index !== slot - 1) {
+            newParty[index] = undefined;
+          }
+        });
+      }
+
       newParty[slot - 1] = apostle;
       return { party: newParty };
     }),
