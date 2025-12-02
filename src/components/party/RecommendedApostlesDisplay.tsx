@@ -291,14 +291,14 @@ export function RecommendedApostlesDisplay() {
       {/* 팁 */}
       <div className="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950">
         <div className="text-sm text-green-900 dark:text-green-200">
-          <ul>
+          <ul className="list">
             <li>9인 PVE의 경우 받는 피해량 감소가 중요합니다.</li>
             <li>대표적인 피해 감소량 사도는 슈로, 벨라(A2)입니다.</li>
             <li>
               티어 선정 기준은 프론티어 공략 글을 참고 했습니다. 자세한 설명은 아래 링크 참고
               부탁드립니다.
               <ul>
-                <li>
+                <li className="list-row">
                   <a href="https://arca.live/b/trickcal/145428369">
                     https://arca.live/b/trickcal/145428369
                   </a>
@@ -306,9 +306,9 @@ export function RecommendedApostlesDisplay() {
               </ul>
             </li>
             <li>
-              대충돌/프론티어 관련 기록을 정리해주시는 분이 계십니다. 링크 찹고 부탁드립니다.
+              대충돌/프론티어 관련 기록을 정리해주시는 분이 계십니다. 링크 참고 부탁드립니다.
               <ul>
-                <li>
+                <li className="list-row">
                   <a href="https://trickcalrecord.pages.dev/">https://trickcalrecord.pages.dev/</a>
                 </li>
               </ul>
