@@ -6,7 +6,7 @@ import PartyAnalysisPanel from './PartyAnalysisPanel';
 import ApostleSelector from './ApostleSelector';
 import { analyzeParty } from '../../utils/partyAnalysisUtils';
 import PartySetting from './PartySetting';
-// import DeckRecommendationGuide from './DeckRecommendationGuide';
+import DeckRecommendationGuide from './DeckRecommendationGuide';
 
 interface Props {
   apostles: Apostle[];
@@ -79,12 +79,12 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
           // ✅ asideSelection Props 제거!
         />
 
-        {/* <DeckRecommendationGuide
+        <DeckRecommendationGuide
           apostles={filledParty}
           allApostles={apostles}
           gameMode={gameMode}
           onGameModeChange={setGameMode}
-        /> */}
+        />
       </div>
 
       {/* 초기화 버튼 */}
