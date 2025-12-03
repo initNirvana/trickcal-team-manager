@@ -6,7 +6,7 @@ import PartyAnalysisPanel from './PartyAnalysisPanel';
 import ApostleSelector from './ApostleSelector';
 import { analyzeParty } from '../../utils/partyAnalysisUtils';
 import PartySetting from './PartySetting';
-import DeckRecommendationGuide from './DeckRecommendationGuide';
+// import DeckRecommendationGuide from './DeckRecommendationGuide';
 
 interface Props {
   apostles: Apostle[];
