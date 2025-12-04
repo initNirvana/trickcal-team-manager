@@ -53,11 +53,11 @@ export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult 
   // 덱 타입 판별 (주 성격 기준)
   const getDeckType = (personality: Personality | null): string => {
     const personalityMap: Record<Personality, string> = {
-      Jolly: '활발_6속',
-      Mad: '광기_6속',
-      Naive: '순수_6속',
-      Gloomy: '우울_6속',
-      Cool: '냉정_6속',
+      Jolly: '활발',
+      Mad: '광기',
+      Naive: '순수',
+      Gloomy: '우울',
+      Cool: '냉정',
     };
     return personality ? personalityMap[personality] : '기타';
   };
@@ -146,11 +146,11 @@ export const getOptimalCombination = (analysis: DeckAnalysisResult): Combination
   // deckType에서 접두사 추출
   const getDeckPersonalityKey = (deckType: string): string => {
     const mapping: Record<string, string> = {
-      활발_6속: '활발',
-      광기_6속: '광기',
-      순수_6속: '순수',
-      우울_6속: '우울',
-      냉정_6속: '냉정',
+      활발: '활발',
+      광기: '광기',
+      순수: '순수',
+      우울: '우울',
+      냉정: '냉정',
     };
     return mapping[deckType] || '순수';
   };
@@ -158,7 +158,7 @@ export const getOptimalCombination = (analysis: DeckAnalysisResult): Combination
   const deckPersonalityKey = getDeckPersonalityKey(analysis.deckType);
   const filledCount = analysis.filledSlots;
 
-  const combinations = (deckGuides as any).combinations?.['6속']?.[deckPersonalityKey];
+  const combinations = (deckGuides as any).combinations?.[deckPersonalityKey];
   if (!combinations) return null;
 
   const optimalKey = filledCount >= 9 ? '9' : filledCount >= 4 ? '4' : '2';
