@@ -133,9 +133,7 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
               {guide.core.map((member, idx) => {
                 // ✅ 필수 사도 여부 확인
-                const isEssential = guide.essentials.filter((e) => e.tier === 'essential');
-                const isRecommended = guide.essentials.filter((e) => e.tier === 'recommended');
-
+                const isEssential = member.essential;
                 // ✅ 배치 여부 확인
                 const isPlaced = apostles.some((a) => a && a.name === member.name);
 
@@ -148,7 +146,6 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
                     position={member.position}
                     asideRequired={member.aside_required}
                     isEssential={isEssential} // ✅ 필수 여부 전달
-                    isRecommended={isRecommended} // ✅ 권장 여부 전달
                     isPlaced={isPlaced} // ✅ 배치 여부 전달
                     allApostles={allApostles}
                   />

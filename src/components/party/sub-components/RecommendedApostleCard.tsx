@@ -4,6 +4,7 @@ import React from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { getPersonalities } from '../../../types/apostle';
 import { getApostleImagePath, getPersonalityBackgroundClass } from '../../../utils/apostleUtils';
+import ApostleImage from '../../common/ApostleImage';
 
 interface RecommendedApostleCardProps {
   name: string;
@@ -24,8 +25,7 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
   position,
   asideRequired,
   isEssential = false,
-  isRecommended = false,
-  isPlaced,
+  isPlaced = false,
   allApostles,
 }) => {
   const apostle = allApostles.find((a) => a.name === name);
@@ -45,7 +45,7 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
 
   const getRoleColor = (r: string) => {
     switch (r) {
-      case 'tank':
+      case 'tanker':
         return 'badge-info';
       case 'attacker':
         return 'badge-error';
@@ -60,7 +60,7 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
 
   const getRoleName = (r: string) => {
     switch (r) {
-      case 'tank':
+      case 'tanker':
         return '탱';
       case 'attacker':
         return '딜';
@@ -75,24 +75,19 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
 
   return (
     <div>
-      {/* 필수/권장 표시 */}
+      {/* 필수 표시 */}
       {isPlaced ? (
         <div className="badge badge-success">✓ 배치됨</div>
       ) : isEssential ? (
         <div className="badge badge-primary">필수</div>
-      ) : isRecommended ? (
-        <div className="badge badge-info">권장</div>
       ) : null}
 
       {/* 사도 이미지 */}
       <figure className="h-24 overflow-hidden bg-black/20">
-        <img
+        <ApostleImage
           src={getApostleImagePath(apostle.engName)}
           alt={apostle.name}
           className="h-full w-full object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.display = 'none';
-          }}
         />
       </figure>
       {/* 카드 본문 */}

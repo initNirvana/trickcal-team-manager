@@ -20,75 +20,28 @@
   "decks": {
     "순수": {
       "personality": "Naive",
-      "overview": "보호막과 유지력이 높아 초보자 친화적. 침략에서 매우 안정적이며, 저점이 높다.",
+      "overview": "탱커/서폿의 시너지가 좋아 저점이 높다. 다만 순수덱을 위해선 비비와 란이 필수.",
       "difficulty": "easy",
       "pros": [
-        "유지력이 높음",
-        "침략에서 안정적",
+        "유지력이 좋아 침략에서 안정적",
         "뉴비가 덱을 맞추기 쉬움 (가성비 가능)",
-        "저점이 높고 고점이 낮음"
+        "저점이 높음"
       ],
       "cons": ["PVP 상성 차이가 심함", "고점이 낮음", "보호막 원툴 (PVP에서 취약)"],
-      "essentials": [
-        {
-          "name": "비비",
-          "engName": "Vivi",
-          "role": "tank",
-          "tier": "essential",
-          "reason": "고정필수 탱커. 높은 받피감 보장",
-          "aside_required": null,
-          "notes": ["1탱으로도 충분한 경우 많음", "PVP 줘팸터에서도 필수"]
-        },
-        {
-          "name": "란",
-          "engName": "Ran",
-          "role": "attacker",
-          "tier": "essential",
-          "reason": "고정필수 서포터. 높은 피해 증가 제공",
-          "aside_required": null,
-          "notes": ["보호막 시너지 핵심", "뮤트는 대충돌/프론티어 확약, 이외는 SP회복용"]
-        },
-        {
-          "name": "나이아",
-          "engName": "Naia",
-          "role": "healer",
-          "tier": "recommended",
-          "reason": "PVE 침략에서 유지력 제공",
-          "aside_required": null,
-          "notes": ["PVP 전투력이 높아질수록 힐의 역할 제한적"]
-        },
-        {
-          "name": "마요(멋짐)",
-          "engName": "MayoCool",
-          "role": "attacker",
-          "tier": "recommended",
-          "reason": "안정적인 딜/서포터",
-          "aside_required": null,
-          "notes": ["고학년에 받는 피해량 감소 30% 효과인 소음 있음"]
-        },
-        {
-          "name": "우로스",
-          "engName": "Uros",
-          "role": "attacker",
-          "tier": "recommended",
-          "reason": "높은 피해 증가",
-          "aside_required": null,
-          "notes": []
-        }
-      ],
       "pve": {
         "core": [
           {
             "name": "비비",
             "engName": "Vivi",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
-            "reason": "탱커 1순위"
+            "reason": "탱커 1순위",
+            "essential": true
           },
           {
             "name": "라이카",
             "engName": "Raika",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "높은 받피감",
             "aside_required": "어사이드 권장"
@@ -105,21 +58,22 @@
             "engName": "MayoCool",
             "role": "support",
             "position": "mid",
-            "reason": "버프 제공"
+            "reason": "버프/디버프"
           },
           {
             "name": "우로스",
             "engName": "Uros",
             "role": "support",
             "position": "back",
-            "reason": "피해 증가"
+            "reason": "공격력 증가 (35%)"
           },
           {
             "name": "란",
             "engName": "Ran",
             "role": "attacker",
             "position": "back",
-            "reason": "보호막 및 피해 증가"
+            "reason": "지속 피해 및 고유 피해량 감소 효과",
+            "essential": true
           }
         ],
         "alternatives": [
@@ -139,7 +93,7 @@
         "tips": [
           "비비 1탱으로도 충분한 경우 많음",
           "라이카 어사이드 권장",
-          "침략 순한맛은 사도 장비/보드만 잘 맞춰도 문제없음"
+          "뮤트는 보스전(대충돌, 프론티어)에서 활약"
         ]
       },
       "pvp": {
@@ -147,9 +101,10 @@
           {
             "name": "비비",
             "engName": "Vivi",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
-            "reason": "탱커 필수"
+            "reason": "탱커 필수",
+            "essential": true
           },
           {
             "name": "나이아",
@@ -184,7 +139,8 @@
             "engName": "Ran",
             "role": "attacker",
             "position": "back",
-            "reason": "보호막/피해 증가"
+            "reason": "보호막/피해 증가",
+            "essential": true
           }
         ],
         "alternatives": [
@@ -226,26 +182,6 @@
         "초반 기준 뉴비가 쓰기 어려움",
         "고점이 나지 않으면 처참"
       ],
-      "essentials": [
-        {
-          "name": "디아나(왕년)",
-          "engName": "DianaYester",
-          "role": "attacker",
-          "tier": "essential",
-          "reason": "고정필수. 강력한 광역딜",
-          "aside_required": null,
-          "notes": ["용병으로도 강력 추천", "6냉정의 핵심"]
-        },
-        {
-          "name": "리코타",
-          "engName": "Ricota",
-          "role": "healer",
-          "tier": "recommended",
-          "reason": "유지력 제공",
-          "aside_required": "A2 필요",
-          "notes": ["어사이드 A2 권장", "없을 시 이드로 대체"]
-        }
-      ],
       "pve": {
         "core": [
           {
@@ -253,14 +189,15 @@
             "engName": "Ed",
             "role": "attacker",
             "position": "front",
-            "reason": "물리딜러"
+            "reason": "전체 보호막 탱커"
           },
           {
             "name": "디아나(왕년)",
             "engName": "DianaYester",
             "role": "attacker",
             "position": "front",
-            "reason": "광역딜 필수"
+            "reason": "광역딜 필수",
+            "tier": "essential"
           },
           {
             "name": "아야",
@@ -295,9 +232,9 @@
         "alternatives": [
           {
             "replace": "이드",
-            "with": ["코미(수영복)"],
+            "with": ["코미(수영복)", "리코타"],
             "condition": "힐 부족 시",
-            "tradeoff": "어사이드 필요"
+            "tradeoff": "어사이드 필수"
           },
           {
             "replace": "피코라",
@@ -309,7 +246,7 @@
             "replace": "우로스",
             "with": ["리코타", "아멜리아"],
             "condition": "우로스 미보유 시",
-            "tradeoff": "리코타는 어사이드 권장"
+            "tradeoff": "리코타 어사이드 필수"
           }
         ],
         "tips": [
@@ -333,14 +270,15 @@
             "role": "healer",
             "position": "front",
             "reason": "유지력",
-            "aside_required": "A2 필요"
+            "aside_required": "A2 필요",
+            "essential": true
           },
           {
             "name": "바롱",
             "engName": "Barong",
             "role": "attacker",
-            "position": "mid",
-            "reason": "딜 제공"
+            "position": "front",
+            "reason": "후열 저격 및 상대 디버프"
           },
           {
             "name": "아야",
@@ -368,20 +306,20 @@
           {
             "replace": "리코타",
             "with": ["이드"],
-            "condition": "어사이드 없을 시",
-            "tradeoff": "어사이드X 상태"
+            "condition": "리코타 어사이드 없을 시",
+            "tradeoff": ""
           },
           {
             "replace": "리코타",
             "with": ["코미(수영복)", "피코라"],
             "condition": "유지력 부족 시",
-            "tradeoff": "어사이드 필요"
+            "tradeoff": "코미(수영복)은 어사이드 필요"
           },
           {
             "replace": "바롱",
             "with": ["우로스"],
             "condition": "상황에 따라",
-            "tradeoff": "우로스는 피증 강화"
+            "tradeoff": "우로스는 공격력 강화"
           }
         ],
         "tips": [
@@ -407,7 +345,7 @@
         {
           "name": "클로에",
           "engName": "Chloe",
-          "role": "tank",
+          "role": "tanker",
           "tier": "essential",
           "reason": "고정필수 탱커",
           "aside_required": null,
@@ -437,21 +375,21 @@
           {
             "name": "네티",
             "engName": "Neti",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "탱커"
           },
           {
             "name": "클로에",
             "engName": "Chloe",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "고정필수 탱커"
           },
           {
             "name": "네르",
             "engName": "Ner",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "3탱 옵션",
             "aside_required": "A2 필요"
@@ -538,14 +476,14 @@
           {
             "name": "클로에",
             "engName": "Chloe",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "탱커 필수"
           },
           {
             "name": "네티",
             "engName": "Neti",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "탱커"
           },
@@ -627,7 +565,7 @@
         {
           "name": "벨라",
           "engName": "Vela",
-          "role": "tank",
+          "role": "tanker",
           "tier": "essential",
           "reason": "고정필수 탱커",
           "aside_required": null,
@@ -666,7 +604,7 @@
           {
             "name": "벨라",
             "engName": "Vela",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "고정필수 탱커"
           },
@@ -767,7 +705,7 @@
           {
             "name": "벨라",
             "engName": "Vela",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "고정필수 탱커"
           },
@@ -852,7 +790,7 @@
         {
           "name": "스노키",
           "engName": "Snoki",
-          "role": "tank",
+          "role": "tanker",
           "tier": "essential",
           "reason": "고정필수 탱커",
           "aside_required": "A2 필요",
@@ -873,7 +811,7 @@
           {
             "name": "스노키",
             "engName": "Snoki",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "고정필수 탱커",
             "aside_required": "A2 필요"
@@ -947,7 +885,7 @@
           {
             "name": "스노키",
             "engName": "Snoki",
-            "role": "tank",
+            "role": "tanker",
             "position": "front",
             "reason": "고정필수 탱커",
             "aside_required": "A2 필요"
