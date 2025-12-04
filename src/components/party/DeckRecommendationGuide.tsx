@@ -73,7 +73,26 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
           <div className="collapse-plus bg-base-100 border-base-300 collapse border">
             <input type="checkbox" defaultChecked />
             <div className="collapse-title flex items-center justify-between text-lg font-semibold">
-              <span>📋 {analysis.deckType} 특징</span>
+              <span>{analysis.deckType} 특징</span>
+              {/* 난이도 */}
+              <div>
+                <span className="mb-2 text-sm font-semibold">조합 난이도</span>
+                <div
+                  className={`badge badge-sm ${
+                    guide.difficulty === 'easy'
+                      ? 'badge-success'
+                      : guide.difficulty === 'medium'
+                        ? 'badge-warning'
+                        : 'badge-error'
+                  }`}
+                >
+                  {guide.difficulty === 'easy'
+                    ? '쉬움'
+                    : guide.difficulty === 'medium'
+                      ? '중간'
+                      : '어려움'}
+                </div>
+              </div>
             </div>
             <div className="collapse-content space-y-4">
               {/* 개요 */}
@@ -104,26 +123,6 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              {/* 난이도 */}
-              <div>
-                <h3 className="mb-2 text-sm font-semibold">🎯 난이도</h3>
-                <div
-                  className={`badge badge-lg ${
-                    guide.difficulty === 'easy'
-                      ? 'badge-success'
-                      : guide.difficulty === 'medium'
-                        ? 'badge-warning'
-                        : 'badge-error'
-                  }`}
-                >
-                  {guide.difficulty === 'easy'
-                    ? '쉬움'
-                    : guide.difficulty === 'medium'
-                      ? '중간'
-                      : '어려움'}
-                </div>
               </div>
             </div>
           </div>
