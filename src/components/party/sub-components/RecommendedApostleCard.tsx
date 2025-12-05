@@ -90,13 +90,13 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
       {/* 카드 본문 */}
       <div className="card-body items-center p-2 text-center">
         {/* 이름 */}
-        <p className="truncate text-xs font-bold">{name}</p>
+        <span className="truncate text-xs font-bold">{name}</span>
 
         {/* 설명 */}
-        <p className="line-clamp-2 text-xs opacity-75">{reason}</p>
+        <span className="line-clamp-2 text-xs opacity-75">{reason}</span>
 
         {/* 어사이드 표시 */}
-        {asideRequired && <p className="badge badge-sm badge-warning"> {asideRequired}</p>}
+        {asideRequired && <span className="badge badge-sm badge-warning"> {asideRequired}</span>}
       </div>
     </div>
   );
