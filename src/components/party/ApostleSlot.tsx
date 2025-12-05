@@ -2,7 +2,7 @@ import React from 'react';
 import type { Apostle } from '../../types/apostle';
 import { getPersonalities } from '../../types/apostle';
 import { getPersonalityBackgroundClass, getApostleImagePath } from '../../utils/apostleUtils';
-import ApostleImage from '../common/ApostleImage';
+import Image from '../common/ApostleImage';
 
 interface ApostleSlotProps {
   slotNumber: number;
@@ -23,7 +23,7 @@ const ApostleSlot: React.FC<ApostleSlotProps> = ({ slotNumber, apostle, onSelect
         )} flex h-30 cursor-pointer flex-col rounded-md text-white transition hover:opacity-50`}
       >
         <div className="flex flex-1 flex-col items-center justify-center">
-          <ApostleImage
+          <Image
             src={getApostleImagePath(apostle.engName)}
             alt={apostle.name}
             className="h-auto max-h-20 w-auto rounded-md object-cover"

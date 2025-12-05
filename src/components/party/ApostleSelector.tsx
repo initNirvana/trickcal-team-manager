@@ -7,7 +7,7 @@ import {
   getApostleImagePath,
   getRankIconPath,
 } from '../../utils/apostleUtils';
-import ApostleImage from '../common/ApostleImage';
+import Image from '../common/ApostleImage';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
@@ -182,7 +182,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
               >
                 {/* 사도 이미지 */}
                 <div className="flex h-20 w-20 items-center justify-center">
-                  <ApostleImage
+                  <Image
                     src={getApostleImagePath(apostle.engName)}
                     alt={apostle.name}
                     className="h-full w-full rounded object-cover"

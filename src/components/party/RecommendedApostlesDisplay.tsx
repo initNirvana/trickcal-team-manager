@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getApostleImagePath, getPositionIconPath } from '../../utils/apostleUtils';
 import { HiOutlineExclamation } from 'react-icons/hi';
-import ApostleImage from '../common/ApostleImage';
+import Image from '../common/ApostleImage';
 import apostlesTiersData from '../../data/apostles-recommend.json';
 
 interface ApostleData {
@@ -43,7 +43,7 @@ const positionConfig = {
 const ApostleCard: React.FC<{ apostle: ApostleData }> = ({ apostle }) => (
   <div className="group flex flex-col items-center gap-1">
     <div className="relative h-24 w-20 overflow-hidden rounded-lg border-2 border-gray-300 transition hover:shadow-lg dark:border-gray-600">
-      <ApostleImage
+      <Image
         src={getApostleImagePath(apostle.engName)}
         alt={apostle.name}
         className="h-full w-full object-cover"
