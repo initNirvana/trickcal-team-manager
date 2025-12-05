@@ -18,6 +18,27 @@ export interface DeckAnalysisResult {
   gameMode: 'pve' | 'pvp';
 }
 
+interface CoreApostle {
+  name: string;
+  engName: string;
+  role: string;
+  position: 'front' | 'mid' | 'back';
+  reason: string;
+  essential: boolean;
+  aside_required: string;
+}
+
+interface DeckGuide {
+  overview: string;
+  difficulty: string;
+  pros: string[];
+  cons: string[];
+  essentials: boolean;
+  core: CoreApostle[];
+  alternatives: [];
+  tips: string[];
+}
+
 // 파티의 성격 분포 분석
 export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult => {
   const filledSlots = apostles.filter((a) => a).length;
@@ -76,7 +97,7 @@ export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult 
 };
 
 // 추천 사도 가져오기
-export const getRecommendedApostles = (deckType: string, mode: 'pve' | 'pvp') => {
+export const getRecommendedApostles = (deckType: string, mode: 'pve' | 'pvp'): DeckGuide | null => {
   const deck = (deckGuides as any).decks?.[deckType] || (deckGuides as any).decks?.['순수_6속'];
   if (!deck) return null;
 
@@ -106,7 +127,6 @@ export const getRecommendationsForEmptySlot = (
   const guide = getRecommendedApostles(deckType, mode);
   if (!guide) return [];
 
-  // 슬롯의 위치 파악 (1-3: 전열, 4-6: 중열, 7-9: 후열)
   const getPosition = (slot: number): 'front' | 'mid' | 'back' => {
     if ([1, 2, 3].includes(slot)) return 'front';
     if ([4, 5, 6].includes(slot)) return 'mid';
@@ -115,20 +135,17 @@ export const getRecommendationsForEmptySlot = (
 
   const position = getPosition(emptySlot);
 
-  // 핵심 조합에서 해당 위치의 사도 추천
-  const recommendedNames = (guide.core as any[])
-    .filter((apostle: any) => apostle.position === position)
-    .map((apostle: any) => apostle.name);
+  const recommendedNames = guide.core
+    .filter((apostle: CoreApostle) => apostle.position === position)
+    .map((apostle: CoreApostle) => apostle.name);
 
-  // 이미 배치된 사도 제외
   const placedNames = filledApostles.filter((a) => a).map((a) => a.name);
 
-  // 추천 사도 객체 찾기
   const recommendations = allApostles.filter(
     (apostle) => recommendedNames.includes(apostle.name) && !placedNames.includes(apostle.name),
   );
 
-  return recommendations.slice(0, 3); // 상위 3개만
+  return recommendations.slice(0, 3);
 };
 
 export interface CombinationGuide {
