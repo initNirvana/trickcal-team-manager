@@ -33,7 +33,7 @@
           {
             "name": "비비",
             "engName": "Vivi",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "탱커 1순위",
             "essential": true
@@ -41,7 +41,7 @@
           {
             "name": "라이카",
             "engName": "Raika",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "높은 받피감",
             "aside_required": "어사이드 권장"
@@ -49,28 +49,28 @@
           {
             "name": "나이아",
             "engName": "Naia",
-            "role": "healer",
+            "role": "Supporter",
             "position": "mid",
             "reason": "침략 유지력 필수"
           },
           {
             "name": "마요(멋짐)",
             "engName": "MayoCool",
-            "role": "support",
+            "role": "Attacker",
             "position": "mid",
             "reason": "버프/디버프"
           },
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "공격력 증가 (35%)"
           },
           {
             "name": "란",
             "engName": "Ran",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "지속 피해 및 고유 피해량 감소 효과",
             "essential": true
@@ -101,7 +101,7 @@
           {
             "name": "비비",
             "engName": "Vivi",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "탱커 필수",
             "essential": true
@@ -109,35 +109,35 @@
           {
             "name": "나이아",
             "engName": "Naia",
-            "role": "healer",
+            "role": "Supporter",
             "position": "mid",
             "reason": "초중반 유지력"
           },
           {
             "name": "마요(멋짐)",
             "engName": "MayoCool",
-            "role": "support",
+            "role": "Attacker",
             "position": "mid",
             "reason": "버프/디버프"
           },
           {
             "name": "캐시",
             "engName": "Cache",
-            "role": "attacker",
-            "position": "mid",
-            "reason": "효율 높은 딜러"
+            "role": "Attacker",
+            "position": "back",
+            "reason": "적 SP 감소 & 딜러"
           },
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "공격력 증가 (35%)"
           },
           {
             "name": "란",
             "engName": "Ran",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "보호막/피해 증가",
             "essential": true
@@ -187,14 +187,14 @@
           {
             "name": "이드",
             "engName": "Ed",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "front",
             "reason": "전체 보호막 탱커"
           },
           {
             "name": "디아나(왕년)",
             "engName": "DianaYester",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "front",
             "reason": "필수 딜러",
             "aside_required": "A2 필수",
@@ -203,21 +203,21 @@
           {
             "name": "아야",
             "engName": "Aya",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "mid",
             "reason": "범용성 좋은 범위 딜러"
           },
           {
             "name": "아이시아",
             "engName": "Eisia",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "높은 계수의 후열 딜러"
           },
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "공격력 증가 (35%)",
             "aside_required": "A3 아니면 명함"
@@ -225,7 +225,7 @@
           {
             "name": "피코라",
             "engName": "Picora",
-            "role": "healer",
+            "role": "Supporter",
             "position": "back",
             "reason": "유지력"
           }
@@ -262,14 +262,14 @@
           {
             "name": "디아나(왕년)",
             "engName": "DianaYester",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "front",
             "reason": "필수 딜러"
           },
           {
             "name": "리코타",
             "engName": "Ricota",
-            "role": "healer",
+            "role": "Tanker",
             "position": "front",
             "reason": "유지력",
             "aside_required": "A2",
@@ -278,28 +278,28 @@
           {
             "name": "바롱",
             "engName": "Barong",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "front",
             "reason": "후열 저격 및 상대 디버프"
           },
           {
             "name": "아야",
             "engName": "Aya",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "mid",
             "reason": "마법딜러"
           },
           {
             "name": "시저",
             "engName": "Caesar",
-            "role": "support",
+            "role": "Supporter",
             "position": "mid",
             "reason": "버프"
           },
           {
             "name": "아이시아",
             "engName": "Eisia",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "지원"
           }
@@ -347,14 +347,14 @@
           {
             "name": "네티",
             "engName": "Neti",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "전체 보호막 탱커"
           },
           {
             "name": "클로에",
             "engName": "Chloe",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "든든한 저학년",
             "essential": true
@@ -362,7 +362,7 @@
           {
             "name": "리뉴아",
             "engName": "Renewa",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "mid",
             "reason": "대체 불가",
             "essential": true
@@ -370,14 +370,14 @@
           {
             "name": "아네트",
             "engName": "Arnet",
-            "role": "support",
+            "role": "Supporter",
             "position": "mid",
             "reason": "최강의 버퍼"
           },
           {
             "name": "티그(영웅)",
             "engName": "TigHero",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "고정필수 딜러",
             "essential": true
@@ -385,7 +385,7 @@
           {
             "name": "폴랑",
             "engName": "Polan",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "HP 증가 효과 및 서브 힐러",
             "aside_required": "A2"
@@ -393,7 +393,7 @@
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "공격력 증가 (35%)"
           }
@@ -442,28 +442,28 @@
           {
             "name": "클로에",
             "engName": "Chloe",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "저학년으로 무쌍 찍음"
           },
           {
             "name": "네티",
             "engName": "Neti",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "전체 보호막 탱커"
           },
           {
             "name": "리뉴아",
             "engName": "Renewa",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "mid",
             "reason": "대체 불가"
           },
           {
             "name": "폴랑",
             "engName": "Polan",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "고학년",
             "aside_required": "A2"
@@ -471,7 +471,7 @@
           {
             "name": "롤렛",
             "engName": "Rollet",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "딜 & CC",
             "aside_required": "A2"
@@ -479,7 +479,7 @@
           {
             "name": "티그(영웅)",
             "engName": "TigHero",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "필수 딜러"
           }
@@ -527,7 +527,7 @@
           {
             "name": "벨라",
             "engName": "Vela",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "고정필수 탱커",
             "essential": true
@@ -535,7 +535,7 @@
           {
             "name": "슈로",
             "engName": "Suro",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "탱커인데 딜러도 됨",
             "essential": true
@@ -543,7 +543,7 @@
           {
             "name": "우이",
             "engName": "Ui",
-            "role": "healer",
+            "role": "Supporter",
             "position": "mid",
             "reason": "유일한 HP&SP 힐러",
             "essential": true
@@ -551,7 +551,7 @@
           {
             "name": "에피카",
             "engName": "Epica",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "mid",
             "reason": "강력한 딜러",
             "aside_required": "A2",
@@ -560,14 +560,14 @@
           {
             "name": "모모",
             "engName": "Momo",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "PVE의 악마"
           },
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "공격력 증가 (35%)"
           }
@@ -604,28 +604,28 @@
           {
             "name": "벨라",
             "engName": "Vela",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "고정필수 탱커"
           },
           {
             "name": "슈로",
             "engName": "Suro",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "front",
             "reason": "탱커인데 딜러도 됨"
           },
           {
             "name": "우이",
             "engName": "Ui",
-            "role": "healer",
+            "role": "Supporter",
             "position": "mid",
             "reason": "유일한 HP&SP 힐러"
           },
           {
             "name": "아르코",
             "engName": "Arco",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "mid",
             "reason": "SP 버프/디버프와 보호막 파괴",
             "aside_required": "어사이드 권장"
@@ -633,14 +633,14 @@
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "공격력 증가 (35%)"
           },
           {
             "name": "슈팡",
             "engName": "Shoupan",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "PVP의 악마"
           }
@@ -683,7 +683,7 @@
           {
             "name": "스노키",
             "engName": "Snorky",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "고정필수 탱커",
             "aside_required": "A2",
@@ -692,21 +692,21 @@
           {
             "name": "키디언",
             "engName": "Kidian",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "front",
             "reason": ""
           },
           {
             "name": "힐데",
             "engName": "Hilde",
-            "role": "healer",
+            "role": "Supporter",
             "position": "mid",
             "reason": "힐러"
           },
           {
             "name": "죠안",
             "engName": "Joanne",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "고정필수 서포터",
             "essential": true
@@ -714,7 +714,7 @@
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "공격력 증가 (35%)",
             "aside_required": "A3 아니면 명함"
@@ -722,7 +722,7 @@
           {
             "name": "시온",
             "engName": "Xion",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "reason": "체급은 좋음"
           }
@@ -754,7 +754,7 @@
           {
             "name": "스노키",
             "engName": "Snorky",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "고정필수 탱커",
             "aside_required": "A2"
@@ -762,7 +762,7 @@
           {
             "name": "아사나",
             "engName": "Asana",
-            "role": "tanker",
+            "role": "Tanker",
             "position": "front",
             "reason": "",
             "aside_required": "A2"
@@ -770,7 +770,7 @@
           {
             "name": "로네(시장)",
             "engName": "Ronet",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "mid",
             "reason": "",
             "aside_required": "A2"
@@ -778,21 +778,21 @@
           {
             "name": "죠안",
             "engName": "Joanne",
-            "role": "support",
+            "role": "Supporter",
             "position": "mid",
             "reason": "중열 or 후열"
           },
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "attacker",
+            "role": "Attacker",
             "position": "back",
             "aside_required": "A3"
           },
           {
             "name": "오르",
             "engName": "Orr",
-            "role": "support",
+            "role": "Supporter",
             "position": "back",
             "reason": "유틸"
           }
