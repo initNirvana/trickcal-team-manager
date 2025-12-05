@@ -1,13 +1,13 @@
 import React from 'react';
 
-interface ApostleImageProps {
+interface ImageProps {
   src: string;
   alt: string;
   className?: string;
   fallbackSrc?: string;
 }
 
-const ApostleImage: React.FC<ApostleImageProps> = ({
+const ApostleImage: React.FC<ImageProps> = ({
   src,
   alt,
   className = '',
