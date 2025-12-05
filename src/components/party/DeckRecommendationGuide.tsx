@@ -3,7 +3,6 @@
 import React, { useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
 import { analyzeDeckPersonality, getRecommendedApostles } from '../../utils/deckGuideEngine';
-import PersonalityIcon from '../common/PersonalityIcon';
 import RecommendedApostleCard from './sub-components/RecommendedApostleCard';
 import DeckTipsPanel from './sub-components/DeckTipsPanel';
 import AlternativeApostlesPanel from './sub-components/AlternativeApostlesPanel';
@@ -51,23 +50,7 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
 
   return (
     <div className="space-y-4">
-      {/* 2. PVE/PVP 모드 선택 */}
-      <div className="bg-base-100 flex gap-2 rounded-lg p-4">
-        <button
-          onClick={() => onGameModeChange('pve')}
-          className={`btn btn-sm ${gameMode === 'pve' ? 'btn-primary' : 'btn-outline'}`}
-        >
-          🎮 PVE (침략)
-        </button>
-        <button
-          onClick={() => onGameModeChange('pvp')}
-          className={`btn btn-sm ${gameMode === 'pvp' ? 'btn-primary' : 'btn-outline'}`}
-        >
-          ⚔️ PVP (줘팸터)
-        </button>
-      </div>
-
-      {/* 3. 덱 개요 및 장단점 */}
+      {/* 덱 개요 및 장단점 */}
       {guide && (
         <>
           <div className="collapse-plus bg-base-100 border-base-300 collapse border">
@@ -127,16 +110,31 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
             </div>
           </div>
 
-          {/* 4. 핵심 사도 추천 (필수/권장 배지 포함) */}
+          {/* 핵심 사도 추천 (필수/권장 배지 포함) */}
           <div className="bg-base-100 border-base-300 rounded-lg border p-4">
-            <h3 className="mb-4 text-lg font-bold">⭐ 핵심 사도 조합</h3>
+            <div className="flex items-center justify-between text-lg font-semibold">
+              핵심 사도 조합
+              {/* PVE/PVP 모드 선택 */}
+              <span className="mb-2 text-sm font-semibold">
+                <button
+                  onClick={() => onGameModeChange('pve')}
+                  className={`btn btn-sm ${gameMode === 'pve' ? 'btn-primary' : 'btn-outline'}`}
+                >
+                  PVE (침략)
+                </button>
+                <button
+                  onClick={() => onGameModeChange('pvp')}
+                  className={`btn btn-sm ${gameMode === 'pvp' ? 'btn-primary' : 'btn-outline'}`}
+                >
+                  PVP (줘팸터)
+                </button>
+              </span>
+            </div>
+
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
               {guide.core.map((member, idx) => {
                 // ✅ 필수 사도 여부 확인
                 const isEssential = member.essential;
-                // ✅ 배치 여부 확인
-                const isPlaced = apostles.some((a) => a && a.name === member.name);
-
                 return (
                   <RecommendedApostleCard
                     key={`${member.name}-${idx}`}
@@ -146,7 +144,6 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
                     position={member.position}
                     asideRequired={member.aside_required}
                     isEssential={isEssential} // ✅ 필수 여부 전달
-                    isPlaced={isPlaced} // ✅ 배치 여부 전달
                     allApostles={allApostles}
                   />
                 );
@@ -154,12 +151,12 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
             </div>
           </div>
 
-          {/* 5. 대체 사도 옵션 */}
+          {/* 대체 사도 옵션 */}
           {guide.alternatives && guide.alternatives.length > 0 && (
             <AlternativeApostlesPanel alternatives={guide.alternatives} />
           )}
 
-          {/* 6. 팁 */}
+          {/* 팁 */}
           {guide.tips && guide.tips.length > 0 && <DeckTipsPanel tips={guide.tips} />}
         </>
       )}

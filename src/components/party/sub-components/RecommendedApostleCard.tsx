@@ -3,8 +3,12 @@
 import React from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { getPersonalities } from '../../../types/apostle';
-import { getApostleImagePath, getPersonalityBackgroundClass } from '../../../utils/apostleUtils';
-import ApostleImage from '../../common/ApostleImage';
+import {
+  getApostleImagePath,
+  getPositionIconPath,
+  getClassIconPath,
+} from '../../../utils/apostleUtils';
+import Image from '../../common/ApostleImage';
 
 interface RecommendedApostleCardProps {
   name: string;
@@ -13,10 +17,15 @@ interface RecommendedApostleCardProps {
   position: string;
   asideRequired?: number | string | null;
   isEssential?: boolean; // ✅ 필수 사도 여부
-  isRecommended?: boolean; // ✅ 권장 사도 여부
-  isPlaced?: boolean; // ✅ 배치 여부
   allApostles: Apostle[];
 }
+
+// ===== 위치 설정 (아이콘 이미지) =====
+const positionConfig = {
+  front: { icon: 'Common_PositionFront', label: '전열' },
+  mid: { icon: 'Common_PositionMiddle', label: '중열' },
+  back: { icon: 'Common_PositionBack', label: '후열' },
+};
 
 const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
   name,
@@ -25,7 +34,6 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
   position,
   asideRequired,
   isEssential = false,
-  isPlaced = false,
   allApostles,
 }) => {
   const apostle = allApostles.find((a) => a.name === name);
@@ -41,79 +49,54 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
     return null;
   }
 
-  const bgColor = getPersonalityBackgroundClass(personalities[0]);
-
-  const getRoleColor = (r: string) => {
-    switch (r) {
-      case 'tanker':
-        return 'badge-info';
-      case 'attacker':
-        return 'badge-error';
-      case 'healer':
-        return 'badge-success';
-      case 'support':
-        return 'badge-secondary';
-      default:
-        return 'badge-neutral';
-    }
-  };
-
-  const getRoleName = (r: string) => {
-    switch (r) {
-      case 'tanker':
-        return '탱';
-      case 'attacker':
-        return '딜';
-      case 'healer':
-        return '힐';
-      case 'support':
-        return '지원';
-      default:
-        return r;
-    }
-  };
-
   return (
     <div>
-      {/* 필수 표시 */}
-      {isPlaced ? (
-        <div className="badge badge-success">✓ 배치됨</div>
-      ) : isEssential ? (
-        <div className="badge badge-primary">필수</div>
-      ) : null}
-
       {/* 사도 이미지 */}
-      <figure className="h-24 overflow-hidden bg-black/20">
-        <ApostleImage
+      <figure className="relative h-24 overflow-hidden bg-black/20">
+        <Image
           src={getApostleImagePath(apostle.engName)}
           alt={apostle.name}
           className="h-full w-full object-cover"
         />
+        {/* 위치 표시 */}
+        <div className="absolute bottom-1 left-1 h-5 w-5 rounded-full">
+          <Image
+            src={getPositionIconPath(positionConfig[position as keyof typeof positionConfig].icon)}
+            className="h-full w-full object-contain"
+            alt={position}
+          />
+        </div>
+
+        {/* 클래스 표시 */}
+        <div className="absolute bottom-1 left-6 h-5 w-5 rounded-full">
+          <Image
+            src={getClassIconPath(role)}
+            className="h-full w-full object-contain"
+            alt={apostle.role}
+          />
+        </div>
+
+        {/* 필수 사도 표시 (참잘했어요) */}
+        {isEssential ? (
+          <div className="tooltip absolute right-2 bottom-1 h-5 w-5 rounded-full" data-tip="필수">
+            <Image
+              src="/src/assets/icon/CurrencyIcon_0033.png"
+              className="h-full w-full object-contain"
+              alt="필수"
+            />
+          </div>
+        ) : null}
       </figure>
       {/* 카드 본문 */}
-      <div className="card-body p-2 text-center">
+      <div className="card-body items-center p-2 text-center">
         {/* 이름 */}
         <p className="truncate text-xs font-bold">{name}</p>
 
-        {/* 역할 배지 */}
-        <div className="flex justify-center gap-1">
-          <span className={`badge badge-sm ${getRoleColor(role)}`}>{getRoleName(role)}</span>
-        </div>
-
-        {/* 위치 정보 */}
-        <span className="text-base-content/60 mt-1 text-xs">
-          {position === 'front' ? '전열' : position === 'mid' ? '중열' : '후열'}
-        </span>
-
-        {/* 어사이드 표시 */}
-        {asideRequired && (
-          <span className="badge badge-sm badge-warning">
-            {typeof asideRequired === 'number' ? `A${asideRequired}` : asideRequired}
-          </span>
-        )}
-
         {/* 설명 */}
         <p className="line-clamp-2 text-xs opacity-75">{reason}</p>
+
+        {/* 어사이드 표시 */}
+        {asideRequired && <p className="badge badge-sm badge-warning"> {asideRequired}</p>}
       </div>
     </div>
   );

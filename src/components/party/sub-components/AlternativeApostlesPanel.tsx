@@ -17,7 +17,7 @@ const AlternativeApostlesPanel: React.FC<AlternativeApostlesPanelProps> = ({ alt
   return (
     <div className="collapse-arrow border-base-300 collapse border">
       <input type="checkbox" name="my-accordion-4" />
-      <div className="collapse-title font-semibold">🔄 대체 선택지</div>
+      <div className="collapse-title font-semibold">대체 사도 선택지</div>
       <div className="collapse-content text-sm">
         {alternatives.map((alt, idx) => (
           <div key={idx} className="border-warning bg-warning/10 rounded-lg border-l-4 p-3">
