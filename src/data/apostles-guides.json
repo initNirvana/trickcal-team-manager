@@ -132,7 +132,7 @@
             "engName": "Uros",
             "role": "support",
             "position": "back",
-            "reason": "피해 증가"
+            "reason": "공격력 증가 (35%)"
           },
           {
             "name": "란",
@@ -174,14 +174,14 @@
 
     "냉정": {
       "personality": "Cool",
-      "overview": "광역딜과 한방딜이 강한 유리대포형. 유지력이 낮지만 순간 화력이 높다.",
+      "overview": "광역기와 한방딜이 강한 사도가 많음. 다만 힐러가 부실",
       "difficulty": "medium",
-      "pros": ["광역딜에 최적화", "한방딜이 강함 (순간 고화력)", "어사이드만 갖추면 좋음"],
-      "cons": [
-        "낮은 유지력 (힐러 부실)",
-        "초반 기준 뉴비가 쓰기 어려움",
-        "고점이 나지 않으면 처참"
+      "pros": [
+        "광역기, 한방딜이 강한 사도가 많음",
+        "사도들이 어사이드만 갖추면 좋음",
+        "유연한 조합"
       ],
+      "cons": ["힐러 부실로 인한 낮은 유지력", "뉴비가 쓰기 어려움", "디아나(왕년) 필수"],
       "pve": {
         "core": [
           {
@@ -196,29 +196,30 @@
             "engName": "DianaYester",
             "role": "attacker",
             "position": "front",
-            "reason": "광역딜 필수",
-            "tier": "essential"
+            "reason": "필수 딜러",
+            "aside_required": "A2 필수",
+            "essential": true
           },
           {
             "name": "아야",
             "engName": "Aya",
             "role": "attacker",
             "position": "mid",
-            "reason": "마법딜러"
+            "reason": "범용성 좋은 범위 딜러"
           },
           {
             "name": "아이시아",
-            "engName": "Isyia",
+            "engName": "Eisia",
             "role": "support",
-            "position": "mid",
-            "reason": "버프 제공"
+            "position": "back",
+            "reason": "높은 계수의 후열 딜러"
           },
           {
             "name": "우로스",
             "engName": "Uros",
             "role": "attacker",
             "position": "back",
-            "reason": "피해 증가",
+            "reason": "공격력 증가 (35%)",
             "aside_required": "A3 아니면 명함"
           },
           {
@@ -252,7 +253,8 @@
         "tips": [
           "디아나(왕년)은 용병으로 강력 추천",
           "에스피, 리코타 사용시 어사이드 필수",
-          "광역기, 한방딜이 높은 계수의 사도 많음"
+          "광역기, 한방딜이 높은 계수의 사도 많음",
+          "이외에는 에스피(A2), 엘레나, 실라, 제이드(A2), 베니(베니) 사용"
         ]
       },
       "pvp": {
@@ -270,7 +272,7 @@
             "role": "healer",
             "position": "front",
             "reason": "유지력",
-            "aside_required": "A2 필요",
+            "aside_required": "A2",
             "essential": true
           },
           {
@@ -296,7 +298,7 @@
           },
           {
             "name": "아이시아",
-            "engName": "Isyia",
+            "engName": "Eisia",
             "role": "support",
             "position": "back",
             "reason": "지원"
@@ -318,58 +320,28 @@
           {
             "replace": "바롱",
             "with": ["우로스"],
-            "condition": "상황에 따라",
-            "tradeoff": "우로스는 공격력 강화"
+            "condition": "유지력 부족 시",
+            "tradeoff": "우로스는 공격력 증가 (35%)"
           }
         ],
         "tips": [
-          "상황에 따라 유연한 조합 가능",
-          "고점이 아닐시 처참할 정도로 약함",
-          "힐러가 정상이 없어서 한방이 강력한 유리대포 같은 성격"
+          "디아나(왕년) 뒤에 시저를 놓는 조합이 좋음",
+          "이외에는 엘레나, 실라, 에스피(A2), 벨벳(A2), 베니(베니) 사용"
         ]
       }
     },
 
     "광기": {
       "personality": "Mad",
-      "overview": "버프가 많고 스킬이 강력. 서로 간 시너지는 약하지만, 개별 사도 성능이 뛰어남.",
+      "overview": "버프가 많고 스킬이 강력. 사도 간 시너지는 약하지만, 개별 사도 성능이 뛰어남.",
       "difficulty": "medium",
       "pros": [
         "버프를 주는 사도가 많음",
-        "대부분 사도들이 모난 점이 없음 (유연한 조합 가능)",
+        "대부분 사도들이 크게 단점이 없음 (유연한 조합 가능)",
         "스킬이 강력함",
-        "현재 가장 좋은 성격"
+        "2주년 기준 활발과 함께 가장 좋은 성격"
       ],
       "cons": ["뉴비에겐 리뉴아 없으면 많이 약함", "서로 간 시너지가 잘 안 맞음"],
-      "essentials": [
-        {
-          "name": "클로에",
-          "engName": "Chloe",
-          "role": "tanker",
-          "tier": "essential",
-          "reason": "고정필수 탱커",
-          "aside_required": null,
-          "notes": []
-        },
-        {
-          "name": "리뉴아",
-          "engName": "Renewa",
-          "role": "attacker",
-          "tier": "essential",
-          "reason": "고정필수 딜러. 용병으로도 강력",
-          "aside_required": null,
-          "notes": ["용병으로 강력 추천", "리뉴아 육성 강력 추천"]
-        },
-        {
-          "name": "티그(영웅)",
-          "engName": "TigHero",
-          "role": "attacker",
-          "tier": "essential",
-          "reason": "고정필수 딜러",
-          "aside_required": null,
-          "notes": ["용병으로도 강력", "육성 강력 추천"]
-        }
-      ],
       "pve": {
         "core": [
           {
@@ -377,91 +349,85 @@
             "engName": "Neti",
             "role": "tanker",
             "position": "front",
-            "reason": "탱커"
+            "reason": "전체 보호막 탱커"
           },
           {
             "name": "클로에",
             "engName": "Chloe",
             "role": "tanker",
             "position": "front",
-            "reason": "고정필수 탱커"
-          },
-          {
-            "name": "네르",
-            "engName": "Ner",
-            "role": "tanker",
-            "position": "front",
-            "reason": "3탱 옵션",
-            "aside_required": "A2 필요"
+            "reason": "든든한 저학년",
+            "essential": true
           },
           {
             "name": "리뉴아",
             "engName": "Renewa",
             "role": "attacker",
             "position": "mid",
-            "reason": "필수 딜러"
+            "reason": "대체 불가",
+            "essential": true
           },
           {
             "name": "아네트",
             "engName": "Arnet",
             "role": "support",
             "position": "mid",
-            "reason": "버프/서포트"
-          },
-          {
-            "name": "시스트",
-            "engName": "Schist",
-            "role": "attacker",
-            "position": "mid",
-            "reason": "중열 딜러"
+            "reason": "최강의 버퍼"
           },
           {
             "name": "티그(영웅)",
             "engName": "TigHero",
             "role": "attacker",
             "position": "back",
-            "reason": "고정필수 딜러"
+            "reason": "고정필수 딜러",
+            "essential": true
           },
           {
             "name": "폴랑",
-            "engName": "Folang",
+            "engName": "Polan",
             "role": "support",
             "position": "back",
-            "reason": "버프 제공",
-            "aside_required": "A2 필요"
+            "reason": "HP 증가 효과 및 서브 힐러",
+            "aside_required": "A2"
           },
           {
             "name": "우로스",
             "engName": "Uros",
-            "role": "attacker",
+            "role": "support",
             "position": "back",
-            "reason": "피해 증가"
+            "reason": "공격력 증가 (35%)"
           }
         ],
         "alternatives": [
           {
             "replace": "네티",
-            "with": ["리츠", "마에스트로"],
-            "condition": "탱커 부족 시",
-            "tradeoff": "성능은 비슷"
-          },
-          {
-            "replace": "시스트",
-            "with": ["앨리스"],
-            "condition": "딜 부족 시",
-            "tradeoff": "딜러 대체"
-          },
-          {
-            "replace": "아네트",
-            "with": ["디아나"],
-            "condition": "상황에 따라",
-            "tradeoff": "지원 성능"
+            "with": ["클로에", "네르"],
+            "condition": "네티가 없거나 상황을 봐서",
+            "tradeoff": "네르는 매운맛/핵불맛/보스전에서 3탱 옵션으로 사용됨"
           },
           {
             "replace": "폴랑",
-            "with": ["롤렛"],
+            "with": ["디아나"],
+            "condition": "힐 부족 시",
+            "tradeoff": "폴랑 어사이드가 없을 경우"
+          },
+          {
+            "replace": ["티그(영웅) 혹은 우로스"],
+            "with": ["림(혼돈)", "롤렛"],
+            "condition": "후열 딜러",
+            "tradeoff": "육성비용 높은 엘다인 대체"
+          },
+          {
+            "replace": "림(혼돈)",
+            "with": ["시스트", "앨리스"],
             "condition": "폴랑 어사A2 없을 시",
             "tradeoff": "롤렛도 좋지만 어사A2 권장"
+          },
+          {
+            "replace": "네티/네르/클로에",
+            "with": ["마에스트로2호"],
+            "condition": "탱커 없을 시",
+            "tradeoff": "티그(영웅)을 전열로도 사용 가능"
           }
         ],
         "tips": [
@@ -478,37 +444,37 @@
             "engName": "Chloe",
             "role": "tanker",
             "position": "front",
-            "reason": "탱커 필수"
+            "reason": "저학년으로 무쌍 찍음"
           },
           {
             "name": "네티",
             "engName": "Neti",
             "role": "tanker",
             "position": "front",
-            "reason": "탱커"
+            "reason": "전체 보호막 탱커"
           },
           {
             "name": "리뉴아",
             "engName": "Renewa",
             "role": "attacker",
             "position": "mid",
-            "reason": "필수 딜러"
+            "reason": "대체 불가"
           },
           {
             "name": "폴랑",
-            "engName": "Folang",
+            "engName": "Polan",
             "role": "support",
-            "position": "mid",
-            "reason": "버프 제공",
-            "aside_required": "A2 필요"
+            "position": "back",
+            "reason": "고학년",
+            "aside_required": "A2"
           },
           {
             "name": "롤렛",
             "engName": "Rollet",
             "role": "attacker",
             "position": "back",
-            "reason": "후열 딜러",
-            "aside_required": "A2 필요"
+            "reason": "딜 & CC",
+            "aside_required": "A2"
           },
           {
             "name": "티그(영웅)",
@@ -523,25 +489,24 @@
             "replace": "롤렛",
             "with": ["우로스", "림(혼돈)"],
             "condition": "롤렛 어사이드 없을 시",
-            "tradeoff": "딜은 롤렛이 더 좋음"
+            "tradeoff": "딜은 림(혼돈)이 더 좋음"
           },
           {
-            "replace": "폴랑",
-            "with": ["아네트"],
-            "condition": "상황에 따라",
-            "tradeoff": "버프 성능"
+            "replace": "폴랑/네티/클로에",
+            "with": ["디아나", "네르"],
+            "condition": "",
+            "tradeoff": ""
           },
           {
-            "replace": "네티",
-            "with": ["리츠"],
-            "condition": "1탱만 필요 시",
-            "tradeoff": "탱 성능"
+            "replace": "우로스 혹은 림(혼돈)",
+            "with": ["아네트", "하이디"],
+            "condition": "상황을 보고 기용",
+            "tradeoff": ""
           }
         ],
         "tips": [
-          "사람마다 덱이 다르기 때문에 본인이 좋다고 생각되는 사도를 쓰면 됨",
-          "상황에 따라 유연한 조합 가능",
-          "어그로, 생존력, 대체 옵션들이 많음"
+          "림(혼돈)이 줘팸에서 높은 계수로 딜러를 자르는 역할로 기용됨",
+          "이외에는 셰이디(어그로), 마에2호, 리츠, 앨리스 기용 가능"
         ]
       }
     },
@@ -556,49 +521,7 @@
         "메타를 잘 타지 않음 (고정적이고 안정적)",
         "유일하게 6속성 시너지 유지하며 용병 사용 가능"
       ],
-      "cons": [
-        "대부분 사도가 강해서 육성을 필요로 하는 사도가 많음",
-        "어사이드를 필요로 하는 사도가 많음",
-        "초반 파티 완성 기준치가 높음"
-      ],
-      "essentials": [
-        {
-          "name": "벨라",
-          "engName": "Vela",
-          "role": "tanker",
-          "tier": "essential",
-          "reason": "고정필수 탱커",
-          "aside_required": null,
-          "notes": []
-        },
-        {
-          "name": "슈로",
-          "engName": "Suro",
-          "role": "attacker",
-          "tier": "essential",
-          "reason": "고정필수 딜러",
-          "aside_required": null,
-          "notes": []
-        },
-        {
-          "name": "우이",
-          "engName": "Ui",
-          "role": "healer",
-          "tier": "essential",
-          "reason": "고정필수 힐러",
-          "aside_required": null,
-          "notes": ["어사이드 뚫면 아무 피해 없이 용병 사용 가능"]
-        },
-        {
-          "name": "에피카",
-          "engName": "Epica",
-          "role": "attacker",
-          "tier": "recommended",
-          "reason": "강력한 딜러",
-          "aside_required": "A2 필요",
-          "notes": []
-        }
-      ],
+      "cons": ["사도 육성 비용이 높음"],
       "pve": {
         "core": [
           {
@@ -606,28 +529,24 @@
             "engName": "Vela",
             "role": "tanker",
             "position": "front",
-            "reason": "고정필수 탱커"
+            "reason": "고정필수 탱커",
+            "essential": true
           },
           {
             "name": "슈로",
             "engName": "Suro",
-            "role": "attacker",
+            "role": "tanker",
             "position": "front",
-            "reason": "고정필수 딜러"
-          },
-          {
-            "name": "미로",
-            "engName": "Miro",
-            "role": "support",
-            "position": "front",
-            "reason": "버프/탱커"
+            "reason": "탱커인데 딜러도 됨",
+            "essential": true
           },
           {
             "name": "우이",
             "engName": "Ui",
             "role": "healer",
             "position": "mid",
-            "reason": "고정필수 힐러"
+            "reason": "유일한 HP&SP 힐러",
+            "essential": true
           },
           {
             "name": "에피카",
@@ -635,44 +554,30 @@
             "role": "attacker",
             "position": "mid",
             "reason": "강력한 딜러",
-            "aside_required": "A2 필요"
-          },
-          {
-            "name": "아르코",
-            "engName": "Arco",
-            "role": "support",
-            "position": "mid",
-            "reason": "버프",
-            "aside_required": "어사이드 권장"
+            "aside_required": "A2",
+            "essential": true
           },
           {
             "name": "모모",
             "engName": "Momo",
             "role": "attacker",
             "position": "back",
-            "reason": "후열 딜러 (PVE 최강)"
-          },
-          {
-            "name": "슈팡",
-            "engName": "Shupang",
-            "role": "attacker",
-            "position": "back",
-            "reason": "딜 제공"
+            "reason": "PVE의 악마"
           },
           {
             "name": "우로스",
             "engName": "Uros",
             "role": "attacker",
             "position": "back",
-            "reason": "피해 증가"
+            "reason": "공격력 증가 (35%)"
           }
         ],
         "alternatives": [
           {
-            "replace": "슈로",
-            "with": ["벨라"],
-            "condition": "상황에 따라",
-            "tradeoff": "성능은 벨라가 더 좋음"
+            "replace": "슈로 혹은 벨라",
+            "with": ["미로"],
+            "condition": "",
+            "tradeoff": ""
           },
           {
             "replace": "에피카",
@@ -681,23 +586,17 @@
             "tradeoff": "딜 성능"
           },
           {
-            "replace": "우로스",
+            "replace": "우로스 혹은 에피카(A2)",
             "with": ["슈팡"],
-            "condition": "상황에 따라",
-            "tradeoff": "우로스는 어사이드 권장"
-          },
-          {
-            "replace": "미로",
-            "with": ["셀리네"],
-            "condition": "탱커 다양성",
-            "tradeoff": "성능"
+            "condition": "",
+            "tradeoff": ""
           }
         ],
         "tips": [
           "벨라, 슈로, 우이, 에피카(어사) 필수",
-          "프론티어, 대충돌에 강력한 사도 많음",
-          "필요로 하는 조건이 많음 (초반 파티 완성 난도 높음)",
-          "PVE는 모모가 더 좋음"
+          "우이의 어사이드가 있을 경우 에피카빼고 리뉴아 사용 추천",
+          "이외에는 마카샤, 셀리네 기용",
+          "PVE는 모모가 좋음"
         ]
       },
       "pvp": {
@@ -714,37 +613,36 @@
             "engName": "Suro",
             "role": "attacker",
             "position": "front",
-            "reason": "고정필수 딜러"
+            "reason": "탱커인데 딜러도 됨"
           },
           {
             "name": "우이",
             "engName": "Ui",
             "role": "healer",
             "position": "mid",
-            "reason": "고정필수 힐러"
-          },
-          {
-            "name": "에피카",
-            "engName": "Epica",
-            "role": "attacker",
-            "position": "mid",
-            "reason": "강력한 딜러",
-            "aside_required": "A2 필요"
+            "reason": "유일한 HP&SP 힐러"
           },
           {
             "name": "아르코",
             "engName": "Arco",
             "role": "attacker",
             "position": "mid",
-            "reason": "딜러",
+            "reason": "SP 버프/디버프와 보호막 파괴",
             "aside_required": "어사이드 권장"
           },
           {
-            "name": "슈팡",
-            "engName": "Shupang",
-            "role": "attacker",
+            "name": "우로스",
+            "engName": "Uros",
+            "role": "support",
             "position": "back",
-            "reason": "후열 딜러 (PVP 최강)"
+            "reason": "공격력 증가 (35%)"
+          },
+          {
+            "name": "슈팡",
+            "engName": "Shoupan",
+            "role": "support",
+            "position": "back",
+            "reason": "PVP의 악마"
           }
         ],
         "alternatives": [
@@ -752,25 +650,18 @@
             "replace": "아르코",
             "with": ["에피카", "모모"],
             "condition": "아르코 미보유 시",
-            "tradeoff": "딜 성능"
+            "tradeoff": ""
           },
           {
             "replace": "우로스",
-            "with": ["모모"],
-            "condition": "상황에 따라",
-            "tradeoff": "우로스는 피증 강화"
-          },
-          {
-            "replace": "우이",
-            "with": ["리뉴아"],
-            "condition": "우이 어사이드 있을 시",
-            "tradeoff": "힐 vs 딜"
+            "with": ["모모", "에피카"],
+            "condition": "",
+            "tradeoff": ""
           }
         ],
         "tips": [
           "벨라, 슈로, 우이, 에피카(어사) 필수",
-          "우이의 어사이드를 뚫면 활발 1+이 되어 5속성 중 유일하게 7활이 가능",
-          "메타를 잘 타지 않아서 고정적이고 안정적인 속성",
+          "우이의 어사이드가 있을 경우 우로스 빼고 리뉴아 사용 가능",
           "PVP는 슈팡이 더 좋음"
         ]
       }
@@ -780,77 +671,60 @@
       "personality": "Gloomy",
       "overview": "단일 딜링과 후열 파괴력이 뛰어남. 하지만 저점이 매우 낮고 대부분 어사이드 필수.",
       "difficulty": "hard",
-      "pros": ["단일 딜링이 뛰어남", "후열 파괴력이 뛰어남", "고점이 높음"],
+      "pros": ["단일 딜링이 뛰어남", "후열 파괴력이 뛰어남"],
       "cons": [
         "저점이 상상 이상으로 매우 낮음",
         "대부분의 사도가 어사이드 필수",
-        "순정 6우울이 아니면 성능이 애매함"
-      ],
-      "essentials": [
-        {
-          "name": "스노키",
-          "engName": "Snoki",
-          "role": "tanker",
-          "tier": "essential",
-          "reason": "고정필수 탱커",
-          "aside_required": "A2 필요",
-          "notes": []
-        },
-        {
-          "name": "죠안",
-          "engName": "Joanne",
-          "role": "support",
-          "tier": "essential",
-          "reason": "고정필수 서포터",
-          "aside_required": null,
-          "notes": []
-        }
+        "고점이 아닐시 처참한 성능",
+        "사도 육성 비용이 높음"
       ],
       "pve": {
         "core": [
           {
             "name": "스노키",
-            "engName": "Snoki",
+            "engName": "Snorky",
             "role": "tanker",
             "position": "front",
             "reason": "고정필수 탱커",
-            "aside_required": "A2 필요"
+            "aside_required": "A2",
+            "essential": true
           },
           {
             "name": "키디언",
             "engName": "Kidian",
             "role": "attacker",
             "position": "front",
-            "reason": "딜러"
+            "reason": ""
           },
           {
             "name": "힐데",
             "engName": "Hilde",
             "role": "healer",
-            "position": "front",
+            "position": "mid",
             "reason": "힐러"
           },
           {
             "name": "죠안",
             "engName": "Joanne",
             "role": "support",
-            "position": "mid",
-            "reason": "고정필수 서포터"
+            "position": "back",
+            "reason": "고정필수 서포터",
+            "essential": true
           },
           {
             "name": "우로스",
             "engName": "Uros",
             "role": "attacker",
-            "position": "mid",
-            "reason": "피해 증가",
+            "position": "back",
+            "reason": "공격력 증가 (35%)",
             "aside_required": "A3 아니면 명함"
           },
           {
             "name": "시온",
             "engName": "Xion",
-            "role": "support",
+            "role": "attacker",
             "position": "back",
-            "reason": "서포트"
+            "reason": "체급은 좋음"
           }
         ],
         "alternatives": [
@@ -858,75 +732,69 @@
             "replace": "우로스",
             "with": ["블랑셰"],
             "condition": "우로스 미보유 시",
-            "tradeoff": "피해 감소"
+            "tradeoff": ""
           },
           {
             "replace": "블랑셰",
             "with": ["샤샤", "로네(시장)"],
             "condition": "블랑셰 미보유 시",
-            "tradeoff": "유지력"
+            "tradeoff": ""
           },
           {
             "replace": "키디언",
             "with": ["리온", "림"],
-            "condition": "키디언 자주 죽을 시",
-            "tradeoff": "탱 성능 (3탱 옵션)"
+            "condition": "키디언 자주 죽거나 스노키 어사이드 없을 경우",
+            "tradeoff": ""
           }
         ],
-        "tips": [
-          "스노키(어사) 필수",
-          "죠안 고정필수",
-          "고점이 아닐시 처참할 정도의 약한 성능",
-          "아사나, 로네(시장), 우로스랑 같이 쓰면 좋음"
-        ]
+        "tips": ["스노키(어사) 필수", "블랑셰 빼고 리온, 스노티, 키디언으로 3탱 운용 가능"]
       },
       "pvp": {
         "core": [
           {
             "name": "스노키",
-            "engName": "Snoki",
+            "engName": "Snorky",
             "role": "tanker",
             "position": "front",
             "reason": "고정필수 탱커",
-            "aside_required": "A2 필요"
+            "aside_required": "A2"
           },
           {
             "name": "아사나",
             "engName": "Asana",
-            "role": "attacker",
+            "role": "tanker",
             "position": "front",
-            "reason": "딜러",
-            "aside_required": "A2 필요"
+            "reason": "",
+            "aside_required": "A2"
           },
           {
             "name": "로네(시장)",
             "engName": "Ronet",
-            "role": "support",
+            "role": "attacker",
             "position": "mid",
-            "reason": "지원",
-            "aside_required": "A2 필요"
+            "reason": "",
+            "aside_required": "A2"
           },
           {
             "name": "죠안",
             "engName": "Joanne",
             "role": "support",
             "position": "mid",
-            "reason": "고정필수 서포터"
+            "reason": "중열 or 후열"
           },
           {
             "name": "우로스",
             "engName": "Uros",
             "role": "attacker",
             "position": "back",
-            "reason": "피해 증가",
             "aside_required": "A3"
           },
           {
             "name": "오르",
-            "engName": "Or",
-            "role": "attacker",
+            "engName": "Orr",
+            "role": "support",
             "position": "back",
-            "reason": "후열 딜러"
+            "reason": "유틸"
           }
         ],
         "alternatives": [
@@ -934,26 +802,32 @@
             "replace": "오르",
             "with": ["포셔", "힐데"],
             "condition": "오르 미보유 시",
-            "tradeoff": "어사이드 필요"
+            "tradeoff": "포셔 추천"
           },
           {
             "replace": "로네(시장)",
             "with": ["시온"],
-            "condition": "상황에 따라",
+            "condition": "",
             "tradeoff": "우로스 어사이드 없을 때도 시온 가능"
           },
           {
             "replace": "아사나",
             "with": ["리온", "키디언"],
             "condition": "아사나 미보유 시",
-            "tradeoff": "딜 성능"
+            "tradeoff": ""
+          },
+          {
+            "replace": "스노키(A2)",
+            "with": ["림(A2)", "코미"],
+            "condition": "스노키 어사이드 없을 경우",
+            "tradeoff": ""
           }
         ],
         "tips": [
-          "죠안, 스노키(어사) 필수",
-          "고점이 아닐시 처참함",
-          "대부분 사도가 어사를 찍어 높은 고점을 노려야 함 (비쌈)",
-          "PVP는 사람마다 덱이 다름"
+          "죠안, 스노키(A2) 필수",
+          "PVP는 사람마다 덱이 다름",
+          "아사나, 로네(시장), 우로스랑 같이 쓰면 딜뻥이 되므로 조합이 좋음",
+          "이외에는 리스티 기용"
         ]
       }
     }
@@ -1086,7 +960,7 @@
       },
       "2": {
         "name": "2우울 덱",
-        "members": ["시온", "죠안"]
+        "members": ["시온", "죠안", "스노키(A2)"]
       }
     }
   }
