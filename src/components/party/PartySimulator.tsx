@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import type { Apostle } from '../../types/apostle';
-import { usePartyStore } from '../../stores/partyStore'; // ← 추가
+import { usePartyStore } from '../../stores/partyStore';
 import PartyGrid from './PartyGrid';
-import PartyAnalysisPanel from './PartyAnalysisPanel';
-import ApostleSelector from './ApostleSelector';
+import PartyAnalysisPanel from './Analysis/PartyAnalysisPanel';
+import ApostleSelector from './Apostle/ApostleSelector';
 import { analyzeParty } from '../../utils/partyAnalysisUtils';
 import PartySetting from './PartySetting';
-import DeckRecommendationGuide from './DeckRecommendationGuide';
+import DeckRecommendationGuide from './ApostleGuide';
 
 interface Props {
   apostles: Apostle[];
@@ -71,19 +71,19 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
 
       {/* PartyAnalysisPanel - skillLevels를 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
+        <DeckRecommendationGuide
+          apostles={filledParty}
+          allApostles={apostles}
+          gameMode={gameMode}
+          onGameModeChange={setGameMode}
+        />
+
         <PartyAnalysisPanel
           analysis={analysis}
           filledParty={filledParty}
           skillsData={skillsData}
           asidesData={asidesData}
           // ✅ asideSelection Props 제거!
-        />
-
-        <DeckRecommendationGuide
-          apostles={filledParty}
-          allApostles={apostles}
-          gameMode={gameMode}
-          onGameModeChange={setGameMode}
         />
       </div>
 

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { Apostle } from '../../types/apostle';
-import RecommendedApostlesDisplay from './RecommendedApostlesDisplay';
-import AsideSetting from './sub-components/AsideSetting';
-import DeckRecommendationGuide from './DeckRecommendationGuide';
+import RecommendedApostlesDisplay from './SettingDisplay/TiersApostlesDisplay';
+import AsideSetting from './SettingDisplay/AsideSetting';
 
 interface PartySettingProps {
   filledParty: Apostle[];

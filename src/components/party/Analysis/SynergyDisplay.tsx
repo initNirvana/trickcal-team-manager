@@ -1,7 +1,7 @@
 import React from 'react';
-import type { Personality } from '../../types/apostle';
-import { getSynergyOnIconPath } from '../../utils/apostleUtils';
-import { getPersonalityBackgroundClass } from '../../utils/apostleUtils';
+import type { Personality } from '../../../types/apostle';
+import { getSynergyOnIconPath } from '../../../utils/apostleUtils';
+import { getPersonalityBackgroundClass } from '../../../utils/apostleUtils';
 
 interface SynergyDisplayProps {
   synergies: Array<{

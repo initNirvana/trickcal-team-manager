@@ -96,7 +96,7 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
         <span className="line-clamp-2 text-xs opacity-75">{reason}</span>
 
         {/* 어사이드 표시 */}
-        {asideRequired && <span className="badge badge-sm badge-warning"> {asideRequired}</span>}
+        {asideRequired && <span className="badge badge-xs badge-accent"> {asideRequired}</span>}
       </div>
     </div>
   );

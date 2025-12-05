@@ -1,9 +1,9 @@
 import React from 'react';
-import type { Apostle } from '../../types/apostle';
-import type { PartyAnalysis } from '../../utils/partyAnalysisUtils';
-import { usePartyStore } from '../../stores/partyStore';
-import DamageReductionSkillDisplay from './DamageReductionSkillDisplay';
-import DamageReductionAsideDisplay from './DamageReductionAsideDisplay';
+import type { Apostle } from '../../../types/apostle';
+import type { PartyAnalysis } from '../../../utils/partyAnalysisUtils';
+import { usePartyStore } from '../../../stores/partyStore';
+import SkillEffectDisplay from '../DamageDisplay/SkillEffect';
+import AsideEffectDisplay from '../DamageDisplay/AsideEffect';
 import SynergyDisplay from './SynergyDisplay';
 
 interface PartyAnalysisPanelProps {
@@ -39,7 +39,7 @@ export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
   return (
     <div className="space-y-4">
       {/* 스킬 피해감소 표시 */}
-      <DamageReductionSkillDisplay
+      <SkillEffectDisplay
         apostles={filledParty}
         skillsData={skillsData}
         skillLevels={skillLevels}
@@ -47,7 +47,7 @@ export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
       />
 
       {/* 어사이드 피해감소 표시 */}
-      <DamageReductionAsideDisplay
+      <AsideEffectDisplay
         apostles={filledParty}
         asidesData={asidesData}
         asideSelection={asideSelection}

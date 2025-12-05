@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from 'react';
-import type { Apostle, Personality } from '../../types/apostle';
-import { getPersonalities, isValidPosition } from '../../types/apostle';
+import type { Apostle, Personality } from '../../../types/apostle';
+import { getPersonalities, isValidPosition } from '../../../types/apostle';
 import {
   getPersonalityBackgroundClass,
   getPersonalityIconPath,
   getApostleImagePath,
   getRankIconPath,
-} from '../../utils/apostleUtils';
-import Image from '../common/ApostleImage';
+} from '../../../utils/apostleUtils';
+import Image from '../../common/ApostleImage';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];

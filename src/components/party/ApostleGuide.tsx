@@ -3,9 +3,9 @@
 import React, { useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
 import { analyzeDeckPersonality, getRecommendedApostles } from '../../utils/deckGuideEngine';
-import RecommendedApostleCard from './sub-components/RecommendedApostleCard';
-import DeckTipsPanel from './sub-components/DeckTipsPanel';
-import AlternativeApostlesPanel from './sub-components/AlternativeApostlesPanel';
+import RecommendedApostleCard from './Guide/RecommendedApostleCard';
+import DeckTipsPanel from './Guide/DeckTipsPanel';
+import AlternativeApostlesPanel from './Guide/AlternativeApostlesPanel';
 
 interface DeckRecommendationGuideProps {
   apostles: Apostle[];
@@ -28,24 +28,7 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
   );
 
   if (apostles.filter((a) => a).length === 0) {
-    return (
-      <div className="alert alert-info">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          className="h-6 w-6 shrink-0 stroke-current"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          ></path>
-        </svg>
-        <span>사도를 배치하면 추천이 시작됩니다.</span>
-      </div>
-    );
+    return;
   }
 
   return (
@@ -108,56 +91,54 @@ export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = (
                 </ul>
               </div>
             </div>
-          </div>
 
-          {/* 핵심 사도 추천 (필수/권장 배지 포함) */}
-          <div className="bg-base-100 border-base-300 rounded-lg border p-4">
-            <div className="flex items-center justify-between text-lg font-semibold">
-              핵심 사도 조합
-              {/* PVE/PVP 모드 선택 */}
-              <span className="mb-2 text-sm font-semibold">
-                <button
-                  onClick={() => onGameModeChange('pve')}
-                  className={`btn btn-sm ${gameMode === 'pve' ? 'btn-primary' : 'btn-outline'}`}
-                >
-                  PVE (침략)
-                </button>
-                <button
-                  onClick={() => onGameModeChange('pvp')}
-                  className={`btn btn-sm ${gameMode === 'pvp' ? 'btn-primary' : 'btn-outline'}`}
-                >
-                  PVP (줘팸터)
-                </button>
-              </span>
+            {/* 핵심 사도 추천 (필수/권장 배지 포함) */}
+            <div className="bg-base-100 border-base-300 rounded-lg border p-4">
+              <div className="flex items-center justify-between text-lg font-semibold">
+                핵심 사도 조합
+                {/* PVE/PVP 모드 선택 */}
+                <span className="mb-2 text-sm font-semibold">
+                  <button
+                    onClick={() => onGameModeChange('pve')}
+                    className={`btn btn-sm ${gameMode === 'pve' ? 'btn-primary' : 'btn-outline'}`}
+                  >
+                    PVE (침략)
+                  </button>
+                  <button
+                    onClick={() => onGameModeChange('pvp')}
+                    className={`btn btn-sm ${gameMode === 'pvp' ? 'btn-primary' : 'btn-outline'}`}
+                  >
+                    PVP (줘팸터)
+                  </button>
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+                {guide.core.map((member, idx) => {
+                  // ✅ 필수 사도 여부 확인
+                  const isEssential = member.essential;
+                  return (
+                    <RecommendedApostleCard
+                      key={`${member.name}-${idx}`}
+                      name={member.name}
+                      role={member.role}
+                      reason={member.reason}
+                      position={member.position}
+                      asideRequired={member.aside_required}
+                      isEssential={isEssential} // ✅ 필수 여부 전달
+                      allApostles={allApostles}
+                    />
+                  );
+                })}
+              </div>
+              {/* 대체 사도 옵션 */}
+              {guide.alternatives && guide.alternatives.length > 0 && (
+                <AlternativeApostlesPanel alternatives={guide.alternatives} />
+              )}
             </div>
-
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
-              {guide.core.map((member, idx) => {
-                // ✅ 필수 사도 여부 확인
-                const isEssential = member.essential;
-                return (
-                  <RecommendedApostleCard
-                    key={`${member.name}-${idx}`}
-                    name={member.name}
-                    role={member.role}
-                    reason={member.reason}
-                    position={member.position}
-                    asideRequired={member.aside_required}
-                    isEssential={isEssential} // ✅ 필수 여부 전달
-                    allApostles={allApostles}
-                  />
-                );
-              })}
-            </div>
+            {/* 팁 */}
+            {guide.tips && guide.tips.length > 0 && <DeckTipsPanel tips={guide.tips} />}
           </div>
-
-          {/* 대체 사도 옵션 */}
-          {guide.alternatives && guide.alternatives.length > 0 && (
-            <AlternativeApostlesPanel alternatives={guide.alternatives} />
-          )}
-
-          {/* 팁 */}
-          {guide.tips && guide.tips.length > 0 && <DeckTipsPanel tips={guide.tips} />}
         </>
       )}
     </div>

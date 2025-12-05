@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
-import type { Apostle } from '../../types/apostle';
+import type { Apostle } from '../../../types/apostle';
 import {
   calculateAsideEffects,
   calculatePositionSum,
   type AsideEffect,
-} from '../../utils/damageProcessor';
+} from '../../../utils/damageProcessor';
 
-interface DamageReductionAsideDisplayProps {
+interface AsideEffectProps {
   apostles: Apostle[];
   asidesData?: any;
   asideSelection: Record<string, number | null>;
@@ -76,7 +76,7 @@ const PositionSection: React.FC<{
   );
 };
 
-export const DamageReductionAsideDisplay: React.FC<DamageReductionAsideDisplayProps> = ({
+export const AsideEffectDisplay: React.FC<AsideEffectProps> = ({
   apostles,
   asidesData,
   asideSelection,
@@ -182,4 +182,4 @@ export const DamageReductionAsideDisplay: React.FC<DamageReductionAsideDisplayPr
   );
 };
 
-export default DamageReductionAsideDisplay;
+export default AsideEffectDisplay;

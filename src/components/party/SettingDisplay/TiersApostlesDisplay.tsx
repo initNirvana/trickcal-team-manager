@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { getApostleImagePath, getPositionIconPath } from '../../utils/apostleUtils';
+import { getApostleImagePath, getPositionIconPath } from '../../../utils/apostleUtils';
 import { HiOutlineExclamation } from 'react-icons/hi';
-import Image from '../common/ApostleImage';
-import apostlesTiersData from '../../data/apostles-recommend.json';
+import Image from '../../common/ApostleImage';
+import apostlesTiersData from '../../../data/apostles-recommend.json';
 
 interface ApostleData {
   name: string;

@@ -220,7 +220,7 @@
             "role": "Attacker",
             "position": "back",
             "reason": "공격력 증가 (35%)",
-            "aside_required": "A3 아니면 명함"
+            "aside_required": "A3/명함"
           },
           {
             "name": "피코라",
@@ -717,7 +717,7 @@
             "role": "Attacker",
             "position": "back",
             "reason": "공격력 증가 (35%)",
-            "aside_required": "A3 아니면 명함"
+            "aside_required": "A3/명함"
           },
           {
             "name": "시온",
