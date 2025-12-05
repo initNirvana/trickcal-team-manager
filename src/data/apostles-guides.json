@@ -212,7 +212,7 @@
             "engName": "Eisia",
             "role": "Supporter",
             "position": "back",
-            "reason": "높은 계수의 후열 딜러"
+            "reason": "강한 후열 범위 딜러"
           },
           {
             "name": "우로스",
@@ -287,21 +287,21 @@
             "engName": "Aya",
             "role": "Attacker",
             "position": "mid",
-            "reason": "마법딜러"
+            "reason": "범용성 좋은 범위 딜러"
           },
           {
             "name": "시저",
             "engName": "Caesar",
             "role": "Supporter",
             "position": "mid",
-            "reason": "버프"
+            "reason": "고유 버프와 적 SP 감소"
           },
           {
             "name": "아이시아",
             "engName": "Eisia",
-            "role": "Supporter",
+            "role": "Attacker",
             "position": "back",
-            "reason": "지원"
+            "reason": "강한 후열 범위 딜러"
           }
         ],
         "alternatives": [
