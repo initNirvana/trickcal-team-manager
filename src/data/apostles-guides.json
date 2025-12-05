@@ -379,7 +379,7 @@
             "engName": "TigHero",
             "role": "Attacker",
             "position": "back",
-            "reason": "고정필수 딜러",
+            "reason": "필수 딜러",
             "essential": true
           },
           {
@@ -387,7 +387,7 @@
             "engName": "Polan",
             "role": "Supporter",
             "position": "back",
-            "reason": "HP 증가 효과 및 서브 힐러",
+            "reason": "HP증/서브힐",
             "aside_required": "A2"
           },
           {
@@ -529,7 +529,7 @@
             "engName": "Vela",
             "role": "Tanker",
             "position": "front",
-            "reason": "고정필수 탱커",
+            "reason": "필수 탱커",
             "essential": true
           },
           {
@@ -606,7 +606,7 @@
             "engName": "Vela",
             "role": "Tanker",
             "position": "front",
-            "reason": "고정필수 탱커"
+            "reason": "필수 탱커"
           },
           {
             "name": "슈로",
@@ -685,7 +685,7 @@
             "engName": "Snorky",
             "role": "Tanker",
             "position": "front",
-            "reason": "고정필수 탱커",
+            "reason": "필수 탱커",
             "aside_required": "A2",
             "essential": true
           },
@@ -708,7 +708,7 @@
             "engName": "Joanne",
             "role": "Supporter",
             "position": "back",
-            "reason": "고정필수 서포터",
+            "reason": "필수 서포터",
             "essential": true
           },
           {
@@ -756,7 +756,7 @@
             "engName": "Snorky",
             "role": "Tanker",
             "position": "front",
-            "reason": "고정필수 탱커",
+            "reason": "필수 탱커",
             "aside_required": "A2"
           },
           {
