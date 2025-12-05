@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.3.0",
+    "date": "2025.12.6",
+    "sections": [
+      {
+        "type": "added",
+        "title": "✅ 추가",
+        "items": ["속성 가이드 추가"]
+      }
+    ]
+  },
+  {
     "version": "1.2.0",
     "date": "2025.12.02",
     "sections": [
