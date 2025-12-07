@@ -19,6 +19,7 @@ export function getPersonalityBackgroundClass(personality: Personality): string 
 const assetPathMap = import.meta.glob<string>(
   [
     '/src/assets/apostles/*.{png,webp}', // 사도 이미지
+    '/src/assets/icon/*.{png,webp}', // 아이콘 이미지
     '/src/assets/icon/Common_UnitPersonality_*.png', // 성격 아이콘
     '/src/assets/icon/Synergy_Icon_*_On.png', // 시너지 ON 아이콘
     '/src/assets/icon/Synergy_Icon_*_Off.png', // 시너지 OFF 아이콘
@@ -83,5 +84,10 @@ export function getPositionIconPath(iconName: string): string {
 
 export function getClassIconPath(iconName: string): string {
   const originalPath = `/src/assets/icon/Common_UnitClass_${iconName}.png`;
+  return getAssetPath(originalPath);
+}
+
+export function getIconPath(iconName: string): string {
+  const originalPath = `/src/assets/icon/${iconName}.png`;
   return getAssetPath(originalPath);
 }

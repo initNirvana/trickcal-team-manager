@@ -7,7 +7,9 @@ import {
   getApostleImagePath,
   getPositionIconPath,
   getClassIconPath,
+  getIconPath,
 } from '../../../utils/apostleUtils';
+
 import Image from '../../common/Image';
 
 interface RecommendedApostleCardProps {
@@ -79,7 +81,7 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
         <Activity mode={isEssential ? 'visible' : 'hidden'}>
           <div className="tooltip absolute right-2 bottom-1 h-5 w-5 rounded-full" data-tip="필수">
             <Image
-              src="/src/assets/icon/CurrencyIcon_0033.png"
+              src={getIconPath('CurrencyIcon_0033')}
               className="h-full w-full object-contain"
               alt="필수"
             />
