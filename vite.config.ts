@@ -10,6 +10,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   base: '/',
   plugins: [react(), tailwindcss(), tsconfigPaths()],
+  publicDir: 'public',
   test: {
     globals: true,
     environment: 'jsdom',
