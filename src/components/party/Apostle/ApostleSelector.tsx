@@ -31,48 +31,19 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
   const isRemoveButtonEnabled = currentApostle !== undefined && currentApostle !== null;
 
   const filteredApostles = useMemo(() => {
-    return apostles
-      .filter((apostle) => {
-        if (selectedSlot && !isValidPosition(apostle, selectedSlot)) {
-          return false;
-        }
-
-        if (selectedPersonality) {
-          const personalities = getPersonalities(apostle);
-          if (!personalities.includes(selectedPersonality)) {
-            return false;
-          }
-        }
-
-        if (selectedRank !== null) {
-          if (apostle.rank !== selectedRank) {
-            return false;
-          }
-        }
-
-        return true;
-      })
-      .map((apostle) => {
-        if (selectedPersonality && getPersonalities(apostle).includes(selectedPersonality)) {
-          const personalities = getPersonalities(apostle);
-
-          const otherPersonalities = personalities.filter((p) => p !== selectedPersonality);
-
-          const newPersonaList = [selectedPersonality, ...otherPersonalities];
-
-          const newPersona =
-            newPersonaList.length === 1 ? newPersonaList[0] : (newPersonaList as Personality[]);
-          return {
-            ...apostle,
-            persona: newPersona,
-          } as Apostle;
-        }
-        return apostle;
-      })
-      .sort((a, b) => {
-        return a.name.localeCompare(b.name, 'ko');
-      });
-  }, [apostles, selectedSlot, selectedPersonality, selectedRank]);
+    return apostles.filter((apostle) => {
+      if (selectedPersonality && apostle.persona !== selectedPersonality) {
+        return false; // ✅ 간단한 비교
+      }
+      if (selectedSlot && !isValidPosition(apostle, selectedSlot)) {
+        return false;
+      }
+      if (selectedRank !== null && apostle.rank !== selectedRank) {
+        return false;
+      }
+      return true;
+    });
+  }, [apostles, selectedPersonality, selectedSlot, selectedRank]);
 
   const getRequiredPosition = (slot: number | null): string => {
     if (!slot) return '전체';
@@ -171,13 +142,13 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
           </div>
         ) : (
           filteredApostles.map((apostle) => {
-            const primaryPersonality = getPersonalities(apostle)[0];
+            const displayPersonality = apostle.persona;
             return (
               <div
                 key={apostle.id}
                 onClick={() => onSelect(apostle)}
                 className={`${getPersonalityBackgroundClass(
-                  primaryPersonality,
+                  displayPersonality,
                 )} flex h-25 cursor-pointer flex-col items-center justify-between rounded-lg p-1 text-white transition hover:shadow-md`}
               >
                 {/* 사도 이미지 */}

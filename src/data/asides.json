@@ -770,6 +770,42 @@
       "damage": [{ "Increase": 45, "Reduction": 12 }]
     },
     {
+      "apostleId": "a107_1",
+      "apostleName": "우로스",
+      "name": "걸어갈 길",
+      "level": 3,
+      "description": "착용자와 같은 성격인 아군이 적에게 주는 피해량이 증가하고, 착용자와 같은 성격인 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Persona"],
+      "damage": [{ "Increase": 45, "Reduction": 12 }]
+    },
+    {
+      "apostleId": "a107_2",
+      "apostleName": "우로스",
+      "name": "걸어갈 길",
+      "level": 3,
+      "description": "착용자와 같은 성격인 아군이 적에게 주는 피해량이 증가하고, 착용자와 같은 성격인 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Persona"],
+      "damage": [{ "Increase": 45, "Reduction": 12 }]
+    },
+    {
+      "apostleId": "a107_3",
+      "apostleName": "우로스",
+      "name": "걸어갈 길",
+      "level": 3,
+      "description": "착용자와 같은 성격인 아군이 적에게 주는 피해량이 증가하고, 착용자와 같은 성격인 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Persona"],
+      "damage": [{ "Increase": 45, "Reduction": 12 }]
+    },
+    {
+      "apostleId": "a107_4",
+      "apostleName": "우로스",
+      "name": "걸어갈 길",
+      "level": 3,
+      "description": "착용자와 같은 성격인 아군이 적에게 주는 피해량이 증가하고, 착용자와 같은 성격인 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Persona"],
+      "damage": [{ "Increase": 45, "Reduction": 12 }]
+    },
+    {
       "apostleId": "a108",
       "apostleName": "티그(영웅)",
       "name": "그 스승에 그 제자",
