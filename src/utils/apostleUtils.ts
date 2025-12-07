@@ -19,7 +19,6 @@ export function getPersonalityBackgroundClass(personality: Personality): string 
 const assetPathMap = import.meta.glob<string>(
   [
     '/src/assets/apostles/*.{png,webp}', // 사도 이미지
-    '/src/assets/placeholder.webp', // 플레이스홀더
     '/src/assets/icon/Common_UnitPersonality_*.png', // 성격 아이콘
     '/src/assets/icon/Synergy_Icon_*_On.png', // 시너지 ON 아이콘
     '/src/assets/icon/Synergy_Icon_*_Off.png', // 시너지 OFF 아이콘
@@ -35,14 +34,14 @@ function getAssetPath(originalPath: string): string {
 
   if (!path) {
     console.warn(`Asset not found in map for key: ${originalPath}`);
-    return assetPathMap['/src/assets/placeholder.webp'] || originalPath;
+    return assetPathMap['/src/assets/apostles/placeholder.webp'] || originalPath;
   }
 
   return path;
 }
 
 export function getApostleImagePath(engName: string): string {
-  if (!engName) return getAssetPath('/src/assets/placeholder.webp');
+  if (!engName) return getAssetPath('/src/assets/apostles/placeholder.webp');
 
   const pngKey = `/src/assets/apostles/${engName}.png`;
   const webpKey = `/src/assets/apostles/${engName}.webp`;
@@ -54,7 +53,7 @@ export function getApostleImagePath(engName: string): string {
     return getAssetPath(webpKey);
   }
 
-  return getAssetPath('/src/assets/placeholder.webp');
+  return getAssetPath('/src/assets/apostles/placeholder.webp');
 }
 
 export function getPersonalityIconPath(personality: Personality): string {
