@@ -264,7 +264,8 @@
             "engName": "DianaYester",
             "role": "Attacker",
             "position": "front",
-            "reason": "필수 딜러"
+            "reason": "필수 딜러",
+            "essential": true
           },
           {
             "name": "리코타",
@@ -272,8 +273,7 @@
             "role": "Tanker",
             "position": "front",
             "reason": "유지력",
-            "aside_required": "A2",
-            "essential": true
+            "aside_required": "A2"
           },
           {
             "name": "바롱",
