@@ -88,7 +88,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
   const ranks = [3, 2, 1];
 
   return (
-    <div className="max-h-[60vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-6">
+    <div className="modal-box max-h-[50vh] max-w-xl overflow-y-auto rounded-lg bg-white p-6">
       {/* 헤더 */}
       <div className="grid grid-cols-2 items-center gap-2">
         <h2 className="min-w-fit text-2xl font-bold whitespace-nowrap">
@@ -116,7 +116,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
 
       {/* 성격 필터 | 등급 필터 */}
       <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           {personalities.map((personality) => (
             <button
               key={personality}
@@ -178,10 +178,10 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                 onClick={() => onSelect(apostle)}
                 className={`${getPersonalityBackgroundClass(
                   primaryPersonality,
-                )} flex h-30 cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg p-2 text-white transition hover:shadow-md`}
+                )} flex h-25 cursor-pointer flex-col items-center justify-between rounded-lg p-1 text-white transition hover:shadow-md`}
               >
                 {/* 사도 이미지 */}
-                <div className="flex h-20 w-20 items-center justify-center">
+                <div className="flex h-18 w-20 items-center justify-center">
                   <Image
                     src={getApostleImagePath(apostle.engName)}
                     alt={apostle.name}
@@ -189,9 +189,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   />
                 </div>
                 {/* 사도 이름 */}
-                <div className="w-full truncate text-center text-xs font-semibold">
-                  {apostle.name}
-                </div>
+                <div className="text-center text-xs font-semibold">{apostle.name}</div>
               </div>
             );
           })
