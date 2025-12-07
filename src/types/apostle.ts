@@ -12,7 +12,7 @@ export interface Apostle {
   hasAside: boolean;
   rank: 1 | 2 | 3;
   race: Race;
-  persona: Personality | Personality[];
+  persona: Personality;
   role: Role;
   method: Method;
   position: Position | Position[];
