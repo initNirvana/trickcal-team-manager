@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { Activity, useMemo } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { getApostleImagePath } from '../../../utils/apostleUtils';
 import { usePartyStore } from '../../../stores/partyStore';
+import Image from '../../common/Image';
 
 interface AsideSettingProps {
   filledParty: Apostle[];
@@ -62,21 +63,6 @@ export const AsideSetting: React.FC<AsideSettingProps> = ({ filledParty, asidesD
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-left text-sm">
-        {/* 테이블 헤더 */}
-        <thead className="bg-gray-50 text-xs uppercase dark:bg-gray-700">
-          <tr>
-            <th scope="col" className="px-2 py-3">
-              이미지
-            </th>
-            <th scope="col" className="px-3 py-3">
-              사도명
-            </th>
-            <th scope="col" className="px-6 py-3">
-              어사이드 등급
-            </th>
-          </tr>
-        </thead>
-
         {/* 테이블 바디 */}
         <tbody>
           {filledParty.map((apostle, index) => {
@@ -92,14 +78,10 @@ export const AsideSetting: React.FC<AsideSettingProps> = ({ filledParty, asidesD
               >
                 {/* 사도 이미지 */}
                 <td className="px-2 py-3">
-                  <img
+                  <Image
                     src={getApostleImagePath(apostle.engName)}
                     alt={apostle.name}
-                    className="h-12 w-12 rounded object-cover"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src =
-                        '/src/assets/apostles/default.webp';
-                    }}
+                    className="h-10 w-10 rounded object-cover"
                   />
                 </td>
 
@@ -110,7 +92,7 @@ export const AsideSetting: React.FC<AsideSettingProps> = ({ filledParty, asidesD
                 <td className="px-6 py-3">
                   <div className="flex gap-2">
                     {/* 3성 버튼 */}
-                    {has3Star && (
+                    <Activity mode={has3Star ? 'visible' : 'hidden'}>
                       <button
                         onClick={() => handleAsideRankSelect(apostleKey, 3)}
                         className={`rounded px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition ${
@@ -122,10 +104,10 @@ export const AsideSetting: React.FC<AsideSettingProps> = ({ filledParty, asidesD
                       >
                         어사이드 3성
                       </button>
-                    )}
+                    </Activity>
 
                     {/* 2성 버튼 */}
-                    {has2Star && (
+                    <Activity mode={has2Star ? 'visible' : 'hidden'}>
                       <button
                         onClick={() => handleAsideRankSelect(apostleKey, 2)}
                         className={`rounded px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition ${
@@ -137,7 +119,7 @@ export const AsideSetting: React.FC<AsideSettingProps> = ({ filledParty, asidesD
                       >
                         어사이드 2성
                       </button>
-                    )}
+                    </Activity>
 
                     {/* 해제 버튼 */}
                     <button
@@ -148,16 +130,11 @@ export const AsideSetting: React.FC<AsideSettingProps> = ({ filledParty, asidesD
                           ? 'bg-red-500 text-white shadow-md'
                           : 'bg-gray-300 text-gray-700 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500'
                       } ${hasNoAside ? 'cursor-not-allowed opacity-50' : ''}`}
-                      title={hasNoAside ? '가능한 어사이드가 없습니다' : '어사이드 해제'}
+                      title={hasNoAside ? '어사이드가 없습니다' : '어사이드 해제'}
                     >
                       미해당
                     </button>
                   </div>
-
-                  {/* 어사이드 없음 알림 */}
-                  {hasNoAside && (
-                    <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">어사이드 없음</p>
-                  )}
                 </td>
               </tr>
             );

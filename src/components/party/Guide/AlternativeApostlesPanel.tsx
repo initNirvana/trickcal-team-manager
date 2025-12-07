@@ -1,6 +1,6 @@
 // src/components/party/sub-components/AlternativeApostlesPanel.tsx
 
-import React from 'react';
+import React, { Activity } from 'react';
 
 interface Alternative {
   replace: string;
@@ -26,12 +26,13 @@ const AlternativeApostlesPanel: React.FC<AlternativeApostlesPanelProps> = ({ alt
                 <p className="text-sm font-bold">
                   {alt.replace} → {Array.isArray(alt.with) ? alt.with.join(', ') : alt.with}
                 </p>
-                {alt.condition && (
+                <Activity mode={alt.condition ? 'visible' : 'hidden'}>
                   <p className="text-base-content/70 mt-1 text-xs">⚠️ 조건: {alt.condition}</p>
-                )}
-                {alt.tradeoff && (
+                </Activity>
+
+                <Activity mode={alt.tradeoff ? 'visible' : 'hidden'}>
                   <p className="text-base-content/70 mt-1 text-xs">💡 {alt.tradeoff}</p>
-                )}
+                </Activity>
               </div>
             </div>
           </div>

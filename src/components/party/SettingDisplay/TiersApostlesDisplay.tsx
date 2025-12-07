@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getApostleImagePath, getPositionIconPath } from '../../../utils/apostleUtils';
 import { HiOutlineExclamation } from 'react-icons/hi';
-import Image from '../../common/ApostleImage';
+import Image from '../../common/Image';
 import apostlesTiersData from '../../../data/apostles-recommend.json';
 
 interface ApostleData {

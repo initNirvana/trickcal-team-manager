@@ -1,6 +1,6 @@
 // src/components/party/sub-components/RecommendedApostleCard.tsx
 
-import React from 'react';
+import React, { Activity } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { getPersonalities } from '../../../types/apostle';
 import {
@@ -8,7 +8,7 @@ import {
   getPositionIconPath,
   getClassIconPath,
 } from '../../../utils/apostleUtils';
-import Image from '../../common/ApostleImage';
+import Image from '../../common/Image';
 
 interface RecommendedApostleCardProps {
   name: string;
@@ -75,9 +75,8 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
             alt={apostle.role}
           />
         </div>
-
         {/* 필수 사도 표시 (참잘했어요) */}
-        {isEssential ? (
+        <Activity mode={isEssential ? 'visible' : 'hidden'}>
           <div className="tooltip absolute right-2 bottom-1 h-5 w-5 rounded-full" data-tip="필수">
             <Image
               src="/src/assets/icon/CurrencyIcon_0033.png"
@@ -85,7 +84,7 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
               alt="필수"
             />
           </div>
-        ) : null}
+        </Activity>
       </figure>
       {/* 카드 본문 */}
       <div className="card-body items-center p-2 text-center">
@@ -96,7 +95,9 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
         <span className="line-clamp-2 text-xs opacity-75">{reason}</span>
 
         {/* 어사이드 표시 */}
-        {asideRequired && <span className="badge badge-xs badge-accent"> {asideRequired}</span>}
+        <Activity mode={asideRequired ? 'visible' : 'hidden'}>
+          <span className="badge badge-xs badge-accent"> {asideRequired} </span>
+        </Activity>
       </div>
     </div>
   );

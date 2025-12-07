@@ -2,7 +2,7 @@ import React from 'react';
 import type { Apostle } from '../../types/apostle';
 import { getPersonalities } from '../../types/apostle';
 import { getPersonalityBackgroundClass, getApostleImagePath } from '../../utils/apostleUtils';
-import Image from '../common/ApostleImage';
+import Image from '../common/Image';
 
 interface ApostleSlotProps {
   slotNumber: number;

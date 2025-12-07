@@ -7,7 +7,7 @@ import {
   getApostleImagePath,
   getRankIconPath,
 } from '../../../utils/apostleUtils';
-import Image from '../../common/ApostleImage';
+import Image from '../../common/Image';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
