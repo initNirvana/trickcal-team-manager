@@ -18,7 +18,6 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
   // ===== Zustand 구독: Party 상태 =====
   const party = usePartyStore((state) => state.party);
   const setPartyMember = usePartyStore((state) => state.setPartyMember);
-  const clearParty = usePartyStore((state) => state.clearParty);
   const resetAll = usePartyStore((state) => state.resetAll);
 
   // ===== UI 관련 로컬 상태 (useState 유지) =====
