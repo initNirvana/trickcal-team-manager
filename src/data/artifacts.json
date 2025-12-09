@@ -86,6 +86,7 @@
     { "id": 69, "level": 1, "grade": "일반", "name": "중량 조끼" },
     { "id": 70, "level": 1, "grade": "일반", "name": "치유의 호롱불" },
     { "id": 71, "level": 1, "grade": "일반", "name": "묘수" },
-    { "id": 72, "level": 1, "grade": "일반", "name": "요정 로브" }
+    { "id": 72, "level": 1, "grade": "일반", "name": "요정 로브" },
+    { "id": 73, "level": 1, "grade": "희귀", "name": "제이드의 비싼 만년필" }
   ]
 }

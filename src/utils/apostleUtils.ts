@@ -20,6 +20,8 @@ const assetPathMap = import.meta.glob<string>(
   [
     '/src/assets/apostles/*.{png,webp}', // 사도 이미지
     '/src/assets/icon/*.{png,webp}', // 아이콘 이미지
+    '/src/assets/artifacts/*.{png,webp}', // 아티팩트 이미지
+    '/src/assets/spells/*.{png,webp}', // 스펠 이미지
     '/src/assets/icon/Common_UnitPersonality_*.png', // 성격 아이콘
     '/src/assets/icon/Synergy_Icon_*_On.png', // 시너지 ON 아이콘
     '/src/assets/icon/Synergy_Icon_*_Off.png', // 시너지 OFF 아이콘
