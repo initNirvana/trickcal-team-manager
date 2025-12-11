@@ -12,7 +12,7 @@ interface UseApostleSearchReturn {
   open: boolean;
   setOpen: (value: boolean) => void;
   searchList: Apostle[];
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
 }
 
 /**
@@ -23,7 +23,7 @@ interface UseApostleSearchReturn {
 export const useApostleSearch = ({ apostles }: UseApostleSearchProps): UseApostleSearchReturn => {
   const [search, setSearch] = useState('');
   const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null!);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   // 초성 맵 생성 (사도 이름 -> 초성)
   const initialMap = useMemo(() => {
