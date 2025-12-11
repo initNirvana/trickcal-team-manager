@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import type { Apostle, Personality } from '../../../types/apostle';
-import { getPersonalities, isValidPosition } from '../../../types/apostle';
+import { getPersonalityKoreanName, isValidPosition } from '../../../types/apostle';
 import {
   getPersonalityBackgroundClass,
   getPersonalityIconPath,
@@ -8,6 +8,7 @@ import {
   getRankIconPath,
 } from '../../../utils/apostleUtils';
 import Image from '../../common/Image';
+import ApostleSelectorSearch from './ApostleSearch';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
@@ -29,13 +30,25 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
   const [selectedPersonality, setSelectedPersonality] = useState<Personality | null>(null);
   const [selectedRank, setSelectedRank] = useState<number | null>(null);
   const isRemoveButtonEnabled = currentApostle !== undefined && currentApostle !== null;
+  const [selectedApostle, setSelectedApostle] = useState<Apostle | null>(null);
+
+  const handleSelectApostle = (apostle: Apostle) => {
+    setSelectedApostle(apostle);
+    onSelect(apostle);
+  };
+
+  const positionFilteredApostles = useMemo(() => {
+    return apostles.filter((apostle) => {
+      if (selectedSlot && !isValidPosition(apostle, selectedSlot)) {
+        return false;
+      }
+      return true;
+    });
+  }, [apostles, selectedSlot]);
 
   const filteredApostles = useMemo(() => {
-    return apostles.filter((apostle) => {
+    return positionFilteredApostles.filter((apostle) => {
       if (selectedPersonality && apostle.persona !== selectedPersonality) {
-        return false; // ✅ 간단한 비교
-      }
-      if (selectedSlot && !isValidPosition(apostle, selectedSlot)) {
         return false;
       }
       if (selectedRank !== null && apostle.rank !== selectedRank) {
@@ -43,7 +56,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
       }
       return true;
     });
-  }, [apostles, selectedPersonality, selectedSlot, selectedRank]);
+  }, [positionFilteredApostles, selectedPersonality, selectedRank]);
 
   const getRequiredPosition = (slot: number | null): string => {
     if (!slot) return '전체';
@@ -85,6 +98,9 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
         </div>
       </div>
 
+      {/* 사도 검색기 */}
+      <ApostleSelectorSearch apostles={positionFilteredApostles} onSelect={handleSelectApostle} />
+
       {/* 성격 필터 | 등급 필터 */}
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
@@ -99,7 +115,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   ? 'ring-primary scale-110 ring-2 ring-offset-1'
                   : 'opacity-60 hover:scale-105 hover:opacity-100'
               }`}
-              title={personality}
+              title={getPersonalityKoreanName(personality)}
             >
               <img
                 src={getPersonalityIconPath(personality)}
@@ -122,20 +138,17 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
               }`}
               title={`${rank}성`}
             >
-              <img
-                src={getRankIconPath(rank)}
-                alt={`${rank}성`}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
-                }}
-              />
+              <Image src={getRankIconPath(rank)} alt={`${rank}성`} />
+              <div className="absolute inset-0 flex items-center justify-center rounded-lg">
+                <span className="text-sm font-bold text-black">{rank}</span>
+              </div>
             </button>
           ))}
         </div>
       </div>
 
       {/* 사도 그리드 - 5열 */}
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-5 gap-1">
         {filteredApostles.length === 0 ? (
           <div className="col-span-5 py-12 text-center text-gray-500">
             배치 가능한 사도가 없습니다.
@@ -160,7 +173,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   />
                 </div>
                 {/* 사도 이름 */}
-                <div className="text-center text-xs font-semibold">{apostle.name}</div>
+                <div className="text-center text-xs">{apostle.name}</div>
               </div>
             );
           })

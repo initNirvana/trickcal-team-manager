@@ -11,6 +11,7 @@
   "dependencies": {
     "@ssgoi/react": "^3.1.0",
     "@tailwindcss/vite": "^4.1.17",
+    "es-hangul": "^2.3.8",
     "lodash": "^4.17.21",
     "react": "^19.2.1",
     "react-dom": "19.2.1",
@@ -26,7 +27,7 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "^5.1.2",
-    "daisyui": "^5.5.8",
+    "daisyui": "^5.5.11",
     "jsdom": "^27.3.0",
     "postcss": "^8.5.6",
     "prettier": "^3.7.4",
