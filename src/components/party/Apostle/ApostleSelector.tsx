@@ -8,6 +8,7 @@ import {
   getRankIconPath,
 } from '../../../utils/apostleUtils';
 import Image from '../../common/Image';
+import ApostleSelectorSearch from './ApostleSearch';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
@@ -29,6 +30,12 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
   const [selectedPersonality, setSelectedPersonality] = useState<Personality | null>(null);
   const [selectedRank, setSelectedRank] = useState<number | null>(null);
   const isRemoveButtonEnabled = currentApostle !== undefined && currentApostle !== null;
+  const [selectedApostle, setSelectedApostle] = useState<Apostle | null>(null);
+
+  const handleSelectApostle = (apostle: Apostle) => {
+    setSelectedApostle(apostle);
+    console.log(`선택된 사도: ${apostle.name}`);
+  };
 
   const filteredApostles = useMemo(() => {
     return apostles.filter((apostle) => {
@@ -83,6 +90,12 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
             닫기
           </button>
         </div>
+      </div>
+
+      <div className="space-y-4">
+        <ApostleSelectorSearch apostles={apostles} onSelect={handleSelectApostle} />
+
+        {selectedApostle && <p>선택됨: {selectedApostle.name}</p>}
       </div>
 
       {/* 성격 필터 | 등급 필터 */}
