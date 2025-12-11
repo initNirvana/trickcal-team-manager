@@ -34,15 +34,21 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
 
   const handleSelectApostle = (apostle: Apostle) => {
     setSelectedApostle(apostle);
-    console.log(`선택된 사도: ${apostle.name}`);
+    onSelect(apostle);
   };
 
-  const filteredApostles = useMemo(() => {
+  const positionFilteredApostles = useMemo(() => {
     return apostles.filter((apostle) => {
-      if (selectedPersonality && apostle.persona !== selectedPersonality) {
-        return false; // ✅ 간단한 비교
-      }
       if (selectedSlot && !isValidPosition(apostle, selectedSlot)) {
+        return false;
+      }
+      return true;
+    });
+  }, [apostles, selectedSlot]);
+
+  const filteredApostles = useMemo(() => {
+    return positionFilteredApostles.filter((apostle) => {
+      if (selectedPersonality && apostle.persona !== selectedPersonality) {
         return false;
       }
       if (selectedRank !== null && apostle.rank !== selectedRank) {
@@ -50,7 +56,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
       }
       return true;
     });
-  }, [apostles, selectedPersonality, selectedSlot, selectedRank]);
+  }, [positionFilteredApostles, selectedPersonality, selectedRank]);
 
   const getRequiredPosition = (slot: number | null): string => {
     if (!slot) return '전체';
@@ -92,11 +98,8 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
         </div>
       </div>
 
-      <div className="space-y-4">
-        <ApostleSelectorSearch apostles={apostles} onSelect={handleSelectApostle} />
-
-        {selectedApostle && <p>선택됨: {selectedApostle.name}</p>}
-      </div>
+      {/* 사도 검색기 */}
+      <ApostleSelectorSearch apostles={positionFilteredApostles} onSelect={handleSelectApostle} />
 
       {/* 성격 필터 | 등급 필터 */}
       <div className="flex items-center justify-between gap-3">
