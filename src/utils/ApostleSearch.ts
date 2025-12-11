@@ -56,10 +56,10 @@ export const useApostleSearch = ({ apostles }: UseApostleSearchProps): UseApostl
   }, []);
 
   // 클릭 감지 리스너 등록
-  useState(() => {
+  useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  });
+  }, [handleClickOutside]);
 
   return {
     search,
