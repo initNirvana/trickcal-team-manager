@@ -25,6 +25,17 @@ export function getPersonalities(apostle: Apostle): Personality[] {
   return [apostle.persona];
 }
 
+export const getPersonalityKoreanName = (personality: Personality): string => {
+  const personalityMap: Record<Personality, string> = {
+    Mad: '광기',
+    Gloomy: '우울',
+    Naive: '순수',
+    Jolly: '활발',
+    Cool: '냉정',
+  };
+  return personalityMap[personality] || personality;
+};
+
 export function getPositions(apostle: Apostle): Position[] {
   const normalizePos = (pos: any): Position => {
     if (pos === '전열' || pos === 'frontLine') return 'frontLine';

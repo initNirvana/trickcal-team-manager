@@ -42,7 +42,7 @@ export const ApostleSelectorSearch: React.FC<ApostleSelectorSearchProps> = ({
         onChange={(e) => setSearch(e.target.value)}
         onFocus={() => setOpen(true)}
         placeholder={placeholder}
-        className="form-control bg-base-200 w-full"
+        className="input form-control bg-base-200 w-full"
       />
 
       {/* 검색 결과 드롭다운 */}

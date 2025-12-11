@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import type { Apostle, Personality } from '../../../types/apostle';
-import { getPersonalities, isValidPosition } from '../../../types/apostle';
+import { getPersonalityKoreanName, isValidPosition } from '../../../types/apostle';
 import {
   getPersonalityBackgroundClass,
   getPersonalityIconPath,
@@ -115,7 +115,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   ? 'ring-primary scale-110 ring-2 ring-offset-1'
                   : 'opacity-60 hover:scale-105 hover:opacity-100'
               }`}
-              title={personality}
+              title={getPersonalityKoreanName(personality)}
             >
               <img
                 src={getPersonalityIconPath(personality)}
@@ -138,20 +138,17 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
               }`}
               title={`${rank}성`}
             >
-              <img
-                src={getRankIconPath(rank)}
-                alt={`${rank}성`}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
-                }}
-              />
+              <Image src={getRankIconPath(rank)} alt={`${rank}성`} />
+              <div className="absolute inset-0 flex items-center justify-center rounded-lg">
+                <span className="text-sm font-bold text-black">{rank}</span>
+              </div>
             </button>
           ))}
         </div>
       </div>
 
       {/* 사도 그리드 - 5열 */}
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-5 gap-1">
         {filteredApostles.length === 0 ? (
           <div className="col-span-5 py-12 text-center text-gray-500">
             배치 가능한 사도가 없습니다.
@@ -176,7 +173,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
                   />
                 </div>
                 {/* 사도 이름 */}
-                <div className="text-center text-xs font-semibold">{apostle.name}</div>
+                <div className="text-center text-xs">{apostle.name}</div>
               </div>
             );
           })
