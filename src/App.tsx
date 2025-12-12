@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import PartySimulator from './components/party/PartySimulator';
 import { useDataLoader } from './hooks/useDataLoader';
 import Layout from './components/layout/Layout';

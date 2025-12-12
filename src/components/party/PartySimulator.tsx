@@ -21,8 +21,8 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
   const resetAll = usePartyStore((state) => state.resetAll);
 
   // ===== UI 관련 로컬 상태 (useState 유지) =====
-  const [selectedSlot, setSelectedSlot] = React.useState<number | null>(null);
-  const [showSelector, setShowSelector] = React.useState(false);
+  const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
+  const [showSelector, setShowSelector] = useState(false);
 
   const [gameMode, setGameMode] = useState<'pve' | 'pvp'>('pve');
 
