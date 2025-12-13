@@ -839,7 +839,7 @@
       "level": 3,
       "description": "후열 아군이 적에게 주는 피해량을 증가시킨다.",
       "type": ["Back"],
-      "damage": [{ "Increase": 26, "Reduction": 9.75 }]
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
     },
     {
       "apostleId": "a112",
