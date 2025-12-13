@@ -1496,6 +1496,19 @@
       "role": "딜러",
       "method": "물리",
       "position": "후열"
+    },
+    {
+      "id": "a112",
+      "name": "하이디",
+      "engName": "Heidi",
+      "isEldain": false,
+      "hasAside": true,
+      "rank": 3,
+      "race": "엘프",
+      "persona": "Mad",
+      "role": "딜러",
+      "method": "물리",
+      "position": "후열"
     }
   ]
 }

@@ -840,6 +840,15 @@
       "description": "후열 아군이 적에게 주는 피해량을 증가시킨다.",
       "type": ["Back"],
       "damage": [{ "Increase": 26, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a112",
+      "apostleName": "하이디",
+      "name": "목표 포착!",
+      "level": 3,
+      "description": "후열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 0, "Reduction": 18 }]
     }
   ]
 }
