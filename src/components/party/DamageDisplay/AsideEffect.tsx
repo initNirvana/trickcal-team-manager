@@ -1,10 +1,6 @@
 import React, { useMemo } from 'react';
 import type { Apostle } from '../../../types/apostle';
-import {
-  calculateAsideEffects,
-  calculatePositionSum,
-  type AsideEffect,
-} from '../../../utils/damageProcessor';
+import { calculateAsideEffects, calculatePositionSum } from '../../../utils/damageProcessor';
 
 interface AsideEffectProps {
   apostles: Apostle[];
@@ -12,65 +8,180 @@ interface AsideEffectProps {
   asideSelection: Record<string, number | null>;
 }
 
-function getPositionLabel(type: 'all' | 'front' | 'mid' | 'back' | 'persona'): string {
-  const labels = {
-    all: '모든 열에 적용',
-    front: '전열',
-    mid: '중열',
-    back: '후열',
-    persona: '동일 성격',
-  };
-  return labels[type];
-}
+// ✅ 포지션별 설정
+const positionConfig = {
+  all: {
+    label: '모든 아군',
+    dotColor: 'text-slate-700 dark:text-slate-300',
+  },
+  front: {
+    label: '전열 아군',
+    dotColor: 'text-red-700 dark:text-red-300',
+  },
+  mid: {
+    label: '중열 아군',
+    dotColor: 'text-green-700 dark:text-green-300',
+  },
+  back: {
+    label: '후열 아군',
+    dotColor: 'text-blue-700 dark:text-blue-300',
+  },
+  persona: {
+    label: '동일 성격 아군',
+    dotColor: 'text-purple-700 dark:text-purple-300',
+  },
+};
 
-const EffectCard: React.FC<{
-  effect: AsideEffect;
-  isDamageIncrease: boolean;
-}> = ({ effect, isDamageIncrease }) => {
-  const value = isDamageIncrease ? effect.damageIncrease : effect.damageReduction;
-  const bgColor = isDamageIncrease
-    ? 'bg-orange-50 hover:bg-orange-100 dark:bg-orange-900/20 dark:hover:bg-orange-900/30'
-    : 'bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30';
-  const badgeColor = isDamageIncrease ? 'warning' : 'info';
+// ✅ 포지션 효과 라인 (증가/감소 함께 표시)
+const PositionEffectLine: React.FC<{
+  position: 'all' | 'front' | 'mid' | 'back' | 'persona';
+  skillIncrease?: number;
+  damageIncrease?: number;
+  damageReduction?: number;
+  skillReduction?: number;
+}> = ({
+  position,
+  skillIncrease = 0,
+  damageIncrease = 0,
+  damageReduction = 0,
+  skillReduction = 0,
+}) => {
+  const config = positionConfig[position];
+
+  // 표시할 항목만 필터링
+  const items: Array<{ label: string; value: number; color: string }> = [];
+
+  if (skillIncrease && skillIncrease > 0) {
+    items.push({
+      label: '스킬 피해량 증가',
+      value: skillIncrease,
+      color: 'text-yellow-600 dark:text-yellow-400',
+    });
+  }
+
+  if (skillReduction && skillReduction > 0) {
+    items.push({
+      label: '스킬 피해량 감소',
+      value: skillReduction,
+      color: 'text-cyan-600 dark:text-cyan-400',
+    });
+  }
+  if (position === 'persona') {
+    if (damageIncrease && damageIncrease > 0) {
+      items.push({
+        label: '동일 성격 피해량 증가',
+        value: damageIncrease,
+        color: 'text-orange-600 dark:text-orange-400',
+      });
+    }
+    if (damageReduction && damageReduction > 0) {
+      items.push({
+        label: '동일 성격 받는 피해량 감소',
+        value: damageReduction,
+        color: 'text-blue-600 dark:text-blue-400',
+      });
+    }
+  } else {
+    if (damageIncrease && damageIncrease > 0) {
+      items.push({
+        label: '피해량 증가',
+        value: damageIncrease,
+        color: 'text-orange-600 dark:text-orange-400',
+      });
+    }
+    if (damageReduction && damageReduction > 0) {
+      items.push({
+        label: '받는 피해량 감소',
+        value: damageReduction,
+        color: 'text-blue-600 dark:text-blue-400',
+      });
+    }
+  }
+
+  if (items.length === 0) return null;
 
   return (
-    <div className={`flex items-center justify-between rounded-lg p-2 transition ${bgColor}`}>
-      <div className="flex-1">
-        <p className="text-sm font-bold text-gray-900 dark:text-white">
-          {effect.apostleName} ({effect.rankStar}성)
-        </p>
+    <div className="space-y-2">
+      <p className={`text-sm font-semibold ${config.dotColor}`}>● {config.label}</p>
+      <div className="ml-4 space-y-1">
+        {items.map((item, idx) => (
+          <div key={idx} className="flex items-center justify-between text-sm">
+            <span className="text-gray-600 dark:text-gray-400">{item.label}</span>
+            <span className={`font-bold ${item.color}`}>+{item.value}%</span>
+          </div>
+        ))}
       </div>
-      <span className="badge badge-sm badge-info">{value}%</span>
     </div>
   );
 };
 
-const PositionSection: React.FC<{
-  effects: AsideEffect[];
-  positionType: 'all' | 'front' | 'mid' | 'back' | 'persona';
-  isDamageIncrease: boolean;
-}> = ({ effects, positionType, isDamageIncrease }) => {
-  if (effects.length === 0) return null;
+const EffectSection: React.FC<{
+  skillIncreaseByPosition: Record<string, number>;
+  damageIncreaseByPosition?: Record<string, number>;
+  damageIncreaseByPersona?: Record<string, number>;
+  damageReductionByPosition?: Record<string, number>;
+  damageReductionByPersona?: Record<string, number>;
+  skillReductionByPosition?: Record<string, number>;
+}> = ({
+  skillIncreaseByPosition = {},
+  damageIncreaseByPosition = {},
+  damageIncreaseByPersona = {},
+  damageReductionByPosition = {},
+  damageReductionByPersona = {},
+  skillReductionByPosition = {},
+}) => {
+  const hasAnyEffect =
+    Object.values(skillIncreaseByPosition).some((v) => v > 0) ||
+    (damageIncreaseByPosition && Object.values(damageIncreaseByPosition).some((v) => v > 0)) ||
+    (damageReductionByPosition && Object.values(damageReductionByPosition).some((v) => v > 0)) ||
+    (damageIncreaseByPersona && Object.values(damageIncreaseByPersona).some((v) => v > 0)) ||
+    (damageReductionByPersona && Object.values(damageReductionByPersona).some((v) => v > 0)) ||
+    (skillReductionByPosition && Object.values(skillReductionByPosition).some((v) => v > 0));
 
-  const sum = calculatePositionSum(effects, isDamageIncrease);
+  if (!hasAnyEffect) return null;
+
+  console.log(damageReductionByPersona.persona);
 
   return (
-    <div className="mb-3">
-      <div className="mb-2 flex items-center justify-between">
-        <h5 className="text-xs font-bold text-gray-700 dark:text-gray-300">
-          {getPositionLabel(positionType)}
-        </h5>
-        <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">{sum}%</span>
-      </div>
+    <div className="space-y-3 rounded-lg bg-gray-50 p-4 dark:bg-gray-900/20">
+      <div className="space-y-4">
+        <PositionEffectLine
+          position="persona"
+          damageIncrease={damageIncreaseByPersona.persona}
+          damageReduction={damageReductionByPersona.persona}
+        />
 
-      <div className="space-y-2">
-        {effects.map((effect, idx) => (
-          <EffectCard
-            key={`${effect.apostleId}-${idx}`}
-            effect={effect}
-            isDamageIncrease={isDamageIncrease}
-          />
-        ))}
+        <PositionEffectLine
+          position="all"
+          skillIncrease={skillIncreaseByPosition.all}
+          damageIncrease={damageIncreaseByPosition?.all}
+          damageReduction={damageReductionByPosition?.all}
+          skillReduction={skillReductionByPosition?.all}
+        />
+
+        <PositionEffectLine
+          position="front"
+          skillIncrease={skillIncreaseByPosition.front}
+          damageIncrease={damageIncreaseByPosition?.front}
+          damageReduction={damageReductionByPosition?.front}
+          skillReduction={skillReductionByPosition?.front}
+        />
+
+        <PositionEffectLine
+          position="mid"
+          skillIncrease={skillIncreaseByPosition.mid}
+          damageIncrease={damageIncreaseByPosition?.mid}
+          damageReduction={damageReductionByPosition?.mid}
+          skillReduction={skillReductionByPosition?.mid}
+        />
+
+        <PositionEffectLine
+          position="back"
+          skillIncrease={skillIncreaseByPosition.back}
+          damageIncrease={damageIncreaseByPosition?.back}
+          damageReduction={damageReductionByPosition?.back}
+          skillReduction={skillReductionByPosition?.back}
+        />
       </div>
     </div>
   );
@@ -88,95 +199,91 @@ export const AsideEffectDisplay: React.FC<AsideEffectProps> = ({
 
   if (apostles.length === 0) {
     return (
-      <div className="box py-4 text-center">
-        <p className="text-muted">파티에 사도를 추가하세요.</p>
+      <div className="rounded-lg bg-blue-50 p-4 text-center dark:bg-blue-900/20">
+        파티에 사도를 추가하세요.
       </div>
     );
   }
 
+  const totalHasEffect =
+    effectList.totalIncrease +
+    effectList.totalReduction +
+    effectList.totalSkillIncrease +
+    effectList.totalSkillReduction;
+
+  // ✅ 포지션별 효과값 계산
+  const damageIncreaseByPersona = {
+    all: calculatePositionSum(effectList.increaseEffects.all, false, false),
+    front: calculatePositionSum(effectList.increaseEffects.front, false, false),
+    mid: calculatePositionSum(effectList.increaseEffects.mid, false, false),
+    back: calculatePositionSum(effectList.increaseEffects.back, false, false),
+    persona: calculatePositionSum(effectList.increaseEffects.persona, true, false),
+  };
+
+  const damageReductionByPersona = {
+    all: calculatePositionSum(effectList.reductionEffects.all, false, false),
+    front: calculatePositionSum(effectList.reductionEffects.front, false, false),
+    mid: calculatePositionSum(effectList.reductionEffects.mid, false, false),
+    back: calculatePositionSum(effectList.reductionEffects.back, false, false),
+    persona: calculatePositionSum(effectList.reductionEffects.persona, false, false),
+  };
+
+  const skillIncreaseByPosition = {
+    all: calculatePositionSum(effectList.skillIncreaseEffects.all, true, true),
+    front: calculatePositionSum(effectList.skillIncreaseEffects.front, true, true),
+    mid: calculatePositionSum(effectList.skillIncreaseEffects.mid, true, true),
+    back: calculatePositionSum(effectList.skillIncreaseEffects.back, true, true),
+  };
+
+  const damageIncreaseByPosition = {
+    all: calculatePositionSum(effectList.increaseEffects.all, true, false),
+    front: calculatePositionSum(effectList.increaseEffects.front, true, false),
+    mid: calculatePositionSum(effectList.increaseEffects.mid, true, false),
+    back: calculatePositionSum(effectList.increaseEffects.back, true, false),
+  };
+
+  const damageReductionByPosition = {
+    all: calculatePositionSum(effectList.reductionEffects.all, false, false),
+    front: calculatePositionSum(effectList.reductionEffects.front, false, false),
+    mid: calculatePositionSum(effectList.reductionEffects.mid, false, false),
+    back: calculatePositionSum(effectList.reductionEffects.back, false, false),
+  };
+
+  const skillReductionByPosition = {
+    all: calculatePositionSum(effectList.skillReductionEffects.all, false, true),
+    front: calculatePositionSum(effectList.skillReductionEffects.front, false, true),
+    mid: calculatePositionSum(effectList.skillReductionEffects.mid, false, true),
+    back: calculatePositionSum(effectList.skillReductionEffects.back, false, true),
+  };
+
   return (
-    <div className="collapse-arrow border-base-300 collapse border">
-      <input type="checkbox" name="my-accordion-4" />
-      <div className="collapse-title font-semibold">
-        <div className="flex w-full items-center justify-between pr-2">
-          <span className="text-sm font-semibold">어사이드 효과</span>
-        </div>
-      </div>
+    <div className="space-y-6">
+      <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
+        <input type="checkbox" defaultChecked />
+        <div className="collapse-title font-semibold">어사이드 효과</div>
 
-      <div className="collapse-content text-sm">
-        {effectList.totalIncrease === 0 && effectList.totalReduction === 0 && (
-          <div className="py-6 text-center">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="collapse-content text-sm">
+          {totalHasEffect === 0 && (
+            <div className="rounded-lg bg-blue-50 p-4 text-center dark:bg-blue-900/20">
               어사이드 설정에서 사도의 어사이드를 선택해주세요.
-            </p>
-          </div>
-        )}
+            </div>
+          )}
 
-        {/* 피해량 증가 섹션 */}
-        {effectList.totalIncrease > 0 && (
-          <div className="mb-4">
-            <h4 className="mb-3 text-sm font-bold text-orange-700 dark:text-orange-400">
-              피해량 증가
-            </h4>
-            <PositionSection
-              effects={effectList.increaseEffects.all}
-              positionType="all"
-              isDamageIncrease={true}
-            />
-            <PositionSection
-              effects={effectList.increaseEffects.persona}
-              positionType="persona"
-              isDamageIncrease={true}
-            />
-            <PositionSection
-              effects={effectList.increaseEffects.front}
-              positionType="front"
-              isDamageIncrease={true}
-            />
-            <PositionSection
-              effects={effectList.increaseEffects.mid}
-              positionType="mid"
-              isDamageIncrease={true}
-            />
-            <PositionSection
-              effects={effectList.increaseEffects.back}
-              positionType="back"
-              isDamageIncrease={true}
-            />
-          </div>
-        )}
+          {/* ✅ 기타 섹션 */}
+          <EffectSection
+            skillIncreaseByPosition={skillIncreaseByPosition}
+            skillReductionByPosition={skillReductionByPosition}
+            damageIncreaseByPersona={damageIncreaseByPersona}
+            damageReductionByPersona={damageReductionByPersona}
+          />
 
-        {/* 피해량 감소 섹션 */}
-        {effectList.totalReduction > 0 && (
-          <div>
-            <h4 className="mb-3 text-sm font-bold text-blue-700 dark:text-blue-400">피해량 감소</h4>
-            <PositionSection
-              effects={effectList.reductionEffects.all}
-              positionType="all"
-              isDamageIncrease={false}
-            />
-            <PositionSection
-              effects={effectList.reductionEffects.persona}
-              positionType="persona"
-              isDamageIncrease={false}
-            />
-            <PositionSection
-              effects={effectList.reductionEffects.front}
-              positionType="front"
-              isDamageIncrease={false}
-            />
-            <PositionSection
-              effects={effectList.reductionEffects.mid}
-              positionType="mid"
-              isDamageIncrease={false}
-            />
-            <PositionSection
-              effects={effectList.reductionEffects.back}
-              positionType="back"
-              isDamageIncrease={false}
-            />
-          </div>
-        )}
+          {/* ✅ 피해량 섹션 */}
+          <EffectSection
+            skillIncreaseByPosition={{}}
+            damageIncreaseByPosition={damageIncreaseByPosition}
+            damageReductionByPosition={damageReductionByPosition}
+          />
+        </div>
       </div>
     </div>
   );

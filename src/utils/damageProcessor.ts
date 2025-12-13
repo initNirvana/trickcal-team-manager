@@ -12,6 +12,8 @@ export interface AsideEffect {
   type: string;
   damageIncrease: number;
   damageReduction: number;
+  skillIncrease: number;
+  skillReduction: number;
   description?: string;
 }
 
@@ -26,13 +28,16 @@ export interface GroupedEffects {
 export interface AsideEffectResult {
   totalIncrease: number;
   totalReduction: number;
+  totalSkillIncrease: number;
+  totalSkillReduction: number;
   increaseEffects: GroupedEffects;
   reductionEffects: GroupedEffects;
+  skillIncreaseEffects: GroupedEffects;
+  skillReductionEffects: GroupedEffects;
 }
 
 /**
  * 어사이드 데이터와 선택된 랭크를 기반으로 효과를 계산합니다.
- * (기존 DamageReductionAsideDisplay.tsx에서 분리됨)
  */
 export function calculateAsideEffects(
   apostles: Apostle[],
@@ -46,6 +51,7 @@ export function calculateAsideEffects(
     mid: [],
     back: [],
   };
+
   const reductionEffects: GroupedEffects = {
     all: [],
     persona: [],
@@ -53,69 +59,142 @@ export function calculateAsideEffects(
     mid: [],
     back: [],
   };
+
+  const skillIncreaseEffects: GroupedEffects = {
+    all: [],
+    persona: [],
+    front: [],
+    mid: [],
+    back: [],
+  };
+
+  const skillReductionEffects: GroupedEffects = {
+    all: [],
+    persona: [],
+    front: [],
+    mid: [],
+    back: [],
+  };
+
   let totalIncrease = 0;
   let totalReduction = 0;
+  let totalSkillIncrease = 0;
+  let totalSkillReduction = 0;
 
-  if (!asidesData?.asides) {
+  if (!asidesData?.asides || !Array.isArray(asidesData.asides)) {
     return {
       totalIncrease: 0,
       totalReduction: 0,
+      totalSkillIncrease: 0,
+      totalSkillReduction: 0,
       increaseEffects,
       reductionEffects,
+      skillIncreaseEffects,
+      skillReductionEffects,
     };
   }
 
   for (const apostle of apostles) {
-    // apostle.id가 없으면 name을 대체 키로 사용 (기존 로직 보완)
+    if (!apostle) continue;
+
+    // ✅ apostleKey 개선
     const apostleKey = apostle.id || apostle.name;
     const selectedRank = asideSelection[apostleKey];
 
     if (!selectedRank) continue;
 
+    // ✅ aside 찾기 개선 (더 유연한 검색)
     const aside = asidesData.asides.find(
-      (a: any) => a.apostleId === apostle.id && a.level === selectedRank,
+      (a: any) => a.apostleId === apostle.id && a.level === selectedRank && (a.damage || a.skill), // ✅ damage 또는 skill 중 하나라도 있으면 OK
     );
-    if (!aside?.damage) continue;
 
-    const damageData = Array.isArray(aside.damage) ? aside.damage[0] : aside.damage;
+    if (!aside) continue;
 
+    // ✅ damage 필드 처리 (안전하게)
+    const damageData = aside.damage
+      ? Array.isArray(aside.damage)
+        ? aside.damage[0]
+        : aside.damage
+      : null;
     const increase = damageData?.Increase || 0;
     const reduction = damageData?.Reduction || 0;
-    const asideType = aside.type || 'All';
+
+    // ✅ skill 필드 처리 (안전하게)
+    const skillData = aside.skill
+      ? Array.isArray(aside.skill)
+        ? aside.skill[0]
+        : aside.skill
+      : null;
+    const skillIncrease = skillData?.Increase || 0;
+    const skillReduction = skillData?.Reduction || 0;
+
+    // ✅ type 처리 개선
+    const asideType = aside.type && Array.isArray(aside.type) ? aside.type[0] : aside.type || 'All';
 
     const effectBase: AsideEffect = {
       apostleName: apostle.name,
       apostleId: apostle.id,
       asideName: aside.name,
       rankStar: selectedRank,
-      type: aside.type || 'All',
+      type: asideType,
       damageIncrease: increase,
       damageReduction: reduction,
+      skillIncrease: skillIncrease,
+      skillReduction: skillReduction,
       description: aside.description,
     };
 
+    // 피해량 증가
     if (increase > 0) {
       totalIncrease += increase;
       const increaseEffect = { ...effectBase, damageReduction: 0 };
-      addToGroup(increaseEffects, asideType[0], increaseEffect);
+      addToGroup(increaseEffects, asideType, increaseEffect);
     }
 
+    // 피해량 감소
     if (reduction > 0) {
       totalReduction += reduction;
       const reductionEffect = { ...effectBase, damageIncrease: 0 };
-      addToGroup(reductionEffects, asideType[0], reductionEffect);
+      addToGroup(reductionEffects, asideType, reductionEffect);
+    }
+
+    // 스킬 피해량 증가
+    if (skillIncrease > 0) {
+      totalSkillIncrease += skillIncrease;
+      const skillIncreaseEffect = {
+        ...effectBase,
+        skillReduction: 0,
+        damageIncrease: 0,
+        damageReduction: 0,
+      };
+      addToGroup(skillIncreaseEffects, asideType, skillIncreaseEffect);
+    }
+
+    // 스킬 피해량 감소
+    if (skillReduction > 0) {
+      totalSkillReduction += skillReduction;
+      const skillReductionEffect = {
+        ...effectBase,
+        skillIncrease: 0,
+        damageIncrease: 0,
+        damageReduction: 0,
+      };
+      addToGroup(skillReductionEffects, asideType, skillReductionEffect);
     }
   }
 
   return {
     totalIncrease,
     totalReduction,
+    totalSkillIncrease,
+    totalSkillReduction,
     increaseEffects,
     reductionEffects,
+    skillIncreaseEffects,
+    skillReductionEffects,
   };
 }
 
-// 헬퍼 함수: 그룹 분류 (중복 제거를 위해 내부 함수로 분리)
 function addToGroup(groups: GroupedEffects, type: string, effect: AsideEffect) {
   switch (type) {
     case 'All':
@@ -139,11 +218,19 @@ function addToGroup(groups: GroupedEffects, type: string, effect: AsideEffect) {
 /**
  * 효과 목록의 합계를 계산합니다.
  */
-export function calculatePositionSum(effects: AsideEffect[], isDamageIncrease: boolean): number {
-  return effects.reduce(
-    (sum, e) => sum + (isDamageIncrease ? e.damageIncrease : e.damageReduction),
-    0,
-  );
+export function calculatePositionSum(
+  effects: AsideEffect[],
+  isDamageIncrease: boolean,
+  isSkillIncrease?: boolean,
+): number {
+  if (!effects || effects.length === 0) return 0;
+
+  return effects.reduce((sum, e) => {
+    if (isSkillIncrease) {
+      return sum + (isDamageIncrease ? e.skillIncrease : e.skillReduction);
+    }
+    return sum + (isDamageIncrease ? e.damageIncrease : e.damageReduction);
+  }, 0);
 }
 
 // ==========================================
@@ -166,7 +253,6 @@ export interface SkillReductionResult {
 
 /**
  * 스킬 데이터와 레벨을 기반으로 피해량 감소를 계산합니다.
- * (기존 DamageReductionSkillDisplay.tsx에서 분리됨)
  */
 export function calculateSkillDamageReduction(
   apostles: Apostle[],
@@ -176,11 +262,12 @@ export function calculateSkillDamageReduction(
   const details: SkillReductionDetail[] = [];
   let totalReduction = 0;
 
-  if (!skillsData?.skills) {
+  if (!skillsData?.skills || !Array.isArray(skillsData.skills)) {
     return { totalReduction: 0, details: [] };
   }
 
   for (const apostle of apostles) {
+    if (!apostle) continue;
     const apostaSkills = skillsData.skills.filter((s: any) => s.apostleId === apostle.id);
     let bestSkill = null;
     let bestReduction = 0;
@@ -215,9 +302,6 @@ export function calculateSkillDamageReduction(
       });
     }
   }
-
-  // 최대 75%로 제한
-  totalReduction = Math.min(totalReduction, 75);
 
   return { totalReduction, details };
 }
