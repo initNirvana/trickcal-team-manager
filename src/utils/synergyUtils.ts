@@ -1,94 +1,61 @@
-import type { Apostle, Personality } from "../types/apostle";
-import { getPersonalities } from "../types/apostle";
+import type { Apostle, Personality } from '../types/apostle';
+import { getPersonalities } from '../types/apostle';
+
+const SYNERGY_TIERS = [
+  { count: 9, level: 5, hp: 200, damage: 200, label: 'Lv.5 (+200%)' },
+  { count: 7, level: 4, hp: 140, damage: 140, label: 'Lv.4 (+140%)' },
+  { count: 6, level: 3, hp: 100, damage: 100, label: 'Lv.3 (+100%)' },
+  { count: 4, level: 2, hp: 55, damage: 55, label: 'Lv.2 (+55%)' },
+  { count: 2, level: 1, hp: 20, damage: 20, label: 'Lv.1 (+20%)' },
+] as const;
+
+const PERSONALITY_LIST: Personality[] = ['Jolly', 'Mad', 'Naive', 'Gloomy', 'Cool'];
 
 export interface Synergy {
   personality: Personality;
   count: number;
+  totalCount: number;
+  inactiveCount: number;
   isActive: boolean;
-  bonus?: {
-    hp: number;
-    damage: number;
-  };
+  bonus?: { hp: number; damage: number };
 }
 
-export function calculateSynergyBonus(count: number): {
-  hp: number;
-  damage: number;
-} {
-  if (count < 2) return { hp: 0, damage: 0 };
-  if (count >= 9) return { hp: 200, damage: 200 };
-  if (count >= 7) return { hp: 140, damage: 140 };
-  if (count >= 6) return { hp: 100, damage: 100 };
-  if (count >= 4) return { hp: 55, damage: 55 };
-  return { hp: 20, damage: 20 };
+function getSynergyTier(count: number) {
+  return SYNERGY_TIERS.find((tier) => count >= tier.count);
+}
+
+export function calculateSynergyBonus(count: number): { hp: number; damage: number } {
+  const tier = getSynergyTier(count);
+  return tier ? { hp: tier.hp, damage: tier.damage } : { hp: 0, damage: 0 };
 }
 
 export function analyzeSynergies(apostles: Apostle[]): Synergy[] {
   if (apostles.length === 0) return [];
 
-  const personalityCounts: Map<Personality, number> = new Map();
+  const personalityCounts = new Map<Personality, number>();
 
-  apostles.forEach((apostle) => {
+  for (const apostle of apostles) {
     const personalities = getPersonalities(apostle);
-    personalities.forEach((personality) => {
-      const current = personalityCounts.get(personality) || 0;
-      personalityCounts.set(personality, current + 1);
-    });
-  });
+    for (const p of personalities) {
+      personalityCounts.set(p, (personalityCounts.get(p) || 0) + 1);
+    }
+  }
 
-  const personalities: Personality[] = [
-    "Jolly",
-    "Mad",
-    "Naive",
-    "Gloomy",
-    "Cool",
-  ];
-
-  const synergies: Synergy[] = personalities.map((personality) => {
-    const count = personalityCounts.get(personality) || 0;
-    const isActive = count >= 2;
-    const bonus = isActive ? calculateSynergyBonus(count) : undefined;
+  return PERSONALITY_LIST.map((personality) => {
+    const totalCount = personalityCounts.get(personality) || 0;
+    const activeTier = getSynergyTier(totalCount);
+    const isActive = !!activeTier;
+    const count = activeTier ? activeTier.count : 0;
+    const inactiveCount = isActive ? totalCount - count : 0;
+    const bonus = activeTier ? { hp: activeTier.hp, damage: activeTier.damage } : undefined;
 
     return {
       personality,
       count,
+      totalCount,
+      inactiveCount,
       isActive,
       bonus,
     };
   });
-
-  return synergies;
-}
-
-export function getSynergyLevel(count: number): number {
-  if (count < 2) return 0;
-  if (count < 4) return 1;
-  if (count < 6) return 2;
-  if (count < 7) return 3;
-  if (count < 9) return 4;
-  return 5;
-}
-
-export function getSynergyLevelDescription(level: number): string {
-  switch (level) {
-    case 0:
-      return "미활성";
-    case 1:
-      return "Lv.1 (+20%)";
-    case 2:
-      return "Lv.2 (+55%)";
-    case 3:
-      return "Lv.3 (+100%)";
-    case 4:
-      return "Lv.4 (+140%)";
-    case 5:
-      return "Lv.5 (+200%)";
-    default:
-      return "알 수 없음";
-  }
-}
-
-export function getActiveSynergies(apostles: Apostle[]): Personality[] {
-  const synergies = analyzeSynergies(apostles);
-  return synergies.filter((s) => s.isActive).map((s) => s.personality);
 }
