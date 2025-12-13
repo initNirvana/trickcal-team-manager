@@ -1,4 +1,5 @@
 import React from 'react';
+import { usePartyStore } from '../../stores/partyStore';
 import type { Apostle } from '../../types/apostle';
 import RecommendedApostlesDisplay from './SettingDisplay/TiersApostlesDisplay';
 import AsideSetting from './SettingDisplay/AsideSetting';
@@ -9,6 +10,9 @@ interface PartySettingProps {
 }
 
 export const PartySetting: React.FC<PartySettingProps> = ({ filledParty, asidesData }) => {
+  const showDeckGuide = usePartyStore((state) => state.showDeckGuide);
+  const setShowDeckGuide = usePartyStore((state) => state.setShowDeckGuide);
+
   return (
     <div className="space-y-1">
       {/* 설정 섹션 */}
@@ -17,7 +21,17 @@ export const PartySetting: React.FC<PartySettingProps> = ({ filledParty, asidesD
         <div className="collapse-title font-semibold">
           <div>각종 설정</div>
         </div>
-        <div className="collapse-content text-sm">아티팩트/스펠 설정 구현 예정</div>
+        <div className="collapse-content text-sm">
+          <label className="swap justify-center">
+            <input
+              type="checkbox"
+              checked={showDeckGuide}
+              onChange={(e) => setShowDeckGuide(e.target.checked)}
+            />
+            <div className="swap-on">속성 추천 모드 ON</div>
+            <div className="swap-off">속성 추천 모드 OFF</div>
+          </label>
+        </div>
       </div>
 
       {/* 추천 사도 섹션 */}

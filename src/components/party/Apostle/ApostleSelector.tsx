@@ -148,7 +148,7 @@ const ApostleSelector: React.FC<ApostleSelectorProps> = ({
       </div>
 
       {/* 사도 그리드 - 5열 */}
-      <div className="grid grid-cols-5 gap-1">
+      <div className="grid grid-cols-3 gap-1 sm:grid-cols-3 md:grid-cols-5">
         {filteredApostles.length === 0 ? (
           <div className="col-span-5 py-12 text-center text-gray-500">
             배치 가능한 사도가 없습니다.

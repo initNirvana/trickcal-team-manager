@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Activity, useState } from 'react';
 import type { Apostle } from '../../types/apostle';
 import { usePartyStore } from '../../stores/partyStore';
 import PartyGrid from './PartyGrid';
@@ -15,18 +15,20 @@ interface Props {
 }
 
 export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesData }) => {
-  // ===== Zustand 구독: Party 상태 =====
+  // Zustand 구독: Party 상태
   const party = usePartyStore((state) => state.party);
   const setPartyMember = usePartyStore((state) => state.setPartyMember);
   const resetAll = usePartyStore((state) => state.resetAll);
+  // 속성별 추천 사도 가이드 ON/OFF
+  const showDeckGuide = usePartyStore((state) => state.showDeckGuide);
 
-  // ===== UI 관련 로컬 상태 (useState 유지) =====
+  // UI 관련 로컬 상태 (useState 유지)
   const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
   const [showSelector, setShowSelector] = useState(false);
 
   const [gameMode, setGameMode] = useState<'pve' | 'pvp'>('pve');
 
-  // ===== 액션 핸들러 =====
+  // 액션 핸들러
   const handleSlotClick = (slotNumber: number) => {
     setSelectedSlot(slotNumber);
     setShowSelector(true);
@@ -51,7 +53,7 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
     resetAll();
   };
 
-  // ===== 파생 상태 (계산된 값) =====
+  // 파생 상태 (계산된 값)
   const filledParty = party.filter((a) => a !== undefined) as Apostle[];
   const analysis = analyzeParty(filledParty);
 
@@ -70,12 +72,14 @@ export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesDa
 
       {/* PartyAnalysisPanel - skillLevels를 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
-        <DeckRecommendationGuide
-          apostles={filledParty}
-          allApostles={apostles}
-          gameMode={gameMode}
-          onGameModeChange={setGameMode}
-        />
+        <Activity mode={showDeckGuide ? 'visible' : 'hidden'}>
+          <DeckRecommendationGuide
+            apostles={filledParty}
+            allApostles={apostles}
+            gameMode={gameMode}
+            onGameModeChange={setGameMode}
+          />
+        </Activity>
 
         <PartyAnalysisPanel
           analysis={analysis}

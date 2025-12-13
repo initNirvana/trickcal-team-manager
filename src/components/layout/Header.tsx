@@ -31,6 +31,9 @@ export function HeaderComp() {
             <li>
               <a onClick={() => setShowPatchNotes(true)}>패치 노트</a>
             </li>
+            <li>
+              <a>보유 사도 육성 순위</a>
+            </li>
           </ul>
         </div>
       </div>

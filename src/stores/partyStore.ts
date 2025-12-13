@@ -6,6 +6,8 @@ interface PartyState {
   skillLevels: Record<string, number>;
   asideSelection: Record<string, number | null>;
 
+  showDeckGuide: boolean;
+
   // Party 관련
   setPartyMember: (slot: number, apostle: Apostle | undefined) => void;
   clearParty: () => void;
@@ -20,12 +22,15 @@ interface PartyState {
 
   // 전체 리셋
   resetAll: () => void;
+
+  setShowDeckGuide: (show: boolean) => void;
 }
 
 export const usePartyStore = create<PartyState>((set) => ({
   party: Array(9).fill(undefined),
   skillLevels: {},
   asideSelection: {},
+  showDeckGuide: true,
 
   // Party 액션
   setPartyMember: (slot, apostle) =>
@@ -72,5 +77,8 @@ export const usePartyStore = create<PartyState>((set) => ({
       party: Array(9).fill(undefined),
       skillLevels: {},
       asideSelection: {},
+      showDeckGuide: undefined,
     }),
+
+  setShowDeckGuide: (show) => set({ showDeckGuide: show }), // ✅ 새로운 액션
 }));
