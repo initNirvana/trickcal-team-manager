@@ -1,7 +1,11 @@
 import React from 'react';
 import type { Personality } from '../../../types/apostle';
-import { getSynergyOnIconPath, getSynergyOffIconPath } from '../../../utils/apostleUtils';
-import { getPersonalityBackgroundClass } from '../../../utils/apostleUtils';
+import {
+  getSynergyOnIconPath,
+  getSynergyOffIconPath,
+  getPersonalityBackgroundClass,
+} from '../../../utils/apostleUtils';
+import { calculateTotalSynergyBonus } from '../../../utils/synergyUtils';
 
 interface SynergyDisplayProps {
   synergies: Array<{
@@ -15,12 +19,39 @@ interface SynergyDisplayProps {
 }
 
 const SynergyDisplay: React.FC<SynergyDisplayProps> = ({ synergies }) => {
+  const totalBonus = calculateTotalSynergyBonus(synergies);
+  const hasActiveSynergies = synergies.some((s) => s.isActive);
+
   return (
     <div className="space-y-4">
       <h3 className="text-sm font-semibold">성격 시너지</h3>
 
+      {/* 성격 시너지 합계 */}
+      {hasActiveSynergies && (
+        <div className="space-y-2">
+          {/* HP + 피해량 바 */}
+          <div className="flex gap-2">
+            {/* 합계 라벨 */}
+            <div className="text-center text-xs font-bold text-gray-600">합계</div>
+            <div className="flex-1">
+              <div className="flex h-5 items-center justify-center rounded bg-gray-200">
+                <span className="text-xs font-bold text-gray-700">HP +{totalBonus.hp}%</span>
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <div className="flex h-5 items-center justify-center rounded bg-gray-200">
+                <span className="text-xs font-bold text-gray-700">
+                  피해량 +{totalBonus.damage}%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 모든 시너지 표시 (비활성도 포함) */}
-      {synergies.filter((s) => s.totalCount > 0).length === 0 ? (
+      {!hasActiveSynergies ? (
         <p className="text-center text-sm text-gray-500">같은 성격의 사도 2명 이상을 배치하세요.</p>
       ) : (
         <div className="flex flex-wrap justify-center gap-4">

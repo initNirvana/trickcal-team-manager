@@ -59,3 +59,18 @@ export function analyzeSynergies(apostles: Apostle[]): Synergy[] {
     };
   });
 }
+
+export function calculateTotalSynergyBonus(synergies: Synergy[]): { hp: number; damage: number } {
+  return synergies.reduce(
+    (total, synergy) => {
+      if (synergy.isActive && synergy.bonus) {
+        return {
+          hp: total.hp + synergy.bonus.hp,
+          damage: total.damage + synergy.bonus.damage,
+        };
+      }
+      return total;
+    },
+    { hp: 0, damage: 0 },
+  );
+}
