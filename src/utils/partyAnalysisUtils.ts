@@ -1,5 +1,5 @@
 import type { Apostle, Personality } from '../types/apostle';
-import { analyzeSynergies } from './synergyUtils';
+import { analyzeSynergies, Synergy } from './synergyUtils';
 import { calculateDamageReduction } from './damageReductionUtils';
 
 export interface PartyAnalysis {
@@ -7,6 +7,8 @@ export interface PartyAnalysis {
   synergies: Array<{
     personality: Personality;
     count: number;
+    totalCount: number;
+    inactiveCount: number;
     isActive: boolean;
     bonus?: { hp: number; damage: number };
   }>;
