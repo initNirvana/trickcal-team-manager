@@ -156,7 +156,7 @@ export interface SkillReductionDetail {
   skillType: string;
   skillLevel: number;
   reduction: number;
-  appliesTo: string;
+  effectRange: string;
 }
 
 export interface SkillReductionResult {
@@ -211,7 +211,7 @@ export function calculateSkillDamageReduction(
         skillType: bestSkill.level === 'low' ? '저학년' : '고학년',
         skillLevel: currentSkillLevel,
         reduction: bestReduction,
-        appliesTo: isExcludingSelf ? '자신만' : '다수 적용',
+        effectRange: bestSkill.effectRange,
       });
     }
   }

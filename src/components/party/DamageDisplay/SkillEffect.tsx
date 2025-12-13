@@ -74,7 +74,7 @@ export const SkillEffectDisplay: React.FC<SkillEffectDisplayProps> = ({
                   <p className="text-sm font-bold text-gray-900">
                     {item.apostleName} {item.skillType} Lv.{item.skillLevel}
                   </p>
-                  <p className="text-xs text-gray-500">범위: {item.appliesTo}</p>
+                  <p className="text-xs text-gray-500">범위: {item.effectRange} </p>
                 </div>
 
                 {/* 사도 스킬 레벨 조정 */}
