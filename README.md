@@ -1,11 +1,29 @@
-# 트릭컬 리바이브 파티 빌더
+# 트릭컬 리바이브 팀 매니저 (Trickcal: Revive Team Manager)
 
-- Last updated 2025/11/25
-- This repo is the source to build the github pages to view related tools for the game Trickcal: Revive.
-- non-profit fan project for the game Trickcal: Revive/
-- Please file an issue if you come across any bugs, or have any wanted/suggested features. I can't guarantee to implement all wanted/suggested features, but I will put priority on the ones I find interesting.
+> **비영리 팬 프로젝트**입니다
 
-# Disclaimer
-- All assets/data used in this repo is a property/copyright of EPIDGames. They are used for only non-commercial / informational / educational purposes only.
-- Please note that all the assets and data are subject to the original copyright terms, and should not be used for commercial purposes without explicit permission from the copyright holders.
-- This repo is not affiliated with the developers/creators of the game, and could be shutdown anytime with the request from the copyright holders.
+---
+
+### 주요 기능 및 특징
+
+* **파티 빌더 (3x3 포지션):** 전열/중열/후열 3x3 그리드 형태의 파티 구성 시뮬레이터
+* **실시간 시너지 분석:** 배치한 사도 성격(Personality) 조합에 따른 시너지를 실시간으로 표시
+* **피해량 계산기:** 스킬 레벨 조정이 가능한 받피감 스킬/어사이드 효과 계산기
+* **성격별 사도 추천 가이드:** 성격 별 PVE/PVP 덱(파티) 추천 기능, 프론티어 기준 티어리스트 제공
+
+---
+
+### 피드백 및 기여
+
+프로젝트를 개선하기 위한 여러분의 도움은 언제나 환영합니다!
+
+* **버그 신고 / 기능 제안:** 버그나 제안할 기능이 있다면 언제든지 [Issue](https://github.com/initNirvana/trickcal-team-manager/issues/26)로 알려주세요.
+
+---
+
+### Disclaimer (저작권 고지)
+
+* **저작권:** 이 프로젝트에 사용된 모든 에셋(Assets) 및 데이터는 **EPIDGames**의 소유 및 저작물입니다.
+* **사용 목적:** 모든 자료는 **비영리적 / 정보 제공**으로만 사용됩니다.
+* **상업적 이용 금지:** 모든 에셋과 데이터는 원 저작권 조건에 따라 보호되며, 저작권자의 명시적인 허가 없이 상업적인 목적으로 사용될 수 없습니다.
+* **비공식 프로젝트:** 본 저장소는 게임 개발사/제작사와 어떠한 제휴 관계도 없으며, 저작권 소유자의 요청에 따라 언제든지 종료될 수 있습니다.
