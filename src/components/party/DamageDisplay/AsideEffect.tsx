@@ -140,8 +140,6 @@ const EffectSection: React.FC<{
 
   if (!hasAnyEffect) return null;
 
-  console.log(damageReductionByPersona.persona);
-
   return (
     <div className="space-y-3 rounded-lg bg-gray-50 p-4 dark:bg-gray-900/20">
       <div className="space-y-4">

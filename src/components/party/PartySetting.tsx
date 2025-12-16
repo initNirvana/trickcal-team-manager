@@ -23,13 +23,17 @@ export const PartySetting: React.FC<PartySettingProps> = ({ filledParty, asidesD
         </div>
         <div className="collapse-content text-sm">
           <label className="swap justify-center">
-            <input
-              type="checkbox"
-              checked={showDeckGuide}
-              onChange={(e) => setShowDeckGuide(e.target.checked)}
-            />
-            <div className="swap-on">속성 추천 모드 ON</div>
-            <div className="swap-off">속성 추천 모드 OFF</div>
+            <fieldset className="fieldset bg-base-100 border-base-300 rounded-box w-28 border p-3">
+              <legend className="fieldset-legend">속성 추천 모드</legend>
+              <label className="label">
+                <input
+                  type="checkbox"
+                  checked={showDeckGuide}
+                  onChange={(e) => setShowDeckGuide(e.target.checked)}
+                  className="toggle toggle-xl toggle-primary"
+                />
+              </label>
+            </fieldset>
           </label>
         </div>
       </div>
