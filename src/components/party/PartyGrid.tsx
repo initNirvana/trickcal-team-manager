@@ -1,4 +1,3 @@
-import React from 'react';
 import { usePartyStore } from '../../stores/partyStore';
 import ApostleSlot from './ApostleSlot';
 
@@ -6,7 +5,7 @@ interface PartyGridProps {
   onSelectSlot: (slotNumber: number) => void;
 }
 
-const PartyGrid: React.FC<PartyGridProps> = ({ onSelectSlot }) => {
+const PartyGrid = ({ onSelectSlot }: PartyGridProps) => {
   const party = usePartyStore((state) => state.party);
 
   return (

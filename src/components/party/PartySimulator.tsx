@@ -8,13 +8,13 @@ import { analyzeParty } from '../../utils/partyAnalysisUtils';
 import PartySetting from './PartySetting';
 import DeckRecommendationGuide from './ApostleGuide';
 
-interface Props {
+interface PartySimulatorProps {
   apostles: Apostle[];
   skillsData?: any;
   asidesData: any;
 }
 
-export const PartySimulator: React.FC<Props> = ({ apostles, skillsData, asidesData }) => {
+const PartySimulator = ({ apostles, skillsData, asidesData }: PartySimulatorProps) => {
   // Zustand 구독: Party 상태
   const party = usePartyStore((state) => state.party);
   const setPartyMember = usePartyStore((state) => state.setPartyMember);

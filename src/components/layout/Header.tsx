@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PatchNotesModal from './PatchNotesModal';
 
-export function HeaderComp() {
+function Header() {
   const [showPatchNotes, setShowPatchNotes] = useState(false);
 
   return (
@@ -44,4 +44,4 @@ export function HeaderComp() {
   );
 }
 
-export default HeaderComp;
+export default Header;

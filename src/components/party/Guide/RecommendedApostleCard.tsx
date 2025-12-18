@@ -29,7 +29,7 @@ const positionConfig = {
   back: { icon: 'Common_PositionBack', label: '후열' },
 };
 
-const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
+const RecommendedApostleCard = ({
   name,
   role,
   reason,
@@ -37,7 +37,7 @@ const RecommendedApostleCard: React.FC<RecommendedApostleCardProps> = ({
   asideRequired,
   isEssential = false,
   allApostles,
-}) => {
+}: RecommendedApostleCardProps) => {
   const apostle = allApostles.find((a) => a.name === name);
 
   if (!apostle) {

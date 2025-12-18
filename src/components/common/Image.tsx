@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ImageProps {
   src: string;
   alt: string;
@@ -7,12 +5,12 @@ interface ImageProps {
   fallbackSrc?: string;
 }
 
-const ApostleImage: React.FC<ImageProps> = ({
+function ApostleImage({
   src,
   alt,
   className = '',
   fallbackSrc = '/src/assets/placeholder.webp',
-}) => {
+}: ImageProps) {
   return (
     <img
       src={src}
@@ -23,6 +21,6 @@ const ApostleImage: React.FC<ImageProps> = ({
       }}
     />
   );
-};
+}
 
 export default ApostleImage;

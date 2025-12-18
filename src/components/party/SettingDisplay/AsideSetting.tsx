@@ -1,4 +1,4 @@
-import React, { Activity, useMemo } from 'react';
+import { Activity, useMemo } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { getApostleImagePath } from '../../../utils/apostleUtils';
 import { usePartyStore } from '../../../stores/partyStore';
@@ -18,7 +18,7 @@ interface AsideRankInfo {
  * 어사이드 설정 컴포넌트
  * 각 사도별 어사이드 등급(2성, 3성) 선택 기능 제공
  */
-export const AsideSetting: React.FC<AsideSettingProps> = ({ filledParty, asidesData }) => {
+const AsideSetting = ({ filledParty, asidesData }: AsideSettingProps) => {
   const asideSelection = usePartyStore((state) => state.asideSelection);
   const setAsideSelection = usePartyStore((state) => state.setAsideSelection);
 

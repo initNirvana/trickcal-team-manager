@@ -33,18 +33,18 @@ const positionConfig = {
 };
 
 // ✅ 포지션 효과 라인 (증가/감소 함께 표시)
-const PositionEffectLine: React.FC<{
-  position: 'all' | 'front' | 'mid' | 'back' | 'persona';
-  skillIncrease?: number;
-  damageIncrease?: number;
-  damageReduction?: number;
-  skillReduction?: number;
-}> = ({
+const PositionEffectLine = ({
   position,
   skillIncrease = 0,
   damageIncrease = 0,
   damageReduction = 0,
   skillReduction = 0,
+}: {
+  position: 'all' | 'front' | 'mid' | 'back' | 'persona';
+  skillIncrease?: number;
+  damageIncrease?: number;
+  damageReduction?: number;
+  skillReduction?: number;
 }) => {
   const config = positionConfig[position];
 
@@ -115,21 +115,23 @@ const PositionEffectLine: React.FC<{
   );
 };
 
-const EffectSection: React.FC<{
+interface EffectSectionProps {
   skillIncreaseByPosition: Record<string, number>;
   damageIncreaseByPosition?: Record<string, number>;
   damageIncreaseByPersona?: Record<string, number>;
   damageReductionByPosition?: Record<string, number>;
   damageReductionByPersona?: Record<string, number>;
   skillReductionByPosition?: Record<string, number>;
-}> = ({
+}
+
+const EffectSection = ({
   skillIncreaseByPosition = {},
   damageIncreaseByPosition = {},
   damageIncreaseByPersona = {},
   damageReductionByPosition = {},
   damageReductionByPersona = {},
   skillReductionByPosition = {},
-}) => {
+}: EffectSectionProps) => {
   const hasAnyEffect =
     Object.values(skillIncreaseByPosition).some((v) => v > 0) ||
     (damageIncreaseByPosition && Object.values(damageIncreaseByPosition).some((v) => v > 0)) ||
@@ -185,11 +187,7 @@ const EffectSection: React.FC<{
   );
 };
 
-export const AsideEffectDisplay: React.FC<AsideEffectProps> = ({
-  apostles,
-  asidesData,
-  asideSelection,
-}) => {
+const AsideEffectDisplay = ({ apostles, asidesData, asideSelection }: AsideEffectProps) => {
   const effectList = useMemo(
     () => calculateAsideEffects(apostles, asidesData, asideSelection),
     [apostles, asidesData, asideSelection],

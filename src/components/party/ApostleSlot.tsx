@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Apostle } from '../../types/apostle';
 import { getPersonalities } from '../../types/apostle';
 import { getPersonalityBackgroundClass, getApostleImagePath } from '../../utils/apostleUtils';
@@ -9,8 +8,7 @@ interface ApostleSlotProps {
   apostle?: Apostle;
   onSelect?: () => void;
 }
-
-const ApostleSlot: React.FC<ApostleSlotProps> = ({ slotNumber, apostle, onSelect }) => {
+const ApostleSlot = ({ slotNumber, apostle, onSelect }: ApostleSlotProps) => {
   if (apostle) {
     const personalities = getPersonalities(apostle);
     const primaryPersonality = personalities[0];

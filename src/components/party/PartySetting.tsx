@@ -1,4 +1,3 @@
-import React from 'react';
 import { usePartyStore } from '../../stores/partyStore';
 import type { Apostle } from '../../types/apostle';
 import RecommendedApostlesDisplay from './SettingDisplay/TiersApostlesDisplay';
@@ -9,7 +8,7 @@ interface PartySettingProps {
   asidesData?: any;
 }
 
-export const PartySetting: React.FC<PartySettingProps> = ({ filledParty, asidesData }) => {
+const PartySetting = ({ filledParty, asidesData }: PartySettingProps) => {
   const showDeckGuide = usePartyStore((state) => state.showDeckGuide);
   const setShowDeckGuide = usePartyStore((state) => state.setShowDeckGuide);
 

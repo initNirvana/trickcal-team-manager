@@ -1,6 +1,4 @@
-// src/components/party/sub-components/AlternativeApostlesPanel.tsx
-
-import React, { Activity } from 'react';
+import { Activity } from 'react';
 
 interface Alternative {
   replace: string;
@@ -13,7 +11,7 @@ interface AlternativeApostlesPanelProps {
   alternatives: Alternative[];
 }
 
-const AlternativeApostlesPanel: React.FC<AlternativeApostlesPanelProps> = ({ alternatives }) => {
+const AlternativeApostlesPanel = ({ alternatives }: AlternativeApostlesPanelProps) => {
   return (
     <div className="collapse-arrow border-base-300 collapse border">
       <input type="checkbox" name="my-accordion-4" />

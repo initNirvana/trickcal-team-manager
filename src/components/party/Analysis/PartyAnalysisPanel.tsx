@@ -13,12 +13,12 @@ interface PartyAnalysisPanelProps {
   asidesData?: any;
 }
 
-export const PartyAnalysisPanel: React.FC<PartyAnalysisPanelProps> = ({
+const PartyAnalysisPanel = ({
   analysis,
   filledParty,
   skillsData,
   asidesData,
-}) => {
+}: PartyAnalysisPanelProps) => {
   const skillLevels = usePartyStore((state) => state.skillLevels);
   const setSkillLevel = usePartyStore((state) => state.setSkillLevel);
   const asideSelection = usePartyStore((state) => state.asideSelection);

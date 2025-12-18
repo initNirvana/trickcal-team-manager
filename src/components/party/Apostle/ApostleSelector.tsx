@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import type { Apostle, Personality } from '../../../types/apostle';
 import { getPersonalityKoreanName, isValidPosition } from '../../../types/apostle';
 import {
@@ -19,14 +19,14 @@ interface ApostleSelectorProps {
   onClose: () => void;
 }
 
-const ApostleSelector: React.FC<ApostleSelectorProps> = ({
+const ApostleSelector = ({
   apostles,
   selectedSlot,
   currentApostle,
   onSelect,
   onRemove,
   onClose,
-}) => {
+}: ApostleSelectorProps) => {
   const [selectedPersonality, setSelectedPersonality] = useState<Personality | null>(null);
   const [selectedRank, setSelectedRank] = useState<number | null>(null);
   const isRemoveButtonEnabled = currentApostle !== undefined && currentApostle !== null;

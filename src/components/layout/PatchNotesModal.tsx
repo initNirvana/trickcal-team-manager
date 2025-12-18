@@ -1,4 +1,3 @@
-import React from 'react';
 import patchNotesData from '../../data/patchNotes.json';
 
 interface PatchSection {
@@ -18,6 +17,10 @@ interface PatchNotesModalProps {
   onClose: () => void;
 }
 
+interface SectionContentProps {
+  section: PatchSection;
+}
+
 const getSectionColor = (type: string): string => {
   switch (type) {
     case 'added':
@@ -33,7 +36,7 @@ const getSectionColor = (type: string): string => {
   }
 };
 
-const SectionContent: React.FC<{ section: PatchSection }> = ({ section }) => (
+const SectionContent = ({ section }: SectionContentProps) => (
   <div className="space-y-2 text-sm">
     <p className={`font-semibold ${getSectionColor(section.type)}`}>{section.title}</p>
     <ul className="ml-2 list-inside list-disc space-y-1">
@@ -44,7 +47,7 @@ const SectionContent: React.FC<{ section: PatchSection }> = ({ section }) => (
   </div>
 );
 
-export const PatchNotesModal: React.FC<PatchNotesModalProps> = ({ isOpen, onClose }) => {
+const PatchNotesModal = ({ isOpen, onClose }: PatchNotesModalProps) => {
   if (!isOpen) return null;
 
   const patchNotes: PatchNote[] = patchNotesData as PatchNote[];

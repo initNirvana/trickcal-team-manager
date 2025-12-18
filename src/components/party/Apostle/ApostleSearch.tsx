@@ -15,11 +15,11 @@ interface ApostleSelectorSearchProps {
  * - 전체 이름 및 초성 검색 지원
  * - 검색 결과 목록 표시
  */
-export const ApostleSelectorSearch: React.FC<ApostleSelectorSearchProps> = ({
+const ApostleSelectorSearch = ({
   apostles,
   onSelect,
   placeholder = '사도 이름 검색 (초성 가능)',
-}) => {
+}: ApostleSelectorSearchProps) => {
   const { search, setSearch, open, setOpen, searchList, containerRef } = useApostleSearch({
     apostles,
   });

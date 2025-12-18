@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Personality } from '../../../types/apostle';
 import {
   getSynergyOnIconPath,
@@ -18,7 +17,7 @@ interface SynergyDisplayProps {
   }>;
 }
 
-const SynergyDisplay: React.FC<SynergyDisplayProps> = ({ synergies }) => {
+const SynergyDisplay = ({ synergies }: SynergyDisplayProps) => {
   const totalBonus = calculateTotalSynergyBonus(synergies);
   const hasActiveSynergies = synergies.some((s) => s.isActive);
 

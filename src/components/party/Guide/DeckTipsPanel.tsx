@@ -1,12 +1,8 @@
-// src/components/party/sub-components/DeckTipsPanel.tsx
-
-import React from 'react';
-
 interface DeckTipsPanelProps {
   tips: string[];
 }
 
-const DeckTipsPanel: React.FC<DeckTipsPanelProps> = ({ tips }) => {
+const DeckTipsPanel = ({ tips }: DeckTipsPanelProps) => {
   return (
     <div className="alert alert-success">
       <svg

@@ -1,6 +1,4 @@
-// src/components/party/DeckRecommendationGuide.tsx
-
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
 import { analyzeDeckPersonality, getRecommendedApostles } from '../../utils/deckGuideEngine';
 import RecommendedApostleCard from './Guide/RecommendedApostleCard';
@@ -14,12 +12,12 @@ interface DeckRecommendationGuideProps {
   onGameModeChange: (mode: 'pve' | 'pvp') => void;
 }
 
-export const DeckRecommendationGuide: React.FC<DeckRecommendationGuideProps> = ({
+const DeckRecommendationGuide = ({
   apostles,
   allApostles,
   gameMode,
   onGameModeChange,
-}) => {
+}: DeckRecommendationGuideProps) => {
   const analysis = useMemo(() => analyzeDeckPersonality(apostles), [apostles]);
 
   const guide = useMemo(

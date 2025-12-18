@@ -1,5 +1,4 @@
-// src/components/party/DamageReductionSkillDisplay.tsx
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import { calculateSkillDamageReduction } from '../../../utils/damageProcessor';
@@ -11,12 +10,12 @@ interface SkillEffectDisplayProps {
   onSkillLevelChange?: (apostleId: string, newLevel: number) => void;
 }
 
-export const SkillEffectDisplay: React.FC<SkillEffectDisplayProps> = ({
+const SkillEffectDisplay = ({
   apostles,
   skillsData,
   skillLevels = {},
   onSkillLevelChange,
-}) => {
+}: SkillEffectDisplayProps) => {
   const MIN_LEVEL = 1;
   const MAX_LEVEL = 13;
 
