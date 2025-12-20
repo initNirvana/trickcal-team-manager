@@ -849,6 +849,15 @@
       "description": "후열 아군이 적에게 받는 피해량이 감소한다.",
       "type": ["Back"],
       "damage": [{ "Increase": 0, "Reduction": 18 }]
+    },
+    {
+      "apostleId": "a113",
+      "apostleName": "아일라",
+      "name": "평화 박살 해파리",
+      "level": 3,
+      "description": "모든 아군의 최대 HP가 증가한다",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 0 }]
     }
   ]
 }
