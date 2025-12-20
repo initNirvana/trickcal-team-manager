@@ -3556,6 +3556,30 @@
           "Reduction": 0
         }
       ]
+    },
+    {
+      "apostleId": "a113",
+      "name": "아일라의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a113",
+      "name": "아일라의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "damage": [
+        {
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     }
   ]
 }

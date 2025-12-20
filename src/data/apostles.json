@@ -1509,6 +1509,19 @@
       "role": "딜러",
       "method": "물리",
       "position": "후열"
+    },
+    {
+      "id": "a113",
+      "name": "아일라",
+      "engName": "Ayla",
+      "isEldain": false,
+      "hasAside": true,
+      "rank": 3,
+      "race": "정령",
+      "persona": "Naive",
+      "role": "서포터",
+      "method": "마법",
+      "position": "중열"
     }
   ]
 }
