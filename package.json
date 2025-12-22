@@ -9,7 +9,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@ssgoi/react": "^3.3.0",
+    "@ssgoi/react": "^4.0.0",
     "@tailwindcss/vite": "^4.1.18",
     "es-hangul": "^2.3.8",
     "lodash": "^4.17.21",
@@ -36,7 +36,7 @@
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
     "vite": "^7.3.0",
-    "vite-tsconfig-paths": "^6.0.2",
+    "vite-tsconfig-paths": "^6.0.3",
     "vitest": "^4.0.16"
   }
 }
