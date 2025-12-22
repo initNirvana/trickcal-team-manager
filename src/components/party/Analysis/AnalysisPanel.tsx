@@ -1,34 +1,28 @@
-import React from 'react';
 import type { Apostle } from '../../../types/apostle';
-import type { PartyAnalysis } from '../../../utils/partyAnalysisUtils';
-import { usePartyStore } from '../../../stores/partyStore';
+import type { DeckAnalysis } from '../../../utils/deckAnalysisUtils';
+import { useDeckStore } from '../../../stores/deckStore';
 import SkillEffectDisplay from '../DamageDisplay/SkillEffect';
 import AsideEffectDisplay from '../DamageDisplay/AsideEffect';
 import SynergyDisplay from './SynergyDisplay';
 
-interface PartyAnalysisPanelProps {
-  analysis: PartyAnalysis;
-  filledParty: Apostle[];
+interface AnalysisPanelProps {
+  analysis: DeckAnalysis;
+  filledDeck: Apostle[];
   skillsData?: any;
   asidesData?: any;
 }
 
-const PartyAnalysisPanel = ({
-  analysis,
-  filledParty,
-  skillsData,
-  asidesData,
-}: PartyAnalysisPanelProps) => {
-  const skillLevels = usePartyStore((state) => state.skillLevels);
-  const setSkillLevel = usePartyStore((state) => state.setSkillLevel);
-  const asideSelection = usePartyStore((state) => state.asideSelection);
+const AnalysisPanel = ({ analysis, filledDeck, skillsData, asidesData }: AnalysisPanelProps) => {
+  const skillLevels = useDeckStore((state) => state.skillLevels);
+  const setSkillLevel = useDeckStore((state) => state.setSkillLevel);
+  const asideSelection = useDeckStore((state) => state.asideSelection);
 
   // ✅ 스킬 레벨 변경 핸들러
   const handleSkillLevelChange = (apostleId: string, newLevel: number) => {
     setSkillLevel(apostleId, newLevel);
   };
 
-  if (filledParty.length === 0) {
+  if (filledDeck.length === 0) {
     return (
       <div className="box py-8 text-center">
         <p className="text-muted">사도를 배치하면 분석 결과가 표시됩니다.</p>
@@ -40,7 +34,7 @@ const PartyAnalysisPanel = ({
     <div className="space-y-4">
       {/* 스킬 피해감소 표시 */}
       <SkillEffectDisplay
-        apostles={filledParty}
+        apostles={filledDeck}
         skillsData={skillsData}
         skillLevels={skillLevels}
         onSkillLevelChange={handleSkillLevelChange}
@@ -48,7 +42,7 @@ const PartyAnalysisPanel = ({
 
       {/* 어사이드 피해감소 표시 */}
       <AsideEffectDisplay
-        apostles={filledParty}
+        apostles={filledDeck}
         asidesData={asidesData}
         asideSelection={asideSelection}
       />
@@ -59,4 +53,4 @@ const PartyAnalysisPanel = ({
   );
 };
 
-export default PartyAnalysisPanel;
+export default AnalysisPanel;

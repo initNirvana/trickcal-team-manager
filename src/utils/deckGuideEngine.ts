@@ -39,7 +39,7 @@ interface DeckGuide {
   tips: string[];
 }
 
-// 파티의 성격 분포 분석
+// 덱의 성격 분포 분석
 export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult => {
   const filledSlots = apostles.filter((a) => a).length;
   const emptySlots = 9 - filledSlots;
@@ -158,7 +158,7 @@ export interface CombinationGuide {
   notes?: string[];
 }
 
-// 현재 파티의 성격별 개수에 따라 최적 조합 가져오기
+// 현재 덱의 성격별 개수에 따라 최적 조합 가져오기
 export const getOptimalCombination = (analysis: DeckAnalysisResult): CombinationGuide | null => {
   // deckType에서 접두사 추출
   const getDeckPersonalityKey = (deckType: string): string => {

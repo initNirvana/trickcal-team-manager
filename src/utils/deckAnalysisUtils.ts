@@ -1,7 +1,7 @@
 import type { Apostle, Personality } from '../types/apostle';
 import { analyzeSynergies } from './synergyUtils';
 
-export interface PartyAnalysis {
+export interface DeckAnalysis {
   totalApostles: number;
   synergies: Array<{
     personality: Personality;
@@ -13,7 +13,7 @@ export interface PartyAnalysis {
   }>;
 }
 
-export function analyzeParty(apostles: Apostle[]): PartyAnalysis {
+export function analyzeDeck(apostles: Apostle[]): DeckAnalysis {
   const totalApostles = apostles.length;
   const synergies = analyzeSynergies(apostles);
 

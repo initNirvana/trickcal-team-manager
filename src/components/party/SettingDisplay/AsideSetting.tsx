@@ -1,11 +1,11 @@
 import { Activity, useMemo } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { getApostleImagePath } from '../../../utils/apostleUtils';
-import { usePartyStore } from '../../../stores/partyStore';
+import { useDeckStore } from '../../../stores/deckStore';
 import Image from '../../common/Image';
 
 interface AsideSettingProps {
-  filledParty: Apostle[];
+  filledDeck: Apostle[];
   asidesData?: any;
 }
 
@@ -18,9 +18,9 @@ interface AsideRankInfo {
  * 어사이드 설정 컴포넌트
  * 각 사도별 어사이드 등급(2성, 3성) 선택 기능 제공
  */
-const AsideSetting = ({ filledParty, asidesData }: AsideSettingProps) => {
-  const asideSelection = usePartyStore((state) => state.asideSelection);
-  const setAsideSelection = usePartyStore((state) => state.setAsideSelection);
+const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
+  const asideSelection = useDeckStore((state) => state.asideSelection);
+  const setAsideSelection = useDeckStore((state) => state.setAsideSelection);
 
   /**
    * 특정 사도가 가진 어사이드 등급 확인
@@ -50,7 +50,7 @@ const AsideSetting = ({ filledParty, asidesData }: AsideSettingProps) => {
     setAsideSelection(apostleId, newValue);
   };
 
-  if (filledParty.length === 0) {
+  if (filledDeck.length === 0) {
     return (
       <div className="py-4 text-center">
         <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -65,7 +65,7 @@ const AsideSetting = ({ filledParty, asidesData }: AsideSettingProps) => {
       <table className="w-full text-left text-sm">
         {/* 테이블 바디 */}
         <tbody>
-          {filledParty.map((apostle, index) => {
+          {filledDeck.map((apostle, index) => {
             const apostleKey = apostle.id || apostle.name;
             const selectedRank = asideSelection[apostleKey];
             const { has2Star, has3Star } = getAvailableAsideRanks(apostleKey);

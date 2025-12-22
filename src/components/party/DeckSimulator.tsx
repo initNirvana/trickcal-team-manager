@@ -1,26 +1,26 @@
-import React, { Activity, useState } from 'react';
+import { Activity, useState } from 'react';
 import type { Apostle } from '../../types/apostle';
-import { usePartyStore } from '../../stores/partyStore';
-import PartyGrid from './PartyGrid';
-import PartyAnalysisPanel from './Analysis/PartyAnalysisPanel';
+import { useDeckStore } from '../../stores/deckStore';
+import DeckGrid from './DeckGrid';
+import DeckAnalysisPanel from './Analysis/AnalysisPanel';
 import ApostleSelector from './Apostle/ApostleSelector';
-import { analyzeParty } from '../../utils/partyAnalysisUtils';
-import PartySetting from './PartySetting';
+import { analyzeDeck } from '../../utils/deckAnalysisUtils';
+import DeckSetting from './DeckSetting';
 import DeckRecommendationGuide from './ApostleGuide';
 
-interface PartySimulatorProps {
+interface DeckSimulatorProps {
   apostles: Apostle[];
   skillsData?: any;
-  asidesData: any;
+  asidesData?: any;
 }
 
-const PartySimulator = ({ apostles, skillsData, asidesData }: PartySimulatorProps) => {
-  // Zustand 구독: Party 상태
-  const party = usePartyStore((state) => state.party);
-  const setPartyMember = usePartyStore((state) => state.setPartyMember);
-  const resetAll = usePartyStore((state) => state.resetAll);
+const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps) => {
+  // Zustand 구독: Deck 상태
+  const deck = useDeckStore((state) => state.deck);
+  const setDeckMember = useDeckStore((state) => state.setDeckMember);
+  const resetAll = useDeckStore((state) => state.resetAll);
   // 속성별 추천 사도 가이드 ON/OFF
-  const showDeckGuide = usePartyStore((state) => state.showDeckGuide);
+  const showDeckGuide = useDeckStore((state) => state.showDeckGuide);
 
   // UI 관련 로컬 상태 (useState 유지)
   const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
@@ -38,13 +38,13 @@ const PartySimulator = ({ apostles, skillsData, asidesData }: PartySimulatorProp
     if (selectedSlot === null) return;
 
     // ✅ Zustand 액션 사용
-    setPartyMember(selectedSlot, apostle);
+    setDeckMember(selectedSlot, apostle);
     setShowSelector(false);
   };
 
   const handleRemoveApostle = () => {
     if (selectedSlot === null) return;
-    setPartyMember(selectedSlot, undefined);
+    setDeckMember(selectedSlot, undefined);
     setShowSelector(false);
     setSelectedSlot(null);
   };
@@ -54,36 +54,37 @@ const PartySimulator = ({ apostles, skillsData, asidesData }: PartySimulatorProp
   };
 
   // 파생 상태 (계산된 값)
-  const filledParty = party.filter((a) => a !== undefined) as Apostle[];
-  const analysis = analyzeParty(filledParty);
+  const filledDeck = deck.filter((a) => a !== undefined) as Apostle[];
+  const analysis = analyzeDeck(filledDeck);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 p-4">
-      <h1 className="mb-4 text-2xl font-bold">파티 빌더</h1>
+      <h1 className="mb-4 text-2xl font-bold">덱 빌더</h1>
+      <p className="text-black-400">사도를 선택하고 피해량 정보를 확인하세요</p>
 
-      {/* PartySetting - asideSelection을 직접 Zustand에서 구독 */}
+      {/* DeckSetting - asideSelection을 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
-        <PartySetting
-          filledParty={filledParty}
+        <DeckSetting
+          filledDeck={filledDeck}
           asidesData={asidesData}
           // ✅ onAsideChange Props 제거!
         />
       </div>
 
-      {/* PartyAnalysisPanel - skillLevels를 직접 Zustand에서 구독 */}
+      {/* DeckAnalysisPanel - skillLevels를 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
         <Activity mode={showDeckGuide ? 'visible' : 'hidden'}>
           <DeckRecommendationGuide
-            apostles={filledParty}
+            apostles={filledDeck}
             allApostles={apostles}
             gameMode={gameMode}
             onGameModeChange={setGameMode}
           />
         </Activity>
 
-        <PartyAnalysisPanel
+        <DeckAnalysisPanel
           analysis={analysis}
-          filledParty={filledParty}
+          filledDeck={filledDeck}
           skillsData={skillsData}
           asidesData={asidesData}
           // ✅ asideSelection Props 제거!
@@ -95,9 +96,9 @@ const PartySimulator = ({ apostles, skillsData, asidesData }: PartySimulatorProp
         초기화
       </button>
 
-      {/* PartyGrid - party를 직접 Zustand에서 구독 */}
+      {/* DeckGrid - deck을 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
-        <PartyGrid onSelectSlot={handleSlotClick} />
+        <DeckGrid onSelectSlot={handleSlotClick} />
       </div>
 
       {/* Apostle 선택 모달 */}
@@ -106,7 +107,7 @@ const PartySimulator = ({ apostles, skillsData, asidesData }: PartySimulatorProp
           <ApostleSelector
             apostles={apostles}
             selectedSlot={selectedSlot}
-            currentApostle={party[selectedSlot - 1]}
+            currentApostle={deck[selectedSlot - 1]}
             onSelect={handleAddApostle}
             onRemove={handleRemoveApostle}
             onClose={() => setShowSelector(false)}
@@ -120,4 +121,4 @@ const PartySimulator = ({ apostles, skillsData, asidesData }: PartySimulatorProp
   );
 };
 
-export default PartySimulator;
+export default DeckSimulator;

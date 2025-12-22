@@ -1,6 +1,6 @@
 // src/components/party/sub-components/RecommendedApostleCard.tsx
 
-import React, { Activity } from 'react';
+import { Activity } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { getPersonalities } from '../../../types/apostle';
 import {

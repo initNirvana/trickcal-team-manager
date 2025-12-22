@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import { calculateAsideEffects, calculatePositionSum } from '../../../utils/damageProcessor';
 
@@ -196,7 +196,7 @@ const AsideEffectDisplay = ({ apostles, asidesData, asideSelection }: AsideEffec
   if (apostles.length === 0) {
     return (
       <div className="rounded-lg bg-blue-50 p-4 text-center dark:bg-blue-900/20">
-        파티에 사도를 추가하세요.
+        덱에 사도를 추가하세요.
       </div>
     );
   }

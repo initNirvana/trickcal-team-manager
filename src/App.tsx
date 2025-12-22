@@ -1,6 +1,8 @@
-import PartySimulator from './components/party/PartySimulator';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDataLoader } from './hooks/useDataLoader';
 import Layout from './components/layout/Layout';
+import DeckSimulator from './components/party/DeckSimulator';
+import DeckRecommender from './components/builder/DeckRecommender';
 
 function App() {
   const { apostles, skills, asides, spells, isLoading, error } = useDataLoader();
@@ -35,9 +37,47 @@ function App() {
   }
 
   return (
-    <Layout>
-      <PartySimulator apostles={apostles} skillsData={skills} asidesData={asides} />
-    </Layout>
+    <BrowserRouter>
+      <Routes>
+        {/* 덱 시뮬레이터 */}
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <DeckSimulator apostles={apostles} skillsData={skills} asidesData={asides} />
+            </Layout>
+          }
+        />
+
+        {/* 보유 사도 분석기 */}
+        <Route
+          path="/builder"
+          element={
+            <Layout>
+              <DeckRecommender apostles={apostles} />
+            </Layout>
+          }
+        />
+
+        {/* 404 페이지 (선택사항) */}
+        <Route
+          path="*"
+          element={
+            <Layout>
+              <div className="flex min-h-screen items-center justify-center">
+                <div className="text-center">
+                  <h1 className="mb-4 text-4xl font-bold">404</h1>
+                  <p className="text-gray-400">페이지를 찾을 수 없습니다</p>
+                  <a href="/" className="mt-4 inline-block text-blue-500 hover:text-blue-400">
+                    홈으로 돌아가기
+                  </a>
+                </div>
+              </div>
+            </Layout>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

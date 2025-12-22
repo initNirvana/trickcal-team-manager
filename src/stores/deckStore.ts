@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 import type { Apostle } from '../types/apostle';
 
-interface PartyState {
-  party: (Apostle | undefined)[];
+interface DeckState {
+  deck: (Apostle | undefined)[];
   skillLevels: Record<string, number>;
   asideSelection: Record<string, number | null>;
 
   showDeckGuide: boolean;
 
-  // Party 관련
-  setPartyMember: (slot: number, apostle: Apostle | undefined) => void;
-  clearParty: () => void;
+  // Deck 관련
+  setDeckMember: (slot: number, apostle: Apostle | undefined) => void;
+  clearDeck: () => void;
 
   // Skill Levels 관련
   setSkillLevel: (apostleId: string, level: number) => void;
@@ -26,30 +26,30 @@ interface PartyState {
   setShowDeckGuide: (show: boolean) => void;
 }
 
-export const usePartyStore = create<PartyState>((set) => ({
-  party: Array(9).fill(undefined),
+export const useDeckStore = create<DeckState>((set) => ({
+  deck: Array(9).fill(undefined),
   skillLevels: {},
   asideSelection: {},
   showDeckGuide: true,
 
-  // Party 액션
-  setPartyMember: (slot, apostle) =>
+  // Deck 액션
+  setDeckMember: (slot, apostle) =>
     set((state) => {
-      const newParty = [...state.party];
+      const newDeck = [...state.deck];
 
       // 기존에 배치된 사도 배치 시도시
       if (apostle) {
-        newParty.forEach((existingApostle, index) => {
+        newDeck.forEach((existingApostle, index) => {
           if (existingApostle && existingApostle.name === apostle.name && index !== slot - 1) {
-            newParty[index] = undefined;
+            newDeck[index] = undefined;
           }
         });
       }
 
-      newParty[slot - 1] = apostle;
-      return { party: newParty };
+      newDeck[slot - 1] = apostle;
+      return { deck: newDeck };
     }),
-  clearParty: () => set({ party: Array(9).fill(undefined) }),
+  clearDeck: () => set({ deck: Array(9).fill(undefined) }),
 
   // Skill Level 액션
   setSkillLevel: (apostleId, level) =>
@@ -74,7 +74,7 @@ export const usePartyStore = create<PartyState>((set) => ({
   // 전체 초기화
   resetAll: () =>
     set({
-      party: Array(9).fill(undefined),
+      deck: Array(9).fill(undefined),
       skillLevels: {},
       asideSelection: {},
       showDeckGuide: undefined,

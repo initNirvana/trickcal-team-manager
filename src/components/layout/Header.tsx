@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PatchNotesModal from './PatchNotesModal';
 
 function Header() {
   const [showPatchNotes, setShowPatchNotes] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -32,7 +34,10 @@ function Header() {
               <a onClick={() => setShowPatchNotes(true)}>패치 노트</a>
             </li>
             <li>
-              <a>보유 사도 육성 순위 (개발중)</a>
+              <a onClick={() => navigate('/')}>덱 빌더</a>
+            </li>
+            <li>
+              <a onClick={() => navigate('/builder')}>보유 사도 분석기</a>
             </li>
           </ul>
         </div>
