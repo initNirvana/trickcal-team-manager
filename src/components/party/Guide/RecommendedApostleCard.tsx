@@ -1,5 +1,3 @@
-// src/components/party/sub-components/RecommendedApostleCard.tsx
-
 import { Activity } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import {

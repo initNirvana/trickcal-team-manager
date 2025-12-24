@@ -1,7 +1,3 @@
-// ============================================
-// 📄 PresetCombinationSection.tsx
-// 프리셋 조합 섹션 (9속성, 4속성, 2속성 조합)
-// ============================================
 import { useState } from 'react';
 import { Apostle } from '../../../types/apostle';
 import { getApostleImagePath } from '../../../utils/apostleUtils';

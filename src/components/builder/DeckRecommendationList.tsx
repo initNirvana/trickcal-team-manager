@@ -1,7 +1,3 @@
-// ============================================
-// 📄 DeckRecommendationList.tsx (리팩토링)
-// 프리셋 조합과 추천 조합을 통합하는 메인 컴포넌트
-// ============================================
 import { Apostle } from '../../types/apostle';
 import { buildPresetCombinations } from '../../utils/builder/deckRecommendationUtils';
 import PresetCombinationSection from './Preset/PresetCombinationSection';

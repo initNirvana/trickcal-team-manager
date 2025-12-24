@@ -1,7 +1,3 @@
-// ============================================
-// 📄 RecommendedDeckSection.tsx
-// 추천 조합 섹션 (보유 사도 기반 자동 생성)
-// ============================================
 import { Apostle } from '../../../types/apostle';
 import { getApostleImagePath } from '../../../utils/apostleUtils';
 import {
