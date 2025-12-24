@@ -770,7 +770,7 @@
       "damage": [{ "Increase": 45, "Reduction": 12 }]
     },
     {
-      "apostleId": "a107_1",
+      "apostleId": "a107_Naive",
       "apostleName": "우로스",
       "name": "걸어갈 길",
       "level": 3,
@@ -779,7 +779,7 @@
       "damage": [{ "Increase": 45, "Reduction": 12 }]
     },
     {
-      "apostleId": "a107_2",
+      "apostleId": "a107_Gloomy",
       "apostleName": "우로스",
       "name": "걸어갈 길",
       "level": 3,
@@ -788,7 +788,7 @@
       "damage": [{ "Increase": 45, "Reduction": 12 }]
     },
     {
-      "apostleId": "a107_3",
+      "apostleId": "a107_Cool",
       "apostleName": "우로스",
       "name": "걸어갈 길",
       "level": 3,
@@ -797,7 +797,7 @@
       "damage": [{ "Increase": 45, "Reduction": 12 }]
     },
     {
-      "apostleId": "a107_4",
+      "apostleId": "a107_Jolly",
       "apostleName": "우로스",
       "name": "걸어갈 길",
       "level": 3,
