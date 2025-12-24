@@ -11,7 +11,7 @@ interface DeckRecommendationListProps {
   recommendedParties: Apostle[][];
   personality: string;
   apostles: Apostle[];
-  deckGuides?: any;
+  deckPreset?: any;
   myApostles?: Apostle[];
 }
 
@@ -19,13 +19,13 @@ export const DeckRecommendationList = ({
   recommendedParties,
   personality,
   apostles,
-  deckGuides,
+  deckPreset,
   myApostles = [],
 }: DeckRecommendationListProps) => {
   const { combo9, combo4, combo2 } = buildPresetCombinations(
     personality,
     apostles,
-    deckGuides,
+    deckPreset,
     myApostles,
   );
 

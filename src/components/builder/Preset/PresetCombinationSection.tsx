@@ -20,7 +20,7 @@ export const PresetCombinationSection = ({
   combo2,
   myApostles,
 }: PresetCombinationSectionProps) => {
-  const [selectedSlot, setSelectedSlot] = useState<'9' | '4' | '2'>('9');
+  const [selectedSlot, setSelectedSlot] = useState<'9' | '4' | '2'>('4');
 
   const comboMap = {
     '9': combo9,

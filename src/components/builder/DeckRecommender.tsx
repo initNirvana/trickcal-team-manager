@@ -3,20 +3,20 @@ import type { Apostle } from '../../types/apostle';
 import { getPersonalityKoreanName } from '../../types/apostle';
 import MyApostleList from './MyApostleList';
 import DeckRecommendationList from './DeckRecommendationList';
-import deckGuides from '../../data/apostles-guides.json';
+import deckPreset from '../../data/apostles-preset.json';
 import { calculateRecommendedParties } from '../../utils/builder/deckRecommendationUtils';
 
-interface DeckSimulatorPaimonStyleProps {
+interface DeckRecommenderProps {
   apostles: Apostle[];
 }
 
-export const DeckSimulatorPaimonStyle = ({ apostles }: DeckSimulatorPaimonStyleProps) => {
+export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
   const [selectedPersonality, setSelectedPersonality] = useState<string>('Naive');
   const [myApostles, setMyApostles] = useState<Apostle[]>([]);
   const [recommendedParties, setRecommendedParties] = useState<Apostle[][]>([]);
 
   const updateRecommendations = (personality: string, owned: Apostle[]) => {
-    const recommendations = calculateRecommendedParties(personality, owned, deckGuides);
+    const recommendations = calculateRecommendedParties(personality, owned, deckPreset);
     setRecommendedParties(recommendations);
   };
 
@@ -86,7 +86,7 @@ export const DeckSimulatorPaimonStyle = ({ apostles }: DeckSimulatorPaimonStyleP
               recommendedParties={recommendedParties}
               personality={selectedPersonality}
               apostles={apostles}
-              deckGuides={deckGuides}
+              deckPreset={deckPreset}
               myApostles={myApostles}
             />
           ) : (
@@ -112,4 +112,4 @@ export const DeckSimulatorPaimonStyle = ({ apostles }: DeckSimulatorPaimonStyleP
   );
 };
 
-export default DeckSimulatorPaimonStyle;
+export default DeckRecommender;
