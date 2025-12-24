@@ -2,7 +2,6 @@
 
 import { Activity } from 'react';
 import type { Apostle } from '../../../types/apostle';
-import { getPersonalities } from '../../../types/apostle';
 import {
   getApostleImagePath,
   getPositionIconPath,
@@ -45,7 +44,7 @@ const RecommendedApostleCard = ({
     return null;
   }
 
-  const personalities = getPersonalities(apostle);
+  const personalities = [apostle.persona];
   if (!personalities || personalities.length === 0) {
     console.warn(`사도 "${apostle.name}"의 성격이 없습니다.`);
     return null;

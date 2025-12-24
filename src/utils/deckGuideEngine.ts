@@ -1,5 +1,4 @@
 import type { Apostle, Personality } from '../types/apostle';
-import { getPersonalities } from '../types/apostle';
 import deckGuides from '../data/apostles-guides.json';
 
 export interface PersonalityDistribution {
@@ -52,7 +51,7 @@ export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult 
 
   apostles.forEach((apostle) => {
     if (!apostle) return;
-    const apostlePersonalities = getPersonalities(apostle);
+    const apostlePersonalities = [apostle.persona];
     const primary = apostlePersonalities[0];
     const current = personalityCount.get(primary) || 0;
     personalityCount.set(primary, current + 1);

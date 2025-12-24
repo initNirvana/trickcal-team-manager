@@ -1,5 +1,4 @@
 import type { Apostle, Personality } from '../types/apostle';
-import { getPersonalities } from '../types/apostle';
 
 const SYNERGY_TIERS = [
   { count: 9, level: 5, hp: 200, damage: 200, label: 'Lv.5 (+200%)' },
@@ -35,7 +34,7 @@ export function analyzeSynergies(apostles: Apostle[]): Synergy[] {
   const personalityCounts = new Map<Personality, number>();
 
   for (const apostle of apostles) {
-    const personalities = getPersonalities(apostle);
+    const personalities = [apostle.persona];
     for (const p of personalities) {
       personalityCounts.set(p, (personalityCounts.get(p) || 0) + 1);
     }

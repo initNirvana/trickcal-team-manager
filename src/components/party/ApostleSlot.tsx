@@ -1,5 +1,4 @@
 import type { Apostle } from '../../types/apostle';
-import { getPersonalities } from '../../types/apostle';
 import { getPersonalityBackgroundClass, getApostleImagePath } from '../../utils/apostleUtils';
 import Image from '../common/Image';
 
@@ -10,8 +9,7 @@ interface ApostleSlotProps {
 }
 const ApostleSlot = ({ slotNumber, apostle, onSelect }: ApostleSlotProps) => {
   if (apostle) {
-    const personalities = getPersonalities(apostle);
-    const primaryPersonality = personalities[0];
+    const primaryPersonality = apostle.persona;
 
     return (
       <div

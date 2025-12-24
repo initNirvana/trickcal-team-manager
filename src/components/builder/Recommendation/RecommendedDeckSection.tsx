@@ -3,7 +3,6 @@
 // 추천 조합 섹션 (보유 사도 기반 자동 생성)
 // ============================================
 import { Apostle } from '../../../types/apostle';
-import { getPersonalities } from '../../../types/apostle';
 import { getApostleImagePath } from '../../../utils/apostleUtils';
 import {
   getPersonalityDistribution,
@@ -50,7 +49,7 @@ export const RecommendedDeckSection = ({
               <div className="mb-3 grid grid-cols-3 gap-3">
                 {deck.map((apostle, idx) => {
                   const isOwned = myApostles.some((a) => a.id === apostle.id);
-                  const personalities = getPersonalities(apostle);
+                  const personalities = [apostle.persona];
 
                   return (
                     <div

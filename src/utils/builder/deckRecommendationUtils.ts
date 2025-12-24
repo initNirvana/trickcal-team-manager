@@ -2,7 +2,7 @@
 // 📦 deckRecommendationUtils.ts (리팩토링)
 // ============================================
 import type { Apostle, Personality } from '../../types/apostle';
-import { isValidPosition, getPersonalities } from '../../types/apostle';
+import { isValidPosition } from '../../types/apostle';
 
 // ============================================
 // 🔧 Constants
@@ -337,7 +337,7 @@ export const getPersonalityDistribution = (
     const apostle = allApostles.find((a) => a.name === name || a.engName === name);
     if (!apostle) return;
 
-    const personalities = getPersonalities(apostle);
+    const personalities = [apostle.persona];
     personalities.forEach((p) => {
       if (p in distribution) distribution[p]++;
     });
@@ -367,7 +367,7 @@ const calculateSimilarMatch = (
   myApostles: Apostle[],
   allApostles: Apostle[],
 ): number => {
-  const ownedPersonalities = myApostles.flatMap((a) => getPersonalities(a));
+  const ownedPersonalities = myApostles.flatMap((a) => [a.persona]);
   const comboDistribution = getPersonalityDistribution(comboMembers, allApostles);
   const uniqueOwnedPersonalities = Array.from(new Set(ownedPersonalities));
 
