@@ -1,21 +1,5 @@
-import type { Personality } from '../types/apostle';
+import type { Personality } from '@/types/apostle';
 
-export function getPersonalityBackgroundClass(personality: Personality): string {
-  switch (personality) {
-    case 'Jolly':
-      return 'bg-yellow-300';
-    case 'Mad':
-      return 'bg-red-500';
-    case 'Naive':
-      return 'bg-lime-500';
-    case 'Gloomy':
-      return 'bg-purple-500';
-    case 'Cool':
-      return 'bg-cyan-300';
-    default:
-      return 'bg-slate-100 ';
-  }
-}
 const assetPathMap = import.meta.glob<string>(
   [
     '/src/assets/apostles/*.{png,webp}', // 사도 이미지

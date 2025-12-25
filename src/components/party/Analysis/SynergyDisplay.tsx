@@ -1,10 +1,7 @@
-import type { Personality } from '../../../types/apostle';
-import {
-  getSynergyOnIconPath,
-  getSynergyOffIconPath,
-  getPersonalityBackgroundClass,
-} from '../../../utils/apostleUtils';
-import { calculateTotalSynergyBonus } from '../../../utils/synergyUtils';
+import type { Personality } from '@/types/apostle';
+import { getPersonalityBackgroundClass } from '@/types/apostle';
+import { getSynergyOnIconPath, getSynergyOffIconPath } from '@/utils/apostleUtils';
+import { calculateTotalSynergyBonus } from '@/utils/synergyUtils';
 
 interface SynergyDisplayProps {
   synergies: Array<{

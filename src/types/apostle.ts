@@ -82,6 +82,15 @@ export function getPositions(apostle: Apostle): Position[] {
   return [normalizePos(apostle.position)];
 }
 
+export function getPositionsKorean(apostle: Apostle): string[] {
+  const positionMap: Record<Position, string> = {
+    front: '전열',
+    mid: '중열',
+    back: '후열',
+  };
+  return getPositions(apostle).map((pos) => positionMap[pos]);
+}
+
 export function isValidPosition(apostle: Apostle, slotNumber: number): boolean {
   const slotPosition = getSlotPosition(slotNumber);
   const positions = getPositions(apostle);
@@ -92,4 +101,21 @@ function getSlotPosition(slotNumber: number): Position {
   if ([1, 4, 7].includes(slotNumber)) return 'back';
   if ([2, 5, 8].includes(slotNumber)) return 'mid';
   return 'front';
+}
+
+export function getPersonalityBackgroundClass(personality: Personality): string {
+  switch (personality) {
+    case 'Jolly':
+      return 'bg-yellow-300';
+    case 'Mad':
+      return 'bg-red-500';
+    case 'Naive':
+      return 'bg-lime-500';
+    case 'Gloomy':
+      return 'bg-purple-500';
+    case 'Cool':
+      return 'bg-cyan-300';
+    default:
+      return 'bg-slate-100 ';
+  }
 }

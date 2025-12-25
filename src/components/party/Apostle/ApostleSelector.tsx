@@ -1,12 +1,11 @@
 import { useState, useMemo } from 'react';
-import type { Apostle, Personality } from '../../../types/apostle';
-import { getPersonalityKoreanName, isValidPosition } from '../../../types/apostle';
+import type { Apostle, Personality } from '@/types/apostle';
 import {
+  getPersonalityKoreanName,
+  isValidPosition,
   getPersonalityBackgroundClass,
-  getPersonalityIconPath,
-  getApostleImagePath,
-  getRankIconPath,
-} from '../../../utils/apostleUtils';
+} from '@/types/apostle';
+import { getPersonalityIconPath, getApostleImagePath, getRankIconPath } from '@/utils/apostleUtils';
 import Image from '../../common/Image';
 import ApostleSelectorSearch from '../../common/ApostleSearch';
 
