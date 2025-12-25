@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import type { Apostle } from '@/types/apostle';
-import { getApostleImagePath, getPersonalityBackgroundClass } from '@/utils/apostleUtils';
-import ApostleSelectorSearch from '../common/ApostleSearch';
+import { getApostleImagePath } from '@/utils/apostleUtils';
+import { getPersonalityBackgroundClass } from '@/types/apostle';
+import ApostleSelectorSearch from '../../common/ApostleSearch';
 
 interface MyApostleListProps {
   myApostles: Apostle[];
@@ -19,6 +20,15 @@ const MyApostleList = ({
   onAddMultiple,
 }: MyApostleListProps) => {
   const [sortBy, setSortBy] = useState<'name' | 'persona' | 'id'>('id');
+
+  const onToggle = (apostle: Apostle) => {
+    const isOwned = myApostles.some((m) => m.id === apostle.id);
+    if (isOwned) {
+      onRemove(apostle);
+    } else {
+      onAdd(apostle);
+    }
+  };
 
   // 정렬
   if (sortBy === 'name') {
@@ -86,7 +96,7 @@ const MyApostleList = ({
       </div>
 
       {/* 검색 */}
-      <ApostleSelectorSearch apostles={allApostles} onSelect={onAdd} />
+      <ApostleSelectorSearch apostles={allApostles} onSelect={onToggle} />
 
       {/* 추가 가능한 캐릭 - 작은 그리드 */}
       <div className="grid max-h-100 grid-cols-5 gap-2 overflow-y-auto pr-2">
@@ -97,7 +107,7 @@ const MyApostleList = ({
             <button
               key={apostle.id}
               onClick={() => {
-                isOwned ? onRemove(apostle) : onAdd(apostle);
+                onToggle(apostle);
               }}
               className={`group relative transform overflow-hidden rounded-lg transition ${
                 isOwned ? 'opacity-100 ring-2 ring-green-400' : 'hover:scale-105 hover:shadow-lg'
@@ -112,7 +122,7 @@ const MyApostleList = ({
 
               {/* ✓ 보유 체크마크 - 우상단 */}
               {isOwned && (
-                <div className="absolute top-1 right-1 flex h-6 w-6 items-center justify-center rounded-full bg-green-400">
+                <div className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-green-400">
                   <span className="text-sm font-bold text-black">✓</span>
                 </div>
               )}
