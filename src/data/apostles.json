@@ -13,7 +13,7 @@
       "role": "Attacker",
       "method": "마법",
       "position": "back",
-      "baseScore": 65,
+      "baseScore": 50,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -205,12 +205,12 @@
       "role": "Attacker",
       "method": "물리",
       "position": "mid",
-      "baseScore": 75,
+      "baseScore": 70,
       "aside": {
         "hasAside": true,
         "importance": "필수",
         "level": 2,
-        "score": 10
+        "score": 15
       }
     },
     {
@@ -1113,7 +1113,7 @@
     {
       "id": "a059",
       "name": "셀리네",
-      "engName": "Sel",
+      "engName": "Selline",
       "isEldain": false,
       "rank": 3,
       "race": "유령",
@@ -1662,7 +1662,7 @@
       "role": "Supporter",
       "method": "물리",
       "position": "mid",
-      "baseScore": 60,
+      "baseScore": 55,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -1839,7 +1839,7 @@
       "role": "Tanker",
       "method": "물리",
       "position": "front",
-      "baseScore": 70,
+      "baseScore": 73,
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -1859,7 +1859,7 @@
       "role": "Attacker",
       "method": "물리",
       "position": "mid",
-      "baseScore": 60,
+      "baseScore": 65,
       "aside": {
         "hasAside": true,
         "importance": "선택",
