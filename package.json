@@ -9,7 +9,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@ssgoi/react": "^4.0.0",
+    "@ssgoi/react": "^4.2.0",
     "@tailwindcss/vite": "^4.1.18",
     "es-hangul": "^2.3.8",
     "lodash": "^4.17.21",
