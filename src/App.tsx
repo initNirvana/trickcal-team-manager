@@ -50,11 +50,13 @@ function App() {
           path="/"
           element={
             <Ssgoi config={ssgoiConfig}>
-              <Layout>
-                <SsgoiTransition id="/">
-                  <DeckSimulator apostles={apostles} skillsData={skills} asidesData={asides} />
-                </SsgoiTransition>
-              </Layout>
+              <div style={{ position: 'relative', minHeight: '100vh' }}>
+                <Layout>
+                  <SsgoiTransition id="/">
+                    <DeckSimulator apostles={apostles} skillsData={skills} asidesData={asides} />
+                  </SsgoiTransition>
+                </Layout>
+              </div>
             </Ssgoi>
           }
         />
@@ -64,13 +66,11 @@ function App() {
           path="/builder"
           element={
             <Ssgoi config={ssgoiConfig}>
-              <div style={{ position: 'relative', minHeight: '100vh' }}>
-                <Layout>
-                  <SsgoiTransition id="/builder">
-                    <DeckRecommender apostles={apostles} />
-                  </SsgoiTransition>
-                </Layout>
-              </div>
+              <Layout>
+                <SsgoiTransition id="/builder">
+                  <DeckRecommender apostles={apostles} />
+                </SsgoiTransition>
+              </Layout>
             </Ssgoi>
           }
         />
