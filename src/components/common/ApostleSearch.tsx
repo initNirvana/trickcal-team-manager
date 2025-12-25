@@ -1,8 +1,9 @@
 import { useCallback } from 'react';
-import type { Apostle } from '../../../types/apostle';
-import { useApostleSearch } from '../../../utils/ApostleSearch';
-import { getApostleImagePath } from '../../../utils/apostleUtils';
-import Image from '../../common/Image';
+import type { Apostle } from '../../types/apostle';
+import { useApostleSearch } from '../../utils/ApostleSearch';
+import { getApostleImagePath, getPersonalityBackgroundClass } from '../../utils/apostleUtils';
+import { getPositionsKorean, getPersonalityKoreanName } from '../../types/apostle';
+import Image from './Image';
 
 interface ApostleSelectorSearchProps {
   apostles: Apostle[];
@@ -49,7 +50,7 @@ const ApostleSelectorSearch = ({
       {open && (
         <div className="bg-base-100 border-base-300 absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-md border shadow-lg">
           {searchList.length === 0 ? (
-            <div className="text-base-content/50 px-4 py-3 text-center">
+            <div className="text-base-content/50 px-2 py-2 text-center">
               {search.trim() ? '검색 결과가 없습니다' : '검색어를 입력해주세요'}
             </div>
           ) : (
@@ -64,13 +65,17 @@ const ApostleSelectorSearch = ({
                   <Image
                     src={getApostleImagePath(apostle.engName)}
                     alt={apostle.name}
-                    className="h-8 w-8 rounded"
+                    className={`h-10 w-10 rounded ${getPersonalityBackgroundClass(apostle.persona)}`}
                   />
 
                   {/* 사도 정보 */}
                   <div className="min-w-0 flex-1">
-                    <div className="text-sm font-medium">{apostle.name}</div>
-                    <div className="text-base-content/60 text-xs">{apostle.position}</div>
+                    <div className="text-sm font-medium">
+                      {apostle.name} ({getPersonalityKoreanName(apostle.persona)})
+                    </div>
+                    <div className="text-base-content/60 text-xs">
+                      {getPositionsKorean(apostle).join(', ')}
+                    </div>
                   </div>
                 </div>
               ))}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import type { Apostle } from '../../types/apostle';
-import { getApostleImagePath, getPersonalityBackgroundClass } from '../../utils/apostleUtils';
+import type { Apostle } from '@/types/apostle';
+import { getApostleImagePath, getPersonalityBackgroundClass } from '@/utils/apostleUtils';
+import ApostleSelectorSearch from '../common/ApostleSearch';
 
 interface MyApostleListProps {
   myApostles: Apostle[];
@@ -17,24 +18,15 @@ const MyApostleList = ({
   onRemove,
   onAddMultiple,
 }: MyApostleListProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'name' | 'persona' | 'id'>('id');
-
-  // 추가 가능한 캐릭 필터링
-  let displayedApostles = allApostles.filter(
-    (a) =>
-      a.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      a.engName.toLowerCase().includes(searchQuery.toLowerCase()),
-    // ✓ 필터 제거! 모든 사도 표시
-  );
 
   // 정렬
   if (sortBy === 'name') {
-    displayedApostles.sort((a, b) => a.name.localeCompare(b.name));
+    allApostles.sort((a, b) => a.name.localeCompare(b.name));
   } else if (sortBy === 'persona') {
-    displayedApostles.sort((a, b) => (a.persona || '').localeCompare(b.persona || ''));
+    allApostles.sort((a, b) => (a.persona || '').localeCompare(b.persona || ''));
   } else if (sortBy === 'id') {
-    displayedApostles.sort((a, b) => b.id.localeCompare(a.id));
+    allApostles.sort((a, b) => b.id.localeCompare(a.id));
   }
 
   return (
@@ -94,17 +86,11 @@ const MyApostleList = ({
       </div>
 
       {/* 검색 */}
-      <input
-        type="text"
-        placeholder="추가할 사도 검색"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        className="border-white-600 bg-white-700 placeholder-white-500 w-full rounded-lg border px-3 py-2 text-sm text-black transition focus:border-blue-500 focus:outline-none"
-      />
+      <ApostleSelectorSearch apostles={allApostles} onSelect={onAdd} />
 
       {/* 추가 가능한 캐릭 - 작은 그리드 */}
       <div className="grid max-h-100 grid-cols-5 gap-2 overflow-y-auto pr-2">
-        {displayedApostles.map((apostle) => {
+        {allApostles.map((apostle) => {
           const isOwned = myApostles.some((m) => m.id === apostle.id);
 
           return (

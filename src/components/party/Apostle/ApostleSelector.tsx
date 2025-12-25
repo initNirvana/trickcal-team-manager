@@ -8,7 +8,7 @@ import {
   getRankIconPath,
 } from '../../../utils/apostleUtils';
 import Image from '../../common/Image';
-import ApostleSelectorSearch from './ApostleSearch';
+import ApostleSelectorSearch from '../../common/ApostleSearch';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
