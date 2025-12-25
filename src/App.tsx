@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Ssgoi, SsgoiTransition } from '@ssgoi/react';
+import { film } from '@ssgoi/react/view-transitions';
 import { useDataLoader } from './hooks/useDataLoader';
 import Layout from './components/layout/Layout';
 import DeckSimulator from './components/party/DeckSimulator';
@@ -6,6 +8,10 @@ import DeckRecommender from './components/builder/DeckRecommender';
 
 function App() {
   const { apostles, skills, asides, spells, isLoading, error } = useDataLoader();
+
+  const ssgoiConfig = {
+    transitions: [{ from: '/', to: '/builder', transition: film(), symmetric: true }],
+  };
 
   if (isLoading) {
     return (
@@ -43,9 +49,13 @@ function App() {
         <Route
           path="/"
           element={
-            <Layout>
-              <DeckSimulator apostles={apostles} skillsData={skills} asidesData={asides} />
-            </Layout>
+            <Ssgoi config={ssgoiConfig}>
+              <Layout>
+                <SsgoiTransition id="/">
+                  <DeckSimulator apostles={apostles} skillsData={skills} asidesData={asides} />
+                </SsgoiTransition>
+              </Layout>
+            </Ssgoi>
           }
         />
 
@@ -53,9 +63,15 @@ function App() {
         <Route
           path="/builder"
           element={
-            <Layout>
-              <DeckRecommender apostles={apostles} />
-            </Layout>
+            <Ssgoi config={ssgoiConfig}>
+              <div style={{ position: 'relative', minHeight: '100vh' }}>
+                <Layout>
+                  <SsgoiTransition id="/builder">
+                    <DeckRecommender apostles={apostles} />
+                  </SsgoiTransition>
+                </Layout>
+              </div>
+            </Ssgoi>
           }
         />
 
