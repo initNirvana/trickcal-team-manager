@@ -2155,7 +2155,7 @@
       "method": "물리",
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
-      "baseScore": 90,
+      "baseScore": 85,
       "aside": {
         "hasAside": true,
         "importance": "선택",
