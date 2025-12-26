@@ -5,11 +5,12 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import SsgoiAutoKey from '@ssgoi/react/unplugin/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/',
-  plugins: [react(), tailwindcss(), tsconfigPaths()],
+  plugins: [react(), tailwindcss(), tsconfigPaths(), SsgoiAutoKey()],
   publicDir: 'public',
   test: {
     globals: true,
