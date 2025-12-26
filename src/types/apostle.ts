@@ -4,6 +4,18 @@ export type Role = 'Attacker' | 'Tanker' | 'Supporter';
 export type Method = 'Physical' | 'Magical';
 export type Race = '용족' | '정령' | '수인' | '유령' | '마녀' | '요정' | '엘프';
 
+const SLOT_POSITIONS: Record<number, Position> = {
+  1: 'back',
+  2: 'mid',
+  3: 'front',
+  4: 'back',
+  5: 'mid',
+  6: 'front',
+  7: 'back',
+  8: 'mid',
+  9: 'front',
+} as const;
+
 /**
  * Apostle 인터페이스는 게임 내 캐릭터인 사도(Apostle)의 속성을 정의합니다.
  *
@@ -59,21 +71,28 @@ interface Aside {
 
 export const getPersonalityKoreanName = (personality: Personality): string => {
   const personalityMap: Record<Personality, string> = {
-    Mad: '광기',
-    Gloomy: '우울',
-    Naive: '순수',
     Jolly: '활발',
+    Mad: '광기',
+    Naive: '순수',
+    Gloomy: '우울',
     Cool: '냉정',
   };
-  return personalityMap[personality] || personality;
+  if (!(personality in personalityMap)) {
+    throw new Error(`Unknown personality: ${personality}`);
+  }
+  return personalityMap[personality];
 };
 
 export function getPositions(apostle: Apostle): Position[] {
+  if (!apostle || !apostle.position) {
+    throw new Error('Invalid apostle or position data');
+  }
+
   const normalizePos = (pos: string): Position => {
-    if (pos === 'front') return 'front';
-    if (pos === 'mid') return 'mid';
-    if (pos === 'back') return 'back';
-    return 'front';
+    if (['front', 'mid', 'back'].includes(pos)) {
+      return pos as Position;
+    }
+    throw new Error(`Invalid position: ${pos}`);
   };
 
   if (Array.isArray(apostle.position)) {
@@ -98,9 +117,10 @@ export function isValidPosition(apostle: Apostle, slotNumber: number): boolean {
 }
 
 function getSlotPosition(slotNumber: number): Position {
-  if ([1, 4, 7].includes(slotNumber)) return 'back';
-  if ([2, 5, 8].includes(slotNumber)) return 'mid';
-  return 'front';
+  if (slotNumber < 1 || slotNumber > 9) {
+    throw new Error(`Invalid slot number: ${slotNumber}. Must be 1-9.`);
+  }
+  return SLOT_POSITIONS[slotNumber] || 'front';
 }
 
 export function getPersonalityBackgroundClass(personality: Personality): string {
@@ -116,6 +136,6 @@ export function getPersonalityBackgroundClass(personality: Personality): string 
     case 'Cool':
       return 'bg-cyan-300';
     default:
-      return 'bg-slate-100 ';
+      return 'bg-slate-100';
   }
 }
