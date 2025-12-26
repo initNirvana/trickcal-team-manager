@@ -2,70 +2,68 @@ import type { Apostle } from '@/types/apostle';
 import { getPositions } from '@/types/apostle';
 import { analyzeSynergies, Synergy } from '@/utils/synergyUtils';
 
+type DeckSize = 6 | 9;
+
+const ROLES = {
+  TANKER: 'Tanker',
+  ATTACKER: 'Attacker',
+  SUPPORTER: 'Supporter',
+} as const;
+
+const DECK_CONFIG = {
+  6: {
+    req: { front: 2, mid: 2, back: 2 },
+    balance: { [ROLES.TANKER]: 1, [ROLES.SUPPORTER]: 1 },
+  },
+  9: {
+    req: { front: 3, mid: 3, back: 3 },
+    balance: { [ROLES.TANKER]: 1, [ROLES.SUPPORTER]: 2 },
+  },
+} as const;
+
+const SYNERGY_SCORES = {
+  TYPE_2: 12,
+  TYPE_2_2_2: 36,
+  TYPE_4_2: 62,
+  TYPE_5: 5,
+  TYPE_6: 10,
+} as const;
+
 export interface RecommendedDeck {
   deck: Apostle[];
-  deckSize: 6 | 9;
+  deckSize: DeckSize;
   totalScore: number;
   baseScore: number;
   synergyScore: number;
   synergies: Synergy[];
-  roleBalance: {
-    tanker: number;
-    attacker: number;
-    supporter: number;
-  };
+  roleBalance: { tanker: number; attacker: number; supporter: number };
 }
 
 function calculateSynergyScore(apostles: Apostle[]): number {
   const synergies = analyzeSynergies(apostles);
 
-  const personalityCounts = synergies.reduce(
-    (acc, s) => {
-      if (s.totalCount > 0) {
-        acc[s.personality] = s.totalCount;
-      }
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
+  const countMap = synergies.reduce((acc: Record<string, number>, s) => {
+    if (s.totalCount > 0) acc[s.personality] = s.totalCount;
+    return acc;
+  }, {});
 
-  console.log('사도 성격 분포:', personalityCounts);
+  const counts = Object.values(countMap).sort((a, b) => b - a);
 
-  const counts = Object.values(personalityCounts).sort((a, b) => b - a);
+  if (counts.length >= 2 && counts[0] === 4 && counts[1] === 2) return SYNERGY_SCORES.TYPE_4_2;
+  if (counts[0] === 5) return SYNERGY_SCORES.TYPE_5;
+  if (counts.length >= 3 && counts[0] === 2 && counts[1] === 2 && counts[2] === 2)
+    return SYNERGY_SCORES.TYPE_2_2_2;
+  if (counts[0] === 6) return SYNERGY_SCORES.TYPE_6;
 
-  // 4/2 조합: 62점, 5명: 50점, 2/2/2: 36점, 6명: 10점
-  if (counts.length >= 2 && counts[0] === 4 && counts[1] === 2) return 62;
-  if (counts[0] === 5) return 50;
-  if (counts.length >= 3 && counts[0] === 2 && counts[1] === 2 && counts[2] === 2) return 36;
-  if (counts[0] === 6) return 10;
   return 0;
-}
-
-function checkRoleBalance(apostles: Apostle[], deckSize: 6 | 9): boolean {
-  const roles = apostles.reduce(
-    (acc, a) => {
-      acc[a.role] = (acc[a.role] || 0) + 1;
-      return acc;
-    },
-    {} as Record<string, number>,
-  );
-
-  console.log('역할 분포:', roles);
-
-  const requirements = deckSize === 6 ? { tanker: 1, supporter: 1 } : { tanker: 1, supporter: 2 };
-
-  return (
-    (roles['Tanker'] || 0) >= requirements.tanker &&
-    (roles['Supporter'] || 0) >= requirements.supporter
-  );
 }
 
 function getRoleBalance(apostles: Apostle[]) {
   return apostles.reduce(
     (acc, a) => {
-      if (a.role === 'Tanker') acc.tanker++;
-      else if (a.role === 'Attacker') acc.attacker++;
-      else if (a.role === 'Supporter') acc.supporter++;
+      if (a.role === ROLES.TANKER) acc.tanker++;
+      else if (a.role === ROLES.ATTACKER) acc.attacker++;
+      else if (a.role === ROLES.SUPPORTER) acc.supporter++;
       return acc;
     },
     { tanker: 0, attacker: 0, supporter: 0 },
@@ -73,203 +71,134 @@ function getRoleBalance(apostles: Apostle[]) {
 }
 
 function selectApostlesGreedy(
-  candidates: Apostle[],
+  sortedCandidates: Apostle[],
   requirements: { front: number; mid: number; back: number },
-  skipName: Set<string> = new Set<string>(),
-): { front: Apostle[]; mid: Apostle[]; back: Apostle[] } {
-  const sorted = [...candidates]
-    .filter((a) => !skipName.has(a.engName))
-    .sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
-  const placement = {
-    front: [] as Apostle[],
-    mid: [] as Apostle[],
-    back: [] as Apostle[],
-  };
+  skipNames: Set<string>,
+): Apostle[] {
+  const placement: Record<string, Apostle[]> = { front: [], mid: [], back: [] };
+  const placedNames = new Set<string>();
 
-  const placedName = new Set<string>();
+  for (const apostle of sortedCandidates) {
+    if (skipNames.has(apostle.engName) || placedNames.has(apostle.engName)) continue;
 
-  for (const apostle of sorted) {
-    if (placedName.has(apostle.engName)) continue;
+    const priorityList = apostle.positionPriority || getPositions(apostle);
+    const validPositions = getPositions(apostle); // 포지션 유효성 체크용
 
-    const priorityList = apostle.positionPriority
-      ? apostle.positionPriority
-      : getPositions(apostle);
-
-    for (const preferredPosition of priorityList) {
+    for (const pos of priorityList) {
       if (
-        placement[preferredPosition].length < requirements[preferredPosition] &&
-        getPositions(apostle).includes(preferredPosition)
+        placement[pos].length < requirements[pos as keyof typeof requirements] &&
+        validPositions.includes(pos)
       ) {
-        placement[preferredPosition].push(apostle);
-        placedName.add(apostle.engName);
+        placement[pos].push(apostle);
+        placedNames.add(apostle.engName);
         break;
       }
     }
 
-    const totalPlaced = placement.front.length + placement.mid.length + placement.back.length;
-    const totalRequired = requirements.front + requirements.mid + requirements.back;
-    if (totalPlaced >= totalRequired) break;
+    const currentTotal = Object.values(placement).reduce((sum, list) => sum + list.length, 0);
+    const targetTotal = requirements.front + requirements.mid + requirements.back;
+    if (currentTotal >= targetTotal) break;
   }
 
-  return placement;
+  return [...placement.front, ...placement.mid, ...placement.back];
 }
 
 function adjustForRoleBalance(
-  placement: { front: Apostle[]; mid: Apostle[]; back: Apostle[] },
+  currentDeck: Apostle[],
   candidates: Apostle[],
-  deckSize: 6 | 9,
+  deckSize: DeckSize,
 ): Apostle[] {
-  let deck = [...placement.front, ...placement.mid, ...placement.back];
+  const config = DECK_CONFIG[deckSize];
+  const roles = getRoleBalance(currentDeck);
+  const placedNames = new Set(currentDeck.map((a) => a.engName));
 
-  if (checkRoleBalance(deck, deckSize)) return deck;
-
-  // 역할 부족 분석
-  const roles = getRoleBalance(deck);
-  const requirements = deckSize === 6 ? { tanker: 1, supporter: 1 } : { tanker: 2, supporter: 2 };
-
-  const placedIds = new Set(deck.map((a) => a.id));
-
-  // 탱커 부족 시 교체
-  if (roles.tanker < requirements.tanker) {
-    const availableTankers = candidates
-      .filter((a) => a.role === 'Tanker' && !placedIds.has(a.id))
+  const trySwap = (targetRole: string, needed: number) => {
+    const availableCandidates = candidates
+      .filter((a) => a.role === targetRole && !placedNames.has(a.engName))
       .sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
 
-    const needed = requirements.tanker - roles.tanker;
-    for (let i = 0; i < needed && i < availableTankers.length; i++) {
-      // 가장 낮은 점수의 딜러 제거
-      const attackerIndex = deck.findIndex((a) => a.role === 'Attacker');
-      if (attackerIndex !== -1) {
-        deck.splice(attackerIndex, 1);
-        deck.push(availableTankers[i]);
+    let swappedCount = 0;
+
+    for (const candidate of availableCandidates) {
+      if (swappedCount >= needed) break;
+
+      const candidatePositions = getPositions(candidate);
+
+      const swapTargetIndex = currentDeck.findIndex(
+        (a) =>
+          a.role === ROLES.ATTACKER &&
+          getPositions(a).some((pos) => candidatePositions.includes(pos)),
+      );
+
+      if (swapTargetIndex !== -1) {
+        currentDeck[swapTargetIndex] = candidate;
+        placedNames.add(candidate.engName);
+        swappedCount++;
       }
     }
+  };
+
+  if (roles.tanker < config.balance[ROLES.TANKER]) {
+    trySwap(ROLES.TANKER, config.balance[ROLES.TANKER] - roles.tanker);
   }
 
-  // 서포터 부족 시 교체
-  if (roles.supporter < requirements.supporter) {
-    const availableSupporters = candidates
-      .filter((a) => a.role === 'Supporter' && !placedIds.has(a.id))
-      .sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
-
-    const needed = requirements.supporter - roles.supporter;
-    for (let i = 0; i < needed && i < availableSupporters.length; i++) {
-      const attackerIndex = deck.findIndex((a) => a.role === 'Attacker');
-      if (attackerIndex !== -1) {
-        deck.splice(attackerIndex, 1);
-        deck.push(availableSupporters[i]);
-      }
-    }
+  if (roles.supporter < config.balance[ROLES.SUPPORTER]) {
+    trySwap(ROLES.SUPPORTER, config.balance[ROLES.SUPPORTER] - roles.supporter);
   }
 
-  return deck;
+  return currentDeck;
 }
 
-function buildSixDeck(myApostles: Apostle[], maxAttempts: number = 5): RecommendedDeck[] {
-  if (myApostles.length < 6) return [];
+function buildDeck(myApostles: Apostle[], size: DeckSize, maxAttempts: number): RecommendedDeck[] {
+  if (!myApostles || myApostles.length === 0) return [];
+
+  if (myApostles.length < size) return [];
 
   const results: RecommendedDeck[] = [];
   const usedCombinations = new Set<string>();
 
+  const sortedApostles = [...myApostles].sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
+
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    const skipName = new Set<string>();
+    const skipNames = new Set<string>();
+
     if (attempt > 0) {
-      const previousTop = myApostles
-        .sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0))
-        .slice(0, attempt);
-      previousTop.forEach((a) => skipName.add(a.engName));
+      sortedApostles.slice(0, attempt).forEach((a) => skipNames.add(a.engName));
     }
 
-    const placement = selectApostlesGreedy(myApostles, { front: 2, mid: 2, back: 2 }, skipName);
+    const initialDeck = selectApostlesGreedy(sortedApostles, DECK_CONFIG[size].req, skipNames);
+    if (initialDeck.length !== size) continue;
 
-    if (!placement) continue;
+    const finalDeck = adjustForRoleBalance(initialDeck, sortedApostles, size);
 
-    let deck = adjustForRoleBalance(placement, myApostles, 6);
+    const finalRoles = getRoleBalance(finalDeck);
+    const reqBalance = DECK_CONFIG[size].balance;
+    if (
+      finalRoles.tanker < reqBalance[ROLES.TANKER] ||
+      finalRoles.supporter < reqBalance[ROLES.SUPPORTER]
+    ) {
+      continue;
+    }
 
-    if (deck.length !== 6 || !checkRoleBalance(deck, 6)) continue;
-
-    const deckKey = deck
+    const deckKey = finalDeck
       .map((a) => a.id)
       .sort()
       .join(',');
     if (usedCombinations.has(deckKey)) continue;
     usedCombinations.add(deckKey);
 
-    const baseScore = deck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
-    const synergies = analyzeSynergies(deck);
-    const synergyScore = calculateSynergyScore(deck);
+    const baseScore = finalDeck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+    const synergyScore = calculateSynergyScore(finalDeck);
 
     results.push({
-      deck,
-      deckSize: 6,
+      deck: finalDeck,
+      deckSize: size,
       totalScore: baseScore + synergyScore,
       baseScore,
       synergyScore,
-      synergies,
-      roleBalance: getRoleBalance(deck),
+      synergies: analyzeSynergies(finalDeck),
+      roleBalance: finalRoles,
     });
-
-    console.log(
-      `6인 조합 #${attempt + 1}:`,
-      deck.map((a) => `${a.name}(${a.baseScore})`),
-      'total:',
-      baseScore + synergyScore,
-    );
-  }
-
-  return results.sort((a, b) => b.totalScore - a.totalScore);
-}
-
-function buildNineDeck(myApostles: Apostle[], maxAttempts: number = 5): RecommendedDeck[] {
-  if (myApostles.length < 9) return [];
-
-  const results: RecommendedDeck[] = [];
-  const usedCombinations = new Set<string>();
-
-  for (let attempt = 0; attempt < maxAttempts; attempt++) {
-    const skipIds = new Set<string>();
-    if (attempt > 0) {
-      const previousTop = myApostles
-        .sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0))
-        .slice(0, attempt);
-      previousTop.forEach((a) => skipIds.add(a.id));
-    }
-
-    const placement = selectApostlesGreedy(myApostles, { front: 3, mid: 3, back: 3 }, skipIds);
-
-    if (!placement) continue;
-
-    let deck = adjustForRoleBalance(placement, myApostles, 9);
-
-    if (deck.length !== 9 || !checkRoleBalance(deck, 9)) continue;
-
-    const deckKey = deck
-      .map((a) => a.id)
-      .sort()
-      .join(',');
-    if (usedCombinations.has(deckKey)) continue;
-    usedCombinations.add(deckKey);
-
-    const baseScore = deck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
-    const synergies = analyzeSynergies(deck);
-    const synergyScore = calculateSynergyScore(deck);
-
-    results.push({
-      deck,
-      deckSize: 9,
-      totalScore: baseScore + synergyScore,
-      baseScore,
-      synergyScore,
-      synergies,
-      roleBalance: getRoleBalance(deck),
-    });
-
-    console.log(
-      `9인 조합 #${attempt + 1}:`,
-      deck.map((a) => `${a.name}(${a.baseScore})`),
-      'total:',
-      baseScore + synergyScore,
-    );
   }
 
   return results.sort((a, b) => b.totalScore - a.totalScore);
@@ -278,13 +207,8 @@ function buildNineDeck(myApostles: Apostle[], maxAttempts: number = 5): Recommen
 export function generateRecommendations(myApostles: Apostle[]): RecommendedDeck[] {
   const results: RecommendedDeck[] = [];
 
-  // console.table(myApostles, ['name', 'baseScore', 'position', 'role', 'rank', 'persona']);
-
-  const nineDeck = buildNineDeck(myApostles, 3);
-  if (nineDeck) results.push(...nineDeck);
-
-  const sixDeck = buildSixDeck(myApostles, 3);
-  if (sixDeck) results.push(...sixDeck);
+  results.push(...buildDeck(myApostles, 9, 3));
+  results.push(...buildDeck(myApostles, 6, 3));
 
   return results.sort((a, b) => b.totalScore - a.totalScore);
 }
