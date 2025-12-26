@@ -1,6 +1,6 @@
 import { Activity, useMemo } from 'react';
 import type { Apostle } from '../../../types/apostle';
-import { getApostleImagePath } from '../../../utils/apostleUtils';
+import { getApostleImagePath } from '../../../utils/apostleImages';
 import { useDeckStore } from '../../../stores/deckStore';
 import Image from '../../common/Image';
 

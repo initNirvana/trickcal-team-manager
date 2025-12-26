@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getApostleImagePath, getPositionIconPath } from '../../../utils/apostleUtils';
+import { getApostleImagePath, getPositionIconPath } from '../../../utils/apostleImages';
 import Image from '../../common/Image';
 import apostlesTiersData from '../../../data/apostles-recommend.json';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Apostle } from '@/types/apostle';
-import { getApostleImagePath } from '@/utils/apostleUtils';
+import { getApostleImagePath } from '@/utils/apostleImages';
 import { getPersonalityBackgroundClass } from '@/types/apostle';
 import ApostleSelectorSearch from '../../common/ApostleSearch';
 
@@ -40,7 +40,7 @@ const MyApostleList = ({
   }
 
   return (
-    <div className="border-white-700 bg-white-800 space-y-5 rounded-xl border p-6 shadow-lg">
+    <div className="border-white-700 bg-base-200 space-y-5 rounded-xl p-6 shadow-lg">
       {/* 헤더 */}
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-bold text-black">보유 사도 </h3>
@@ -86,7 +86,7 @@ const MyApostleList = ({
                   });
                 }
               }}
-              className="rounded bg-green-600 px-2 py-1 text-xs font-semibold text-white transition hover:bg-green-700"
+              className="rounded bg-green-600 px-2 py-1 text-xs font-semibold text-black transition hover:bg-green-700"
               title="모든 사도 추가"
             >
               전체 사도 선택
@@ -99,7 +99,7 @@ const MyApostleList = ({
       <ApostleSelectorSearch apostles={allApostles} onSelect={onToggle} />
 
       {/* 추가 가능한 캐릭 - 작은 그리드 */}
-      <div className="grid max-h-100 grid-cols-5 gap-2 overflow-y-auto pr-2">
+      <div className="grid max-h-[70vh] grid-cols-5 gap-2 overflow-y-auto px-2">
         {allApostles.map((apostle) => {
           const isOwned = myApostles.some((m) => m.id === apostle.id);
 
@@ -109,7 +109,7 @@ const MyApostleList = ({
               onClick={() => {
                 onToggle(apostle);
               }}
-              className={`group relative transform overflow-hidden rounded-lg transition ${
+              className={`group relative aspect-square overflow-hidden rounded-lg border-2 transition-all ${
                 isOwned ? 'opacity-100 ring-2 ring-green-400' : 'hover:scale-105 hover:shadow-lg'
               }`}
             >

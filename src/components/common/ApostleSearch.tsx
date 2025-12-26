@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import type { Apostle } from '@/types/apostle';
 import { getPersonalityBackgroundClass } from '@/types/apostle';
 import { useApostleSearch } from '@/utils/ApostleSearch';
-import { getApostleImagePath } from '@/utils/apostleUtils';
+import { getApostleImagePath } from '@/utils/apostleImages';
 import { getPositionsKorean, getPersonalityKoreanName } from '@/types/apostle';
 import Image from './Image';
 

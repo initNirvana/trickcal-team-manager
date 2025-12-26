@@ -5,7 +5,7 @@ import {
   getPositionIconPath,
   getClassIconPath,
   getIconPath,
-} from '../../../utils/apostleUtils';
+} from '../../../utils/apostleImages';
 
 import Image from '../../common/Image';
 

@@ -1,5 +1,5 @@
 import { Apostle } from '@/types/apostle';
-import { getApostleImagePath } from '@/utils/apostleUtils';
+import { getApostleImagePath } from '@/utils/apostleImages';
 
 interface RecommendedDeckGridProps {
   deck: Apostle[];

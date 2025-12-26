@@ -5,7 +5,11 @@ import {
   isValidPosition,
   getPersonalityBackgroundClass,
 } from '@/types/apostle';
-import { getPersonalityIconPath, getApostleImagePath, getRankIconPath } from '@/utils/apostleUtils';
+import {
+  getPersonalityIconPath,
+  getApostleImagePath,
+  getRankIconPath,
+} from '@/utils/apostleImages';
 import Image from '../../common/Image';
 import ApostleSelectorSearch from '../../common/ApostleSearch';
 

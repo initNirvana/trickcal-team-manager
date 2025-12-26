@@ -1,6 +1,6 @@
 import type { Apostle } from '@/types/apostle';
 import { getPersonalityBackgroundClass } from '@/types/apostle';
-import { getApostleImagePath } from '@/utils/apostleUtils';
+import { getApostleImagePath } from '@/utils/apostleImages';
 import Image from '../common/Image';
 
 interface ApostleSlotProps {
