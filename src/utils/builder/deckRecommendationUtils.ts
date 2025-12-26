@@ -1,6 +1,6 @@
 import type { Apostle } from '@/types/apostle';
 import { getPositions } from '@/types/apostle';
-import { analyzeSynergies, Synergy } from '@/utils/synergyUtils';
+import { analyzeSynergies, Synergy } from '@/utils/deckAnalysisUtils';
 
 type DeckSize = 6 | 9;
 
@@ -23,10 +23,10 @@ const DECK_CONFIG = {
 
 const SYNERGY_SCORES = {
   TYPE_2: 12,
-  TYPE_2_2_2: 36,
-  TYPE_4_2: 62,
+  TYPE_2_2_2: 50, // 2순위: 2+2+2 조합
+  TYPE_4_2: 100, // 1순위: 4+2 조합 (최우선)
   TYPE_5: 5,
-  TYPE_6: 10,
+  TYPE_6: 35, // 3순위: 단일 6인 조합
 } as const;
 
 export interface RecommendedDeck {
@@ -149,14 +149,220 @@ function adjustForRoleBalance(
   return currentDeck;
 }
 
+/**
+ * 성격별로 사도를 그룹화하고 baseScore로 정렬
+ */
+function groupApostlesByPersonality(apostles: Apostle[]): Map<string, Apostle[]> {
+  const groups = new Map<string, Apostle[]>();
+
+  apostles.forEach((apostle) => {
+    const personality = apostle.persona;
+    if (!groups.has(personality)) {
+      groups.set(personality, []);
+    }
+    groups.get(personality)!.push(apostle);
+  });
+
+  // 각 그룹 내에서 baseScore 내림차순 정렬
+  groups.forEach((group) => {
+    group.sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
+  });
+
+  return groups;
+}
+
+/**
+ * 특정 성격 조합으로 6인 덱 생성 시도
+ */
+function tryBuildDeckWithPersonalities(
+  selectedPersonalities: string[],
+  distribution: number[],
+  personalityGroups: Map<string, Apostle[]>,
+  requirements: { front: number; mid: number; back: number },
+): Apostle[] | null {
+  const candidates: Apostle[] = [];
+  const usedNames = new Set<string>();
+
+  // 각 성격에서 필요한 수만큼 사도 선택
+  for (let i = 0; i < selectedPersonalities.length; i++) {
+    const personality = selectedPersonalities[i];
+    const needed = distribution[i];
+    const group = personalityGroups.get(personality) || [];
+
+    let selectedCount = 0;
+    for (const apostle of group) {
+      if (usedNames.has(apostle.engName)) continue;
+      if (selectedCount >= needed) break;
+
+      candidates.push(apostle);
+      usedNames.add(apostle.engName);
+      selectedCount++;
+    }
+
+    // 필요한 수만큼 선택 못했으면 실패
+    if (selectedCount < needed) return null;
+  }
+
+  // 포지션 제약을 만족하는 덱 생성
+  const deck = selectApostlesGreedy(candidates, requirements, new Set());
+
+  // 6명이 선택되지 않았으면 실패
+  if (deck.length !== 6) return null;
+
+  return deck;
+}
+
+/**
+ * 패턴 기반 6인 덱 생성
+ */
+function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
+  if (myApostles.length < 6) return [];
+
+  const results: RecommendedDeck[] = [];
+  const personalityGroups = groupApostlesByPersonality(myApostles);
+  const personalities = Array.from(personalityGroups.keys());
+  const requirements = DECK_CONFIG[6].req;
+  const reqBalance = DECK_CONFIG[6].balance;
+
+  // 1순위: 4+2 패턴
+  for (const p1 of personalities) {
+    const group1 = personalityGroups.get(p1) || [];
+    if (group1.length < 4) continue;
+
+    for (const p2 of personalities) {
+      if (p1 === p2) continue;
+      const group2 = personalityGroups.get(p2) || [];
+      if (group2.length < 2) continue;
+
+      const deck = tryBuildDeckWithPersonalities([p1, p2], [4, 2], personalityGroups, requirements);
+
+      if (deck) {
+        const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
+        const roles = getRoleBalance(balancedDeck);
+
+        if (
+          roles.tanker >= reqBalance[ROLES.TANKER] &&
+          roles.supporter >= reqBalance[ROLES.SUPPORTER]
+        ) {
+          const synergyScore = calculateSynergyScore(balancedDeck);
+          if (synergyScore === SYNERGY_SCORES.TYPE_4_2) {
+            const baseScore = balancedDeck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+            results.push({
+              deck: balancedDeck,
+              deckSize: 6,
+              totalScore: baseScore + synergyScore,
+              baseScore,
+              synergyScore,
+              synergies: analyzeSynergies(balancedDeck),
+              roleBalance: roles,
+            });
+          }
+        }
+      }
+    }
+  }
+
+  // 2순위: 2+2+2 패턴
+  for (let i = 0; i < personalities.length - 2; i++) {
+    for (let j = i + 1; j < personalities.length - 1; j++) {
+      for (let k = j + 1; k < personalities.length; k++) {
+        const p1 = personalities[i];
+        const p2 = personalities[j];
+        const p3 = personalities[k];
+
+        const g1 = personalityGroups.get(p1) || [];
+        const g2 = personalityGroups.get(p2) || [];
+        const g3 = personalityGroups.get(p3) || [];
+
+        if (g1.length < 2 || g2.length < 2 || g3.length < 2) continue;
+
+        const deck = tryBuildDeckWithPersonalities(
+          [p1, p2, p3],
+          [2, 2, 2],
+          personalityGroups,
+          requirements,
+        );
+
+        if (deck) {
+          const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
+          const roles = getRoleBalance(balancedDeck);
+
+          if (
+            roles.tanker >= reqBalance[ROLES.TANKER] &&
+            roles.supporter >= reqBalance[ROLES.SUPPORTER]
+          ) {
+            const synergyScore = calculateSynergyScore(balancedDeck);
+            if (synergyScore === SYNERGY_SCORES.TYPE_2_2_2) {
+              const baseScore = balancedDeck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+              results.push({
+                deck: balancedDeck,
+                deckSize: 6,
+                totalScore: baseScore + synergyScore,
+                baseScore,
+                synergyScore,
+                synergies: analyzeSynergies(balancedDeck),
+                roleBalance: roles,
+              });
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 3순위: 단일 6 패턴
+  for (const personality of personalities) {
+    const group = personalityGroups.get(personality) || [];
+    if (group.length < 6) continue;
+
+    const deck = tryBuildDeckWithPersonalities([personality], [6], personalityGroups, requirements);
+
+    if (deck) {
+      const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
+      const roles = getRoleBalance(balancedDeck);
+
+      if (
+        roles.tanker >= reqBalance[ROLES.TANKER] &&
+        roles.supporter >= reqBalance[ROLES.SUPPORTER]
+      ) {
+        const synergyScore = calculateSynergyScore(balancedDeck);
+        if (synergyScore === SYNERGY_SCORES.TYPE_6) {
+          const baseScore = balancedDeck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+          results.push({
+            deck: balancedDeck,
+            deckSize: 6,
+            totalScore: baseScore + synergyScore,
+            baseScore,
+            synergyScore,
+            synergies: analyzeSynergies(balancedDeck),
+            roleBalance: roles,
+          });
+        }
+      }
+    }
+  }
+
+  // 중복 제거
+  const uniqueResults = new Map<string, RecommendedDeck>();
+  results.forEach((result) => {
+    const deckKey = result.deck
+      .map((a) => a.id)
+      .sort()
+      .join(',');
+    if (!uniqueResults.has(deckKey)) {
+      uniqueResults.set(deckKey, result);
+    }
+  });
+
+  return Array.from(uniqueResults.values()).sort((a, b) => b.totalScore - a.totalScore);
+}
+
 function buildDeck(myApostles: Apostle[], size: DeckSize, maxAttempts: number): RecommendedDeck[] {
   if (!myApostles || myApostles.length === 0) return [];
-
   if (myApostles.length < size) return [];
 
   const results: RecommendedDeck[] = [];
   const usedCombinations = new Set<string>();
-
   const sortedApostles = [...myApostles].sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
@@ -207,8 +413,31 @@ function buildDeck(myApostles: Apostle[], size: DeckSize, maxAttempts: number): 
 export function generateRecommendations(myApostles: Apostle[]): RecommendedDeck[] {
   const results: RecommendedDeck[] = [];
 
+  // 9인 조합: 기존 방식
   results.push(...buildDeck(myApostles, 9, 3));
-  results.push(...buildDeck(myApostles, 6, 3));
 
-  return results.sort((a, b) => b.totalScore - a.totalScore);
+  // 6인 조합: 패턴 기반 방식 (시너지 우선)
+  const pattern6Decks = buildSixPersonDeckWithPattern(myApostles);
+  results.push(...pattern6Decks);
+
+  // 6인 조합: 기존 방식 (백업용)
+  const traditional6Decks = buildDeck(myApostles, 6, 2);
+  results.push(...traditional6Decks);
+
+  // 최종 중복 제거 및 정렬
+  const uniqueResults = new Map<string, RecommendedDeck>();
+  results.forEach((result) => {
+    const deckKey = result.deck
+      .map((a) => a.id)
+      .sort()
+      .join(',');
+    const existing = uniqueResults.get(deckKey);
+    if (!existing || result.totalScore > existing.totalScore) {
+      uniqueResults.set(deckKey, result);
+    }
+  });
+
+  return Array.from(uniqueResults.values())
+    .sort((a, b) => b.totalScore - a.totalScore)
+    .slice(0, 12);
 }

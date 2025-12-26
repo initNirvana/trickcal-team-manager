@@ -7,7 +7,6 @@ type PresetSlot = '9' | '4' | '2';
 
 interface PresetCombo {
   name: string;
-  preset_reason: string;
   front?: string[];
   mid?: string[];
   back?: string[];

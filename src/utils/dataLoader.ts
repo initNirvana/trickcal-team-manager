@@ -1,4 +1,3 @@
-// src/utils/dataLoader.ts
 import { Apostle } from '../types/apostle';
 
 export class DataLoaderService {
