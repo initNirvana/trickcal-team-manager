@@ -1,32 +1,76 @@
 import { useState } from 'react';
 import presetData from '@/data/apostles-preset.json';
-import { getApostleImagePath } from '@/utils/apostleUtils';
-import { Personality } from '@/types/apostle';
+import { Personality, Apostle, getPersonalityKoreanName } from '@/types/apostle';
+import PresetDeckGrid from './PresetDeckGrid';
 
-interface PresetCombinationSectionProps {
-  personality: Personality;
-  allApostles: any[];
+type PresetSlot = '9' | '4' | '2';
+
+interface PresetCombo {
+  name: string;
+  preset_reason: string;
+  front?: string[];
+  mid?: string[];
+  back?: string[];
+  notes?: string[];
+  by_position?: {
+    전열?: string[];
+    중열?: string[];
+    후열?: string[];
+  };
+  by_apostle?: Record<string, string[]>;
 }
 
-export const PresetCombinationSection = ({
-  personality,
-  allApostles,
-}: PresetCombinationSectionProps) => {
-  const [selectedSlot, setSelectedSlot] = useState<'9' | '4' | '2'>('4');
+const presetCombinations: Record<
+  Personality,
+  Record<PresetSlot, PresetCombo>
+> = presetData.combinations as Record<Personality, Record<PresetSlot, PresetCombo>>;
 
-  // JSON에서 직접 데이터 가져오기
-  const combo = presetData.combinations[personality]?.[selectedSlot];
+interface PresetCombinationSectionProps {
+  allApostles: Apostle[];
+}
+
+export const PresetCombinationSection = ({ allApostles }: PresetCombinationSectionProps) => {
+  const [selectedSlot, setSelectedSlot] = useState<PresetSlot>('4');
+  const [selectedPersonality, setSelectedPersonality] = useState<Personality>('Jolly');
+
+  const combo = presetCombinations[selectedPersonality]?.[selectedSlot];
 
   if (!combo) return <div>데이터 없음</div>;
 
-  // front, mid, back 사도 이름들 모으기
-  const apostleNames = [...(combo.front || []), ...(combo.mid || []), ...(combo.back || [])];
+  const findApostle = (name: string): Apostle | undefined => {
+    return allApostles.find((a) => a.engName === name || a.name === name);
+  };
+
+  const mapToApostles = (names: string[]): Apostle[] =>
+    names.map(findApostle).filter((a): a is Apostle => a !== undefined);
+
+  const frontApostles = mapToApostles(combo.front || []);
+  const midApostles = mapToApostles(combo.mid || []);
+  const backApostles = mapToApostles(combo.back || []);
+
+  const fullDeck: Apostle[] = [...frontApostles, ...midApostles, ...backApostles].map((apostle) =>
+    apostle.name === '우로스' ? { ...apostle, persona: selectedPersonality } : apostle,
+  );
+  const deckSize = selectedSlot === '9' ? 9 : 6;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
+      {/* 성격 선택 드롭다운 */}
+      <div className="mb-4 flex justify-center gap-2">
+        {(['Jolly', 'Mad', 'Cool', 'Naive', 'Gloomy'] as Personality[]).map((personality) => (
+          <button
+            key={personality}
+            onClick={() => setSelectedPersonality(personality)}
+            className={`btn ${selectedPersonality === personality ? 'btn-primary' : 'btn-outline'}`}
+          >
+            {getPersonalityKoreanName(personality)}
+          </button>
+        ))}
+      </div>
+
       {/* 슬롯 선택 버튼 */}
       <div className="flex gap-2">
-        {(['9', '4', '2'] as const).map((slot) => (
+        {(['4', '2', '9'] as const).map((slot) => (
           <button
             key={slot}
             onClick={() => setSelectedSlot(slot)}
@@ -38,30 +82,22 @@ export const PresetCombinationSection = ({
       </div>
 
       {/* 조합 정보 */}
-      <div className="card bg-base-200">
+      <div className="card card-sm bg-base-200">
         <div className="card-body">
           <h3 className="card-title">{combo.name}</h3>
-          <p className="text-sm opacity-70">{combo.preset_reason}</p>
 
-          {/* 사도 이미지 표시 */}
-          <div className="mt-4 flex flex-wrap gap-2">
-            {apostleNames.map((name) => {
-              const apostle = allApostles.find((a) => a.name === name || a.engName === name);
-              return apostle ? (
-                <img
-                  key={apostle.id}
-                  src={getApostleImagePath(apostle.engName)}
-                  alt={apostle.name}
-                  className="h-16 w-16 rounded"
-                  title={apostle.name}
-                />
-              ) : null;
-            })}
+          {/* 덱 그리드 표시 */}
+          <div className="flex justify-center">
+            <PresetDeckGrid
+              deck={fullDeck}
+              deckSize={deckSize as 6 | 9}
+              personality={selectedPersonality}
+            />
           </div>
 
           {/* 노트 있으면 표시 */}
           {combo.notes && (
-            <div className="alert alert-info mt-4">
+            <div className="alert alert-info mt-2">
               {combo.notes.map((note, i) => (
                 <p key={i}>{note}</p>
               ))}
