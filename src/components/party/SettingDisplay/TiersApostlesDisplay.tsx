@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { getApostleImagePath, getPositionIconPath } from '../../../utils/apostleImages';
+import { useState } from 'react';
+import { getApostleImagePath, getPositionIconPath } from '@/utils/apostleImages';
 import Image from '../../common/Image';
-import apostlesTiersData from '../../../data/apostles-recommend.json';
+import PersonalityDropdown from '../../common/PersonalityDropdown';
+import apostlesTiersData from '@/data/apostles-recommend.json';
 
 interface ApostleData {
   name: string;
@@ -39,7 +40,7 @@ const positionConfig = {
 };
 
 // ===== 사도 카드 =====
-const ApostleCard: React.FC<{ apostle: ApostleData }> = ({ apostle }) => (
+const ApostleCard = ({ apostle }: { apostle: ApostleData }) => (
   <div className="group flex flex-col items-center gap-1">
     <div className="relative h-24 w-20 overflow-hidden rounded-lg border-2 border-gray-300 transition hover:shadow-lg dark:border-gray-600">
       <Image
@@ -69,10 +70,7 @@ const ApostleCard: React.FC<{ apostle: ApostleData }> = ({ apostle }) => (
 );
 
 // ===== 티어 행 =====
-const TierRow: React.FC<{
-  tier: string;
-  apostles: ApostleData[];
-}> = ({ tier, apostles }) => {
+const TierRow = ({ tier, apostles }: { tier: string; apostles: ApostleData[] }) => {
   const config = tierConfig[tier as keyof typeof tierConfig];
 
   return (
@@ -96,45 +94,6 @@ const TierRow: React.FC<{
           </div>
         )}
       </div>
-    </div>
-  );
-};
-
-// ===== 성격 드롭다운 메뉴 (커스텀) =====
-const PersonalityDropdown: React.FC<{
-  personalities: string[];
-  selectedPersonalities: Set<string>;
-  onToggle: (personality: string) => void;
-}> = ({ personalities, selectedPersonalities, onToggle }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="relative">
-      <button onClick={() => setIsOpen(!isOpen)} className="btn transition">
-        성격선택 {selectedPersonalities.size > 0 && `(${selectedPersonalities.size})`}
-      </button>
-
-      {isOpen && (
-        <div className="absolute top-full right-0 z-50 mt-2 min-w-max rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
-          {personalities.map((personality) => (
-            <label
-              key={personality}
-              className="flex cursor-pointer items-center gap-3 border-b border-gray-200 px-4 py-2 last:border-b-0 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700"
-            >
-              <input
-                type="checkbox"
-                checked={selectedPersonalities.has(personality)}
-                onChange={() => onToggle(personality)}
-                className="cursor-pointer"
-              />
-              <span className="text-sm text-gray-900 dark:text-white">{personality}</span>
-            </label>
-          ))}
-        </div>
-      )}
-
-      {/* 배경 클릭으로 닫기 */}
-      {isOpen && <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />}
     </div>
   );
 };
@@ -242,22 +201,6 @@ export function RecommendedApostlesDisplay() {
           />
         </div>
       </div>
-
-      {/* 선택된 성격 태그 */}
-      {selectedPersonalities.size > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {Array.from(selectedPersonalities).map((personality) => (
-            <div
-              key={personality}
-              color="blue"
-              className="badge badge-info cursor-pointer hover:opacity-75"
-              onClick={() => togglePersonality(personality)}
-            >
-              {personality} ✕
-            </div>
-          ))}
-        </div>
-      )}
 
       {/* 타이틀 & 카운트 */}
       <div className="flex items-center justify-between">
