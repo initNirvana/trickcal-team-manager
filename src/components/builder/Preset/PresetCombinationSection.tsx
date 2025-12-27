@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import presetData from '@/data/apostles-preset.json';
 import { Personality, Apostle } from '@/types/apostle';
 import { getSynergyOnIconPath } from '@/utils/apostleImages';
@@ -120,7 +120,7 @@ export const PresetCombinationSection = ({ allApostles }: PresetCombinationSecti
       {/* 슬롯 선택 탭 */}
       <div className="tabs tabs-box justify-center">
         {(['4', '2', '9'] as const).map((slot) => (
-          <>
+          <Fragment key={slot}>
             <input
               key={`input-${slot}`}
               type="radio"
@@ -131,7 +131,7 @@ export const PresetCombinationSection = ({ allApostles }: PresetCombinationSecti
               onChange={() => setSelectedSlot(slot)}
             />
             <TabContent key={`content-${slot}`} />
-          </>
+          </Fragment>
         ))}
       </div>
     </div>
