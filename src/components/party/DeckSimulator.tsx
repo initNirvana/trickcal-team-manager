@@ -1,4 +1,4 @@
-import { Activity, useState } from 'react';
+import { Activity, useState, useEffect } from 'react';
 import type { Apostle } from '../../types/apostle';
 import { useDeckStore } from '../../stores/deckStore';
 import DeckGrid from './DeckGrid';
@@ -19,6 +19,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   const deck = useDeckStore((state) => state.deck);
   const setDeckMember = useDeckStore((state) => state.setDeckMember);
   const resetAll = useDeckStore((state) => state.resetAll);
+  const _hydrateDeck = useDeckStore((state) => state._hydrateDeck);
   // 속성별 추천 사도 가이드 ON/OFF
   const showDeckGuide = useDeckStore((state) => state.showDeckGuide);
 
@@ -27,6 +28,21 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   const [showSelector, setShowSelector] = useState(false);
 
   const [gameMode, setGameMode] = useState<'pve' | 'pvp'>('pve');
+
+  useEffect(() => {
+    const stored = localStorage.getItem('trickcal-deck-storage');
+    if (stored && apostles.length > 0) {
+      try {
+        const parsed = JSON.parse(stored);
+        const deckIds = parsed?.state?.deckIds;
+        if (deckIds && Array.isArray(deckIds)) {
+          _hydrateDeck(deckIds, apostles);
+        }
+      } catch (error) {
+        console.error('Failed to restore deck:', error);
+      }
+    }
+  }, [apostles, _hydrateDeck]);
 
   // 액션 핸들러
   const handleSlotClick = (slotNumber: number) => {
@@ -87,12 +103,11 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
           filledDeck={filledDeck}
           skillsData={skillsData}
           asidesData={asidesData}
-          // ✅ asideSelection Props 제거!
         />
       </div>
 
       {/* 초기화 버튼 */}
-      <button onClick={handleReset} className="btn btn-error h-full">
+      <button onClick={handleReset} className="btn btn-error mb-4 h-full">
         초기화
       </button>
 

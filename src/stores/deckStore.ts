@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import type { Apostle } from '../types/apostle';
 
 interface DeckState {
@@ -24,61 +25,101 @@ interface DeckState {
   resetAll: () => void;
 
   setShowDeckGuide: (show: boolean) => void;
+
+  // 내부 헬퍼 (persist용)
+  _hydrateDeck: (apostleIds: (string | null)[], allApostles: Apostle[]) => void;
 }
 
-export const useDeckStore = create<DeckState>((set) => ({
-  deck: Array(9).fill(undefined),
-  skillLevels: {},
-  asideSelection: {},
-  showDeckGuide: true,
+interface PersistedState {
+  deckIds: (string | null)[];
+  skillLevels: Record<string, number>;
+  asideSelection: Record<string, number | null>;
+}
 
-  // Deck 액션
-  setDeckMember: (slot, apostle) =>
-    set((state) => {
-      const newDeck = [...state.deck];
-
-      // 기존에 배치된 사도 배치 시도시
-      if (apostle) {
-        newDeck.forEach((existingApostle, index) => {
-          if (existingApostle && existingApostle.name === apostle.name && index !== slot - 1) {
-            newDeck[index] = undefined;
-          }
-        });
-      }
-
-      newDeck[slot - 1] = apostle;
-      return { deck: newDeck };
-    }),
-  clearDeck: () => set({ deck: Array(9).fill(undefined) }),
-
-  // Skill Level 액션
-  setSkillLevel: (apostleId, level) =>
-    set((state) => ({
-      skillLevels: {
-        ...state.skillLevels,
-        [apostleId]: level,
-      },
-    })),
-  resetSkillLevels: () => set({ skillLevels: {} }),
-
-  // Aside Selection 액션
-  setAsideSelection: (apostleId, asideIndex) =>
-    set((state) => ({
-      asideSelection: {
-        ...state.asideSelection,
-        [apostleId]: asideIndex,
-      },
-    })),
-  resetAsideSelection: () => set({ asideSelection: {} }),
-
-  // 전체 초기화
-  resetAll: () =>
-    set({
+export const useDeckStore = create<DeckState>()(
+  persist(
+    (set, get) => ({
       deck: Array(9).fill(undefined),
       skillLevels: {},
       asideSelection: {},
-      showDeckGuide: undefined,
-    }),
+      showDeckGuide: true,
 
-  setShowDeckGuide: (show) => set({ showDeckGuide: show }), // ✅ 새로운 액션
-}));
+      // Deck 액션
+      setDeckMember: (slot, apostle) =>
+        set((state) => {
+          const newDeck = [...state.deck];
+
+          // 기존에 배치된 사도 중복 배치 시도 시 제거
+          if (apostle) {
+            newDeck.forEach((existingApostle, index) => {
+              if (existingApostle && existingApostle.name === apostle.name && index !== slot - 1) {
+                newDeck[index] = undefined;
+              }
+            });
+          }
+
+          newDeck[slot - 1] = apostle;
+          return { deck: newDeck };
+        }),
+
+      clearDeck: () => set({ deck: Array(9).fill(undefined) }),
+
+      // Skill Level 액션
+      setSkillLevel: (apostleId, level) =>
+        set((state) => ({
+          skillLevels: {
+            ...state.skillLevels,
+            [apostleId]: level,
+          },
+        })),
+
+      resetSkillLevels: () => set({ skillLevels: {} }),
+
+      // Aside Selection 액션
+      setAsideSelection: (apostleId, asideIndex) =>
+        set((state) => ({
+          asideSelection: {
+            ...state.asideSelection,
+            [apostleId]: asideIndex,
+          },
+        })),
+
+      resetAsideSelection: () => set({ asideSelection: {} }),
+
+      // 전체 초기화
+      resetAll: () =>
+        set({
+          deck: Array(9).fill(undefined),
+          skillLevels: {},
+          asideSelection: {},
+          showDeckGuide: true,
+        }),
+
+      setShowDeckGuide: (show) => set({ showDeckGuide: show }),
+
+      // 내부 헬퍼: ID 배열을 받아 Apostle 객체로 복원
+      _hydrateDeck: (apostleIds, allApostles) => {
+        const apostlesMap = new Map(allApostles.map((a) => [a.id, a]));
+        const restoredDeck = apostleIds.map((id) => (id ? apostlesMap.get(id) : undefined));
+        set({ deck: restoredDeck });
+      },
+    }),
+    {
+      name: 'trickcal-deck-storage',
+      storage: createJSONStorage(() => localStorage),
+
+      // 저장 시: Apostle 객체를 ID로 변환
+      partialize: (state): PersistedState => ({
+        deckIds: state.deck.map((a) => a?.id || null),
+        skillLevels: state.skillLevels,
+        asideSelection: state.asideSelection,
+      }),
+
+      // 복원 시: ID를 다시 Apostle 객체로 변환하지 않음 (컴포넌트에서 처리)
+      merge: (persistedState, currentState) => ({
+        ...currentState,
+        ...(persistedState as any),
+      }),
+    },
+  ),
+);

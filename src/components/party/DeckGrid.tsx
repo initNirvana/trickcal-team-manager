@@ -19,7 +19,6 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
             {[1, 4, 7].map((slot) => (
               <ApostleSlot
                 key={slot}
-                slotNumber={slot}
                 apostle={deck[slot - 1]}
                 onSelect={() => onSelectSlot(slot)}
               />
@@ -34,7 +33,6 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
             {[2, 5, 8].map((slot) => (
               <ApostleSlot
                 key={slot}
-                slotNumber={slot}
                 apostle={deck[slot - 1]}
                 onSelect={() => onSelectSlot(slot)}
               />
@@ -49,7 +47,6 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
             {[3, 6, 9].map((slot) => (
               <ApostleSlot
                 key={slot}
-                slotNumber={slot}
                 apostle={deck[slot - 1]}
                 onSelect={() => onSelectSlot(slot)}
               />
