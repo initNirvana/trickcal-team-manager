@@ -1893,7 +1893,7 @@
       "method": "Physical",
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
-      "baseScore": 80,
+      "baseScore": 78,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2224,6 +2224,10 @@
       "method": "Physical",
       "position": "front",
       "baseScore": 73,
+      "scoreBySize": {
+        "size6": 70,
+        "size9": 75
+      },
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -2366,6 +2370,10 @@
       "method": "Physical",
       "position": "mid",
       "baseScore": 80,
+      "scoreBySize": {
+        "size6": 70,
+        "size9": 80
+      },
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -2459,6 +2467,10 @@
       "method": "Physical",
       "position": "back",
       "baseScore": 75,
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 80
+      },
       "aside": {
         "hasAside": true,
         "importance": "권장",

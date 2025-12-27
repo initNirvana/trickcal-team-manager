@@ -73,6 +73,18 @@ const getSynergyScore9 = (mode9: ContentMode9 | undefined) => {
   };
 };
 
+/**
+ * 6인덱/9인덱 변동 점수 반영
+ * @param a Apostle
+ * @param size ep
+ * @returns
+ */
+function getEffectiveBaseScore(a: Apostle, size: DeckSize): number {
+  const s = a.scoreBySize as { size6?: number; size9?: number } | undefined;
+  if (!s) return a.baseScore ?? 0;
+  return size === 6 ? (s.size6 ?? a.baseScore ?? 0) : (s.size9 ?? a.baseScore ?? 0);
+}
+
 function calculateSynergyScore(apostles: Apostle[]): number {
   const synergies = analyzeSynergies(apostles);
 
@@ -179,7 +191,7 @@ function adjustForRoleBalance(currentDeck: Apostle[], candidates: Apostle[], dec
 
     const available = candidates
       .filter((a) => a.role.main === targetRole && !placedNames.has(a.engName))
-      .sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
+      .sort((a, b) => getEffectiveBaseScore(b, deckSize) - getEffectiveBaseScore(a, deckSize));
 
     for (const candidate of available) {
       if (needed <= 0) break;
@@ -219,7 +231,10 @@ function adjustForRoleBalance(currentDeck: Apostle[], candidates: Apostle[], dec
 /**
  * 성격별로 사도를 그룹화하고 baseScore로 정렬
  */
-function groupApostlesByPersonality(apostles: Apostle[]): Map<Personality, Apostle[]> {
+function groupApostlesByPersonality(
+  apostles: Apostle[],
+  deckSize: DeckSize,
+): Map<Personality, Apostle[]> {
   const groups = new Map<Personality, Apostle[]>();
 
   apostles.forEach((apostle) => {
@@ -232,7 +247,7 @@ function groupApostlesByPersonality(apostles: Apostle[]): Map<Personality, Apost
 
   // 각 그룹 내에서 baseScore 내림차순 정렬
   groups.forEach((group) => {
-    group.sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
+    group.sort((a, b) => getEffectiveBaseScore(b, deckSize) - getEffectiveBaseScore(a, deckSize));
   });
 
   return groups;
@@ -286,7 +301,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
   if (myApostles.length < 6) return [];
 
   const results: RecommendedDeck[] = [];
-  const personalityGroups = groupApostlesByPersonality(myApostles);
+  const personalityGroups = groupApostlesByPersonality(myApostles, 6);
   const personalities = Array.from(personalityGroups.keys());
   const requirements = DECK_CONFIG[6].req;
   const reqBalance = DECK_CONFIG[6].balance;
@@ -315,9 +330,10 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
           const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
           if (synergyScore === SYNERGY_SCORES.TYPE_4_2) {
             const baseScore = balancedDeckWithBestPersona.reduce(
-              (sum, a) => sum + (a.baseScore || 0),
+              (sum, a) => sum + getEffectiveBaseScore(a, 6),
               0,
             );
+
             results.push({
               deck: balancedDeckWithBestPersona,
               deckSize: 6,
@@ -366,7 +382,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
             const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
             if (synergyScore === SYNERGY_SCORES.TYPE_2_2_2) {
               const baseScore = balancedDeckWithBestPersona.reduce(
-                (sum, a) => sum + (a.baseScore || 0),
+                (sum, a) => sum + getEffectiveBaseScore(a, 6),
                 0,
               );
               results.push({
@@ -404,7 +420,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
         const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
         if (synergyScore === SYNERGY_SCORES.TYPE_6) {
           const baseScore = balancedDeckWithBestPersona.reduce(
-            (sum, a) => sum + (a.baseScore || 0),
+            (sum, a) => sum + getEffectiveBaseScore(a, 6),
             0,
           );
           results.push({
@@ -447,7 +463,9 @@ function buildDeck(
 
   const results: RecommendedDeck[] = [];
   const usedCombinations = new Set<string>();
-  const sortedApostles = [...myApostles].sort((a, b) => (b.baseScore || 0) - (a.baseScore || 0));
+  const sortedApostles = [...myApostles].sort(
+    (a, b) => getEffectiveBaseScore(b, size) - getEffectiveBaseScore(a, size),
+  );
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const skipNames = new Set<string>();
@@ -477,7 +495,10 @@ function buildDeck(
     if (usedCombinations.has(deckKey)) continue;
     usedCombinations.add(deckKey);
 
-    const baseScore = finalDeckWithBestPersona.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+    const baseScore = finalDeckWithBestPersona.reduce(
+      (sum, a) => sum + getEffectiveBaseScore(a, size),
+      0,
+    );
     const synergyScore = getSynergyScore(finalDeckWithBestPersona);
 
     results.push({

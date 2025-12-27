@@ -58,6 +58,7 @@ export interface Apostle {
   mercenary?: boolean;
   aside: Aside;
   baseScore: number;
+  scoreBySize?: { size6?: number; size9?: number };
 }
 
 /**
