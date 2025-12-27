@@ -29,11 +29,12 @@ const hasAnyNonZeroNumberDeep = (v: unknown): boolean => {
 describe('asides.json schema validation', () => {
   it('asides.json should match AsidesDataSchema', () => {
     const result = AsidesDataSchema.safeParse(asidesData);
-    expect(result.success).toBe(true);
 
     if (!result.success) {
       console.log(result.error.format());
     }
+
+    expect(result.success).toBe(true);
   });
 
   it('(apostleId, level) pairs should be unique', () => {
@@ -144,6 +145,7 @@ describe('asides.json schema validation', () => {
         critical: a.critical,
         hp: a.hp,
         spRecovery: a.spRecovery,
+        attackSpeed: a.attackSpeed,
       }));
 
     expect(

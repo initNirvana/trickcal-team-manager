@@ -6,11 +6,12 @@ import { SkillsDataSchema } from '@/schemas/skills.schema';
 describe('skills.json schema validation', () => {
   it('skills.json should match SkillsDataSchema', () => {
     const result = SkillsDataSchema.safeParse(skillsData);
-    expect(result.success).toBe(true);
 
     if (!result.success) {
       console.log(result.error.format());
     }
+
+    expect(result.success).toBe(true);
   });
 
   it('each apostleId should have exactly one low and one high skill', () => {

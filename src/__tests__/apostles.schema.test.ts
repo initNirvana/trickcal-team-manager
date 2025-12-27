@@ -5,11 +5,12 @@ import { ApostlesDataSchema } from '@/schemas/apostles.schema';
 describe('apostles.json schema validation', () => {
   it('apostles.json should match ApostlesDataSchema', () => {
     const result = ApostlesDataSchema.safeParse(apostlesData);
-    expect(result.success).toBe(true);
 
     if (!result.success) {
       console.log(result.error.format());
     }
+
+    expect(result.success).toBe(true);
   });
 
   it('apostle ids should be unique', () => {
