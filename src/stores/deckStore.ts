@@ -5,7 +5,7 @@ import type { Apostle } from '../types/apostle';
 interface DeckState {
   deck: (Apostle | undefined)[];
   skillLevels: Record<string, number>;
-  asideSelection: Record<string, number | null>;
+  asideSelection: Record<string, number | string | undefined>;
 
   showDeckGuide: boolean;
 
@@ -18,7 +18,7 @@ interface DeckState {
   resetSkillLevels: () => void;
 
   // Aside Selection 관련
-  setAsideSelection: (apostleId: string, asideIndex: number | null) => void;
+  setAsideSelection: (apostleId: string, asideIndex: number | string | undefined) => void;
   resetAsideSelection: () => void;
 
   // 전체 리셋
@@ -33,7 +33,7 @@ interface DeckState {
 interface PersistedState {
   deckIds: (string | null)[];
   skillLevels: Record<string, number>;
-  asideSelection: Record<string, number | null>;
+  asideSelection: Record<string, number | string | undefined>;
 }
 
 export const useDeckStore = create<DeckState>()(

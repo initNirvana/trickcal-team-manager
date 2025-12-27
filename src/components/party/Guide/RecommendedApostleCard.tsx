@@ -71,7 +71,7 @@ const RecommendedApostleCard = ({
           <Image
             src={getClassIconPath(role)}
             className="h-full w-full object-contain"
-            alt={apostle.role}
+            alt={apostle.role.main}
           />
         </div>
         {/* 필수 사도 표시 (참잘했어요) */}
