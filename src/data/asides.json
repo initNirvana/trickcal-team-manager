@@ -120,6 +120,7 @@
       "level": 3,
       "description": "모든 아군의 공격 속도를 증가시킨다.",
       "type": ["All"],
+      "attackSpeed": 16,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     },
     {
@@ -410,6 +411,7 @@
       "level": 3,
       "description": "모든 아군의 최대 HP가 증가한다",
       "type": ["All"],
+      "hp": 22,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     },
     {
@@ -566,6 +568,7 @@
       "level": 3,
       "description": "모든 아군의 최대 HP가 증가한다",
       "type": ["All"],
+      "hp": 22,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     },
     {
@@ -857,6 +860,7 @@
       "level": 3,
       "description": "모든 아군의 최대 HP가 증가한다",
       "type": ["All"],
+      "hp": 22,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
     }
   ]

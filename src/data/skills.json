@@ -5,8 +5,10 @@
       "name": "다야의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -17,8 +19,10 @@
       "name": "다야의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -29,8 +33,10 @@
       "name": "이프리트의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -41,8 +47,10 @@
       "name": "이프리트의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -53,8 +61,10 @@
       "name": "코미의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -65,8 +75,10 @@
       "name": "코미의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -77,8 +89,10 @@
       "name": "마에스트로 2호의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -92,8 +106,69 @@
       "effectRange": "(소음) 다수 적용",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
-          "Reduction": 0
+          "Reduction": 30
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 30
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 30
         }
       ]
     },
@@ -102,8 +177,10 @@
       "name": "네르의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -114,8 +191,10 @@
       "name": "네르의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -126,8 +205,10 @@
       "name": "림의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -138,8 +219,10 @@
       "name": "림의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -150,8 +233,10 @@
       "name": "스피키의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -162,8 +247,10 @@
       "name": "스피키의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -174,8 +261,10 @@
       "name": "실라의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -186,8 +275,10 @@
       "name": "실라의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -198,8 +289,10 @@
       "name": "벨벳의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -210,8 +303,10 @@
       "name": "벨벳의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -222,8 +317,10 @@
       "name": "빅우드의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -234,8 +331,10 @@
       "name": "빅우드의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -246,8 +345,10 @@
       "name": "제이드의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -258,8 +359,10 @@
       "name": "제이드의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -270,8 +373,10 @@
       "name": "아멜리아의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -282,8 +387,10 @@
       "name": "아멜리아의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -294,8 +401,10 @@
       "name": "벨리타의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -306,8 +415,10 @@
       "name": "벨리타의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -318,8 +429,10 @@
       "name": "에르핀의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -330,8 +443,10 @@
       "name": "에르핀의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -342,8 +457,10 @@
       "name": "루포의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -354,8 +471,10 @@
       "name": "루포의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -366,8 +485,10 @@
       "name": "에슈르의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -378,8 +499,10 @@
       "name": "에슈르의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -390,8 +513,10 @@
       "name": "엘레나의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -402,8 +527,10 @@
       "name": "엘레나의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -414,8 +541,10 @@
       "name": "프리클의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -426,8 +555,10 @@
       "name": "프리클의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -438,8 +569,10 @@
       "name": "키디언의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -450,8 +583,10 @@
       "name": "키디언의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -536,8 +671,10 @@
       "name": "루드의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -548,8 +685,10 @@
       "name": "셰이디의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -560,8 +699,10 @@
       "name": "셰이디의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -572,8 +713,10 @@
       "name": "디아나의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -584,8 +727,10 @@
       "name": "디아나의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -596,8 +741,10 @@
       "name": "가비아의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -608,8 +755,10 @@
       "name": "가비아의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -620,8 +769,10 @@
       "name": "칸나의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -632,8 +783,10 @@
       "name": "칸나의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -644,8 +797,10 @@
       "name": "베니의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -656,8 +811,10 @@
       "name": "베니의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -668,8 +825,10 @@
       "name": "시스트의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -680,8 +839,10 @@
       "name": "시스트의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -692,8 +853,10 @@
       "name": "버터의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -704,8 +867,10 @@
       "name": "버터의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -864,8 +1029,10 @@
       "name": "레비의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -876,8 +1043,10 @@
       "name": "레비의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -888,8 +1057,10 @@
       "name": "마리의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -900,8 +1071,10 @@
       "name": "마리의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -912,8 +1085,10 @@
       "name": "멜루나의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -924,8 +1099,10 @@
       "name": "멜루나의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -936,8 +1113,10 @@
       "name": "포셔의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -948,8 +1127,10 @@
       "name": "포셔의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -960,8 +1141,10 @@
       "name": "쥬비의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -972,8 +1155,10 @@
       "name": "쥬비의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -984,8 +1169,10 @@
       "name": "에스피의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -996,8 +1183,10 @@
       "name": "에스피의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1008,8 +1197,10 @@
       "name": "마고의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1020,8 +1211,10 @@
       "name": "마고의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1032,8 +1225,10 @@
       "name": "마요의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1044,8 +1239,10 @@
       "name": "마요의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1056,8 +1253,10 @@
       "name": "로네의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1068,8 +1267,10 @@
       "name": "로네의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1080,8 +1281,10 @@
       "name": "시온의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1092,8 +1295,10 @@
       "name": "시온의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1104,8 +1309,10 @@
       "name": "클로에의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1116,8 +1323,10 @@
       "name": "클로에의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1128,8 +1337,10 @@
       "name": "아야의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1140,8 +1351,10 @@
       "name": "아야의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1152,8 +1365,10 @@
       "name": "우이의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1164,8 +1379,10 @@
       "name": "우이의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1176,8 +1393,10 @@
       "name": "레이지의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1188,8 +1407,10 @@
       "name": "레이지의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1200,8 +1421,10 @@
       "name": "메죵의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1212,8 +1435,10 @@
       "name": "메죵의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1224,8 +1449,10 @@
       "name": "밍스의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1236,8 +1463,10 @@
       "name": "밍스의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1248,8 +1477,10 @@
       "name": "베루의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1260,8 +1491,10 @@
       "name": "베루의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1272,8 +1505,10 @@
       "name": "사리의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1284,8 +1519,10 @@
       "name": "사리의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1296,8 +1533,10 @@
       "name": "알레트의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1308,8 +1547,10 @@
       "name": "알레트의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1320,8 +1561,10 @@
       "name": "유미미의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1332,8 +1575,10 @@
       "name": "유미미의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1344,8 +1589,10 @@
       "name": "쵸피의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1356,8 +1603,10 @@
       "name": "쵸피의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1368,8 +1617,10 @@
       "name": "카렌의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1380,8 +1631,10 @@
       "name": "카렌의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1392,8 +1645,10 @@
       "name": "큐이의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1404,8 +1659,10 @@
       "name": "큐이의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1416,8 +1673,10 @@
       "name": "타이다의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1428,8 +1687,10 @@
       "name": "타이다의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1440,8 +1701,10 @@
       "name": "파트라의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1452,8 +1715,10 @@
       "name": "파트라의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1464,8 +1729,10 @@
       "name": "티그의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1476,8 +1743,10 @@
       "name": "티그의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1488,8 +1757,10 @@
       "name": "나이아의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1500,8 +1771,10 @@
       "name": "나이아의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1512,8 +1785,10 @@
       "name": "실피르의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1524,8 +1799,10 @@
       "name": "실피르의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1536,8 +1813,10 @@
       "name": "비비의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1548,8 +1827,10 @@
       "name": "비비의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1560,8 +1841,10 @@
       "name": "힐데의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1572,8 +1855,10 @@
       "name": "힐데의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1584,8 +1869,10 @@
       "name": "셀리네의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1596,8 +1883,10 @@
       "name": "셀리네의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1608,8 +1897,10 @@
       "name": "에피카의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1620,8 +1911,10 @@
       "name": "에피카의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1632,8 +1925,10 @@
       "name": "앨리스의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1644,8 +1939,10 @@
       "name": "앨리스의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1656,8 +1953,10 @@
       "name": "리츠의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1668,8 +1967,10 @@
       "name": "리츠의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1680,8 +1981,10 @@
       "name": "피코라의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1692,8 +1995,10 @@
       "name": "피코라의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1704,8 +2009,10 @@
       "name": "블랑셰의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1716,8 +2023,10 @@
       "name": "블랑셰의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1728,8 +2037,10 @@
       "name": "이드의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1740,8 +2051,10 @@
       "name": "이드의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1752,8 +2065,10 @@
       "name": "슈팡의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1838,8 +2153,10 @@
       "name": "캬롯의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1850,8 +2167,10 @@
       "name": "캬롯의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1862,8 +2181,10 @@
       "name": "롤렛의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1874,8 +2195,10 @@
       "name": "롤렛의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1886,8 +2209,10 @@
       "name": "바나의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1898,8 +2223,10 @@
       "name": "바나의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1910,8 +2237,10 @@
       "name": "리스티의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1922,8 +2251,10 @@
       "name": "리스티의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1934,8 +2265,10 @@
       "name": "코미(수영복)의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1946,8 +2279,10 @@
       "name": "코미(수영복)의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -1958,8 +2293,10 @@
       "name": "리뉴아의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2044,8 +2381,10 @@
       "name": "헤일리의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2056,8 +2395,10 @@
       "name": "헤일리의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2068,8 +2409,10 @@
       "name": "레테의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2080,8 +2423,10 @@
       "name": "레테의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2092,8 +2437,10 @@
       "name": "모모의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2104,8 +2451,10 @@
       "name": "모모의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2116,8 +2465,10 @@
       "name": "바롱의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2128,8 +2479,10 @@
       "name": "바롱의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2140,8 +2493,10 @@
       "name": "바리에의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2152,8 +2507,10 @@
       "name": "바리에의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2164,8 +2521,10 @@
       "name": "스노키의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2176,8 +2535,10 @@
       "name": "스노키의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2188,8 +2549,10 @@
       "name": "피라의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2200,8 +2563,10 @@
       "name": "피라의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2212,8 +2577,10 @@
       "name": "칸타의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2224,8 +2591,10 @@
       "name": "칸타의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2310,8 +2679,10 @@
       "name": "셰럼의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2396,8 +2767,10 @@
       "name": "죠안의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2482,8 +2855,10 @@
       "name": "그윈의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2494,8 +2869,10 @@
       "name": "폴랑의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2506,8 +2883,10 @@
       "name": "폴랑의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2518,8 +2897,10 @@
       "name": "스피키(메이드)의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2530,8 +2911,10 @@
       "name": "스피키(메이드)의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2542,8 +2925,10 @@
       "name": "리온의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2554,8 +2939,10 @@
       "name": "리온의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2566,8 +2953,10 @@
       "name": "오팔의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2578,8 +2967,10 @@
       "name": "오팔의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2664,8 +3055,10 @@
       "name": "란의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2676,8 +3069,10 @@
       "name": "림(혼돈)의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2688,8 +3083,10 @@
       "name": "림(혼돈)의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2700,8 +3097,10 @@
       "name": "아이시아의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2712,8 +3111,10 @@
       "name": "아이시아의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2724,8 +3125,10 @@
       "name": "샤샤의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2736,8 +3139,10 @@
       "name": "샤샤의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2822,8 +3227,10 @@
       "name": "슈로의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2834,8 +3241,10 @@
       "name": "라이카의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2846,8 +3255,10 @@
       "name": "라이카의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2858,8 +3269,10 @@
       "name": "벨라의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2870,8 +3283,10 @@
       "name": "벨라의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2882,8 +3297,10 @@
       "name": "네티의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2894,8 +3311,10 @@
       "name": "네티의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2980,8 +3399,10 @@
       "name": "리코타의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -2992,8 +3413,10 @@
       "name": "마요(멋짐)의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3152,8 +3575,10 @@
       "name": "오르의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3164,8 +3589,10 @@
       "name": "디아나(왕년)의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3176,8 +3603,10 @@
       "name": "디아나(왕년)의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3188,8 +3617,10 @@
       "name": "아르코의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3200,8 +3631,10 @@
       "name": "아르코의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3212,8 +3645,10 @@
       "name": "캐시의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3224,8 +3659,10 @@
       "name": "캐시의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3236,8 +3673,10 @@
       "name": "아네트의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3248,8 +3687,10 @@
       "name": "아네트의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3260,8 +3701,10 @@
       "name": "로네(시장)의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3272,8 +3715,10 @@
       "name": "로네(시장)의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3284,8 +3729,10 @@
       "name": "마카샤의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3296,8 +3743,10 @@
       "name": "마카샤의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3308,8 +3757,10 @@
       "name": "시저의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3320,8 +3771,10 @@
       "name": "시저의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3332,8 +3785,10 @@
       "name": "뮤트의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3344,8 +3799,10 @@
       "name": "뮤트의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3356,8 +3813,10 @@
       "name": "우로스의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3368,8 +3827,10 @@
       "name": "우로스의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3380,8 +3841,10 @@
       "name": "티그(영웅)의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3392,8 +3855,10 @@
       "name": "티그(영웅)의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3404,8 +3869,10 @@
       "name": "미로의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3416,8 +3883,10 @@
       "name": "미로의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3428,8 +3897,10 @@
       "name": "아사나의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3514,8 +3985,10 @@
       "name": "베니(베니)의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3526,8 +3999,10 @@
       "name": "베니(베니)의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3538,8 +4013,10 @@
       "name": "하이디의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3550,8 +4027,10 @@
       "name": "하이디의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3562,8 +4041,10 @@
       "name": "아일라의 저학년 스킬",
       "level": "low",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
@@ -3574,8 +4055,10 @@
       "name": "아일라의 고학년 스킬",
       "level": "high",
       "description": "",
+      "effectRange": "",
       "damage": [
         {
+          "level": 1,
           "Increase": 0,
           "Reduction": 0
         }
