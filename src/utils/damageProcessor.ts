@@ -1,21 +1,67 @@
 import type { Apostle } from '../types/apostle';
 
-// ==========================================
-// 1. 어사이드(Aside) 효과 계산 로직
-// ==========================================
+type AsideTarget = 'All' | 'Front' | 'Mid' | 'Back' | 'Persona';
+type Modifier = { Increase?: number; Reduction?: number };
+type OneOrArray<T> = T | T[];
+
+export interface AsideRow {
+  apostleId: string;
+  apostleName?: string;
+  name: string;
+  level: number;
+  description?: string;
+  type?: OneOrArray<AsideTarget>;
+  damage?: OneOrArray<Required<Pick<Modifier, 'Increase' | 'Reduction'>>>;
+  skill?: OneOrArray<Required<Pick<Modifier, 'Increase' | 'Reduction'>>>;
+}
 
 export interface AsideEffect {
   apostleName: string;
   apostleId: string;
   asideName: string;
   rankStar: number;
-  type: string;
+  type: AsideTarget;
   damageIncrease: number;
   damageReduction: number;
   skillIncrease: number;
   skillReduction: number;
   description?: string;
 }
+
+const emptyGroups = (): GroupedEffects => ({ all: [], front: [], mid: [], back: [], persona: [] });
+
+const normalizeTarget = (t?: OneOrArray<AsideTarget>): AsideTarget => {
+  const v = Array.isArray(t) ? t[0] : t;
+  return v ?? 'All';
+};
+
+const normalizeMod = (m?: OneOrArray<{ Increase: number; Reduction: number }>) => {
+  const v = Array.isArray(m) ? m[0] : m;
+  return { inc: v?.Increase ?? 0, red: v?.Reduction ?? 0 };
+};
+
+const pushGrouped = (groups: GroupedEffects, target: AsideTarget, effect: AsideEffect) => {
+  switch (target) {
+    case 'All':
+      groups.all.push(effect);
+      break;
+    case 'Front':
+      groups.front.push(effect);
+      break;
+    case 'Mid':
+      groups.mid.push(effect);
+      break;
+    case 'Back':
+      groups.back.push(effect);
+      break;
+    case 'Persona':
+      groups.persona.push(effect);
+      break;
+    default:
+      groups.all.push(effect);
+      break;
+  }
+};
 
 export interface GroupedEffects {
   all: AsideEffect[];
@@ -41,47 +87,15 @@ export interface AsideEffectResult {
  */
 export function calculateAsideEffects(
   apostles: Apostle[],
-  asidesData: any,
-  asideSelection: Record<string, number | null>,
+  asidesData: { asides?: AsideRow[] } | undefined,
+  asideSelection: Record<string, number | string | undefined>,
 ): AsideEffectResult {
-  const increaseEffects: GroupedEffects = {
-    all: [],
-    persona: [],
-    front: [],
-    mid: [],
-    back: [],
-  };
+  const increaseEffects = emptyGroups();
+  const reductionEffects = emptyGroups();
+  const skillIncreaseEffects = emptyGroups();
+  const skillReductionEffects = emptyGroups();
 
-  const reductionEffects: GroupedEffects = {
-    all: [],
-    persona: [],
-    front: [],
-    mid: [],
-    back: [],
-  };
-
-  const skillIncreaseEffects: GroupedEffects = {
-    all: [],
-    persona: [],
-    front: [],
-    mid: [],
-    back: [],
-  };
-
-  const skillReductionEffects: GroupedEffects = {
-    all: [],
-    persona: [],
-    front: [],
-    mid: [],
-    back: [],
-  };
-
-  let totalIncrease = 0;
-  let totalReduction = 0;
-  let totalSkillIncrease = 0;
-  let totalSkillReduction = 0;
-
-  if (!asidesData?.asides || !Array.isArray(asidesData.asides)) {
+  if (!Array.isArray(asidesData?.asides)) {
     return {
       totalIncrease: 0,
       totalReduction: 0,
@@ -94,92 +108,68 @@ export function calculateAsideEffects(
     };
   }
 
+  const index = new Map<string, AsideRow>();
+  for (const a of asidesData.asides) index.set(`${a.apostleId}:${a.level}`, a);
+
+  let totalIncrease = 0;
+  let totalReduction = 0;
+  let totalSkillIncrease = 0;
+  let totalSkillReduction = 0;
+
   for (const apostle of apostles) {
-    if (!apostle) continue;
+    if (!apostle?.id) continue;
 
-    // ✅ apostleKey 개선
-    const apostleKey = apostle.id || apostle.name;
-    const selectedRank = asideSelection[apostleKey];
+    const selected = asideSelection[apostle.id];
+    if (selected == null) continue;
 
-    if (!selectedRank) continue;
+    const level = typeof selected === 'string' ? Number(selected) : selected;
+    if (!Number.isFinite(level)) continue;
 
-    // ✅ aside 찾기 개선 (더 유연한 검색)
-    const aside = asidesData.asides.find(
-      (a: any) => a.apostleId === apostle.id && a.level === selectedRank && (a.damage || a.skill), // ✅ damage 또는 skill 중 하나라도 있으면 OK
-    );
-
+    const aside = index.get(`${apostle.id}:${level}`);
     if (!aside) continue;
 
-    // ✅ damage 필드 처리 (안전하게)
-    const damageData = aside.damage
-      ? Array.isArray(aside.damage)
-        ? aside.damage[0]
-        : aside.damage
-      : null;
-    const increase = damageData?.Increase || 0;
-    const reduction = damageData?.Reduction || 0;
+    const target = normalizeTarget(aside.type);
+    const dmg = normalizeMod(aside.damage);
+    const skl = normalizeMod(aside.skill);
 
-    // ✅ skill 필드 처리 (안전하게)
-    const skillData = aside.skill
-      ? Array.isArray(aside.skill)
-        ? aside.skill[0]
-        : aside.skill
-      : null;
-    const skillIncrease = skillData?.Increase || 0;
-    const skillReduction = skillData?.Reduction || 0;
-
-    // ✅ type 처리 개선
-    const asideType = aside.type && Array.isArray(aside.type) ? aside.type[0] : aside.type || 'All';
-
-    const effectBase: AsideEffect = {
+    const base: AsideEffect = {
       apostleName: apostle.name,
       apostleId: apostle.id,
       asideName: aside.name,
-      rankStar: selectedRank,
-      type: asideType,
-      damageIncrease: increase,
-      damageReduction: reduction,
-      skillIncrease: skillIncrease,
-      skillReduction: skillReduction,
+      rankStar: level,
+      type: target,
+      damageIncrease: dmg.inc,
+      damageReduction: dmg.red,
+      skillIncrease: skl.inc,
+      skillReduction: skl.red,
       description: aside.description,
     };
 
-    // 피해량 증가
-    if (increase > 0) {
-      totalIncrease += increase;
-      const increaseEffect = { ...effectBase, damageReduction: 0 };
-      addToGroup(increaseEffects, asideType, increaseEffect);
+    if (dmg.inc > 0) {
+      totalIncrease += dmg.inc;
+      pushGrouped(increaseEffects, target, { ...base, damageReduction: 0 });
     }
-
-    // 피해량 감소
-    if (reduction > 0) {
-      totalReduction += reduction;
-      const reductionEffect = { ...effectBase, damageIncrease: 0 };
-      addToGroup(reductionEffects, asideType, reductionEffect);
+    if (dmg.red > 0) {
+      totalReduction += dmg.red;
+      pushGrouped(reductionEffects, target, { ...base, damageIncrease: 0 });
     }
-
-    // 스킬 피해량 증가
-    if (skillIncrease > 0) {
-      totalSkillIncrease += skillIncrease;
-      const skillIncreaseEffect = {
-        ...effectBase,
+    if (skl.inc > 0) {
+      totalSkillIncrease += skl.inc;
+      pushGrouped(skillIncreaseEffects, target, {
+        ...base,
         skillReduction: 0,
         damageIncrease: 0,
         damageReduction: 0,
-      };
-      addToGroup(skillIncreaseEffects, asideType, skillIncreaseEffect);
+      });
     }
-
-    // 스킬 피해량 감소
-    if (skillReduction > 0) {
-      totalSkillReduction += skillReduction;
-      const skillReductionEffect = {
-        ...effectBase,
+    if (skl.red > 0) {
+      totalSkillReduction += skl.red;
+      pushGrouped(skillReductionEffects, target, {
+        ...base,
         skillIncrease: 0,
         damageIncrease: 0,
         damageReduction: 0,
-      };
-      addToGroup(skillReductionEffects, asideType, skillReductionEffect);
+      });
     }
   }
 
@@ -195,25 +185,8 @@ export function calculateAsideEffects(
   };
 }
 
-function addToGroup(groups: GroupedEffects, type: string, effect: AsideEffect) {
-  switch (type) {
-    case 'All':
-      groups.all.push(effect);
-      break;
-    case 'Persona':
-      groups.persona.push(effect);
-      break;
-    case 'Front':
-      groups.front.push(effect);
-      break;
-    case 'Mid':
-      groups.mid.push(effect);
-      break;
-    case 'Back':
-      groups.back.push(effect);
-      break;
-  }
-}
+export const sumEffects = (effects: AsideEffect[], pick: (e: AsideEffect) => number) =>
+  effects.reduce((acc, e) => acc + pick(e), 0);
 
 /**
  * 효과 목록의 합계를 계산합니다.
@@ -233,9 +206,21 @@ export function calculatePositionSum(
   }, 0);
 }
 
-// ==========================================
-// 2. 스킬(Skill) 피해량 감소 계산 로직
-// ==========================================
+type SkillGrade = 'low' | 'high';
+
+type SkillDamageRow = {
+  level: number;
+  Reduction?: number;
+};
+
+type SkillRow = {
+  apostleId: string;
+  name: string;
+  level: SkillGrade;
+  effectRange: string;
+  excludeSelf?: boolean;
+  damage?: SkillDamageRow[];
+};
 
 export interface SkillReductionDetail {
   apostleName: string;
@@ -251,56 +236,66 @@ export interface SkillReductionResult {
   details: SkillReductionDetail[];
 }
 
-/**
- * 스킬 데이터와 레벨을 기반으로 피해량 감소를 계산합니다.
- */
+const toValidLevel = (v: unknown, fallback = 1) => {
+  const n = typeof v === 'string' ? Number(v) : typeof v === 'number' ? v : NaN;
+  return Number.isFinite(n) && n >= 1 ? Math.floor(n) : fallback;
+};
+
+const getReductionAtLevel = (skill: SkillRow, level: number) => {
+  const rows = skill.damage;
+  if (!Array.isArray(rows) || rows.length === 0) return 0;
+  const hit = rows.find((r) => r.level === level);
+  return hit?.Reduction ?? 0;
+};
+
 export function calculateSkillDamageReduction(
   apostles: Apostle[],
-  skillsData: any,
-  skillLevels: Record<string, number>,
+  skillsData: { skills?: SkillRow[] } | undefined,
+  skillLevels: Record<string, number | string | undefined>,
 ): SkillReductionResult {
+  if (!Array.isArray(skillsData?.skills)) return { totalReduction: 0, details: [] };
+
+  const skillsByApostleId = new Map<string, SkillRow[]>();
+  for (const s of skillsData.skills) {
+    const prev = skillsByApostleId.get(s.apostleId);
+    if (prev) prev.push(s);
+    else skillsByApostleId.set(s.apostleId, [s]);
+  }
+
   const details: SkillReductionDetail[] = [];
   let totalReduction = 0;
 
-  if (!skillsData?.skills || !Array.isArray(skillsData.skills)) {
-    return { totalReduction: 0, details: [] };
-  }
-
   for (const apostle of apostles) {
-    if (!apostle) continue;
-    const apostaSkills = skillsData.skills.filter((s: any) => s.apostleId === apostle.id);
-    let bestSkill = null;
+    if (!apostle?.id) continue;
+
+    const currentLevel = toValidLevel(skillLevels[apostle.id], 1);
+    const skills = skillsByApostleId.get(apostle.id) ?? [];
+    if (skills.length === 0) continue;
+
+    let bestSkill: SkillRow | null = null;
     let bestReduction = 0;
 
-    for (const skill of apostaSkills) {
-      if (!skill.damage || skill.damage.length === 0) continue;
+    for (const skill of skills) {
+      if (skill.excludeSelf) continue;
 
-      const currentLevel = skillLevels[apostle.id] || 1;
-      const reductionData = skill.damage.find((d: any) => d.level === currentLevel);
-
-      if (reductionData && reductionData.Reduction > bestReduction) {
-        bestReduction = reductionData.Reduction;
+      const reduction = getReductionAtLevel(skill, currentLevel);
+      if (reduction > bestReduction) {
+        bestReduction = reduction;
         bestSkill = skill;
       }
     }
 
-    if (bestSkill && bestReduction > 0) {
-      const currentSkillLevel = skillLevels[apostle.id] || 1;
-      const isExcludingSelf = bestSkill.excludeSelf ?? false;
+    if (!bestSkill || bestReduction <= 0) continue;
 
-      if (!isExcludingSelf) {
-        totalReduction += bestReduction;
-      }
-
-      details.push({
-        apostleName: apostle.name,
-        skillName: bestSkill.name,
-        skillType: bestSkill.level === 'low' ? '저학년' : '고학년',
-        skillLevel: currentSkillLevel,
-        reduction: bestReduction,
-        effectRange: bestSkill.effectRange,
-      });
-    }
+    totalReduction += bestReduction;
+    details.push({
+      apostleName: apostle.name,
+      skillName: bestSkill.name,
+      skillType: bestSkill.level === 'low' ? '저학년' : '고학년',
+      skillLevel: currentLevel,
+      reduction: bestReduction,
+      effectRange: bestSkill.effectRange,
+    });
   }
 
   return { totalReduction, details };

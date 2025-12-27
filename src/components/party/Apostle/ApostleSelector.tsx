@@ -1,14 +1,17 @@
 import { useState, useMemo } from 'react';
-import type { Apostle, Personality } from '../../../types/apostle';
-import { getPersonalityKoreanName, isValidPosition } from '../../../types/apostle';
+import type { Apostle, Personality } from '@/types/apostle';
 import {
+  getPersonalityKoreanName,
+  isValidPosition,
   getPersonalityBackgroundClass,
+} from '@/types/apostle';
+import {
   getPersonalityIconPath,
   getApostleImagePath,
   getRankIconPath,
-} from '../../../utils/apostleUtils';
+} from '@/utils/apostleImages';
 import Image from '../../common/Image';
-import ApostleSelectorSearch from './ApostleSearch';
+import ApostleSelectorSearch from '../../common/ApostleSearch';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
@@ -30,10 +33,8 @@ const ApostleSelector = ({
   const [selectedPersonality, setSelectedPersonality] = useState<Personality | null>(null);
   const [selectedRank, setSelectedRank] = useState<number | null>(null);
   const isRemoveButtonEnabled = currentApostle !== undefined && currentApostle !== null;
-  const [selectedApostle, setSelectedApostle] = useState<Apostle | null>(null);
 
   const handleSelectApostle = (apostle: Apostle) => {
-    setSelectedApostle(apostle);
     onSelect(apostle);
   };
 

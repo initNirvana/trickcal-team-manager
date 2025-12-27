@@ -1,24 +1,22 @@
-import type { Apostle } from '../../types/apostle';
-import { getPersonalities } from '../../types/apostle';
-import { getPersonalityBackgroundClass, getApostleImagePath } from '../../utils/apostleUtils';
+import type { Apostle } from '@/types/apostle';
+import { getPersonalityBackgroundClass } from '@/types/apostle';
+import { getApostleImagePath } from '@/utils/apostleImages';
 import Image from '../common/Image';
 
 interface ApostleSlotProps {
-  slotNumber: number;
   apostle?: Apostle;
   onSelect?: () => void;
 }
-const ApostleSlot = ({ slotNumber, apostle, onSelect }: ApostleSlotProps) => {
+const ApostleSlot = ({ apostle, onSelect }: ApostleSlotProps) => {
   if (apostle) {
-    const personalities = getPersonalities(apostle);
-    const primaryPersonality = personalities[0];
+    const primaryPersonality = apostle.persona;
 
     return (
       <div
         onClick={onSelect}
         className={`${getPersonalityBackgroundClass(
           primaryPersonality,
-        )} flex h-30 cursor-pointer flex-col rounded-md text-white transition hover:opacity-50`}
+        )} group relative flex h-30 cursor-pointer flex-col overflow-hidden rounded-md text-white transition hover:opacity-50`}
       >
         <div className="flex flex-1 flex-col items-center justify-center">
           <Image
@@ -26,6 +24,9 @@ const ApostleSlot = ({ slotNumber, apostle, onSelect }: ApostleSlotProps) => {
             alt={apostle.name}
             className="h-auto max-h-20 w-auto rounded-md object-cover"
           />
+        </div>
+        <div className="absolute right-0 bottom-0 left-0 bg-black/60 px-2 py-1 text-center">
+          <p className="text-[12px] font-bold text-white">{apostle.name}</p>
         </div>
       </div>
     );

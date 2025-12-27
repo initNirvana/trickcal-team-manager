@@ -1,5 +1,5 @@
 import type { Personality } from '../../types/apostle';
-import { getPersonalityIconPath } from '../../utils/apostleUtils';
+import { getPersonalityIconPath } from '../../utils/apostleImages';
 
 interface PersonalityIconProps {
   personality: Personality;

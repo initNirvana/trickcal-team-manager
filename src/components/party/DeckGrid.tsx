@@ -1,12 +1,12 @@
-import { usePartyStore } from '../../stores/partyStore';
+import { useDeckStore } from '../../stores/deckStore';
 import ApostleSlot from './ApostleSlot';
 
-interface PartyGridProps {
+interface DeckGridProps {
   onSelectSlot: (slotNumber: number) => void;
 }
 
-const PartyGrid = ({ onSelectSlot }: PartyGridProps) => {
-  const party = usePartyStore((state) => state.party);
+const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
+  const deck = useDeckStore((state) => state.deck);
 
   return (
     <div className="box space-h-4">
@@ -19,8 +19,7 @@ const PartyGrid = ({ onSelectSlot }: PartyGridProps) => {
             {[1, 4, 7].map((slot) => (
               <ApostleSlot
                 key={slot}
-                slotNumber={slot}
-                apostle={party[slot - 1]}
+                apostle={deck[slot - 1]}
                 onSelect={() => onSelectSlot(slot)}
               />
             ))}
@@ -34,8 +33,7 @@ const PartyGrid = ({ onSelectSlot }: PartyGridProps) => {
             {[2, 5, 8].map((slot) => (
               <ApostleSlot
                 key={slot}
-                slotNumber={slot}
-                apostle={party[slot - 1]}
+                apostle={deck[slot - 1]}
                 onSelect={() => onSelectSlot(slot)}
               />
             ))}
@@ -49,8 +47,7 @@ const PartyGrid = ({ onSelectSlot }: PartyGridProps) => {
             {[3, 6, 9].map((slot) => (
               <ApostleSlot
                 key={slot}
-                slotNumber={slot}
-                apostle={party[slot - 1]}
+                apostle={deck[slot - 1]}
                 onSelect={() => onSelectSlot(slot)}
               />
             ))}
@@ -61,4 +58,4 @@ const PartyGrid = ({ onSelectSlot }: PartyGridProps) => {
   );
 };
 
-export default PartyGrid;
+export default DeckGrid;

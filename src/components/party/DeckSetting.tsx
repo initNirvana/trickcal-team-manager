@@ -1,16 +1,16 @@
-import { usePartyStore } from '../../stores/partyStore';
+import { useDeckStore } from '../../stores/deckStore';
 import type { Apostle } from '../../types/apostle';
 import RecommendedApostlesDisplay from './SettingDisplay/TiersApostlesDisplay';
 import AsideSetting from './SettingDisplay/AsideSetting';
 
-interface PartySettingProps {
-  filledParty: Apostle[];
+interface DeckSettingProps {
+  filledDeck: Apostle[];
   asidesData?: any;
 }
 
-const PartySetting = ({ filledParty, asidesData }: PartySettingProps) => {
-  const showDeckGuide = usePartyStore((state) => state.showDeckGuide);
-  const setShowDeckGuide = usePartyStore((state) => state.setShowDeckGuide);
+const DeckSetting = ({ filledDeck, asidesData }: DeckSettingProps) => {
+  const showDeckGuide = useDeckStore((state) => state.showDeckGuide);
+  const setShowDeckGuide = useDeckStore((state) => state.setShowDeckGuide);
 
   return (
     <div className="space-y-1">
@@ -55,11 +55,11 @@ const PartySetting = ({ filledParty, asidesData }: PartySettingProps) => {
           <div>어사이드 설정</div>
         </div>
         <div className="collapse-content text-sm">
-          <AsideSetting filledParty={filledParty} asidesData={asidesData} />
+          <AsideSetting filledDeck={filledDeck} asidesData={asidesData} />
         </div>
       </div>
     </div>
   );
 };
 
-export default PartySetting;
+export default DeckSetting;

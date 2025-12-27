@@ -1,14 +1,11 @@
-// src/components/party/sub-components/RecommendedApostleCard.tsx
-
-import React, { Activity } from 'react';
+import { Activity } from 'react';
 import type { Apostle } from '../../../types/apostle';
-import { getPersonalities } from '../../../types/apostle';
 import {
   getApostleImagePath,
   getPositionIconPath,
   getClassIconPath,
   getIconPath,
-} from '../../../utils/apostleUtils';
+} from '../../../utils/apostleImages';
 
 import Image from '../../common/Image';
 
@@ -45,8 +42,7 @@ const RecommendedApostleCard = ({
     return null;
   }
 
-  const personalities = getPersonalities(apostle);
-  if (!personalities || personalities.length === 0) {
+  if (!apostle.persona) {
     console.warn(`사도 "${apostle.name}"의 성격이 없습니다.`);
     return null;
   }
@@ -74,7 +70,7 @@ const RecommendedApostleCard = ({
           <Image
             src={getClassIconPath(role)}
             className="h-full w-full object-contain"
-            alt={apostle.role}
+            alt={apostle.role.main}
           />
         </div>
         {/* 필수 사도 표시 (참잘했어요) */}

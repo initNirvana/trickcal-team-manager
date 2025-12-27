@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PatchNotesModal from './PatchNotesModal';
 
 function Header() {
@@ -32,7 +33,10 @@ function Header() {
               <a onClick={() => setShowPatchNotes(true)}>패치 노트</a>
             </li>
             <li>
-              <a>보유 사도 육성 순위 (개발중)</a>
+              <Link to="/">덱 빌더</Link>
+            </li>
+            <li>
+              <Link to="/builder">보유 사도 분석기</Link>
             </li>
           </ul>
         </div>

@@ -1,5 +1,4 @@
 import type { Apostle, Personality } from '../types/apostle';
-import { getPersonalities } from '../types/apostle';
 import deckGuides from '../data/apostles-guides.json';
 
 export interface PersonalityDistribution {
@@ -39,7 +38,7 @@ interface DeckGuide {
   tips: string[];
 }
 
-// 파티의 성격 분포 분석
+// 덱의 성격 분포 분석
 export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult => {
   const filledSlots = apostles.filter((a) => a).length;
   const emptySlots = 9 - filledSlots;
@@ -52,7 +51,7 @@ export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult 
 
   apostles.forEach((apostle) => {
     if (!apostle) return;
-    const apostlePersonalities = getPersonalities(apostle);
+    const apostlePersonalities = [apostle.persona];
     const primary = apostlePersonalities[0];
     const current = personalityCount.get(primary) || 0;
     personalityCount.set(primary, current + 1);
@@ -114,70 +113,4 @@ export const getRecommendedApostles = (deckType: string, mode: 'pve' | 'pvp'): D
     alternatives: modeGuide.alternatives,
     tips: modeGuide.tips,
   };
-};
-
-// 빈 슬롯에 가장 적합한 사도 추천
-export const getRecommendationsForEmptySlot = (
-  emptySlot: number,
-  filledApostles: Apostle[],
-  allApostles: Apostle[],
-  deckType: string,
-  mode: 'pve' | 'pvp',
-) => {
-  const guide = getRecommendedApostles(deckType, mode);
-  if (!guide) return [];
-
-  const getPosition = (slot: number): 'front' | 'mid' | 'back' => {
-    if ([1, 2, 3].includes(slot)) return 'front';
-    if ([4, 5, 6].includes(slot)) return 'mid';
-    return 'back';
-  };
-
-  const position = getPosition(emptySlot);
-
-  const recommendedNames = guide.core
-    .filter((apostle: CoreApostle) => apostle.position === position)
-    .map((apostle: CoreApostle) => apostle.name);
-
-  const placedNames = filledApostles.filter((a) => a).map((a) => a.name);
-
-  const recommendations = allApostles.filter(
-    (apostle) => recommendedNames.includes(apostle.name) && !placedNames.includes(apostle.name),
-  );
-
-  return recommendations.slice(0, 3);
-};
-
-export interface CombinationGuide {
-  name: string;
-  front?: string[];
-  mid?: string[];
-  back?: string[];
-  members?: string[];
-  alternatives?: Record<string, string[]>;
-  notes?: string[];
-}
-
-// 현재 파티의 성격별 개수에 따라 최적 조합 가져오기
-export const getOptimalCombination = (analysis: DeckAnalysisResult): CombinationGuide | null => {
-  // deckType에서 접두사 추출
-  const getDeckPersonalityKey = (deckType: string): string => {
-    const mapping: Record<string, string> = {
-      활발: '활발',
-      광기: '광기',
-      순수: '순수',
-      우울: '우울',
-      냉정: '냉정',
-    };
-    return mapping[deckType] || '순수';
-  };
-
-  const deckPersonalityKey = getDeckPersonalityKey(analysis.deckType);
-  const filledCount = analysis.filledSlots;
-
-  const combinations = (deckGuides as any).combinations?.[deckPersonalityKey];
-  if (!combinations) return null;
-
-  const optimalKey = filledCount >= 9 ? '9' : filledCount >= 4 ? '4' : '2';
-  return combinations[optimalKey] || null;
 };

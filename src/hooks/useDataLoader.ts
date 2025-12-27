@@ -1,4 +1,3 @@
-// src/hooks/useDataLoader.ts
 import { useEffect, useState } from 'react';
 import { DataLoaderService } from '../utils/dataLoader';
 import { Apostle } from '../types/apostle';

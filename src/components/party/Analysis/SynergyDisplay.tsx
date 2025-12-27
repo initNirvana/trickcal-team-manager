@@ -1,23 +1,13 @@
-import type { Personality } from '../../../types/apostle';
+import { getPersonalityBackgroundClass } from '@/types/apostle';
 import {
   getSynergyOnIconPath,
   getSynergyOffIconPath,
-  getPersonalityBackgroundClass,
-} from '../../../utils/apostleUtils';
-import { calculateTotalSynergyBonus } from '../../../utils/synergyUtils';
+  placeholderImagePath,
+} from '@/utils/apostleImages';
+import type { Synergy } from '@/utils/deckAnalysisUtils';
+import { calculateTotalSynergyBonus } from '@/utils/deckAnalysisUtils';
 
-interface SynergyDisplayProps {
-  synergies: Array<{
-    personality: Personality;
-    count: number;
-    totalCount: number;
-    inactiveCount: number;
-    isActive: boolean;
-    bonus?: { hp: number; damage: number };
-  }>;
-}
-
-const SynergyDisplay = ({ synergies }: SynergyDisplayProps) => {
+const SynergyDisplay = ({ synergies }: { synergies: Synergy[] }) => {
   const totalBonus = calculateTotalSynergyBonus(synergies);
   const hasActiveSynergies = synergies.some((s) => s.isActive);
 
@@ -55,25 +45,25 @@ const SynergyDisplay = ({ synergies }: SynergyDisplayProps) => {
       ) : (
         <div className="flex flex-wrap justify-center gap-4">
           {synergies
-            .filter((s) => s.totalCount > 0)
+            .filter((s) => s.ownedCount > 0)
             .map((synergy) => (
               <div key={synergy.personality} className="space-y-2">
                 <div className="flex items-center gap-3">
                   <div className="relative inline-flex items-center" style={{ height: '24px' }}>
                     {/* 활성 아이콘 */}
-                    {Array.from({ length: synergy.count }).map((_, index) => (
+                    {Array.from({ length: synergy.ownedCount }).map((_, index) => (
                       <img
                         key={`active-${index}`}
                         src={getSynergyOnIconPath(synergy.personality)}
                         alt={`${synergy.personality}-active-${index + 1}`}
-                        className="h-6 w-6 rounded-full border-2 border-white"
+                        className="h-6 w-6 rounded-full"
                         style={{
                           marginLeft: index === 0 ? '0' : '-12px',
-                          zIndex: synergy.totalCount - index,
+                          zIndex: 100 + synergy.ownedCount - index,
                           position: 'relative',
                         }}
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                          (e.target as HTMLImageElement).src = placeholderImagePath;
                         }}
                       />
                     ))}
@@ -84,14 +74,14 @@ const SynergyDisplay = ({ synergies }: SynergyDisplayProps) => {
                         key={`inactive-${index}`}
                         src={getSynergyOffIconPath(synergy.personality)}
                         alt={`${synergy.personality}-inactive-${index + 1}`}
-                        className="h-6 w-6 rounded-full border-2 border-white opacity-50 grayscale"
+                        className="h-6 w-6 rounded-full opacity-50 grayscale"
                         style={{
                           marginLeft: '-12px',
                           zIndex: synergy.inactiveCount - index,
                           position: 'relative',
                         }}
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                          (e.target as HTMLImageElement).src = placeholderImagePath;
                         }}
                       />
                     ))}
