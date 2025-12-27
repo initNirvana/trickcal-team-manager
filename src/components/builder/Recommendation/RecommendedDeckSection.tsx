@@ -58,7 +58,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                       <span className="font-bold">
                         {getPersonalityKoreanName(synergy.personality)}
                       </span>
-                      <span className="opacity-80">{synergy.totalCount}명</span>
+                      <span className="opacity-80">{synergy.activeCount}명</span>
                       {synergy.inactiveCount > 0 && (
                         <span className="text-xs opacity-60">(+{synergy.inactiveCount})</span>
                       )}
@@ -80,14 +80,9 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
               </div>
             </div>
 
-            {/* 추천 조합 그리드*/}
-            <RecommendedDeckGrid deck={rec.deck} deckSize={rec.deckSize} />
-
-            {/* 역할 밸런스 */}
-            <div className="mt-2 flex gap-4 text-xs opacity-70">
-              <span>🛡️ 탱커 {rec.roleBalance.tanker}명</span>
-              <span>⚔️ 딜러 {rec.roleBalance.attacker}명</span>
-              <span>💚 서포터 {rec.roleBalance.supporter}명</span>
+            {/* 추천 조합 그리드 */}
+            <div className="m-2 flex justify-center">
+              <RecommendedDeckGrid deck={rec.deck} deckSize={rec.deckSize} />
             </div>
           </div>
         </div>

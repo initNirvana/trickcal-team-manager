@@ -1,5 +1,6 @@
 import { Apostle } from '@/types/apostle';
 import { getApostleImagePath } from '@/utils/apostleImages';
+import { getPersonalityBackgroundClass } from '@/types/apostle';
 
 interface RecommendedDeckGridProps {
   deck: Apostle[];
@@ -43,10 +44,11 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
 
     return (
       <div className="group border-base-200 bg-base-100 hover:border-primary relative aspect-square overflow-hidden rounded-lg border-2 shadow-sm transition hover:shadow-md">
+        {/* 사도 이미지 */}
         <img
           src={getApostleImagePath(apostle.engName)}
+          className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackgroundClass(apostle.persona)}`}
           alt={apostle.name}
-          className="h-auto w-auto object-cover"
         />
 
         {/* 사도 이름 오버레이 */}
