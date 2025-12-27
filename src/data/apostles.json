@@ -15,7 +15,7 @@
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 50,
       "aside": {
@@ -38,7 +38,7 @@
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 20,
       "aside": {
@@ -61,7 +61,7 @@
         "subRole": "Main",
         "trait": []
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 65,
       "aside": {
@@ -84,7 +84,7 @@
         "subRole": "Sub",
         "trait": ["Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 45,
       "aside": {
@@ -107,7 +107,7 @@
         "subRole": "Buffer",
         "trait": []
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "front",
       "baseScore": 60,
       "aside": {
@@ -131,7 +131,7 @@
         "subRole": "Melee",
         "trait": ["CC", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 60,
       "aside": {
@@ -154,7 +154,7 @@
         "subRole": "Utility",
         "trait": ["Buff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 30,
       "aside": {
@@ -177,7 +177,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 75,
       "aside": {
@@ -201,7 +201,7 @@
         "subRole": "Main",
         "trait": ["Defense", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 45,
       "aside": {
@@ -224,7 +224,7 @@
         "subRole": "Main",
         "trait": ["CC", "Shield"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 30,
       "aside": {
@@ -247,7 +247,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 70,
       "aside": {
@@ -270,7 +270,7 @@
         "subRole": "Attacker",
         "trait": ["CC", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 60,
       "aside": {
@@ -293,7 +293,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 60,
       "aside": {
@@ -316,7 +316,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 60,
       "aside": {
@@ -339,7 +339,7 @@
         "subRole": "Assassin",
         "trait": ["Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -362,7 +362,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "CC", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 50,
       "aside": {
@@ -385,7 +385,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -408,7 +408,7 @@
         "subRole": "Ranged",
         "trait": ["Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 50,
       "aside": {
@@ -431,7 +431,7 @@
         "subRole": "Nuker",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 65,
       "aside": {
@@ -455,7 +455,7 @@
         "subRole": "Sub",
         "trait": ["Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 45,
       "aside": {
@@ -478,7 +478,7 @@
         "subRole": "Assassin",
         "trait": ["Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 45,
       "aside": {
@@ -501,7 +501,7 @@
         "subRole": "Pure",
         "trait": ["CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 55,
       "aside": {
@@ -524,7 +524,7 @@
         "subRole": "Utility",
         "trait": ["Shield"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 65,
       "aside": {
@@ -547,7 +547,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 45,
       "aside": {
@@ -570,7 +570,7 @@
         "subRole": "Melee",
         "trait": ["CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 30,
       "aside": {
@@ -593,7 +593,7 @@
         "subRole": "Melee",
         "trait": ["Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -616,7 +616,7 @@
         "subRole": "Melee",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 45,
       "aside": {
@@ -639,7 +639,7 @@
         "subRole": "Utility",
         "trait": ["Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 45,
       "aside": {
@@ -662,7 +662,7 @@
         "subRole": "Assassin",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 20,
       "aside": {
@@ -685,7 +685,7 @@
         "subRole": "Melee",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 20,
       "aside": {
@@ -708,7 +708,7 @@
         "subRole": "Pure",
         "trait": ["Damage"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 25,
       "aside": {
@@ -731,7 +731,7 @@
         "subRole": "Utility",
         "trait": ["Debuff", "CC"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 65,
       "aside": {
@@ -754,7 +754,7 @@
         "subRole": "Melee",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 20,
       "aside": {
@@ -777,7 +777,7 @@
         "subRole": "Utility",
         "trait": ["CC", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 60,
       "aside": {
@@ -801,7 +801,7 @@
         "subRole": "Pure",
         "trait": []
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 20,
       "aside": {
@@ -824,7 +824,7 @@
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 20,
       "aside": {
@@ -847,7 +847,7 @@
         "subRole": "Sub",
         "trait": ["Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 20,
       "aside": {
@@ -870,7 +870,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 75,
       "aside": {
@@ -893,7 +893,7 @@
         "subRole": "Main",
         "trait": ["Shield", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 70,
       "aside": {
@@ -916,7 +916,7 @@
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 75,
       "aside": {
@@ -939,7 +939,7 @@
         "subRole": "Pure",
         "trait": ["Buff", "Heal", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 75,
       "aside": {
@@ -963,7 +963,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 10,
       "aside": {
@@ -986,7 +986,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 10,
       "aside": {
@@ -1009,7 +1009,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 10,
       "aside": {
@@ -1032,7 +1032,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 10,
       "aside": {
@@ -1055,7 +1055,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 10,
       "aside": {
@@ -1078,7 +1078,7 @@
         "subRole": "Sub",
         "trait": ["Shield", "Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 10,
       "aside": {
@@ -1101,7 +1101,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 10,
       "aside": {
@@ -1124,7 +1124,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 10,
       "aside": {
@@ -1147,7 +1147,7 @@
         "subRole": "Pure",
         "trait": ["Heal"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 10,
       "aside": {
@@ -1170,7 +1170,7 @@
         "subRole": "Pure",
         "trait": ["Heal"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 10,
       "aside": {
@@ -1193,7 +1193,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 10,
       "aside": {
@@ -1216,7 +1216,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 10,
       "aside": {
@@ -1239,7 +1239,7 @@
         "subRole": "Melee",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 55,
       "aside": {
@@ -1262,7 +1262,7 @@
         "subRole": "Pure",
         "trait": ["Heal"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 65,
       "aside": {
@@ -1285,7 +1285,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 20,
       "aside": {
@@ -1308,7 +1308,7 @@
         "subRole": "Main",
         "trait": ["Shield", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "front",
       "baseScore": 70,
       "aside": {
@@ -1332,7 +1332,7 @@
         "subRole": "Pure",
         "trait": ["Heal", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -1355,7 +1355,7 @@
         "subRole": "Sub",
         "trait": ["CC", "Shield"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 60,
       "aside": {
@@ -1378,7 +1378,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 70,
       "aside": {
@@ -1402,7 +1402,7 @@
         "subRole": "Ranged",
         "trait": ["CC", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -1422,10 +1422,10 @@
       "persona": "Mad",
       "role": {
         "main": "Attacker",
-        "subRole": "Sub",
+        "subRole": "Melee",
         "trait": ["Defense"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 55,
       "aside": {
@@ -1448,7 +1448,7 @@
         "subRole": "Pure",
         "trait": ["Heal", "Buff", "CC"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 65,
       "aside": {
@@ -1471,7 +1471,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 65,
       "aside": {
@@ -1494,7 +1494,7 @@
         "subRole": "Sub",
         "trait": ["Shield"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 70,
       "aside": {
@@ -1517,7 +1517,7 @@
         "subRole": "Utility",
         "trait": ["Debuff", "Heal", "Buff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 60,
       "aside": {
@@ -1541,7 +1541,7 @@
         "subRole": "Utility",
         "trait": ["CC", "Buff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 55,
       "aside": {
@@ -1564,7 +1564,7 @@
         "subRole": "Ranged",
         "trait": ["CC", "Debuff", "Buff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 65,
       "aside": {
@@ -1588,7 +1588,7 @@
         "subRole": "Utility",
         "trait": ["Shield", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 20,
       "aside": {
@@ -1611,7 +1611,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 55,
       "aside": {
@@ -1634,7 +1634,7 @@
         "subRole": "Utility",
         "trait": ["Heal", "Buff", "CC"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "mid",
       "baseScore": 65,
       "aside": {
@@ -1657,7 +1657,7 @@
         "subRole": "Utility",
         "trait": ["Buff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 93,
       "aside": {
@@ -1681,7 +1681,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -1704,7 +1704,7 @@
         "subRole": "Sub",
         "trait": ["CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 20,
       "aside": {
@@ -1727,7 +1727,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 75,
       "aside": {
@@ -1751,7 +1751,7 @@
         "subRole": "Assassin",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "front",
       "baseScore": 65,
       "aside": {
@@ -1774,7 +1774,7 @@
         "subRole": "Utility",
         "trait": ["Shield", "Buff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 20,
       "aside": {
@@ -1797,7 +1797,7 @@
         "subRole": "Main",
         "trait": ["Buff", "Shield", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 60,
       "aside": {
@@ -1821,7 +1821,7 @@
         "subRole": "Utility",
         "trait": ["Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 50,
       "aside": {
@@ -1844,7 +1844,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 25,
       "aside": {
@@ -1867,7 +1867,7 @@
         "subRole": "Sub",
         "trait": ["Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 50,
       "aside": {
@@ -1890,7 +1890,7 @@
         "subRole": "Utility",
         "trait": ["Shield", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
       "baseScore": 80,
@@ -1915,7 +1915,7 @@
         "subRole": "Utility",
         "trait": ["Debuff", "Buff", "CC"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "front",
       "baseScore": 50,
       "aside": {
@@ -1938,7 +1938,7 @@
         "subRole": "Utility",
         "trait": ["Buff", "Heal", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 75,
       "aside": {
@@ -1962,7 +1962,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 60,
       "aside": {
@@ -1985,7 +1985,7 @@
         "subRole": "Sub",
         "trait": ["Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 60,
       "aside": {
@@ -2008,7 +2008,7 @@
         "subRole": "Utility",
         "trait": ["Buff", "Heal", "CC", "Shield"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 55,
       "aside": {
@@ -2031,7 +2031,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 70,
       "aside": {
@@ -2055,7 +2055,7 @@
         "subRole": "Assassin",
         "trait": ["Damage", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 65,
       "aside": {
@@ -2079,7 +2079,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 65,
       "aside": {
@@ -2103,7 +2103,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -2126,7 +2126,7 @@
         "subRole": "Utility",
         "trait": ["Buff", "Defense", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 75,
       "aside": {
@@ -2150,7 +2150,7 @@
         "subRole": "Sub",
         "trait": ["CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 65,
       "aside": {
@@ -2173,7 +2173,7 @@
         "subRole": "Main",
         "trait": ["Buff", "CC", "Heal"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "front",
       "baseScore": 75,
       "aside": {
@@ -2197,7 +2197,7 @@
         "subRole": "Main",
         "trait": ["Shield", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 65,
       "aside": {
@@ -2221,7 +2221,7 @@
         "subRole": "Main",
         "trait": ["Damage", "Heal", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 73,
       "aside": {
@@ -2245,7 +2245,7 @@
         "subRole": "Ranged",
         "trait": ["Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 65,
       "aside": {
@@ -2269,7 +2269,7 @@
         "subRole": "Utility",
         "trait": ["Buff", "Debuff", "CC"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "back",
       "baseScore": 65,
       "aside": {
@@ -2293,7 +2293,7 @@
         "subRole": "Melee",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 85,
       "aside": {
@@ -2317,7 +2317,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -2340,7 +2340,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 60,
       "aside": {
@@ -2363,7 +2363,7 @@
         "subRole": "Buffer",
         "trait": ["Buff", "Heal", "Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 80,
       "aside": {
@@ -2387,7 +2387,7 @@
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -2410,7 +2410,7 @@
         "subRole": "Attacker",
         "trait": ["Damage"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 55,
       "aside": {
@@ -2433,7 +2433,7 @@
         "subRole": "Utility",
         "trait": ["Buff", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "mid",
       "baseScore": 60,
       "aside": {
@@ -2456,7 +2456,7 @@
         "subRole": "Attacker",
         "trait": ["Damage", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 75,
       "aside": {
@@ -2480,7 +2480,7 @@
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 85,
       "aside": {
@@ -2504,7 +2504,7 @@
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 85,
       "aside": {
@@ -2528,7 +2528,7 @@
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 85,
       "aside": {
@@ -2552,7 +2552,7 @@
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 85,
       "aside": {
@@ -2576,7 +2576,7 @@
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 85,
       "aside": {
@@ -2600,7 +2600,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
       "baseScore": 85,
@@ -2625,7 +2625,7 @@
         "subRole": "Main",
         "trait": ["CC", "Damage", "Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 65,
       "aside": {
@@ -2648,7 +2648,7 @@
         "subRole": "Main",
         "trait": ["CC", "Shield", "Heal", "Buff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "front",
       "baseScore": 70,
       "aside": {
@@ -2671,7 +2671,7 @@
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 65,
       "aside": {
@@ -2694,7 +2694,7 @@
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "물리",
+      "method": "Physical",
       "position": "back",
       "baseScore": 60,
       "aside": {
@@ -2717,7 +2717,7 @@
         "subRole": "Utility",
         "trait": ["Buff", "Shield", "CC", "Debuff"]
       },
-      "method": "마법",
+      "method": "Magical",
       "position": "mid",
       "baseScore": 70,
       "aside": {

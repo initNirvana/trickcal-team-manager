@@ -6,9 +6,9 @@ export type Role =
   | { main: 'Tanker'; subRole: TankerSubRole; trait: Trait[] }
   | { main: 'Attacker'; subRole: AttackerSubRole; trait: Trait[] }
   | { main: 'Supporter'; subRole: SupporterSubRole; trait: Trait[] };
-export type TankerSubRole = 'Main' | 'Sub' | 'Evasion';
 export type AttackerSubRole = 'Melee' | 'Ranged' | 'Assassin' | 'Nuker';
-export type SupporterSubRole = 'Pure' | 'Buffer' | 'CC' | 'Utility';
+export type TankerSubRole = 'Main' | 'Sub' | 'Evasion';
+export type SupporterSubRole = 'Pure' | 'Buffer' | 'CC' | 'Utility' | 'Attacker';
 export type Trait = 'Damage' | 'Defense' | 'CC' | 'Heal' | 'Shield' | 'Buff' | 'Debuff';
 
 const SLOT_POSITIONS: Record<number, Position> = {
