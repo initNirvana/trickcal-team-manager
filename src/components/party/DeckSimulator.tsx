@@ -76,7 +76,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   return (
     <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 p-4">
       <h1 className="mb-4 text-2xl font-bold">덱 빌더</h1>
-      <p className="text-black-400">사도를 선택하고 피해량 정보를 확인하세요</p>
+      <p className="text-black">사도를 선택하고 피해량 정보를 확인하세요</p>
 
       {/* DeckSetting - asideSelection을 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">

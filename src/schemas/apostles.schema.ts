@@ -82,4 +82,3 @@ export const ApostlesDataSchema = z.object({
 });
 
 export type ApostlesData = z.infer<typeof ApostlesDataSchema>;
-export type Apostle = z.infer<typeof ApostleSchema>;

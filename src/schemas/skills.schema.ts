@@ -17,6 +17,7 @@ export const SkillSchema = z
     level: SkillGradeSchema,
     description: z.string().optional(),
     effectRange: z.string().optional(),
+    excludeSelf: z.boolean().optional(),
     damage: z.union([z.array(SkillValueSchema), SkillValueSchema]).optional(),
   })
   .passthrough();

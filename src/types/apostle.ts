@@ -6,7 +6,7 @@ export type Role =
   | { main: 'Tanker'; subRole: TankerSubRole; trait: Trait[] }
   | { main: 'Attacker'; subRole: AttackerSubRole; trait: Trait[] }
   | { main: 'Supporter'; subRole: SupporterSubRole; trait: Trait[] };
-export type AttackerSubRole = 'Melee' | 'Ranged' | 'Assassin' | 'Nuker';
+export type AttackerSubRole = 'Melee' | 'Ranged' | 'Assassin' | 'Nuker' | 'Utility';
 export type TankerSubRole = 'Main' | 'Sub' | 'Evasion';
 export type SupporterSubRole = 'Pure' | 'Buffer' | 'CC' | 'Utility' | 'Attacker';
 export type Trait = 'Damage' | 'Defense' | 'CC' | 'Heal' | 'Shield' | 'Buff' | 'Debuff';

@@ -41,7 +41,7 @@ const MyApostleList = ({
   }
 
   return (
-    <div className="border-white-700 bg-base-200 space-y-5 rounded-xl p-6 shadow-lg">
+    <div className="bg-base-200 space-y-5 rounded-xl border-gray-700 p-6 shadow-lg">
       {/* 헤더 */}
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-bold text-black">보유 사도 </h3>
@@ -49,7 +49,7 @@ const MyApostleList = ({
           <button
             onClick={() => setSortBy('id')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
-              sortBy === 'id' ? 'bg-blue-600 text-black' : 'bg-white-700 text-black-300'
+              sortBy === 'id' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
             }`}
           >
             순서
@@ -57,7 +57,7 @@ const MyApostleList = ({
           <button
             onClick={() => setSortBy('name')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
-              sortBy === 'name' ? 'bg-blue-600 text-black' : 'bg-white-700 text-black-300'
+              sortBy === 'name' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
             }`}
           >
             이름
@@ -65,7 +65,7 @@ const MyApostleList = ({
           <button
             onClick={() => setSortBy('persona')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
-              sortBy === 'persona' ? 'bg-blue-600 text-black' : 'bg-white-700 text-black-300'
+              sortBy === 'persona' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
             }`}
           >
             성격
