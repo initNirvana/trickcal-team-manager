@@ -87,7 +87,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
         />
       </div>
 
-      {/* DeckAnalysisPanel - skillLevels를 직접 Zustand에서 구독 */}
+      {/* DeckRecommendationGuide - showDeckGuide를 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
         <Activity mode={showDeckGuide ? 'visible' : 'hidden'}>
           <DeckRecommendationGuide
@@ -97,7 +97,10 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
             onGameModeChange={setGameMode}
           />
         </Activity>
+      </div>
 
+      {/* DeckAnalysisPanel - skillLevels를 직접 Zustand에서 구독 */}
+      <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
         <DeckAnalysisPanel
           analysis={analysis}
           filledDeck={filledDeck}
