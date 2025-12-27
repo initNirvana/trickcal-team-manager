@@ -1,0 +1,36 @@
+import { z } from 'zod';
+
+export const AsideTargetSchema = z.enum(['All', 'Front', 'Mid', 'Back', 'Persona']);
+
+export const AsideModifierSchema = z
+  .object({
+    Increase: z.number().optional(),
+    Reduction: z.number().optional(),
+  })
+  .passthrough();
+
+export const AsideRowSchema = z
+  .object({
+    apostleId: z.string().min(1),
+    apostleName: z.string().optional(),
+    name: z.string().min(1),
+    level: z.number().int().min(1),
+    description: z.string().optional(),
+
+    // 코드에서 첫 요소만 쓰는 케이스가 있어 배열/단일 둘 다 허용 [file:1]
+    type: z.union([AsideTargetSchema, z.array(AsideTargetSchema)]).optional(),
+    damage: z.union([AsideModifierSchema, z.array(AsideModifierSchema)]).optional(),
+    skill: z.union([AsideModifierSchema, z.array(AsideModifierSchema)]).optional(),
+  })
+  .passthrough();
+
+export const AsidesDataSchema = z
+  .object({
+    asides: z.array(AsideRowSchema).min(1),
+    version: z.string().optional(),
+    lastUpdated: z.string().optional(),
+  })
+  .passthrough();
+
+export type AsidesData = z.infer<typeof AsidesDataSchema>;
+export type AsideRow = z.infer<typeof AsideRowSchema>;
