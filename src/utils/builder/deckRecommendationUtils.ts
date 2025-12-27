@@ -2,7 +2,6 @@ import type { Apostle, Personality } from '@/types/apostle';
 import { getPositions } from '@/types/apostle';
 import { analyzeSynergies, Synergy, calculateTotalSynergyBonus } from '@/utils/deckAnalysisUtils';
 
-type RoleKey = 'tanker' | 'attacker' | 'supporter';
 type DeckSize = 6 | 9;
 type ContentMode9 = 'CRASH' | 'FRONTIER';
 
@@ -17,11 +16,24 @@ const ROLES = {
   SUPPORTER: 'Supporter',
 } as const;
 
-const ROLE_KEY: Record<(typeof ROLES)[keyof typeof ROLES], RoleKey> = {
-  [ROLES.TANKER]: 'tanker',
-  [ROLES.ATTACKER]: 'attacker',
-  [ROLES.SUPPORTER]: 'supporter',
-};
+const ALL_PERSONALITIES = ['Jolly', 'Mad', 'Naive', 'Gloomy', 'Cool'] as const;
+
+const MULTI_PERSONA_RULES: Array<{
+  engName?: string;
+  id?: string;
+  name?: string;
+  allowed: Personality[];
+}> = [{ engName: 'Uros', name: '우로스', allowed: [...ALL_PERSONALITIES] }];
+
+function getAllowedPersonas(a: Apostle): Personality[] | null {
+  const rule = MULTI_PERSONA_RULES.find(
+    (r) =>
+      (r.engName && r.engName === a.engName) ||
+      (r.id && r.id === a.id) ||
+      (r.name && r.name === a.name),
+  );
+  return rule ? rule.allowed : null;
+}
 
 const DECK_CONFIG = {
   6: {
@@ -64,7 +76,7 @@ const getSynergyScore9 = (mode9: ContentMode9 | undefined) => {
 function calculateSynergyScore(apostles: Apostle[]): number {
   const synergies = analyzeSynergies(apostles);
 
-  const countMap = synergies.reduce<Record<string, number>>((acc, s) => {
+  const countMap = synergies.reduce<Partial<Record<Personality, number>>>((acc, s) => {
     if (s.ownedCount > 0) acc[s.personality] = s.ownedCount;
     return acc;
   }, {});
@@ -78,6 +90,39 @@ function calculateSynergyScore(apostles: Apostle[]): number {
   if (counts[0] === 6) return SYNERGY_SCORES.TYPE_6;
 
   return 0;
+}
+
+function applyBestPersonaForSynergy(deck: Apostle[]): Apostle[] {
+  const targets = deck
+    .map((a, idx) => ({ a, idx, allowed: getAllowedPersonas(a) }))
+    .filter((x): x is { a: Apostle; idx: number; allowed: Personality[] } => !!x.allowed);
+
+  if (targets.length === 0) return deck;
+
+  let bestDeck = deck;
+  let bestScore = -Infinity;
+
+  const tryAll = (i: number, working: Apostle[]) => {
+    if (i === targets.length) {
+      const synergies = analyzeSynergies(working);
+      const total = calculateTotalSynergyBonus(synergies);
+      const score = total.hp + total.damage;
+      if (score > bestScore) {
+        bestScore = score;
+        bestDeck = working;
+      }
+      return;
+    }
+
+    const t = targets[i];
+    for (const p of t.allowed) {
+      const next = working.map((x, idx) => (idx === t.idx ? { ...x, persona: p } : x));
+      tryAll(i + 1, next);
+    }
+  };
+
+  tryAll(0, deck);
+  return bestDeck;
 }
 
 function getRoleBalance(apostles: Apostle[]) {
@@ -260,22 +305,26 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
 
       if (deck) {
         const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
-        const roles = getRoleBalance(balancedDeck);
+        const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
+        const roles = getRoleBalance(balancedDeckWithBestPersona);
 
         if (
           roles.tanker >= reqBalance[ROLES.TANKER] &&
           roles.supporter >= reqBalance[ROLES.SUPPORTER]
         ) {
-          const synergyScore = calculateSynergyScore(balancedDeck);
+          const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
           if (synergyScore === SYNERGY_SCORES.TYPE_4_2) {
-            const baseScore = balancedDeck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+            const baseScore = balancedDeckWithBestPersona.reduce(
+              (sum, a) => sum + (a.baseScore || 0),
+              0,
+            );
             results.push({
-              deck: balancedDeck,
+              deck: balancedDeckWithBestPersona,
               deckSize: 6,
               totalScore: baseScore + synergyScore,
               baseScore,
               synergyScore,
-              synergies: analyzeSynergies(balancedDeck),
+              synergies: analyzeSynergies(balancedDeckWithBestPersona),
               roleBalance: roles,
             });
           }
@@ -307,22 +356,26 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
 
         if (deck) {
           const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
-          const roles = getRoleBalance(balancedDeck);
+          const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
+          const roles = getRoleBalance(balancedDeckWithBestPersona);
 
           if (
             roles.tanker >= reqBalance[ROLES.TANKER] &&
             roles.supporter >= reqBalance[ROLES.SUPPORTER]
           ) {
-            const synergyScore = calculateSynergyScore(balancedDeck);
+            const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
             if (synergyScore === SYNERGY_SCORES.TYPE_2_2_2) {
-              const baseScore = balancedDeck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+              const baseScore = balancedDeckWithBestPersona.reduce(
+                (sum, a) => sum + (a.baseScore || 0),
+                0,
+              );
               results.push({
-                deck: balancedDeck,
+                deck: balancedDeckWithBestPersona,
                 deckSize: 6,
                 totalScore: baseScore + synergyScore,
                 baseScore,
                 synergyScore,
-                synergies: analyzeSynergies(balancedDeck),
+                synergies: analyzeSynergies(balancedDeckWithBestPersona),
                 roleBalance: roles,
               });
             }
@@ -341,22 +394,26 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
 
     if (deck) {
       const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
-      const roles = getRoleBalance(balancedDeck);
+      const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
+      const roles = getRoleBalance(balancedDeckWithBestPersona);
 
       if (
         roles.tanker >= reqBalance[ROLES.TANKER] &&
         roles.supporter >= reqBalance[ROLES.SUPPORTER]
       ) {
-        const synergyScore = calculateSynergyScore(balancedDeck);
+        const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
         if (synergyScore === SYNERGY_SCORES.TYPE_6) {
-          const baseScore = balancedDeck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+          const baseScore = balancedDeckWithBestPersona.reduce(
+            (sum, a) => sum + (a.baseScore || 0),
+            0,
+          );
           results.push({
-            deck: balancedDeck,
+            deck: balancedDeckWithBestPersona,
             deckSize: 6,
             totalScore: baseScore + synergyScore,
             baseScore,
             synergyScore,
-            synergies: analyzeSynergies(balancedDeck),
+            synergies: analyzeSynergies(balancedDeckWithBestPersona),
             roleBalance: roles,
           });
         }
@@ -403,8 +460,8 @@ function buildDeck(
     if (initialDeck.length !== size) continue;
 
     const finalDeck = adjustForRoleBalance(initialDeck, sortedApostles, size);
-
-    const finalRoles = getRoleBalance(finalDeck);
+    const finalDeckWithBestPersona = applyBestPersonaForSynergy(finalDeck);
+    const finalRoles = getRoleBalance(finalDeckWithBestPersona);
     const reqBalance = DECK_CONFIG[size].balance;
     if (
       finalRoles.tanker < reqBalance[ROLES.TANKER] ||
@@ -413,23 +470,23 @@ function buildDeck(
       continue;
     }
 
-    const deckKey = finalDeck
+    const deckKey = finalDeckWithBestPersona
       .map((a) => a.id)
       .sort()
       .join(',');
     if (usedCombinations.has(deckKey)) continue;
     usedCombinations.add(deckKey);
 
-    const baseScore = finalDeck.reduce((sum, a) => sum + (a.baseScore || 0), 0);
-    const synergyScore = getSynergyScore(finalDeck);
+    const baseScore = finalDeckWithBestPersona.reduce((sum, a) => sum + (a.baseScore || 0), 0);
+    const synergyScore = getSynergyScore(finalDeckWithBestPersona);
 
     results.push({
-      deck: finalDeck,
+      deck: finalDeckWithBestPersona,
       deckSize: size,
       totalScore: baseScore + synergyScore,
       baseScore,
       synergyScore,
-      synergies: analyzeSynergies(finalDeck),
+      synergies: analyzeSynergies(finalDeckWithBestPersona),
       roleBalance: finalRoles,
     });
   }
