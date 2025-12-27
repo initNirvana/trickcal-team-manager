@@ -39,7 +39,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
               <h3 className="card-title">
                 {rec.deckSize}인 조합 ({rec.deckSize === 9 ? '대충돌/프론티어' : '침략'})
               </h3>
-              <div className="badge badge-lg badge-primary">총점: {rec.totalScore}</div>
+              {/* <div className="badge badge-lg badge-primary">총점: {rec.totalScore}</div> */}
             </div>
 
             {/* 성격 시너지 표시 */}
