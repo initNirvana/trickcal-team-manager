@@ -65,6 +65,12 @@ export const ApostleSchema = z.object({
   position: PositionSchema.or(z.array(PositionSchema)), // 일부 데이터가 배열일 가능성 대비 [file:19]
   positionPriority: z.array(PositionSchema).optional(),
   baseScore: z.number(),
+  scoreBySize: z
+    .object({
+      size6: z.number().optional(),
+      size9: z.number().optional(),
+    })
+    .optional(),
   aside: AsideSchema,
   mercenary: z.boolean().optional(),
 });
