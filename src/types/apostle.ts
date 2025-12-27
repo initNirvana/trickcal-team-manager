@@ -1,8 +1,15 @@
 export type Personality = 'Jolly' | 'Mad' | 'Naive' | 'Gloomy' | 'Cool';
 export type Position = 'front' | 'mid' | 'back';
-export type Role = 'Attacker' | 'Tanker' | 'Supporter';
 export type Method = 'Physical' | 'Magical';
 export type Race = '용족' | '정령' | '수인' | '유령' | '마녀' | '요정' | '엘프';
+export type Role =
+  | { main: 'Tanker'; subRole: TankerSubRole; trait: Trait[] }
+  | { main: 'Attacker'; subRole: AttackerSubRole; trait: Trait[] }
+  | { main: 'Supporter'; subRole: SupporterSubRole; trait: Trait[] };
+export type TankerSubRole = 'Main' | 'Sub' | 'Evasion';
+export type AttackerSubRole = 'Melee' | 'Ranged' | 'Assassin' | 'Nuker';
+export type SupporterSubRole = 'Pure' | 'Buffer' | 'CC' | 'Utility';
+export type Trait = 'Damage' | 'Defense' | 'CC' | 'Heal' | 'Shield' | 'Buff' | 'Debuff';
 
 const SLOT_POSITIONS: Record<number, Position> = {
   1: 'back',

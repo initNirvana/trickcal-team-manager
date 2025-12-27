@@ -1,5 +1,7 @@
 import type { Apostle, Personality } from '../types/apostle';
 
+type PersonalityCountMap = Record<Personality, number>;
+
 /**
  * 성격 시너지 효과 정의
  * 성격 사도 수에 따른 시너지 레벨과 보너스
@@ -28,9 +30,9 @@ const PERSONALITY_LIST = [
  * 성격 시너지 정보 인터페이스
  * - personality: 성격 타입
  * - ownedCount: 보유한 사도 수
- * - activeCount: 활성화된 시너지 수
+ * - activeCount: 활성화된 시너지 수 = tier.count (0/2/4/6/7/9)
  * - extraCount: 활성화 후 추가로 보유한 사도 수
- * - inactiveCount: 비활성 시너지 수
+ * - inactiveCount: 비활성 시너지 수 = ownedCount - activeCount
  * - activeThreshold: 다음 시너지 활성화에 필요한 사도 수
  * - isActive: 시너지 활성화 여부
  * - bonus: 시너지 보너스 (HP, 피해량)
@@ -88,9 +90,9 @@ const calculateSingleSynergy = (personality: Personality, ownedCount: number): S
  * 덱의 모든 성격 시너지를 분석합니다.
  */
 export function analyzeSynergies(apostles: Apostle[]): Synergy[] {
-  const counts = apostles.reduce<Record<Personality, number>>(
+  const counts = apostles.reduce<PersonalityCountMap>(
     (acc, { persona }) => {
-      acc[persona] = (acc[persona] ?? 0) + 1;
+      acc[persona] += 1;
       return acc;
     },
     { Jolly: 0, Mad: 0, Naive: 0, Gloomy: 0, Cool: 0 },
