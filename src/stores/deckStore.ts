@@ -42,7 +42,7 @@ export const useDeckStore = create<DeckState>()(
       deck: Array(9).fill(undefined),
       skillLevels: {},
       asideSelection: {},
-      showDeckGuide: true,
+      showDeckGuide: false,
 
       // Deck 액션
       setDeckMember: (slot, apostle) =>
@@ -92,7 +92,7 @@ export const useDeckStore = create<DeckState>()(
           deck: Array(9).fill(undefined),
           skillLevels: {},
           asideSelection: {},
-          showDeckGuide: true,
+          showDeckGuide: false,
         }),
 
       setShowDeckGuide: (show) => set({ showDeckGuide: show }),
