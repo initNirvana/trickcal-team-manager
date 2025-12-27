@@ -25,7 +25,7 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
 
   const fillSlots = (line: Apostle[]) => {
     const slots = [...line];
-    while (slots.length < 3) {
+    while (slots.length < posPerLine) {
       slots.push(null as any);
     }
     return slots;
