@@ -45,8 +45,8 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
   /**
    * 어사이드 등급 선택 핸들러
    */
-  const handleAsideRankSelect = (apostleId: string, rank: number | null) => {
-    const newValue = asideSelection[apostleId] === rank ? null : rank;
+  const handleAsideRankSelect = (apostleId: string, rank: number | undefined) => {
+    const newValue = asideSelection[apostleId] === rank ? undefined : rank;
     setAsideSelection(apostleId, newValue);
   };
 
@@ -123,10 +123,10 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
 
                     {/* 해제 버튼 */}
                     <button
-                      onClick={() => handleAsideRankSelect(apostleKey, null)}
+                      onClick={() => handleAsideRankSelect(apostleKey, undefined)}
                       disabled={hasNoAside}
                       className={`rounded px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition ${
-                        selectedRank === null
+                        selectedRank === undefined
                           ? 'bg-red-500 text-white shadow-md'
                           : 'bg-gray-300 text-gray-700 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500'
                       } ${hasNoAside ? 'cursor-not-allowed opacity-50' : ''}`}
