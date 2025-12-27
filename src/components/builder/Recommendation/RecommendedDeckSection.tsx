@@ -2,7 +2,11 @@ import { useMemo } from 'react';
 import { Apostle, getPersonalityBackgroundClass } from '@/types/apostle';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
 import { getPersonalityKoreanName } from '@/types/apostle';
-import { getSynergyOnIconPath, getSynergyOffIconPath } from '@/utils/apostleImages';
+import {
+  getSynergyOnIconPath,
+  getSynergyOffIconPath,
+  placeholderImagePath,
+} from '@/utils/apostleImages';
 import RecommendedDeckGrid from './RecommendedDeckGrid';
 
 interface RecommendedDeckSectionProps {
@@ -33,7 +37,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
             {/* 헤더 */}
             <div className="flex items-center justify-between">
               <h3 className="card-title">
-                {rec.deckSize}인 조합 ({rec.deckSize === 9 ? '대충돌/프론티어' : '침략/줘팸터'})
+                {rec.deckSize}인 조합 ({rec.deckSize === 9 ? '대충돌/프론티어' : '침략'})
               </h3>
               <div className="badge badge-lg badge-primary">총점: {rec.totalScore}</div>
             </div>
@@ -93,7 +97,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                               position: 'relative',
                             }}
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                              (e.target as HTMLImageElement).src = placeholderImagePath;
                             }}
                           />
                         ))}
@@ -112,7 +116,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                                 position: 'relative',
                               }}
                               onError={(e) => {
-                                (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                                (e.target as HTMLImageElement).src = placeholderImagePath;
                               }}
                             />
                           ))}

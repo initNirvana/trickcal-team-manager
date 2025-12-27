@@ -46,8 +46,7 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
    * 어사이드 등급 선택 핸들러
    */
   const handleAsideRankSelect = (apostleId: string, rank: number | null) => {
-    const normalized = rank === null ? undefined : rank;
-    const newValue = asideSelection[apostleId] === normalized ? undefined : normalized;
+    const newValue = asideSelection[apostleId] === rank ? null : rank;
     setAsideSelection(apostleId, newValue);
   };
 

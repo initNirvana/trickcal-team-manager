@@ -19,7 +19,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   const deck = useDeckStore((state) => state.deck);
   const setDeckMember = useDeckStore((state) => state.setDeckMember);
   const resetAll = useDeckStore((state) => state.resetAll);
-  const _hydrateDeck = useDeckStore((state) => state._hydrateDeck);
+  const hydrateDeck = useDeckStore((state) => state.hydrateDeck);
   // 속성별 추천 사도 가이드 ON/OFF
   const showDeckGuide = useDeckStore((state) => state.showDeckGuide);
 
@@ -36,13 +36,13 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
         const parsed = JSON.parse(stored);
         const deckIds = parsed?.state?.deckIds;
         if (deckIds && Array.isArray(deckIds)) {
-          _hydrateDeck(deckIds, apostles);
+          hydrateDeck(deckIds, apostles);
         }
       } catch (error) {
         console.error('Failed to restore deck:', error);
       }
     }
-  }, [apostles, _hydrateDeck]);
+  }, [apostles, hydrateDeck]);
 
   // 액션 핸들러
   const handleSlotClick = (slotNumber: number) => {
@@ -74,7 +74,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   const analysis = analyzeDeck(filledDeck);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-start p-4">
+    <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 p-4">
       <h1 className="mb-4 text-2xl font-bold">덱 빌더</h1>
       <p className="text-black-400">사도를 선택하고 피해량 정보를 확인하세요</p>
 
@@ -88,16 +88,16 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
       </div>
 
       {/* DeckRecommendationGuide - showDeckGuide를 직접 Zustand에서 구독 */}
-      <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
-        <Activity mode={showDeckGuide ? 'visible' : 'hidden'}>
+      <Activity mode={showDeckGuide ? 'visible' : 'hidden'}>
+        <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">
           <DeckRecommendationGuide
             apostles={filledDeck}
             allApostles={apostles}
             gameMode={gameMode}
             onGameModeChange={setGameMode}
           />
-        </Activity>
-      </div>
+        </div>
+      </Activity>
 
       {/* DeckAnalysisPanel - skillLevels를 직접 Zustand에서 구독 */}
       <div className="mb-4 w-full max-w-xl rounded-lg bg-white p-4 shadow">

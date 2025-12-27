@@ -11,7 +11,7 @@ export type TankerSubRole = 'Main' | 'Sub' | 'Evasion';
 export type SupporterSubRole = 'Pure' | 'Buffer' | 'CC' | 'Utility' | 'Attacker';
 export type Trait = 'Damage' | 'Defense' | 'CC' | 'Heal' | 'Shield' | 'Buff' | 'Debuff';
 
-const SLOT_POSITIONS: Record<number, Position> = {
+const SLOT_POSITIONS = {
   1: 'back',
   2: 'mid',
   3: 'front',
@@ -47,7 +47,6 @@ export interface Apostle {
   name: string;
   engName: string;
   isEldain: boolean;
-  hasAside: boolean;
   rank: 1 | 2 | 3;
   race: Race;
   persona: Personality;
@@ -128,7 +127,7 @@ function getSlotPosition(slotNumber: number): Position {
   if (slotNumber < 1 || slotNumber > 9) {
     throw new Error(`Invalid slot number: ${slotNumber}. Must be 1-9.`);
   }
-  return SLOT_POSITIONS[slotNumber] || 'front';
+  return SLOT_POSITIONS[slotNumber as keyof typeof SLOT_POSITIONS];
 }
 
 export function getPersonalityBackgroundClass(personality: Personality): string {

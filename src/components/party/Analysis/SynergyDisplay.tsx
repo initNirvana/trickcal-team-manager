@@ -1,5 +1,9 @@
 import { getPersonalityBackgroundClass } from '@/types/apostle';
-import { getSynergyOnIconPath, getSynergyOffIconPath } from '@/utils/apostleImages';
+import {
+  getSynergyOnIconPath,
+  getSynergyOffIconPath,
+  placeholderImagePath,
+} from '@/utils/apostleImages';
 import type { Synergy } from '@/utils/deckAnalysisUtils';
 import { calculateTotalSynergyBonus } from '@/utils/deckAnalysisUtils';
 
@@ -59,7 +63,7 @@ const SynergyDisplay = ({ synergies }: { synergies: Synergy[] }) => {
                           position: 'relative',
                         }}
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                          (e.target as HTMLImageElement).src = placeholderImagePath;
                         }}
                       />
                     ))}
@@ -77,7 +81,7 @@ const SynergyDisplay = ({ synergies }: { synergies: Synergy[] }) => {
                           position: 'relative',
                         }}
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                          (e.target as HTMLImageElement).src = placeholderImagePath;
                         }}
                       />
                     ))}

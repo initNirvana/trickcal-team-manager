@@ -15,17 +15,6 @@ export interface AsideRow {
   skill?: OneOrArray<Required<Pick<Modifier, 'Increase' | 'Reduction'>>>;
 }
 
-export interface AsideRow {
-  apostleId: string;
-  apostleName?: string;
-  name: string;
-  level: number;
-  description?: string;
-  type?: OneOrArray<AsideTarget>;
-  damage?: OneOrArray<Required<Pick<Modifier, 'Increase' | 'Reduction'>>>;
-  skill?: OneOrArray<Required<Pick<Modifier, 'Increase' | 'Reduction'>>>;
-}
-
 export interface AsideEffect {
   apostleName: string;
   apostleId: string;
@@ -248,7 +237,7 @@ export interface SkillReductionResult {
 }
 
 const toValidLevel = (v: unknown, fallback = 1) => {
-  const n = typeof v === 'string' ? Number(v) : (v as number);
+  const n = typeof v === 'string' ? Number(v) : typeof v === 'number' ? v : NaN;
   return Number.isFinite(n) && n >= 1 ? Math.floor(n) : fallback;
 };
 

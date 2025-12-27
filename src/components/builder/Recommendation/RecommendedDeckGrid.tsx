@@ -23,10 +23,10 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
     }
   });
 
-  const fillSlots = (line: Apostle[]) => {
-    const slots = [...line];
+  const fillSlots = (line: (Apostle | null)[]) => {
+    const slots: (Apostle | null)[] = [...line];
     while (slots.length < posPerLine) {
-      slots.push(null as any);
+      slots.push(null);
     }
     return slots;
   };

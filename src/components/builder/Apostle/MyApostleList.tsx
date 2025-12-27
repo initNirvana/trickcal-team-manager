@@ -31,12 +31,13 @@ const MyApostleList = ({
   };
 
   // 정렬
+  const sortedApostles = [...allApostles];
   if (sortBy === 'name') {
-    allApostles.sort((a, b) => a.name.localeCompare(b.name));
+    sortedApostles.sort((a, b) => a.name.localeCompare(b.name));
   } else if (sortBy === 'persona') {
-    allApostles.sort((a, b) => (a.persona || '').localeCompare(b.persona || ''));
+    sortedApostles.sort((a, b) => (a.persona || '').localeCompare(b.persona || ''));
   } else if (sortBy === 'id') {
-    allApostles.sort((a, b) => b.id.localeCompare(a.id));
+    sortedApostles.sort((a, b) => b.id.localeCompare(a.id));
   }
 
   return (

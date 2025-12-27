@@ -16,6 +16,8 @@ const assetPathMap = import.meta.glob<string>(
   { eager: true, import: 'default' },
 ) as Record<string, string>;
 
+export const placeholderImagePath = getAssetPath('/src/assets/apostles/placeholder.webp');
+
 function getAssetPath(originalPath: string): string {
   const path = assetPathMap[originalPath];
 

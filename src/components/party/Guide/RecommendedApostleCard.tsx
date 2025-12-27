@@ -42,8 +42,7 @@ const RecommendedApostleCard = ({
     return null;
   }
 
-  const personalities = [apostle.persona];
-  if (!personalities || personalities.length === 0) {
+  if (!apostle.persona) {
     console.warn(`사도 "${apostle.name}"의 성격이 없습니다.`);
     return null;
   }

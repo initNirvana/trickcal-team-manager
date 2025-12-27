@@ -62,7 +62,7 @@ export const ApostleSchema = z.object({
   persona: PersonalitySchema,
   role: RoleSchema,
   method: MethodSchema,
-  position: PositionSchema.or(z.array(PositionSchema)), // 일부 데이터가 배열일 가능성 대비 [file:19]
+  position: z.union([PositionSchema, z.array(PositionSchema)]), // 일부 데이터가 배열일 가능성 대비 [file:19]
   positionPriority: z.array(PositionSchema).optional(),
   baseScore: z.number(),
   scoreBySize: z

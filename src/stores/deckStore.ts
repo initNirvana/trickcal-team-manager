@@ -5,7 +5,7 @@ import type { Apostle } from '../types/apostle';
 interface DeckState {
   deck: (Apostle | undefined)[];
   skillLevels: Record<string, number>;
-  asideSelection: Record<string, number | string | undefined>;
+  asideSelection: Record<string, number | null>;
 
   showDeckGuide: boolean;
 
@@ -18,7 +18,7 @@ interface DeckState {
   resetSkillLevels: () => void;
 
   // Aside Selection 관련
-  setAsideSelection: (apostleId: string, asideIndex: number | string | undefined) => void;
+  setAsideSelection: (apostleId: string, asideIndex: number | null) => void;
   resetAsideSelection: () => void;
 
   // 전체 리셋
@@ -27,13 +27,13 @@ interface DeckState {
   setShowDeckGuide: (show: boolean) => void;
 
   // 내부 헬퍼 (persist용)
-  _hydrateDeck: (apostleIds: (string | null)[], allApostles: Apostle[]) => void;
+  hydrateDeck: (apostleIds: (string | null)[], allApostles: Apostle[]) => void;
 }
 
 interface PersistedState {
   deckIds: (string | null)[];
   skillLevels: Record<string, number>;
-  asideSelection: Record<string, number | string | undefined>;
+  asideSelection: Record<string, number | null>;
 }
 
 export const useDeckStore = create<DeckState>()(
@@ -52,7 +52,7 @@ export const useDeckStore = create<DeckState>()(
           // 기존에 배치된 사도 중복 배치 시도 시 제거
           if (apostle) {
             newDeck.forEach((existingApostle, index) => {
-              if (existingApostle && existingApostle.name === apostle.name && index !== slot - 1) {
+              if (existingApostle && existingApostle.id === apostle.id && index !== slot - 1) {
                 newDeck[index] = undefined;
               }
             });
@@ -98,7 +98,7 @@ export const useDeckStore = create<DeckState>()(
       setShowDeckGuide: (show) => set({ showDeckGuide: show }),
 
       // 내부 헬퍼: ID 배열을 받아 Apostle 객체로 복원
-      _hydrateDeck: (apostleIds, allApostles) => {
+      hydrateDeck: (apostleIds, allApostles) => {
         const apostlesMap = new Map(allApostles.map((a) => [a.id, a]));
         const restoredDeck = apostleIds.map((id) => (id ? apostlesMap.get(id) : undefined));
         set({ deck: restoredDeck });
@@ -118,7 +118,7 @@ export const useDeckStore = create<DeckState>()(
       // 복원 시: ID를 다시 Apostle 객체로 변환하지 않음 (컴포넌트에서 처리)
       merge: (persistedState, currentState) => ({
         ...currentState,
-        ...(persistedState as any),
+        ...(persistedState as Partial<PersistedState>),
       }),
     },
   ),

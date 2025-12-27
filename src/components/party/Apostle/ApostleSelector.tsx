@@ -33,10 +33,8 @@ const ApostleSelector = ({
   const [selectedPersonality, setSelectedPersonality] = useState<Personality | null>(null);
   const [selectedRank, setSelectedRank] = useState<number | null>(null);
   const isRemoveButtonEnabled = currentApostle !== undefined && currentApostle !== null;
-  const [selectedApostle, setSelectedApostle] = useState<Apostle | null>(null);
 
   const handleSelectApostle = (apostle: Apostle) => {
-    setSelectedApostle(apostle);
     onSelect(apostle);
   };
 

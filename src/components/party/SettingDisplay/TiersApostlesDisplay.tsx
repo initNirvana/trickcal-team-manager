@@ -39,8 +39,12 @@ const positionConfig = {
   후열: { icon: 'Common_PositionBack', label: '후열' },
 };
 
+interface ApostleCardProps {
+  apostle: ApostleData;
+}
+
 // ===== 사도 카드 =====
-const ApostleCard = ({ apostle }: { apostle: ApostleData }) => (
+const ApostleCard = ({ apostle }: ApostleCardProps) => (
   <div className="group flex flex-col items-center gap-1">
     <div className="relative h-24 w-20 overflow-hidden rounded-lg border-2 border-gray-300 transition hover:shadow-lg dark:border-gray-600">
       <Image
@@ -173,7 +177,6 @@ export function RecommendedApostlesDisplay() {
           {positions.map((position) => (
             <button
               key={position}
-              color={selectedPosition === position ? 'blue' : 'gray'}
               onClick={() => setSelectedPosition(position)}
               className="btn flex items-center gap-1 transition"
             >
