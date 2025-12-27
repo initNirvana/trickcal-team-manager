@@ -74,7 +74,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   const analysis = analyzeDeck(filledDeck);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 p-4">
+    <div className="flex min-h-screen flex-col items-center justify-start p-4">
       <h1 className="mb-4 text-2xl font-bold">덱 빌더</h1>
       <p className="text-black-400">사도를 선택하고 피해량 정보를 확인하세요</p>
 

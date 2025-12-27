@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Apostle, getPersonalityBackgroundClass } from '@/types/apostle';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
 import { getPersonalityKoreanName } from '@/types/apostle';
+import { getSynergyOnIconPath, getSynergyOffIconPath } from '@/utils/apostleImages';
 import RecommendedDeckGrid from './RecommendedDeckGrid';
 
 interface RecommendedDeckSectionProps {
@@ -13,7 +14,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
 
   if (recommendations.length === 0) {
     return (
-      <div className="alert alert-warning">
+      <div className="alert alert-warning flex items-center justify-center text-center">
         <div>
           <h3 className="font-bold">추천 가능한 조합이 없습니다</h3>
           <p className="text-sm">보유 사도가 부족하거나 역할 밸런스(탱커/서포터)가 맞지 않습니다</p>
@@ -37,46 +38,90 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
               <div className="badge badge-lg badge-primary">총점: {rec.totalScore}</div>
             </div>
 
-            {/* 점수 상세 */}
-            <div className="flex gap-4 text-sm">
-              <span className="badge badge-outline">기본점수: {rec.baseScore}</span>
-              <span className="badge badge-outline">시너지: {rec.synergyScore}</span>
-            </div>
-
             {/* 성격 시너지 표시 */}
-            <div className="mt-3">
-              <h4 className="mb-2 text-sm font-semibold">성격 시너지</h4>
-              <div className="flex flex-wrap gap-2">
+            <div className="mt-1">
+              <h4 className="mb-2 text-sm font-semibold">
+                성격 시너지
+                {/* 성격 시너지 합계 표시 */}
+                {rec.synergies.filter((s) => s.isActive).length > 0 && (
+                  <div className="space-y-2">
+                    {/* HP + 피해량 바 */}
+                    <div className="flex gap-2">
+                      {/* 합계 라벨 */}
+                      <div className="text-center text-xs font-bold text-gray-600">합계</div>
+                      <div className="flex-1">
+                        <div className="flex h-5 items-center justify-center rounded bg-gray-200">
+                          <span className="text-xs font-bold text-gray-700">
+                            HP +{rec.synergies.reduce((sum, s) => sum + (s.bonus?.hp || 0), 0)}%
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex-1">
+                        <div className="flex h-5 items-center justify-center rounded bg-gray-200">
+                          <span className="text-xs font-bold text-gray-700">
+                            피해량 +
+                            {rec.synergies.reduce((sum, s) => sum + (s.bonus?.damage || 0), 0)}%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </h4>
+
+              <div className="flex flex-wrap justify-center gap-2">
                 {rec.synergies
                   .filter((s) => s.isActive)
                   .map((synergy) => (
                     <div
                       key={synergy.personality}
                       className={`badge badge-lg gap-1 ${getPersonalityBackgroundClass(synergy.personality)}`}
-                      title={`HP +${synergy.bonus?.hp}%, 공격력 +${synergy.bonus?.damage}%`}
+                      title={`${getPersonalityKoreanName(synergy.personality)} - HP +${synergy.bonus?.hp}%, 공격력 +${synergy.bonus?.damage}%`}
                     >
-                      <span className="font-bold">
-                        {getPersonalityKoreanName(synergy.personality)}
-                      </span>
-                      <span className="opacity-80">{synergy.activeCount}명</span>
-                      {synergy.inactiveCount > 0 && (
-                        <span className="text-xs opacity-60">(+{synergy.inactiveCount})</span>
-                      )}
-                      <span className="text-xs">
-                        {synergy.bonus ? `+${synergy.bonus.hp}%` : ''}
-                      </span>
+                      <div className="relative inline-flex items-center" style={{ height: '24px' }}>
+                        {/* 활성 아이콘 */}
+                        {Array.from({ length: synergy.activeCount }).map((_, index) => (
+                          <img
+                            key={`active-${index}`}
+                            src={getSynergyOnIconPath(synergy.personality)}
+                            alt={`${synergy.personality}-active-${index + 1}`}
+                            className="h-6 w-6 rounded-full"
+                            style={{
+                              marginLeft: index === 0 ? '0' : '-12px',
+                              zIndex: 100 + synergy.activeCount - index,
+                              position: 'relative',
+                            }}
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                            }}
+                          />
+                        ))}
+
+                        {/* 비활성 아이콘 */}
+                        {synergy.inactiveCount > 0 &&
+                          Array.from({ length: synergy.inactiveCount }).map((_, index) => (
+                            <img
+                              key={`inactive-${index}`}
+                              src={getSynergyOffIconPath(synergy.personality)}
+                              alt={`${synergy.personality}-inactive-${index + 1}`}
+                              className="h-6 w-6 rounded-full opacity-50 grayscale"
+                              style={{
+                                marginLeft: '-12px',
+                                zIndex: synergy.inactiveCount - index,
+                                position: 'relative',
+                              }}
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = '/src/assets/placeholder.png';
+                              }}
+                            />
+                          ))}
+                      </div>
+                      {/* <span className="text-xs">
+                        {synergy.bonus ? `HP/피해량 +${synergy.bonus.hp}%` : ''}
+                      </span> */}
                     </div>
                   ))}
-
-                {rec.synergies.filter((s) => s.isActive).length > 0 && (
-                  <div className="mt-2 text-xs text-gray-600">
-                    전체 보너스:
-                    <span className="ml-1">
-                      HP +{rec.synergies.reduce((sum, s) => sum + (s.bonus?.hp || 0), 0)}%, 피해량 +
-                      {rec.synergies.reduce((sum, s) => sum + (s.bonus?.damage || 0), 0)}%
-                    </span>
-                  </div>
-                )}
               </div>
             </div>
 

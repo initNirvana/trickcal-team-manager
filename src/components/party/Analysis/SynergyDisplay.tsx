@@ -52,10 +52,10 @@ const SynergyDisplay = ({ synergies }: { synergies: Synergy[] }) => {
                         key={`active-${index}`}
                         src={getSynergyOnIconPath(synergy.personality)}
                         alt={`${synergy.personality}-active-${index + 1}`}
-                        className="h-6 w-6 rounded-full border-2 border-white"
+                        className="h-6 w-6 rounded-full"
                         style={{
                           marginLeft: index === 0 ? '0' : '-12px',
-                          zIndex: synergy.ownedCount - index,
+                          zIndex: 100 + synergy.ownedCount - index,
                           position: 'relative',
                         }}
                         onError={(e) => {
@@ -70,7 +70,7 @@ const SynergyDisplay = ({ synergies }: { synergies: Synergy[] }) => {
                         key={`inactive-${index}`}
                         src={getSynergyOffIconPath(synergy.personality)}
                         alt={`${synergy.personality}-inactive-${index + 1}`}
-                        className="h-6 w-6 rounded-full border-2 border-white opacity-50 grayscale"
+                        className="h-6 w-6 rounded-full opacity-50 grayscale"
                         style={{
                           marginLeft: '-12px',
                           zIndex: synergy.inactiveCount - index,
