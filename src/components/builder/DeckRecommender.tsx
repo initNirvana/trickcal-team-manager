@@ -27,7 +27,7 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 p-4">
+    <div className="flex min-h-screen flex-col items-center justify-start p-4">
       {/* 헤더 */}
       <div className="mb-4 text-center">
         <h1 className="text-3xl font-bold">보유 사도 분석기</h1>
