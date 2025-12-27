@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Ssgoi, SsgoiTransition } from '@ssgoi/react';
 import { film } from '@ssgoi/react/view-transitions';
 import { useDataLoader } from './hooks/useDataLoader';
@@ -6,12 +6,12 @@ import Layout from './components/layout/Layout';
 import DeckSimulator from './components/party/DeckSimulator';
 import DeckRecommender from './components/builder/DeckRecommender';
 
+const ssgoiConfig = {
+  transitions: [{ from: '/', to: '/builder', transition: film(), symmetric: true }],
+};
+
 function App() {
   const { apostles, skills, asides, spells, isLoading, error } = useDataLoader();
-
-  const ssgoiConfig = {
-    transitions: [{ from: '/', to: '/builder', transition: film(), symmetric: true }],
-  };
 
   if (isLoading) {
     return (
@@ -84,9 +84,9 @@ function App() {
                 <div className="text-center">
                   <h1 className="mb-4 text-4xl font-bold">404</h1>
                   <p className="text-gray-400">페이지를 찾을 수 없습니다</p>
-                  <a href="/" className="mt-4 inline-block text-blue-500 hover:text-blue-400">
+                  <Link to="/" className="mt-4 inline-block text-blue-500 hover:text-blue-400">
                     홈으로 돌아가기
-                  </a>
+                  </Link>
                 </div>
               </div>
             </Layout>
