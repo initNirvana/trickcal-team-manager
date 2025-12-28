@@ -3,8 +3,8 @@ import type { Apostle, Personality } from '@/types/apostle';
 import {
   getPersonalityKoreanName,
   isValidPosition,
-  getPersonalityBackgroundClass,
-} from '@/types/apostle';
+  getPersonalityBackground,
+} from '@/utils/ApostleUtils';
 import {
   getPersonalityIconPath,
   getApostleImagePath,
@@ -161,7 +161,7 @@ const ApostleSelector = ({
               <div
                 key={apostle.id}
                 onClick={() => onSelect(apostle)}
-                className={`${getPersonalityBackgroundClass(
+                className={`${getPersonalityBackground(
                   displayPersonality,
                 )} flex h-25 cursor-pointer flex-col items-center justify-between rounded-lg p-1 text-white transition hover:shadow-md`}
               >

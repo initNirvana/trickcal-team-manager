@@ -1,4 +1,4 @@
-import { getPersonalityBackgroundClass } from '@/types/apostle';
+import { getPersonalityBackground } from '@/utils/ApostleUtils';
 import {
   getSynergyOnIconPath,
   getSynergyOffIconPath,
@@ -93,7 +93,7 @@ const SynergyDisplay = ({ synergies }: { synergies: Synergy[] }) => {
                   <div className="ml-2 space-y-1 text-sm">
                     {synergy.bonus.hp > 0 && (
                       <div
-                        className={`inline-flex items-center gap-1 rounded px-2 py-1 text-center text-xs ${getPersonalityBackgroundClass(synergy.personality)}`}
+                        className={`inline-flex items-center gap-1 rounded px-2 py-1 text-center text-xs ${getPersonalityBackground(synergy.personality)}`}
                       >
                         HP +{synergy.bonus.hp}% <br />
                         피해량 +{synergy.bonus.damage}%

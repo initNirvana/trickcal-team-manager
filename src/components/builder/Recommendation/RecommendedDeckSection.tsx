@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { Apostle, getPersonalityBackgroundClass } from '@/types/apostle';
+import { Apostle } from '@/types/apostle';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
-import { getPersonalityKoreanName } from '@/types/apostle';
+import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/ApostleUtils';
 import {
   getSynergyOnIconPath,
   getSynergyOffIconPath,
@@ -80,7 +80,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                   .map((synergy) => (
                     <div
                       key={synergy.personality}
-                      className={`badge badge-lg gap-1 ${getPersonalityBackgroundClass(synergy.personality)}`}
+                      className={`badge badge-lg gap-1 ${getPersonalityBackground(synergy.personality)}`}
                       title={`${getPersonalityKoreanName(synergy.personality)} - HP +${synergy.bonus?.hp}%, 공격력 +${synergy.bonus?.damage}%`}
                     >
                       <div className="relative inline-flex items-center" style={{ height: '24px' }}>

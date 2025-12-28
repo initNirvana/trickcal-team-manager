@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { getApostleImagePath, getPositionIconPath } from '@/utils/apostleImages';
-import {
-  Position,
-  POSITION_CONFIG,
-  Personality,
-  getPersonalityBackgroundClass,
-} from '@/types/apostle';
+import { Position, POSITION_CONFIG, Personality } from '@/types/apostle';
+import { getPersonalityBackground } from '@/utils/ApostleUtils';
 import Image from '../../common/Image';
 import PersonalityDropdown from '../../common/PersonalityDropdown';
 import apostlesTiersData from '@/data/apostles-recommend.json';
@@ -51,7 +47,7 @@ const ApostleCard = ({ apostle }: ApostleCardProps) => (
       <Image
         src={getApostleImagePath(apostle.engName)}
         alt={apostle.name}
-        className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackgroundClass(apostle.persona as Personality)}`}
+        className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackground(apostle.persona as Personality)}`}
       />
       {/* 위치 아이콘 배지 */}
       <div className="absolute bottom-1 left-1 h-6 w-6 rounded-full border border-gray-300 bg-white p-0.5 dark:border-gray-600 dark:bg-gray-800">

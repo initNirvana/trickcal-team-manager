@@ -1,5 +1,5 @@
 import type { Apostle } from '@/types/apostle';
-import { getPersonalityBackgroundClass } from '@/types/apostle';
+import { getPersonalityBackground } from '@/utils/ApostleUtils';
 import { getApostleImagePath } from '@/utils/apostleImages';
 import Image from '../common/Image';
 
@@ -14,7 +14,7 @@ const ApostleSlot = ({ apostle, onSelect }: ApostleSlotProps) => {
     return (
       <div
         onClick={onSelect}
-        className={`${getPersonalityBackgroundClass(
+        className={`${getPersonalityBackground(
           primaryPersonality,
         )} group relative flex h-30 cursor-pointer flex-col overflow-hidden rounded-md text-white transition hover:opacity-50`}
       >

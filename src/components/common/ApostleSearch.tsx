@@ -1,9 +1,12 @@
 import { useCallback } from 'react';
 import type { Apostle } from '@/types/apostle';
-import { getPersonalityBackgroundClass } from '@/types/apostle';
 import { useApostleSearch } from '@/utils/ApostleSearch';
 import { getApostleImagePath } from '@/utils/apostleImages';
-import { getPositionsKorean, getPersonalityKoreanName } from '@/types/apostle';
+import {
+  getPositionsKorean,
+  getPersonalityKoreanName,
+  getPersonalityBackground,
+} from '@/utils/ApostleUtils';
 import Image from './Image';
 
 interface ApostleSelectorSearchProps {
@@ -79,7 +82,7 @@ const ApostleSelectorSearch = ({
                   <Image
                     src={getApostleImagePath(apostle.engName)}
                     alt={apostle.name}
-                    className={`h-10 w-10 rounded ${getPersonalityBackgroundClass(apostle.persona)}`}
+                    className={`h-10 w-10 rounded ${getPersonalityBackground(apostle.persona)}`}
                   />
 
                   {/* 사도 정보 */}

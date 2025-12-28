@@ -1,4 +1,5 @@
-import { Apostle, POSITION_CONFIG, getPersonalityBackgroundClass } from '@/types/apostle';
+import { Apostle, POSITION_CONFIG } from '@/types/apostle';
+import { getPersonalityBackground } from '@/utils/ApostleUtils';
 import {
   getApostleImagePath,
   getPersonalityIconPath,
@@ -55,7 +56,7 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
         {/* 사도 이미지 */}
         <img
           src={getApostleImagePath(apostle.engName)}
-          className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackgroundClass(apostle.persona)}`}
+          className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackground(apostle.persona)}`}
           alt={apostle.name}
         />
 

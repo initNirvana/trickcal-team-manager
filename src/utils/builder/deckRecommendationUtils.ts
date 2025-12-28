@@ -1,5 +1,5 @@
 import type { Apostle, Personality } from '@/types/apostle';
-import { getPositions } from '@/types/apostle';
+import { getPositions } from '@/utils/ApostleUtils';
 import { analyzeSynergies, Synergy, calculateTotalSynergyBonus } from '@/utils/deckAnalysisUtils';
 
 type DeckSize = 6 | 9;
@@ -64,8 +64,13 @@ export interface RecommendedDeck {
   roleBalance: { tanker: number; attacker: number; supporter: number };
 }
 
+/**
+ * 대충돌/프론티어 성격시너지 옵션 함수
+ * @param mode9 9인 콘텐츠 모드
+ * @returns
+ */
 const getSynergyScore9 = (mode9: ContentMode9 | undefined) => {
-  if (mode9 === 'FRONTIER') return (_deck: Apostle[]) => 0; // 프론티어는 시너지 미적용
+  if (mode9 === 'FRONTIER') return () => 0; // 프론티어는 시너지 미적용
   return (deck: Apostle[]) => {
     const synergies = analyzeSynergies(deck);
     const total = calculateTotalSynergyBonus(synergies);
