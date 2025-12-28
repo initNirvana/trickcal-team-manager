@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import { getApostleImagePath, getPositionIconPath } from '@/utils/apostleImages';
+import {
+  Position,
+  POSITION_CONFIG,
+  Personality,
+  getPersonalityBackgroundClass,
+} from '@/types/apostle';
 import Image from '../../common/Image';
 import PersonalityDropdown from '../../common/PersonalityDropdown';
 import apostlesTiersData from '@/data/apostles-recommend.json';
@@ -8,6 +14,8 @@ interface ApostleData {
   name: string;
   engName: string;
   position: string;
+  description?: string;
+  persona: string;
 }
 
 // ===== 티어 색상 및 설정 =====
@@ -32,13 +40,6 @@ const tierConfig = {
   },
 };
 
-// ===== 위치 설정 (아이콘 이미지) =====
-const positionConfig = {
-  전열: { icon: 'Common_PositionFront', label: '전열' },
-  중열: { icon: 'Common_PositionMiddle', label: '중열' },
-  후열: { icon: 'Common_PositionBack', label: '후열' },
-};
-
 interface ApostleCardProps {
   apostle: ApostleData;
 }
@@ -50,15 +51,15 @@ const ApostleCard = ({ apostle }: ApostleCardProps) => (
       <Image
         src={getApostleImagePath(apostle.engName)}
         alt={apostle.name}
-        className="h-full w-full object-cover"
+        className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackgroundClass(apostle.persona as Personality)}`}
       />
       {/* 위치 아이콘 배지 */}
       <div className="absolute bottom-1 left-1 h-6 w-6 rounded-full border border-gray-300 bg-white p-0.5 dark:border-gray-600 dark:bg-gray-800">
         <img
           src={getPositionIconPath(
-            positionConfig[apostle.position as keyof typeof positionConfig].icon,
+            POSITION_CONFIG[apostle.position as keyof typeof POSITION_CONFIG]?.icon ||
+              'Common_PositionFront',
           )}
-          alt={apostle.position}
           className="h-full w-full object-contain"
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = 'none';
@@ -106,18 +107,18 @@ const TierRow = ({ tier, apostles }: { tier: string; apostles: ApostleData[] }) 
 export function RecommendedApostlesDisplay() {
   const APOSTLES_BY_PERSONALITY = apostlesTiersData.tiers as Record<
     string,
-    { S: any[]; A: any[]; B: any[] }
+    { S: ApostleData[]; A: ApostleData[]; B: ApostleData[] }
   >;
 
   const personalities = Object.keys(APOSTLES_BY_PERSONALITY) as Array<
     keyof typeof APOSTLES_BY_PERSONALITY
   >;
 
-  const positions = ['전열', '중열', '후열'];
+  const positions: Position[] = ['front', 'mid', 'back'];
 
   // ===== 상태 관리 =====
   const [selectedPersonalities, setSelectedPersonalities] = useState<Set<string>>(new Set()); // 초기: 선택 없음 (전체)
-  const [selectedPosition, setSelectedPosition] = useState<string>('전열'); // 초기: 전열
+  const [selectedPosition, setSelectedPosition] = useState<Position>('front'); // 초기: 전열
 
   // ===== 성격 토글 함수 =====
   const togglePersonality = (personality: string) => {
@@ -182,15 +183,16 @@ export function RecommendedApostlesDisplay() {
             >
               <img
                 src={getPositionIconPath(
-                  positionConfig[position as keyof typeof positionConfig].icon,
+                  POSITION_CONFIG[position as keyof typeof POSITION_CONFIG]?.icon ||
+                    'Common_PositionFront',
                 )}
-                alt={position}
+                alt={POSITION_CONFIG[position].label}
                 className="h-5 w-5"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).style.display = 'none';
                 }}
               />
-              {position}
+              {POSITION_CONFIG[position].label}
             </button>
           ))}
         </div>
@@ -208,7 +210,7 @@ export function RecommendedApostlesDisplay() {
       {/* 타이틀 & 카운트 */}
       <div className="flex items-center justify-between">
         <p className="font-semibold text-gray-900 dark:text-white">
-          {displayPersonalityText} 성격 / {selectedPosition === '전체' ? '전체' : selectedPosition}
+          {displayPersonalityText} 성격 / {POSITION_CONFIG[selectedPosition].label}
         </p>
       </div>
 

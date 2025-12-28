@@ -24,6 +24,16 @@ const SLOT_POSITIONS = {
 } as const;
 
 /**
+ * 포지션 설정 (아이콘 및 레이블)
+ */
+export const POSITION_CONFIG = {
+  front: { icon: 'Common_PositionFront', label: '전열' },
+  mid: { icon: 'Common_PositionMiddle', label: '중열' },
+  back: { icon: 'Common_PositionBack', label: '후열' },
+  free: { icon: 'Common_PositionFree', label: '자유' },
+} as const;
+
+/**
  * Apostle 인터페이스는 게임 내 캐릭터인 사도(Apostle)의 속성을 정의합니다.
  *
  * @property {string} id - 사도의 고유 식별자.
