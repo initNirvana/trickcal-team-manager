@@ -110,7 +110,7 @@ const MyApostleList = ({
               onClick={() => {
                 onToggle(apostle);
               }}
-              className={`group relative aspect-square overflow-hidden rounded-lg border-2 transition-all ${
+              className={`group relative aspect-square min-h-14 overflow-hidden rounded-lg border-2 transition-all ${
                 isOwned ? 'opacity-100 ring-2 ring-green-400' : 'hover:scale-105 hover:shadow-lg'
               }`}
             >
