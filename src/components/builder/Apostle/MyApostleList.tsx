@@ -100,7 +100,7 @@ const MyApostleList = ({
       <ApostleSelectorSearch apostles={allApostles} onSelect={onToggle} />
 
       {/* 추가 가능한 캐릭 - 작은 그리드 */}
-      <div className="grid max-h-[70vh] grid-cols-5 gap-2 overflow-y-auto px-2">
+      <div className="grid max-h-[70dvh] grid-cols-5 gap-2 overflow-y-auto px-2">
         {allApostles.map((apostle) => {
           const isOwned = myApostles.some((m) => m.id === apostle.id);
 
