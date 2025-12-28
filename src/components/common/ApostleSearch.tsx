@@ -38,15 +38,28 @@ const ApostleSelectorSearch = ({
   return (
     <div ref={containerRef} className="relative w-full">
       {/* 검색 입력창 */}
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        onFocus={() => setOpen(true)}
-        placeholder={placeholder}
-        className="input form-control bg-base-200 w-full"
-      />
-
+      <label className="input w-full">
+        <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <g
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            strokeWidth="2.5"
+            fill="none"
+            stroke="currentColor"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </g>
+        </svg>
+        <input
+          type="search"
+          required
+          placeholder={placeholder}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onFocus={() => setOpen(true)}
+        />
+      </label>
       {/* 검색 결과 드롭다운 */}
       {open && (
         <div className="bg-base-100 border-base-300 absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-md border shadow-lg">
