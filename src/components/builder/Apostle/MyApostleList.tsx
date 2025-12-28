@@ -20,6 +20,16 @@ const MyApostleList = ({
   onAddMultiple,
 }: MyApostleListProps) => {
   const [sortBy, setSortBy] = useState<'name' | 'persona' | 'id'>('id');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+
+  const handleSort = (sortType: 'name' | 'persona' | 'id') => {
+    if (sortBy === sortType) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(sortType);
+      setSortOrder('asc');
+    }
+  };
 
   const onToggle = (apostle: Apostle) => {
     const isOwned = myApostles.some((m) => m.id === apostle.id);
@@ -33,11 +43,20 @@ const MyApostleList = ({
   // 정렬
   const sortedApostles = [...allApostles];
   if (sortBy === 'name') {
-    sortedApostles.sort((a, b) => a.name.localeCompare(b.name));
+    sortedApostles.sort((a, b) => {
+      const result = a.name.localeCompare(b.name);
+      return sortOrder === 'asc' ? result : -result;
+    });
   } else if (sortBy === 'persona') {
-    sortedApostles.sort((a, b) => (a.persona || '').localeCompare(b.persona || ''));
+    sortedApostles.sort((a, b) => {
+      const result = (a.persona || '').localeCompare(b.persona || '');
+      return sortOrder === 'asc' ? result : -result;
+    });
   } else if (sortBy === 'id') {
-    sortedApostles.sort((a, b) => b.id.localeCompare(a.id));
+    sortedApostles.sort((a, b) => {
+      const result = a.id.localeCompare(b.id);
+      return sortOrder === 'asc' ? result : -result;
+    });
   }
 
   return (
@@ -47,26 +66,29 @@ const MyApostleList = ({
         <h3 className="text-lg font-bold text-black">보유 사도 </h3>
         <div className="flex gap-2">
           <button
-            onClick={() => setSortBy('id')}
+            onClick={() => handleSort('id')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
               sortBy === 'id' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
             }`}
+            title={sortBy === 'id' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
             순서
           </button>
           <button
-            onClick={() => setSortBy('name')}
+            onClick={() => handleSort('name')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
               sortBy === 'name' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
             }`}
+            title={sortBy === 'name' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
             이름
           </button>
           <button
-            onClick={() => setSortBy('persona')}
+            onClick={() => handleSort('persona')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
               sortBy === 'persona' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
             }`}
+            title={sortBy === 'persona' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
             성격
           </button>
@@ -101,7 +123,7 @@ const MyApostleList = ({
 
       {/* 추가 가능한 캐릭 - 작은 그리드 */}
       <div className="grid max-h-[70dvh] grid-cols-5 gap-2 overflow-y-auto px-2">
-        {allApostles.map((apostle) => {
+        {sortedApostles.map((apostle) => {
           const isOwned = myApostles.some((m) => m.id === apostle.id);
 
           return (
