@@ -60,15 +60,15 @@ const MyApostleList = ({
   }
 
   return (
-    <div className="bg-base-200 space-y-5 rounded-xl border-gray-700 p-6 shadow-lg">
+    <div className="bg-base-200 space-y-5 rounded-xl p-6 shadow-lg">
       {/* 헤더 */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-bold text-black">보유 사도 </h3>
+        <h3 className="text-lg font-bold">보유 사도 </h3>
         <div className="flex gap-2">
           <button
             onClick={() => handleSort('id')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
-              sortBy === 'id' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
+              sortBy === 'id' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
             title={sortBy === 'id' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
@@ -77,7 +77,7 @@ const MyApostleList = ({
           <button
             onClick={() => handleSort('name')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
-              sortBy === 'name' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
+              sortBy === 'name' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
             title={sortBy === 'name' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
@@ -86,7 +86,7 @@ const MyApostleList = ({
           <button
             onClick={() => handleSort('persona')}
             className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
-              sortBy === 'persona' ? 'bg-blue-600 text-black' : 'bg-gray-700 text-gray-300'
+              sortBy === 'persona' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
             title={sortBy === 'persona' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
@@ -109,7 +109,7 @@ const MyApostleList = ({
                   });
                 }
               }}
-              className="rounded bg-green-600 px-2 py-1 text-xs font-semibold text-black transition hover:bg-green-700"
+              className="btn btn-success rounded px-2 py-1 text-xs font-semibold text-black transition"
               title="모든 사도 추가"
             >
               전체 사도 선택
