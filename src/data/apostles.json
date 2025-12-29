@@ -899,7 +899,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 70,
+      "baseScore": 67,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -1384,7 +1384,7 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 70,
+      "baseScore": 68,
       "aside": {
         "hasAside": true,
         "importance": "필수",
@@ -1500,7 +1500,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 70,
+      "baseScore": 68,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2041,7 +2041,7 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 70,
+      "baseScore": 68,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2207,7 +2207,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 65,
+      "baseScore": 68,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2379,7 +2379,7 @@
       "position": "mid",
       "baseScore": 80,
       "scoreBySize": {
-        "size6": 70,
+        "size6": 60,
         "size9": 80
       },
       "aside": {
