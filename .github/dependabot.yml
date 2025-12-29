@@ -1,22 +1,25 @@
-version: 2
+version: 3
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      time: "04:00"
+      interval: 'weekly'
+      time: '04:00'
     groups:
+      npm-major:
+        patterns:
+          - '*'
+        update-types:
+          - 'major'
       npm-minor-patch:
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - "minor"
-          - "patch"
-    open-pull-requests-limit: 15
+          - 'minor'
+          - 'patch'
     ignore:
-      - dependency-name: "react"
-      - dependency-name: "react-dom"
-      - dependency-name: "@types/react"
-      - dependency-name: "@types/react-dom"
-      - dependency-name: "react-beautiful-dnd"
-      - dependency-name: "flowbite-react"
+      - dependency-name: '@testing-library/jest-dom'
+      - dependency-name: '@testing-library/react'
+      - dependency-name: 'vitest'
+      - dependency-name: 'zod'
+    open-pull-requests-limit: 10
