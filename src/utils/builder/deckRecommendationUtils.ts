@@ -324,7 +324,10 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
       const deck = tryBuildDeckWithPersonalities([p1, p2], [4, 2], personalityGroups, requirements);
 
       if (deck) {
-        const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
+        // 성격 시너지 유지되도록 후보군 제한
+        const synergyCandidates = myApostles.filter((a) => a.persona === p1 || a.persona === p2);
+
+        const balancedDeck = adjustForRoleBalance([...deck], synergyCandidates, 6);
         const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
         const roles = getRoleBalance(balancedDeckWithBestPersona);
 
