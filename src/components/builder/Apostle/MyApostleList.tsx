@@ -10,6 +10,7 @@ interface MyApostleListProps {
   onAdd: (apostle: Apostle) => void;
   onRemove: (apostle: Apostle) => void;
   onAddMultiple?: (apostles: Apostle[]) => void;
+  onRemoveMultiple?: (apostles: Apostle[]) => void;
 }
 
 const MyApostleList = ({
@@ -18,6 +19,7 @@ const MyApostleList = ({
   onAdd,
   onRemove,
   onAddMultiple,
+  onRemoveMultiple,
 }: MyApostleListProps) => {
   const [sortBy, setSortBy] = useState<'name' | 'persona' | 'id'>('id');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
@@ -60,10 +62,10 @@ const MyApostleList = ({
   }
 
   return (
-    <div className="bg-base-200 space-y-5 rounded-xl p-6 shadow-lg">
+    <div className="bg-base-200 space-y-2 rounded-xl p-4 shadow-lg">
       {/* 헤더 */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-bold">보유 사도 </h3>
+        <h3 className="text-2xl font-bold">보유 사도 </h3>
         <div className="flex gap-2">
           <button
             onClick={() => handleSort('id')}
@@ -93,26 +95,42 @@ const MyApostleList = ({
             성격
           </button>
 
-          {myApostles.length < allApostles.length && (
+          <button
+            onClick={() => {
+              if (onAddMultiple) {
+                const apostlesToAdd = allApostles.filter(
+                  (apostle) => !myApostles.some((m) => m.id === apostle.id),
+                );
+                onAddMultiple(apostlesToAdd);
+              } else {
+                allApostles.forEach((apostle) => {
+                  if (!myApostles.some((m) => m.id === apostle.id)) {
+                    onAdd(apostle);
+                  }
+                });
+              }
+            }}
+            className="btn btn-success rounded px-2 py-1 text-xs font-semibold text-black transition"
+            title="모든 사도 추가"
+          >
+            전체 선택
+          </button>
+
+          {myApostles.length > 0 && (
             <button
               onClick={() => {
-                if (onAddMultiple) {
-                  const apostlesToAdd = allApostles.filter(
-                    (apostle) => !myApostles.some((m) => m.id === apostle.id),
-                  );
-                  onAddMultiple(apostlesToAdd);
+                if (onRemoveMultiple) {
+                  onRemoveMultiple(myApostles);
                 } else {
-                  allApostles.forEach((apostle) => {
-                    if (!myApostles.some((m) => m.id === apostle.id)) {
-                      onAdd(apostle);
-                    }
+                  myApostles.forEach((apostle) => {
+                    onRemove(apostle);
                   });
                 }
               }}
-              className="btn btn-success rounded px-2 py-1 text-xs font-semibold text-black transition"
-              title="모든 사도 추가"
+              className="btn btn-error rounded px-2 py-1 text-xs font-semibold text-black transition"
+              title="모든 사도 제거"
             >
-              전체 사도 선택
+              전체 제거
             </button>
           )}
         </div>
@@ -133,13 +151,15 @@ const MyApostleList = ({
                 onToggle(apostle);
               }}
               className={`group relative min-h-14 overflow-hidden rounded-lg border-2 transition-all ${
-                isOwned ? 'opacity-100 ring-2 ring-green-400' : 'hover:scale-105 hover:shadow-lg'
+                isOwned
+                  ? 'border-success shadow-success/30 shadow-lg'
+                  : 'border-transparent hover:scale-105 hover:shadow-lg'
               }`}
             >
               {/* 이미지 */}
               <img
                 src={getApostleImagePath(apostle.engName)}
-                className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackground(apostle.persona)}`}
+                className={`inline-flex h-full w-full items-center gap-1 rounded object-cover text-center text-xs transition-all ${getPersonalityBackground(apostle.persona)} ${!isOwned ? 'grayscale-30% brightness-75' : ''}`}
                 alt={apostle.name}
               />
 

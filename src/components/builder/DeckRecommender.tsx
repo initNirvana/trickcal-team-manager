@@ -22,6 +22,11 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
     setMyApostles([...myApostles, ...filtered]);
   };
 
+  const handleRemoveMultipleApostles = (apostlesToRemove: Apostle[]) => {
+    const idsToRemove = new Set(apostlesToRemove.map((a) => a.id));
+    setMyApostles(myApostles.filter((a) => !idsToRemove.has(a.id)));
+  };
+
   const handleRemoveApostle = (apostle: Apostle) => {
     setMyApostles(myApostles.filter((a) => a.id !== apostle.id));
   };
@@ -40,13 +45,13 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
           {/* 좌측: 프리셋 조합 + 추천 조합 (세로) */}
           <div className="space-y-3">
             {/* 프리셋 조합 안내 */}
-            <div className="rounded-lg bg-white p-4 shadow">
+            <div className="rounded-lg bg-white p-2 shadow">
               <PresetCombinationSection allApostles={apostles} />
             </div>
 
             {/* 추천 조합 (보유 사도만) */}
             {myApostles.length > 0 ? (
-              <div className="rounded-lg bg-white p-4 shadow">
+              <div className="rounded-lg bg-white p-2 shadow">
                 <RecommendedDeckSection myApostles={myApostles} />
               </div>
             ) : (
@@ -63,6 +68,7 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
             onAdd={handleAddApostle}
             onRemove={handleRemoveApostle}
             onAddMultiple={handleAddMultipleApostles}
+            onRemoveMultiple={handleRemoveMultipleApostles}
           />
         </div>
       </div>
