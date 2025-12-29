@@ -1,29 +1,66 @@
-# 트릭컬 리바이브 팀 매니저 (Trickcal: Revive Team Manager)
+# Trickcal Re:Vive Team Manager
 
-> **비영리 팬 프로젝트**입니다
+A web-based tool for managing deck, recommending decks, and simulating strategies in the mobile game Trickcal Re:Vive. Built with React, TypeScript, and Vite, this project helps players optimize their gameplay by analyzing apostles (characters), presets, synergies, and more.
 
----
+## Project Overview
 
-### 주요 기능 및 특징
+This tool is designed to enhance the Trickcal Re:vive experience by:
 
-* **덱 빌더 (3x3 포지션):** 전열/중열/후열 3x3 그리드 형태의 덱 구성 시뮬레이터
-* **실시간 시너지 분석:** 배치한 사도 성격(Personality) 조합에 따른 시너지를 실시간으로 표시
-* **피해량 계산기:** 스킬 레벨 조정이 가능한 받피감 스킬/어사이드 효과 계산기
-* **성격별 사도 추천 가이드:** 성격 별 PVE/PVP 덱(파티) 추천 기능, 프론티어 기준 티어리스트 제공
+- Recommending optimal decks based on user-owned apostles.
+- Simulating deck performance, including damage calculations, synergies, and role balances.
+- Providing guides, tier lists, and data-driven insights for PVE/PVP content like Elias Frontier, Dimension Crash, Invasion.
+- Allowing users to manage presets, analyze apostle stats, and explore game data (e.g., skills, artifacts, asides).
 
----
+Key features include:
 
-### 피드백 및 기여
+- **Deck Simulator** : Simulates deck performance to predict battle outcomes, including damage calculations, skill effects, personality synergies.
+- **Deck Recommender** : Generates recommendations using algorithms.
+- **Apostle Management** : Lists, searches, and selects apostles with personality filters.
+- **Synergy Analysis** : Calculates scores for base, synergy, and total performance.
+- **Preset and Recommendation Sections** : Displays preset combinations and recommended decks in grid views.
+
+## Tech Stack
+
+- Core : React, TypeScript, Vite
+- Testing : Vitest, Zod
+- Linting & Formatting : ESLint, Prettier
+- Styling : Tailwind CSS, daisyUI
+
+## Getting Started
+
+```
+# Clone the repository
+git clone https://github.com/initnirvana/trickcal-team-manager.git
+# Navigate to the project directory
+cd trickcal-team-manager
+# Install dependencies
+npm install
+# Start the development server
+npm run dev
+# Build for production
+npm run build
+# Run tests
+npm test
+```
+
+## 피드백 및 기여
 
 프로젝트를 개선하기 위한 여러분의 도움은 언제나 환영합니다!
 
-* **버그 신고 / 기능 제안:** 버그나 제안할 기능이 있다면 언제든지 [Issue](https://github.com/initNirvana/trickcal-team-manager/issues/26)로 알려주세요.
+- **버그 신고 / 기능 제안:** 버그나 제안할 기능이 있다면 언제든지 [Issue](https://github.com/initNirvana/trickcal-team-manager/issues/26)로 알려주세요.
 
----
+## Contributing
 
-### Disclaimer (저작권 고지)
+1. Fork the repository
+2. Create a feature branch : `git checkout -b feature/new-feature`
+3. Commit changes : `git commit -m 'feat : Add new feature'`
+4. Push to the branch : `git push origin feature/new-feature`
+5. Open a Pull Request
 
-* **저작권:** 이 프로젝트에 사용된 모든 에셋(Assets) 및 데이터는 **EPIDGames**의 소유 및 저작물입니다.
-* **사용 목적:** 모든 자료는 **비영리적 / 정보 제공**으로만 사용됩니다.
-* **상업적 이용 금지:** 모든 에셋과 데이터는 원 저작권 조건에 따라 보호되며, 저작권자의 명시적인 허가 없이 상업적인 목적으로 사용될 수 없습니다.
-* **비공식 프로젝트:** 본 저장소는 게임 개발사/제작사와 어떠한 제휴 관계도 없으며, 저작권 소유자의 요청에 따라 언제든지 종료될 수 있습니다.
+Inspired by Trickcal Re:vive community resources and data files (e.g., tier lists, apostle guides).
+
+# Disclaimer
+
+- All assets/data used in this repo is a property/copyright of EPIDGames. They are used for only non-commercial / informational / educational purposes only.
+- Please note that all the assets and data are subject to the original copyright terms, and should not be used for commercial purposes without explicit permission from the copyright holders.
+- This repo is not affiliated with the developers/creators of the game, and could be shutdown anytime with the request from the copyright holders.
