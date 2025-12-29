@@ -9,13 +9,13 @@
     "test": "vitest",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --fix --cache"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
       "prettier --write",
-      "eslint --fix"
+      "eslint --fix --cache"
     ],
     "*.{json,md,css,scss,html}": [
       "prettier --write"
