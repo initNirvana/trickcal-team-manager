@@ -41,7 +41,7 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
 
       {/* 메인 콘텐츠 - 중앙 정렬 + 좌우 2단 */}
       <div className="w-full max-w-6xl">
-        <div className="grid gap-3 lg:grid-cols-2">
+        <div className="grid items-start gap-3 lg:grid-cols-2">
           {/* 좌측: 프리셋 조합 + 추천 조합 (세로) */}
           <div className="space-y-3">
             {/* 프리셋 조합 안내 */}
