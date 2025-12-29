@@ -63,7 +63,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -179,7 +179,7 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 75,
+      "baseScore": 68,
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -249,7 +249,11 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 70,
+      "baseScore": 60,
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 65
+      },
       "aside": {
         "hasAside": true,
         "importance": "필수",
@@ -872,7 +876,7 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 75,
+      "baseScore": 73,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -918,7 +922,7 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 75,
+      "baseScore": 70,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -1799,12 +1803,12 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 60,
+      "baseScore": 63,
       "aside": {
         "hasAside": true,
         "importance": "필수",
         "level": 2,
-        "score": 10
+        "score": 5
       },
       "mercenary": true
     },
@@ -1894,6 +1898,10 @@
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
       "baseScore": 78,
+      "scoreBySize": {
+        "size6": 70,
+        "size9": 78
+      },
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2081,7 +2089,7 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 65,
+      "baseScore": 70,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2128,7 +2136,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 75,
+      "baseScore": 72,
       "aside": {
         "hasAside": true,
         "importance": "선택",
