@@ -56,7 +56,7 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
         {/* 사도 이미지 */}
         <img
           src={getApostleImagePath(apostle.engName)}
-          className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackground(apostle.persona)}`}
+          className={`inline-flex h-full w-full items-center rounded object-cover text-center text-xs ${getPersonalityBackground(apostle.persona)}`}
           alt={apostle.name}
         />
 
@@ -91,13 +91,13 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
   };
 
   return (
-    <div className="grid max-w-sm grid-cols-3 gap-2">
+    <div className="grid max-w-sm grid-cols-3 gap-1">
       {/* 후열 컬럼 */}
-      <div className="space-y-1">
-        <div className="bg-primary text-primary-content rounded-t-lg px-3 py-2 text-center text-sm font-bold">
+      <div className="space-y-0.5">
+        <div className="bg-primary text-primary-content rounded-t-lg py-0.5 text-center text-sm font-bold">
           후열
         </div>
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {backSlots.map((apostle, index) => (
             <div key={index}>{renderSlot(apostle)}</div>
           ))}
@@ -105,11 +105,11 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
       </div>
 
       {/* 중열 컬럼 */}
-      <div className="space-y-1">
-        <div className="bg-success text-success-content rounded-t-lg px-3 py-2 text-center text-sm font-bold">
+      <div className="space-y-0.5">
+        <div className="bg-success text-success-content rounded-t-lg py-0.5 text-center text-sm font-bold">
           중열
         </div>
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {midSlots.map((apostle, index) => (
             <div key={index}>{renderSlot(apostle)}</div>
           ))}
@@ -117,11 +117,11 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
       </div>
 
       {/* 전열 컬럼 */}
-      <div className="space-y-1">
-        <div className="bg-error text-error-content rounded-t-lg px-3 py-2 text-center text-sm font-bold">
+      <div className="space-y-0.5">
+        <div className="bg-error text-error-content rounded-t-lg py-0.5 text-center text-sm font-bold">
           전열
         </div>
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {frontSlots.map((apostle, index) => (
             <div key={index}>{renderSlot(apostle)}</div>
           ))}

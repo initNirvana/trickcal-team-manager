@@ -29,13 +29,13 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
 
   return (
     <div className="space-y-1">
-      <h2 className="text-2xl font-bold">추천 조합 (보유 사도 기반)</h2>
+      <h2 className="text-center text-2xl font-bold">추천 조합 (보유 사도 기반)</h2>
 
       {recommendations.map((rec, idx) => (
         <div key={idx} className="card bg-base-200 shadow-lg">
-          <div className="card-body">
+          <div className="card-body m-1">
             {/* 헤더 */}
-            <div className="flex items-center justify-between">
+            <div className="flex justify-center">
               <h3 className="card-title">
                 {rec.deckSize}인 조합 ({rec.deckSize === 9 ? '대충돌/프론티어' : '침략'})
               </h3>
@@ -80,7 +80,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                   .map((synergy) => (
                     <div
                       key={synergy.personality}
-                      className={`badge badge-lg gap-1 ${getPersonalityBackground(synergy.personality)}`}
+                      className={`badge badge-lg ${getPersonalityBackground(synergy.personality)}`}
                       title={`${getPersonalityKoreanName(synergy.personality)} - HP +${synergy.bonus?.hp}%, 공격력 +${synergy.bonus?.damage}%`}
                     >
                       <div className="relative inline-flex items-center" style={{ height: '24px' }}>
@@ -130,7 +130,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
             </div>
 
             {/* 추천 조합 그리드 */}
-            <div className="m-2 flex justify-center">
+            <div className="m-0.5 flex justify-center">
               <RecommendedDeckGrid deck={rec.deck} deckSize={rec.deckSize} />
             </div>
           </div>
