@@ -118,6 +118,7 @@ const SYNERGY_SCORES = {
 
 export interface RecommendedDeck {
   deck: Apostle[];
+  placement?: Record<string, Position>; // apostle id -> 배치된 포지션
   deckSize: DeckSize;
   totalScore: number;
   baseScore: number;
@@ -235,7 +236,7 @@ function selectApostlesGreedy(
   requirements: { front: number; mid: number; back: number },
   skipNames: Set<string>,
   deckSize: DeckSize = 6,
-): Apostle[] {
+): { deck: Apostle[]; placement: Record<string, Position> } {
   const placement: Record<Position, Apostle[]> = { front: [], mid: [], back: [] };
   const placedNames = new Set<string>();
 
@@ -276,7 +277,18 @@ function selectApostlesGreedy(
   // 2단계: Free Position 사도 최적화 (티그 등)
   optimizeFreePositionApostles(placement);
 
-  return [...placement.front, ...placement.mid, ...placement.back];
+  // 포지션 맵 생성: apostle id -> position
+  const positionMap: Record<string, Position> = {};
+  Object.entries(placement).forEach(([pos, apostles]) => {
+    apostles.forEach((apostle) => {
+      positionMap[apostle.id] = pos as Position;
+    });
+  });
+
+  return {
+    deck: [...placement.front, ...placement.mid, ...placement.back],
+    placement: positionMap,
+  };
 }
 
 /**
@@ -442,7 +454,7 @@ function tryBuildDeckWithPersonalities(
   personalityGroups: Map<Personality, Apostle[]>,
   requirements: { front: number; mid: number; back: number },
   deckSize: DeckSize = 6,
-): Apostle[] | null {
+): { deck: Apostle[]; positionMap: Record<string, Position> } | null {
   const candidates: Apostle[] = [];
   const usedNames = new Set<string>();
 
@@ -467,12 +479,14 @@ function tryBuildDeckWithPersonalities(
   }
 
   // 포지션 제약을 만족하는 덱 생성
-  const deck = selectApostlesGreedy(candidates, requirements, new Set(), deckSize);
+  const deckResult = selectApostlesGreedy(candidates, requirements, new Set(), deckSize);
+  const deck = deckResult.deck;
+  const positionMap = deckResult.placement;
 
   // 6명이 선택되지 않았으면 실패
   if (deck.length !== deckSize) return null;
 
-  return deck;
+  return { deck, positionMap };
 }
 
 /**
@@ -509,7 +523,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
         // 성격 시너지 유지되도록 후보군 제한
         const synergyCandidates = myApostles.filter((a) => a.persona === p1 || a.persona === p2);
 
-        const balancedDeck = adjustForRoleBalance([...deck], synergyCandidates, 6);
+        const balancedDeck = adjustForRoleBalance([...deck.deck], synergyCandidates, 6);
         const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
         const roles = getRoleBalance(balancedDeckWithBestPersona);
 
@@ -519,13 +533,15 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
         ) {
           const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
           if (synergyScore === SYNERGY_SCORES.TYPE_4_2) {
-            const baseScore = balancedDeckWithBestPersona.reduce(
-              (sum, a) => sum + getEffectiveBaseScore(a, 6),
-              0,
-            );
+            // 포지션 정보를 고려한 점수 계산
+            const baseScore = balancedDeckWithBestPersona.reduce((sum, a) => {
+              const pos = deck.positionMap[a.id];
+              return sum + getEffectiveBaseScore(a, 6, pos);
+            }, 0);
 
             results.push({
               deck: balancedDeckWithBestPersona,
+              placement: deck.positionMap,
               deckSize: 6,
               totalScore: baseScore + synergyScore,
               baseScore,
@@ -563,7 +579,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
         );
 
         if (deck) {
-          const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
+          const balancedDeck = adjustForRoleBalance([...deck.deck], myApostles, 6);
           const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
           const roles = getRoleBalance(balancedDeckWithBestPersona);
 
@@ -573,12 +589,14 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
           ) {
             const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
             if (synergyScore === SYNERGY_SCORES.TYPE_2_2_2) {
-              const baseScore = balancedDeckWithBestPersona.reduce(
-                (sum, a) => sum + getEffectiveBaseScore(a, 6),
-                0,
-              );
+              // 포지션 정보를 고려한 점수 계산
+              const baseScore = balancedDeckWithBestPersona.reduce((sum, a) => {
+                const pos = deck.positionMap[a.id];
+                return sum + getEffectiveBaseScore(a, 6, pos);
+              }, 0);
               results.push({
                 deck: balancedDeckWithBestPersona,
+                placement: deck.positionMap,
                 deckSize: 6,
                 totalScore: baseScore + synergyScore,
                 baseScore,
@@ -608,7 +626,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
     );
 
     if (deck) {
-      const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
+      const balancedDeck = adjustForRoleBalance([...deck.deck], myApostles, 6);
       const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
       const roles = getRoleBalance(balancedDeckWithBestPersona);
 
@@ -618,12 +636,14 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
       ) {
         const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
         if (synergyScore === SYNERGY_SCORES.TYPE_6) {
-          const baseScore = balancedDeckWithBestPersona.reduce(
-            (sum, a) => sum + getEffectiveBaseScore(a, 6),
-            0,
-          );
+          // 포지션 정보를 고려한 점수 계산
+          const baseScore = balancedDeckWithBestPersona.reduce((sum, a) => {
+            const pos = deck.positionMap[a.id];
+            return sum + getEffectiveBaseScore(a, 6, pos);
+          }, 0);
           results.push({
             deck: balancedDeckWithBestPersona,
+            placement: deck.positionMap,
             deckSize: 6,
             totalScore: baseScore + synergyScore,
             baseScore,
@@ -674,12 +694,9 @@ function buildDeck(
       sortedApostles.slice(0, attempt).forEach((a) => skipNames.add(a.engName));
     }
 
-    const initialDeck = selectApostlesGreedy(
-      sortedApostles,
-      DECK_CONFIG[size].req,
-      skipNames,
-      size,
-    );
+    const deckResult = selectApostlesGreedy(sortedApostles, DECK_CONFIG[size].req, skipNames, size);
+    const initialDeck = deckResult.deck;
+    const positionMap = deckResult.placement;
     if (initialDeck.length !== size) continue;
 
     const finalDeck = adjustForRoleBalance(initialDeck, sortedApostles, size);
@@ -700,10 +717,11 @@ function buildDeck(
     if (usedCombinations.has(deckKey)) continue;
     usedCombinations.add(deckKey);
 
-    const baseScore = finalDeckWithBestPersona.reduce(
-      (sum, a) => sum + getEffectiveBaseScore(a, size),
-      0,
-    );
+    // 포지션 정보를 고려한 점수 계산
+    const baseScore = finalDeckWithBestPersona.reduce((sum, a) => {
+      const pos = positionMap[a.id];
+      return sum + getEffectiveBaseScore(a, size, pos);
+    }, 0);
     const synergyScore = getSynergyScore(finalDeckWithBestPersona);
 
     const healerSuggestions = hasHealer(finalDeck)
@@ -712,6 +730,7 @@ function buildDeck(
 
     results.push({
       deck: finalDeckWithBestPersona,
+      placement: positionMap,
       deckSize: size,
       totalScore: baseScore + synergyScore,
       baseScore,
