@@ -437,7 +437,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -876,7 +876,7 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 73,
+      "baseScore": 69,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -1733,7 +1733,7 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 75,
+      "baseScore": 71,
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -1803,7 +1803,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 63,
+      "baseScore": 65,
       "aside": {
         "hasAside": true,
         "importance": "필수",
@@ -1897,6 +1897,11 @@
       "method": "Physical",
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
+      "positionScore": {
+        "front": 60,
+        "mid": 72,
+        "back": 78
+      },
       "baseScore": 78,
       "scoreBySize": {
         "size6": 70,
@@ -1948,7 +1953,7 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 75,
+      "baseScore": 73,
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -2041,7 +2046,7 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 68,
+      "baseScore": 65,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2089,7 +2094,7 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 70,
+      "baseScore": 68,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2160,7 +2165,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 65,
+      "baseScore": 66,
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -2623,7 +2628,12 @@
       "method": "Physical",
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
-      "baseScore": 85,
+      "positionScore": {
+        "front": 60,
+        "mid": 80,
+        "back": 82
+      },
+      "baseScore": 82,
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2670,7 +2680,7 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 70,
+      "baseScore": 68,
       "aside": {
         "hasAside": true,
         "importance": "필수",

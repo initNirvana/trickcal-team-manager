@@ -33,11 +33,13 @@ export const POSITION_CONFIG = {
  * @property {Personality} persona - 사도의 성격 유형.
  * @property {Role} role - 사도의 역할 (딜러, 탱커, 서포터).
  * @property {Method} method - 사도의 공격 방식 (물리, 마법).
- * @property {Position | Position[]} position - 사도의 전투 위치 (앞열, 중열, 뒷열).
+ * @property {Position | Position[]} position - 사도의 전투 위치 (전열, 중열, 후열).
  * @property {Position[]} [positionPriority] - 사도의 위치 우선순위 배열 (선택적).
+ * @property {{front?: number; mid?: number; back?: number}} [positionScore] - 사도의 위치별 점수 (선택적).
  * @property {boolean} [mercenary] - 용병 여부 (선택적).
  * @property {Aside} aside - 사도의 어사이드 정보.
  * @property {number} baseScore - 사도의 기본 점수.
+ * @property {{size6?: number; size9?: number}} [scoreBySize] - 사도의 덱 사이즈별 점수 (선택적).
  */
 
 export interface Apostle {
@@ -52,6 +54,7 @@ export interface Apostle {
   method: Method;
   position: Position | Position[];
   positionPriority?: Position[];
+  positionScore?: { front?: number; mid?: number; back?: number };
   mercenary?: boolean;
   aside: Aside;
   baseScore: number;

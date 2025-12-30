@@ -145,13 +145,25 @@ const getSynergyScore9 = (mode9: ContentMode9 | undefined) => {
 /**
  * 6인덱/9인덱 변동 점수 반영
  * @param a Apostle
- * @param size ep
+ * @param size 덱 크기 (6 or 9)
+ * @param position 배치 열 선택 (전열/중열/후열, 선택적)
  * @returns
  */
-function getEffectiveBaseScore(a: Apostle, size: DeckSize): number {
-  const s = a.scoreBySize as { size6?: number; size9?: number } | undefined;
-  if (!s) return a.baseScore ?? 0;
-  return size === 6 ? (s.size6 ?? a.baseScore ?? 0) : (s.size9 ?? a.baseScore ?? 0);
+function getEffectiveBaseScore(a: Apostle, size: DeckSize, position?: Position): number {
+  let baseScore = a.baseScore ?? 0;
+  const sizeScore = a.scoreBySize as { size6?: number; size9?: number } | undefined;
+  if (sizeScore) {
+    baseScore = size === 6 ? (sizeScore.size6 ?? baseScore) : (sizeScore.size9 ?? baseScore);
+  }
+
+  // position이 지정된 경우만 positionScore 적용
+  if (!position) return baseScore;
+
+  const positionScore = a.positionScore as
+    | { front?: number; mid?: number; back?: number }
+    | undefined;
+  if (!positionScore) return baseScore;
+  return positionScore[position] ?? baseScore;
 }
 
 function calculateSynergyScore(apostles: Apostle[]): number {
@@ -222,6 +234,7 @@ function selectApostlesGreedy(
   sortedCandidates: Apostle[],
   requirements: { front: number; mid: number; back: number },
   skipNames: Set<string>,
+  deckSize: DeckSize = 6,
 ): Apostle[] {
   const placement: Record<Position, Apostle[]> = { front: [], mid: [], back: [] };
   const placedNames = new Set<string>();
@@ -232,15 +245,27 @@ function selectApostlesGreedy(
     const priorityList = apostle.positionPriority || getPositions(apostle);
     const validPositions = getPositions(apostle); // 포지션 유효성 체크용
 
+    // 포지션별 점수를 고려하여 배치 위치 결정
+    let bestPos: Position | null = null;
+    let bestScore = -Infinity;
+
     for (const pos of priorityList) {
       if (
         placement[pos].length < requirements[pos as keyof typeof requirements] &&
         validPositions.includes(pos)
       ) {
-        placement[pos].push(apostle);
-        placedNames.add(apostle.engName);
-        break;
+        // 위치별 점수 계산 (positionScore 적용, deckSize 고려)
+        const posScore = getEffectiveBaseScore(apostle, deckSize, pos);
+        if (posScore > bestScore) {
+          bestScore = posScore;
+          bestPos = pos;
+        }
       }
+    }
+
+    if (bestPos !== null) {
+      placement[bestPos].push(apostle);
+      placedNames.add(apostle.engName);
     }
 
     const currentTotal = Object.values(placement).reduce((sum, list) => sum + list.length, 0);
@@ -275,7 +300,7 @@ function optimizeFreePositionApostles(placement: Record<Position, Apostle[]>): v
       if (preferredPos === currentPos) continue;
 
       // 선호 위치에서 교체 대상 찾기
-      const swapTarget = findSwapTarget(placement[preferredPos], currentPos);
+      const swapTarget = findSwapTarget(placement[preferredPos], currentPos, 6);
 
       if (swapTarget !== null) {
         // Swap 실행
@@ -291,11 +316,12 @@ function optimizeFreePositionApostles(placement: Record<Position, Apostle[]>): v
 }
 
 /**
- * 교체 대상 찾기: Attacker 중 점수 낮은 순 → 전체 중 점수 낮은 순
+ * 교체 대상 찾기: Attacker 중 목표 위치 점수 낮은 순 → 전체 중 낮은 순
  */
 function findSwapTarget(
   candidatesInPosition: Apostle[],
   targetPosition: 'front' | 'mid' | 'back',
+  deckSize: DeckSize = 6,
 ): Apostle | null {
   // targetPosition에 배치 가능한 사도만 필터링
   const eligibleCandidates = candidatesInPosition.filter((a) =>
@@ -304,15 +330,23 @@ function findSwapTarget(
 
   if (eligibleCandidates.length === 0) return null;
 
-  // 1순위: Attacker 중 점수 낮은 순
+  // 1순위: Attacker 중 목표 위치 점수 낮은 순
   const attackers = eligibleCandidates
     .filter((a) => a.role.main === ROLES.ATTACKER)
-    .sort((a, b) => (a.baseScore ?? 0) - (b.baseScore ?? 0));
+    .sort(
+      (a, b) =>
+        getEffectiveBaseScore(a, deckSize, targetPosition) -
+        getEffectiveBaseScore(b, deckSize, targetPosition),
+    );
 
   if (attackers.length > 0) return attackers[0];
 
-  // 2순위: 전체 중 점수 낮은 순
-  const sortedByScore = eligibleCandidates.sort((a, b) => (a.baseScore ?? 0) - (b.baseScore ?? 0));
+  // 2순위: 전체 중 목표 위치 점수 낮은 순
+  const sortedByScore = eligibleCandidates.sort(
+    (a, b) =>
+      getEffectiveBaseScore(a, deckSize, targetPosition) -
+      getEffectiveBaseScore(b, deckSize, targetPosition),
+  );
 
   return sortedByScore[0];
 }
@@ -326,7 +360,18 @@ function adjustForRoleBalance(currentDeck: Apostle[], candidates: Apostle[], dec
 
     const available = candidates
       .filter((a) => a.role.main === targetRole && !placedNames.has(a.engName))
-      .sort((a, b) => getEffectiveBaseScore(b, deckSize) - getEffectiveBaseScore(a, deckSize));
+      .sort((a, b) => {
+        // 가능한 모든 포지션의 평균 점수로 비교 (positionScore 적용)
+        const positionsA = getPositions(a);
+        const positionsB = getPositions(b);
+        const avgA =
+          positionsA.reduce((sum, pos) => sum + getEffectiveBaseScore(a, deckSize, pos), 0) /
+          positionsA.length;
+        const avgB =
+          positionsB.reduce((sum, pos) => sum + getEffectiveBaseScore(b, deckSize, pos), 0) /
+          positionsB.length;
+        return avgB - avgA;
+      });
 
     for (const candidate of available) {
       if (needed <= 0) break;
@@ -396,6 +441,7 @@ function tryBuildDeckWithPersonalities(
   distribution: number[],
   personalityGroups: Map<Personality, Apostle[]>,
   requirements: { front: number; mid: number; back: number },
+  deckSize: DeckSize = 6,
 ): Apostle[] | null {
   const candidates: Apostle[] = [];
   const usedNames = new Set<string>();
@@ -421,10 +467,10 @@ function tryBuildDeckWithPersonalities(
   }
 
   // 포지션 제약을 만족하는 덱 생성
-  const deck = selectApostlesGreedy(candidates, requirements, new Set());
+  const deck = selectApostlesGreedy(candidates, requirements, new Set(), deckSize);
 
   // 6명이 선택되지 않았으면 실패
-  if (deck.length !== 6) return null;
+  if (deck.length !== deckSize) return null;
 
   return deck;
 }
@@ -451,7 +497,13 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
       const group2 = personalityGroups.get(p2) || [];
       if (group2.length < 2) continue;
 
-      const deck = tryBuildDeckWithPersonalities([p1, p2], [4, 2], personalityGroups, requirements);
+      const deck = tryBuildDeckWithPersonalities(
+        [p1, p2],
+        [4, 2],
+        personalityGroups,
+        requirements,
+        6,
+      );
 
       if (deck) {
         // 성격 시너지 유지되도록 후보군 제한
@@ -507,6 +559,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
           [2, 2, 2],
           personalityGroups,
           requirements,
+          6,
         );
 
         if (deck) {
@@ -546,7 +599,13 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
     const group = personalityGroups.get(personality) || [];
     if (group.length < 6) continue;
 
-    const deck = tryBuildDeckWithPersonalities([personality], [6], personalityGroups, requirements);
+    const deck = tryBuildDeckWithPersonalities(
+      [personality],
+      [6],
+      personalityGroups,
+      requirements,
+      6,
+    );
 
     if (deck) {
       const balancedDeck = adjustForRoleBalance([...deck], myApostles, 6);
@@ -615,7 +674,12 @@ function buildDeck(
       sortedApostles.slice(0, attempt).forEach((a) => skipNames.add(a.engName));
     }
 
-    const initialDeck = selectApostlesGreedy(sortedApostles, DECK_CONFIG[size].req, skipNames);
+    const initialDeck = selectApostlesGreedy(
+      sortedApostles,
+      DECK_CONFIG[size].req,
+      skipNames,
+      size,
+    );
     if (initialDeck.length !== size) continue;
 
     const finalDeck = adjustForRoleBalance(initialDeck, sortedApostles, size);
