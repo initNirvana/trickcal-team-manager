@@ -4,7 +4,7 @@ import {
   getPersonalityKoreanName,
   isValidPosition,
   getPersonalityBackground,
-} from '@/utils/ApostleUtils';
+} from '@/utils/apostleUtils';
 import {
   getPersonalityIconPath,
   getApostleImagePath,

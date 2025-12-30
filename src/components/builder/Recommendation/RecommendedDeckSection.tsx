@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Apostle } from '@/types/apostle';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
-import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/ApostleUtils';
+import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/apostleUtils';
 import {
   getSynergyOnIconPath,
   getSynergyOffIconPath,
@@ -33,7 +33,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
 
       {recommendations.map((rec, idx) => (
         <div key={idx} className="card bg-base-200 shadow-lg">
-          <div className="card-body m-1">
+          <div className="card-body">
             {/* 헤더 */}
             <div className="flex justify-center">
               <h3 className="card-title">
@@ -43,7 +43,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
             </div>
 
             {/* 성격 시너지 표시 */}
-            <div className="mt-1">
+            <div>
               <h4 className="mb-2 text-sm font-semibold">
                 성격 시너지
                 {/* 성격 시너지 합계 표시 */}

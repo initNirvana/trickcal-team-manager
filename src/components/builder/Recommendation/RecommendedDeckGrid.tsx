@@ -1,5 +1,5 @@
 import { Apostle, POSITION_CONFIG } from '@/types/apostle';
-import { getPersonalityBackground } from '@/utils/ApostleUtils';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
 import {
   getApostleImagePath,
   getPersonalityIconPath,

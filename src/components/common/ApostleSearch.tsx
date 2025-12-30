@@ -1,12 +1,12 @@
 import { useCallback } from 'react';
 import type { Apostle } from '@/types/apostle';
-import { useApostleSearch } from '@/utils/ApostleSearch';
+import { useApostleSearch } from '@/utils/apostleSearch';
 import { getApostleImagePath } from '@/utils/apostleImages';
 import {
   getPositionsKorean,
   getPersonalityKoreanName,
   getPersonalityBackground,
-} from '@/utils/ApostleUtils';
+} from '@/utils/apostleUtils';
 import Image from './Image';
 
 interface ApostleSelectorSearchProps {

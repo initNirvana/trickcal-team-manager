@@ -1,5 +1,5 @@
 import type { Apostle, Personality } from '@/types/apostle';
-import { getPositions } from '@/utils/ApostleUtils';
+import { getPositions } from '@/utils/apostleUtils';
 import { analyzeSynergies, Synergy, calculateTotalSynergyBonus } from '@/utils/deckAnalysisUtils';
 
 type DeckSize = 6 | 9;

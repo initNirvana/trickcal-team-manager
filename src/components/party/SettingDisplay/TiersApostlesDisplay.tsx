@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { getApostleImagePath, getPositionIconPath } from '@/utils/apostleImages';
 import { Position, POSITION_CONFIG, Personality } from '@/types/apostle';
-import { getPersonalityBackground } from '@/utils/ApostleUtils';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
 import Image from '../../common/Image';
 import PersonalityDropdown from '../../common/PersonalityDropdown';
 import apostlesTiersData from '@/data/apostles-recommend.json';

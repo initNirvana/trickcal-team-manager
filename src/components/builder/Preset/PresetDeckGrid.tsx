@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import type { Apostle, Personality, Position } from '@/types/apostle';
 import { getApostleImagePath } from '@/utils/apostleImages';
-import { getPersonalityBackground } from '@/utils/ApostleUtils';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
 
 interface PresetDeckGridProps {
   deck: Apostle[];

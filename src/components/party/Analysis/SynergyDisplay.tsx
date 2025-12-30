@@ -1,4 +1,4 @@
-import { getPersonalityBackground } from '@/utils/ApostleUtils';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
 import {
   getSynergyOnIconPath,
   getSynergyOffIconPath,

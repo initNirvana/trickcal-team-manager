@@ -1,5 +1,5 @@
 import type { Apostle } from '@/types/apostle';
-import { getPersonalityBackground } from '@/utils/ApostleUtils';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
 import { getApostleImagePath } from '@/utils/apostleImages';
 import Image from '../common/Image';
 

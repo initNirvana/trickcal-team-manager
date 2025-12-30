@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { Apostle } from '@/types/apostle';
 import { getApostleImagePath } from '@/utils/apostleImages';
-import { getPersonalityBackground } from '@/utils/ApostleUtils';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
 import ApostleSelectorSearch from '../../common/ApostleSearch';
 
 interface MyApostleListProps {
