@@ -530,7 +530,7 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 65,
+      "baseScore": 55,
       "aside": {
         "hasAside": false,
         "importance": null,
@@ -1268,7 +1268,7 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 65,
+      "baseScore": 63,
       "aside": {
         "hasAside": true,
         "importance": null,
