@@ -141,7 +141,7 @@ export const PresetCombinationSection = ({ allApostles }: PresetCombinationSecti
               type="radio"
               name="preset_tabs"
               className="tab"
-              aria-label={`${slot}인 조합`}
+              aria-label={`${slot}속성 조합`}
               checked={selectedSlot === slot}
               onChange={() => setSelectedSlot(slot)}
             />
