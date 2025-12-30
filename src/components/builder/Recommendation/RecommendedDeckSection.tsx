@@ -1,11 +1,14 @@
 import { useMemo } from 'react';
-import { Apostle } from '@/types/apostle';
+import { Apostle, POSITION_CONFIG } from '@/types/apostle';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
 import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/apostleUtils';
 import {
   getSynergyOnIconPath,
   getSynergyOffIconPath,
   placeholderImagePath,
+  getApostleImagePath,
+  getPositionIconPath,
+  getPersonalityIconPath,
 } from '@/utils/apostleImages';
 import RecommendedDeckGrid from './RecommendedDeckGrid';
 
@@ -133,6 +136,102 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
             <div className="m-0.5 flex justify-center">
               <RecommendedDeckGrid deck={rec.deck} deckSize={rec.deckSize} />
             </div>
+
+            {/* 힐러 없음 경고 배지 */}
+            {!rec.hasHealer && (
+              <div className="alert alert-warning shadow-sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 shrink-0 stroke-current"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+                <div>
+                  <p className="text-xs">
+                    다른 사도들에게 힐이나 보호막을 부여하는 사도가 없습니다. 유지력이 떨어질 수
+                    있습니다.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* 추천 힐러 사도 (최대 3개) */}
+            {!rec.hasHealer && rec.healerSuggestions && rec.healerSuggestions.length > 0 && (
+              <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
+                <input type="checkbox" name={`healer-suggest-${idx}`} />
+                <div className="collapse-title text-sm font-semibold">
+                  추천 힐러 사도 ({rec.healerSuggestions.length})
+                </div>
+                <div className="collapse-content">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                    {rec.healerSuggestions.map((suggestion) => (
+                      <div className="group border-base-200 bg-base-100 hover:border-primary relative h-30 w-30 overflow-hidden rounded-lg border-2 shadow-sm transition hover:shadow-md">
+                        {/* 사도 이미지 */}
+                        <img
+                          src={getApostleImagePath(suggestion.apostle.engName)}
+                          className={`inline-flex h-full w-full items-center rounded object-cover text-center text-xs ${getPersonalityBackground(suggestion.apostle.persona)}`}
+                          alt={suggestion.apostle.name}
+                        />
+
+                        {/* 위치 아이콘 */}
+                        <div className="absolute bottom-5 left-1 h-6 w-6 rounded-full">
+                          <img
+                            src={getPositionIconPath(
+                              POSITION_CONFIG[
+                                suggestion.apostle.position as keyof typeof POSITION_CONFIG
+                              ].icon,
+                            )}
+                            className="h-full w-full object-contain"
+                            onError={(e) => {
+                              (e.currentTarget as HTMLImageElement).style.display = 'none';
+                            }}
+                          />
+                        </div>
+
+                        {/* 성격 아이콘 배지 */}
+                        <div className="absolute top-1 right-1 h-6 w-6 rounded-full">
+                          <img
+                            src={getPersonalityIconPath(suggestion.apostle.persona)}
+                            className="h-full w-full object-contain"
+                            onError={(e) => {
+                              (e.currentTarget as HTMLImageElement).style.display = 'none';
+                            }}
+                          />
+                        </div>
+
+                        {/* 사도 이름 오버레이 */}
+                        <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/80 to-transparent p-2 text-center">
+                          <p className="text-sm font-bold text-white">{suggestion.apostle.name}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="alert alert-info mt-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5 shrink-0 stroke-current"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span className="text-xs">보유 사도 내 힐러를 추천합니다.</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       ))}

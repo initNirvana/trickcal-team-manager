@@ -1,4 +1,4 @@
-import type { Apostle, Personality } from '@/types/apostle';
+import type { Apostle, Personality, Position } from '@/types/apostle';
 import { getPositions } from '@/utils/apostleUtils';
 import { analyzeSynergies, Synergy, calculateTotalSynergyBonus } from '@/utils/deckAnalysisUtils';
 
@@ -35,6 +35,68 @@ function getAllowedPersonas(a: Apostle): Personality[] | null {
   return rule ? rule.allowed : null;
 }
 
+/**
+ * 추천 힐러 제안 교체 인터페이스
+ */
+interface HealerSuggestion {
+  apostle: Apostle;
+  synergySafe: boolean;
+}
+
+/**
+ * 조합 내 사도의 세부 역할에 Heal 또는 Shield가 포함된 사도가 있는지 확인
+ * @param deck
+ * @returns Boolean
+ */
+function hasHealer(deck: Apostle[]): boolean {
+  return deck.some((a) => a.role?.trait?.includes('Heal') || a.role?.trait?.includes('Shield'));
+}
+
+/**
+ * 사도가 힐러 역할인지 확인
+ * @param apostle
+ * @returns Boolean
+ */
+function isHealer(apostle: Apostle): boolean {
+  return apostle.role?.trait?.includes('Heal') || apostle.role?.trait?.includes('Shield');
+}
+
+/**
+ * 보유 사도 중 추천 힐러 사도 리스트 생성
+ * @param deck 현재 덱
+ * @param allApostles 전체 보유 사도
+ * @returns HealerSuggestion[]
+ */
+function suggestAvailableHealers(deck: Apostle[], allApostles: Apostle[]): HealerSuggestion[] {
+  const deckIds = new Set(deck.map((a) => a.id));
+  const deckPersonas = new Set(deck.map((a) => a.persona));
+
+  const availableHealers = allApostles
+    .filter((a) => !deckIds.has(a.id) && isHealer(a))
+    .map((a) => ({
+      apostle: a,
+      synergySafe: deckPersonas.has(a.persona),
+    }))
+    .sort((a, b) => {
+      // 1순위: 덱 성격군 내
+      if (a.synergySafe && !b.synergySafe) return -1;
+      if (!a.synergySafe && b.synergySafe) return 1;
+      // 2순위: 점수 높은 순
+      return (b.apostle.baseScore ?? 0) - (a.apostle.baseScore ?? 0);
+    })
+    .slice(0, 5); // 상위 5개
+
+  return availableHealers;
+}
+
+/**
+ * 프리 포지션 여부 확인
+ */
+function isFreePosition(apostle: Apostle): boolean {
+  const positions = getPositions(apostle);
+  return positions.length === 3;
+}
+
 const DECK_CONFIG = {
   6: {
     req: { front: 2, mid: 2, back: 2 },
@@ -62,6 +124,8 @@ export interface RecommendedDeck {
   synergyScore: number;
   synergies: Synergy[];
   roleBalance: { tanker: number; attacker: number; supporter: number };
+  hasHealer: boolean;
+  healerSuggestions?: HealerSuggestion[];
 }
 
 /**
@@ -159,7 +223,7 @@ function selectApostlesGreedy(
   requirements: { front: number; mid: number; back: number },
   skipNames: Set<string>,
 ): Apostle[] {
-  const placement: Record<'front' | 'mid' | 'back', Apostle[]> = { front: [], mid: [], back: [] };
+  const placement: Record<Position, Apostle[]> = { front: [], mid: [], back: [] };
   const placedNames = new Set<string>();
 
   for (const apostle of sortedCandidates) {
@@ -184,7 +248,73 @@ function selectApostlesGreedy(
     if (currentTotal >= targetTotal) break;
   }
 
+  // 2단계: Free Position 사도 최적화 (티그 등)
+  optimizeFreePositionApostles(placement);
+
   return [...placement.front, ...placement.mid, ...placement.back];
+}
+
+/**
+ * Free Position 사도가 선호 위치에 배치되도록 교체 시도
+ */
+function optimizeFreePositionApostles(placement: Record<Position, Apostle[]>): void {
+  const positions: Position[] = ['front', 'mid', 'back'];
+
+  // 모든 포지션을 순회하며 Free Position 사도 찾기
+  for (const currentPos of positions) {
+    for (let i = 0; i < placement[currentPos].length; i++) {
+      const apostle = placement[currentPos][i];
+
+      // Free Position이 아니면 skip
+      if (!isFreePosition(apostle)) continue;
+
+      const priority = apostle.positionPriority || getPositions(apostle);
+      const preferredPos = priority[0] as 'front' | 'mid' | 'back';
+
+      // 이미 선호 위치에 있으면 skip
+      if (preferredPos === currentPos) continue;
+
+      // 선호 위치에서 교체 대상 찾기
+      const swapTarget = findSwapTarget(placement[preferredPos], currentPos);
+
+      if (swapTarget !== null) {
+        // Swap 실행
+        const targetIndex = placement[preferredPos].indexOf(swapTarget);
+        placement[preferredPos][targetIndex] = apostle;
+        placement[currentPos][i] = swapTarget;
+
+        // 한 번만 교체 (재귀 방지)
+        break;
+      }
+    }
+  }
+}
+
+/**
+ * 교체 대상 찾기: Attacker 중 점수 낮은 순 → 전체 중 점수 낮은 순
+ */
+function findSwapTarget(
+  candidatesInPosition: Apostle[],
+  targetPosition: 'front' | 'mid' | 'back',
+): Apostle | null {
+  // targetPosition에 배치 가능한 사도만 필터링
+  const eligibleCandidates = candidatesInPosition.filter((a) =>
+    getPositions(a).includes(targetPosition),
+  );
+
+  if (eligibleCandidates.length === 0) return null;
+
+  // 1순위: Attacker 중 점수 낮은 순
+  const attackers = eligibleCandidates
+    .filter((a) => a.role.main === ROLES.ATTACKER)
+    .sort((a, b) => (a.baseScore ?? 0) - (b.baseScore ?? 0));
+
+  if (attackers.length > 0) return attackers[0];
+
+  // 2순위: 전체 중 점수 낮은 순
+  const sortedByScore = eligibleCandidates.sort((a, b) => (a.baseScore ?? 0) - (b.baseScore ?? 0));
+
+  return sortedByScore[0];
 }
 
 function adjustForRoleBalance(currentDeck: Apostle[], candidates: Apostle[], deckSize: DeckSize) {
@@ -350,6 +480,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
               synergyScore,
               synergies: analyzeSynergies(balancedDeckWithBestPersona),
               roleBalance: roles,
+              hasHealer: hasHealer(balancedDeckWithBestPersona),
             });
           }
         }
@@ -401,6 +532,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
                 synergyScore,
                 synergies: analyzeSynergies(balancedDeckWithBestPersona),
                 roleBalance: roles,
+                hasHealer: hasHealer(balancedDeckWithBestPersona),
               });
             }
           }
@@ -439,6 +571,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
             synergyScore,
             synergies: analyzeSynergies(balancedDeckWithBestPersona),
             roleBalance: roles,
+            hasHealer: hasHealer(balancedDeckWithBestPersona),
           });
         }
       }
@@ -509,6 +642,10 @@ function buildDeck(
     );
     const synergyScore = getSynergyScore(finalDeckWithBestPersona);
 
+    const healerSuggestions = hasHealer(finalDeck)
+      ? undefined
+      : suggestAvailableHealers(finalDeck, myApostles);
+
     results.push({
       deck: finalDeckWithBestPersona,
       deckSize: size,
@@ -517,6 +654,8 @@ function buildDeck(
       synergyScore,
       synergies: analyzeSynergies(finalDeckWithBestPersona),
       roleBalance: finalRoles,
+      hasHealer: hasHealer(finalDeckWithBestPersona),
+      healerSuggestions: healerSuggestions,
     });
   }
 
