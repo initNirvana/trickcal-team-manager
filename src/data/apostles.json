@@ -895,7 +895,7 @@
       "role": {
         "main": "Tanker",
         "subRole": "Main",
-        "trait": ["Shield", "CC"]
+        "trait": ["CC"]
       },
       "method": "Physical",
       "position": "front",
