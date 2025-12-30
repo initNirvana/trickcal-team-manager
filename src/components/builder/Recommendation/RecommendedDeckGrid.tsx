@@ -4,6 +4,7 @@ import {
   getApostleImagePath,
   getPersonalityIconPath,
   getPositionIconPath,
+  getClassIconPath,
 } from '@/utils/apostleImages';
 
 interface RecommendedDeckGridProps {
@@ -61,9 +62,20 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
         />
 
         {/* 위치 아이콘 */}
-        <div className="absolute bottom-5 left-1 h-6 w-6 rounded-full">
+        <div className="absolute bottom-5 left-0.5 h-6 w-6 rounded-full">
           <img
             src={getPositionIconPath(positionIcon)}
+            className="h-full w-full object-contain"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
+            }}
+          />
+        </div>
+
+        {/* 클래스 아이콘 */}
+        <div className="absolute bottom-11 left-0.5 h-6 w-6 rounded-full">
+          <img
+            src={getClassIconPath(apostle.role.main)}
             className="h-full w-full object-contain"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).style.display = 'none';

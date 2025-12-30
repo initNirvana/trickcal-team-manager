@@ -1,7 +1,8 @@
-import { useMemo } from 'react';
+import { useMemo, useRef, useCallback } from 'react';
 import { Apostle, POSITION_CONFIG } from '@/types/apostle';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
 import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/apostleUtils';
+import * as htmlToImage from 'html-to-image';
 import {
   getSynergyOnIconPath,
   getSynergyOffIconPath,
@@ -11,6 +12,7 @@ import {
   getPersonalityIconPath,
 } from '@/utils/apostleImages';
 import RecommendedDeckGrid from './RecommendedDeckGrid';
+import { FaRegCopy } from 'react-icons/fa6';
 
 interface RecommendedDeckSectionProps {
   myApostles: Apostle[];
@@ -18,6 +20,20 @@ interface RecommendedDeckSectionProps {
 
 export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionProps) => {
   const recommendations = useMemo(() => generateRecommendations(myApostles), [myApostles]);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  const handleCopyCard = useCallback(async (idx: number) => {
+    const node = cardRefs.current[idx];
+    if (!node) return;
+    try {
+      const dataUrl = await htmlToImage.toPng(node, { pixelRatio: 2 });
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+    } catch (err) {
+      console.error('Failed to copy card image', err);
+    }
+  }, []);
 
   if (recommendations.length === 0) {
     return (
@@ -35,14 +51,28 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
       <h2 className="text-center text-2xl font-bold">추천 조합 (보유 사도 기반)</h2>
 
       {recommendations.map((rec, idx) => (
-        <div key={idx} className="card bg-base-200 shadow-lg">
+        <div
+          key={idx}
+          className="card bg-base-200 relative shadow-lg"
+          ref={(el) => {
+            cardRefs.current[idx] = el;
+          }}
+        >
+          <button
+            type="button"
+            className="btn btn-md btn-circle btn-ghost absolute top-2 right-2 z-10"
+            aria-label="클립보드로 복사하기"
+            title="클립보드로 복사하기"
+            onClick={() => handleCopyCard(idx)}
+          >
+            <FaRegCopy />
+          </button>
           <div className="card-body">
             {/* 헤더 */}
             <div className="flex justify-center">
               <h3 className="card-title">
                 {rec.deckSize}인 조합 ({rec.deckSize === 9 ? '대충돌/프론티어' : '침략'})
               </h3>
-              {/* <div className="badge badge-lg badge-primary">총점: {rec.totalScore}</div> */}
             </div>
 
             {/* 성격 시너지 표시 */}
