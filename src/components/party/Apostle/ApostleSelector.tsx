@@ -73,12 +73,10 @@ const ApostleSelector = ({
   const ranks = [3, 2, 1];
 
   return (
-    <div className="modal-box max-h-[50vh] max-w-xl overflow-y-auto rounded-lg bg-white p-6">
+    <div className="modal-box max-h-[50vh] max-w-xl space-y-1.5 overflow-y-auto rounded-lg">
       {/* 헤더 */}
-      <div className="grid grid-cols-2 items-center gap-2">
-        <h2 className="min-w-fit text-2xl font-bold whitespace-nowrap">
-          {getRequiredPosition(selectedSlot)} 선택
-        </h2>
+      <div className="grid grid-cols-2 items-center">
+        <h2 className="text-2xl font-bold">{getRequiredPosition(selectedSlot)} 선택</h2>
 
         <div className="flex items-center justify-end gap-2">
           <button
@@ -103,8 +101,8 @@ const ApostleSelector = ({
       <ApostleSelectorSearch apostles={positionFilteredApostles} onSelect={handleSelectApostle} />
 
       {/* 성격 필터 | 등급 필터 */}
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-1">
           {personalities.map((personality) => (
             <button
               key={personality}
@@ -113,7 +111,7 @@ const ApostleSelector = ({
               }
               className={`relative h-9 w-9 transform rounded-lg transition hover:scale-50 ${
                 selectedPersonality === personality
-                  ? 'ring-primary scale-110 ring-2 ring-offset-1'
+                  ? 'scale-110'
                   : 'opacity-60 hover:scale-105 hover:opacity-100'
               }`}
               title={getPersonalityKoreanName(personality)}
@@ -133,9 +131,7 @@ const ApostleSelector = ({
               key={rank}
               onClick={() => setSelectedRank(selectedRank === rank ? null : rank)}
               className={`relative h-9 w-9 transform rounded-lg transition ${
-                selectedRank === rank
-                  ? 'ring-2 ring-blue-500 ring-offset-1'
-                  : 'opacity-60 hover:scale-105 hover:opacity-100'
+                selectedRank === rank ? 'scale-110' : 'opacity-60 hover:scale-105 hover:opacity-100'
               }`}
               title={`${rank}성`}
             >
@@ -149,9 +145,9 @@ const ApostleSelector = ({
       </div>
 
       {/* 사도 그리드 - 5열 */}
-      <div className="grid grid-cols-3 gap-1 sm:grid-cols-3 md:grid-cols-5">
+      <div className="rounded-2xlsm:grid-cols-3 grid grid-cols-3 gap-1 md:grid-cols-5">
         {filteredApostles.length === 0 ? (
-          <div className="col-span-5 py-12 text-center text-gray-500">
+          <div className="col-span-5 py-6 text-center text-gray-500">
             배치 가능한 사도가 없습니다.
           </div>
         ) : (
@@ -163,18 +159,24 @@ const ApostleSelector = ({
                 onClick={() => onSelect(apostle)}
                 className={`${getPersonalityBackground(
                   displayPersonality,
-                )} flex h-25 cursor-pointer flex-col items-center justify-between rounded-lg p-1 text-white transition hover:shadow-md`}
+                )} relative h-24 cursor-pointer flex-col items-center rounded-2xl transition-all hover:scale-105 hover:shadow-lg`}
               >
                 {/* 사도 이미지 */}
-                <div className="flex h-18 w-20 items-center justify-center">
-                  <Image
-                    src={getApostleImagePath(apostle.engName)}
-                    alt={apostle.name}
-                    className="h-full w-full rounded object-cover"
-                  />
+                <img
+                  src={getApostleImagePath(apostle.engName)}
+                  className={`h-full w-full rounded-2xl object-cover`}
+                  alt={apostle.name}
+                />
+
+                {/* 이름 표시 */}
+                <div className="absolute right-0 bottom-0 left-0 rounded-2xl bg-black/60 px-2 py-1 text-center">
+                  <p className="text-xs font-semibold text-white">{apostle.name}</p>
                 </div>
-                {/* 사도 이름 */}
-                <div className="text-center text-xs">{apostle.name}</div>
+
+                {/* 성격 아이콘 - 우상단 */}
+                <div className="absolute top-1 right-1 flex h-6 w-6 items-center justify-center rounded-full">
+                  <img src={getPersonalityIconPath(displayPersonality)} />
+                </div>
               </div>
             );
           })
