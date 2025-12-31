@@ -99,16 +99,16 @@ function getSlotPosition(slotNumber: number): Position {
 export function getPersonalityBackground(personality: Personality): string {
   switch (personality) {
     case 'Jolly':
-      return 'bg-yellow-300';
+      return 'bg-[rgb(235_218_86)]';
     case 'Mad':
-      return 'bg-red-500';
+      return 'bg-[rgb(235_129_127)]';
     case 'Naive':
-      return 'bg-lime-500';
+      return 'bg-[rgb(133_215_117)]';
     case 'Gloomy':
-      return 'bg-purple-500';
+      return 'bg-[rgb(159,131,231)]';
     case 'Cool':
-      return 'bg-cyan-300';
+      return 'bg-[rgb(98_219_243)]';
     default:
-      return 'bg-slate-100';
+      return 'bg-[linear-gradient(to_bottom,rgba(255,255,255,.5)),conic-gradient(at_center,#66C17C,#83B9EB,#EB839A,#EBDB83,#C683EC,#66C17C)]';
   }
 }
