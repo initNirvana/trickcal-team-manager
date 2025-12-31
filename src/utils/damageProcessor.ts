@@ -88,7 +88,7 @@ export interface AsideEffectResult {
 export function calculateAsideEffects(
   apostles: Apostle[],
   asidesData: { asides?: AsideRow[] } | undefined,
-  asideSelection: Record<string, number | string | undefined>,
+  asideSelection: Record<string, number[]>,
 ): AsideEffectResult {
   const increaseEffects = emptyGroups();
   const reductionEffects = emptyGroups();
@@ -119,57 +119,59 @@ export function calculateAsideEffects(
   for (const apostle of apostles) {
     if (!apostle?.id) continue;
 
-    const selected = asideSelection[apostle.id];
-    if (selected == null) continue;
+    const selectedRanks = asideSelection[apostle.id];
+    if (!selectedRanks || selectedRanks.length === 0) continue;
 
-    const level = typeof selected === 'string' ? Number(selected) : selected;
-    if (!Number.isFinite(level)) continue;
+    // 선택된 모든 랭크(2성, 3성 등)의 효과를 합산
+    for (const level of selectedRanks) {
+      if (!Number.isFinite(level)) continue;
 
-    const aside = index.get(`${apostle.id}:${level}`);
-    if (!aside) continue;
+      const aside = index.get(`${apostle.id}:${level}`);
+      if (!aside) continue;
 
-    const target = normalizeTarget(aside.type);
-    const dmg = normalizeMod(aside.damage);
-    const skl = normalizeMod(aside.skill);
+      const target = normalizeTarget(aside.type);
+      const dmg = normalizeMod(aside.damage);
+      const skl = normalizeMod(aside.skill);
 
-    const base: AsideEffect = {
-      apostleName: apostle.name,
-      apostleId: apostle.id,
-      asideName: aside.name,
-      rankStar: level,
-      type: target,
-      damageIncrease: dmg.inc,
-      damageReduction: dmg.red,
-      skillIncrease: skl.inc,
-      skillReduction: skl.red,
-      description: aside.description,
-    };
+      const base: AsideEffect = {
+        apostleName: apostle.name,
+        apostleId: apostle.id,
+        asideName: aside.name,
+        rankStar: level,
+        type: target,
+        damageIncrease: dmg.inc,
+        damageReduction: dmg.red,
+        skillIncrease: skl.inc,
+        skillReduction: skl.red,
+        description: aside.description,
+      };
 
-    if (dmg.inc > 0) {
-      totalIncrease += dmg.inc;
-      pushGrouped(increaseEffects, target, { ...base, damageReduction: 0 });
-    }
-    if (dmg.red > 0) {
-      totalReduction += dmg.red;
-      pushGrouped(reductionEffects, target, { ...base, damageIncrease: 0 });
-    }
-    if (skl.inc > 0) {
-      totalSkillIncrease += skl.inc;
-      pushGrouped(skillIncreaseEffects, target, {
-        ...base,
-        skillReduction: 0,
-        damageIncrease: 0,
-        damageReduction: 0,
-      });
-    }
-    if (skl.red > 0) {
-      totalSkillReduction += skl.red;
-      pushGrouped(skillReductionEffects, target, {
-        ...base,
-        skillIncrease: 0,
-        damageIncrease: 0,
-        damageReduction: 0,
-      });
+      if (dmg.inc > 0) {
+        totalIncrease += dmg.inc;
+        pushGrouped(increaseEffects, target, { ...base, damageReduction: 0 });
+      }
+      if (dmg.red > 0) {
+        totalReduction += dmg.red;
+        pushGrouped(reductionEffects, target, { ...base, damageIncrease: 0 });
+      }
+      if (skl.inc > 0) {
+        totalSkillIncrease += skl.inc;
+        pushGrouped(skillIncreaseEffects, target, {
+          ...base,
+          skillReduction: 0,
+          damageIncrease: 0,
+          damageReduction: 0,
+        });
+      }
+      if (skl.red > 0) {
+        totalSkillReduction += skl.red;
+        pushGrouped(skillReductionEffects, target, {
+          ...base,
+          skillIncrease: 0,
+          damageIncrease: 0,
+          damageReduction: 0,
+        });
+      }
     }
   }
 

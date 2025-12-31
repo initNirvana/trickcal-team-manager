@@ -5,7 +5,7 @@ import type { Apostle } from '../types/apostle';
 interface DeckState {
   deck: (Apostle | undefined)[];
   skillLevels: Record<string, number>;
-  asideSelection: Record<string, number | string | undefined>;
+  asideSelection: Record<string, number[]>;
 
   showDeckGuide: boolean;
 
@@ -18,7 +18,7 @@ interface DeckState {
   resetSkillLevels: () => void;
 
   // Aside Selection 관련
-  setAsideSelection: (apostleId: string, asideIndex: number | string | undefined) => void;
+  setAsideSelection: (apostleId: string, ranks: number[]) => void;
   resetAsideSelection: () => void;
 
   // 전체 리셋
@@ -33,12 +33,12 @@ interface DeckState {
 interface PersistedState {
   deckIds: (string | null)[];
   skillLevels: Record<string, number>;
-  asideSelection: Record<string, number | string | undefined>;
+  asideSelection: Record<string, number[]>;
 }
 
 export const useDeckStore = create<DeckState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       deck: Array(9).fill(undefined),
       skillLevels: {},
       asideSelection: {},
@@ -114,6 +114,16 @@ export const useDeckStore = create<DeckState>()(
         skillLevels: state.skillLevels,
         asideSelection: state.asideSelection,
       }),
+
+      // 복원 오류 시 초기화
+      onRehydrateStorage: () => {
+        return (state, error) => {
+          if (error) {
+            console.warn('Storage data error, resetting:', error);
+            localStorage.removeItem('trickcal-deck-storage');
+          }
+        };
+      },
 
       // 복원 시: ID를 다시 Apostle 객체로 변환하지 않음 (컴포넌트에서 처리)
       merge: (persistedState, currentState) => ({

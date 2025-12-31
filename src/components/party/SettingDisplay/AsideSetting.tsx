@@ -1,12 +1,13 @@
 import { Activity, useMemo } from 'react';
-import type { Apostle } from '../../../types/apostle';
-import { getApostleImagePath } from '../../../utils/apostleImages';
-import { useDeckStore } from '../../../stores/deckStore';
+import type { Apostle } from '@/types/apostle';
+import type { AsidesData } from '@/types/aside';
+import { getApostleImagePath } from '@/utils/apostleImages';
+import { useDeckStore } from '@/stores/deckStore';
 import Image from '../../common/Image';
 
 interface AsideSettingProps {
   filledDeck: Apostle[];
-  asidesData?: any;
+  asidesData?: AsidesData;
 }
 
 interface AsideRankInfo {
@@ -31,12 +32,10 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
         return { has2Star: false, has3Star: false };
       }
 
-      const apostleAsides = (asidesData.asides as any[]).filter(
-        (aside: any) => aside.apostleId === apostleId,
-      );
+      const apostleAsides = asidesData.asides.filter((aside) => aside.apostleId === apostleId);
 
-      const has2Star = apostleAsides.some((aside: any) => aside.level === 2);
-      const has3Star = apostleAsides.some((aside: any) => aside.level === 3);
+      const has2Star = apostleAsides.some((aside) => aside.level === 2);
+      const has3Star = apostleAsides.some((aside) => aside.level === 3);
 
       return { has2Star, has3Star };
     };
@@ -44,10 +43,38 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
 
   /**
    * 어사이드 등급 선택 핸들러
+   * 3성 선택 시 2성도 포함, 2성 선택 시 2성만 포함
    */
-  const handleAsideRankSelect = (apostleId: string, rank: number | undefined) => {
-    const newValue = asideSelection[apostleId] === rank ? undefined : rank;
-    setAsideSelection(apostleId, newValue);
+  const handleAsideRankSelect = (apostleId: string, rank: number) => {
+    const currentRanks = asideSelection[apostleId] || [];
+
+    if (rank === 3) {
+      // 3성 클릭: 3성이 이미 있으면 3성만 제거 (2성 유지), 없으면 [2, 3] 추가
+      if (currentRanks.includes(3)) {
+        setAsideSelection(
+          apostleId,
+          currentRanks.filter((r) => r !== 3),
+        );
+      } else {
+        // 3성 선택 시 2성도 자동 포함
+        const newRanks = [2, 3];
+        setAsideSelection(apostleId, newRanks);
+      }
+    } else if (rank === 2) {
+      // 2성 클릭: 2성이 있으면 모두 제거, 없으면 2성만 추가
+      if (currentRanks.includes(2)) {
+        setAsideSelection(apostleId, []);
+      } else {
+        setAsideSelection(apostleId, [2]);
+      }
+    }
+  };
+
+  /**
+   * 어사이드 해제 핸들러
+   */
+  const handleAsideReset = (apostleId: string) => {
+    setAsideSelection(apostleId, []);
   };
 
   if (filledDeck.length === 0) {
@@ -67,7 +94,7 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
         <tbody>
           {filledDeck.map((apostle, index) => {
             const apostleKey = apostle.id || apostle.name;
-            const selectedRank = asideSelection[apostleKey];
+            const selectedRanks = asideSelection[apostleKey] || [];
             const { has2Star, has3Star } = getAvailableAsideRanks(apostleKey);
             const hasNoAside = !has2Star && !has3Star;
 
@@ -96,11 +123,11 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
                       <button
                         onClick={() => handleAsideRankSelect(apostleKey, 3)}
                         className={`rounded px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition ${
-                          selectedRank === 3
+                          selectedRanks.includes(3)
                             ? 'bg-purple-500 text-white shadow-md'
                             : 'bg-gray-300 text-gray-700 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500'
                         }`}
-                        title="3성 어사이드"
+                        title="3성 어사이드 (2성 포함)"
                       >
                         어사이드 3성
                       </button>
@@ -111,7 +138,7 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
                       <button
                         onClick={() => handleAsideRankSelect(apostleKey, 2)}
                         className={`rounded px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition ${
-                          selectedRank === 2
+                          selectedRanks.includes(2)
                             ? 'bg-blue-500 text-white shadow-md'
                             : 'bg-gray-300 text-gray-700 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500'
                         }`}
@@ -123,10 +150,10 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
 
                     {/* 해제 버튼 */}
                     <button
-                      onClick={() => handleAsideRankSelect(apostleKey, undefined)}
+                      onClick={() => handleAsideReset(apostleKey)}
                       disabled={hasNoAside}
                       className={`rounded px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition ${
-                        selectedRank === undefined
+                        selectedRanks.length === 0
                           ? 'bg-red-500 text-white shadow-md'
                           : 'bg-gray-300 text-gray-700 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500'
                       } ${hasNoAside ? 'cursor-not-allowed opacity-50' : ''}`}
