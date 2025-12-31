@@ -109,7 +109,7 @@ const ApostleSelector = ({
               onClick={() =>
                 setSelectedPersonality(selectedPersonality === personality ? null : personality)
               }
-              className={`relative h-9 w-9 transform rounded-lg transition hover:scale-50 ${
+              className={`relative h-9 w-9 transform rounded-lg transition hover:scale-105 ${
                 selectedPersonality === personality
                   ? 'scale-110'
                   : 'opacity-60 hover:scale-105 hover:opacity-100'
@@ -145,7 +145,7 @@ const ApostleSelector = ({
       </div>
 
       {/* 사도 그리드 - 5열 */}
-      <div className="rounded-2xlsm:grid-cols-3 grid grid-cols-3 gap-1 md:grid-cols-5">
+      <div className="grid grid-cols-3 gap-1 rounded-2xl sm:grid-cols-3 md:grid-cols-5">
         {filteredApostles.length === 0 ? (
           <div className="col-span-5 py-6 text-center text-gray-500">
             배치 가능한 사도가 없습니다.

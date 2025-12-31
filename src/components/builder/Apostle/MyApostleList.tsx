@@ -173,7 +173,7 @@ const MyApostleList = ({
               {/* 이미지 */}
               <img
                 src={getApostleImagePath(apostle.engName)}
-                className={`inline-flex h-full w-full items-center gap-1 rounded object-cover text-center text-xs transition-all ${bgClass} ${!isOwned ? 'grayscale-30% brightness-75' : ''}`}
+                className={`inline-flex h-full w-full items-center gap-1 rounded object-cover text-center text-xs transition-all ${bgClass} ${!isOwned ? 'brightness-75 grayscale-[0.3]' : ''}`}
                 alt={apostle.name}
               />
 
