@@ -5,7 +5,7 @@ import type { Apostle } from '../types/apostle';
 interface DeckState {
   deck: (Apostle | undefined)[];
   skillLevels: Record<string, number>;
-  asideSelection: Record<string, number | string | undefined>;
+  asideSelection: Record<string, number[]>;
 
   showDeckGuide: boolean;
 
@@ -18,7 +18,7 @@ interface DeckState {
   resetSkillLevels: () => void;
 
   // Aside Selection 관련
-  setAsideSelection: (apostleId: string, asideIndex: number | string | undefined) => void;
+  setAsideSelection: (apostleId: string, ranks: number[]) => void;
   resetAsideSelection: () => void;
 
   // 전체 리셋
@@ -33,12 +33,12 @@ interface DeckState {
 interface PersistedState {
   deckIds: (string | null)[];
   skillLevels: Record<string, number>;
-  asideSelection: Record<string, number | string | undefined>;
+  asideSelection: Record<string, number[]>;
 }
 
 export const useDeckStore = create<DeckState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       deck: Array(9).fill(undefined),
       skillLevels: {},
       asideSelection: {},
@@ -52,7 +52,13 @@ export const useDeckStore = create<DeckState>()(
           // 기존에 배치된 사도 중복 배치 시도 시 제거
           if (apostle) {
             newDeck.forEach((existingApostle, index) => {
-              if (existingApostle && existingApostle.id === apostle.id && index !== slot - 1) {
+              if (!existingApostle) return;
+
+              // ID 또는 engName이 같으면 중복으로 간주
+              const isSameId = existingApostle.id === apostle.id;
+              const isSameEngName = existingApostle.engName === apostle.engName;
+
+              if ((isSameId || isSameEngName) && index !== slot - 1) {
                 newDeck[index] = undefined;
               }
             });
@@ -114,6 +120,16 @@ export const useDeckStore = create<DeckState>()(
         skillLevels: state.skillLevels,
         asideSelection: state.asideSelection,
       }),
+
+      // 복원 오류 시 초기화
+      onRehydrateStorage: () => {
+        return (state, error) => {
+          if (error) {
+            console.warn('Storage data error, resetting:', error);
+            localStorage.removeItem('trickcal-deck-storage');
+          }
+        };
+      },
 
       // 복원 시: ID를 다시 Apostle 객체로 변환하지 않음 (컴포넌트에서 처리)
       merge: (persistedState, currentState) => ({

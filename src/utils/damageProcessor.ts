@@ -1,19 +1,7 @@
 import type { Apostle } from '../types/apostle';
+import type { AsideTarget, AsideRow } from '../types/aside';
 
-type AsideTarget = 'All' | 'Front' | 'Mid' | 'Back' | 'Persona';
-type Modifier = { Increase?: number; Reduction?: number };
 type OneOrArray<T> = T | T[];
-
-export interface AsideRow {
-  apostleId: string;
-  apostleName?: string;
-  name: string;
-  level: number;
-  description?: string;
-  type?: OneOrArray<AsideTarget>;
-  damage?: OneOrArray<Required<Pick<Modifier, 'Increase' | 'Reduction'>>>;
-  skill?: OneOrArray<Required<Pick<Modifier, 'Increase' | 'Reduction'>>>;
-}
 
 export interface AsideEffect {
   apostleName: string;
@@ -25,6 +13,15 @@ export interface AsideEffect {
   damageReduction: number;
   skillIncrease: number;
   skillReduction: number;
+  // 치명타 관련
+  criticalRate?: number; // 치명타 확률 증가
+  criticalDamage?: number; // 치명타 피해 증가
+  criticalResist?: number; // 치명타 저항
+  criticalDamageResist?: number; // 치명타 피해 저항
+  // 기타 수치형 효과
+  spRecovery?: number; // SP 회복량
+  attackSpeed?: number; // 공격 속도
+  hp?: number; // HP
   description?: string;
 }
 
@@ -35,7 +32,7 @@ const normalizeTarget = (t?: OneOrArray<AsideTarget>): AsideTarget => {
   return v ?? 'All';
 };
 
-const normalizeMod = (m?: OneOrArray<{ Increase: number; Reduction: number }>) => {
+const normalizeMod = (m?: OneOrArray<{ Increase?: number; Reduction?: number }>) => {
   const v = Array.isArray(m) ? m[0] : m;
   return { inc: v?.Increase ?? 0, red: v?.Reduction ?? 0 };
 };
@@ -76,10 +73,14 @@ export interface AsideEffectResult {
   totalReduction: number;
   totalSkillIncrease: number;
   totalSkillReduction: number;
+  totalPhysicalReduction: number;
+  totalMagicalReduction: number;
   increaseEffects: GroupedEffects;
   reductionEffects: GroupedEffects;
   skillIncreaseEffects: GroupedEffects;
   skillReductionEffects: GroupedEffects;
+  physicalReductionEffects: GroupedEffects;
+  magicalReductionEffects: GroupedEffects;
 }
 
 /**
@@ -88,12 +89,14 @@ export interface AsideEffectResult {
 export function calculateAsideEffects(
   apostles: Apostle[],
   asidesData: { asides?: AsideRow[] } | undefined,
-  asideSelection: Record<string, number | string | undefined>,
+  asideSelection: Record<string, number[]>,
 ): AsideEffectResult {
   const increaseEffects = emptyGroups();
   const reductionEffects = emptyGroups();
   const skillIncreaseEffects = emptyGroups();
   const skillReductionEffects = emptyGroups();
+  const physicalReductionEffects = emptyGroups();
+  const magicalReductionEffects = emptyGroups();
 
   if (!Array.isArray(asidesData?.asides)) {
     return {
@@ -101,10 +104,14 @@ export function calculateAsideEffects(
       totalReduction: 0,
       totalSkillIncrease: 0,
       totalSkillReduction: 0,
+      totalPhysicalReduction: 0,
+      totalMagicalReduction: 0,
       increaseEffects,
       reductionEffects,
       skillIncreaseEffects,
       skillReductionEffects,
+      physicalReductionEffects,
+      magicalReductionEffects,
     };
   }
 
@@ -115,61 +122,145 @@ export function calculateAsideEffects(
   let totalReduction = 0;
   let totalSkillIncrease = 0;
   let totalSkillReduction = 0;
+  let totalPhysicalReduction = 0;
+  let totalMagicalReduction = 0;
 
   for (const apostle of apostles) {
     if (!apostle?.id) continue;
 
-    const selected = asideSelection[apostle.id];
-    if (selected == null) continue;
+    const selectedRanks = asideSelection[apostle.id];
+    if (!selectedRanks || selectedRanks.length === 0) continue;
 
-    const level = typeof selected === 'string' ? Number(selected) : selected;
-    if (!Number.isFinite(level)) continue;
+    // 선택된 모든 랭크(2성, 3성 등)의 효과를 합산
+    for (const level of selectedRanks) {
+      if (!Number.isFinite(level)) continue;
 
-    const aside = index.get(`${apostle.id}:${level}`);
-    if (!aside) continue;
+      const aside = index.get(`${apostle.id}:${level}`);
+      if (!aside) continue;
 
-    const target = normalizeTarget(aside.type);
-    const dmg = normalizeMod(aside.damage);
-    const skl = normalizeMod(aside.skill);
+      const target = normalizeTarget(aside.type);
+      const dmg = normalizeMod(aside.damage);
+      const skl = normalizeMod(aside.skill);
+      const phys = normalizeMod(aside.physical);
+      const mag = normalizeMod(aside.magical);
 
-    const base: AsideEffect = {
-      apostleName: apostle.name,
-      apostleId: apostle.id,
-      asideName: aside.name,
-      rankStar: level,
-      type: target,
-      damageIncrease: dmg.inc,
-      damageReduction: dmg.red,
-      skillIncrease: skl.inc,
-      skillReduction: skl.red,
-      description: aside.description,
-    };
+      const base: AsideEffect = {
+        apostleName: apostle.name,
+        apostleId: apostle.id,
+        asideName: aside.name,
+        rankStar: level,
+        type: target,
+        damageIncrease: dmg.inc,
+        damageReduction: dmg.red,
+        skillIncrease: skl.inc,
+        skillReduction: skl.red,
+        description: aside.description,
+      };
 
-    if (dmg.inc > 0) {
-      totalIncrease += dmg.inc;
-      pushGrouped(increaseEffects, target, { ...base, damageReduction: 0 });
-    }
-    if (dmg.red > 0) {
-      totalReduction += dmg.red;
-      pushGrouped(reductionEffects, target, { ...base, damageIncrease: 0 });
-    }
-    if (skl.inc > 0) {
-      totalSkillIncrease += skl.inc;
-      pushGrouped(skillIncreaseEffects, target, {
-        ...base,
-        skillReduction: 0,
-        damageIncrease: 0,
-        damageReduction: 0,
-      });
-    }
-    if (skl.red > 0) {
-      totalSkillReduction += skl.red;
-      pushGrouped(skillReductionEffects, target, {
-        ...base,
-        skillIncrease: 0,
-        damageIncrease: 0,
-        damageReduction: 0,
-      });
+      // 치명타 처리
+      if (aside.critical && Array.isArray(aside.critical) && aside.critical.length > 0) {
+        const crit = aside.critical[0];
+        if (crit.Increase) base.criticalRate = crit.Increase;
+        if (crit.IncreaseDamage) base.criticalDamage = crit.IncreaseDamage;
+        if (crit.resist) base.criticalResist = crit.resist;
+        if (crit.damageResist) base.criticalDamageResist = crit.damageResist;
+      }
+
+      // 기타 수치형 효과
+      if (typeof aside.spRecovery === 'number') base.spRecovery = aside.spRecovery;
+      if (typeof aside.attackSpeed === 'number') base.attackSpeed = aside.attackSpeed;
+      if (typeof aside.hp === 'number') base.hp = aside.hp;
+
+      // 효과가 하나라도 있으면 처리
+      const hasAnyEffect =
+        dmg.inc > 0 ||
+        dmg.red > 0 ||
+        phys.red > 0 ||
+        mag.red > 0 ||
+        skl.inc > 0 ||
+        skl.red > 0 ||
+        base.criticalRate ||
+        base.criticalDamage ||
+        base.criticalResist ||
+        base.criticalDamageResist ||
+        base.spRecovery ||
+        base.attackSpeed ||
+        base.hp;
+
+      // 효과가 없으면 스킵
+      if (!hasAnyEffect) continue;
+
+      // 피해 증가/감소
+      if (dmg.inc > 0) {
+        totalIncrease += dmg.inc;
+        pushGrouped(increaseEffects, target, { ...base, damageReduction: 0 });
+      }
+      if (dmg.red > 0) {
+        totalReduction += dmg.red;
+        pushGrouped(reductionEffects, target, { ...base, damageIncrease: 0 });
+      }
+
+      // 물리 피해 감소 (물리 공격만 막음 - 일반 피해와 별개)
+      if (phys.red > 0) {
+        totalPhysicalReduction += phys.red;
+        pushGrouped(physicalReductionEffects, target, {
+          ...base,
+          damageIncrease: 0,
+          damageReduction: phys.red,
+          description: base.description,
+        });
+      }
+
+      // 마법 피해 감소 (마법 공격만 막음 - 일반 피해와 별개)
+      if (mag.red > 0) {
+        totalMagicalReduction += mag.red;
+        pushGrouped(magicalReductionEffects, target, {
+          ...base,
+          damageIncrease: 0,
+          damageReduction: mag.red,
+          description: base.description,
+        });
+      }
+
+      // 스킬 피해
+      if (skl.inc > 0) {
+        totalSkillIncrease += skl.inc;
+        pushGrouped(skillIncreaseEffects, target, {
+          ...base,
+          skillReduction: 0,
+          damageIncrease: 0,
+          damageReduction: 0,
+        });
+      }
+      if (skl.red > 0) {
+        totalSkillReduction += skl.red;
+        pushGrouped(skillReductionEffects, target, {
+          ...base,
+          skillIncrease: 0,
+          damageIncrease: 0,
+          damageReduction: 0,
+        });
+      }
+
+      // 치명타/SP/공속/HP만 있는 경우 increaseEffects에 추가
+      // (damage=0이지만 다른 효과가 있으므로 표시되어야 함)
+      if (
+        dmg.inc === 0 &&
+        dmg.red === 0 &&
+        phys.red === 0 &&
+        mag.red === 0 &&
+        skl.inc === 0 &&
+        skl.red === 0 &&
+        (base.criticalRate ||
+          base.criticalDamage ||
+          base.criticalResist ||
+          base.criticalDamageResist ||
+          base.spRecovery ||
+          base.attackSpeed ||
+          base.hp)
+      ) {
+        pushGrouped(increaseEffects, target, base);
+      }
     }
   }
 
@@ -178,10 +269,14 @@ export function calculateAsideEffects(
     totalReduction,
     totalSkillIncrease,
     totalSkillReduction,
+    totalPhysicalReduction,
+    totalMagicalReduction,
     increaseEffects,
     reductionEffects,
     skillIncreaseEffects,
     skillReductionEffects,
+    physicalReductionEffects,
+    magicalReductionEffects,
   };
 }
 

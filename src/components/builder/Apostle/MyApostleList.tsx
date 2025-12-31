@@ -61,6 +61,11 @@ const MyApostleList = ({
     });
   }
 
+  // engName 기준 중복 제거 (성격별 변형 사도를 하나로 통합)
+  const uniqueApostles = sortedApostles.filter(
+    (apostle, index, self) => index === self.findIndex((a) => a.engName === apostle.engName),
+  );
+
   return (
     <div className="bg-base-200 space-y-2 rounded-xl p-4 shadow-lg">
       {/* 헤더 */}
@@ -141,8 +146,17 @@ const MyApostleList = ({
 
       {/* 추가 가능한 캐릭 - 작은 그리드 */}
       <div className="grid max-h-[70dvh] grid-cols-5 gap-2 overflow-y-auto px-2">
-        {sortedApostles.map((apostle) => {
+        {uniqueApostles.map((apostle) => {
           const isOwned = myApostles.some((m) => m.id === apostle.id);
+
+          // 같은 engName을 가진 사도가 여러 개인지 확인 (성격별 변형이 있는 경우)
+          const hasMultiplePersonas =
+            allApostles.filter((a) => a.engName === apostle.engName).length > 1;
+
+          // 성격별 변형이 있으면 기본 배경, 없으면 성격 배경
+          const bgClass = hasMultiplePersonas
+            ? 'bg-[linear-gradient(to_bottom,rgba(255,255,255,.5)),conic-gradient(at_center,#66C17C,#83B9EB,#EB839A,#EBDB83,#C683EC,#66C17C)]'
+            : getPersonalityBackground(apostle.persona);
 
           return (
             <button
@@ -159,7 +173,7 @@ const MyApostleList = ({
               {/* 이미지 */}
               <img
                 src={getApostleImagePath(apostle.engName)}
-                className={`inline-flex h-full w-full items-center gap-1 rounded object-cover text-center text-xs transition-all ${getPersonalityBackground(apostle.persona)} ${!isOwned ? 'grayscale-30% brightness-75' : ''}`}
+                className={`inline-flex h-full w-full items-center gap-1 rounded object-cover text-center text-xs transition-all ${bgClass} ${!isOwned ? 'brightness-75 grayscale-[0.3]' : ''}`}
                 alt={apostle.name}
               />
 
