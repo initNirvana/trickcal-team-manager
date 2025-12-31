@@ -52,7 +52,13 @@ export const useDeckStore = create<DeckState>()(
           // 기존에 배치된 사도 중복 배치 시도 시 제거
           if (apostle) {
             newDeck.forEach((existingApostle, index) => {
-              if (existingApostle && existingApostle.id === apostle.id && index !== slot - 1) {
+              if (!existingApostle) return;
+
+              // ID 또는 engName이 같으면 중복으로 간주
+              const isSameId = existingApostle.id === apostle.id;
+              const isSameEngName = existingApostle.engName === apostle.engName;
+
+              if ((isSameId || isSameEngName) && index !== slot - 1) {
                 newDeck[index] = undefined;
               }
             });

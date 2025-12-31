@@ -5,8 +5,8 @@ export type AsideTarget = 'All' | 'Front' | 'Mid' | 'Back' | 'Persona';
 
 /**
  * 피해 증가/감소 수치
- * @property {number} [Increase] - 피해량 증가.
- * @property {number} [Reduction] - 피해량 감소.
+ * @property {number} [Increase] - 피해량 증가 (optional).
+ * @property {number} [Reduction] - 피해량 감소 (optional).
  */
 export interface AsideModifier {
   Increase?: number;
@@ -74,16 +74,16 @@ export interface Aside {
   type?: AsideTarget | AsideTarget[];
 
   /** 피해 증가/감소 */
-  damage?: AsideModifier[];
+  damage?: AsideModifier | AsideModifier[];
 
   /** 스킬 피해 증가/감소 */
-  skill?: AsideSkill[];
+  skill?: AsideSkill | AsideSkill[];
 
   /** 물리 피해 증가/감소 */
-  physical?: AsidePhysical[];
+  physical?: AsidePhysical | AsidePhysical[];
 
   /** 마법 피해 증가/감소 */
-  magical?: AsideMagical[];
+  magical?: AsideMagical | AsideMagical[];
 
   /** 치명타 관련 */
   critical?: AsideCritical[];
@@ -107,3 +107,6 @@ export interface Aside {
 export interface AsidesData {
   asides: Aside[];
 }
+
+/** damageProcessor와의 호환성을 위한 별칭 */
+export type AsideRow = Aside;
