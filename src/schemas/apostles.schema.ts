@@ -6,7 +6,7 @@ const PositionSchema = z.enum(['front', 'mid', 'back']);
 const MethodSchema = z.enum(['Physical', 'Magical']);
 
 // races도 JSON 기준(한글) [file:19]
-const RaceSchema = z.enum(['용족', '정령', '수인', '유령', '마녀', '요정', '엘프']);
+const RaceSchema = z.enum(['용족', '정령', '수인', '유령', '마녀', '요정', '엘프', '미스틱']);
 
 // role은 {main, subRole, trait} 구조 [file:19][file:20]
 const TraitSchema = z.enum(['Damage', 'Defense', 'CC', 'Heal', 'Shield', 'Buff', 'Debuff']);
