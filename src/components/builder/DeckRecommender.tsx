@@ -11,15 +11,45 @@ interface DeckRecommenderProps {
 export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
   const [myApostles, setMyApostles] = useState<Apostle[]>([]);
 
+  // 우로스는 하나만 보유 가능
+  const isUros = (apostle: Apostle) => apostle.engName === 'Uros';
+
   const handleAddApostle = (apostle: Apostle) => {
     if (myApostles.some((a) => a.id === apostle.id)) return;
+
+    // 우로스 추가 시, 기존에 다른 성격의 우로스가 있으면 교체
+    if (isUros(apostle)) {
+      const existingUrosIndex = myApostles.findIndex((a) => isUros(a));
+      if (existingUrosIndex >= 0) {
+        // 교체
+        setMyApostles(myApostles.map((a) => (isUros(a) ? apostle : a)));
+        return;
+      }
+    }
+
     setMyApostles([...myApostles, apostle]);
   };
 
   const handleAddMultipleApostles = (newApostles: Apostle[]) => {
-    const filtered = newApostles.filter((a) => !myApostles.some((m) => m.id === a.id));
-    if (filtered.length === 0) return;
-    setMyApostles([...myApostles, ...filtered]);
+    const toAdd: Apostle[] = [];
+    let hasUros = myApostles.some((a) => isUros(a));
+
+    newApostles.forEach((apostle) => {
+      // 이미 보유한 사도는 스킵
+      if (myApostles.some((m) => m.id === apostle.id)) return;
+
+      // 우로스의 경우 이미 하나가 있으면 스킵 (기존 것 유지)
+      if (isUros(apostle)) {
+        if (hasUros) return;
+        hasUros = true;
+      }
+
+      toAdd.push(apostle);
+    });
+
+    if (toAdd.length > 0) {
+      setMyApostles([...myApostles, ...toAdd]);
+    }
   };
 
   const handleRemoveMultipleApostles = (apostlesToRemove: Apostle[]) => {

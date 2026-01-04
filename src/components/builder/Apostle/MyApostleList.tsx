@@ -24,6 +24,9 @@ const MyApostleList = ({
   const [sortBy, setSortBy] = useState<'name' | 'persona' | 'id'>('id');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
+  // 우로스는 하나만 보유 가능 (성격 변형 중 하나만 선택)
+  const isUros = (apostle: Apostle) => apostle.engName === 'Uros';
+
   const handleSort = (sortType: 'name' | 'persona' | 'id') => {
     if (sortBy === sortType) {
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -38,7 +41,50 @@ const MyApostleList = ({
     if (isOwned) {
       onRemove(apostle);
     } else {
-      onAdd(apostle);
+      handleAddApostle(apostle);
+    }
+  };
+
+  const handleAddApostle = (apostle: Apostle) => {
+    if (myApostles.some((a) => a.id === apostle.id)) return;
+
+    // 우로스 추가 시, 기존에 다른 성격의 우로스가 있으면 교체
+    if (isUros(apostle)) {
+      const existingUros = myApostles.find((a) => isUros(a));
+      if (existingUros) {
+        // 교체: 기존 우로스 제거 후 새로운 우로스 추가
+        onRemove(existingUros);
+        onAdd(apostle);
+        return;
+      }
+    }
+
+    onAdd(apostle);
+  };
+
+  const handleAddMultipleApostles = (newApostles: Apostle[]) => {
+    const toAdd: Apostle[] = [];
+    let hasUros = myApostles.some((a) => isUros(a));
+
+    newApostles.forEach((apostle) => {
+      // 이미 보유한 사도는 스킵
+      if (myApostles.some((m) => m.id === apostle.id)) return;
+
+      // 우로스의 경우 이미 하나가 있으면 스킵 (기존 것 유지)
+      if (isUros(apostle)) {
+        if (hasUros) return;
+        hasUros = true;
+      }
+
+      toAdd.push(apostle);
+    });
+
+    if (toAdd.length > 0) {
+      if (onAddMultiple) {
+        onAddMultiple(toAdd);
+      } else {
+        toAdd.forEach(onAdd);
+      }
     }
   };
 
@@ -101,20 +147,7 @@ const MyApostleList = ({
           </button>
 
           <button
-            onClick={() => {
-              if (onAddMultiple) {
-                const apostlesToAdd = allApostles.filter(
-                  (apostle) => !myApostles.some((m) => m.id === apostle.id),
-                );
-                onAddMultiple(apostlesToAdd);
-              } else {
-                allApostles.forEach((apostle) => {
-                  if (!myApostles.some((m) => m.id === apostle.id)) {
-                    onAdd(apostle);
-                  }
-                });
-              }
-            }}
+            onClick={() => handleAddMultipleApostles(uniqueApostles)}
             className="btn btn-success rounded px-2 py-1 text-xs font-semibold text-black transition"
             title="모든 사도 추가"
           >
