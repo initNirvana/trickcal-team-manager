@@ -2772,7 +2772,7 @@
       },
       "method": "Magical",
       "position": "mid",
-      "baseScore": 70,
+      "baseScore": 68,
       "aside": {
         "hasAside": true,
         "importance": "선택",
