@@ -862,6 +862,15 @@
       "type": ["All"],
       "hp": 22,
       "damage": [{ "Increase": 0, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a114",
+      "apostleName": "요미",
+      "name": "갸륵한 정성으로",
+      "level": 3,
+      "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 22.5, "Reduction": 6 }]
     }
   ]
 }

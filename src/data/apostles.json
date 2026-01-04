@@ -2749,6 +2749,29 @@
       },
       "method": "Magical",
       "position": "mid",
+      "baseScore": 67,
+      "aside": {
+        "hasAside": true,
+        "importance": "선택",
+        "level": 2,
+        "score": 5
+      }
+    },
+    {
+      "id": "a114",
+      "name": "요미",
+      "engName": "Yomi",
+      "isEldain": true,
+      "rank": 3,
+      "race": "미스틱",
+      "persona": "Gloomy",
+      "role": {
+        "main": "Attacker",
+        "subRole": "Utility",
+        "trait": ["Buff", "Debuff"]
+      },
+      "method": "Magical",
+      "position": "mid",
       "baseScore": 70,
       "aside": {
         "hasAside": true,
