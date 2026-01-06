@@ -1904,7 +1904,7 @@
       },
       "baseScore": 78,
       "scoreBySize": {
-        "size6": 70,
+        "size6": 60,
         "size9": 78
       },
       "aside": {
@@ -2629,7 +2629,7 @@
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
       "positionScore": {
-        "front": 60,
+        "front": 58,
         "mid": 80,
         "back": 82
       },

@@ -363,7 +363,12 @@ function findSwapTarget(
   return sortedByScore[0];
 }
 
-function adjustForRoleBalance(currentDeck: Apostle[], candidates: Apostle[], deckSize: DeckSize) {
+function adjustForRoleBalance(
+  currentDeck: Apostle[],
+  candidates: Apostle[],
+  deckSize: DeckSize,
+  positionMap: Record<string, Position>,
+) {
   const config = DECK_CONFIG[deckSize];
   const placedNames = new Set(currentDeck.map((a) => a.engName));
 
@@ -390,11 +395,29 @@ function adjustForRoleBalance(currentDeck: Apostle[], candidates: Apostle[], dec
 
       const candidatePositions = getPositions(candidate);
 
-      const outIdx = currentDeck.findIndex(
-        (a) =>
-          a.role.main === ROLES.ATTACKER &&
-          getPositions(a).some((p) => candidatePositions.includes(p)),
-      );
+      // 교체 가능한 모든 Attacker 찾기
+      const validOutIndices = currentDeck
+        .map((a, idx) => ({ a, idx }))
+        .filter(
+          (x) =>
+            x.a.role.main === ROLES.ATTACKER &&
+            getPositions(x.a).some((p) => candidatePositions.includes(p)),
+        )
+        // 현재 배치된 위치의 점수가 낮은 순으로 정렬 (우선 교체 대상)
+        .sort((a, b) => {
+          // 현재 배치된 위치의 실제 점수로 비교
+          const currentPosA = positionMap[a.a.id];
+          const currentPosB = positionMap[b.a.id];
+          const scoreA = currentPosA
+            ? getEffectiveBaseScore(a.a, deckSize, currentPosA)
+            : getEffectiveBaseScore(a.a, deckSize);
+          const scoreB = currentPosB
+            ? getEffectiveBaseScore(b.a, deckSize, currentPosB)
+            : getEffectiveBaseScore(b.a, deckSize);
+          return scoreA - scoreB;
+        });
+
+      const outIdx = validOutIndices.length > 0 ? validOutIndices[0].idx : -1;
 
       if (outIdx === -1) continue;
 
@@ -523,7 +546,12 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
         // 성격 시너지 유지되도록 후보군 제한
         const synergyCandidates = myApostles.filter((a) => a.persona === p1 || a.persona === p2);
 
-        const balancedDeck = adjustForRoleBalance([...deck.deck], synergyCandidates, 6);
+        const balancedDeck = adjustForRoleBalance(
+          [...deck.deck],
+          synergyCandidates,
+          6,
+          deck.positionMap,
+        );
         const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
         const roles = getRoleBalance(balancedDeckWithBestPersona);
 
@@ -579,7 +607,12 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
         );
 
         if (deck) {
-          const balancedDeck = adjustForRoleBalance([...deck.deck], myApostles, 6);
+          const balancedDeck = adjustForRoleBalance(
+            [...deck.deck],
+            myApostles,
+            6,
+            deck.positionMap,
+          );
           const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
           const roles = getRoleBalance(balancedDeckWithBestPersona);
 
@@ -626,7 +659,7 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
     );
 
     if (deck) {
-      const balancedDeck = adjustForRoleBalance([...deck.deck], myApostles, 6);
+      const balancedDeck = adjustForRoleBalance([...deck.deck], myApostles, 6, deck.positionMap);
       const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
       const roles = getRoleBalance(balancedDeckWithBestPersona);
 
@@ -699,7 +732,7 @@ function buildDeck(
     const positionMap = deckResult.placement;
     if (initialDeck.length !== size) continue;
 
-    const finalDeck = adjustForRoleBalance(initialDeck, sortedApostles, size);
+    const finalDeck = adjustForRoleBalance(initialDeck, sortedApostles, size, positionMap);
     const finalDeckWithBestPersona = applyBestPersonaForSynergy(finalDeck);
     const finalRoles = getRoleBalance(finalDeckWithBestPersona);
     const reqBalance = DECK_CONFIG[size].balance;
