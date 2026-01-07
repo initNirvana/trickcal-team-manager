@@ -1,0 +1,1098 @@
+{
+  "version": "2.5.0",
+  "lastUpdated": "2025-12-27",
+  "ratings": {
+    "a001": {
+      "name": "다야",
+      "engName": "Daya",
+      "baseScore": 50,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a002": {
+      "name": "이프리트",
+      "engName": "Ifrit",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a003": {
+      "name": "코미",
+      "engName": "Kommy",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 5
+      }
+    },
+    "a004": {
+      "name": "마에스트로 2호",
+      "engName": "MaestroMK2",
+      "baseScore": 45,
+      "aside": {
+        "importance": "선택",
+        "score": 10
+      }
+    },
+    "a005": {
+      "name": "네르",
+      "engName": "Ner",
+      "baseScore": 60,
+      "aside": {
+        "importance": "필수",
+        "score": 10
+      }
+    },
+    "a006": {
+      "name": "림",
+      "engName": "Rim",
+      "baseScore": 60,
+      "aside": {
+        "importance": "필수",
+        "score": 5
+      }
+    },
+    "a007": {
+      "name": "스피키",
+      "engName": "Speaki",
+      "baseScore": 30,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a008": {
+      "name": "실라",
+      "engName": "Sylla",
+      "baseScore": 68,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      }
+    },
+    "a009": {
+      "name": "벨벳",
+      "engName": "Velvet",
+      "baseScore": 45,
+      "aside": {
+        "importance": "선택",
+        "score": 0
+      }
+    },
+    "a010": {
+      "name": "빅우드",
+      "engName": "BigWood",
+      "baseScore": 30,
+      "aside": {
+        "importance": null,
+        "score": 3
+      }
+    },
+    "a011": {
+      "name": "제이드",
+      "engName": "Jade",
+      "baseScore": 60,
+      "aside": {
+        "importance": "필수",
+        "score": 15
+      },
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 65
+      }
+    },
+    "a012": {
+      "name": "아멜리아",
+      "engName": "Amelia",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 0
+      }
+    },
+    "a013": {
+      "name": "벨리타",
+      "engName": "Belita",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a014": {
+      "name": "에르핀",
+      "engName": "Erpin",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 5
+      }
+    },
+    "a015": {
+      "name": "루포",
+      "engName": "Rufo",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 0
+      }
+    },
+    "a016": {
+      "name": "에슈르",
+      "engName": "Ashur",
+      "baseScore": 50,
+      "aside": {
+        "importance": null,
+        "score": 2
+      }
+    },
+    "a017": {
+      "name": "엘레나",
+      "engName": "Elena",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 0
+      }
+    },
+    "a018": {
+      "name": "프리클",
+      "engName": "Fricle",
+      "baseScore": 50,
+      "aside": {
+        "importance": null,
+        "score": 3
+      }
+    },
+    "a019": {
+      "name": "키디언",
+      "engName": "Kidian",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 0
+      }
+    },
+    "a020": {
+      "name": "루드",
+      "engName": "Rude",
+      "baseScore": 45,
+      "aside": {
+        "importance": null,
+        "score": 2
+      }
+    },
+    "a021": {
+      "name": "셰이디",
+      "engName": "Shady",
+      "baseScore": 45,
+      "aside": {
+        "importance": null,
+        "score": 2
+      }
+    },
+    "a022": {
+      "name": "디아나",
+      "engName": "Diana",
+      "baseScore": 55,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a023": {
+      "name": "가비아",
+      "engName": "Gabia",
+      "baseScore": 55,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a024": {
+      "name": "칸나",
+      "engName": "Canna",
+      "baseScore": 45,
+      "aside": {
+        "importance": null,
+        "score": 2
+      }
+    },
+    "a025": {
+      "name": "베니",
+      "engName": "Beni",
+      "baseScore": 30,
+      "aside": {
+        "importance": null,
+        "score": 2
+      }
+    },
+    "a026": {
+      "name": "시스트",
+      "engName": "Sist",
+      "baseScore": 60,
+      "aside": {
+        "importance": "필수",
+        "score": 0
+      }
+    },
+    "a027": {
+      "name": "버터",
+      "engName": "Butter",
+      "baseScore": 45,
+      "aside": {
+        "importance": null,
+        "score": 2
+      }
+    },
+    "a028": {
+      "name": "페스타",
+      "engName": "Festa",
+      "baseScore": 45,
+      "aside": {
+        "importance": "선택",
+        "score": 1
+      }
+    },
+    "a029": {
+      "name": "레비",
+      "engName": "Levi",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a030": {
+      "name": "마리",
+      "engName": "Marie",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a031": {
+      "name": "멜루나",
+      "engName": "Meluna",
+      "baseScore": 25,
+      "aside": {
+        "importance": null,
+        "score": 1
+      }
+    },
+    "a032": {
+      "name": "포셔",
+      "engName": "Posher",
+      "baseScore": 65,
+      "aside": {
+        "importance": "필수",
+        "score": 5
+      }
+    },
+    "a033": {
+      "name": "쥬비",
+      "engName": "Jubee",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a034": {
+      "name": "에스피",
+      "engName": "Espi",
+      "baseScore": 60,
+      "aside": {
+        "importance": "필수",
+        "score": 15
+      }
+    },
+    "a035": {
+      "name": "마고",
+      "engName": "Mago",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a036": {
+      "name": "마요",
+      "engName": "Mayo",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a037": {
+      "name": "로네",
+      "engName": "Rohne",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a038": {
+      "name": "시온",
+      "engName": "xXionx",
+      "baseScore": 69,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a039": {
+      "name": "클로에",
+      "engName": "Chloe",
+      "baseScore": 67,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a040": {
+      "name": "아야",
+      "engName": "Aya",
+      "baseScore": 70,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a041": {
+      "name": "우이",
+      "engName": "Ui",
+      "baseScore": 75,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a042": {
+      "name": "레이지",
+      "engName": "Lazy",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a043": {
+      "name": "메죵",
+      "engName": "Maison",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a044": {
+      "name": "밍스",
+      "engName": "Mynx",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a045": {
+      "name": "베루",
+      "engName": "Veroo",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a046": {
+      "name": "사리",
+      "engName": "Sari",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a047": {
+      "name": "알레트",
+      "engName": "Allet",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a048": {
+      "name": "유미미",
+      "engName": "Yumimi",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a049": {
+      "name": "쵸피",
+      "engName": "Chopi",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a050": {
+      "name": "카렌",
+      "engName": "Carren",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a051": {
+      "name": "큐이",
+      "engName": "Cuee",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a052": {
+      "name": "타이다",
+      "engName": "Taida",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a053": {
+      "name": "파트라",
+      "engName": "Patula",
+      "baseScore": 10,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a054": {
+      "name": "티그",
+      "engName": "Tig",
+      "baseScore": 55,
+      "aside": {
+        "importance": null,
+        "score": 3
+      }
+    },
+    "a055": {
+      "name": "나이아",
+      "engName": "Naia",
+      "baseScore": 63,
+      "aside": {
+        "importance": null,
+        "score": 3
+      }
+    },
+    "a056": {
+      "name": "실피르",
+      "engName": "Silphir",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a057": {
+      "name": "비비",
+      "engName": "Vivi",
+      "baseScore": 70,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a058": {
+      "name": "힐데",
+      "engName": "Hilde",
+      "baseScore": 60,
+      "aside": {
+        "importance": null,
+        "score": 3
+      }
+    },
+    "a059": {
+      "name": "셀리네",
+      "engName": "Selline",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a060": {
+      "name": "에피카",
+      "engName": "Epica",
+      "baseScore": 68,
+      "aside": {
+        "importance": "필수",
+        "score": 10
+      }
+    },
+    "a061": {
+      "name": "앨리스",
+      "engName": "Alice",
+      "baseScore": 60,
+      "aside": {
+        "importance": null,
+        "score": 3
+      }
+    },
+    "a062": {
+      "name": "리츠",
+      "engName": "Leets",
+      "baseScore": 55,
+      "aside": {
+        "importance": null,
+        "score": 2
+      }
+    },
+    "a063": {
+      "name": "피코라",
+      "engName": "Picora",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a064": {
+      "name": "블랑셰",
+      "engName": "Blanchet",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a065": {
+      "name": "이드",
+      "engName": "Ed",
+      "baseScore": 68,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a066": {
+      "name": "슈팡",
+      "engName": "Shoupan",
+      "baseScore": 60,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      }
+    },
+    "a067": {
+      "name": "캬롯",
+      "engName": "Kyarot",
+      "baseScore": 55,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a068": {
+      "name": "롤렛",
+      "engName": "Rollett",
+      "baseScore": 65,
+      "aside": {
+        "importance": "필수",
+        "score": 5
+      }
+    },
+    "a069": {
+      "name": "바나",
+      "engName": "Bana",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a070": {
+      "name": "리스티",
+      "engName": "Risty",
+      "baseScore": 55,
+      "aside": {
+        "importance": null,
+        "score": 5
+      }
+    },
+    "a071": {
+      "name": "코미(수영복)",
+      "engName": "KommySwim",
+      "baseScore": 65,
+      "aside": {
+        "importance": "필수",
+        "score": 5
+      }
+    },
+    "a072": {
+      "name": "리뉴아",
+      "engName": "Renewa",
+      "baseScore": 93,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      }
+    },
+    "a073": {
+      "name": "헤일리",
+      "engName": "Haley",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a074": {
+      "name": "레테",
+      "engName": "Lethe",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a075": {
+      "name": "모모",
+      "engName": "Momo",
+      "baseScore": 71,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      }
+    },
+    "a076": {
+      "name": "바롱",
+      "engName": "Barong",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a077": {
+      "name": "바리에",
+      "engName": "Barie",
+      "baseScore": 20,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a078": {
+      "name": "스노키",
+      "engName": "Snorky",
+      "baseScore": 65,
+      "aside": {
+        "importance": "필수",
+        "score": 5
+      }
+    },
+    "a079": {
+      "name": "피라",
+      "engName": "Pira",
+      "baseScore": 50,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a080": {
+      "name": "칸타",
+      "engName": "Canta",
+      "baseScore": 25,
+      "aside": {
+        "importance": null,
+        "score": 0
+      }
+    },
+    "a081": {
+      "name": "셰럼",
+      "engName": "Sherum",
+      "baseScore": 50,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a082": {
+      "name": "죠안",
+      "engName": "Joanne",
+      "baseScore": 78,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      },
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 78
+      },
+      "positionScore": {
+        "front": 60,
+        "mid": 72,
+        "back": 78
+      }
+    },
+    "a083": {
+      "name": "그윈",
+      "engName": "Guin",
+      "baseScore": 50,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a084": {
+      "name": "폴랑",
+      "engName": "Polan",
+      "baseScore": 73,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      }
+    },
+    "a085": {
+      "name": "스피키(메이드)",
+      "engName": "SpeakiMaid",
+      "baseScore": 60,
+      "aside": {
+        "importance": null,
+        "score": 3
+      }
+    },
+    "a086": {
+      "name": "리온",
+      "engName": "Lion",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a087": {
+      "name": "오팔",
+      "engName": "Opal",
+      "baseScore": 55,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a088": {
+      "name": "란",
+      "engName": "Ran",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a089": {
+      "name": "림(혼돈)",
+      "engName": "RimChaos",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a090": {
+      "name": "아이시아",
+      "engName": "Eisia",
+      "baseScore": 68,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a091": {
+      "name": "샤샤",
+      "engName": "Shasha",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a092": {
+      "name": "슈로",
+      "engName": "Suro",
+      "baseScore": 72,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a093": {
+      "name": "라이카",
+      "engName": "Laika",
+      "baseScore": 66,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      }
+    },
+    "a094": {
+      "name": "벨라",
+      "engName": "Vela",
+      "baseScore": 75,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      }
+    },
+    "a095": {
+      "name": "네티",
+      "engName": "Neti",
+      "baseScore": 68,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a096": {
+      "name": "리코타",
+      "engName": "Ricota",
+      "baseScore": 73,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      },
+      "scoreBySize": {
+        "size6": 70,
+        "size9": 75
+      }
+    },
+    "a097": {
+      "name": "마요(멋짐)",
+      "engName": "MayoCool",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a098": {
+      "name": "오르",
+      "engName": "Orr",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a099": {
+      "name": "디아나(왕년)",
+      "engName": "DianaYester",
+      "baseScore": 85,
+      "aside": {
+        "importance": "필수",
+        "score": 5
+      }
+    },
+    "a100": {
+      "name": "아르코",
+      "engName": "Arco",
+      "baseScore": 60,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      }
+    },
+    "a101": {
+      "name": "캐시",
+      "engName": "Kathy",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a102": {
+      "name": "아네트",
+      "engName": "Arnet",
+      "baseScore": 80,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      },
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 80
+      }
+    },
+    "a103": {
+      "name": "로네(시장)",
+      "engName": "RohneMayor",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a104": {
+      "name": "마카샤",
+      "engName": "Makasha",
+      "baseScore": 55,
+      "aside": {
+        "importance": null,
+        "score": 3
+      }
+    },
+    "a105": {
+      "name": "시저",
+      "engName": "Scizor",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a106": {
+      "name": "뮤트",
+      "engName": "Mute",
+      "baseScore": 75,
+      "aside": {
+        "importance": "권장",
+        "score": 5
+      },
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 80
+      }
+    },
+    "a107": {
+      "name": "우로스",
+      "engName": "Uros",
+      "baseScore": 85,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a107_Cool": {
+      "name": "우로스",
+      "engName": "Uros",
+      "baseScore": 85,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a107_Gloomy": {
+      "name": "우로스",
+      "engName": "Uros",
+      "baseScore": 85,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a107_Naive": {
+      "name": "우로스",
+      "engName": "Uros",
+      "baseScore": 85,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a107_Jolly": {
+      "name": "우로스",
+      "engName": "Uros",
+      "baseScore": 85,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a108": {
+      "name": "티그(영웅)",
+      "engName": "TigHero",
+      "baseScore": 82,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      },
+      "positionScore": {
+        "front": 58,
+        "mid": 80,
+        "back": 82
+      }
+    },
+    "a109": {
+      "name": "미로",
+      "engName": "Miro",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a110": {
+      "name": "아사나",
+      "engName": "Asana",
+      "baseScore": 68,
+      "aside": {
+        "importance": "필수",
+        "score": 5
+      }
+    },
+    "a111": {
+      "name": "베니(베니)",
+      "engName": "BeniBeni",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a112": {
+      "name": "하이디",
+      "engName": "Heidi",
+      "baseScore": 60,
+      "aside": {
+        "importance": "선택",
+        "score": 3
+      }
+    },
+    "a113": {
+      "name": "아일라",
+      "engName": "Ayla",
+      "baseScore": 67,
+      "aside": {
+        "importance": "선택",
+        "score": 5
+      }
+    },
+    "a114": {
+      "name": "요미",
+      "engName": "Yomi",
+      "baseScore": 68,
+      "aside": {
+        "importance": "선택",
+        "score": 5
+      }
+    }
+  }
+}

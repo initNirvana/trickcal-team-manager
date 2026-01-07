@@ -17,12 +17,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 50,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -40,12 +36,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -63,12 +55,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -86,12 +74,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 45,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 10
+        "hasAside": true
       }
     },
     {
@@ -109,14 +93,10 @@
       },
       "method": "Magical",
       "position": "front",
-      "baseScore": 60,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 10
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a006",
@@ -133,12 +113,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -156,12 +132,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 30,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -179,14 +151,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 68,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a009",
@@ -203,12 +171,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 45,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 0
+        "hasAside": true
       }
     },
     {
@@ -226,12 +190,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 30,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -249,16 +209,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
-      "scoreBySize": {
-        "size6": 60,
-        "size9": 65
-      },
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 15
+        "hasAside": true
       }
     },
     {
@@ -276,12 +228,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 0
+        "hasAside": true
       }
     },
     {
@@ -299,12 +247,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -322,12 +266,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -345,12 +285,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 0
+        "hasAside": true
       }
     },
     {
@@ -368,12 +304,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 50,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 2
+        "hasAside": true
       }
     },
     {
@@ -391,12 +323,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 0
+        "hasAside": true
       }
     },
     {
@@ -414,12 +342,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 50,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -437,14 +361,10 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 60,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 0
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a020",
@@ -461,12 +381,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 45,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 2
+        "hasAside": true
       }
     },
     {
@@ -484,12 +400,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 45,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 2
+        "hasAside": true
       }
     },
     {
@@ -507,12 +419,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 55,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -530,12 +438,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 55,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -553,12 +457,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 45,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 2
+        "hasAside": true
       }
     },
     {
@@ -576,12 +476,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 30,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 2
+        "hasAside": true
       }
     },
     {
@@ -599,12 +495,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 0
+        "hasAside": true
       }
     },
     {
@@ -622,12 +514,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 45,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 2
+        "hasAside": true
       }
     },
     {
@@ -645,12 +533,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 45,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 1
+        "hasAside": true
       }
     },
     {
@@ -668,12 +552,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -691,12 +571,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -714,12 +590,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 25,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 1
+        "hasAside": true
       }
     },
     {
@@ -737,12 +609,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 65,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -760,12 +628,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -783,14 +647,10 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 60,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 15
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a035",
@@ -807,12 +667,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -830,12 +686,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -853,12 +705,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -876,12 +724,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 69,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -899,12 +743,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 67,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -922,12 +762,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 70,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -945,14 +781,10 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 75,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a042",
@@ -969,12 +801,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -992,12 +820,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1015,12 +839,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1038,12 +858,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1061,12 +877,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1084,12 +896,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1107,12 +915,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1130,12 +934,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1153,12 +953,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1176,12 +972,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1199,12 +991,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1222,12 +1010,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 10,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1245,12 +1029,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 55,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1268,12 +1048,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 63,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1291,12 +1067,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1314,14 +1086,10 @@
       },
       "method": "Magical",
       "position": "front",
-      "baseScore": 70,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a058",
@@ -1338,12 +1106,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1361,12 +1125,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1384,14 +1144,10 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 68,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 10
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a061",
@@ -1408,12 +1164,8 @@
       },
       "method": "Magical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1431,12 +1183,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 55,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 2
+        "hasAside": true
       }
     },
     {
@@ -1454,12 +1202,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 65,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1477,12 +1221,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 65,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1500,12 +1240,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 68,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1523,14 +1259,10 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 60,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a067",
@@ -1547,12 +1279,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 55,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1570,14 +1298,10 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 65,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a069",
@@ -1594,12 +1318,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1617,12 +1337,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 55,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -1640,12 +1356,8 @@
       },
       "method": "Magical",
       "position": "mid",
-      "baseScore": 65,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -1663,14 +1375,10 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 93,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a073",
@@ -1687,12 +1395,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1710,12 +1414,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1733,14 +1433,10 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 71,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a076",
@@ -1757,12 +1453,8 @@
       },
       "method": "Magical",
       "position": "front",
-      "baseScore": 65,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1780,12 +1472,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 20,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1803,14 +1491,10 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 65,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a079",
@@ -1827,12 +1511,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 50,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1850,12 +1530,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 25,
       "aside": {
-        "hasAside": false,
-        "importance": null,
-        "level": 0,
-        "score": 0
+        "hasAside": false
       }
     },
     {
@@ -1873,12 +1549,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 50,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1897,23 +1569,10 @@
       "method": "Physical",
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
-      "positionScore": {
-        "front": 60,
-        "mid": 72,
-        "back": 78
-      },
-      "baseScore": 78,
-      "scoreBySize": {
-        "size6": 60,
-        "size9": 78
-      },
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a083",
@@ -1930,12 +1589,8 @@
       },
       "method": "Magical",
       "position": "front",
-      "baseScore": 50,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -1953,14 +1608,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 73,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a085",
@@ -1977,12 +1628,8 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2000,12 +1647,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2023,12 +1666,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 55,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2046,14 +1685,10 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 65,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a089",
@@ -2070,14 +1705,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 65,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a090",
@@ -2094,14 +1725,10 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 68,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a091",
@@ -2118,12 +1745,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2141,14 +1764,10 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 72,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a093",
@@ -2165,12 +1784,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 66,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -2188,14 +1803,10 @@
       },
       "method": "Magical",
       "position": "front",
-      "baseScore": 75,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a095",
@@ -2212,14 +1823,10 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 68,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a096",
@@ -2236,18 +1843,10 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 73,
-      "scoreBySize": {
-        "size6": 70,
-        "size9": 75
-      },
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a097",
@@ -2264,14 +1863,10 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 65,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a098",
@@ -2288,14 +1883,10 @@
       },
       "method": "Magical",
       "position": "back",
-      "baseScore": 65,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a099",
@@ -2312,14 +1903,10 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 85,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a100",
@@ -2336,12 +1923,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -2359,12 +1942,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2382,18 +1961,10 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 80,
-      "scoreBySize": {
-        "size6": 60,
-        "size9": 80
-      },
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a103",
@@ -2410,12 +1981,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2433,12 +2000,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 55,
       "aside": {
-        "hasAside": true,
-        "importance": null,
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2456,12 +2019,8 @@
       },
       "method": "Physical",
       "position": "mid",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2479,18 +2038,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 75,
-      "scoreBySize": {
-        "size6": 60,
-        "size9": 80
-      },
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "권장",
-        "level": 2,
-        "score": 5
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a107",
@@ -2507,14 +2058,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 85,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a107_Cool",
@@ -2531,14 +2078,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 85,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a107_Gloomy",
@@ -2555,14 +2098,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 85,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a107_Naive",
@@ -2579,14 +2118,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 85,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a107_Jolly",
@@ -2603,14 +2138,10 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 85,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a108",
@@ -2628,19 +2159,10 @@
       "method": "Physical",
       "position": ["front", "mid", "back"],
       "positionPriority": ["back", "mid", "front"],
-      "positionScore": {
-        "front": 58,
-        "mid": 80,
-        "back": 82
-      },
-      "baseScore": 82,
+      "mercenary": true,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
-      },
-      "mercenary": true
+        "hasAside": true
+      }
     },
     {
       "id": "a109",
@@ -2657,12 +2179,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 65,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2680,12 +2198,8 @@
       },
       "method": "Physical",
       "position": "front",
-      "baseScore": 68,
       "aside": {
-        "hasAside": true,
-        "importance": "필수",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -2703,12 +2217,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 65,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2726,12 +2236,8 @@
       },
       "method": "Physical",
       "position": "back",
-      "baseScore": 60,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 3
+        "hasAside": true
       }
     },
     {
@@ -2749,12 +2255,8 @@
       },
       "method": "Magical",
       "position": "mid",
-      "baseScore": 67,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     },
     {
@@ -2772,12 +2274,8 @@
       },
       "method": "Magical",
       "position": "mid",
-      "baseScore": 68,
       "aside": {
-        "hasAside": true,
-        "importance": "선택",
-        "level": 2,
-        "score": 5
+        "hasAside": true
       }
     }
   ]

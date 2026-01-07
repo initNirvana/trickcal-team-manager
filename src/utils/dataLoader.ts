@@ -1,74 +1,93 @@
 import { Apostle } from '../types/apostle';
+import { AsidesData } from '../types/aside';
+import { SkillsData } from '../types/skill';
+import { SpellsData } from '../types/spell';
+import { ApostlesDataSchema } from '../schemas/apostles.schema';
+import { ApostlesRatingsSchema } from '../schemas/apostles-ratings.schema';
+
+type CacheData = Apostle[] | SkillsData | AsidesData | SpellsData;
 
 export class DataLoaderService {
-  private static cache: Map<string, any> = new Map();
+  private static cache: Map<string, CacheData> = new Map();
 
-  /**
-   * 동적 임포트로 데이터 로드
-   * 첫 로드 시만 파싱, 이후는 캐시 사용
-   */
   static async loadApostles(): Promise<Apostle[]> {
-    if (this.cache.has('apostles')) {
-      return this.cache.get('apostles');
-    }
+    if (this.cache.has('apostles')) return this.cache.get('apostles') as Apostle[];
 
     try {
-      const data = await import('../data/apostles.json');
-      const apostles = data.apostles as Apostle[];
-      this.cache.set('apostles', apostles);
-      return apostles;
+      const [apostlesModule, ratingsModule] = await Promise.all([
+        import('../data/apostles.json'),
+        import('../data/apostles-ratings.json'),
+      ]);
+
+      const apostlesData = ApostlesDataSchema.parse(apostlesModule);
+      const ratingsData = ApostlesRatingsSchema.parse(ratingsModule);
+
+      const apostlesRaw = apostlesData.apostles;
+      const ratings = ratingsData.ratings;
+
+      const merged: Apostle[] = apostlesRaw.map((a) => {
+        const rating = ratings[a.id];
+        if (!rating) throw new Error(`Rating missing for ${a.id}`);
+        return {
+          ...a,
+          baseScore: rating.baseScore,
+          scoreBySize: rating.scoreBySize,
+          positionScore: rating.positionScore,
+          aside: {
+            hasAside: a.aside.hasAside,
+            importance: rating.aside.importance,
+            score: rating.aside.score,
+          },
+        } as Apostle;
+      });
+
+      this.cache.set('apostles', merged);
+      return merged;
     } catch (error) {
-      console.error('사도 데이터 로딩 실패:', error);
-      return [];
+      console.error('Failed to load apostles:', error);
+      throw error;
     }
   }
 
-  static async loadSkills(): Promise<any> {
-    if (this.cache.has('skills')) {
-      return this.cache.get('skills');
-    }
-
+  static async loadSkills(): Promise<SkillsData> {
+    if (this.cache.has('skills')) return this.cache.get('skills') as SkillsData;
     try {
-      const data = await import('../data/skills.json');
+      const module = await import('../data/skills.json');
+      const data = module as unknown as SkillsData;
       this.cache.set('skills', data);
       return data;
     } catch (error) {
-      console.error('스킬 데이터 로딩 실패:', error);
-      return {};
+      console.error('Failed to load skills:', error);
+      throw error;
     }
   }
 
-  static async loadAsides(): Promise<any> {
-    if (this.cache.has('asides')) {
-      return this.cache.get('asides');
-    }
-
+  static async loadAsides(): Promise<AsidesData> {
+    if (this.cache.has('asides')) return this.cache.get('asides') as AsidesData;
     try {
-      const data = await import('../data/asides.json');
+      const module = await import('../data/asides.json');
+      const data = module as unknown as AsidesData;
       this.cache.set('asides', data);
       return data;
     } catch (error) {
-      console.error('어사이드 데이터 로딩 실패:', error);
-      return {};
+      console.error('Failed to load asides:', error);
+      throw error;
     }
   }
 
-  static async loadSpells(): Promise<any> {
-    if (this.cache.has('spells')) {
-      return this.cache.get('spells');
-    }
-
+  static async loadSpells(): Promise<SpellsData> {
+    if (this.cache.has('spells')) return this.cache.get('spells') as SpellsData;
     try {
-      const data = await import('../data/spells.json');
+      const module = await import('../data/spells.json');
+      const data = module as unknown as SpellsData;
       this.cache.set('spells', data);
       return data;
     } catch (error) {
-      console.error('스펠 데이터 로딩 실패:', error);
-      return {};
+      console.error('Failed to load spells:', error);
+      throw error;
     }
   }
 
-  // 전체 데이터 동시 로드 (필요할 때만)
   static async loadAllData() {
     return Promise.all([
       this.loadApostles(),
