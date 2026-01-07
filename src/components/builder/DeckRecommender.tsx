@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
 import type { Apostle } from '@/types/apostle';
+import { useMyApostleStore } from '@/stores/myApostleStore';
 import MyApostleList from './Apostle/MyApostleList';
 import PresetCombinationSection from './Preset/PresetCombinationSection';
 import RecommendedDeckSection from './Recommendation/RecommendedDeckSection';
@@ -9,56 +10,58 @@ interface DeckRecommenderProps {
 }
 
 export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
-  const [myApostles, setMyApostles] = useState<Apostle[]>([]);
+  const { ownedApostleIds, toggleApostle, addApostles, removeApostles } = useMyApostleStore();
 
-  // 우로스는 하나만 보유 가능
+  const myApostles = useMemo(() => {
+    return apostles.filter((a) => ownedApostleIds.includes(a.id));
+  }, [apostles, ownedApostleIds]);
+
   const isUros = (apostle: Apostle) => apostle.engName === 'Uros';
 
   const handleAddApostle = (apostle: Apostle) => {
-    if (myApostles.some((a) => a.id === apostle.id)) return;
+    if (ownedApostleIds.includes(apostle.id)) return;
 
-    // 우로스 추가 시, 기존에 다른 성격의 우로스가 있으면 교체
     if (isUros(apostle)) {
-      const existingUrosIndex = myApostles.findIndex((a) => isUros(a));
-      if (existingUrosIndex >= 0) {
-        // 교체
-        setMyApostles(myApostles.map((a) => (isUros(a) ? apostle : a)));
+      const existingUros = myApostles.find((a) => isUros(a));
+      if (existingUros) {
+        toggleApostle(existingUros.id);
+        toggleApostle(apostle.id);
         return;
       }
     }
 
-    setMyApostles([...myApostles, apostle]);
+    toggleApostle(apostle.id);
   };
 
   const handleAddMultipleApostles = (newApostles: Apostle[]) => {
-    const toAdd: Apostle[] = [];
-    let hasUros = myApostles.some((a) => isUros(a));
+    const toAddIds: string[] = [];
+    let hasUrosInCurrent = myApostles.some((a) => isUros(a));
 
     newApostles.forEach((apostle) => {
-      // 이미 보유한 사도는 스킵
-      if (myApostles.some((m) => m.id === apostle.id)) return;
+      if (ownedApostleIds.includes(apostle.id)) return;
 
-      // 우로스의 경우 이미 하나가 있으면 스킵 (기존 것 유지)
       if (isUros(apostle)) {
-        if (hasUros) return;
-        hasUros = true;
+        if (hasUrosInCurrent) return;
+        hasUrosInCurrent = true;
       }
 
-      toAdd.push(apostle);
+      toAddIds.push(apostle.id);
     });
 
-    if (toAdd.length > 0) {
-      setMyApostles([...myApostles, ...toAdd]);
+    if (toAddIds.length > 0) {
+      addApostles(toAddIds);
     }
   };
 
   const handleRemoveMultipleApostles = (apostlesToRemove: Apostle[]) => {
-    const idsToRemove = new Set(apostlesToRemove.map((a) => a.id));
-    setMyApostles(myApostles.filter((a) => !idsToRemove.has(a.id)));
+    const idsToRemove = apostlesToRemove.map((a) => a.id);
+    removeApostles(idsToRemove);
   };
 
   const handleRemoveApostle = (apostle: Apostle) => {
-    setMyApostles(myApostles.filter((a) => a.id !== apostle.id));
+    if (ownedApostleIds.includes(apostle.id)) {
+      toggleApostle(apostle.id);
+    }
   };
 
   return (
