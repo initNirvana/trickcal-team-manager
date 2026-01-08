@@ -20,4 +20,22 @@ export default defineConfig({
     // since parsing CSS is slow
     css: true,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          if (id.includes('/react/') || id.includes('/react-dom/')) return 'react';
+          if (id.includes('react-router')) return 'router';
+          if (id.includes('zustand')) return 'state';
+          if (id.includes('zod')) return 'schema';
+          if (id.includes('lodash')) return 'lodash';
+          if (id.includes('html-to-image')) return 'html-to-image';
+          if (id.includes('react-icons')) return 'icons';
+          if (id.includes('ssgoi')) return 'ssgoi';
+          return 'vendor';
+        },
+      },
+    },
+  },
 });
