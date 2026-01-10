@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
 import Shepherd from 'shepherd.js';
+import type { Tour } from 'shepherd.js';
 import 'shepherd.js/dist/css/shepherd.css';
 
 export const useTour = () => {
-  const tourRef = useRef<Shepherd.Tour | null>(null);
+  const tourRef = useRef<Tour | null>(null);
 
   useEffect(() => {
     if (localStorage.getItem('hasSeenMainTour')) return;
