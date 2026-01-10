@@ -1,13 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import Shepherd from 'shepherd.js';
 import type { Tour } from 'shepherd.js';
 import 'shepherd.js/dist/css/shepherd.css';
 
+const HAS_SEEN_KEY = 'hasSeenMainTour';
+
 export const useTour = () => {
   const tourRef = useRef<Tour | null>(null);
 
-  useEffect(() => {
-    if (localStorage.getItem('hasSeenMainTour')) return;
+  const getOrCreateTour = () => {
+    if (tourRef.current) return tourRef.current;
 
     // 인스턴스 생성
     const tour = new Shepherd.Tour({
@@ -175,20 +177,38 @@ export const useTour = () => {
       },
     ]);
 
-    tour.start();
+    tourRef.current = tour;
+    return tour;
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (localStorage.getItem(HAS_SEEN_KEY)) return;
+
+    const tour = getOrCreateTour();
+
+    if (!tour.isActive()) {
+      tour.start();
+    }
 
     return () => {
-      // 컴포넌트가 리렌더링되면서 투어가 중복 실행되는 것을 방지
       if (tour.isActive()) {
-        tour.cancel();
+        tour.complete();
       }
     };
   }, []);
 
-  return {
-    startTour: () => {
-      localStorage.removeItem('hasSeenMainTour');
-      tourRef.current?.start();
-    },
-  };
+  const startTour = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(HAS_SEEN_KEY);
+    }
+    const tour = getOrCreateTour();
+
+    if (tour.isActive()) return;
+
+    tour.start();
+  }, []);
+
+  return { startTour };
 };
