@@ -1,12 +1,17 @@
 import { useMemo } from 'react';
 import type { Apostle, Personality, Position } from '@/types/apostle';
-import { getApostleImagePath } from '@/utils/apostleImages';
+import { getApostleImagePath, getAsideIconPath } from '@/utils/apostleImages';
 import { getPersonalityBackground } from '@/utils/apostleUtils';
 
 interface PresetDeckGridProps {
   deck: Apostle[];
   deckSize: 6 | 9;
   personality: string;
+}
+
+interface SlotProps {
+  apostle: Apostle | null;
+  personality: Personality;
 }
 
 const getLayoutByPosition = (deck: Apostle[], maxPerLine: number) => {
@@ -34,29 +39,59 @@ const getLayoutByPosition = (deck: Apostle[], maxPerLine: number) => {
   return layout;
 };
 
-const Slot = ({ apostle, personality }: { apostle: Apostle | null; personality: Personality }) => (
-  <div
-    className={`rounded-box aspect-square border-2 transition-all ${
-      !apostle
-        ? 'border-base-300 bg-base-100 border-dashed'
-        : `group relative overflow-hidden shadow-sm hover:shadow-md ${getPersonalityBackground(personality)}`
-    }`}
-  >
-    {apostle && (
-      <>
-        <img
-          src={getApostleImagePath(apostle.engName)}
-          alt={apostle.name}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute right-0 bottom-0 left-0 bg-black/60 px-2 py-1 text-center">
-          <p className="text-[12px] font-bold text-white sm:text-sm">{apostle.name}</p>
-        </div>
-      </>
-    )}
-  </div>
-);
+const getAsideStyle = (importance: string | null) => {
+  switch (importance) {
+    case '필수':
+      return {
+        visible: true,
+        className: 'absolute -top-0 -right-1 h-10 w-10 animate-bounce',
+      };
+    case '권장':
+      return {
+        visible: true,
+        className: 'absolute -top-0 -right-1 h-10 w-10',
+      };
+    default:
+      return { visible: false };
+  }
+};
+
+const Slot = ({ apostle, personality }: SlotProps) => {
+  const asideStyle = apostle ? getAsideStyle(apostle.aside.importance) : null;
+
+  return (
+    <div
+      className={`rounded-box aspect-square border-2 transition-all ${
+        !apostle
+          ? 'border-base-300 bg-base-100 border-dashed'
+          : `group relative overflow-hidden shadow-sm hover:shadow-md ${getPersonalityBackground(personality)}`
+      }`}
+    >
+      {apostle && (
+        <>
+          {asideStyle?.visible && (
+            <img
+              src={getAsideIconPath(apostle.engName)}
+              alt={apostle.name}
+              className={asideStyle.className}
+              loading="lazy"
+              title={apostle.aside.importance?.toString()}
+            />
+          )}
+          <img
+            src={getApostleImagePath(apostle.engName)}
+            alt={apostle.name}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute right-0 bottom-0 left-0 bg-black/60 px-2 py-1 text-center">
+            <p className="text-[12px] font-bold text-white sm:text-sm">{apostle.name}</p>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const Column = ({
   title,

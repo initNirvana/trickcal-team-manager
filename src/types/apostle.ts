@@ -66,13 +66,11 @@ export interface Apostle {
  *
  * @property {boolean} hasAside - 어사이드 존재 여부.
  * @property {'선택' | '권장' | '필수' | null} importance - 어사이드 중요도.
- * @property {0 | 1 | 2 | 3} level - 어사이드 레벨.
  * @property {number} score - 어사이드 점수. (0 ~ 15)
  */
 
 interface Aside {
   hasAside: boolean;
   importance: '선택' | '권장' | '필수' | null;
-  level: 0 | 1 | 2 | 3;
   score: number;
 }

@@ -16,8 +16,6 @@ export const AsideRowSchema = z
     name: z.string().min(1),
     level: z.number().int().min(1),
     description: z.string().optional(),
-
-    // 코드에서 첫 요소만 쓰는 케이스가 있어 배열/단일 둘 다 허용 [file:1]
     type: z.union([AsideTargetSchema, z.array(AsideTargetSchema)]).optional(),
     damage: z.union([AsideModifierSchema, z.array(AsideModifierSchema)]).optional(),
     skill: z.union([AsideModifierSchema, z.array(AsideModifierSchema)]).optional(),

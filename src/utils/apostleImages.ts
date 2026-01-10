@@ -3,6 +3,7 @@ import type { Personality } from '@/types/apostle';
 const assetPathMap = import.meta.glob<string>(
   [
     '/src/assets/apostles/*.{png,webp}', // 사도 이미지
+    '/src/assets/asideicons/*.{png,webp}', // 사도 어사이드 이미지
     '/src/assets/icon/*.{png,webp}', // 아이콘 이미지
     '/src/assets/artifacts/*.{png,webp}', // 아티팩트 이미지
     '/src/assets/spells/*.{png,webp}', // 스펠 이미지
@@ -43,6 +44,22 @@ export function getApostleImagePath(engName: string): string {
   }
 
   return getAssetPath('/src/assets/apostles/placeholder.webp');
+}
+
+export function getAsideIconPath(engName: string): string {
+  if (!engName) return getAssetPath('/src/assets/asideicons/placeholder.webp');
+
+  const pngKey = `/src/assets/asideicons/AsideIcon_${engName}.png`;
+  const webpKey = `/src/assets/asideicons/AsideIcon_${engName}.webp`;
+
+  if (assetPathMap[pngKey]) {
+    return getAssetPath(pngKey);
+  }
+  if (assetPathMap[webpKey]) {
+    return getAssetPath(webpKey);
+  }
+
+  return getAssetPath('/src/assets/asideicons/placeholder.webp');
 }
 
 export function getPersonalityIconPath(personality: Personality): string {

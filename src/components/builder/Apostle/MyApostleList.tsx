@@ -113,7 +113,7 @@ const MyApostleList = ({
   );
 
   return (
-    <div className="bg-base-200 space-y-2 rounded-xl p-4 shadow-lg">
+    <div id="my-apostle-list-container" className="bg-base-200 space-y-2 rounded-xl p-4 shadow-lg">
       {/* 헤더 */}
       <div className="flex items-center justify-between">
         <h3 className="text-2xl font-bold">보유 사도 </h3>
@@ -147,6 +147,7 @@ const MyApostleList = ({
           </button>
 
           <button
+            id="btn-apostle-select-all"
             onClick={() => handleAddMultipleApostles(uniqueApostles)}
             className="btn btn-success rounded px-2 py-1 text-xs font-semibold text-black transition"
             title="모든 사도 추가"

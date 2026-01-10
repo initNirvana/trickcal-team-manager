@@ -1,4 +1,3 @@
-// src/__tests__/asides.schema.test.ts
 import { describe, it, expect } from 'vitest';
 import asidesData from '@/data/asides.json';
 import { AsidesDataSchema } from '@/schemas/asides.schema';
@@ -38,14 +37,14 @@ describe('asides.json schema validation', () => {
   });
 
   it('(apostleId, level) pairs should be unique', () => {
-    const parsed = AsidesDataSchema.parse(asidesData) as { asides: any[] };
+    const parsed = AsidesDataSchema.parse(asidesData);
 
     const keys = parsed.asides.map((a) => `${a.apostleId}#${a.level}`);
     expect(new Set(keys).size).toBe(keys.length);
   });
 
   it('type values should be valid (All/Front/Mid/Back/Persona)', () => {
-    const parsed = AsidesDataSchema.parse(asidesData) as { asides: any[] };
+    const parsed = AsidesDataSchema.parse(asidesData);
 
     const invalid = parsed.asides
       .flatMap((a) => normalizeArray(a.type))
@@ -56,7 +55,7 @@ describe('asides.json schema validation', () => {
   });
 
   it('if persona field exists, it must be non-empty and one of 5 personalities', () => {
-    const parsed = AsidesDataSchema.parse(asidesData) as { asides: any[] };
+    const parsed = AsidesDataSchema.parse(asidesData);
 
     const invalid = parsed.asides
       // "키가 존재하는지" 기준 (값이 undefined여도 키가 있으면 검사)
@@ -81,7 +80,7 @@ describe('asides.json schema validation', () => {
   });
 
   it('when type includes Persona, it should not mix with position types', () => {
-    const parsed = AsidesDataSchema.parse(asidesData) as { asides: any[] };
+    const parsed = AsidesDataSchema.parse(asidesData);
     const positionTypes = new Set(['All', 'Front', 'Mid', 'Back']);
 
     const invalid = parsed.asides
@@ -105,7 +104,7 @@ describe('asides.json schema validation', () => {
   });
 
   it('each aside should have at least one meaningful modifier (non-zero numbers OR valid persona)', () => {
-    const parsed = AsidesDataSchema.parse(asidesData) as { asides: any[] };
+    const parsed = AsidesDataSchema.parse(asidesData);
 
     const modifierFields = [
       'damage',
@@ -155,7 +154,7 @@ describe('asides.json schema validation', () => {
   });
 
   it('if description exists, it should not be empty', () => {
-    const parsed = AsidesDataSchema.parse(asidesData) as { asides: any[] };
+    const parsed = AsidesDataSchema.parse(asidesData);
 
     const invalid = parsed.asides
       .filter((a) => Object.prototype.hasOwnProperty.call(a, 'description'))

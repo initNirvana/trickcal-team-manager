@@ -94,7 +94,7 @@ export const PresetCombinationSection = ({ allApostles }: PresetCombinationSecti
       </div>
 
       {/* 성격 선택 필터 */}
-      <div className="justify-center filter">
+      <div id="preset-personality-section" className="justify-center filter">
         {/* 초기화 버튼: UI는 전체 표시, 내용은 활발, 아이콘은 공명 */}
         <input
           className="btn filter-reset"
