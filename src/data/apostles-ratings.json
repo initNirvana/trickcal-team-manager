@@ -614,7 +614,7 @@
       "engName": "Rollett",
       "baseScore": 65,
       "aside": {
-        "importance": "필수",
+        "importance": "권장",
         "score": 5
       }
     },
@@ -639,7 +639,7 @@
     "a071": {
       "name": "코미(수영복)",
       "engName": "KommySwim",
-      "baseScore": 65,
+      "baseScore": 63,
       "aside": {
         "importance": "필수",
         "score": 5
@@ -839,7 +839,7 @@
       "engName": "Suro",
       "baseScore": 72,
       "aside": {
-        "importance": "선택",
+        "importance": "권장",
         "score": 3
       }
     },
@@ -848,7 +848,7 @@
       "engName": "Laika",
       "baseScore": 66,
       "aside": {
-        "importance": "권장",
+        "importance": "필수",
         "score": 5
       }
     },
@@ -906,7 +906,7 @@
       "engName": "DianaYester",
       "baseScore": 85,
       "aside": {
-        "importance": "필수",
+        "importance": "권장",
         "score": 5
       }
     },
