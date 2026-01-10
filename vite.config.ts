@@ -22,7 +22,7 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
-      includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.svg', 'AppImages/ios/180.png'],
       manifest: {
         name: '트릭컬 매니저',
         short_name: '트릭컬 매니저',
