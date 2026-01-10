@@ -24,14 +24,14 @@ function getAssetPath(originalPath: string): string {
 
   if (!path) {
     console.warn(`Asset not found in map for key: ${originalPath}`);
-    return assetPathMap['/src/assets/apostles/placeholder.webp'] || originalPath;
+    return placeholderImagePath;
   }
 
   return path;
 }
 
 export function getApostleImagePath(engName: string): string {
-  if (!engName) return getAssetPath('/src/assets/apostles/placeholder.webp');
+  if (!engName) return placeholderImagePath;
 
   const pngKey = `/src/assets/apostles/${engName}.png`;
   const webpKey = `/src/assets/apostles/${engName}.webp`;
@@ -43,11 +43,11 @@ export function getApostleImagePath(engName: string): string {
     return getAssetPath(webpKey);
   }
 
-  return getAssetPath('/src/assets/apostles/placeholder.webp');
+  return placeholderImagePath;
 }
 
 export function getAsideIconPath(engName: string): string {
-  if (!engName) return getAssetPath('/src/assets/asideicons/placeholder.webp');
+  if (!engName) return placeholderImagePath;
 
   const pngKey = `/src/assets/asideicons/AsideIcon_${engName}.png`;
   const webpKey = `/src/assets/asideicons/AsideIcon_${engName}.webp`;
@@ -59,7 +59,7 @@ export function getAsideIconPath(engName: string): string {
     return getAssetPath(webpKey);
   }
 
-  return getAssetPath('/src/assets/asideicons/placeholder.webp');
+  return placeholderImagePath;
 }
 
 export function getPersonalityIconPath(personality: Personality): string {
