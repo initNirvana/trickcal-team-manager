@@ -4,12 +4,14 @@ import { useMyApostleStore } from '@/stores/myApostleStore';
 import MyApostleList from './Apostle/MyApostleList';
 import PresetCombinationSection from './Preset/PresetCombinationSection';
 import RecommendedDeckSection from './Recommendation/RecommendedDeckSection';
+import { useTour } from '@/hooks/useTour';
 
 interface DeckRecommenderProps {
   apostles: Apostle[];
 }
 
 export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
+  useTour();
   const { ownedApostleIds, toggleApostle, addApostles, removeApostles } = useMyApostleStore();
 
   const myApostles = useMemo(() => {
@@ -78,13 +80,13 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
           {/* 좌측: 프리셋 조합 + 추천 조합 (세로) */}
           <div className="space-y-3">
             {/* 프리셋 조합 안내 */}
-            <div className="rounded-lg bg-white p-2 shadow">
+            <div id="preset-combination-section" className="rounded-lg bg-white p-2 shadow">
               <PresetCombinationSection allApostles={apostles} />
             </div>
 
             {/* 추천 조합 (보유 사도만) */}
             {myApostles.length > 0 ? (
-              <div className="rounded-lg bg-white p-2 shadow">
+              <div id="recommendation-section" className="rounded-lg bg-white p-2 shadow">
                 <RecommendedDeckSection myApostles={myApostles} />
               </div>
             ) : (
