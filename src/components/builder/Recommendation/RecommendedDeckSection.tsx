@@ -212,17 +212,23 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
 
                         {/* 위치 아이콘 */}
                         <div className="absolute bottom-5 left-1 h-6 w-6 rounded-full">
-                          <img
-                            src={getPositionIconPath(
-                              POSITION_CONFIG[
-                                suggestion.apostle.position as keyof typeof POSITION_CONFIG
-                              ].icon,
-                            )}
-                            className="h-full w-full object-contain"
-                            onError={(e) => {
-                              (e.currentTarget as HTMLImageElement).style.display = 'none';
-                            }}
-                          />
+                          {(() => {
+                            const position = Array.isArray(suggestion.apostle.position)
+                              ? 'free'
+                              : suggestion.apostle.position;
+                            const icon =
+                              POSITION_CONFIG[position as keyof typeof POSITION_CONFIG]?.icon ||
+                              'Common_PositionFront';
+                            return (
+                              <img
+                                src={getPositionIconPath(icon)}
+                                className="h-full w-full object-contain"
+                                onError={(e) => {
+                                  (e.currentTarget as HTMLImageElement).style.display = 'none';
+                                }}
+                              />
+                            );
+                          })()}
                         </div>
 
                         {/* 성격 아이콘 배지 */}
