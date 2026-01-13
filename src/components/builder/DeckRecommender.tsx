@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import type { Apostle } from '@/types/apostle';
 import { useMyApostleStore } from '@/stores/myApostleStore';
+import { isUros } from '@/utils/apostleUtils';
 import MyApostleList from './Apostle/MyApostleList';
 import PresetCombinationSection from './Preset/PresetCombinationSection';
 import RecommendedDeckSection from './Recommendation/RecommendedDeckSection';
@@ -18,53 +19,61 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
     return apostles.filter((a) => ownedApostleIds.includes(a.id));
   }, [apostles, ownedApostleIds]);
 
-  const isUros = (apostle: Apostle) => apostle.engName === 'Uros';
-
-  const handleAddApostle = (apostle: Apostle) => {
-    if (ownedApostleIds.includes(apostle.id)) return;
-
-    if (isUros(apostle)) {
-      const existingUros = myApostles.find((a) => isUros(a));
-      if (existingUros) {
-        toggleApostle(existingUros.id);
-        toggleApostle(apostle.id);
-        return;
-      }
-    }
-
-    toggleApostle(apostle.id);
-  };
-
-  const handleAddMultipleApostles = (newApostles: Apostle[]) => {
-    const toAddIds: string[] = [];
-    let hasUrosInCurrent = myApostles.some((a) => isUros(a));
-
-    newApostles.forEach((apostle) => {
+  const handleAddApostle = useCallback(
+    (apostle: Apostle) => {
       if (ownedApostleIds.includes(apostle.id)) return;
 
       if (isUros(apostle)) {
-        if (hasUrosInCurrent) return;
-        hasUrosInCurrent = true;
+        const existingUros = myApostles.find((a) => isUros(a));
+        if (existingUros) {
+          toggleApostle(existingUros.id);
+          toggleApostle(apostle.id);
+          return;
+        }
       }
 
-      toAddIds.push(apostle.id);
-    });
-
-    if (toAddIds.length > 0) {
-      addApostles(toAddIds);
-    }
-  };
-
-  const handleRemoveMultipleApostles = (apostlesToRemove: Apostle[]) => {
-    const idsToRemove = apostlesToRemove.map((a) => a.id);
-    removeApostles(idsToRemove);
-  };
-
-  const handleRemoveApostle = (apostle: Apostle) => {
-    if (ownedApostleIds.includes(apostle.id)) {
       toggleApostle(apostle.id);
-    }
-  };
+    },
+    [ownedApostleIds, myApostles, toggleApostle],
+  );
+
+  const handleAddMultipleApostles = useCallback(
+    (newApostles: Apostle[]) => {
+      const toAddIds: string[] = [];
+      let hasUrosInCurrent = myApostles.some((a) => isUros(a));
+
+      newApostles.forEach((apostle) => {
+        if (ownedApostleIds.includes(apostle.id)) return;
+
+        if (isUros(apostle)) {
+          if (hasUrosInCurrent) return;
+          hasUrosInCurrent = true;
+        }
+
+        toAddIds.push(apostle.id);
+      });
+
+      if (toAddIds.length > 0) {
+        addApostles(toAddIds);
+      }
+    },
+    [myApostles, ownedApostleIds, addApostles],
+  );
+
+  const handleRemoveMultipleApostles = useCallback(
+    (apostlesToRemove: Apostle[]) => {
+      const idsToRemove = apostlesToRemove.map((a) => a.id);
+      removeApostles(idsToRemove);
+    },
+    [removeApostles],
+  );
+
+  const handleRemoveApostle = useCallback(
+    (apostle: Apostle) => {
+      toggleApostle(apostle.id);
+    },
+    [toggleApostle],
+  );
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start p-4">

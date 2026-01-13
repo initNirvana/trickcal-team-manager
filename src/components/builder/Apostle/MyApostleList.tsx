@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import type { Apostle } from '@/types/apostle';
 import { getApostleImagePath } from '@/utils/apostleImages';
-import { getPersonalityBackground } from '@/utils/apostleUtils';
+import { getPersonalityBackground, filterUniqueApostles, isUros } from '@/utils/apostleUtils';
 import ApostleSelectorSearch from '../../common/ApostleSearch';
 
 interface MyApostleListProps {
@@ -23,9 +23,6 @@ const MyApostleList = ({
 }: MyApostleListProps) => {
   const [sortBy, setSortBy] = useState<'name' | 'persona' | 'id'>('id');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
-
-  // 우로스는 하나만 보유 가능 (성격 변형 중 하나만 선택)
-  const isUros = (apostle: Apostle) => apostle.engName === 'Uros';
 
   const handleSort = (sortType: 'name' | 'persona' | 'id') => {
     if (sortBy === sortType) {
@@ -88,29 +85,23 @@ const MyApostleList = ({
     }
   };
 
-  // 정렬
-  const sortedApostles = [...allApostles];
-  if (sortBy === 'name') {
-    sortedApostles.sort((a, b) => {
-      const result = a.name.localeCompare(b.name);
-      return sortOrder === 'asc' ? result : -result;
-    });
-  } else if (sortBy === 'persona') {
-    sortedApostles.sort((a, b) => {
-      const result = (a.persona || '').localeCompare(b.persona || '');
-      return sortOrder === 'asc' ? result : -result;
-    });
-  } else if (sortBy === 'id') {
-    sortedApostles.sort((a, b) => {
-      const result = a.id.localeCompare(b.id);
-      return sortOrder === 'asc' ? result : -result;
-    });
-  }
+  const sortedApostles = useMemo(() => {
+    const sorted = [...allApostles];
+
+    const sortFunctions = {
+      name: (a: Apostle, b: Apostle) => a.name.localeCompare(b.name),
+      persona: (a: Apostle, b: Apostle) => (a.persona || '').localeCompare(b.persona || ''),
+      id: (a: Apostle, b: Apostle) => a.id.localeCompare(b.id),
+    };
+
+    sorted.sort(sortFunctions[sortBy]);
+    return sortOrder === 'asc' ? sorted : sorted.reverse();
+  }, [allApostles, sortBy, sortOrder]);
 
   // engName 기준 중복 제거 (성격별 변형 사도를 하나로 통합)
-  const uniqueApostles = sortedApostles.filter(
-    (apostle, index, self) => index === self.findIndex((a) => a.engName === apostle.engName),
-  );
+  const uniqueApostles = useMemo(() => {
+    return filterUniqueApostles(sortedApostles);
+  }, [sortedApostles]);
 
   return (
     <div id="my-apostle-list-container" className="bg-base-200 space-y-2 rounded-xl p-4 shadow-lg">
