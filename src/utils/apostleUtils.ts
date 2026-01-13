@@ -112,3 +112,25 @@ export function getPersonalityBackground(personality: Personality): string {
       return 'bg-[linear-gradient(to_bottom,rgba(255,255,255,.5)),conic-gradient(at_center,#66C17C,#83B9EB,#EB839A,#EBDB83,#C683EC,#66C17C)]';
   }
 }
+
+export const isUros = (apostle: Apostle): boolean => apostle.engName === 'Uros';
+
+export const filterUniqueApostles = (apostles: Apostle[]): Apostle[] => {
+  const seen = new Set<string>();
+  const PREFERRED_UROS_ID = 'a107';
+  return apostles.filter((apostle) => {
+    if (apostle.engName === 'Uros') {
+      if (apostle.id === PREFERRED_UROS_ID && !seen.has('Uros')) {
+        seen.add('Uros');
+        return true;
+      }
+      return false;
+    }
+
+    if (seen.has(apostle.engName)) {
+      return false;
+    }
+    seen.add(apostle.engName);
+    return true;
+  });
+};
