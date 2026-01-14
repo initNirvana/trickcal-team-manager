@@ -33,6 +33,8 @@ export class DataLoaderService {
           baseScore: rating.baseScore,
           scoreBySize: rating.scoreBySize,
           positionScore: rating.positionScore,
+          pvp: rating.pvp,
+          reason: rating.reason,
           aside: {
             hasAside: a.aside.hasAside,
             importance: rating.aside.importance,

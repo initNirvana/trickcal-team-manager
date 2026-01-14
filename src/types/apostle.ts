@@ -40,6 +40,8 @@ export const POSITION_CONFIG = {
  * @property {Aside} aside - 사도의 어사이드 정보.
  * @property {number} baseScore - 사도의 기본 점수.
  * @property {{size6?: number; size9?: number}} [scoreBySize] - 사도의 덱 사이즈별 점수 (선택적).
+ * @property {{score: number; aside: '선택' | '권장' | '필수' | null; reason?: string}} [pvp] - PvP 모드 관련 정보 (선택적).
+ * @property {string} [reason] - 사도 선택 이유 또는 설명 (선택적).
  */
 
 export interface Apostle {
@@ -59,6 +61,12 @@ export interface Apostle {
   aside: Aside;
   baseScore: number;
   scoreBySize?: { size6?: number; size9?: number };
+  pvp?: {
+    score: number;
+    aside: '선택' | '권장' | '필수' | null;
+    reason?: string;
+  };
+  reason?: string;
 }
 
 /**
