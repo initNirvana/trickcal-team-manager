@@ -1567,7 +1567,7 @@
         "trait": ["Shield", "Buff"]
       },
       "method": "Physical",
-      "position": ["front", "mid", "back"],
+      "position": ["back", "mid", "front"],
       "positionPriority": ["back", "mid", "front"],
       "mercenary": true,
       "aside": {
@@ -2157,7 +2157,7 @@
         "trait": ["Damage", "Buff"]
       },
       "method": "Physical",
-      "position": ["front", "mid", "back"],
+      "position": ["back", "mid", "front"],
       "positionPriority": ["back", "mid", "front"],
       "mercenary": true,
       "aside": {
