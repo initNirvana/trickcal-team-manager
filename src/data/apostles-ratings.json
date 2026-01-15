@@ -1093,6 +1093,15 @@
         "importance": "선택",
         "score": 5
       }
+    },
+    "a115": {
+      "name": "셰이디(역전)",
+      "engName": "ShadyTwisted",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 5
+      }
     }
   }
 }

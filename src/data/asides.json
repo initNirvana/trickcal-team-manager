@@ -871,6 +871,15 @@
       "description": "모든 아군이 적에게 주는 피해량이 증가하고, 모든 아군이 적에게 받는 피해량이 감소한다.",
       "type": ["All"],
       "damage": [{ "Increase": 22.5, "Reduction": 6 }]
+    },
+    {
+      "apostleId": "a115",
+      "apostleName": "셰이디(역전)",
+      "name": "질투하는 인형",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량을 증가시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 26, "Reduction": 0 }]
     }
   ]
 }

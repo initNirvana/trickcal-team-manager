@@ -2277,6 +2277,25 @@
       "aside": {
         "hasAside": true
       }
+    },
+    {
+      "id": "a115",
+      "name": "셰이디(역전)",
+      "engName": "ShadyTwisted",
+      "isEldain": false,
+      "rank": 3,
+      "race": "유령",
+      "persona": "Jolly",
+      "role": {
+        "main": "Supporter",
+        "subRole": "Utility",
+        "trait": ["Buff", "Debuff", "CC", "Heal"]
+      },
+      "method": "Physical",
+      "position": "back",
+      "aside": {
+        "hasAside": true
+      }
     }
   ]
 }
