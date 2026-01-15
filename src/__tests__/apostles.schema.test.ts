@@ -1,9 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import apostlesData from '@/data/apostles.json';
 import ratingsData from '@/data/apostles-ratings.json';
-
+import asidesData from '@/data/asides.json';
+import skillsData from '@/data/skills.json';
 import { ApostlesDataSchema } from '@/schemas/apostles.schema';
 import { ApostlesRatingsSchema } from '@/schemas/apostles-ratings.schema';
+import { AsidesDataSchema } from '@/schemas/asides.schema';
+import { SkillsDataSchema } from '@/schemas/skills.schema';
 
 describe('apostles data validation', () => {
   it('apostles.json should match ApostlesDataSchema', () => {
@@ -63,5 +66,50 @@ describe('apostles data validation', () => {
       .filter(Boolean);
 
     expect(mismatched).toEqual([]);
+  });
+
+  it('if apostle has aside.hasAside=true, should have at least one aside in asides.json', () => {
+    const apostles = ApostlesDataSchema.parse(apostlesData).apostles;
+    const asides = AsidesDataSchema.parse(asidesData).asides;
+
+    const apostlesWithAside = apostles.filter((a) => a.aside.hasAside);
+    const asideApostleIds = new Set(asides.map((a) => a.apostleId));
+
+    const missingAsides = apostlesWithAside
+      .filter((a) => !asideApostleIds.has(a.id))
+      .map((a) => ({
+        id: a.id,
+        name: a.name,
+        engName: a.engName,
+        asideHasAside: a.aside.hasAside,
+      }));
+
+    expect(missingAsides).toEqual([]);
+  });
+
+  it('every apostle should have one low-level skill and one high-level skill', () => {
+    const apostles = ApostlesDataSchema.parse(apostlesData).apostles;
+    const skills = SkillsDataSchema.parse(skillsData).skills;
+
+    const missingSkills = apostles
+      .map((apostle) => {
+        if (apostle.id.includes('_')) return null; // 공명 사도의 성격 분리 데이터 제외
+
+        const lowSkill = skills.find((s) => s.apostleId === apostle.id && s.level === 'low');
+        const highSkill = skills.find((s) => s.apostleId === apostle.id && s.level === 'high');
+
+        if (!lowSkill || !highSkill) {
+          return {
+            id: apostle.id,
+            name: apostle.name,
+            lowSkill: !!lowSkill,
+            highSkill: !!highSkill,
+          };
+        }
+        return null;
+      })
+      .filter(Boolean);
+
+    expect(missingSkills).toEqual([]);
   });
 });

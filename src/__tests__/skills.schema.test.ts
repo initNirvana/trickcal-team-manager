@@ -1,4 +1,3 @@
-// src/__tests__/skills.schema.test.ts
 import { describe, it, expect } from 'vitest';
 import skillsData from '@/data/skills.json';
 import { SkillsDataSchema } from '@/schemas/skills.schema';
@@ -39,7 +38,10 @@ describe('skills.json schema validation', () => {
   it('effectRange non-empty skills must have meaningful damage rows', () => {
     const parsed = SkillsDataSchema.parse(skillsData);
 
-    const normalizeRows = (damage: any): any[] => {
+    type DamageValue = { level?: number; Increase?: number; Reduction?: number };
+    type DamageField = DamageValue | DamageValue[] | undefined;
+
+    const normalizeRows = (damage: DamageField): DamageValue[] => {
       if (!damage) return [];
       if (Array.isArray(damage)) return damage.filter(Boolean);
       if (typeof damage === 'object') return [damage];
@@ -50,8 +52,8 @@ describe('skills.json schema validation', () => {
 
     // 2-a) effectRange가 있는데 damage 값이 없는 경우(없음/빈 배열/빈 객체만)
     const missingDamage = parsed.skills
-      .filter((s: any) => isNonEmptyString(s.effectRange))
-      .filter((s: any) => {
+      .filter((s) => isNonEmptyString(s.effectRange))
+      .filter((s) => {
         const rows = normalizeRows(s.damage);
 
         // rows가 0개이거나, "Increase/Reduction/level" 중 의미있는 필드가 하나도 없는 row만 있는 경우를 비정상으로 판단
@@ -65,7 +67,7 @@ describe('skills.json schema validation', () => {
 
         return rows.length === 0 || !meaningful;
       })
-      .map((s: any) => ({
+      .map((s) => ({
         apostleId: s.apostleId,
         skillType: s.level,
         name: s.name,
@@ -80,8 +82,8 @@ describe('skills.json schema validation', () => {
 
     // 2-b) effectRange가 있는데 damage 배열이 "기본값 1개(레벨1, 0/0)"만 있는 경우
     const onlyDefaultRow = parsed.skills
-      .filter((s: any) => isNonEmptyString(s.effectRange))
-      .filter((s: any) => {
+      .filter((s) => isNonEmptyString(s.effectRange))
+      .filter((s) => {
         const rows = normalizeRows(s.damage);
 
         if (rows.length !== 1) return false;
@@ -95,7 +97,7 @@ describe('skills.json schema validation', () => {
 
         return levelOk && incOk && redOk;
       })
-      .map((s: any) => ({
+      .map((s) => ({
         apostleId: s.apostleId,
         skillType: s.level,
         name: s.name,
