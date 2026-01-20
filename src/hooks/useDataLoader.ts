@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { DataLoaderService } from '../utils/dataLoader';
-import { AsidesData } from '../types/aside';
-import { SkillsData } from '../types/skill';
-import { SpellsData } from '../types/spell';
-import { Apostle } from '../types/apostle';
+import { DataLoaderService } from '@/services/DataLoaderService';
+import type { AsidesData } from '@/types/aside';
+import type { SkillsData } from '@/types/skill';
+import type { SpellsData } from '@/types/spell';
+import type { Apostle } from '@/types/apostle';
 
 interface DataLoaderState {
   apostles: Apostle[];
@@ -29,13 +29,18 @@ export function useDataLoader(): DataLoaderState {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [apostles, skills, asides, spells] = await DataLoaderService.loadAllData();
+        const [apostles, skills, asides, spells] = await Promise.all([
+          DataLoaderService.loadApostles(),
+          DataLoaderService.loadSkills(),
+          DataLoaderService.loadAsides(),
+          DataLoaderService.loadSpells(),
+        ]);
 
         setState({
           apostles,
-          skills: skills as SkillsData,
-          asides: asides as AsidesData,
-          spells: spells as SpellsData,
+          skills,
+          asides,
+          spells,
           isLoading: false,
           error: null,
         });

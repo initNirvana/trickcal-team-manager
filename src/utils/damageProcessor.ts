@@ -88,7 +88,7 @@ export interface AsideEffectResult {
  */
 export function calculateAsideEffects(
   apostles: Apostle[],
-  asidesData: { asides?: AsideRow[] } | undefined,
+  asidesData: AsideRow[] | undefined,
   asideSelection: Record<string, number[]>,
 ): AsideEffectResult {
   const increaseEffects = emptyGroups();
@@ -98,7 +98,7 @@ export function calculateAsideEffects(
   const physicalReductionEffects = emptyGroups();
   const magicalReductionEffects = emptyGroups();
 
-  if (!Array.isArray(asidesData?.asides)) {
+  if (!Array.isArray(asidesData)) {
     return {
       totalIncrease: 0,
       totalReduction: 0,
@@ -116,7 +116,7 @@ export function calculateAsideEffects(
   }
 
   const index = new Map<string, AsideRow>();
-  for (const a of asidesData.asides) index.set(`${a.apostleId}:${a.level}`, a);
+  for (const a of asidesData) index.set(`${a.apostleId}:${a.level}`, a);
 
   let totalIncrease = 0;
   let totalReduction = 0;
@@ -345,13 +345,13 @@ const getReductionAtLevel = (skill: SkillRow, level: number) => {
 
 export function calculateSkillDamageReduction(
   apostles: Apostle[],
-  skillsData: { skills?: SkillRow[] } | undefined,
+  skillsData: SkillRow[] | undefined,
   skillLevels: Record<string, number | string | undefined>,
 ): SkillReductionResult {
-  if (!Array.isArray(skillsData?.skills)) return { totalReduction: 0, details: [] };
+  if (!Array.isArray(skillsData)) return { totalReduction: 0, details: [] };
 
   const skillsByApostleId = new Map<string, SkillRow[]>();
-  for (const s of skillsData.skills) {
+  for (const s of skillsData) {
     const prev = skillsByApostleId.get(s.apostleId);
     if (prev) prev.push(s);
     else skillsByApostleId.set(s.apostleId, [s]);

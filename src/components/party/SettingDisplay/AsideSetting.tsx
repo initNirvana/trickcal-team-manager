@@ -1,13 +1,13 @@
 import { Activity, useMemo } from 'react';
 import type { Apostle } from '@/types/apostle';
-import type { AsidesData } from '@/types/aside';
+import type { Aside } from '@/types/aside';
 import { getApostleImagePath } from '@/utils/apostleImages';
 import { useDeckStore } from '@/stores/deckStore';
 import Image from '../../common/Image';
 
 interface AsideSettingProps {
   filledDeck: Apostle[];
-  asidesData?: AsidesData;
+  asidesData?: Aside[];
 }
 
 interface AsideRankInfo {
@@ -28,11 +28,11 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
    */
   const getAvailableAsideRanks = useMemo(() => {
     return (apostleId: string): AsideRankInfo => {
-      if (!asidesData?.asides) {
+      if (!Array.isArray(asidesData)) {
         return { has2Star: false, has3Star: false };
       }
 
-      const apostleAsides = asidesData.asides.filter((aside) => aside.apostleId === apostleId);
+      const apostleAsides = asidesData.filter((aside) => aside.apostleId === apostleId);
 
       const has2Star = apostleAsides.some((aside) => aside.level === 2);
       const has3Star = apostleAsides.some((aside) => aside.level === 3);

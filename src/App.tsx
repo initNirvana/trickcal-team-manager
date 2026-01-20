@@ -54,7 +54,11 @@ function App() {
             <Ssgoi config={ssgoiConfig}>
               <Layout>
                 <SsgoiTransition id="/">
-                  <DeckSimulator apostles={apostles} skillsData={skills} asidesData={asides} />
+                  <DeckSimulator
+                    apostles={apostles}
+                    skillsData={skills.skills}
+                    asidesData={asides.asides}
+                  />
                 </SsgoiTransition>
               </Layout>
             </Ssgoi>

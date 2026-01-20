@@ -167,7 +167,7 @@ const MyApostleList = ({
       </div>
 
       {/* 검색 */}
-      <ApostleSelectorSearch apostles={allApostles} onSelect={onToggle} />
+      <ApostleSelectorSearch apostles={uniqueApostles} onSelect={onToggle} />
 
       {/* 추가 가능한 캐릭 - 작은 그리드 */}
       <div className="grid max-h-[70dvh] grid-cols-5 gap-2 overflow-y-auto px-2">

@@ -1,4 +1,6 @@
 import type { Apostle } from '../../../types/apostle';
+import type { Skill } from '@/types/skill';
+import type { Aside } from '@/types/aside';
 import type { DeckAnalysis } from '../../../utils/deckAnalysisUtils';
 import { useDeckStore } from '../../../stores/deckStore';
 import SkillEffectDisplay from '../DamageDisplay/SkillEffect';
@@ -8,8 +10,8 @@ import SynergyDisplay from './SynergyDisplay';
 interface AnalysisPanelProps {
   analysis: DeckAnalysis;
   filledDeck: Apostle[];
-  skillsData?: any;
-  asidesData?: any;
+  skillsData?: Skill[];
+  asidesData?: Aside[];
 }
 
 const AnalysisPanel = ({ analysis, filledDeck, skillsData, asidesData }: AnalysisPanelProps) => {

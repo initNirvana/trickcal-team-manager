@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { Apostle } from '../types/apostle';
+import { GRID_CONFIG } from '@/constants/gameConstants';
 
 interface DeckState {
   deck: (Apostle | undefined)[];
@@ -39,7 +40,7 @@ interface PersistedState {
 export const useDeckStore = create<DeckState>()(
   persist(
     (set) => ({
-      deck: Array(9).fill(undefined),
+      deck: Array(GRID_CONFIG.SIZE).fill(undefined),
       skillLevels: {},
       asideSelection: {},
       showDeckGuide: false,
@@ -68,7 +69,7 @@ export const useDeckStore = create<DeckState>()(
           return { deck: newDeck };
         }),
 
-      clearDeck: () => set({ deck: Array(9).fill(undefined) }),
+      clearDeck: () => set({ deck: Array(GRID_CONFIG.SIZE).fill(undefined) }),
 
       // Skill Level 액션
       setSkillLevel: (apostleId, level) =>

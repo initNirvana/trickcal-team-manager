@@ -31,7 +31,7 @@ export default tseslint.config(
 
   // 린트 제외
   {
-    ignores: ['dist/**', 'node_modules/**'],
+    ignores: ['dist/**', 'dev-dist/**', 'node_modules/**'],
   },
   prettierConfig,
 );

@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import type { Apostle } from '@/types/apostle';
-import type { AsidesData } from '@/types/aside';
+import type { Aside } from '@/types/aside';
 import { calculateAsideEffects, type AsideEffect } from '@/utils/damageProcessor';
 
 type PositionKey = 'all' | 'front' | 'mid' | 'back' | 'persona';
 
 interface AsideEffectProps {
   apostles: Apostle[];
-  asidesData?: AsidesData;
+  asidesData?: Aside[];
   asideSelection: Record<string, number[]>;
 }
 
