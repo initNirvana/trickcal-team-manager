@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import type { Apostle, Personality } from '@/types/apostle';
+import type { SlotNumber } from '@/types/branded';
 import {
   getPersonalityKoreanName,
   isValidPosition,
@@ -15,7 +16,7 @@ import ApostleSelectorSearch from '../../common/ApostleSearch';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];
-  selectedSlot: number | null;
+  selectedSlot: SlotNumber | null;
   currentApostle?: Apostle;
   onSelect: (apostle: Apostle) => void;
   onRemove?: () => void;

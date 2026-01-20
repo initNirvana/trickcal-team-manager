@@ -1,5 +1,7 @@
 import type { Apostle } from '../types/apostle';
 import type { AsideTarget, AsideRow } from '../types/aside';
+import type { SkillLevel } from '../types/branded';
+import { trySkillLevel, toSkillLevel } from '../types/branded';
 
 type OneOrArray<T> = T | T[];
 
@@ -331,22 +333,17 @@ export interface SkillReductionResult {
   details: SkillReductionDetail[];
 }
 
-const toValidLevel = (v: unknown, fallback = 1) => {
-  const n = typeof v === 'string' ? Number(v) : typeof v === 'number' ? v : NaN;
-  return Number.isFinite(n) && n >= 1 ? Math.floor(n) : fallback;
-};
-
-const getReductionAtLevel = (skill: SkillRow, level: number) => {
+const getReductionAtLevel = (skill: SkillRow, level: SkillLevel) => {
   const rows = skill.damage;
   if (!Array.isArray(rows) || rows.length === 0) return 0;
-  const hit = rows.find((r) => r.level === level);
+  const hit = rows.find((r) => r.level === (level as number));
   return hit?.Reduction ?? 0;
 };
 
 export function calculateSkillDamageReduction(
   apostles: Apostle[],
   skillsData: SkillRow[] | undefined,
-  skillLevels: Record<string, number | string | undefined>,
+  skillLevels: Record<string, SkillLevel | undefined>,
 ): SkillReductionResult {
   if (!Array.isArray(skillsData)) return { totalReduction: 0, details: [] };
 
@@ -363,7 +360,7 @@ export function calculateSkillDamageReduction(
   for (const apostle of apostles) {
     if (!apostle?.id) continue;
 
-    const currentLevel = toValidLevel(skillLevels[apostle.id], 1);
+    const currentLevel = trySkillLevel(skillLevels[apostle.id], toSkillLevel(1));
     const skills = skillsByApostleId.get(apostle.id) ?? [];
     if (skills.length === 0) continue;
 
@@ -387,7 +384,7 @@ export function calculateSkillDamageReduction(
       apostleName: apostle.name,
       skillName: bestSkill.name,
       skillType: bestSkill.level === 'low' ? '저학년' : '고학년',
-      skillLevel: currentLevel,
+      skillLevel: currentLevel as number,
       reduction: bestReduction,
       effectRange: bestSkill.effectRange,
     });

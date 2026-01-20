@@ -1,8 +1,10 @@
 import { useDeckStore } from '../../stores/deckStore';
+import { toSlotNumber } from '@/types/branded';
+import type { SlotNumber } from '@/types/branded';
 import ApostleSlot from './ApostleSlot';
 
 interface DeckGridProps {
-  onSelectSlot: (slotNumber: number) => void;
+  onSelectSlot: (slotNumber: SlotNumber) => void;
 }
 
 const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
@@ -20,7 +22,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
               <ApostleSlot
                 key={slot}
                 apostle={deck[slot - 1]}
-                onSelect={() => onSelectSlot(slot)}
+                onSelect={() => onSelectSlot(toSlotNumber(slot))}
               />
             ))}
           </div>
@@ -34,7 +36,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
               <ApostleSlot
                 key={slot}
                 apostle={deck[slot - 1]}
-                onSelect={() => onSelectSlot(slot)}
+                onSelect={() => onSelectSlot(toSlotNumber(slot))}
               />
             ))}
           </div>
@@ -48,7 +50,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
               <ApostleSlot
                 key={slot}
                 apostle={deck[slot - 1]}
-                onSelect={() => onSelectSlot(slot)}
+                onSelect={() => onSelectSlot(toSlotNumber(slot))}
               />
             ))}
           </div>

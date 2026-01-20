@@ -3,6 +3,7 @@ import type { Apostle } from '@/types/apostle';
 import type { Aside } from '@/types/aside';
 import { getApostleImagePath } from '@/utils/apostleImages';
 import { useDeckStore } from '@/stores/deckStore';
+import { toAsideRank, type AsideRank } from '@/types/branded';
 import Image from '../../common/Image';
 
 interface AsideSettingProps {
@@ -50,22 +51,22 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
 
     if (rank === 3) {
       // 3성 클릭: 3성이 이미 있으면 3성만 제거 (2성 유지), 없으면 [2, 3] 추가
-      if (currentRanks.includes(3)) {
+      if (currentRanks.includes(3 as AsideRank)) {
         setAsideSelection(
           apostleId,
-          currentRanks.filter((r) => r !== 3),
+          currentRanks.filter((r) => r !== (3 as AsideRank)),
         );
       } else {
         // 3성 선택 시 2성도 자동 포함
-        const newRanks = [2, 3];
+        const newRanks: AsideRank[] = [toAsideRank(2), toAsideRank(3)];
         setAsideSelection(apostleId, newRanks);
       }
     } else if (rank === 2) {
       // 2성 클릭: 2성이 있으면 모두 제거, 없으면 2성만 추가
-      if (currentRanks.includes(2)) {
+      if (currentRanks.includes(2 as AsideRank)) {
         setAsideSelection(apostleId, []);
       } else {
-        setAsideSelection(apostleId, [2]);
+        setAsideSelection(apostleId, [toAsideRank(2)]);
       }
     }
   };
@@ -123,7 +124,7 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
                       <button
                         onClick={() => handleAsideRankSelect(apostleKey, 3)}
                         className={`rounded px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition ${
-                          selectedRanks.includes(3)
+                          selectedRanks.includes(toAsideRank(3))
                             ? 'bg-purple-500 text-white shadow-md'
                             : 'bg-gray-300 text-gray-700 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500'
                         }`}
@@ -138,7 +139,7 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
                       <button
                         onClick={() => handleAsideRankSelect(apostleKey, 2)}
                         className={`rounded px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap transition ${
-                          selectedRanks.includes(2)
+                          selectedRanks.includes(toAsideRank(2))
                             ? 'bg-blue-500 text-white shadow-md'
                             : 'bg-gray-300 text-gray-700 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500'
                         }`}

@@ -1,7 +1,13 @@
 import type { Apostle, Personality } from '../types/apostle';
 import { SYNERGY_TIER_CONFIG } from '@/constants/gameConstants';
 
-type PersonalityCountMap = Record<Personality, number>;
+type PersonalityCountMap = {
+  Jolly: number;
+  Mad: number;
+  Naive: number;
+  Gloomy: number;
+  Cool: number;
+};
 
 /**
  * 성격 시너지 효과 정의

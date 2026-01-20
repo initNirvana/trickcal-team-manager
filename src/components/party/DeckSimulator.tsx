@@ -2,6 +2,7 @@ import { Activity, useState, useEffect, useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
 import type { Skill } from '@/types/skill';
 import type { Aside } from '@/types/aside';
+import type { SlotNumber } from '@/types/branded';
 import { useDeckStore } from '../../stores/deckStore';
 import DeckGrid from './DeckGrid';
 import DeckAnalysisPanel from './Analysis/AnalysisPanel';
@@ -26,7 +27,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   const showDeckGuide = useDeckStore((state) => state.showDeckGuide);
 
   // UI 관련 로컬 상태 (useState 유지)
-  const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
+  const [selectedSlot, setSelectedSlot] = useState<SlotNumber | null>(null);
   const [showSelector, setShowSelector] = useState(false);
 
   const [gameMode, setGameMode] = useState<'pve' | 'pvp'>('pve');
@@ -47,7 +48,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   }, [apostles, hydrateDeck]);
 
   // 액션 핸들러
-  const handleSlotClick = (slotNumber: number) => {
+  const handleSlotClick = (slotNumber: SlotNumber) => {
     setSelectedSlot(slotNumber);
     setShowSelector(true);
   };

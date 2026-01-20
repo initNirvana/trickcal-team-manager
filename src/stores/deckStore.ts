@@ -1,25 +1,26 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import type { Apostle } from '../types/apostle';
+import type { SlotNumber, SkillLevel, AsideRank } from '@/types/branded';
 import { GRID_CONFIG } from '@/constants/gameConstants';
 
 interface DeckState {
   deck: (Apostle | undefined)[];
-  skillLevels: Record<string, number>;
-  asideSelection: Record<string, number[]>;
+  skillLevels: Record<string, SkillLevel>;
+  asideSelection: Record<string, AsideRank[]>;
 
   showDeckGuide: boolean;
 
   // Deck 관련
-  setDeckMember: (slot: number, apostle: Apostle | undefined) => void;
+  setDeckMember: (slot: SlotNumber, apostle: Apostle | undefined) => void;
   clearDeck: () => void;
 
   // Skill Levels 관련
-  setSkillLevel: (apostleId: string, level: number) => void;
+  setSkillLevel: (apostleId: string, level: SkillLevel) => void;
   resetSkillLevels: () => void;
 
   // Aside Selection 관련
-  setAsideSelection: (apostleId: string, ranks: number[]) => void;
+  setAsideSelection: (apostleId: string, ranks: AsideRank[]) => void;
   resetAsideSelection: () => void;
 
   // 전체 리셋
@@ -33,8 +34,8 @@ interface DeckState {
 
 interface PersistedState {
   deckIds: (string | null)[];
-  skillLevels: Record<string, number>;
-  asideSelection: Record<string, number[]>;
+  skillLevels: Record<string, SkillLevel>;
+  asideSelection: Record<string, AsideRank[]>;
 }
 
 export const useDeckStore = create<DeckState>()(
