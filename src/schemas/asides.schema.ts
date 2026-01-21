@@ -22,13 +22,9 @@ export const AsideRowSchema = z
   })
   .passthrough();
 
-export const AsidesDataSchema = z
-  .object({
-    asides: z.array(AsideRowSchema).min(1),
-    version: z.string().optional(),
-    lastUpdated: z.string().optional(),
-  })
-  .passthrough();
+export const AsidesDataSchema = z.object({
+  asides: z.array(AsideRowSchema).min(1),
+});
 
 export type AsidesData = z.infer<typeof AsidesDataSchema>;
 export type AsideRow = z.infer<typeof AsideRowSchema>;

@@ -48,8 +48,6 @@ export const ApostleSchema = z.object({
 });
 
 export const ApostlesDataSchema = z.object({
-  version: z.string(),
-  lastUpdated: z.string(),
   apostles: z.array(ApostleSchema).min(1),
 });
 

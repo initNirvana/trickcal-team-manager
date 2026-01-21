@@ -33,8 +33,6 @@ export const ApostleRatingSchema = z.object({
 });
 
 export const ApostlesRatingsSchema = z.object({
-  version: z.string(),
-  lastUpdated: z.string(),
   ratings: z.record(z.string().min(1), ApostleRatingSchema),
 });
 
