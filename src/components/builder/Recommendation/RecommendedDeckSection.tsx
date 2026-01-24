@@ -76,7 +76,6 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                 {rec.deckSize}인 조합 ({rec.deckSize === 9 ? '대충돌/프론티어' : '침략'})
               </h3>
             </div>
-
             {/* 성격 시너지 표시 */}
             <div>
               <h4 className="mb-2 text-sm font-semibold">
@@ -163,12 +162,10 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                   ))}
               </div>
             </div>
-
             {/* 추천 조합 그리드 */}
             <div className="m-0.5 flex justify-center">
               <RecommendedDeckGrid deck={rec.deck} deckSize={rec.deckSize} />
             </div>
-
             {/* 힐러 없음 경고 배지 */}
             {!rec.hasHealer && (
               <div className="alert alert-warning shadow-sm">
@@ -193,7 +190,6 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                 </div>
               </div>
             )}
-
             {/* 추천 힐러 사도 */}
             {!rec.hasHealer && rec.healerSuggestions && rec.healerSuggestions.length > 0 && (
               <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
@@ -269,9 +265,8 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                 </div>
               </div>
             )}
-
             {/* 2. PVP 추천 용병 섹션 */}
-            {rec.deckSize === 6 && rec.jwopaemSuggestions && rec.jwopaemSuggestions.length > 0 && (
+            {/* {rec.deckSize === 6 && rec.jwopaemSuggestions && rec.jwopaemSuggestions.length > 0 && (
               <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
                 <input type="checkbox" name={`jwopaem-suggest-${idx}`} />
                 <div className="collapse-title text-sm font-semibold">줘팸터 추천 사도</div>
@@ -294,7 +289,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                     ))}
                   </div>
                   {/* 선택된 사도 상세 정보 */}
-                  {selectedSuggestions[idx] &&
+            {/* {selectedSuggestions[idx] &&
                     (() => {
                       const selected = rec.jwopaemSuggestions.find(
                         (s) => s.apostle.id === selectedSuggestions[idx],
@@ -331,10 +326,10 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                           </div>
                         </div>
                       ) : null;
-                    })()}
-                </div>
-              </div>
-            )}
+                    })()} */}
+            {/* </div> */}
+            {/* </div> */}
+            {/* // )}   */}
           </div>
         </div>
       ))}

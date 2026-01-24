@@ -1,6 +1,4 @@
 {
-  "version": "2.5.0",
-  "lastUpdated": "2025-12-27",
   "ratings": {
     "a001": {
       "name": "다야",
@@ -27,7 +25,8 @@
       "aside": {
         "importance": "선택",
         "score": 5
-      }
+      },
+      "reason": "저학년으로 디버프 면역 & 본인 HP 회복, 고학년 스킬의 경우 피해량 만큼 회복"
     },
     "a004": {
       "name": "마에스트로 2호",
@@ -360,7 +359,7 @@
     "a040": {
       "name": "아야",
       "engName": "Aya",
-      "baseScore": 70,
+      "baseScore": 68,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -586,10 +585,16 @@
       "name": "이드",
       "engName": "Ed",
       "baseScore": 68,
+      "pvp": {
+        "score": 5,
+        "aside": "권장",
+        "reason": "아군 사도가 죽기전 보호막으로 생존 시켜줌"
+      },
       "aside": {
         "importance": "선택",
         "score": 3
-      }
+      },
+      "reason": "서브 탱커 역할, 아군 사도 보호막 부여"
     },
     "a066": {
       "name": "슈팡",
@@ -684,11 +689,17 @@
     "a076": {
       "name": "바롱",
       "engName": "Barong",
-      "baseScore": 65,
+      "baseScore": 60,
+      "pvp": {
+        "score": 15,
+        "aside": "권장",
+        "reason": "어그로 & 가장 뒤에 있는 적을 공격하는 암살자 포지션"
+      },
       "aside": {
         "importance": "선택",
         "score": 3
-      }
+      },
+      "reason": "줘팸터에서 잘 활용되는 사도, 9인 덱에서도 활용은 가능하나 우선 순위 낮음"
     },
     "a077": {
       "name": "바리에",
@@ -756,7 +767,7 @@
     "a083": {
       "name": "그윈",
       "engName": "Guin",
-      "baseScore": 50,
+      "baseScore": 53,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -792,7 +803,7 @@
     "a087": {
       "name": "오팔",
       "engName": "Opal",
-      "baseScore": 55,
+      "baseScore": 58,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -904,7 +915,7 @@
     "a099": {
       "name": "디아나(왕년)",
       "engName": "DianaYester",
-      "baseScore": 85,
+      "baseScore": 80,
       "aside": {
         "importance": "권장",
         "score": 5
@@ -963,10 +974,16 @@
       "name": "시저",
       "engName": "Scizor",
       "baseScore": 60,
+      "pvp": {
+        "score": 10,
+        "aside": "권장",
+        "reason": "상대 고학년 쿨타임 증가 & 배치한 위치의 우측 사도 고학년 쿨타임 감소"
+      },
       "aside": {
         "importance": "선택",
         "score": 3
-      }
+      },
+      "reason": "줘팸터에서 상대 고학년의 쿨타임을 증가시키고, 배치한 위치의 앞의 전열 사도의 고학년 쿨타임을 감소시키는 효과 있음"
     },
     "a106": {
       "name": "뮤트",
@@ -984,7 +1001,7 @@
     "a107": {
       "name": "우로스",
       "engName": "Uros",
-      "baseScore": 85,
+      "baseScore": 80,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -993,7 +1010,7 @@
     "a107_Cool": {
       "name": "우로스",
       "engName": "Uros",
-      "baseScore": 85,
+      "baseScore": 80,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -1002,7 +1019,7 @@
     "a107_Gloomy": {
       "name": "우로스",
       "engName": "Uros",
-      "baseScore": 85,
+      "baseScore": 80,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -1011,7 +1028,7 @@
     "a107_Naive": {
       "name": "우로스",
       "engName": "Uros",
-      "baseScore": 85,
+      "baseScore": 80,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -1020,7 +1037,7 @@
     "a107_Jolly": {
       "name": "우로스",
       "engName": "Uros",
-      "baseScore": 85,
+      "baseScore": 80,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -1080,15 +1097,26 @@
       "name": "아일라",
       "engName": "Ayla",
       "baseScore": 67,
+      "pvp": {
+        "score": 5,
+        "aside": "권장",
+        "reason": "보호막, 화상, 기절 등 유지력 증가. 어사이드 2성시 고학년 즉시 발동"
+      },
       "aside": {
         "importance": "선택",
         "score": 5
-      }
+      },
+      "reason": "모든 사도 보호막과 피해감소/기절 등 파티 유지력에 도움 되는 스킬 보유"
     },
     "a114": {
       "name": "요미",
       "engName": "Yomi",
       "baseScore": 68,
+      "pvp": {
+        "score": 7,
+        "aside": "선택",
+        "reason": "전중열 피감 장판 + 적 SP 감소 + 아군 SP 회복량 증가"
+      },
       "aside": {
         "importance": "선택",
         "score": 5
@@ -1097,7 +1125,7 @@
     "a115": {
       "name": "셰이디(역전)",
       "engName": "ShadyTwisted",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
         "importance": "선택",
         "score": 5
