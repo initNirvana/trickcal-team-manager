@@ -1,5 +1,8 @@
-import { Activity, useState, useEffect } from 'react';
+import { Activity, useState, useEffect, useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
+import type { Skill } from '@/types/skill';
+import type { Aside } from '@/types/aside';
+import type { SlotNumber } from '@/types/branded';
 import { useDeckStore } from '../../stores/deckStore';
 import DeckGrid from './DeckGrid';
 import DeckAnalysisPanel from './Analysis/AnalysisPanel';
@@ -10,8 +13,8 @@ import DeckRecommendationGuide from './ApostleGuide';
 
 interface DeckSimulatorProps {
   apostles: Apostle[];
-  skillsData?: any;
-  asidesData?: any;
+  skillsData?: Skill[];
+  asidesData?: Aside[];
 }
 
 const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps) => {
@@ -24,7 +27,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   const showDeckGuide = useDeckStore((state) => state.showDeckGuide);
 
   // UI 관련 로컬 상태 (useState 유지)
-  const [selectedSlot, setSelectedSlot] = useState<number | null>(null);
+  const [selectedSlot, setSelectedSlot] = useState<SlotNumber | null>(null);
   const [showSelector, setShowSelector] = useState(false);
 
   const [gameMode, setGameMode] = useState<'pve' | 'pvp'>('pve');
@@ -45,7 +48,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
   }, [apostles, hydrateDeck]);
 
   // 액션 핸들러
-  const handleSlotClick = (slotNumber: number) => {
+  const handleSlotClick = (slotNumber: SlotNumber) => {
     setSelectedSlot(slotNumber);
     setShowSelector(true);
   };
@@ -69,9 +72,10 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
     resetAll();
   };
 
-  // 파생 상태 (계산된 값)
-  const filledDeck = deck.filter((a) => a !== undefined) as Apostle[];
-  const analysis = analyzeDeck(filledDeck);
+  // ✅ 파생 상태 (메모이제이션으로 불필요한 재계산 방지)
+  const filledDeck = useMemo(() => deck.filter((a) => a !== undefined) as Apostle[], [deck]);
+
+  const analysis = useMemo(() => analyzeDeck(filledDeck), [filledDeck]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 p-4">

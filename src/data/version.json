@@ -1,0 +1,30 @@
+{
+  "projectVersion": "202601.24.-b85f5f2d",
+  "lastUpdated": "2026-01-24T12:10:37.511Z",
+  "files": {
+    "apostles.json": {
+      "hash": "a66d58d0",
+      "updated": "2026-01-21T11:34:08.901Z"
+    },
+    "apostles-ratings.json": {
+      "hash": "d56508b0",
+      "updated": "2026-01-24T12:10:37.511Z"
+    },
+    "skills.json": {
+      "hash": "c59e6330",
+      "updated": "2026-01-21T11:25:18.594Z"
+    },
+    "asides.json": {
+      "hash": "00aa2553",
+      "updated": "2026-01-21T11:25:18.594Z"
+    },
+    "spells.json": {
+      "hash": "74ef7411",
+      "updated": "2026-01-21T11:25:18.594Z"
+    },
+    "artifacts.json": {
+      "hash": "ab4ded47",
+      "updated": "2026-01-21T11:25:18.594Z"
+    }
+  }
+}

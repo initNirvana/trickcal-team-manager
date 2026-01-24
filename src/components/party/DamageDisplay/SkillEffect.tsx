@@ -1,25 +1,20 @@
 import { useMemo, useCallback } from 'react';
 import type { Apostle } from '@/types/apostle';
+import type { Skill } from '@/types/skill';
+import type { SkillLevel } from '@/types/branded';
+import { trySkillLevel, toSkillLevel } from '@/types/branded';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import { calculateSkillDamageReduction } from '@/utils/damageProcessor';
+import { SKILL_LEVELS } from '@/constants/gameConstants';
 
-type SkillLevels = Record<string, number | string | undefined>;
+type SkillLevels = Record<string, SkillLevel | undefined>;
 
 interface SkillEffectDisplayProps {
   apostles: Apostle[];
-  skillsData?: any;
+  skillsData?: Skill[];
   skillLevels?: SkillLevels;
-  onSkillLevelChange?: (apostleId: string, newLevel: number) => void;
+  onSkillLevelChange?: (apostleId: string, newLevel: SkillLevel) => void;
 }
-
-const MIN_LEVEL = 1;
-const MAX_LEVEL = 13;
-
-const toValidLevel = (v: unknown, fallback = 1) => {
-  const n = typeof v === 'string' ? Number(v) : (v as number);
-  if (!Number.isFinite(n)) return fallback;
-  return Math.max(MIN_LEVEL, Math.min(MAX_LEVEL, Math.floor(n)));
-};
 
 const SkillEffectDisplay = ({
   apostles,
@@ -42,8 +37,12 @@ const SkillEffectDisplay = ({
     (apostleId: string, delta: number) => {
       if (!onSkillLevelChange) return;
 
-      const currentLevel = toValidLevel(skillLevels[apostleId], 1);
-      const newLevel = Math.max(MIN_LEVEL, Math.min(MAX_LEVEL, currentLevel + delta));
+      const currentLevel = trySkillLevel(skillLevels[apostleId], toSkillLevel(SKILL_LEVELS.MIN));
+      const newLevelNum = Math.max(
+        SKILL_LEVELS.MIN,
+        Math.min(SKILL_LEVELS.MAX, (currentLevel as number) + delta),
+      );
+      const newLevel = toSkillLevel(newLevelNum);
       if (newLevel !== currentLevel) onSkillLevelChange(apostleId, newLevel);
     },
     [onSkillLevelChange, skillLevels],
@@ -73,7 +72,7 @@ const SkillEffectDisplay = ({
               const canChange = Boolean(onSkillLevelChange && apostleId);
 
               const currentLevel = apostleId
-                ? toValidLevel(skillLevels[apostleId], item.skillLevel)
+                ? (trySkillLevel(skillLevels[apostleId], toSkillLevel(item.skillLevel)) as number)
                 : item.skillLevel;
 
               return (
@@ -92,7 +91,7 @@ const SkillEffectDisplay = ({
                       type="button"
                       className="btn btn-sm"
                       onClick={() => apostleId && handleLevelChange(apostleId, -1)}
-                      disabled={!canChange || currentLevel <= MIN_LEVEL}
+                      disabled={!canChange || currentLevel <= SKILL_LEVELS.MIN}
                       aria-label={`${item.apostleName} 스킬 레벨 -1`}
                     >
                       <HiMinus />
@@ -102,7 +101,7 @@ const SkillEffectDisplay = ({
                       type="button"
                       className="btn btn-sm"
                       onClick={() => apostleId && handleLevelChange(apostleId, 1)}
-                      disabled={!canChange || currentLevel >= MAX_LEVEL}
+                      disabled={!canChange || currentLevel >= SKILL_LEVELS.MAX}
                       aria-label={`${item.apostleName} 스킬 레벨 +1`}
                     >
                       <HiPlus />

@@ -96,7 +96,9 @@ export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult 
 };
 
 // 추천 사도 가져오기
+
 export const getRecommendedApostles = (deckType: string, mode: 'pve' | 'pvp'): DeckGuide | null => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const deck = (deckGuides as any).decks?.[deckType] || (deckGuides as any).decks?.['순수_6속'];
   if (!deck) return null;
 

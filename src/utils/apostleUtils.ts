@@ -1,4 +1,5 @@
 import { Apostle, Personality, Position } from '@/types/apostle';
+import type { SlotNumber } from '@/types/branded';
 
 /**
  * 사도의 성격 유형을 한국어로 변환합니다.
@@ -58,10 +59,10 @@ export function getPositionsKorean(apostle: Apostle): string[] {
 /**
  * 사도가 특정 슬롯에 배치될 수 있는지 확인합니다.
  * @param apostle: Apostle 사도 객체
- * @param slotNumber: number 슬롯 번호
+ * @param slotNumber: SlotNumber 슬롯 번호 (1-9)
  * @returns {boolean} 배치 가능 여부
  */
-export function isValidPosition(apostle: Apostle, slotNumber: number): boolean {
+export function isValidPosition(apostle: Apostle, slotNumber: SlotNumber): boolean {
   const slotPosition = getSlotPosition(slotNumber);
   const positions = getPositions(apostle);
   return positions.includes(slotPosition);
@@ -69,10 +70,10 @@ export function isValidPosition(apostle: Apostle, slotNumber: number): boolean {
 
 /**
  * 슬롯 번호에 해당하는 열 위치를 반환합니다.
- * @param slotNumber: number 슬롯 번호
+ * @param slotNumber: SlotNumber 슬롯 번호 (1-9)
  * @returns {Position} 전투 위치
  */
-function getSlotPosition(slotNumber: number): Position {
+function getSlotPosition(slotNumber: SlotNumber): Position {
   const SLOT_POSITIONS = {
     1: 'back',
     2: 'mid',

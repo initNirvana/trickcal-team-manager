@@ -4,10 +4,12 @@ import { analyzeSynergies, Synergy, calculateTotalSynergyBonus } from '@/utils/d
 
 type DeckSize = 6 | 9;
 type ContentMode9 = 'CRASH' | 'FRONTIER';
+type ContentMode6 = 'INVASION' | 'JWOPAEMTEO';
 
 export interface RecommendOptions {
   deckSize: DeckSize;
   mode9?: ContentMode9;
+  mode6?: ContentMode6;
 }
 
 const ROLES = {
@@ -36,11 +38,14 @@ function getAllowedPersonas(a: Apostle): Personality[] | null {
 }
 
 /**
- * 추천 힐러 제안 교체 인터페이스
+ * 힐러/줘팸터 사도 제안 교체 인터페이스
  */
-interface HealerSuggestion {
+interface ApostleSuggestion {
   apostle: Apostle;
   synergySafe: boolean;
+  score: number;
+  reason?: string;
+  aside?: '필수' | '권장' | '선택' | null;
 }
 
 /**
@@ -65,9 +70,9 @@ function isHealer(apostle: Apostle): boolean {
  * 보유 사도 중 추천 힐러 사도 리스트 생성
  * @param deck 현재 덱
  * @param allApostles 전체 보유 사도
- * @returns HealerSuggestion[]
+ * @returns ApostleSuggestion[]
  */
-function suggestAvailableHealers(deck: Apostle[], allApostles: Apostle[]): HealerSuggestion[] {
+function suggestAvailableHealers(deck: Apostle[], allApostles: Apostle[]): ApostleSuggestion[] {
   const deckIds = new Set(deck.map((a) => a.id));
   const deckPersonas = new Set(deck.map((a) => a.persona));
 
@@ -76,15 +81,17 @@ function suggestAvailableHealers(deck: Apostle[], allApostles: Apostle[]): Heale
     .map((a) => ({
       apostle: a,
       synergySafe: deckPersonas.has(a.persona),
+      score: a.baseScore ?? 0, // 기본 점수 사용
+      reason: a.reason, // 공통 사유 사용
     }))
     .sort((a, b) => {
       // 1순위: 덱 성격군 내
       if (a.synergySafe && !b.synergySafe) return -1;
       if (!a.synergySafe && b.synergySafe) return 1;
       // 2순위: 점수 높은 순
-      return (b.apostle.baseScore ?? 0) - (a.apostle.baseScore ?? 0);
+      return b.score - a.score;
     })
-    .slice(0, 5); // 상위 5개
+    .slice(0, 5);
 
   return availableHealers;
 }
@@ -126,7 +133,59 @@ export interface RecommendedDeck {
   synergies: Synergy[];
   roleBalance: { tanker: number; attacker: number; supporter: number };
   hasHealer: boolean;
-  healerSuggestions?: HealerSuggestion[];
+  healerSuggestions?: ApostleSuggestion[]; // 힐러/보호막 사도 제안
+  jwopaemSuggestions?: ApostleSuggestion[]; // 줘팸터 사도 제안
+}
+
+/**
+ * 줘팸터(PVP)/힐러 추천 로직 일원화
+ * @param deck Apostle[]
+ * @param positionMap Record<string, Position>
+ * @param myApostles Apostle[]
+ * @param deckSize DeckSize
+ * @param synergyScoreInput number (선택적)
+ * @returns RecommendedDeck
+ */
+function createRecommendedDeckResult(
+  deck: Apostle[],
+  positionMap: Record<string, Position>,
+  myApostles: Apostle[],
+  deckSize: DeckSize,
+  synergyScoreInput?: number,
+): RecommendedDeck {
+  // 1. 점수 및 시너지 계산
+  const baseScore = deck.reduce((sum, a) => {
+    const pos = positionMap[a.id];
+    return sum + getEffectiveBaseScore(a, deckSize, pos);
+  }, 0);
+
+  const synergies = analyzeSynergies(deck);
+  // synergyScore가 주어지지 않으면 계산, 주어지면 사용 (9인덱 등 유연성 확보)
+  const synergyScore = synergyScoreInput ?? calculateSynergyScore(deck);
+
+  // 2. 부가 정보 계산
+  const hasHealerBool = hasHealer(deck);
+  const roleBalance = getRoleBalance(deck);
+
+  // 3. 추천(Suggestion) 로직 통합
+  // 힐러가 없으면 힐러 추천, 있으면 undefined
+  const healerSuggestions = hasHealerBool ? undefined : suggestAvailableHealers(deck, myApostles);
+  // 줘팸터(PVP) 사도 추천
+  const jwopaemSuggestions = suggestAvailableAlternatives(deck, myApostles);
+
+  return {
+    deck,
+    placement: positionMap,
+    deckSize,
+    totalScore: baseScore + synergyScore,
+    baseScore,
+    synergyScore,
+    synergies,
+    roleBalance,
+    hasHealer: hasHealerBool,
+    healerSuggestions,
+    jwopaemSuggestions,
+  };
 }
 
 /**
@@ -144,27 +203,101 @@ const getSynergyScore9 = (mode9: ContentMode9 | undefined) => {
 };
 
 /**
- * 6인덱/9인덱 변동 점수 반영
- * @param a Apostle
+ * 줘팸터(PVP) 보너스 점수 반영
+ * @param apostle Apostle
+ * @param options RecommendOptions (6인덱/9인덱 모드 옵션)
+ * @returns number
+ */
+function getPvpBonusScore(apostle: Apostle, options?: RecommendOptions): number {
+  const isPvpMode = options?.deckSize === 6 && options?.mode6 === 'JWOPAEMTEO';
+  if (isPvpMode && apostle.pvp?.score) {
+    return apostle.pvp.score;
+  }
+  return 0;
+}
+/**
+ * 6인덱/9인덱 변동 점수 반영 (줘팸터 보너스 점수 포함)
+ * @param apostle Apostle
  * @param size 덱 크기 (6 or 9)
  * @param position 배치 열 선택 (전열/중열/후열, 선택적)
- * @returns
+ * @param options RecommendOptions (6인덱/9인덱 모드 옵션)
+ * @returns number
  */
-function getEffectiveBaseScore(a: Apostle, size: DeckSize, position?: Position): number {
-  let baseScore = a.baseScore ?? 0;
-  const sizeScore = a.scoreBySize as { size6?: number; size9?: number } | undefined;
+function getEffectiveBaseScore(
+  apostle: Apostle,
+  decksize: DeckSize,
+  targetPos?: Position,
+  options?: RecommendOptions,
+): number {
+  let baseScore = apostle.baseScore ?? 0;
+  // 1. 덱 크기 보정
+  const sizeScore = apostle.scoreBySize as { size6?: number; size9?: number } | undefined;
   if (sizeScore) {
-    baseScore = size === 6 ? (sizeScore.size6 ?? baseScore) : (sizeScore.size9 ?? baseScore);
+    baseScore = decksize === 6 ? (sizeScore.size6 ?? baseScore) : (sizeScore.size9 ?? baseScore);
   }
 
-  // position이 지정된 경우만 positionScore 적용
-  if (!position) return baseScore;
+  // 2. PVP 보정 (분리된 함수 호출)
+  baseScore += getPvpBonusScore(apostle, options);
+  // 3. 포지션 보정
+  if (targetPos && apostle.positionScore) {
+    baseScore = (apostle.positionScore as Record<Position, number>)[targetPos] ?? baseScore;
+  }
 
-  const positionScore = a.positionScore as
-    | { front?: number; mid?: number; back?: number }
-    | undefined;
-  if (!positionScore) return baseScore;
-  return positionScore[position] ?? baseScore;
+  return baseScore;
+}
+
+/**
+ * 보유한 사도 중 줘팸터 추천 사도 리스트를 생성합니다.
+ *
+ * @param deck 현재 구성된 덱 (6명 or 9명)
+ * @param allApostles 전체 보유 사도 리스트
+ * @param positionMap 현재 덱의 사도별 배치 위치 정보 (Record<apostleId, Position>)
+ * @param options 추천 옵션 (모드, 덱 크기 등)
+ * @returns Record<string, ApostleSuggestion[]> (key: 원본 사도 ID, value: 대체 후보 리스트)
+ */
+function suggestAvailableAlternatives(
+  deck: Apostle[],
+  allApostles: Apostle[],
+): ApostleSuggestion[] {
+  const deckIds = new Set(deck.map((a) => a.id));
+  const deckPersonas = new Set(deck.map((a) => a.persona));
+  const recommendOptions = { deckSize: 6, mode6: 'JWOPAEMTEO' } as RecommendOptions;
+
+  const candidates = allApostles
+    .filter((candidate) => !deckIds.has(candidate.id))
+    .map((candidate) => {
+      const positions = Array.isArray(candidate.position)
+        ? candidate.position
+        : [candidate.position];
+      const bestPos = positions[0] as Position;
+      const score = getEffectiveBaseScore(candidate, 6, bestPos, recommendOptions);
+
+      /**
+       * 활성화된 시너지 내에서 대체 사도 확인
+       * PVP 데이터가 있으면 우선 적용
+       */
+      const synergySafe = deckPersonas.has(candidate.persona);
+      let reason = candidate.reason;
+      let asideRec = candidate.aside?.importance;
+      if (candidate.pvp) {
+        if (candidate.pvp.reason) reason = candidate.pvp.reason;
+        if (candidate.pvp.aside) asideRec = candidate.pvp.aside as '필수' | '권장' | '선택';
+      }
+
+      return {
+        apostle: candidate,
+        synergySafe,
+        score,
+        reason,
+        aside: asideRec,
+      } as ApostleSuggestion;
+    });
+
+  // 2. 상위 5명 사도 추출 (50점 이상만)
+  return candidates
+    .filter((c) => c.score > 50 && c.synergySafe)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
 }
 
 function calculateSynergyScore(apostles: Apostle[]): number {
@@ -186,7 +319,12 @@ function calculateSynergyScore(apostles: Apostle[]): number {
   return 0;
 }
 
-function applyBestPersonaForSynergy(deck: Apostle[]): Apostle[] {
+/**
+ * 공명성격 사도 성격 시너지 최적화
+ * @param deck
+ * @returns
+ */
+function applyBestPersona(deck: Apostle[]): Apostle[] {
   const targets = deck
     .map((a, idx) => ({ a, idx, allowed: getAllowedPersonas(a) }))
     .filter((x): x is { a: Apostle; idx: number; allowed: Personality[] } => !!x.allowed);
@@ -515,7 +653,7 @@ function tryBuildDeckWithPersonalities(
 /**
  * 패턴 기반 6인 덱 생성
  */
-function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
+function buildSixDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
   if (myApostles.length < 6) return [];
 
   const results: RecommendedDeck[] = [];
@@ -523,6 +661,48 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
   const personalities = Array.from(personalityGroups.keys());
   const requirements = DECK_CONFIG[6].req;
   const reqBalance = DECK_CONFIG[6].balance;
+
+  const processAndAddDeck = (
+    deckResult: { deck: Apostle[]; positionMap: Record<string, Position> } | null,
+    targetSynergyScore: number,
+    balancingCandidates: Apostle[], // 밸런싱에 사용할 사도 풀 (4+2는 시너지 깨짐 방지 위해 제한 필요)
+  ) => {
+    if (!deckResult) return;
+
+    // 1. 역할 밸런스 조정 (탱커/서포터 부족 시 교체 시도)
+    const balancedDeck = adjustForRoleBalance(
+      [...deckResult.deck],
+      balancingCandidates,
+      6,
+      deckResult.positionMap,
+    );
+
+    // 2. 최적의 성격 적용 (우로스 등)
+    const optimizedDeck = applyBestPersona(balancedDeck);
+
+    // 3. 최종 역할군 검사 (Hard Constraint)
+    const roles = getRoleBalance(optimizedDeck);
+    if (
+      roles.tanker >= reqBalance[ROLES.TANKER] &&
+      roles.supporter >= reqBalance[ROLES.SUPPORTER]
+    ) {
+      // 4. 최종 시너지 점수 확인
+      const currentSynergyScore = calculateSynergyScore(optimizedDeck);
+
+      // 5. 목표 시너지와 일치하면 결과 저장
+      if (currentSynergyScore === targetSynergyScore) {
+        results.push(
+          createRecommendedDeckResult(
+            optimizedDeck,
+            deckResult.positionMap,
+            myApostles, // 줘팸터 추천 등을 위해 전체 목록 필요
+            6,
+            currentSynergyScore,
+          ),
+        );
+      }
+    }
+  };
 
   // 1순위: 4+2 패턴
   for (const p1 of personalities) {
@@ -542,45 +722,9 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
         6,
       );
 
-      if (deck) {
-        // 성격 시너지 유지되도록 후보군 제한
-        const synergyCandidates = myApostles.filter((a) => a.persona === p1 || a.persona === p2);
-
-        const balancedDeck = adjustForRoleBalance(
-          [...deck.deck],
-          synergyCandidates,
-          6,
-          deck.positionMap,
-        );
-        const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
-        const roles = getRoleBalance(balancedDeckWithBestPersona);
-
-        if (
-          roles.tanker >= reqBalance[ROLES.TANKER] &&
-          roles.supporter >= reqBalance[ROLES.SUPPORTER]
-        ) {
-          const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
-          if (synergyScore === SYNERGY_SCORES.TYPE_4_2) {
-            // 포지션 정보를 고려한 점수 계산
-            const baseScore = balancedDeckWithBestPersona.reduce((sum, a) => {
-              const pos = deck.positionMap[a.id];
-              return sum + getEffectiveBaseScore(a, 6, pos);
-            }, 0);
-
-            results.push({
-              deck: balancedDeckWithBestPersona,
-              placement: deck.positionMap,
-              deckSize: 6,
-              totalScore: baseScore + synergyScore,
-              baseScore,
-              synergyScore,
-              synergies: analyzeSynergies(balancedDeckWithBestPersona),
-              roleBalance: roles,
-              hasHealer: hasHealer(balancedDeckWithBestPersona),
-            });
-          }
-        }
-      }
+      // 4+2는 시너지가 깨지지 않도록, 해당 성격(p1, p2)을 가진 사도들 중에서만 교체 멤버를 찾음
+      const synergyCandidates = myApostles.filter((a) => a.persona === p1 || a.persona === p2);
+      processAndAddDeck(deck, SYNERGY_SCORES.TYPE_4_2, synergyCandidates);
     }
   }
 
@@ -592,11 +736,9 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
         const p2 = personalities[j];
         const p3 = personalities[k];
 
-        const g1 = personalityGroups.get(p1) || [];
-        const g2 = personalityGroups.get(p2) || [];
-        const g3 = personalityGroups.get(p3) || [];
-
-        if (g1.length < 2 || g2.length < 2 || g3.length < 2) continue;
+        if ((personalityGroups.get(p1)?.length ?? 0) < 2) continue;
+        if ((personalityGroups.get(p2)?.length ?? 0) < 2) continue;
+        if ((personalityGroups.get(p3)?.length ?? 0) < 2) continue;
 
         const deck = tryBuildDeckWithPersonalities(
           [p1, p2, p3],
@@ -606,41 +748,8 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
           6,
         );
 
-        if (deck) {
-          const balancedDeck = adjustForRoleBalance(
-            [...deck.deck],
-            myApostles,
-            6,
-            deck.positionMap,
-          );
-          const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
-          const roles = getRoleBalance(balancedDeckWithBestPersona);
-
-          if (
-            roles.tanker >= reqBalance[ROLES.TANKER] &&
-            roles.supporter >= reqBalance[ROLES.SUPPORTER]
-          ) {
-            const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
-            if (synergyScore === SYNERGY_SCORES.TYPE_2_2_2) {
-              // 포지션 정보를 고려한 점수 계산
-              const baseScore = balancedDeckWithBestPersona.reduce((sum, a) => {
-                const pos = deck.positionMap[a.id];
-                return sum + getEffectiveBaseScore(a, 6, pos);
-              }, 0);
-              results.push({
-                deck: balancedDeckWithBestPersona,
-                placement: deck.positionMap,
-                deckSize: 6,
-                totalScore: baseScore + synergyScore,
-                baseScore,
-                synergyScore,
-                synergies: analyzeSynergies(balancedDeckWithBestPersona),
-                roleBalance: roles,
-                hasHealer: hasHealer(balancedDeckWithBestPersona),
-              });
-            }
-          }
-        }
+        // 2+2+2는 이미 다양한 성격이 섞여 있으므로 전체 사도 풀에서 교체 시도
+        processAndAddDeck(deck, SYNERGY_SCORES.TYPE_2_2_2, myApostles);
       }
     }
   }
@@ -658,39 +767,9 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
       6,
     );
 
-    if (deck) {
-      const balancedDeck = adjustForRoleBalance([...deck.deck], myApostles, 6, deck.positionMap);
-      const balancedDeckWithBestPersona = applyBestPersonaForSynergy(balancedDeck);
-      const roles = getRoleBalance(balancedDeckWithBestPersona);
-
-      if (
-        roles.tanker >= reqBalance[ROLES.TANKER] &&
-        roles.supporter >= reqBalance[ROLES.SUPPORTER]
-      ) {
-        const synergyScore = calculateSynergyScore(balancedDeckWithBestPersona);
-        if (synergyScore === SYNERGY_SCORES.TYPE_6) {
-          // 포지션 정보를 고려한 점수 계산
-          const baseScore = balancedDeckWithBestPersona.reduce((sum, a) => {
-            const pos = deck.positionMap[a.id];
-            return sum + getEffectiveBaseScore(a, 6, pos);
-          }, 0);
-          results.push({
-            deck: balancedDeckWithBestPersona,
-            placement: deck.positionMap,
-            deckSize: 6,
-            totalScore: baseScore + synergyScore,
-            baseScore,
-            synergyScore,
-            synergies: analyzeSynergies(balancedDeckWithBestPersona),
-            roleBalance: roles,
-            hasHealer: hasHealer(balancedDeckWithBestPersona),
-          });
-        }
-      }
-    }
+    processAndAddDeck(deck, SYNERGY_SCORES.TYPE_6, myApostles);
   }
 
-  // 중복 제거
   const uniqueResults = new Map<string, RecommendedDeck>();
   results.forEach((result) => {
     const deckKey = result.deck
@@ -705,74 +784,104 @@ function buildSixPersonDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[]
   return Array.from(uniqueResults.values()).sort((a, b) => b.totalScore - a.totalScore);
 }
 
+function processGreedyAttempt(
+  sortedCandidates: Apostle[],
+  skipNames: Set<string>,
+  size: DeckSize,
+): { deck: Apostle[]; placement: Record<string, Position> } | null {
+  const deckResult = selectApostlesGreedy(sortedCandidates, DECK_CONFIG[size].req, skipNames, size);
+  const initialDeck = deckResult.deck;
+  const placement = deckResult.placement;
+
+  if (initialDeck.length !== size) return null;
+
+  // 제외 사도 필터링
+  const candidatesForBalancing = sortedCandidates.filter((a) => !skipNames.has(a.engName));
+
+  // 역할 밸런스 조정
+  const balancedDeck = adjustForRoleBalance(
+    initialDeck,
+    candidatesForBalancing, // [변경] 필터링된 후보군 사용
+    size,
+    placement,
+  );
+
+  // 공명 성격 최적화
+  const finalDeck = applyBestPersona(balancedDeck);
+
+  // 덱 내 필수 역할 검증
+  const finalRoles = getRoleBalance(finalDeck);
+  const reqBalance = DECK_CONFIG[size].balance;
+
+  if (
+    finalRoles.tanker < reqBalance[ROLES.TANKER] ||
+    finalRoles.supporter < reqBalance[ROLES.SUPPORTER]
+  ) {
+    return null;
+  }
+
+  return { deck: finalDeck, placement };
+}
+
+/**
+ * 덱 빌더 메인 함수
+ * 점수 기준 정렬 후, 하나씩 제외하여 덱 생성
+ * @param myApostles
+ * @param size
+ * @param maxAttempts
+ * @param getSynergyScore
+ * @returns
+ */
 function buildDeck(
   myApostles: Apostle[],
   size: DeckSize,
   maxAttempts: number,
   getSynergyScore: (deck: Apostle[]) => number,
 ): RecommendedDeck[] {
-  if (!myApostles || myApostles.length === 0) return [];
-  if (myApostles.length < size) return [];
+  // 예외 처리
+  if (!myApostles || myApostles.length < size) return [];
 
   const results: RecommendedDeck[] = [];
   const usedCombinations = new Set<string>();
+
+  // 점수 기준 정렬 (모든 시도에서 공통으로 사용)
   const sortedApostles = [...myApostles].sort(
     (a, b) => getEffectiveBaseScore(b, size) - getEffectiveBaseScore(a, size),
   );
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const skipNames = new Set<string>();
-
     if (attempt > 0) {
       sortedApostles.slice(0, attempt).forEach((a) => skipNames.add(a.engName));
     }
 
-    const deckResult = selectApostlesGreedy(sortedApostles, DECK_CONFIG[size].req, skipNames, size);
-    const initialDeck = deckResult.deck;
-    const positionMap = deckResult.placement;
-    if (initialDeck.length !== size) continue;
+    // 2. 단일 덱 생성 시도 (분리된 함수 호출)
+    const attemptResult = processGreedyAttempt(sortedApostles, skipNames, size);
 
-    const finalDeck = adjustForRoleBalance(initialDeck, sortedApostles, size, positionMap);
-    const finalDeckWithBestPersona = applyBestPersonaForSynergy(finalDeck);
-    const finalRoles = getRoleBalance(finalDeckWithBestPersona);
-    const reqBalance = DECK_CONFIG[size].balance;
-    if (
-      finalRoles.tanker < reqBalance[ROLES.TANKER] ||
-      finalRoles.supporter < reqBalance[ROLES.SUPPORTER]
-    ) {
-      continue;
-    }
+    // 생성 실패 시 다음 시도로 넘어감
+    if (!attemptResult) continue;
 
-    const deckKey = finalDeckWithBestPersona
+    // 3. 중복 조합 체크 (Deck Key 생성)
+    const deckKey = attemptResult.deck
       .map((a) => a.id)
       .sort()
       .join(',');
     if (usedCombinations.has(deckKey)) continue;
     usedCombinations.add(deckKey);
 
-    // 포지션 정보를 고려한 점수 계산
-    const baseScore = finalDeckWithBestPersona.reduce((sum, a) => {
-      const pos = positionMap[a.id];
-      return sum + getEffectiveBaseScore(a, size, pos);
-    }, 0);
-    const synergyScore = getSynergyScore(finalDeckWithBestPersona);
+    // 4. 시너지 점수 계산 (주입받은 함수 사용 - 6인/9인 대응)
+    const synergyScore = getSynergyScore(attemptResult.deck);
 
-    const healerSuggestions = hasHealer(finalDeck)
-      ? undefined
-      : suggestAvailableHealers(finalDeck, myApostles);
-
-    results.push({
-      deck: finalDeckWithBestPersona,
-      placement: positionMap,
-      deckSize: size,
-      totalScore: baseScore + synergyScore,
-      baseScore,
-      synergyScore,
-      synergies: analyzeSynergies(finalDeckWithBestPersona),
-      roleBalance: finalRoles,
-      hasHealer: hasHealer(finalDeckWithBestPersona),
-      healerSuggestions: healerSuggestions,
-    });
+    // 5. 결과 객체 생성 및 저장
+    results.push(
+      createRecommendedDeckResult(
+        attemptResult.deck,
+        attemptResult.placement,
+        myApostles,
+        size,
+        synergyScore,
+      ),
+    );
   }
 
   return results.sort((a, b) => b.totalScore - a.totalScore);
@@ -785,18 +894,21 @@ export function generateRecommendations(
   const results: RecommendedDeck[] = [];
 
   // 9인
-  if (!options?.deckSize || options.deckSize === 9) {
-    const score9 = getSynergyScore9(options?.mode9);
-    results.push(...buildDeck(myApostles, 9, 3, score9));
-  }
+  const score9 = getSynergyScore9(options?.mode9);
+  results.push(...buildDeck(myApostles, 9, 2, score9));
+  // 6인
+  results.push(...buildSixDeckWithPattern(myApostles));
+  results.push(...buildDeck(myApostles, 6, 2, calculateSynergyScore));
 
-  // 6인 (시너지 조합 우선)
-  if (!options?.deckSize || options.deckSize === 6) {
-    results.push(...buildSixPersonDeckWithPattern(myApostles));
-    results.push(...buildDeck(myApostles, 6, 2, calculateSynergyScore));
-  }
+  return duplicateAndSortResults(results);
+}
 
-  // 최종 중복 제거 및 정렬
+/**
+ * 중복된 추천 덱 제거 후 상위 6개 반환
+ * @param results
+ * @returns
+ */
+function duplicateAndSortResults(results: RecommendedDeck[]): RecommendedDeck[] {
   const uniqueResults = new Map<string, RecommendedDeck>();
   results.forEach((result) => {
     const deckKey = result.deck
@@ -811,5 +923,5 @@ export function generateRecommendations(
 
   return Array.from(uniqueResults.values())
     .sort((a, b) => b.totalScore - a.totalScore)
-    .slice(0, 12);
+    .slice(0, 6);
 }

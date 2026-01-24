@@ -1,7 +1,9 @@
 node_modules
 .DS_Store
-dist
-dist-ssr
-*.local
 .vscode
 .eslintcache
+node_modules
+dist
+dist-ssr
+dev-dist
+*.local

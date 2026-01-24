@@ -1,22 +1,26 @@
 import type { Apostle, Personality } from '../types/apostle';
+import { SYNERGY_TIER_CONFIG } from '@/constants/gameConstants';
 
-type PersonalityCountMap = Record<Personality, number>;
+type PersonalityCountMap = {
+  Jolly: number;
+  Mad: number;
+  Naive: number;
+  Gloomy: number;
+  Cool: number;
+};
 
 /**
  * 성격 시너지 효과 정의
- * 성격 사도 수에 따른 시너지 레벨과 보너스
- * - count: 필요한 사도 수
- * - level: 시너지 레벨
- * - hp: 최대 HP 보너스 (%)
- * - damage: 피해량 보너스 (%)
  */
-export const SYNERGY_TIERS = [
-  { count: 9, level: 5, hp: 200, damage: 200, label: 'Lv.5 (+200%)' },
-  { count: 7, level: 4, hp: 140, damage: 140, label: 'Lv.4 (+140%)' },
-  { count: 6, level: 3, hp: 100, damage: 100, label: 'Lv.3 (+100%)' },
-  { count: 4, level: 2, hp: 55, damage: 55, label: 'Lv.2 (+55%)' },
-  { count: 2, level: 1, hp: 20, damage: 20, label: 'Lv.1 (+20%)' },
-] as const;
+export const SYNERGY_TIERS = Object.entries(SYNERGY_TIER_CONFIG)
+  .map(([countStr, cfg]) => ({ count: Number(countStr), ...cfg }))
+  .sort((a, b) => b.count - a.count) as ReadonlyArray<{
+  count: number;
+  level: number;
+  hp: number;
+  damage: number;
+  label: string;
+}>;
 
 const PERSONALITY_LIST = [
   'Jolly',

@@ -1,5 +1,7 @@
 import type { Apostle } from '../types/apostle';
 import type { AsideTarget, AsideRow } from '../types/aside';
+import type { SkillLevel } from '../types/branded';
+import { trySkillLevel, toSkillLevel } from '../types/branded';
 
 type OneOrArray<T> = T | T[];
 
@@ -88,7 +90,7 @@ export interface AsideEffectResult {
  */
 export function calculateAsideEffects(
   apostles: Apostle[],
-  asidesData: { asides?: AsideRow[] } | undefined,
+  asidesData: AsideRow[] | undefined,
   asideSelection: Record<string, number[]>,
 ): AsideEffectResult {
   const increaseEffects = emptyGroups();
@@ -98,7 +100,7 @@ export function calculateAsideEffects(
   const physicalReductionEffects = emptyGroups();
   const magicalReductionEffects = emptyGroups();
 
-  if (!Array.isArray(asidesData?.asides)) {
+  if (!Array.isArray(asidesData)) {
     return {
       totalIncrease: 0,
       totalReduction: 0,
@@ -116,7 +118,7 @@ export function calculateAsideEffects(
   }
 
   const index = new Map<string, AsideRow>();
-  for (const a of asidesData.asides) index.set(`${a.apostleId}:${a.level}`, a);
+  for (const a of asidesData) index.set(`${a.apostleId}:${a.level}`, a);
 
   let totalIncrease = 0;
   let totalReduction = 0;
@@ -331,27 +333,22 @@ export interface SkillReductionResult {
   details: SkillReductionDetail[];
 }
 
-const toValidLevel = (v: unknown, fallback = 1) => {
-  const n = typeof v === 'string' ? Number(v) : typeof v === 'number' ? v : NaN;
-  return Number.isFinite(n) && n >= 1 ? Math.floor(n) : fallback;
-};
-
-const getReductionAtLevel = (skill: SkillRow, level: number) => {
+const getReductionAtLevel = (skill: SkillRow, level: SkillLevel) => {
   const rows = skill.damage;
   if (!Array.isArray(rows) || rows.length === 0) return 0;
-  const hit = rows.find((r) => r.level === level);
+  const hit = rows.find((r) => r.level === (level as number));
   return hit?.Reduction ?? 0;
 };
 
 export function calculateSkillDamageReduction(
   apostles: Apostle[],
-  skillsData: { skills?: SkillRow[] } | undefined,
-  skillLevels: Record<string, number | string | undefined>,
+  skillsData: SkillRow[] | undefined,
+  skillLevels: Record<string, SkillLevel | undefined>,
 ): SkillReductionResult {
-  if (!Array.isArray(skillsData?.skills)) return { totalReduction: 0, details: [] };
+  if (!Array.isArray(skillsData)) return { totalReduction: 0, details: [] };
 
   const skillsByApostleId = new Map<string, SkillRow[]>();
-  for (const s of skillsData.skills) {
+  for (const s of skillsData) {
     const prev = skillsByApostleId.get(s.apostleId);
     if (prev) prev.push(s);
     else skillsByApostleId.set(s.apostleId, [s]);
@@ -363,7 +360,7 @@ export function calculateSkillDamageReduction(
   for (const apostle of apostles) {
     if (!apostle?.id) continue;
 
-    const currentLevel = toValidLevel(skillLevels[apostle.id], 1);
+    const currentLevel = trySkillLevel(skillLevels[apostle.id], toSkillLevel(1));
     const skills = skillsByApostleId.get(apostle.id) ?? [];
     if (skills.length === 0) continue;
 
@@ -387,7 +384,7 @@ export function calculateSkillDamageReduction(
       apostleName: apostle.name,
       skillName: bestSkill.name,
       skillType: bestSkill.level === 'low' ? '저학년' : '고학년',
-      skillLevel: currentLevel,
+      skillLevel: currentLevel as number,
       reduction: bestReduction,
       effectRange: bestSkill.effectRange,
     });

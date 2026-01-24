@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Ssgoi, SsgoiTransition } from '@ssgoi/react';
 import { film } from '@ssgoi/react/view-transitions';
+import { getNetworkIconPath } from './utils/apostleImages';
 import { useDataLoader } from './hooks/useDataLoader';
 import Layout from './components/layout/Layout';
 import DeckSimulator from './components/party/DeckSimulator';
@@ -11,13 +12,14 @@ const ssgoiConfig = {
 };
 
 function App() {
-  const { apostles, skills, asides, spells, isLoading, error } = useDataLoader();
+  // TODO: spells 추가
+  const { apostles, skills, asides, isLoading, error } = useDataLoader();
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-800 text-white">
+      <div className="flex min-h-screen items-center justify-center bg-white text-black">
         <div className="text-center">
-          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+          <img src={getNetworkIconPath()} alt="로딩 중" className="mb-4 h-16 w-16" />
           <p>데이터 로딩 중...</p>
         </div>
       </div>
@@ -26,7 +28,7 @@ function App() {
 
   if (error) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-800 text-white">
+      <div className="flex min-h-screen items-center justify-center bg-white text-black">
         <div className="text-center">
           <p className="text-red-500">⚠️ {error}</p>
         </div>
@@ -36,7 +38,7 @@ function App() {
 
   if (apostles.length === 0) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-800 text-white">
+      <div className="flex min-h-screen items-center justify-center bg-white text-black">
         <p>사도 데이터를 불러올 수 없습니다</p>
       </div>
     );
@@ -52,7 +54,11 @@ function App() {
             <Ssgoi config={ssgoiConfig}>
               <Layout>
                 <SsgoiTransition id="/">
-                  <DeckSimulator apostles={apostles} skillsData={skills} asidesData={asides} />
+                  <DeckSimulator
+                    apostles={apostles}
+                    skillsData={skills.skills}
+                    asidesData={asides.asides}
+                  />
                 </SsgoiTransition>
               </Layout>
             </Ssgoi>

@@ -1,12 +1,12 @@
 import { useDeckStore } from '@/stores/deckStore';
 import type { Apostle } from '@/types/apostle';
-import type { AsidesData } from '@/types/aside';
+import type { Aside } from '@/types/aside';
 import RecommendedApostlesDisplay from './SettingDisplay/TiersApostlesDisplay';
 import AsideSetting from './SettingDisplay/AsideSetting';
 
 interface DeckSettingProps {
   filledDeck: Apostle[];
-  asidesData?: AsidesData;
+  asidesData?: Aside[];
 }
 
 const DeckSetting = ({ filledDeck, asidesData }: DeckSettingProps) => {

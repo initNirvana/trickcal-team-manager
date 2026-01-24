@@ -1,4 +1,5 @@
 import patchNotesData from '../../data/patchNotes.json';
+import versionData from '@/data/version.json';
 
 interface PatchSection {
   type: 'added' | 'improved' | 'fixed' | 'removed';
@@ -78,6 +79,7 @@ const PatchNotesModal = ({ isOpen, onClose }: PatchNotesModalProps) => {
             </div>
           ))}
         </div>
+        <p className="text-center text-xs text-gray-500">Version {versionData.projectVersion}</p>
       </div>
 
       <form method="dialog" className="modal-backdrop">

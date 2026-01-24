@@ -1,5 +1,5 @@
-import { useMemo, useRef, useCallback } from 'react';
-import { Apostle, POSITION_CONFIG } from '@/types/apostle';
+import { useMemo, useRef, useCallback, useState } from 'react';
+import { Apostle } from '@/types/apostle';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
 import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/apostleUtils';
 import * as htmlToImage from 'html-to-image';
@@ -7,11 +7,9 @@ import {
   getSynergyOnIconPath,
   getSynergyOffIconPath,
   placeholderImagePath,
-  getApostleImagePath,
-  getPositionIconPath,
-  getPersonalityIconPath,
 } from '@/utils/apostleImages';
 import RecommendedDeckGrid from './RecommendedDeckGrid';
+import SuggestionCard from './SuggestionCard';
 import { FaRegCopy } from 'react-icons/fa6';
 
 interface RecommendedDeckSectionProps {
@@ -21,6 +19,10 @@ interface RecommendedDeckSectionProps {
 export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionProps) => {
   const recommendations = useMemo(() => generateRecommendations(myApostles), [myApostles]);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  // 각 추천 덱별로 선택된 사도 ID 관리 (number: PVP용, string: 힐러용)
+  const [selectedSuggestions, setSelectedSuggestions] = useState<Record<number | string, string>>(
+    {},
+  );
 
   const handleCopyCard = useCallback(async (idx: number) => {
     const node = cardRefs.current[idx];
@@ -74,7 +76,6 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                 {rec.deckSize}인 조합 ({rec.deckSize === 9 ? '대충돌/프론티어' : '침략'})
               </h3>
             </div>
-
             {/* 성격 시너지 표시 */}
             <div>
               <h4 className="mb-2 text-sm font-semibold">
@@ -161,12 +162,10 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                   ))}
               </div>
             </div>
-
             {/* 추천 조합 그리드 */}
             <div className="m-0.5 flex justify-center">
               <RecommendedDeckGrid deck={rec.deck} deckSize={rec.deckSize} />
             </div>
-
             {/* 힐러 없음 경고 배지 */}
             {!rec.hasHealer && (
               <div className="alert alert-warning shadow-sm">
@@ -185,70 +184,68 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                 </svg>
                 <div>
                   <p className="text-xs">
-                    다른 사도들에게 힐이나 보호막을 부여하는 사도가 없습니다. 유지력이 떨어질 수
+                    다른 사도에게 회복이나 보호막을 부여하는 사도가 없습니다. 유지력이 떨어질 수
                     있습니다.
                   </p>
                 </div>
               </div>
             )}
-
-            {/* 추천 힐러 사도 (최대 3개) */}
+            {/* 추천 힐러 사도 */}
             {!rec.hasHealer && rec.healerSuggestions && rec.healerSuggestions.length > 0 && (
               <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
                 <input type="checkbox" name={`healer-suggest-${idx}`} />
-                <div className="collapse-title text-sm font-semibold">
-                  추천 힐러 사도 ({rec.healerSuggestions.length})
-                </div>
+                <div className="collapse-title text-sm font-semibold">추천 힐러 사도</div>
                 <div className="collapse-content">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                    {rec.healerSuggestions.map((suggestion) => (
-                      <div className="group border-base-200 bg-base-100 hover:border-primary relative h-30 w-30 overflow-hidden rounded-lg border-2 shadow-sm transition hover:shadow-md">
-                        {/* 사도 이미지 */}
-                        <img
-                          src={getApostleImagePath(suggestion.apostle.engName)}
-                          className={`inline-flex h-full w-full items-center rounded object-cover text-center text-xs ${getPersonalityBackground(suggestion.apostle.persona)}`}
-                          alt={suggestion.apostle.name}
-                        />
-
-                        {/* 위치 아이콘 */}
-                        <div className="absolute bottom-5 left-1 h-6 w-6 rounded-full">
-                          {(() => {
-                            const position = Array.isArray(suggestion.apostle.position)
-                              ? 'free'
-                              : suggestion.apostle.position;
-                            const icon =
-                              POSITION_CONFIG[position as keyof typeof POSITION_CONFIG]?.icon ||
-                              'Common_PositionFront';
-                            return (
-                              <img
-                                src={getPositionIconPath(icon)}
-                                className="h-full w-full object-contain"
-                                onError={(e) => {
-                                  (e.currentTarget as HTMLImageElement).style.display = 'none';
-                                }}
-                              />
-                            );
-                          })()}
-                        </div>
-
-                        {/* 성격 아이콘 배지 */}
-                        <div className="absolute top-1 right-1 h-6 w-6 rounded-full">
-                          <img
-                            src={getPersonalityIconPath(suggestion.apostle.persona)}
-                            className="h-full w-full object-contain"
-                            onError={(e) => {
-                              (e.currentTarget as HTMLImageElement).style.display = 'none';
-                            }}
-                          />
-                        </div>
-
-                        {/* 사도 이름 오버레이 */}
-                        <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/80 to-transparent p-2 text-center">
-                          <p className="text-sm font-bold text-white">{suggestion.apostle.name}</p>
-                        </div>
-                      </div>
+                  <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
+                    {rec.healerSuggestions.map((suggestion, hIdx) => (
+                      <SuggestionCard
+                        key={`healer-${hIdx}`}
+                        apostle={suggestion.apostle}
+                        type="HEALER"
+                        reason={suggestion.reason}
+                        isSelected={selectedSuggestions[`healer-${idx}`] === suggestion.apostle.id}
+                        onClick={() =>
+                          setSelectedSuggestions((prev) => ({
+                            ...prev,
+                            [`healer-${idx}`]:
+                              prev[`healer-${idx}`] === suggestion.apostle.id
+                                ? ''
+                                : suggestion.apostle.id,
+                          }))
+                        }
+                      />
                     ))}
                   </div>
+                  {/* 선택된 힐러 상세 정보 */}
+                  {selectedSuggestions[`healer-${idx}`] &&
+                    (() => {
+                      const selected = rec.healerSuggestions.find(
+                        (s) => s.apostle.id === selectedSuggestions[`healer-${idx}`],
+                      );
+                      return selected ? (
+                        <div role="alert" className="alert alert-info mt-3">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            className="h-6 w-6 shrink-0 stroke-current"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                          <div className="flex flex-col gap-1">
+                            <span className="font-bold">
+                              {selected.apostle.name} ({selected.apostle.engName})
+                            </span>
+                            {selected.reason && <span className="text-sm">{selected.reason}</span>}
+                          </div>
+                        </div>
+                      ) : null;
+                    })()}
                   <div className="alert alert-info mt-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -268,6 +265,71 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                 </div>
               </div>
             )}
+            {/* 2. PVP 추천 용병 섹션 */}
+            {/* {rec.deckSize === 6 && rec.jwopaemSuggestions && rec.jwopaemSuggestions.length > 0 && (
+              <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
+                <input type="checkbox" name={`jwopaem-suggest-${idx}`} />
+                <div className="collapse-title text-sm font-semibold">줘팸터 추천 사도</div>
+                <div className="collapse-content">
+                  <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
+                    {rec.jwopaemSuggestions.map((suggestion, sIdx) => (
+                      <SuggestionCard
+                        key={`pvp-${sIdx}`}
+                        apostle={suggestion.apostle}
+                        type="PVP"
+                        reason={suggestion.reason}
+                        isSelected={selectedSuggestions[idx] === suggestion.apostle.id}
+                        onClick={() =>
+                          setSelectedSuggestions((prev) => ({
+                            ...prev,
+                            [idx]: prev[idx] === suggestion.apostle.id ? '' : suggestion.apostle.id,
+                          }))
+                        }
+                      />
+                    ))}
+                  </div>
+                  {/* 선택된 사도 상세 정보 */}
+            {/* {selectedSuggestions[idx] &&
+                    (() => {
+                      const selected = rec.jwopaemSuggestions.find(
+                        (s) => s.apostle.id === selectedSuggestions[idx],
+                      );
+                      return selected ? (
+                        <div role="alert" className="alert alert-info mt-3">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            className="h-6 w-6 shrink-0 stroke-current"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                          <div className="flex flex-col gap-1">
+                            <span className="font-bold">
+                              {selected.apostle.name} ({selected.apostle.engName})
+                            </span>
+                            {selected.reason && (
+                              <span className="text-sm">
+                                {selected.reason.replace('[PVP] ', '').replace('⚔️ ', '')}
+                              </span>
+                            )}
+                            {selected.aside && (
+                              <span className="text-xs">
+                                어사이드: <span className="font-semibold">{selected.aside}</span>
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      ) : null;
+                    })()} */}
+            {/* </div> */}
+            {/* </div> */}
+            {/* // )}   */}
           </div>
         </div>
       ))}

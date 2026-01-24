@@ -1,6 +1,9 @@
 import type { Apostle } from '../../../types/apostle';
+import type { Skill } from '@/types/skill';
+import type { Aside } from '@/types/aside';
 import type { DeckAnalysis } from '../../../utils/deckAnalysisUtils';
 import { useDeckStore } from '../../../stores/deckStore';
+import type { SkillLevel } from '@/types/branded';
 import SkillEffectDisplay from '../DamageDisplay/SkillEffect';
 import AsideEffectDisplay from '../DamageDisplay/AsideEffect';
 import SynergyDisplay from './SynergyDisplay';
@@ -8,8 +11,8 @@ import SynergyDisplay from './SynergyDisplay';
 interface AnalysisPanelProps {
   analysis: DeckAnalysis;
   filledDeck: Apostle[];
-  skillsData?: any;
-  asidesData?: any;
+  skillsData?: Skill[];
+  asidesData?: Aside[];
 }
 
 const AnalysisPanel = ({ analysis, filledDeck, skillsData, asidesData }: AnalysisPanelProps) => {
@@ -18,7 +21,7 @@ const AnalysisPanel = ({ analysis, filledDeck, skillsData, asidesData }: Analysi
   const asideSelection = useDeckStore((state) => state.asideSelection);
 
   // ✅ 스킬 레벨 변경 핸들러
-  const handleSkillLevelChange = (apostleId: string, newLevel: number) => {
+  const handleSkillLevelChange = (apostleId: string, newLevel: SkillLevel) => {
     setSkillLevel(apostleId, newLevel);
   };
 

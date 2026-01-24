@@ -13,6 +13,7 @@ const assetPathMap = import.meta.glob<string>(
     '/src/assets/icon/*star.webp', // 랭크 아이콘
     '/src/assets/icon/Common_Position*.png', // 위치 아이콘
     '/src/assets/icon/Common_UnitClass*.png', // 클래스 아이콘
+    '/src/assets/networkicon/*.{png,webp}', // 네트워크 아이콘
   ],
   { eager: true, import: 'default' },
 ) as Record<string, string>;
@@ -95,4 +96,8 @@ export function getClassIconPath(iconName: string): string {
 export function getIconPath(iconName: string): string {
   const originalPath = `/src/assets/icon/${iconName}.png`;
   return getAssetPath(originalPath);
+}
+
+export function getNetworkIconPath(): string {
+  return getAssetPath('/src/assets/networkicon/NetworkIcon_Elena.png');
 }
