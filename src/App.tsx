@@ -19,7 +19,7 @@ function App() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-white text-black">
         <div className="text-center">
-          <img src={getNetworkIconPath()} className="mb-4 h-16 w-16" />
+          <img src={getNetworkIconPath()} alt="로딩 중" className="mb-4 h-16 w-16" />
           <p>데이터 로딩 중...</p>
         </div>
       </div>

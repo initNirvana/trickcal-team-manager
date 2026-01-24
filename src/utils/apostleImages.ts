@@ -99,5 +99,5 @@ export function getIconPath(iconName: string): string {
 }
 
 export function getNetworkIconPath(): string {
-  return '/src/assets/networkicon/NetworkIcon_Elena.png';
+  return getAssetPath('/src/assets/networkicon/NetworkIcon_Elena.png');
 }

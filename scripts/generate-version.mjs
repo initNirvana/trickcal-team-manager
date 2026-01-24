@@ -13,7 +13,7 @@ const TARGET_FILES = [
   'skills.json',
   'asides.json',
   'spells.json',
-  'artifacts.json'
+  'artifacts.json',
 ];
 
 const VERSION_FILE_PATH = path.join(DATA_DIR, 'version.json');
@@ -28,7 +28,7 @@ function getFileHash(filePath) {
 // 메인 로직
 function updateVersionFile() {
   const now = new Date();
-  
+
   // 기존 버전 파일 읽기 (이전 상태 보존을 위해)
   let previousData = { files: {} };
   if (fs.existsSync(VERSION_FILE_PATH)) {
@@ -43,7 +43,7 @@ function updateVersionFile() {
   let isAnyFileChanged = false;
   let latestUpdate = new Date(0); // 가장 최근 업데이트 시간 추적
 
-  TARGET_FILES.forEach(fileName => {
+  TARGET_FILES.forEach((fileName) => {
     const filePath = path.join(DATA_DIR, fileName);
     const currentHash = getFileHash(filePath);
 
@@ -53,12 +53,12 @@ function updateVersionFile() {
     }
 
     const prevFileInfo = previousData.files?.[fileName];
-    
+
     // 변경 감지: 이전 정보가 없거나, 해시가 다르면 업데이트
     if (!prevFileInfo || prevFileInfo.hash !== currentHash) {
       newFilesInfo[fileName] = {
         hash: currentHash,
-        updated: now.toISOString()
+        updated: now.toISOString(),
       };
       isAnyFileChanged = true;
       latestUpdate = now;
@@ -66,7 +66,7 @@ function updateVersionFile() {
     } else {
       // 변경 없음: 이전 정보 유지
       newFilesInfo[fileName] = prevFileInfo;
-      
+
       // 가장 최근 업데이트 시간 갱신 (기존 파일들의 시간 중 가장 최신값 찾기)
       const prevDate = new Date(prevFileInfo.updated);
       if (prevDate > latestUpdate) {
@@ -77,20 +77,25 @@ function updateVersionFile() {
 
   // 전체 버전 문자열 생성 (날짜 + 전체 파일 해시 조합)
   // 전체 해시는 파일들의 해시를 모두 합쳐서 다시 해시를 뜸
-  const allHashes = Object.values(newFilesInfo).map(f => f.hash).sort().join('');
+  const allHashes = Object.values(newFilesInfo)
+    .map((f) => f.hash)
+    .sort()
+    .join('');
   const globalHash = crypto.createHash('md5').update(allHashes).digest('hex').substring(0, 8);
-  
+
   const dateStr = new Intl.DateTimeFormat('ko-KR', {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-    timeZone: 'Asia/Seoul'
-  }).format(latestUpdate).replace(/\. /g, '.').replace('.', '');
+    timeZone: 'Asia/Seoul',
+  })
+    .format(latestUpdate)
+    .replace(/[.\s]/g, '');
 
   const versionData = {
     projectVersion: `${dateStr}-${globalHash}`,
     lastUpdated: latestUpdate.toISOString(),
-    files: newFilesInfo
+    files: newFilesInfo,
   };
 
   // 변경사항이 있거나 파일이 아예 없었으면 저장
