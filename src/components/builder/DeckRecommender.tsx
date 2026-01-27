@@ -1,10 +1,11 @@
 import { useMemo, useCallback } from 'react';
 import type { Apostle } from '@/types/apostle';
 import { useMyApostleStore } from '@/stores/myApostleStore';
-import { isUros } from '@/utils/apostleUtils';
 import MyApostleList from './Apostle/MyApostleList';
 import PresetCombinationSection from './Preset/PresetCombinationSection';
 import RecommendedDeckSection from './Recommendation/RecommendedDeckSection';
+import GrowthGuide from './Recommendation/GrowthGuide';
+import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
 import { useTour } from '@/hooks/useTour';
 
 interface DeckRecommenderProps {
@@ -13,51 +14,31 @@ interface DeckRecommenderProps {
 
 export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
   useTour();
-  const { ownedApostleIds, toggleApostle, addApostles, removeApostles } = useMyApostleStore();
+  const { ownedApostles, toggleApostle, addApostles, removeApostles } = useMyApostleStore();
 
   const myApostles = useMemo(() => {
-    return apostles.filter((a) => ownedApostleIds.includes(a.id));
-  }, [apostles, ownedApostleIds]);
+    return apostles.filter((a) => ownedApostles.some((oa) => oa.id === a.id));
+  }, [apostles, ownedApostles]);
 
   const handleAddApostle = useCallback(
     (apostle: Apostle) => {
-      if (ownedApostleIds.includes(apostle.id)) return;
-
-      if (isUros(apostle)) {
-        const existingUros = myApostles.find((a) => isUros(a));
-        if (existingUros) {
-          toggleApostle(existingUros.id);
-          toggleApostle(apostle.id);
-          return;
-        }
-      }
-
+      if (ownedApostles.some((oa) => oa.id === apostle.id)) return;
       toggleApostle(apostle.id);
     },
-    [ownedApostleIds, myApostles, toggleApostle],
+    [ownedApostles, toggleApostle],
   );
 
   const handleAddMultipleApostles = useCallback(
     (newApostles: Apostle[]) => {
-      const toAddIds: string[] = [];
-      let hasUrosInCurrent = myApostles.some((a) => isUros(a));
-
-      newApostles.forEach((apostle) => {
-        if (ownedApostleIds.includes(apostle.id)) return;
-
-        if (isUros(apostle)) {
-          if (hasUrosInCurrent) return;
-          hasUrosInCurrent = true;
-        }
-
-        toAddIds.push(apostle.id);
-      });
+      const toAddIds = newApostles
+        .filter((a) => !ownedApostles.some((oa) => oa.id === a.id))
+        .map((a) => a.id);
 
       if (toAddIds.length > 0) {
         addApostles(toAddIds);
       }
     },
-    [myApostles, ownedApostleIds, addApostles],
+    [ownedApostles, addApostles],
   );
 
   const handleRemoveMultipleApostles = useCallback(
@@ -74,6 +55,18 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
     },
     [toggleApostle],
   );
+
+  const recommendations = useMemo(() => {
+    const asideLevels = ownedApostles.reduce(
+      (acc, oa) => {
+        acc[oa.id] = oa.asideLevel;
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
+
+    return generateRecommendations(myApostles, { asideLevels });
+  }, [myApostles, ownedApostles]);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start p-4">
@@ -94,9 +87,11 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
             </div>
 
             {/* 추천 조합 (보유 사도만) */}
-            {myApostles.length > 0 ? (
-              <div id="recommendation-section" className="rounded-lg bg-white p-2 shadow">
-                <RecommendedDeckSection myApostles={myApostles} />
+            {recommendations.length > 0 ? (
+              <div id="recommendation-section" className="space-y-4">
+                <div className="rounded-lg bg-white p-2 shadow">
+                  <RecommendedDeckSection recommendations={recommendations} />
+                </div>
               </div>
             ) : (
               <div className="alert justify-center">
@@ -105,15 +100,19 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
             )}
           </div>
 
-          {/* 우측: 보유 사도 관리 */}
-          <MyApostleList
-            myApostles={myApostles}
-            allApostles={apostles}
-            onAdd={handleAddApostle}
-            onRemove={handleRemoveApostle}
-            onAddMultiple={handleAddMultipleApostles}
-            onRemoveMultiple={handleRemoveMultipleApostles}
-          />
+          {/* 우측: 보유 사도 관리 + 육성 가이드 */}
+          <div className="space-y-3">
+            <MyApostleList
+              myApostles={myApostles}
+              allApostles={apostles}
+              onAdd={handleAddApostle}
+              onRemove={handleRemoveApostle}
+              onAddMultiple={handleAddMultipleApostles}
+              onRemoveMultiple={handleRemoveMultipleApostles}
+            />
+            {/* 육성 가이드 */}
+            {recommendations.length > 0 && <GrowthGuide topDecks={recommendations} />}
+          </div>
         </div>
       </div>
     </div>

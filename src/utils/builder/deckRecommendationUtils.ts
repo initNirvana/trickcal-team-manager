@@ -7,9 +7,10 @@ type ContentMode9 = 'CRASH' | 'FRONTIER';
 type ContentMode6 = 'INVASION' | 'JWOPAEMTEO';
 
 export interface RecommendOptions {
-  deckSize: DeckSize;
-  mode9?: ContentMode9;
+  deckSize?: DeckSize;
   mode6?: ContentMode6;
+  mode9?: ContentMode9;
+  asideLevels?: Record<string, number>;
 }
 
 const ROLES = {
@@ -152,11 +153,13 @@ function createRecommendedDeckResult(
   myApostles: Apostle[],
   deckSize: DeckSize,
   synergyScoreInput?: number,
+  options?: RecommendOptions,
 ): RecommendedDeck {
   // 1. 점수 및 시너지 계산
   const baseScore = deck.reduce((sum, a) => {
     const pos = positionMap[a.id];
-    return sum + getEffectiveBaseScore(a, deckSize, pos);
+    const asideLevel = options?.asideLevels?.[a.id] ?? 0;
+    return sum + getEffectiveBaseScore(a, deckSize, pos, options, asideLevel);
   }, 0);
 
   const synergies = analyzeSynergies(deck);
@@ -228,6 +231,7 @@ function getEffectiveBaseScore(
   decksize: DeckSize,
   targetPos?: Position,
   options?: RecommendOptions,
+  asideLevel: number = 0,
 ): number {
   let baseScore = apostle.baseScore ?? 0;
   // 1. 덱 크기 보정
@@ -242,6 +246,11 @@ function getEffectiveBaseScore(
   if (targetPos && apostle.positionScore) {
     baseScore = (apostle.positionScore as Record<Position, number>)[targetPos] ?? baseScore;
   }
+
+  // 4. 어사이드 보정 (A2 달성 시만 점수반영)
+  const asideScore = apostle.aside?.score ?? 0;
+  const asideBonus = asideLevel >= 2 ? asideScore : 0;
+  baseScore += asideBonus;
 
   return baseScore;
 }
@@ -374,6 +383,7 @@ function selectApostlesGreedy(
   requirements: { front: number; mid: number; back: number },
   skipNames: Set<string>,
   deckSize: DeckSize = 6,
+  options?: RecommendOptions,
 ): { deck: Apostle[]; placement: Record<string, Position> } {
   const placement: Record<Position, Apostle[]> = { front: [], mid: [], back: [] };
   const placedNames = new Set<string>();
@@ -394,7 +404,8 @@ function selectApostlesGreedy(
         validPositions.includes(pos)
       ) {
         // 위치별 점수 계산 (positionScore 적용, deckSize 고려)
-        const posScore = getEffectiveBaseScore(apostle, deckSize, pos);
+        const asideLevel = options?.asideLevels?.[apostle.id] ?? 0;
+        const posScore = getEffectiveBaseScore(apostle, deckSize, pos, options, asideLevel);
         if (posScore > bestScore) {
           bestScore = posScore;
           bestPos = pos;
@@ -615,6 +626,7 @@ function tryBuildDeckWithPersonalities(
   personalityGroups: Map<Personality, Apostle[]>,
   requirements: { front: number; mid: number; back: number },
   deckSize: DeckSize = 6,
+  options?: RecommendOptions,
 ): { deck: Apostle[]; positionMap: Record<string, Position> } | null {
   const candidates: Apostle[] = [];
   const usedNames = new Set<string>();
@@ -640,7 +652,7 @@ function tryBuildDeckWithPersonalities(
   }
 
   // 포지션 제약을 만족하는 덱 생성
-  const deckResult = selectApostlesGreedy(candidates, requirements, new Set(), deckSize);
+  const deckResult = selectApostlesGreedy(candidates, requirements, new Set(), deckSize, options);
   const deck = deckResult.deck;
   const positionMap = deckResult.placement;
 
@@ -653,7 +665,10 @@ function tryBuildDeckWithPersonalities(
 /**
  * 패턴 기반 6인 덱 생성
  */
-function buildSixDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
+function buildSixDeckWithPattern(
+  myApostles: Apostle[],
+  options?: RecommendOptions,
+): RecommendedDeck[] {
   if (myApostles.length < 6) return [];
 
   const results: RecommendedDeck[] = [];
@@ -666,6 +681,7 @@ function buildSixDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
     deckResult: { deck: Apostle[]; positionMap: Record<string, Position> } | null,
     targetSynergyScore: number,
     balancingCandidates: Apostle[], // 밸런싱에 사용할 사도 풀 (4+2는 시너지 깨짐 방지 위해 제한 필요)
+    options?: RecommendOptions,
   ) => {
     if (!deckResult) return;
 
@@ -698,6 +714,7 @@ function buildSixDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
             myApostles, // 줘팸터 추천 등을 위해 전체 목록 필요
             6,
             currentSynergyScore,
+            options,
           ),
         );
       }
@@ -720,11 +737,12 @@ function buildSixDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
         personalityGroups,
         requirements,
         6,
+        options,
       );
 
       // 4+2는 시너지가 깨지지 않도록, 해당 성격(p1, p2)을 가진 사도들 중에서만 교체 멤버를 찾음
       const synergyCandidates = myApostles.filter((a) => a.persona === p1 || a.persona === p2);
-      processAndAddDeck(deck, SYNERGY_SCORES.TYPE_4_2, synergyCandidates);
+      processAndAddDeck(deck, SYNERGY_SCORES.TYPE_4_2, synergyCandidates, options);
     }
   }
 
@@ -746,10 +764,11 @@ function buildSixDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
           personalityGroups,
           requirements,
           6,
+          options,
         );
 
         // 2+2+2는 이미 다양한 성격이 섞여 있으므로 전체 사도 풀에서 교체 시도
-        processAndAddDeck(deck, SYNERGY_SCORES.TYPE_2_2_2, myApostles);
+        processAndAddDeck(deck, SYNERGY_SCORES.TYPE_2_2_2, myApostles, options);
       }
     }
   }
@@ -765,9 +784,10 @@ function buildSixDeckWithPattern(myApostles: Apostle[]): RecommendedDeck[] {
       personalityGroups,
       requirements,
       6,
+      options,
     );
 
-    processAndAddDeck(deck, SYNERGY_SCORES.TYPE_6, myApostles);
+    processAndAddDeck(deck, SYNERGY_SCORES.TYPE_6, myApostles, options);
   }
 
   const uniqueResults = new Map<string, RecommendedDeck>();
@@ -788,8 +808,15 @@ function processGreedyAttempt(
   sortedCandidates: Apostle[],
   skipNames: Set<string>,
   size: DeckSize,
+  options?: RecommendOptions,
 ): { deck: Apostle[]; placement: Record<string, Position> } | null {
-  const deckResult = selectApostlesGreedy(sortedCandidates, DECK_CONFIG[size].req, skipNames, size);
+  const deckResult = selectApostlesGreedy(
+    sortedCandidates,
+    DECK_CONFIG[size].req,
+    skipNames,
+    size,
+    options,
+  );
   const initialDeck = deckResult.deck;
   const placement = deckResult.placement;
 
@@ -837,6 +864,7 @@ function buildDeck(
   size: DeckSize,
   maxAttempts: number,
   getSynergyScore: (deck: Apostle[]) => number,
+  options?: RecommendOptions,
 ): RecommendedDeck[] {
   // 예외 처리
   if (!myApostles || myApostles.length < size) return [];
@@ -845,9 +873,14 @@ function buildDeck(
   const usedCombinations = new Set<string>();
 
   // 점수 기준 정렬 (모든 시도에서 공통으로 사용)
-  const sortedApostles = [...myApostles].sort(
-    (a, b) => getEffectiveBaseScore(b, size) - getEffectiveBaseScore(a, size),
-  );
+  const sortedApostles = [...myApostles].sort((a, b) => {
+    const aAside = options?.asideLevels?.[a.id] ?? 0;
+    const bAside = options?.asideLevels?.[b.id] ?? 0;
+    return (
+      getEffectiveBaseScore(b, size, undefined, options, bAside) -
+      getEffectiveBaseScore(a, size, undefined, options, aAside)
+    );
+  });
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const skipNames = new Set<string>();
@@ -856,7 +889,7 @@ function buildDeck(
     }
 
     // 2. 단일 덱 생성 시도 (분리된 함수 호출)
-    const attemptResult = processGreedyAttempt(sortedApostles, skipNames, size);
+    const attemptResult = processGreedyAttempt(sortedApostles, skipNames, size, options);
 
     // 생성 실패 시 다음 시도로 넘어감
     if (!attemptResult) continue;
@@ -880,6 +913,7 @@ function buildDeck(
         myApostles,
         size,
         synergyScore,
+        options,
       ),
     );
   }
@@ -895,10 +929,10 @@ export function generateRecommendations(
 
   // 9인
   const score9 = getSynergyScore9(options?.mode9);
-  results.push(...buildDeck(myApostles, 9, 2, score9));
+  results.push(...buildDeck(myApostles, 9, 2, score9, options));
   // 6인
-  results.push(...buildSixDeckWithPattern(myApostles));
-  results.push(...buildDeck(myApostles, 6, 2, calculateSynergyScore));
+  results.push(...buildSixDeckWithPattern(myApostles, options));
+  results.push(...buildDeck(myApostles, 6, 2, calculateSynergyScore, options));
 
   return duplicateAndSortResults(results);
 }

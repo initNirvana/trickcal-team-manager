@@ -1,6 +1,5 @@
-import { useMemo, useRef, useCallback, useState } from 'react';
-import { Apostle } from '@/types/apostle';
-import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
+import { useRef, useCallback, useState } from 'react';
+import { RecommendedDeck } from '@/utils/builder/deckRecommendationUtils';
 import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/apostleUtils';
 import * as htmlToImage from 'html-to-image';
 import {
@@ -13,11 +12,10 @@ import SuggestionCard from './SuggestionCard';
 import { FaRegCopy } from 'react-icons/fa6';
 
 interface RecommendedDeckSectionProps {
-  myApostles: Apostle[];
+  recommendations: RecommendedDeck[];
 }
 
-export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionProps) => {
-  const recommendations = useMemo(() => generateRecommendations(myApostles), [myApostles]);
+export const RecommendedDeckSection = ({ recommendations }: RecommendedDeckSectionProps) => {
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   // 각 추천 덱별로 선택된 사도 ID 관리 (number: PVP용, string: 힐러용)
   const [selectedSuggestions, setSelectedSuggestions] = useState<Record<number | string, string>>(

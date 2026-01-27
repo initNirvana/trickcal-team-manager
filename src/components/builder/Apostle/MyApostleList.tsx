@@ -1,8 +1,10 @@
 import { useState, useMemo } from 'react';
 import type { Apostle } from '@/types/apostle';
 import { getApostleImagePath } from '@/utils/apostleImages';
-import { getPersonalityBackground, filterUniqueApostles, isUros } from '@/utils/apostleUtils';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
+import { useUniqueApostles } from '@/hooks/useUniqueApostles';
 import ApostleSelectorSearch from '../../common/ApostleSearch';
+import { useMyApostleStore } from '@/stores/myApostleStore';
 
 interface MyApostleListProps {
   myApostles: Apostle[];
@@ -23,6 +25,7 @@ const MyApostleList = ({
 }: MyApostleListProps) => {
   const [sortBy, setSortBy] = useState<'name' | 'persona' | 'id'>('id');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  const { setAsideLevel, getAsideLevel } = useMyApostleStore();
 
   const handleSort = (sortType: 'name' | 'persona' | 'id') => {
     if (sortBy === sortType) {
@@ -44,37 +47,11 @@ const MyApostleList = ({
 
   const handleAddApostle = (apostle: Apostle) => {
     if (myApostles.some((a) => a.id === apostle.id)) return;
-
-    // 우로스 추가 시, 기존에 다른 성격의 우로스가 있으면 교체
-    if (isUros(apostle)) {
-      const existingUros = myApostles.find((a) => isUros(a));
-      if (existingUros) {
-        // 교체: 기존 우로스 제거 후 새로운 우로스 추가
-        onRemove(existingUros);
-        onAdd(apostle);
-        return;
-      }
-    }
-
     onAdd(apostle);
   };
 
   const handleAddMultipleApostles = (newApostles: Apostle[]) => {
-    const toAdd: Apostle[] = [];
-    let hasUros = myApostles.some((a) => isUros(a));
-
-    newApostles.forEach((apostle) => {
-      // 이미 보유한 사도는 스킵
-      if (myApostles.some((m) => m.id === apostle.id)) return;
-
-      // 우로스의 경우 이미 하나가 있으면 스킵 (기존 것 유지)
-      if (isUros(apostle)) {
-        if (hasUros) return;
-        hasUros = true;
-      }
-
-      toAdd.push(apostle);
-    });
+    const toAdd = newApostles.filter((a) => !myApostles.some((m) => m.id === a.id));
 
     if (toAdd.length > 0) {
       if (onAddMultiple) {
@@ -99,9 +76,7 @@ const MyApostleList = ({
   }, [allApostles, sortBy, sortOrder]);
 
   // engName 기준 중복 제거 (성격별 변형 사도를 하나로 통합)
-  const uniqueApostles = useMemo(() => {
-    return filterUniqueApostles(sortedApostles);
-  }, [sortedApostles]);
+  const uniqueApostles = useUniqueApostles(sortedApostles);
 
   return (
     <div id="my-apostle-list-container" className="bg-base-200 space-y-2 rounded-xl p-4 shadow-lg">
@@ -111,28 +86,25 @@ const MyApostleList = ({
         <div className="flex gap-2">
           <button
             onClick={() => handleSort('id')}
-            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
+            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold shadow-sm transition ${
               sortBy === 'id' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
-            title={sortBy === 'id' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
             순서
           </button>
           <button
             onClick={() => handleSort('name')}
-            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
+            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold shadow-sm transition ${
               sortBy === 'name' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
-            title={sortBy === 'name' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
             이름
           </button>
           <button
             onClick={() => handleSort('persona')}
-            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold transition ${
+            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold shadow-sm transition ${
               sortBy === 'persona' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
-            title={sortBy === 'persona' ? (sortOrder === 'asc' ? '오름차순' : '내림차순') : ''}
           >
             성격
           </button>
@@ -140,8 +112,7 @@ const MyApostleList = ({
           <button
             id="btn-apostle-select-all"
             onClick={() => handleAddMultipleApostles(uniqueApostles)}
-            className="btn btn-success rounded px-2 py-1 text-xs font-semibold text-black transition"
-            title="모든 사도 추가"
+            className="btn btn-success rounded px-2 py-1 text-xs font-semibold text-black shadow-sm transition"
           >
             전체 선택
           </button>
@@ -157,8 +128,7 @@ const MyApostleList = ({
                   });
                 }
               }}
-              className="btn btn-error rounded px-2 py-1 text-xs font-semibold text-black transition"
-              title="모든 사도 제거"
+              className="btn btn-error rounded px-2 py-1 text-xs font-semibold text-black shadow-sm transition"
             >
               전체 제거
             </button>
@@ -173,6 +143,7 @@ const MyApostleList = ({
       <div className="grid max-h-[70dvh] grid-cols-5 gap-2 overflow-y-auto px-2">
         {uniqueApostles.map((apostle) => {
           const isOwned = myApostles.some((m) => m.id === apostle.id);
+          const asideLevel = getAsideLevel(apostle.id);
 
           // 같은 engName을 가진 사도가 여러 개인지 확인 (성격별 변형이 있는 경우)
           const hasMultiplePersonas =
@@ -184,16 +155,14 @@ const MyApostleList = ({
             : getPersonalityBackground(apostle.persona);
 
           return (
-            <button
+            <div
               key={apostle.id}
-              onClick={() => {
-                onToggle(apostle);
-              }}
-              className={`group relative min-h-14 overflow-hidden rounded-lg border-2 transition-all ${
+              className={`group relative min-h-14 cursor-pointer overflow-hidden rounded-lg border-2 transition-all ${
                 isOwned
                   ? 'border-success shadow-success/30 shadow-lg'
                   : 'border-transparent hover:scale-105 hover:shadow-lg'
               }`}
+              onClick={() => onToggle(apostle)}
             >
               {/* 이미지 */}
               <img
@@ -204,21 +173,62 @@ const MyApostleList = ({
 
               {/* ✓ 보유 체크마크 - 우상단 */}
               {isOwned && (
-                <div className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-green-400">
-                  <span className="text-sm font-bold text-black">✓</span>
+                <div className="absolute top-1 right-1 z-10 flex h-4 w-4 items-center justify-center rounded-full border border-black/10 bg-green-400 shadow-sm">
+                  <span className="text-xs leading-none font-bold text-black">✓</span>
                 </div>
               )}
 
-              {/* 호버 오버레이 */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition group-hover:opacity-100">
-                <span className="text-sm font-bold text-white">{isOwned ? '보유중' : '추가'}</span>
-              </div>
+              {/* A레벨 배지 - 좌상단 */}
+              {isOwned && asideLevel > 0 && (
+                <div className="absolute top-1 left-1 z-10 flex items-center justify-center rounded border border-black/10 bg-amber-400 px-1 py-0.5 shadow-sm">
+                  <span className="text-[10px] leading-none font-black text-black">
+                    A{asideLevel}
+                  </span>
+                </div>
+              )}
+
+              {/* 어사이드 퀵 선택 오버레이 (보유한 경우에만 호버 시 표시) */}
+              {isOwned && (
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/70 opacity-0 transition group-hover:opacity-100">
+                  <p className="mb-1 text-[10px] font-bold text-white">어사이드 설정</p>
+                  <div className="flex gap-1" onClick={(e) => e.stopPropagation()}>
+                    {[0, 1, 2, 3].map((lv) => (
+                      <button
+                        key={lv}
+                        onClick={() => setAsideLevel(apostle.id, lv)}
+                        className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold transition-colors ${
+                          asideLevel === lv
+                            ? 'border-2 border-white bg-amber-400 text-black'
+                            : 'bg-white/20 text-white hover:bg-white/40'
+                        }`}
+                      >
+                        {lv === 0 ? '명' : lv}
+                      </button>
+                    ))}
+                  </div>
+                  <p
+                    className="mt-2 cursor-pointer text-[10px] font-bold text-red-400 hover:underline"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onRemove(apostle);
+                    }}
+                  >
+                    제거
+                  </p>
+                </div>
+              )}
 
               {/* 이름 표시 */}
-              <div className="absolute right-0 bottom-0 left-0 bg-black/60 px-2 py-1">
-                <p className="text-xs font-semibold text-white">{apostle.name}</p>
+              <div className="absolute right-0 bottom-0 left-0 bg-black/60 px-2 py-0.5">
+                <p className="truncate text-[10px] font-semibold text-white">{apostle.name}</p>
               </div>
-            </button>
+
+              {!isOwned && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition group-hover:opacity-100">
+                  <span className="text-sm font-bold text-white">추가</span>
+                </div>
+              )}
+            </div>
           );
         })}
       </div>
