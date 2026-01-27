@@ -178,43 +178,27 @@ const MyApostleList = ({
                 </div>
               )}
 
-              {/* A레벨 배지 - 좌상단 */}
-              {isOwned && asideLevel > 0 && (
-                <div className="absolute top-1 left-1 z-10 flex items-center justify-center rounded border border-black/10 bg-amber-400 px-1 py-0.5 shadow-sm">
-                  <span className="text-[10px] leading-none font-black text-black">
-                    A{asideLevel}
-                  </span>
+              {/* A2 토글 버튼 - 좌상단 (항상 표시 / 모바일 대응) */}
+              {isOwned && (
+                <div
+                  className={`absolute top-1 left-1 z-20 flex h-5 w-6 cursor-pointer items-center justify-center rounded border shadow-sm transition-all sm:h-5 sm:w-6 ${
+                    asideLevel >= 2
+                      ? 'border-black/20 bg-amber-400 text-black'
+                      : 'border-white/30 bg-black/40 text-white/70 hover:bg-black/60'
+                  }`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setAsideLevel(apostle.id, asideLevel >= 2 ? 0 : 2);
+                  }}
+                >
+                  <span className="text-[10px] leading-none font-bold">A2</span>
                 </div>
               )}
 
-              {/* 어사이드 퀵 선택 오버레이 (보유한 경우에만 호버 시 표시) */}
+              {/* 제거 힌트 오버레이 (데스크탑 호버용) */}
               {isOwned && (
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/70 opacity-0 transition group-hover:opacity-100">
-                  <p className="mb-1 text-[10px] font-bold text-white">어사이드 설정</p>
-                  <div className="flex gap-1" onClick={(e) => e.stopPropagation()}>
-                    {[0, 1, 2, 3].map((lv) => (
-                      <button
-                        key={lv}
-                        onClick={() => setAsideLevel(apostle.id, lv)}
-                        className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold transition-colors ${
-                          asideLevel === lv
-                            ? 'border-2 border-white bg-amber-400 text-black'
-                            : 'bg-white/20 text-white hover:bg-white/40'
-                        }`}
-                      >
-                        {lv === 0 ? '명' : lv}
-                      </button>
-                    ))}
-                  </div>
-                  <p
-                    className="mt-2 cursor-pointer text-[10px] font-bold text-red-400 hover:underline"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onRemove(apostle);
-                    }}
-                  >
-                    제거
-                  </p>
+                <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 opacity-0 transition group-hover:opacity-100">
+                  <span className="text-sm font-bold text-red-300 drop-shadow-md">제거</span>
                 </div>
               )}
 

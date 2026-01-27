@@ -1,14 +1,14 @@
 {
-  "projectVersion": "202601.24.-b85f5f2d",
-  "lastUpdated": "2026-01-24T12:10:37.511Z",
+  "projectVersion": "20260128-dc7d2821",
+  "lastUpdated": "2026-01-27T17:30:46.157Z",
   "files": {
     "apostles.json": {
       "hash": "a66d58d0",
       "updated": "2026-01-21T11:34:08.901Z"
     },
     "apostles-ratings.json": {
-      "hash": "d56508b0",
-      "updated": "2026-01-24T12:10:37.511Z"
+      "hash": "08762ec5",
+      "updated": "2026-01-27T17:30:46.157Z"
     },
     "skills.json": {
       "hash": "c59e6330",
