@@ -39,6 +39,7 @@ export class DataLoaderService {
             hasAside: a.aside.hasAside,
             importance: rating.aside.importance,
             score: rating.aside.score,
+            reason: rating.aside.reason,
           },
         } as Apostle;
       });

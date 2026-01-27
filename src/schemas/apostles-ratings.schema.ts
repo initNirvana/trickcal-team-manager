@@ -21,13 +21,14 @@ export const ApostleRatingSchema = z.object({
   pvp: z
     .object({
       score: z.number().int().min(0).max(15),
-      aside: z.enum(['선택', '권장', '필수']).nullable(),
+      aside: z.enum(['선택', '권장', '필수', '보류']).nullable(),
       reason: z.string().min(1).optional(),
     })
     .optional(),
   aside: z.object({
-    importance: z.enum(['선택', '권장', '필수']).nullable(),
+    importance: z.enum(['선택', '권장', '필수', '보류']).nullable(),
     score: z.number().int().min(0).max(15),
+    reason: z.string().optional(),
   }),
   reason: z.string().min(1).optional(),
 });

@@ -73,12 +73,13 @@ export interface Apostle {
  * Aside 인터페이스는 사도의 어사이드(Aside) 속성을 정의합니다.
  *
  * @property {boolean} hasAside - 어사이드 존재 여부.
- * @property {'선택' | '권장' | '필수' | null} importance - 어사이드 중요도.
+ * @property {'선택' | '권장' | '필수' | '보류' | null} importance - 어사이드 중요도.
  * @property {number} score - 어사이드 점수. (0 ~ 15)
  */
 
 interface Aside {
   hasAside: boolean;
-  importance: '선택' | '권장' | '필수' | null;
+  importance: '선택' | '권장' | '필수' | '보류' | null;
   score: number;
+  reason?: string;
 }
