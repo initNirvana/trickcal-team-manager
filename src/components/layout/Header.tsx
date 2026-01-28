@@ -34,7 +34,7 @@ function Header() {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-50 w-52 p-2 shadow-lg"
+            className="dropdown-content menu bg-base-100 rounded-box z-50 w-36 p-2 shadow-lg"
           >
             <li>
               <a onClick={() => setShowPatchNotes(true)}>패치 노트</a>
@@ -47,6 +47,11 @@ function Header() {
             <li>
               <Link to="/builder" onClick={handleClick}>
                 보유 사도 분석기
+              </Link>
+            </li>
+            <li>
+              <Link to="/settings" onClick={handleClick}>
+                설정
               </Link>
             </li>
           </ul>
