@@ -7,7 +7,7 @@ import { FaCloudUploadAlt, FaHistory, FaCheckCircle, FaExclamationCircle } from 
 import { BiLoaderAlt } from 'react-icons/bi';
 
 function Settings() {
-  const { user, checkUser, signInWithGoogle, signOut } = useAuthStore();
+  const { user, loading, checkUser, signInWithGoogle, signOut } = useAuthStore();
   const { backups, restoreBackup, lastSyncedTime, isSyncing, refreshBackups } = useCloudSync({
     enableAutoSave: false,
   });
@@ -30,7 +30,9 @@ function Settings() {
           </p>
 
           <div className="mt-4 flex items-center justify-between">
-            {user ? (
+            {loading ? (
+              <div className="text-sm font-semibold text-gray-400">계정 확인 중...</div>
+            ) : user ? (
               <div className="flex items-center gap-3">
                 <FcGoogle size={20} />
                 <div>

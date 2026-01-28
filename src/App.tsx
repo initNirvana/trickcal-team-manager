@@ -115,15 +115,7 @@ function App() {
             </Layout>
           }
         />
-        <Route
-          path="/settings"
-          element={
-            <Layout>
-              <Settings />
-            </Layout>
-          }
-        />
-        {/* 자주 찾는 질문 / 개인정보 처리방침 */}
+        {/* 개인정보 처리방침 */}
         <Route
           path="/privacy"
           element={
