@@ -3,9 +3,12 @@ import { Ssgoi, SsgoiTransition } from '@ssgoi/react';
 import { film } from '@ssgoi/react/view-transitions';
 import { getNetworkIconPath } from './utils/apostleImages';
 import { useDataLoader } from './hooks/useDataLoader';
+import { useCloudSync } from './hooks/useCloudSync';
 import Layout from './components/layout/Layout';
 import DeckSimulator from './components/party/DeckSimulator';
 import DeckRecommender from './components/builder/DeckRecommender';
+import Settings from './pages/Settings';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import { Toaster } from 'react-hot-toast';
 
 const ssgoiConfig = {
@@ -15,6 +18,9 @@ const ssgoiConfig = {
 function App() {
   // TODO: spells 추가
   const { apostles, skills, asides, isLoading, error } = useDataLoader();
+
+  // 전역 클라우드 동기화 활성화
+  useCloudSync();
 
   if (isLoading) {
     return (
@@ -97,6 +103,32 @@ function App() {
                   </Link>
                 </div>
               </div>
+            </Layout>
+          }
+        />
+        {/* 설정 페이지 */}
+        <Route
+          path="/settings"
+          element={
+            <Layout>
+              <Settings />
+            </Layout>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <Layout>
+              <Settings />
+            </Layout>
+          }
+        />
+        {/* 자주 찾는 질문 / 개인정보 처리방침 */}
+        <Route
+          path="/privacy"
+          element={
+            <Layout>
+              <PrivacyPolicy />
             </Layout>
           }
         />
