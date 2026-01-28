@@ -5,6 +5,13 @@ import PatchNotesModal from './PatchNotesModal';
 function Header() {
   const [showPatchNotes, setShowPatchNotes] = useState(false);
 
+  const handleClick = () => {
+    const elem = document.activeElement as HTMLElement;
+    if (elem) {
+      elem.blur();
+    }
+  };
+
   return (
     <>
       <div className="fixed top-4 left-4 z-50">
@@ -33,10 +40,14 @@ function Header() {
               <a onClick={() => setShowPatchNotes(true)}>패치 노트</a>
             </li>
             <li>
-              <Link to="/">덱 빌더</Link>
+              <Link to="/" onClick={handleClick}>
+                덱 빌더
+              </Link>
             </li>
             <li>
-              <Link to="/builder">보유 사도 분석기</Link>
+              <Link to="/builder" onClick={handleClick}>
+                보유 사도 분석기
+              </Link>
             </li>
           </ul>
         </div>
