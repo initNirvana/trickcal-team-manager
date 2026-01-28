@@ -6,6 +6,7 @@ import { useDataLoader } from './hooks/useDataLoader';
 import Layout from './components/layout/Layout';
 import DeckSimulator from './components/party/DeckSimulator';
 import DeckRecommender from './components/builder/DeckRecommender';
+import { Toaster } from 'react-hot-toast';
 
 const ssgoiConfig = {
   transitions: [{ from: '/', to: '/builder', transition: film(), symmetric: true }],
@@ -46,6 +47,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Toaster position="top-center" />
       <Routes>
         {/* 덱 시뮬레이터 */}
         <Route

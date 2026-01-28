@@ -1,4 +1,5 @@
 import { useRef, useCallback, useState } from 'react';
+import toast from 'react-hot-toast';
 import { RecommendedDeck } from '@/utils/builder/deckRecommendationUtils';
 import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/apostleUtils';
 import * as htmlToImage from 'html-to-image';
@@ -22,17 +23,38 @@ export const RecommendedDeckSection = ({ recommendations }: RecommendedDeckSecti
     {},
   );
 
-  const handleCopyCard = useCallback(async (idx: number) => {
+  const handleCopyCard = useCallback((idx: number) => {
     const node = cardRefs.current[idx];
     if (!node) return;
-    try {
-      const dataUrl = await htmlToImage.toPng(node, { pixelRatio: 2 });
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-    } catch (err) {
-      console.error('Failed to copy card image', err);
-    }
+
+    const blobPromise = htmlToImage
+      .toBlob(node, {
+        pixelRatio: 2,
+        cacheBust: true,
+        backgroundColor: '#ffffff',
+        style: {
+          borderRadius: '16px',
+        },
+      })
+      .then((blob) => {
+        if (!blob) throw new Error('이미지 생성 실패');
+        return blob;
+      });
+
+    const copyPromise = blobPromise.then((blob) => {
+      try {
+        const item = new ClipboardItem({ 'image/png': blob });
+        return navigator.clipboard.write([item]);
+      } catch (err) {
+        throw new Error('클립보드 저장 실패: ' + (err as Error).message);
+      }
+    });
+
+    toast.promise(copyPromise, {
+      loading: '이미지 생성 중...',
+      success: '클립보드에 복사되었습니다!',
+      error: (err) => `실패: ${err.message}`,
+    });
   }, []);
 
   if (recommendations.length === 0) {
