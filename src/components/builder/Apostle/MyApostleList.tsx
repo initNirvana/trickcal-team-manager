@@ -179,7 +179,7 @@ const MyApostleList = ({
               )}
 
               {/* A2 토글 버튼 - 좌상단 (항상 표시 / 모바일 대응) */}
-              {isOwned && (
+              {isOwned && apostle.aside?.hasAside && (
                 <div
                   className={`absolute top-1 left-1 z-20 flex h-5 w-6 cursor-pointer items-center justify-center rounded border shadow-sm transition-all sm:h-5 sm:w-6 ${
                     asideLevel >= 2
