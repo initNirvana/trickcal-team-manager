@@ -226,7 +226,7 @@ const GrowthGuide = ({ topDecks }: GrowthGuideProps) => {
           <HiMiniExclamationTriangle className="text-primary h-4 w-4 shrink-0" />
           <div className="text-[11px] leading-snug font-medium">
             <span className="font-bold underline">어사이드</span>는 사도의 효과를 추가하거나
-            능력치를 강화하는 시스템입니다. 투자시 주의가 필요합니다.
+            강화하는 시스템입니다. 다만 증명서는 귀한 재화이므로 투자시 주의가 필요합니다.
           </div>
         </div>
       </div>
