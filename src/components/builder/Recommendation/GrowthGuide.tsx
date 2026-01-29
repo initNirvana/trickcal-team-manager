@@ -77,15 +77,15 @@ const GrowthGuide = ({ topDecks }: GrowthGuideProps) => {
                 reason: info.reason,
                 type: 'SKIP',
               });
+            } else {
+              steps.push({
+                apostle,
+                priority: info.priority,
+                reason: info.reason,
+                targetLevel: 2,
+                type: 'UPGRADE',
+              });
             }
-
-            steps.push({
-              apostle,
-              priority: info.priority,
-              reason: info.reason,
-              targetLevel: 2,
-              type: 'UPGRADE',
-            });
           }
         }
       });

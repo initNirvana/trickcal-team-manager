@@ -28,7 +28,7 @@ export const ApostleRatingSchema = z.object({
   aside: z.object({
     importance: z.enum(['선택', '권장', '필수', '보류']).nullable(),
     score: z.number().int().min(0).max(15),
-    reason: z.string().optional(),
+    reason: z.string().min(1).optional(),
   }),
   reason: z.string().min(1).optional(),
 });

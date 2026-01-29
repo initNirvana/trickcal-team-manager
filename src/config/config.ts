@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 const envSchema = z.object({
-  VITE_SUPABASE_URL: z.string().url({ message: 'VITE_SUPABASE_URL must be a valid URL' }),
-  VITE_SUPABASE_ANON_KEY: z.string().min(1, { message: 'VITE_SUPABASE_ANON_KEY is required' }),
+  VITE_SUPABASE_URL: z.string().url({ error: 'VITE_SUPABASE_URL must be a valid URL' }),
+  VITE_SUPABASE_ANON_KEY: z.string().min(1, { error: 'VITE_SUPABASE_ANON_KEY is required' }),
 });
 
 const _env = envSchema.safeParse(import.meta.env);
