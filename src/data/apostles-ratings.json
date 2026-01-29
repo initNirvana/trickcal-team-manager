@@ -67,7 +67,7 @@
     "a008": {
       "name": "실라",
       "engName": "Sylla",
-      "baseScore": 66,
+      "baseScore": 63,
       "aside": {
         "importance": "선택",
         "score": 5,
@@ -176,7 +176,7 @@
       "baseScore": 60,
       "aside": {
         "importance": "보류",
-        "score": 0
+        "score": 5
       }
     },
     "a020": {
@@ -311,7 +311,8 @@
       "baseScore": 60,
       "aside": {
         "importance": "필수",
-        "score": 15
+        "score": 5,
+        "reason": "9인덱(프론티어)에서 활용, 여유 있을 시 투자 추천"
       }
     },
     "a035": {
@@ -368,7 +369,7 @@
       "aside": {
         "importance": "선택",
         "score": 3,
-        "reason": "기본 공격 범위 효과 추가, 저학년 사용시 본인 보호막 + HP회복 효과. 냉정 유저를 제외한다면 투자 우선순위가 낮습니다."
+        "reason": "기본 공격 범위 효과 추가, 저학년 사용시 본인 보호막 + HP회복 효과. 냉정 유저를 제외한다면 투자 우선순위는 낮아요"
       }
     },
     "a041": {
@@ -378,7 +379,7 @@
       "aside": {
         "importance": "선택",
         "score": 3,
-        "reason": "유일한 7활발 시너지를 가능하게 합니다. 명함 힐러 용병으로 많이 사용됩니다. 어사이드 추천 순위는 낮습니다."
+        "reason": "유일한 7활발 시너지를 가능하게 합니다. 명함 용병으로 많이 사용됩니다. 어사이드 추천 순위는 낮아요"
       }
     },
     "a042": {
@@ -550,7 +551,8 @@
       "baseScore": 68,
       "aside": {
         "importance": "필수",
-        "score": 10
+        "score": 10,
+        "reason": "A2가 본체"
       }
     },
     "a061": {
@@ -583,7 +585,7 @@
     "a064": {
       "name": "블랑셰",
       "engName": "Blanchet",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
         "importance": "보류",
         "score": 3
@@ -628,8 +630,8 @@
       "engName": "Rollett",
       "baseScore": 65,
       "aside": {
-        "importance": "권장",
-        "score": 5
+        "importance": "선택",
+        "score": 3
       }
     },
     "a069": {
@@ -725,10 +727,11 @@
     "a078": {
       "name": "스노키",
       "engName": "Snorky",
-      "baseScore": 65,
+      "baseScore": 58,
       "aside": {
         "importance": "필수",
-        "score": 5
+        "score": 10,
+        "reason": "A2가 본체"
       }
     },
     "a079": {
@@ -765,7 +768,7 @@
       "aside": {
         "importance": "선택",
         "score": 3,
-        "reason": "명함으로도 좋아서 우선 순위는 낮아요"
+        "reason": "명함으로도 좋아서 우선 순위가 낮아요"
       },
       "scoreBySize": {
         "size6": 60,
@@ -852,7 +855,7 @@
     "a091": {
       "name": "샤샤",
       "engName": "Shasha",
-      "baseScore": 60,
+      "baseScore": 63,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -871,7 +874,7 @@
     "a093": {
       "name": "라이카",
       "engName": "Laika",
-      "baseScore": 66,
+      "baseScore": 60,
       "aside": {
         "importance": "필수",
         "score": 5
@@ -893,7 +896,8 @@
       "baseScore": 68,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "명함으로도 충분해서 추천하지 않아요"
       }
     },
     "a096": {
@@ -913,7 +917,7 @@
     "a097": {
       "name": "마요(멋짐)",
       "engName": "MayoCool",
-      "baseScore": 65,
+      "baseScore": 63,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -922,7 +926,7 @@
     "a098": {
       "name": "오르",
       "engName": "Orr",
-      "baseScore": 65,
+      "baseScore": 63,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -935,7 +939,7 @@
       "aside": {
         "importance": "권장",
         "score": 5,
-        "reason": "전열 딜러중 최강"
+        "reason": "최강"
       }
     },
     "a100": {
@@ -954,7 +958,7 @@
       "baseScore": 60,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 5
       }
     },
     "a102": {
@@ -964,7 +968,7 @@
       "aside": {
         "importance": "권장",
         "score": 5,
-        "reason": "9인덱에서만 활용, 명함 사용 후 여유 있을 시 투자 권장"
+        "reason": "9인덱에서만 활용, 명함 사용 후 여유 있을 시 투자 추천"
       },
       "scoreBySize": {
         "size6": 60,
@@ -1015,7 +1019,7 @@
       },
       "scoreBySize": {
         "size6": 60,
-        "size9": 80
+        "size9": 75
       }
     },
     "a107": {
@@ -1071,14 +1075,14 @@
     "a108": {
       "name": "티그(영웅)",
       "engName": "TigHero",
-      "baseScore": 82,
+      "baseScore": 78,
       "aside": {
         "importance": "권장",
         "score": 5,
         "reason": "유리한 성격 피해량 50% 추가, 고학년 사용시 기본 공격 1회/2회/3회에 추가 효과 부여"
       },
       "positionScore": {
-        "front": 58,
+        "front": 53,
         "mid": 80,
         "back": 82
       }
@@ -1086,7 +1090,7 @@
     "a109": {
       "name": "미로",
       "engName": "Miro",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
         "importance": "보류",
         "score": 3
@@ -1095,7 +1099,7 @@
     "a110": {
       "name": "아사나",
       "engName": "Asana",
-      "baseScore": 68,
+      "baseScore": 63,
       "aside": {
         "importance": "필수",
         "score": 5
@@ -1104,7 +1108,7 @@
     "a111": {
       "name": "베니(베니)",
       "engName": "BeniBeni",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
         "importance": "보류",
         "score": 3
