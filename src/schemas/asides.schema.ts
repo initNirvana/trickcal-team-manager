@@ -1,11 +1,12 @@
 import { z } from 'zod';
 
-export const AsideTargetSchema = z.enum(['All', 'Front', 'Mid', 'Back', 'Persona']);
+export const AsideTargetSchema = z.enum(['All', 'Front', 'Mid', 'Back', 'Persona', 'Skill']);
 
 export const AsideModifierSchema = z
   .object({
     Increase: z.number().optional(),
     Reduction: z.number().optional(),
+    Duration: z.number().optional(),
   })
   .passthrough();
 

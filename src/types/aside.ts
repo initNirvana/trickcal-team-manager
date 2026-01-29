@@ -1,16 +1,18 @@
 /**
  * 어사이드 적용 타입
  */
-export type AsideTarget = 'All' | 'Front' | 'Mid' | 'Back' | 'Persona';
+export type AsideTarget = 'All' | 'Front' | 'Mid' | 'Back' | 'Persona' | 'Skill';
 
 /**
  * 피해 증가/감소 수치
  * @property {number} [Increase] - 피해량 증가 (optional).
  * @property {number} [Reduction] - 피해량 감소 (optional).
+ * @property {number} [Duration] - 지속 시간 (optional).
  */
 export interface AsideModifier {
   Increase?: number;
   Reduction?: number;
+  Duration?: number;
 }
 
 /**

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { Apostle } from '@/types/apostle';
 import type { Aside } from '@/types/aside';
 import { calculateAsideEffects, type AsideEffect } from '@/utils/damageProcessor';
@@ -309,6 +309,69 @@ const DamageTypeListSection = ({
   );
 };
 
+const SkillEffectItem = ({ effect }: { effect: AsideEffect }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div
+      className="bg-base-100 hover:bg-base-200/50 flex cursor-pointer flex-col gap-1 rounded p-2 transition-colors"
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 text-sm font-semibold">
+          <span className="text-purple-600 dark:text-purple-400">● {effect.apostleName}</span>
+          <span className="text-xs text-gray-500">Lv.{effect.rankStar}</span>
+        </div>
+        <div className="text-xs text-slate-400">{isOpen ? '접기 ▲' : '설명 보기 ▼'}</div>
+      </div>
+
+      <div className="flex flex-col gap-0.5 pl-4 text-sm">
+        {/* 주요 정보 우선 표시 */}
+        {effect.duration && (
+          <div className="font-medium text-amber-600 dark:text-amber-400">
+            지속 시간: {effect.duration}초
+          </div>
+        )}
+
+        {effect.damageReduction > 0 && (
+          <div className="text-blue-600 dark:text-blue-400">
+            받는 피해량 감소 +{effect.damageReduction}%
+          </div>
+        )}
+        {effect.damageIncrease > 0 && (
+          <div className="text-orange-600 dark:text-orange-400">
+            피해량 증가 +{effect.damageIncrease}%
+          </div>
+        )}
+
+        {/* 상세 설명 (토글) */}
+        {isOpen && effect.description && (
+          <div className="border-base-300 mt-1 border-t pt-1 text-xs whitespace-pre-wrap text-gray-600 dark:text-gray-400">
+            {effect.description}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const SkillEffectSection = ({ effects }: { effects: AsideEffect[] }) => {
+  if (!effects || effects.length === 0) return null;
+
+  return (
+    <section className="rounded-box bg-base-200 p-3">
+      <div className="flex flex-col gap-2">
+        <div className="mb-1 text-xs font-semibold text-slate-600 dark:text-slate-300">
+          스킬 효과
+        </div>
+        {effects.map((effect, idx) => (
+          <SkillEffectItem key={`${effect.apostleId}-${idx}`} effect={effect} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
 const AsideEffectDisplay = ({ apostles, asidesData, asideSelection }: AsideEffectProps) => {
   const effectList = useMemo(
     () => calculateAsideEffects(apostles, asidesData, asideSelection),
@@ -327,7 +390,8 @@ const AsideEffectDisplay = ({ apostles, asidesData, asideSelection }: AsideEffec
     effectList.totalSkillIncrease +
     effectList.totalSkillReduction +
     effectList.totalPhysicalReduction +
-    effectList.totalMagicalReduction;
+    effectList.totalMagicalReduction +
+    effectList.skillTypeEffects.length;
 
   const damageIncreaseByPosition = aggregateByPosition(
     effectList.increaseEffects,
@@ -449,6 +513,9 @@ const AsideEffectDisplay = ({ apostles, asidesData, asideSelection }: AsideEffec
           },
         ]}
       />
+
+      {/* 스킬 효과 섹션 (새로 추가됨) */}
+      <SkillEffectSection effects={effectList.skillTypeEffects} />
 
       <DamageTypeListSection
         types={[

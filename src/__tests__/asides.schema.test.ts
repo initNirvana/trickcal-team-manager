@@ -6,7 +6,7 @@ import { Personality } from '@/types/apostle';
 const PERSONALITIES = ['Jolly', 'Mad', 'Cool', 'Naive', 'Gloomy'] as const;
 const ALLOWED_PERSONALITIES = new Set(PERSONALITIES);
 
-const ALLOWED_TYPES = new Set(['All', 'Front', 'Mid', 'Back', 'Persona']);
+const ALLOWED_TYPES = new Set(['All', 'Front', 'Mid', 'Back', 'Persona', 'Skill']);
 
 const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '';
 
