@@ -1,22 +1,22 @@
 {
-  "projectVersion": "202601.24.-b85f5f2d",
-  "lastUpdated": "2026-01-24T12:10:37.511Z",
+  "projectVersion": "20260130-f5455df4",
+  "lastUpdated": "2026-01-29T16:28:38.844Z",
   "files": {
     "apostles.json": {
-      "hash": "a66d58d0",
-      "updated": "2026-01-21T11:34:08.901Z"
+      "hash": "8d59313d",
+      "updated": "2026-01-29T16:28:38.844Z"
     },
     "apostles-ratings.json": {
-      "hash": "d56508b0",
-      "updated": "2026-01-24T12:10:37.511Z"
+      "hash": "5bc0a560",
+      "updated": "2026-01-29T16:28:38.844Z"
     },
     "skills.json": {
-      "hash": "c59e6330",
-      "updated": "2026-01-21T11:25:18.594Z"
+      "hash": "a1b9d08d",
+      "updated": "2026-01-29T16:28:38.844Z"
     },
     "asides.json": {
-      "hash": "00aa2553",
-      "updated": "2026-01-21T11:25:18.594Z"
+      "hash": "c8ac2fd1",
+      "updated": "2026-01-29T16:28:38.844Z"
     },
     "spells.json": {
       "hash": "74ef7411",

@@ -2294,6 +2294,25 @@
       "aside": {
         "hasAside": true
       }
+    },
+    {
+      "id": "a116",
+      "name": "다야(퓨어사인)",
+      "engName": "DayaPureshine",
+      "isEldain": false,
+      "rank": 3,
+      "race": "용족",
+      "persona": "Mad",
+      "role": {
+        "main": "Supporter",
+        "subRole": "Utility",
+        "trait": ["Buff", "Debuff", "CC", "Heal", "Shield"]
+      },
+      "method": "Magical",
+      "position": "mid",
+      "aside": {
+        "hasAside": true
+      }
     }
   ]
 }

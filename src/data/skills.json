@@ -4239,6 +4239,94 @@
           "Reduction": 0
         }
       ]
+    },
+    {
+      "apostleId": "a116",
+      "name": "다야(퓨어사인)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "effectRange": "",
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a116",
+      "name": "다야(퓨어사인)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "effectRange": "다수 적용",
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 2,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 3,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 4,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 5,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 6,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 7,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 8,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 9,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 10,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 11,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 12,
+          "Increase": 0,
+          "Reduction": 25
+        },
+        {
+          "level": 13,
+          "Increase": 0,
+          "Reduction": 25
+        }
+      ]
     }
   ]
 }

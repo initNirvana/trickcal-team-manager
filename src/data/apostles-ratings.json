@@ -1130,6 +1130,15 @@
         "importance": "선택",
         "score": 5
       }
+    },
+    "a116": {
+      "name": "다야(퓨어사인)",
+      "engName": "DayaPureshine",
+      "baseScore": 65,
+      "aside": {
+        "importance": "선택",
+        "score": 5
+      }
     }
   }
 }

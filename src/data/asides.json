@@ -880,6 +880,24 @@
       "description": "후열 아군이 적에게 주는 피해량을 증가시킨다.",
       "type": ["Back"],
       "damage": [{ "Increase": 26, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a116",
+      "apostleName": "다야(퓨어사인)",
+      "name": "마법 소녀는 편지 쓰는 중",
+      "level": 2,
+      "description": "웨이브당 한번 HP가 20% 미만이 될 경우 자신의 HP를 회복한다. 일정 시간마다 아군이 직접 피해를 10회 받으면, 스타☆샤인을 발산한다. 스타☆샤인은 주변 아군의 HP를 회복시키고, 자신을 포함한 양옆 범위 내 아군의 받는 피해량을 감소시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 0, "Reduction": 35 }]
+    },
+    {
+      "apostleId": "a116",
+      "apostleName": "다야(퓨어사인)",
+      "name": "나의 아름다운 장미꽃에게",
+      "level": 3,
+      "description": "중열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Mid"],
+      "damage": [{ "Increase": 0, "Reduction": 18 }]
     }
   ]
 }
