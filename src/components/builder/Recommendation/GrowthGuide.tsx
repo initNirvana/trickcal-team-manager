@@ -61,7 +61,7 @@ const GrowthGuide = ({ topDecks }: GrowthGuideProps) => {
     };
 
     // 1. 핵심 사도 육성 추천 (상위 6개 덱 분석)
-    const analysisTargetDecks = topDecks.slice(0, 12);
+    const analysisTargetDecks = topDecks.slice(0, 6);
 
     analysisTargetDecks.forEach((deckResult) => {
       deckResult.deck.forEach((apostle) => {
