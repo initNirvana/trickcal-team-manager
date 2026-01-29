@@ -81,12 +81,12 @@ const MyApostleList = ({
   return (
     <div id="my-apostle-list-container" className="bg-base-200 space-y-2 rounded-xl p-4 shadow-lg">
       {/* 헤더 */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h3 className="text-2xl font-bold">보유 사도 </h3>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => handleSort('id')}
-            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold shadow-sm transition ${
+            className={`btn btn-sm h-8 min-h-0 w-auto gap-0 rounded-md px-3 text-xs font-semibold whitespace-nowrap shadow-sm transition ${
               sortBy === 'id' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
           >
@@ -94,7 +94,7 @@ const MyApostleList = ({
           </button>
           <button
             onClick={() => handleSort('name')}
-            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold shadow-sm transition ${
+            className={`btn btn-sm h-8 min-h-0 w-auto gap-0 rounded-md px-3 text-xs font-semibold whitespace-nowrap shadow-sm transition ${
               sortBy === 'name' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
           >
@@ -102,17 +102,19 @@ const MyApostleList = ({
           </button>
           <button
             onClick={() => handleSort('persona')}
-            className={`btn btn-circle rounded px-2 py-1 text-xs font-semibold shadow-sm transition ${
+            className={`btn btn-sm h-8 min-h-0 w-auto gap-0 rounded-md px-3 text-xs font-semibold whitespace-nowrap shadow-sm transition ${
               sortBy === 'persona' ? 'btn-info text-black' : 'bg-slate-50'
             }`}
           >
             성격
           </button>
 
+          <div className="divider divider-horizontal mx-0"></div>
+
           <button
             id="btn-apostle-select-all"
             onClick={() => handleAddMultipleApostles(uniqueApostles)}
-            className="btn btn-success rounded px-2 py-1 text-xs font-semibold text-black shadow-sm transition"
+            className="btn btn-success btn-sm rounded px-2 py-1 text-xs font-semibold text-black shadow-sm transition"
           >
             전체 선택
           </button>
@@ -128,7 +130,7 @@ const MyApostleList = ({
                   });
                 }
               }}
-              className="btn btn-error rounded px-2 py-1 text-xs font-semibold text-black shadow-sm transition"
+              className="btn btn-error btn-sm rounded px-2 py-1 text-xs font-semibold text-black shadow-sm transition"
             >
               전체 제거
             </button>
@@ -139,8 +141,8 @@ const MyApostleList = ({
       {/* 검색 */}
       <ApostleSelectorSearch apostles={uniqueApostles} onSelect={onToggle} />
 
-      {/* 추가 가능한 캐릭 - 작은 그리드 */}
-      <div className="grid max-h-[70dvh] grid-cols-5 gap-2 overflow-y-auto px-2">
+      {/* 추가 가능한 캐릭 - 작은 그리드 (Mobile: 3열, Desktop: 5열) */}
+      <div className="grid max-h-[70dvh] grid-cols-3 gap-2 overflow-y-auto px-2 sm:grid-cols-5">
         {uniqueApostles.map((apostle) => {
           const isOwned = myApostles.some((m) => m.id === apostle.id);
           const asideLevel = getAsideLevel(apostle.id);
@@ -157,7 +159,7 @@ const MyApostleList = ({
           return (
             <div
               key={apostle.id}
-              className={`group relative min-h-14 cursor-pointer overflow-hidden rounded-lg border-2 transition-all ${
+              className={`group relative min-h-20 cursor-pointer overflow-hidden rounded-lg border-2 transition-all sm:min-h-14 ${
                 isOwned
                   ? 'border-success shadow-success/30 shadow-lg'
                   : 'border-transparent hover:scale-105 hover:shadow-lg'
@@ -171,17 +173,17 @@ const MyApostleList = ({
                 alt={apostle.name}
               />
 
-              {/* ✓ 보유 체크마크 - 우상단 */}
+              {/* ✓ 보유 체크마크 - 우상단 (모바일에서 더 크게) */}
               {isOwned && (
-                <div className="absolute top-1 right-1 z-10 flex h-4 w-4 items-center justify-center rounded-full border border-black/10 bg-green-400 shadow-sm">
+                <div className="absolute top-1 right-1 z-10 flex h-5 w-5 items-center justify-center rounded-full border border-black/10 bg-green-400 shadow-sm sm:h-4 sm:w-4">
                   <span className="text-xs leading-none font-bold text-black">✓</span>
                 </div>
               )}
 
-              {/* A2 토글 버튼 - 좌상단 (항상 표시 / 모바일 대응) */}
+              {/* A2 토글 버튼 - 좌상단 (항상 표시 / 모바일 대응 - 더 크게) */}
               {isOwned && apostle.aside?.hasAside && (
                 <div
-                  className={`absolute top-1 left-1 z-20 flex h-5 w-6 cursor-pointer items-center justify-center rounded border shadow-sm transition-all sm:h-5 sm:w-6 ${
+                  className={`absolute top-1 left-1 z-20 flex h-7 w-8 cursor-pointer items-center justify-center rounded border shadow-sm transition-all sm:h-5 sm:w-6 ${
                     asideLevel >= 2
                       ? 'border-black/20 bg-amber-400 text-black'
                       : 'border-white/30 bg-black/40 text-white/70 hover:bg-black/60'
@@ -203,8 +205,8 @@ const MyApostleList = ({
               )}
 
               {/* 이름 표시 */}
-              <div className="absolute right-0 bottom-0 left-0 bg-black/60 px-2 py-0.5">
-                <p className="truncate text-[10px] font-semibold text-white">{apostle.name}</p>
+              <div className="absolute right-0 bottom-0 left-0 bg-black/70 px-3 py-0.5">
+                <p className="truncate text-[11px] font-semibold text-white">{apostle.name}</p>
               </div>
 
               {!isOwned && (

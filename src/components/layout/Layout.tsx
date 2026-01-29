@@ -7,7 +7,7 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   return (
-    <div>
+    <div className="bg-base-100 relative z-0 min-h-screen">
       <Header />
       {children}
       <Footer />
