@@ -43,7 +43,7 @@ describe('asides.json schema validation', () => {
     expect(new Set(keys).size).toBe(keys.length);
   });
 
-  it('type values should be valid (All/Front/Mid/Back/Persona)', () => {
+  it('type values should be valid (All/Front/Mid/Back/Persona/Skill)', () => {
     const parsed = AsidesDataSchema.parse(asidesData);
 
     const invalid = parsed.asides
