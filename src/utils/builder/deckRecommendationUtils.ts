@@ -401,8 +401,8 @@ function selectApostlesGreedy(
     if (capacity <= 0) continue;
 
     pool.sort((a, b) => {
-      const asideLevelA = a.aside?.score ?? 0;
-      const asideLevelB = b.aside?.score ?? 0;
+      const asideLevelA = options?.asideLevels?.[a.id] ?? 0;
+      const asideLevelB = options?.asideLevels?.[b.id] ?? 0;
 
       const scoreA = getEffectiveBaseScore(a, deckSize, targetPos, options, asideLevelA);
       const scoreB = getEffectiveBaseScore(b, deckSize, targetPos, options, asideLevelB);
@@ -589,6 +589,16 @@ function buildSixDeckWithPattern(
     } else {
       personalityGroups.get(a.persona)?.push(a);
     }
+  });
+
+  personalityGroups.forEach((group) => {
+    group.sort((a, b) => {
+      const asideA = options?.asideLevels?.[a.id] ?? 0;
+      const asideB = options?.asideLevels?.[b.id] ?? 0;
+      const scoreA = getEffectiveBaseScore(a, 6, undefined, options, asideA);
+      const scoreB = getEffectiveBaseScore(b, 6, undefined, options, asideB);
+      return scoreB - scoreA;
+    });
   });
 
   const personalities = Array.from(personalityGroups.keys()).filter(
