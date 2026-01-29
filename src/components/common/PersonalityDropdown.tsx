@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { getPersonalityKoreanName } from '@/utils/apostleUtils';
+import { Personality } from '@/types/apostle';
 
 interface PersonalityDropdownProps {
-  personalities: string[];
-  selectedPersonalities: Set<string>;
-  onToggle: (personality: string) => void;
+  personalities: Personality[];
+  selectedPersonalities: Set<Personality>;
+  onToggle: (personality: Personality | null) => void;
 }
 
 export const PersonalityDropdown = ({
@@ -11,36 +12,51 @@ export const PersonalityDropdown = ({
   selectedPersonalities,
   onToggle,
 }: PersonalityDropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // details tag handles open state natively
+
+  // 버튼 텍스트 계산
+  const getButtonText = () => {
+    const count = selectedPersonalities.size;
+    if (count === 0) return '전체';
+    if (count === 1) return getPersonalityKoreanName(Array.from(selectedPersonalities)[0]);
+    return `${getPersonalityKoreanName(Array.from(selectedPersonalities)[0])} (+${count - 1})`;
+  };
+
+  const handleAllClick = () => {
+    onToggle(null);
+  };
 
   return (
-    <div className="relative">
-      <button onClick={() => setIsOpen(!isOpen)} className="btn transition">
-        성격선택 {selectedPersonalities.size > 0 && `(${selectedPersonalities.size})`}
-      </button>
-
-      {isOpen && (
-        <div className="absolute top-full right-0 z-50 mt-2 min-w-max rounded-lg border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-gray-800">
-          {personalities.map((personality) => (
-            <label
-              key={personality}
-              className="flex cursor-pointer items-center gap-3 border-b border-gray-200 px-4 py-2 last:border-b-0 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700"
-            >
+    <details className="dropdown dropdown-end">
+      <summary className="btn m-1">{getButtonText()}</summary>
+      <ul className="menu dropdown-content rounded-box bg-base-100 z-[1] w-52 p-2 shadow">
+        {/* 전체 선택 옵션 */}
+        <li>
+          <label className="flex cursor-pointer items-center gap-3">
+            <input
+              type="checkbox"
+              checked={selectedPersonalities.size === 0}
+              onChange={handleAllClick}
+              className="checkbox checkbox-sm"
+            />
+            <span className="text-sm">전체</span>
+          </label>
+        </li>
+        {personalities.map((personality) => (
+          <li key={personality}>
+            <label className="flex cursor-pointer items-center gap-3">
               <input
                 type="checkbox"
                 checked={selectedPersonalities.has(personality)}
                 onChange={() => onToggle(personality)}
-                className="cursor-pointer"
+                className="checkbox checkbox-sm"
               />
-              <span className="text-sm text-gray-900 dark:text-white">{personality}</span>
+              <span className="text-sm">{getPersonalityKoreanName(personality)}</span>
             </label>
-          ))}
-        </div>
-      )}
-
-      {/* 배경 클릭으로 닫기 */}
-      {isOpen && <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />}
-    </div>
+          </li>
+        ))}
+      </ul>
+    </details>
   );
 };
 
