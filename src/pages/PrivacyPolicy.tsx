@@ -7,7 +7,7 @@ function PrivacyPolicy() {
   return (
     <div className="container mx-auto max-w-3xl p-6 pb-20">
       <div className="mb-6 flex items-center gap-4">
-        <Link to="/settings" className="btn btn-ghost btn-circle">
+        <Link to="/settings" className="btn btn-ghost btn-circle" aria-label="설정으로 돌아가기">
           <FaArrowLeft size={20} />
         </Link>
         <h1 className="text-2xl font-bold">개인정보 처리방침</h1>

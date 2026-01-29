@@ -40,6 +40,8 @@ export const useCloudSync = (
       setBackups(data || []);
       if (data && data.length > 0) {
         setLastSyncedTime(new Date(data[0].created_at).toLocaleString());
+      } else {
+        setLastSyncedTime(null);
       }
     } catch (error) {
       console.error('백업 로드 실패:', error);

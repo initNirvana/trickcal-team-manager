@@ -25,8 +25,10 @@ interface MockChain {
   single: Mock;
   insert: Mock;
   eq: Mock;
-  then: (resolve: (value: unknown) => void) => void;
 }
+
+type ChainResult = { data: unknown; error: unknown };
+let chainResult: ChainResult = { data: [], error: null };
 
 describe('useCloudSync', () => {
   const mockUser = { id: 'test-user', email: 'test@example.com' };
@@ -41,15 +43,23 @@ describe('useCloudSync', () => {
 
   // Create a persistent chain object that behaves like a Promise AND a chain
   // This is crucial because Supabase queries are thenable builders including .select(), .order(), etc.
-  const mockChain: MockChain = {
+  // Create a custom thenable object that defers resolution until awaited
+  // This ensures it returns the current value of chainResult at the time of execution
+  const mockChain = {
+    then: (
+      onFulfilled?: ((value: ChainResult) => unknown) | null,
+      onRejected?: ((reason: unknown) => unknown) | null,
+    ) => Promise.resolve(chainResult).then(onFulfilled, onRejected),
+    catch: (onRejected?: ((reason: unknown) => unknown) | null) =>
+      Promise.resolve(chainResult).catch(onRejected),
+    finally: (onFinally?: (() => void) | null) => Promise.resolve(chainResult).finally(onFinally),
     select: mockSelect,
     order: mockOrder,
     limit: mockLimit,
     single: mockSingle,
     insert: mockInsert,
     eq: mockEq,
-    then: (resolve: (value: unknown) => void) => resolve({ data: [], error: null }), // Default 'await' result
-  };
+  } as unknown as MockChain & Promise<ChainResult>;
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -75,8 +85,7 @@ describe('useCloudSync', () => {
     // Root call returns the chain
     (supabase.from as unknown as Mock).mockReturnValue(mockChain);
 
-    // Reset default promise resolution for the chain (for fetchBackups)
-    mockChain.then = (resolve: (value: unknown) => void) => resolve({ data: [], error: null });
+    chainResult = { data: [], error: null };
   });
 
   afterEach(() => {
@@ -86,8 +95,7 @@ describe('useCloudSync', () => {
   it('should fetch backups on mount', async () => {
     // Customize the 'await' result of the chain
     const mockBackups = [{ id: '1', created_at: '2023-01-01', data: {} }];
-    mockChain.then = (resolve: (value: unknown) => void) =>
-      resolve({ data: mockBackups, error: null });
+    chainResult = { data: mockBackups, error: null };
 
     const { result } = renderHook(() => useCloudSync());
 

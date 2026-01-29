@@ -17,10 +17,9 @@ export const useAuthStore = create<AuthState>((set) => ({
   setUser: (user) => set({ user }),
   checkUser: async () => {
     try {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      set({ user, loading: false });
+      const { data, error } = await supabase.auth.getUser();
+      if (error) throw error;
+      set({ user: data.user, loading: false });
     } catch (error) {
       console.error('Error checking user:', error);
       set({ user: null, loading: false });
@@ -28,19 +27,21 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
   signInWithGoogle: async () => {
     try {
-      await supabase.auth.signInWithOAuth({
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
           redirectTo: window.location.origin,
         },
       });
+      if (error) throw error;
     } catch (error) {
       console.error('Error signing in with Google:', error);
     }
   },
   signOut: async () => {
     try {
-      await supabase.auth.signOut();
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
       set({ user: null });
     } catch (error) {
       console.error('Error signing out:', error);

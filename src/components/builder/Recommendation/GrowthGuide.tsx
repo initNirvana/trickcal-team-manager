@@ -135,8 +135,6 @@ const GrowthGuide = ({ topDecks }: GrowthGuideProps) => {
     return result.slice(0, 12); // 최대 12개 노출
   }, [topDecks, ownedApostles, includeEldain]);
 
-  if (growthSteps.length === 0 && includeEldain) return null;
-
   return (
     <div id="growth-roadmap-section" className="card bg-base-100 border-base-200 border shadow-xl">
       <div className="card-body p-5">
@@ -159,68 +157,74 @@ const GrowthGuide = ({ topDecks }: GrowthGuideProps) => {
           </div>
         </div>
 
-        <Activity mode={growthSteps.length ? 'visible' : 'hidden'}>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {growthSteps.map((step, idx) => {
-              const getBadgeStyle = (step: GrowthStep) => {
-                const importance = step.apostle.aside.importance;
-                if (step.priority === 1) return { text: '필수', color: 'bg-error text-white' };
-                if (step.priority === 2)
-                  return { text: '권장', color: 'bg-warning text-warning-content' };
-                if (step.priority === 4)
-                  return { text: '보류', color: 'bg-neutral text-neutral-content' };
-                if (step.priority === 5)
-                  return { text: '비추천', color: 'bg-base-300 text-base-content/50' };
-                // if (step.type === 'RECRUIT') return { text: '영입', color: 'bg-secondary text-secondary-content' };
-                return { text: importance || '권장', color: 'bg-info text-white' };
-              };
+        {growthSteps.length === 0 ? (
+          <div className="text-base-content/60 text-center text-sm">
+            추천할 어사이드가 없습니다.
+          </div>
+        ) : (
+          <Activity mode={growthSteps.length ? 'visible' : 'hidden'}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {growthSteps.map((step, idx) => {
+                const getBadgeStyle = (step: GrowthStep) => {
+                  const importance = step.apostle.aside.importance;
+                  if (step.priority === 1) return { text: '필수', color: 'bg-error text-white' };
+                  if (step.priority === 2)
+                    return { text: '권장', color: 'bg-warning text-warning-content' };
+                  if (step.priority === 4)
+                    return { text: '보류', color: 'bg-neutral text-neutral-content' };
+                  if (step.priority === 5)
+                    return { text: '비추천', color: 'bg-base-300 text-base-content/50' };
+                  // if (step.type === 'RECRUIT') return { text: '영입', color: 'bg-secondary text-secondary-content' };
+                  return { text: importance || '권장', color: 'bg-info text-white' };
+                };
 
-              const { text: badgeText, color: badgeColor } = getBadgeStyle(step);
+                const { text: badgeText, color: badgeColor } = getBadgeStyle(step);
 
-              return (
-                <div
-                  key={`${step.apostle.id}-${idx}`}
-                  className="group bg-base-200/50 border-base-300 hover:bg-base-200 flex items-center gap-2 rounded-2xl border p-2 transition-all duration-200 hover:scale-[1.02]"
-                >
-                  <div className="relative shrink-0">
-                    <div
-                      className={`avatar ${getPersonalityBackground(step.apostle.persona)} rounded-xl p-0.5 shadow-sm`}
-                    >
-                      <div className="w-12 rounded-lg">
-                        <img
-                          src={getApostleImagePath(step.apostle.engName)}
-                          alt={step.apostle.name}
-                        />
+                return (
+                  <div
+                    key={`${step.apostle.id}-${idx}`}
+                    className="group bg-base-200/50 border-base-300 hover:bg-base-200 flex items-center gap-2 rounded-2xl border p-2 transition-all duration-200 hover:scale-[1.02]"
+                  >
+                    <div className="relative shrink-0">
+                      <div
+                        className={`avatar ${getPersonalityBackground(step.apostle.persona)} rounded-xl p-0.5 shadow-sm`}
+                      >
+                        <div className="w-12 rounded-lg">
+                          <img
+                            src={getApostleImagePath(step.apostle.engName)}
+                            alt={step.apostle.name}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={`badge badge-sm absolute -top-2 -left-2 border-none font-bold shadow-md ${badgeColor}`}
+                      >
+                        {badgeText}
                       </div>
                     </div>
-                    <div
-                      className={`badge badge-sm absolute -top-2 -left-2 border-none font-bold shadow-md ${badgeColor}`}
-                    >
-                      {badgeText}
-                    </div>
-                  </div>
 
-                  <div className="flex min-w-0 flex-col">
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      <span className="truncate text-sm font-bold">{step.apostle.name}</span>
-                      {step.targetLevel && (
-                        <div className="flex items-center gap-0.5">
-                          <HiArrowRight className="h-3 w-3" />
-                          <span className="text-warning text-xs font-black italic">
-                            A{step.targetLevel}
-                          </span>
-                        </div>
-                      )}
+                    <div className="flex min-w-0 flex-col">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="truncate text-sm font-bold">{step.apostle.name}</span>
+                        {step.targetLevel && (
+                          <div className="flex items-center gap-0.5">
+                            <HiArrowRight className="h-3 w-3" />
+                            <span className="text-warning text-xs font-black italic">
+                              A{step.targetLevel}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-base-content/70 mt-0.5 line-clamp-2 text-[12px] leading-tight md:line-clamp-none">
+                        {step.reason}
+                      </p>
                     </div>
-                    <p className="text-base-content/70 mt-0.5 line-clamp-2 text-[12px] leading-tight md:line-clamp-none">
-                      {step.reason}
-                    </p>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </Activity>
+                );
+              })}
+            </div>
+          </Activity>
+        )}
 
         <div className="alert bg-primary/10 mt-2 gap-2 border-none py-2 shadow-inner">
           <HiMiniExclamationTriangle className="text-primary h-4 w-4 shrink-0" />
