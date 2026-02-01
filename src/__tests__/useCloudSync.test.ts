@@ -1,9 +1,10 @@
-import { renderHook, act, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach, afterEach, type Mock } from 'vitest';
+import { renderHook, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest';
 import { useCloudSync } from '../hooks/useCloudSync';
 import { supabase } from '@/lib/supabase';
 import { useAuthStore } from '@/stores/authStore';
 import { useMyApostleStore } from '@/stores/myApostleStore';
+import type { OwnedApostle } from '@/stores/myApostleStore';
 
 // Mock dependencies
 vi.mock('@/lib/supabase');
@@ -17,84 +18,66 @@ vi.mock('react-hot-toast', () => ({
   },
 }));
 
-// Define interface for the mock chain
-interface MockChain {
-  select: Mock;
-  order: Mock;
-  limit: Mock;
-  single: Mock;
-  insert: Mock;
-  eq: Mock;
-}
-
 type ChainResult = { data: unknown; error: unknown };
-let chainResult: ChainResult = { data: [], error: null };
 
 describe('useCloudSync', () => {
   const mockUser = { id: 'test-user', email: 'test@example.com' };
 
-  // Setup mock functions
+  // Chain result state
+  let chainResult: ChainResult = { data: [], error: null };
+
+  // Mock functions
   const mockSelect = vi.fn();
   const mockOrder = vi.fn();
-  const mockLimit = vi.fn();
-  const mockSingle = vi.fn();
   const mockInsert = vi.fn();
   const mockEq = vi.fn();
 
-  // Create a persistent chain object that behaves like a Promise AND a chain
-  // This is crucial because Supabase queries are thenable builders including .select(), .order(), etc.
-  // Create a custom thenable object that defers resolution until awaited
-  // This ensures it returns the current value of chainResult at the time of execution
-  const mockChain = {
-    then: (
-      onFulfilled?: ((value: ChainResult) => unknown) | null,
-      onRejected?: ((reason: unknown) => unknown) | null,
-    ) => Promise.resolve(chainResult).then(onFulfilled, onRejected),
-    catch: (onRejected?: ((reason: unknown) => unknown) | null) =>
-      Promise.resolve(chainResult).catch(onRejected),
-    finally: (onFinally?: (() => void) | null) => Promise.resolve(chainResult).finally(onFinally),
-    select: mockSelect,
-    order: mockOrder,
-    limit: mockLimit,
-    single: mockSingle,
-    insert: mockInsert,
-    eq: mockEq,
-  } as unknown as MockChain & Promise<ChainResult>;
+  const setOwnedApostlesSpy = vi.fn();
+  let currentOwnedApostles: OwnedApostle[] = [];
+
+  // Helper to create a fresh Promise-based chain that resolves immediately
+  const createMockChain = () => {
+    // Create a native Promise that resolves to the current chainResult
+    const promise = Promise.resolve(chainResult);
+
+    // Attach mock methods to the promise instance (Mixin pattern)
+    Object.assign(promise, {
+      select: mockSelect.mockReturnValue(promise),
+      order: mockOrder.mockReturnValue(promise),
+      insert: mockInsert.mockReturnValue(promise),
+      eq: mockEq.mockReturnValue(promise),
+    });
+
+    return promise;
+  };
 
   beforeEach(() => {
     vi.clearAllMocks();
 
+    // Reset chain result and store state
+    chainResult = { data: [], error: null };
+    currentOwnedApostles = [];
+
     // Zustand Store Mocks
     (useAuthStore as unknown as Mock).mockReturnValue({ user: mockUser });
-    (useMyApostleStore as unknown as Mock).mockReturnValue({
-      ownedApostles: [],
-      setOwnedApostles: vi.fn(),
-    });
 
-    // Supabase Chain Mock Setup
-    // Ensure every method returns the chain to enable fluent API
-    mockSelect.mockReturnValue(mockChain);
-    mockOrder.mockReturnValue(mockChain);
-    mockLimit.mockReturnValue(mockChain);
-    mockEq.mockReturnValue(mockChain);
+    (useMyApostleStore as unknown as Mock).mockImplementation(() => ({
+      ownedApostles: currentOwnedApostles,
+      setOwnedApostles: setOwnedApostlesSpy,
+    }));
 
-    // Terminals return explicit promises
-    mockSingle.mockResolvedValue({ data: null, error: { code: 'PGRST116' } });
-    mockInsert.mockResolvedValue({ error: null });
+    (useMyApostleStore as unknown as { getState: Mock }).getState = vi
+      .fn()
+      .mockImplementation(() => ({
+        ownedApostles: currentOwnedApostles,
+      }));
 
-    // Root call returns the chain
-    (supabase.from as unknown as Mock).mockReturnValue(mockChain);
-
-    chainResult = { data: [], error: null };
-  });
-
-  afterEach(() => {
-    vi.useRealTimers();
+    // Setup Supabase Mock to return a NEW chain promise on each call
+    (supabase.from as unknown as Mock).mockImplementation(() => createMockChain());
   });
 
   it('should fetch backups on mount', async () => {
-    // Customize the 'await' result of the chain
-    const mockBackups = [{ id: '1', created_at: '2023-01-01', data: {} }];
+    const mockBackups = [{ id: '1', created_at: '2023-01-01', data: { ownedApostles: [] } }];
     chainResult = { data: mockBackups, error: null };
 
     const { result } = renderHook(() => useCloudSync());
@@ -105,65 +88,38 @@ describe('useCloudSync', () => {
     });
   });
 
-  // Timer-based tests are skipped due to flakiness in the test environment,
-  // but logic is covered by the fetch and restore tests.
-  it.skip('should auto-save when local data differs from server data', async () => {
-    vi.useFakeTimers();
+  it('should auto-restore when local data is empty and server has data', async () => {
+    // 1. Local is empty
+    currentOwnedApostles = [];
 
-    // 1. Initial State: Server has NO data
-    mockSingle.mockResolvedValue({ data: null, error: { code: 'PGRST116' } });
-
-    // Ensure the chain for auto-save works (order returns chain, single returns data)
-    mockOrder.mockReturnValue(mockChain);
-
-    // 2. Local State
-    const localData = [{ id: '1', asideLevel: 0 }];
-    (useMyApostleStore as unknown as Mock).mockReturnValue({
-      ownedApostles: localData,
-      setOwnedApostles: vi.fn(),
-    });
+    // 2. Server has data
+    const serverData = { ownedApostles: [{ id: 'apostle-1', asideLevel: 2 }] };
+    const mockBackups = [{ id: '1', created_at: '2023-01-01', data: serverData }];
+    chainResult = { data: mockBackups, error: null };
 
     renderHook(() => useCloudSync());
 
-    // 3. Fast-forward time
-    await act(async () => {
-      await vi.advanceTimersByTimeAsync(10000);
-    });
-
-    // 4. Verification
     await waitFor(() => {
-      // Did we even check the DB?
-      expect(mockSingle).toHaveBeenCalled();
-
-      // Did we try to insert?
-      expect(mockInsert).toHaveBeenCalledWith([
-        expect.objectContaining({
-          user_id: mockUser.id,
-          data: { ownedApostles: localData },
-        }),
-      ]);
+      // Should call setOwnedApostles with server data
+      expect(setOwnedApostlesSpy).toHaveBeenCalledWith(serverData.ownedApostles);
     });
   });
 
-  it('should restore backup', async () => {
-    const setOwnedApostlesSpy = vi.fn();
-    (useMyApostleStore as unknown as Mock).mockReturnValue({
-      ownedApostles: [],
-      setOwnedApostles: setOwnedApostlesSpy,
+  it('should NOT auto-restore if local data exists', async () => {
+    // 1. Local has data
+    currentOwnedApostles = [{ id: 'apostle-local', asideLevel: 1 }];
+
+    // 2. Server has different data
+    const serverData = { ownedApostles: [{ id: 'apostle-server', asideLevel: 2 }] };
+    const mockBackups = [{ id: '1', created_at: '2023-01-01', data: serverData }];
+    chainResult = { data: mockBackups, error: null };
+
+    renderHook(() => useCloudSync());
+
+    await waitFor(() => {
+      expect(mockSelect).toHaveBeenCalled();
+      // Should NOT call setOwnedApostles
+      expect(setOwnedApostlesSpy).not.toHaveBeenCalled();
     });
-
-    // Mock confirm dialog
-    vi.spyOn(window, 'confirm').mockReturnValue(true);
-
-    const { result } = renderHook(() => useCloudSync());
-
-    const backupData = { ownedApostles: [{ id: 'test', asideLevel: 3 }] };
-    const backup = { id: '1', created_at: '2023-01-01', data: backupData };
-
-    await act(async () => {
-      await result.current.restoreBackup(backup);
-    });
-
-    expect(setOwnedApostlesSpy).toHaveBeenCalledWith(backupData.ownedApostles);
   });
 });

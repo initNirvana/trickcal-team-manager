@@ -1,10 +1,13 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState, useRef } from 'react';
 import { useAuthStore } from '@/stores/authStore';
 import { supabase } from '@/lib/supabase';
 import { useMyApostleStore } from '@/stores/myApostleStore';
 import type { OwnedApostle } from '@/stores/myApostleStore';
 import toast from 'react-hot-toast';
 import isEqual from 'lodash/isEqual';
+
+/** 자동 저장 대기 시간 (3초) */
+const AUTO_SAVE_DELAY = 3000;
 
 export interface BackupData {
   ownedApostles: OwnedApostle[];
@@ -16,6 +19,33 @@ export interface Backup {
   data: BackupData;
 }
 
+/**
+ * 데이터를 비교하기 좋게 정렬하고 불필요한 필드를 제거하여 정규화합니다.
+ * @param data 백업 데이터 객체
+ * @returns 정규화된 데이터 객체
+ */
+const normalizeData = (data: BackupData | null | undefined) => {
+  if (!data?.ownedApostles) return { ownedApostles: [] };
+
+  const sortedApostles = [...data.ownedApostles].sort((a: OwnedApostle, b: OwnedApostle) =>
+    a.id.localeCompare(b.id),
+  );
+
+  return {
+    ownedApostles: sortedApostles.map((a: OwnedApostle) => ({
+      id: a.id,
+      asideLevel: a.asideLevel,
+    })),
+  };
+};
+
+/**
+ * 클라우드 동기화 및 자동 저장을 관리하는 커스텀 훅입니다.
+ * - 사용자 백업 목록 조회 및 복원
+ * - 데이터 변경 감지 시 Debounce를 적용한 자동 저장
+ * - 중복 저장 방지 및 초기 로드 시 자동 복원 기능 포함
+ * @param options.enableAutoSave 자동 저장 활성화 여부
+ */
 export const useCloudSync = (
   { enableAutoSave }: { enableAutoSave: boolean } = { enableAutoSave: true },
 ) => {
@@ -26,9 +56,21 @@ export const useCloudSync = (
   const [isSyncing, setIsSyncing] = useState(false);
   const [backups, setBackups] = useState<Backup[]>([]);
 
-  // 백업 목록 불러오기
+  // 초기 로드 완료 여부 (Race Condition 방지용)
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // 마지막으로 저장에 성공한 데이터를 추적 (불필요한 중복 저장 방지)
+  const lastSavedRef = useRef<{ ownedApostles: { id: string; asideLevel: number }[] } | null>(null);
+
+  /**
+   * Supabase에서 사용자의 백업 목록을 가져오고 초기 상태를 설정합니다.
+   * - 백업 목록 업데이트
+   * - 마지막 동기화 시간 표시
+   * - (최초 실행 시) 로컬 데이터가 비어있을 경우 자동 복원 수행
+   */
   const fetchBackups = useCallback(async () => {
     if (!user) return;
+
     try {
       const { data, error } = await supabase
         .from('user_owned_apostle')
@@ -37,93 +79,100 @@ export const useCloudSync = (
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setBackups(data || []);
-      if (data && data.length > 0) {
-        setLastSyncedTime(new Date(data[0].created_at).toLocaleString());
+
+      const backupList = data || [];
+      setBackups(backupList);
+
+      if (backupList.length > 0) {
+        const latestBackup = backupList[0];
+        const latestData = latestBackup.data;
+
+        setLastSyncedTime(new Date(latestBackup.created_at).toLocaleString());
+
+        const normalizedLatest = normalizeData(latestData);
+
+        // 1. 초기 기준점 설정 (비교용)
+        if (!lastSavedRef.current) {
+          lastSavedRef.current = normalizedLatest;
+        }
+
+        // 2. 자동 복원 로직: 로컬 데이터가 비어있다면 최신 백업 자동 적용
+        const currentOwned = useMyApostleStore.getState().ownedApostles;
+        if (currentOwned.length === 0 && normalizedLatest.ownedApostles.length > 0) {
+          setOwnedApostles(normalizedLatest.ownedApostles);
+
+          // 복원된 데이터가 즉시 다시 저장되는 것을 방지하기 위해 기준점 업데이트
+          lastSavedRef.current = normalizedLatest;
+          toast.success('서버에서 최신 데이터를 자동으로 불러왔습니다.', { id: 'auto-restore' });
+        }
       } else {
         setLastSyncedTime(null);
       }
     } catch (error) {
       console.error('백업 로드 실패:', error);
+    } finally {
+      setIsInitialized(true);
     }
-  }, [user]);
+  }, [user, setOwnedApostles]);
 
-  // 자동 저장 로직 (10초마다 체크)
+  // 컴포넌트 마운트 시 초기 백업 목록 로드
   useEffect(() => {
-    if (!user) return;
-
-    // 초기 백업 로드
     fetchBackups();
+  }, [fetchBackups]);
 
-    if (!enableAutoSave) return;
-
-    const interval = setInterval(async () => {
+  // 실제 데이터를 Supabase에 저장하는 비동기 함수
+  const performSave = useCallback(
+    async (currentNormalized: { ownedApostles: { id: string; asideLevel: number }[] }) => {
       if (!user) return;
 
-      // 최신 백업과 현재 상태 비교
-      const { data: latestBackup, error } = await supabase
-        .from('user_owned_apostle')
-        .select('data')
-        .order('created_at', { ascending: false })
-        .limit(1)
-        .single();
+      setIsSyncing(true);
+      try {
+        // ownedApostles는 최신 상태를 참조
+        // deps에 ownedApostles가 있으므로, performSave 호출 시점의 ownedApostles는 최신임.
+        const { error: insertError } = await supabase
+          .from('user_owned_apostle')
+          .insert([{ user_id: user.id, data: { ownedApostles } }]);
 
-      // 에러가 'Row not found'인 경우는 백업이 없는 것이므로 진행
-      if (error && error.code !== 'PGRST116') {
-        console.error('Sync check error:', error);
-        return;
+        if (insertError) throw insertError;
+
+        lastSavedRef.current = currentNormalized;
+        await fetchBackups();
+        toast.success('자동 저장되었습니다.', { id: 'auto-save' });
+      } catch (err) {
+        console.error('자동 저장 실패:', err);
+        toast.error('자동 저장 실패');
+      } finally {
+        setIsSyncing(false);
       }
+    },
+    [user, ownedApostles, fetchBackups],
+  );
 
-      const normalizeData = (data: BackupData | null | undefined) => {
-        if (!data?.ownedApostles) return { ownedApostles: [] };
-        // ID 기준 정렬하여 순서 변경으로 인한 불필요한 저장 방지
-        const sortedApostles = [...data.ownedApostles].sort((a: OwnedApostle, b: OwnedApostle) =>
-          a.id.localeCompare(b.id),
-        );
-        // 객체 키 순서 정규화를 위해(일부 환경 대비) 새로운 객체 반환
-        return {
-          ownedApostles: sortedApostles.map((a: OwnedApostle) => ({
-            id: a.id,
-            asideLevel: a.asideLevel,
-          })),
-        };
-      };
+  //데이터 변경 감지 및 자동 저장 트리거
+  useEffect(() => {
+    // 초기화 전이거나, 유저가 없거나, 자동저장 꺼짐, 데이터 없음이면 스킵
+    if (!isInitialized || !user || !enableAutoSave || ownedApostles.length === 0) return;
 
-      const currentNormalized = normalizeData({ ownedApostles });
-      const serverNormalized = normalizeData(latestBackup?.data);
+    const currentNormalized = normalizeData({ ownedApostles });
 
-      // lodash.isEqual로 깊은 비교 수행
-      if (!isEqual(currentNormalized, serverNormalized)) {
-        setIsSyncing(true);
-        try {
-          // 저장할 때는 정렬되지 않은 원본 데이터를 저장할지, 정렬된 데이터를 저장할지 고민
-          // 여기서는 현재 상태 그대로(ownedApostles) 저장
-          const { error: insertError } = await supabase
-            .from('user_owned_apostle')
-            .insert([{ user_id: user.id, data: { ownedApostles } }]); // Wrap in object to match structure
+    // 이전 저장 상태와 내용이 같다면 아무 작업도 하지 않음
+    if (isEqual(currentNormalized, lastSavedRef.current)) return;
 
-          if (insertError) throw insertError;
+    // 지정된 시간(AUTO_SAVE_DELAY) 동안 데이터 변경이 없으면 저장을 수행
+    const timer = setTimeout(() => performSave(currentNormalized), AUTO_SAVE_DELAY);
 
-          await fetchBackups(); // 목록 갱신
-          toast.success('저장되었습니다.', { id: 'auto-save' });
-        } catch (err) {
-          console.error('저장 실패:', err);
-          toast.error('저장 실패');
-        } finally {
-          setIsSyncing(false);
-        }
-      }
-    }, 10000); // 10초
+    return () => clearTimeout(timer);
+  }, [user, ownedApostles, enableAutoSave, isInitialized, performSave]);
 
-    return () => clearInterval(interval);
-  }, [user, ownedApostles, fetchBackups, enableAutoSave]);
-
-  // 백업 복원
+  //선택한 백업 데이터로 현재 상태를 복원
   const restoreBackup = async (backup: Backup) => {
     try {
-      // 데이터 유효성 체크
       if (backup.data && Array.isArray(backup.data.ownedApostles)) {
         setOwnedApostles(backup.data.ownedApostles);
+
+        // 복원 직후 자동 저장이 다시 발생하는 것을 방지하기 위해 참조를 동기화
+        lastSavedRef.current = normalizeData(backup.data);
+
         toast.success('데이터가 복원되었습니다.');
       } else {
         throw new Error('유효하지 않은 데이터 형식입니다.');
