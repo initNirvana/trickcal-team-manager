@@ -3,7 +3,7 @@ import asidesData from '@/data/asides.json';
 import { AsidesDataSchema } from '@/schemas/asides.schema';
 import { Personality } from '@/types/apostle';
 
-const PERSONALITIES = ['Jolly', 'Mad', 'Cool', 'Naive', 'Gloomy'] as const;
+const PERSONALITIES = ['Jolly', 'Mad', 'Cool', 'Naive', 'Gloomy', 'Resonance'] as const;
 const ALLOWED_PERSONALITIES = new Set(PERSONALITIES);
 
 const ALLOWED_TYPES = new Set(['All', 'Front', 'Mid', 'Back', 'Persona', 'Skill']);

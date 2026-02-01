@@ -45,7 +45,7 @@ export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult 
 
   // 성격 카운트
   const personalityCount = new Map<Personality, number>();
-  const personalities: Personality[] = ['Jolly', 'Mad', 'Naive', 'Gloomy', 'Cool'];
+  const personalities: Personality[] = ['Jolly', 'Mad', 'Naive', 'Gloomy', 'Cool', 'Resonance'];
 
   personalities.forEach((p) => personalityCount.set(p, 0));
 
@@ -78,6 +78,7 @@ export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult 
       Naive: '순수',
       Gloomy: '우울',
       Cool: '냉정',
+      Resonance: '공명',
     };
     return personality ? personalityMap[personality] : '기타';
   };
