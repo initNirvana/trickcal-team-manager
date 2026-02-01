@@ -7,6 +7,7 @@ type PersonalityCountMap = {
   Naive: number;
   Gloomy: number;
   Cool: number;
+  Resonance: number;
 };
 
 /**
@@ -28,6 +29,7 @@ const PERSONALITY_LIST = [
   'Naive',
   'Gloomy',
   'Cool',
+  'Resonance',
 ] as const satisfies readonly Personality[];
 
 /**
@@ -99,7 +101,7 @@ export function analyzeSynergies(apostles: Apostle[]): Synergy[] {
       acc[persona] += 1;
       return acc;
     },
-    { Jolly: 0, Mad: 0, Naive: 0, Gloomy: 0, Cool: 0 },
+    { Jolly: 0, Mad: 0, Naive: 0, Gloomy: 0, Cool: 0, Resonance: 0 },
   );
 
   return PERSONALITY_LIST.map((p) => calculateSingleSynergy(p, counts[p]));

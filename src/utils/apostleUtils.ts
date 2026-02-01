@@ -13,6 +13,7 @@ export const getPersonalityKoreanName = (personality: Personality): string => {
     Naive: '순수',
     Gloomy: '우울',
     Cool: '냉정',
+    Resonance: '공명',
   };
   if (!(personality in personalityMap)) {
     throw new Error(`Unknown personality: ${personality}`);
@@ -114,24 +115,21 @@ export function getPersonalityBackground(personality: Personality): string {
   }
 }
 
-export const isUros = (apostle: Apostle): boolean => apostle.engName === 'Uros';
-
+/**
+ * 공명 성격(우로스 등)인 사도들을 engName 기준으로 그룹화하여 하나씩만 남깁니다.
+ * 대표는 ID가 가장 짧은 것을 선택합니다.
+ */
 export const filterUniqueApostles = (apostles: Apostle[]): Apostle[] => {
-  const seen = new Set<string>();
-  const PREFERRED_UROS_ID = 'a107';
-  return apostles.filter((apostle) => {
-    if (apostle.engName === 'Uros') {
-      if (apostle.id === PREFERRED_UROS_ID && !seen.has('Uros')) {
-        seen.add('Uros');
-        return true;
+  const grouped = apostles.reduce(
+    (acc, apostle) => {
+      const key = apostle.engName;
+      if (!acc[key] || apostle.id.length < acc[key].id.length) {
+        acc[key] = apostle;
       }
-      return false;
-    }
+      return acc;
+    },
+    {} as Record<string, Apostle>,
+  );
 
-    if (seen.has(apostle.engName)) {
-      return false;
-    }
-    seen.add(apostle.engName);
-    return true;
-  });
+  return Object.values(grouped);
 };

@@ -25,6 +25,7 @@ export interface AsideEffect {
   attackSpeed?: number; // 공격 속도
   hp?: number; // HP
   description?: string;
+  duration?: number;
 }
 
 const emptyGroups = (): GroupedEffects => ({ all: [], front: [], mid: [], back: [], persona: [] });
@@ -34,9 +35,11 @@ const normalizeTarget = (t?: OneOrArray<AsideTarget>): AsideTarget => {
   return v ?? 'All';
 };
 
-const normalizeMod = (m?: OneOrArray<{ Increase?: number; Reduction?: number }>) => {
+const normalizeMod = (
+  m?: OneOrArray<{ Increase?: number; Reduction?: number; Duration?: number }>,
+) => {
   const v = Array.isArray(m) ? m[0] : m;
-  return { inc: v?.Increase ?? 0, red: v?.Reduction ?? 0 };
+  return { inc: v?.Increase ?? 0, red: v?.Reduction ?? 0, dur: v?.Duration };
 };
 
 const pushGrouped = (groups: GroupedEffects, target: AsideTarget, effect: AsideEffect) => {
@@ -56,6 +59,8 @@ const pushGrouped = (groups: GroupedEffects, target: AsideTarget, effect: AsideE
     case 'Persona':
       groups.persona.push(effect);
       break;
+    // Skill type is handled separately, but if it slips here, default to all?
+    // Actually, we should handle 'Skill' explicitly in the main loop to avoid pushing to these groups
     default:
       groups.all.push(effect);
       break;
@@ -83,6 +88,7 @@ export interface AsideEffectResult {
   skillReductionEffects: GroupedEffects;
   physicalReductionEffects: GroupedEffects;
   magicalReductionEffects: GroupedEffects;
+  skillTypeEffects: AsideEffect[];
 }
 
 /**
@@ -99,6 +105,7 @@ export function calculateAsideEffects(
   const skillReductionEffects = emptyGroups();
   const physicalReductionEffects = emptyGroups();
   const magicalReductionEffects = emptyGroups();
+  const skillTypeEffects: AsideEffect[] = [];
 
   if (!Array.isArray(asidesData)) {
     return {
@@ -114,6 +121,7 @@ export function calculateAsideEffects(
       skillReductionEffects,
       physicalReductionEffects,
       magicalReductionEffects,
+      skillTypeEffects,
     };
   }
 
@@ -157,6 +165,7 @@ export function calculateAsideEffects(
         skillIncrease: skl.inc,
         skillReduction: skl.red,
         description: aside.description,
+        duration: dmg.dur, // Add duration
       };
 
       // 치명타 처리
@@ -172,6 +181,12 @@ export function calculateAsideEffects(
       if (typeof aside.spRecovery === 'number') base.spRecovery = aside.spRecovery;
       if (typeof aside.attackSpeed === 'number') base.attackSpeed = aside.attackSpeed;
       if (typeof aside.hp === 'number') base.hp = aside.hp;
+
+      // Handle Skill type separately
+      if (target === 'Skill') {
+        skillTypeEffects.push(base);
+        continue; // Skip standard processing for Skill type
+      }
 
       // 효과가 하나라도 있으면 처리
       const hasAnyEffect =
@@ -279,6 +294,7 @@ export function calculateAsideEffects(
     skillReductionEffects,
     physicalReductionEffects,
     magicalReductionEffects,
+    skillTypeEffects,
   };
 }
 

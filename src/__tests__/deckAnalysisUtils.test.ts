@@ -27,7 +27,7 @@ const createMockApostle = (
 describe('analyzeSynergies', () => {
   it('should calculate no synergy for empty deck', () => {
     const synergies = analyzeSynergies([]);
-    expect(synergies).toHaveLength(5);
+    expect(synergies).toHaveLength(6);
     synergies.forEach((s) => {
       expect(s.isActive).toBe(false);
       expect(s.bonus.hp).toBe(0);
@@ -121,7 +121,7 @@ describe('analyzeDeck', () => {
     const analysis = analyzeDeck(deck);
 
     expect(analysis.totalApostles).toBe(4);
-    expect(analysis.synergies).toHaveLength(5);
+    expect(analysis.synergies).toHaveLength(6);
     expect(analysis.totalBonus.hp).toBeGreaterThan(0);
     expect(analysis.totalBonus.damage).toBeGreaterThan(0);
   });

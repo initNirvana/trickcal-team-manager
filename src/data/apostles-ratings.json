@@ -5,7 +5,7 @@
       "engName": "Daya",
       "baseScore": 50,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -23,10 +23,9 @@
       "engName": "Kommy",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 5
-      },
-      "reason": "저학년으로 디버프 면역 & 본인 HP 회복, 고학년 스킬의 경우 피해량 만큼 회복"
+      }
     },
     "a004": {
       "name": "마에스트로 2호",
@@ -51,7 +50,7 @@
       "engName": "Rim",
       "baseScore": 60,
       "aside": {
-        "importance": "필수",
+        "importance": "보류",
         "score": 5
       }
     },
@@ -67,10 +66,11 @@
     "a008": {
       "name": "실라",
       "engName": "Sylla",
-      "baseScore": 68,
+      "baseScore": 63,
       "aside": {
-        "importance": "권장",
-        "score": 5
+        "importance": "선택",
+        "score": 5,
+        "reason": "망원경 등 조건만 맞춰진다면 보스전 1.5군 딜러 활약"
       }
     },
     "a009": {
@@ -78,8 +78,9 @@
       "engName": "Velvet",
       "baseScore": 45,
       "aside": {
-        "importance": "선택",
-        "score": 0
+        "importance": null,
+        "score": 0,
+        "reason": "얼탱"
       }
     },
     "a010": {
@@ -97,7 +98,8 @@
       "baseScore": 60,
       "aside": {
         "importance": "필수",
-        "score": 15
+        "score": 10,
+        "reason": "강화 공격 확률 증가, 비취옥 추가 효과, 비취옥 3스택시 범위 피해 추가"
       },
       "scoreBySize": {
         "size6": 60,
@@ -109,7 +111,7 @@
       "engName": "Amelia",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": null,
         "score": 0
       }
     },
@@ -118,7 +120,7 @@
       "engName": "Belita",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": null,
         "score": 3
       }
     },
@@ -127,8 +129,8 @@
       "engName": "Erpin",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
-        "score": 5
+        "importance": null,
+        "score": 3
       }
     },
     "a015": {
@@ -136,7 +138,7 @@
       "engName": "Rufo",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": null,
         "score": 0
       }
     },
@@ -154,7 +156,7 @@
       "engName": "Elena",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 0
       }
     },
@@ -172,8 +174,8 @@
       "engName": "Kidian",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
-        "score": 0
+        "importance": "보류",
+        "score": 5
       }
     },
     "a020": {
@@ -199,7 +201,7 @@
       "engName": "Diana",
       "baseScore": 55,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -235,8 +237,8 @@
       "engName": "Sist",
       "baseScore": 60,
       "aside": {
-        "importance": "필수",
-        "score": 0
+        "importance": "보류",
+        "score": 3
       }
     },
     "a027": {
@@ -308,7 +310,8 @@
       "baseScore": 60,
       "aside": {
         "importance": "필수",
-        "score": 15
+        "score": 5,
+        "reason": "9인덱(프론티어)에서 활용, 여유 있을 시 투자 추천"
       }
     },
     "a035": {
@@ -344,7 +347,8 @@
       "baseScore": 69,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "기본 공격 시 HP 회복, 스킬 사용후 공격 속도 증가. 우울 유저가 아니라면 투자 우선순위는 낮아요"
       }
     },
     "a039": {
@@ -353,7 +357,8 @@
       "baseScore": 67,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "기절/변이 면역 추가, 초당 HP 회복효과가 추가. 광기 유저가 아니라면 투자 우선순위는 낮아요"
       }
     },
     "a040": {
@@ -362,16 +367,18 @@
       "baseScore": 68,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "기본 공격 범위 효과 추가, 저학년 사용시 본인 보호막 + HP회복 효과. 냉정 유저가 아니라면 투자 우선순위는 낮아요"
       }
     },
     "a041": {
       "name": "우이",
       "engName": "Ui",
-      "baseScore": 75,
+      "baseScore": 72,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "유일한 7활발 시너지가 가능. 명함 용병으로 많이 사용해요. 어사이드 투자 우선순위는 낮아요"
       }
     },
     "a042": {
@@ -512,10 +519,11 @@
     "a057": {
       "name": "비비",
       "engName": "Vivi",
-      "baseScore": 70,
+      "baseScore": 68,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "기본 공격시 SP 감소 효과가 추가됩니다. 순수 유저가 아니라면 투자 우선순위는 낮아요"
       }
     },
     "a058": {
@@ -523,7 +531,7 @@
       "engName": "Hilde",
       "baseScore": 60,
       "aside": {
-        "importance": null,
+        "importance": "보류",
         "score": 3
       }
     },
@@ -532,7 +540,7 @@
       "engName": "Selline",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": null,
         "score": 3
       }
     },
@@ -542,7 +550,8 @@
       "baseScore": 68,
       "aside": {
         "importance": "필수",
-        "score": 10
+        "score": 10,
+        "reason": "A2가 본체"
       }
     },
     "a061": {
@@ -550,7 +559,7 @@
       "engName": "Alice",
       "baseScore": 60,
       "aside": {
-        "importance": null,
+        "importance": "보류",
         "score": 3
       }
     },
@@ -575,9 +584,9 @@
     "a064": {
       "name": "블랑셰",
       "engName": "Blanchet",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -592,7 +601,8 @@
       },
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "웨이브 시작시 본인에게 무적. 냉정 유저라면 고난이도 침략 등에 활용"
       },
       "reason": "서브 탱커 역할, 아군 사도 보호막 부여"
     },
@@ -610,7 +620,7 @@
       "engName": "Kyarot",
       "baseScore": 55,
       "aside": {
-        "importance": "선택",
+        "importance": null,
         "score": 3
       }
     },
@@ -619,8 +629,8 @@
       "engName": "Rollett",
       "baseScore": 65,
       "aside": {
-        "importance": "권장",
-        "score": 5
+        "importance": "선택",
+        "score": 3
       }
     },
     "a069": {
@@ -656,7 +666,8 @@
       "baseScore": 93,
       "aside": {
         "importance": "권장",
-        "score": 5
+        "score": 5,
+        "reason": "고학년의 스킬 쿨타임 감소. 엘다인 어사이드 투자 1순위"
       }
     },
     "a073": {
@@ -664,7 +675,7 @@
       "engName": "Haley",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -683,7 +694,8 @@
       "baseScore": 71,
       "aside": {
         "importance": "권장",
-        "score": 5
+        "score": 5,
+        "reason": "저학년 11렙을 위해 A1 추천. 여유 있다면 A2-A3 까지 추천함"
       }
     },
     "a076": {
@@ -697,7 +709,8 @@
       },
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "줘팸터 시저 어사이드 투자 이후 투자 순위"
       },
       "reason": "줘팸터에서 잘 활용되는 사도, 9인 덱에서도 활용은 가능하나 우선 순위 낮음"
     },
@@ -713,10 +726,11 @@
     "a078": {
       "name": "스노키",
       "engName": "Snorky",
-      "baseScore": 65,
+      "baseScore": 58,
       "aside": {
         "importance": "필수",
-        "score": 5
+        "score": 10,
+        "reason": "A2가 본체"
       }
     },
     "a079": {
@@ -724,7 +738,7 @@
       "engName": "Pira",
       "baseScore": 50,
       "aside": {
-        "importance": "선택",
+        "importance": null,
         "score": 3
       }
     },
@@ -742,26 +756,27 @@
       "engName": "Sherum",
       "baseScore": 50,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
     "a082": {
       "name": "죠안",
       "engName": "Joanne",
-      "baseScore": 78,
+      "baseScore": 75,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "명함으로도 좋아서 우선 순위가 낮아요"
       },
       "scoreBySize": {
         "size6": 60,
-        "size9": 78
+        "size9": 75
       },
       "positionScore": {
         "front": 60,
         "mid": 72,
-        "back": 78
+        "back": 75
       }
     },
     "a083": {
@@ -769,7 +784,7 @@
       "engName": "Guin",
       "baseScore": 53,
       "aside": {
-        "importance": "선택",
+        "importance": null,
         "score": 3
       }
     },
@@ -787,7 +802,7 @@
       "engName": "SpeakiMaid",
       "baseScore": 60,
       "aside": {
-        "importance": null,
+        "importance": "보류",
         "score": 3
       }
     },
@@ -796,7 +811,7 @@
       "engName": "Lion",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -805,7 +820,7 @@
       "engName": "Opal",
       "baseScore": 58,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -814,7 +829,7 @@
       "engName": "Ran",
       "baseScore": 65,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -839,7 +854,7 @@
     "a091": {
       "name": "샤샤",
       "engName": "Shasha",
-      "baseScore": 60,
+      "baseScore": 63,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -850,14 +865,15 @@
       "engName": "Suro",
       "baseScore": 72,
       "aside": {
-        "importance": "권장",
-        "score": 3
+        "importance": "선택",
+        "score": 3,
+        "reason": "명함(저학년 스킬 레벨업)으로도 충분하여 우선 순위 낮음"
       }
     },
     "a093": {
       "name": "라이카",
       "engName": "Laika",
-      "baseScore": 66,
+      "baseScore": 60,
       "aside": {
         "importance": "필수",
         "score": 5
@@ -869,7 +885,8 @@
       "baseScore": 75,
       "aside": {
         "importance": "권장",
-        "score": 5
+        "score": 5,
+        "reason": "탱킹 체급 상향 + 아군 전체 버프. 각종 컨텐츠에 매우 유용하여 투자 권장"
       }
     },
     "a095": {
@@ -878,7 +895,8 @@
       "baseScore": 68,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "명함으로도 충분해서 추천하지 않아요"
       }
     },
     "a096": {
@@ -886,8 +904,9 @@
       "engName": "Ricota",
       "baseScore": 73,
       "aside": {
-        "importance": "권장",
-        "score": 5
+        "importance": "선택",
+        "score": 3,
+        "reason": "저학년 사용시, 배틀 아이템으로 아군에게 다양한 버프 제공"
       },
       "scoreBySize": {
         "size6": 70,
@@ -897,7 +916,7 @@
     "a097": {
       "name": "마요(멋짐)",
       "engName": "MayoCool",
-      "baseScore": 65,
+      "baseScore": 63,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -906,7 +925,7 @@
     "a098": {
       "name": "오르",
       "engName": "Orr",
-      "baseScore": 65,
+      "baseScore": 63,
       "aside": {
         "importance": "선택",
         "score": 3
@@ -918,7 +937,8 @@
       "baseScore": 80,
       "aside": {
         "importance": "권장",
-        "score": 5
+        "score": 5,
+        "reason": "최강"
       }
     },
     "a100": {
@@ -927,7 +947,8 @@
       "baseScore": 60,
       "aside": {
         "importance": "권장",
-        "score": 5
+        "score": 5,
+        "reason": "활발 줘팸터의 핵심 딜러"
       }
     },
     "a101": {
@@ -936,7 +957,7 @@
       "baseScore": 60,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 5
       }
     },
     "a102": {
@@ -945,7 +966,8 @@
       "baseScore": 80,
       "aside": {
         "importance": "권장",
-        "score": 5
+        "score": 5,
+        "reason": "9인덱에서만 활용, 명함 사용 후 여유 있을 시 투자 추천"
       },
       "scoreBySize": {
         "size6": 60,
@@ -957,7 +979,7 @@
       "engName": "RohneMayor",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -977,13 +999,13 @@
       "pvp": {
         "score": 10,
         "aside": "권장",
-        "reason": "상대 고학년 쿨타임 증가 & 배치한 위치의 우측 사도 고학년 쿨타임 감소"
+        "reason": "줘팸터에서 상대 고학년의 쿨타임을 증가시키고, 배치한 위치의 앞의 전열 사도의 고학년 쿨타임을 감소시키는 효과"
       },
       "aside": {
-        "importance": "선택",
-        "score": 3
-      },
-      "reason": "줘팸터에서 상대 고학년의 쿨타임을 증가시키고, 배치한 위치의 앞의 전열 사도의 고학년 쿨타임을 감소시키는 효과 있음"
+        "importance": "권장",
+        "score": 5,
+        "reason": "웨이브 시작시 공격력 높은 3명을 디버프 및 지정된 3명 처치 혹은 10초 경과시 모든 아군 HP 회복 효과"
+      }
     },
     "a106": {
       "name": "뮤트",
@@ -991,11 +1013,12 @@
       "baseScore": 75,
       "aside": {
         "importance": "권장",
-        "score": 5
+        "score": 5,
+        "reason": "9인덱에서만 활용, 명함 사용 후 여유 있을 시 투자 권장"
       },
       "scoreBySize": {
         "size6": 60,
-        "size9": 80
+        "size9": 75
       }
     },
     "a107": {
@@ -1004,7 +1027,8 @@
       "baseScore": 80,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       }
     },
     "a107_Cool": {
@@ -1013,7 +1037,8 @@
       "baseScore": 80,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       }
     },
     "a107_Gloomy": {
@@ -1022,7 +1047,8 @@
       "baseScore": 80,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       }
     },
     "a107_Naive": {
@@ -1031,7 +1057,8 @@
       "baseScore": 80,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       }
     },
     "a107_Jolly": {
@@ -1040,36 +1067,38 @@
       "baseScore": 80,
       "aside": {
         "importance": "선택",
-        "score": 3
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       }
     },
     "a108": {
       "name": "티그(영웅)",
       "engName": "TigHero",
-      "baseScore": 82,
+      "baseScore": 78,
       "aside": {
-        "importance": "선택",
-        "score": 3
+        "importance": "권장",
+        "score": 5,
+        "reason": "유리한 성격 피해량 50% 추가, 고학년 사용시 기본 공격 1회/2회/3회에 추가 효과 부여"
       },
       "positionScore": {
-        "front": 58,
-        "mid": 80,
-        "back": 82
+        "front": 53,
+        "mid": 78,
+        "back": 80
       }
     },
     "a109": {
       "name": "미로",
       "engName": "Miro",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
     "a110": {
       "name": "아사나",
       "engName": "Asana",
-      "baseScore": 68,
+      "baseScore": 63,
       "aside": {
         "importance": "필수",
         "score": 5
@@ -1078,9 +1107,9 @@
     "a111": {
       "name": "베니(베니)",
       "engName": "BeniBeni",
-      "baseScore": 65,
+      "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -1089,7 +1118,7 @@
       "engName": "Heidi",
       "baseScore": 60,
       "aside": {
-        "importance": "선택",
+        "importance": "보류",
         "score": 3
       }
     },
@@ -1119,16 +1148,17 @@
       },
       "aside": {
         "importance": "선택",
-        "score": 5
+        "score": 3,
+        "reason": "저학년 장판 지속시간 증가 + 강화 공격 투사체 1개 추가"
       }
     },
     "a115": {
       "name": "셰이디(역전)",
       "engName": "ShadyTwisted",
-      "baseScore": 60,
+      "baseScore": 63,
       "aside": {
-        "importance": "선택",
-        "score": 5
+        "importance": "보류",
+        "score": 3
       }
     },
     "a116": {

@@ -65,7 +65,7 @@ const ApostleSelectorSearch = ({
       </label>
       {/* 검색 결과 드롭다운 */}
       {open && (
-        <div className="bg-base-100 border-base-300 absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-md border shadow-lg">
+        <div className="bg-base-100 border-base-300 absolute top-full right-0 left-0 z-50 mt-1 max-h-60 overflow-y-auto rounded-md border shadow-lg">
           {searchList.length === 0 ? (
             <div className="text-base-content/50 px-2 py-2 text-center">
               {search.trim() ? '검색 결과가 없습니다' : '검색어를 입력해주세요'}

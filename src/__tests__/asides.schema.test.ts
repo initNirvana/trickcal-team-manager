@@ -3,10 +3,10 @@ import asidesData from '@/data/asides.json';
 import { AsidesDataSchema } from '@/schemas/asides.schema';
 import { Personality } from '@/types/apostle';
 
-const PERSONALITIES = ['Jolly', 'Mad', 'Cool', 'Naive', 'Gloomy'] as const;
+const PERSONALITIES = ['Jolly', 'Mad', 'Cool', 'Naive', 'Gloomy', 'Resonance'] as const;
 const ALLOWED_PERSONALITIES = new Set(PERSONALITIES);
 
-const ALLOWED_TYPES = new Set(['All', 'Front', 'Mid', 'Back', 'Persona']);
+const ALLOWED_TYPES = new Set(['All', 'Front', 'Mid', 'Back', 'Persona', 'Skill']);
 
 const isNonEmptyString = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '';
 
@@ -43,7 +43,7 @@ describe('asides.json schema validation', () => {
     expect(new Set(keys).size).toBe(keys.length);
   });
 
-  it('type values should be valid (All/Front/Mid/Back/Persona)', () => {
+  it('type values should be valid (All/Front/Mid/Back/Persona/Skill)', () => {
     const parsed = AsidesDataSchema.parse(asidesData);
 
     const invalid = parsed.asides

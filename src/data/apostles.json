@@ -603,7 +603,7 @@
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
-        "trait": ["Debuff", "CC"]
+        "trait": ["Debuff", "CC", "Heal"]
       },
       "method": "Magical",
       "position": "back",

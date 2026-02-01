@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { getApostleImagePath, getPositionIconPath } from '@/utils/apostleImages';
-import { Position, POSITION_CONFIG, Personality } from '@/types/apostle';
-import { getPersonalityBackground } from '@/utils/apostleUtils';
-import Image from '../../common/Image';
-import PersonalityDropdown from '../../common/PersonalityDropdown';
+import { getApostleImagePath, getPositionIconPath, getClassIconPath } from '@/utils/apostleImages';
+import { Position, POSITION_CONFIG, Personality, Apostle } from '@/types/apostle';
+import { getPersonalityBackground, getPersonalityKoreanName } from '@/utils/apostleUtils';
+import PersonalityDropdown from '@/components/common/PersonalityDropdown';
 import apostlesTiersData from '@/data/apostles-recommend.json';
+import apostlesData from '@/data/apostles.json';
 
 interface ApostleData {
   name: string;
@@ -41,16 +41,25 @@ interface ApostleCardProps {
 }
 
 // ===== 사도 카드 =====
-const ApostleCard = ({ apostle }: ApostleCardProps) => (
-  <div className="group flex flex-col items-center gap-1">
-    <div className="relative h-24 w-20 overflow-hidden rounded-lg border-2 border-gray-300 transition hover:shadow-lg dark:border-gray-600">
-      <Image
+const ApostleCard = ({ apostle }: ApostleCardProps) => {
+  // 전체 데이터에서 해당 사도의 Role 정보 찾기
+  // apostlesData has the shape { apostles: Apostle[] }
+  const fullApostleData = (apostlesData as unknown as { apostles: Apostle[] }).apostles.find(
+    (a) => a.engName === apostle.engName,
+  );
+  const mainRole = fullApostleData?.role.main;
+
+  return (
+    <div className="group border-base-200 bg-base-100 hover:border-primary relative aspect-square w-20 cursor-pointer overflow-hidden rounded-lg border-2 shadow-sm transition-all duration-200 hover:scale-105 hover:shadow-md">
+      {/* 사도 이미지 */}
+      <img
         src={getApostleImagePath(apostle.engName)}
+        className={`inline-flex h-full w-full items-center rounded object-cover text-center text-xs ${getPersonalityBackground(apostle.persona as Personality)}`}
         alt={apostle.name}
-        className={`inline-flex h-full w-full items-center gap-1 rounded object-cover px-2 py-1 text-center text-xs ${getPersonalityBackground(apostle.persona as Personality)}`}
       />
-      {/* 위치 아이콘 배지 */}
-      <div className="absolute bottom-1 left-1 h-6 w-6 rounded-full border border-gray-300 bg-white p-0.5 dark:border-gray-600 dark:bg-gray-800">
+
+      {/* 위치 아이콘 */}
+      <div className="absolute bottom-5 left-0.5 h-5 w-5 rounded-full">
         <img
           src={getPositionIconPath(
             POSITION_CONFIG[apostle.position as keyof typeof POSITION_CONFIG]?.icon ||
@@ -62,13 +71,29 @@ const ApostleCard = ({ apostle }: ApostleCardProps) => (
           }}
         />
       </div>
+
+      {/* 클래스 아이콘 (Role 정보가 있을 때만 표시) */}
+      {mainRole && (
+        <div className="absolute bottom-11 left-0.5 h-5 w-5 rounded-full">
+          <img
+            src={getClassIconPath(mainRole)}
+            className="h-full w-full object-contain"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
+            }}
+          />
+        </div>
+      )}
+
+      {/* 사도 이름 오버레이 */}
+      <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/80 to-transparent p-1 text-center">
+        <p className="group-hover:text-primary-content text-[10px] font-bold text-white">
+          {apostle.name}
+        </p>
+      </div>
     </div>
-    {/* 사도명 */}
-    <span className="text-center text-xs font-semibold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
-      {apostle.name}
-    </span>
-  </div>
-);
+  );
+};
 
 // ===== 티어 행 =====
 const TierRow = ({ tier, apostles }: { tier: string; apostles: ApostleData[] }) => {
@@ -106,18 +131,21 @@ export function RecommendedApostlesDisplay() {
     { S: ApostleData[]; A: ApostleData[]; B: ApostleData[] }
   >;
 
-  const personalities = Object.keys(APOSTLES_BY_PERSONALITY) as Array<
-    keyof typeof APOSTLES_BY_PERSONALITY
-  >;
+  const personalities = Object.keys(APOSTLES_BY_PERSONALITY) as Personality[];
 
   const positions: Position[] = ['front', 'mid', 'back'];
 
   // ===== 상태 관리 =====
-  const [selectedPersonalities, setSelectedPersonalities] = useState<Set<string>>(new Set()); // 초기: 선택 없음 (전체)
+  const [selectedPersonalities, setSelectedPersonalities] = useState<Set<Personality>>(new Set()); // 초기: 선택 없음 (전체)
   const [selectedPosition, setSelectedPosition] = useState<Position>('front'); // 초기: 전열
 
   // ===== 성격 토글 함수 =====
-  const togglePersonality = (personality: string) => {
+  const togglePersonality = (personality: Personality | null) => {
+    if (personality === null) {
+      setSelectedPersonalities(new Set());
+      return;
+    }
+
     const newSet = new Set(selectedPersonalities);
     if (newSet.has(personality)) {
       newSet.delete(personality);
@@ -156,7 +184,11 @@ export function RecommendedApostlesDisplay() {
 
   // ===== 표시될 성격 텍스트 =====
   const displayPersonalityText =
-    selectedPersonalities.size === 0 ? '전체' : Array.from(selectedPersonalities).join(', ');
+    selectedPersonalities.size === 0
+      ? '전체'
+      : Array.from(selectedPersonalities)
+          .map((p) => getPersonalityKoreanName(p))
+          .join(', ');
 
   return (
     <div className="space-y-1">
@@ -169,13 +201,13 @@ export function RecommendedApostlesDisplay() {
 
       {/* 필터 바 */}
       <div className="flex flex-wrap items-center gap-2 rounded-lg bg-gray-50 p-2 dark:bg-gray-900">
-        {/* 위치 선택 버튼 */}
-        <div className="flex flex-wrap gap-2">
+        {/* 위치 선택 버튼 - Join 사용 */}
+        <div className="join">
           {positions.map((position) => (
             <button
               key={position}
               onClick={() => setSelectedPosition(position)}
-              className="btn flex items-center gap-1 transition"
+              className={`btn join-item ${selectedPosition === position ? 'btn-active btn-primary' : ''}`}
             >
               <img
                 src={getPositionIconPath(
@@ -232,29 +264,47 @@ export function RecommendedApostlesDisplay() {
       </div>
 
       {/* 팁 */}
-      <div className="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950">
-        <div className="text-sm text-green-900 dark:text-green-200">
-          <ul className="list">
+      {/* 팁 - Alert 사용 */}
+      <div role="alert" className="alert alert-success">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="h-6 w-6 shrink-0 stroke-current"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <div>
+          <h3 className="font-bold">Tip!</h3>
+          <ul className="list-inside list-disc text-sm">
             <li>9인 PVE의 경우 받는 피해량 감소가 중요합니다.</li>
             <li>대표적인 피해 감소량 사도는 슈로, 벨라(A2)입니다.</li>
             <li>
-              티어 선정 기준은 프론티어 공략 글을 참고 했습니다. 자세한 설명은 아래 링크 참고
-              부탁드립니다.
-              <ul>
-                <li className="list-row">
-                  <a href="https://arca.live/b/trickcal/145428369">
-                    https://arca.live/b/trickcal/145428369
-                  </a>
-                </li>
-              </ul>
+              티어 선정 기준 ref:{' '}
+              <a
+                href="https://arca.live/b/trickcal/145428369"
+                target="_blank"
+                rel="noreferrer"
+                className="link"
+              >
+                아카라이브 공략 채널
+              </a>
             </li>
             <li>
-              대충돌/프론티어 관련 기록을 정리해주시는 분이 계십니다. 링크 참고 부탁드립니다.
-              <ul>
-                <li className="list-row">
-                  <a href="https://trickcalrecord.pages.dev/">https://trickcalrecord.pages.dev/</a>
-                </li>
-              </ul>
+              대충돌/프론티어 기록:{' '}
+              <a
+                href="https://trickcalrecord.pages.dev/"
+                target="_blank"
+                rel="noreferrer"
+                className="link"
+              >
+                Trickcal Record
+              </a>
             </li>
           </ul>
         </div>

@@ -100,46 +100,9 @@ export const useTour = () => {
         ],
       },
       {
-        id: 'aside-guide',
-        title: '어사이드 투자 여부',
-        text: `
-        <div class="space-y-3 text-sm text-left">
-          <div class="flex items-start gap-2">
-            <div>
-              <b class="text-red-600">필수</b>
-              <div class="text-xs text-gray-500">아이콘에 애니메이션이 적용되어 있어요. <br/> 어사이드 2성이 되어야 제 성능이 나오거나, 큰 차이가 나는 경우를 의미해요. </div>
-            </div>
-          </div>
-          <div class="flex items-start gap-2">
-            <div>
-              <b class="text-amber-500">권장 </b>
-              <div class="text-xs text-gray-500">투자시 효과가 좋은 사도입니다. 여유가 되실 때 올려주세요.</div>
-            </div>
-          </div>
-          <div class="flex items-start gap-2">
-            <div>
-              <b class="text-gray-500">없음</b>
-              <div class="text-xs text-gray-500">명함만 있어도 1인분 하는 사도들입니다.</div>
-            </div>
-          </div>
-        </div>
-        `,
-        attachTo: { element: '#preset-combination-section', on: 'bottom' },
-        buttons: [
-          {
-            text: '다음',
-            classes:
-              'bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-bold',
-            action: () => {
-              tour.next();
-            },
-          },
-        ],
-      },
-      {
         id: 'select-my-apostles',
         title: '보유 사도 선택',
-        text: '보유 중인 사도를 선택하세요. <b class="text-green-600">[전체 선택]</b>을 눌러도 됩니다.<br/>(시연을 위해 전체선택으로 진행할게요!)',
+        text: '보유 중인 사도를 선택하세요. <b class="text-green-600">[전체 선택]</b>을 눌러도 됩니다. 어사이드(A2) 아이콘을 클릭하면 추천 조합이 변동이 됩니다. <br/>(시연을 위해 전체선택으로 진행할게요!)',
         attachTo: { element: '#my-apostle-list-container', on: 'left' },
         buttons: [
           {
@@ -165,6 +128,21 @@ export const useTour = () => {
         text: '선택한 사도들로 만들 수 있는 <b>추천 조합</b>이 여기에 나타납니다.<br/>선택하신 보유 사도는 로컬에 저장되니 새로고침해도 유지됩니다!',
         attachTo: { element: '#recommendation-section', on: 'top' },
         scrollTo: { behavior: 'smooth', block: 'start' },
+        buttons: [
+          {
+            text: '다음',
+            action: () => {
+              tour.next();
+            },
+          },
+        ],
+      },
+      {
+        id: 'growth-guide',
+        title: '어사이드 투자 가이드',
+        text: '보유한 사도와 생성된 추천 조합을 기반으로,<br/>어떤 사도의 어사이드를 우선적으로 투자하면 좋을지 알려드려요!',
+        attachTo: { element: '#growth-roadmap-section', on: 'top' },
+        scrollTo: { behavior: 'smooth', block: 'center' },
         buttons: [
           {
             text: '완료',

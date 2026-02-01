@@ -1,6 +1,6 @@
-import { useMemo, useRef, useCallback, useState } from 'react';
-import { Apostle } from '@/types/apostle';
-import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
+import { useRef, useCallback, useState } from 'react';
+import toast from 'react-hot-toast';
+import { RecommendedDeck } from '@/utils/builder/deckRecommendationUtils';
 import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/apostleUtils';
 import * as htmlToImage from 'html-to-image';
 import {
@@ -13,28 +13,48 @@ import SuggestionCard from './SuggestionCard';
 import { FaRegCopy } from 'react-icons/fa6';
 
 interface RecommendedDeckSectionProps {
-  myApostles: Apostle[];
+  recommendations: RecommendedDeck[];
 }
 
-export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionProps) => {
-  const recommendations = useMemo(() => generateRecommendations(myApostles), [myApostles]);
+export const RecommendedDeckSection = ({ recommendations }: RecommendedDeckSectionProps) => {
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   // 각 추천 덱별로 선택된 사도 ID 관리 (number: PVP용, string: 힐러용)
   const [selectedSuggestions, setSelectedSuggestions] = useState<Record<number | string, string>>(
     {},
   );
 
-  const handleCopyCard = useCallback(async (idx: number) => {
+  const handleCopyCard = useCallback((idx: number) => {
     const node = cardRefs.current[idx];
     if (!node) return;
-    try {
-      const dataUrl = await htmlToImage.toPng(node, { pixelRatio: 2 });
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
-    } catch (err) {
-      console.error('Failed to copy card image', err);
-    }
+
+    const blobPromise = htmlToImage
+      .toBlob(node, {
+        pixelRatio: 2,
+        cacheBust: true,
+        backgroundColor: '#ffffff',
+        style: {
+          borderRadius: '16px',
+        },
+      })
+      .then((blob) => {
+        if (!blob) throw new Error('이미지 생성 실패');
+        return blob;
+      });
+
+    const copyPromise = blobPromise.then((blob) => {
+      try {
+        const item = new ClipboardItem({ 'image/png': blob });
+        return navigator.clipboard.write([item]);
+      } catch (err) {
+        throw new Error('클립보드 저장 실패: ' + (err as Error).message);
+      }
+    });
+
+    toast.promise(copyPromise, {
+      loading: '이미지 생성 중...',
+      success: '클립보드에 복사되었습니다!',
+      error: (err) => `실패: ${err.message}`,
+    });
   }, []);
 
   if (recommendations.length === 0) {
@@ -190,11 +210,11 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                 </div>
               </div>
             )}
-            {/* 추천 힐러 사도 */}
+            {/* HP 회복/보호막 사도 */}
             {!rec.hasHealer && rec.healerSuggestions && rec.healerSuggestions.length > 0 && (
               <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
                 <input type="checkbox" name={`healer-suggest-${idx}`} />
-                <div className="collapse-title text-sm font-semibold">추천 힐러 사도</div>
+                <div className="collapse-title text-sm font-semibold">추천 HP 회복/보호막 사도</div>
                 <div className="collapse-content">
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
                     {rec.healerSuggestions.map((suggestion, hIdx) => (
@@ -217,7 +237,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                     ))}
                   </div>
                   {/* 선택된 힐러 상세 정보 */}
-                  {selectedSuggestions[`healer-${idx}`] &&
+                  {/* {selectedSuggestions[`healer-${idx}`] &&
                     (() => {
                       const selected = rec.healerSuggestions.find(
                         (s) => s.apostle.id === selectedSuggestions[`healer-${idx}`],
@@ -245,7 +265,7 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                           </div>
                         </div>
                       ) : null;
-                    })()}
+                    })()} */}
                   <div className="alert alert-info mt-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +280,9 @@ export const RecommendedDeckSection = ({ myApostles }: RecommendedDeckSectionPro
                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <span className="text-xs">보유 사도 내 힐러를 추천합니다.</span>
+                    <span className="text-xs">
+                      다른 사도에게 HP 회복이나 보호막을 부여하는 사도에요
+                    </span>
                   </div>
                 </div>
               </div>
