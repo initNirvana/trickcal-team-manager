@@ -13,6 +13,7 @@ export const getPersonalityKoreanName = (personality: Personality): string => {
     Naive: '순수',
     Gloomy: '우울',
     Cool: '냉정',
+    Resonance: '공명',
   };
   if (!(personality in personalityMap)) {
     throw new Error(`Unknown personality: ${personality}`);

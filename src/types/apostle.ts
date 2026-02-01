@@ -1,4 +1,4 @@
-export type Personality = 'Jolly' | 'Mad' | 'Naive' | 'Gloomy' | 'Cool';
+export type Personality = 'Jolly' | 'Mad' | 'Naive' | 'Gloomy' | 'Cool' | 'Resonance';
 export type Position = 'front' | 'mid' | 'back';
 export type Method = 'Physical' | 'Magical';
 export type Race = '용족' | '정령' | '수인' | '유령' | '마녀' | '요정' | '엘프';
