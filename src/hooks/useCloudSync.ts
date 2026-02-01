@@ -5,12 +5,20 @@ import { useMyApostleStore } from '@/stores/myApostleStore';
 import type { OwnedApostle } from '@/stores/myApostleStore';
 import toast from 'react-hot-toast';
 import isEqual from 'lodash/isEqual';
+import {
+  compressData,
+  decompressData,
+  optimizeData,
+  restoreData,
+  type OptimizedData,
+} from '@/utils/compression';
 
 /** 자동 저장 대기 시간 (3초) */
 const AUTO_SAVE_DELAY = 3000;
 
 export interface BackupData {
-  ownedApostles: OwnedApostle[];
+  ownedApostles?: OwnedApostle[];
+  c?: string; // Compressed data
 }
 
 export interface Backup {
@@ -20,14 +28,35 @@ export interface Backup {
 }
 
 /**
+ * 백업 데이터에서 실제 데이터를 추출합니다 (압축 해제 포함).
+ */
+const getRealData = (data: BackupData | null | undefined): BackupData => {
+  if (!data) return { ownedApostles: [] };
+  if (data.c) {
+    // 1. 압축 해제
+    const decompressed = decompressData<unknown>(data.c);
+
+    // 2. 최적화된 데이터인지 확인 ('o' 프로퍼티가 있는지)
+    if (decompressed && typeof decompressed === 'object' && 'o' in decompressed) {
+      return restoreData(decompressed as OptimizedData);
+    }
+
+    // 3. 기존 압축 데이터 (단순 JSON 압축)
+    return (decompressed as BackupData) || { ownedApostles: [] };
+  }
+  return data;
+};
+
+/**
  * 데이터를 비교하기 좋게 정렬하고 불필요한 필드를 제거하여 정규화합니다.
  * @param data 백업 데이터 객체
  * @returns 정규화된 데이터 객체
  */
 const normalizeData = (data: BackupData | null | undefined) => {
-  if (!data?.ownedApostles) return { ownedApostles: [] };
+  const realData = getRealData(data);
+  const apostles = realData.ownedApostles || [];
 
-  const sortedApostles = [...data.ownedApostles].sort((a: OwnedApostle, b: OwnedApostle) =>
+  const sortedApostles = [...apostles].sort((a: OwnedApostle, b: OwnedApostle) =>
     a.id.localeCompare(b.id),
   );
 
@@ -103,7 +132,7 @@ export const useCloudSync = (
 
           // 복원된 데이터가 즉시 다시 저장되는 것을 방지하기 위해 기준점 업데이트
           lastSavedRef.current = normalizedLatest;
-          toast.success('서버에서 최신 데이터를 자동으로 불러왔습니다.', { id: 'auto-restore' });
+          toast.success('데이터를 불러왔습니다.', { id: 'auto-restore' });
         }
       } else {
         setLastSyncedTime(null);
@@ -127,11 +156,14 @@ export const useCloudSync = (
 
       setIsSyncing(true);
       try {
-        // ownedApostles는 최신 상태를 참조
-        // deps에 ownedApostles가 있으므로, performSave 호출 시점의 ownedApostles는 최신임.
+        // 1. 데이터 최적화 (Short Key + Default Value Removal)
+        const optimized = optimizeData({ ownedApostles });
+
+        // 2. 압축 저장
+        const compressed = compressData(optimized);
         const { error: insertError } = await supabase
           .from('user_owned_apostle')
-          .insert([{ user_id: user.id, data: { ownedApostles } }]);
+          .insert([{ user_id: user.id, data: { c: compressed } }]);
 
         if (insertError) throw insertError;
 
@@ -167,8 +199,9 @@ export const useCloudSync = (
   //선택한 백업 데이터로 현재 상태를 복원
   const restoreBackup = async (backup: Backup) => {
     try {
-      if (backup.data && Array.isArray(backup.data.ownedApostles)) {
-        setOwnedApostles(backup.data.ownedApostles);
+      const realData = getRealData(backup.data);
+      if (realData && Array.isArray(realData.ownedApostles)) {
+        setOwnedApostles(realData.ownedApostles);
 
         // 복원 직후 자동 저장이 다시 발생하는 것을 방지하기 위해 참조를 동기화
         lastSavedRef.current = normalizeData(backup.data);

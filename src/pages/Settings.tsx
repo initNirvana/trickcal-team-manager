@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '@/stores/authStore';
-import { useCloudSync } from '@/hooks/useCloudSync';
+import { useCloudSync, type BackupData } from '@/hooks/useCloudSync';
+import { decompressData, restoreData, type OptimizedData } from '@/utils/compression';
 import { FcGoogle } from 'react-icons/fc';
 import { FaCloudUploadAlt, FaHistory, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import { BiLoaderAlt } from 'react-icons/bi';
@@ -117,43 +118,65 @@ function Settings() {
                       </tr>
                     </thead>
                     <tbody>
-                      {backups.map((backup) => (
-                        <tr key={backup.id} className="hover">
-                          <td>{new Date(backup.created_at).toLocaleString()}</td>
-                          <td>
-                            {/* JSON 데이터 구조에 따라 다를 수 있음. 안전하게 접근 */}
-                            {Array.isArray(backup.data?.ownedApostles) ? (
-                              <div className="flex flex-col text-xs">
-                                <span>총 {backup.data.ownedApostles.length}명</span>
-                                <span className="text-base-content/60">
-                                  (어사이드:{' '}
-                                  {backup.data.ownedApostles.filter((a) => a.asideLevel > 0).length}
-                                  명)
-                                </span>
-                              </div>
-                            ) : (
-                              '알 수 없음'
-                            )}
-                          </td>
-                          <td>
-                            <button
-                              onClick={async () => {
-                                if (
-                                  window.confirm(
-                                    '이 시점으로 데이터를 복원하시겠습니까?\n현재 데이터는 덮어씌워집니다.',
-                                  )
-                                ) {
-                                  await restoreBackup(backup);
-                                }
-                              }}
-                              className="btn btn-warning btn-xs"
-                              disabled={isSyncing}
-                            >
-                              복원
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
+                      {backups.map((backup) => {
+                        // 압축된 데이터 처리
+                        let displayData: BackupData = backup.data;
+
+                        if (backup.data.c) {
+                          // 1. 압축 해제
+                          const decompressed = decompressData<unknown>(backup.data.c);
+
+                          if (decompressed && typeof decompressed === 'object') {
+                            // 2. 최적화된 데이터(Short Key)인지 확인
+                            if ('o' in decompressed) {
+                              displayData = restoreData(decompressed as OptimizedData);
+                            } else {
+                              // 3. 레거시 압축 데이터
+                              displayData = decompressed as BackupData;
+                            }
+                          }
+                        }
+
+                        const ownedCount = displayData.ownedApostles?.length;
+                        const asideCount = displayData.ownedApostles?.filter(
+                          (a) => a.asideLevel > 0,
+                        ).length;
+
+                        return (
+                          <tr key={backup.id} className="hover">
+                            <td>{new Date(backup.created_at).toLocaleString()}</td>
+                            <td>
+                              {typeof ownedCount === 'number' ? (
+                                <div className="flex flex-col text-xs">
+                                  <span>총 {ownedCount}명</span>
+                                  <span className="text-base-content/60">
+                                    (어사이드: {asideCount}명)
+                                  </span>
+                                </div>
+                              ) : (
+                                '알 수 없음'
+                              )}
+                            </td>
+                            <td>
+                              <button
+                                onClick={async () => {
+                                  if (
+                                    window.confirm(
+                                      '이 시점으로 데이터를 복원하시겠습니까?\n현재 데이터는 덮어씌워집니다.',
+                                    )
+                                  ) {
+                                    await restoreBackup(backup);
+                                  }
+                                }}
+                                className="btn btn-warning btn-xs"
+                                disabled={isSyncing}
+                              >
+                                복원
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>

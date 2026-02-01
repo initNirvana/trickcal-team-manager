@@ -122,4 +122,24 @@ describe('useCloudSync', () => {
       expect(setOwnedApostlesSpy).not.toHaveBeenCalled();
     });
   });
+
+  it('should auto-restore from COMPRESSED server data', async () => {
+    const { compressData } = await import('@/utils/compression');
+
+    // 1. Local is empty
+    currentOwnedApostles = [];
+
+    // 2. Server has COMPRESSED data
+    const rawData = { ownedApostles: [{ id: 'apostle-compressed', asideLevel: 3 }] };
+    const compressed = compressData(rawData);
+    const mockBackups = [{ id: '1', created_at: '2023-01-01', data: { c: compressed } }];
+    chainResult = { data: mockBackups, error: null };
+
+    renderHook(() => useCloudSync());
+
+    await waitFor(() => {
+      // Should decompress and call setOwnedApostles with original data
+      expect(setOwnedApostlesSpy).toHaveBeenCalledWith(rawData.ownedApostles);
+    });
+  });
 });
