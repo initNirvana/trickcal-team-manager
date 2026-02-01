@@ -1,8 +1,6 @@
 import LZString from 'lz-string';
 import type { OwnedApostle } from '@/stores/myApostleStore';
 
-// === Short Key Mapping & Optimization Types ===
-
 // 원본 데이터 타입 (백업용)
 interface OriginalData {
   ownedApostles: OwnedApostle[];
@@ -48,16 +46,19 @@ export const restoreData = (data: OptimizedData): OriginalData => {
   };
 };
 
-// === Compression Functions ===
-
 /**
  * 데이터를 LZString으로 압축합니다.
  * @param data 압축할 객체 또는 문자열
  * @returns 압축된 문자열
  */
 export const compressData = (data: unknown): string => {
-  const jsonString = typeof data === 'string' ? data : JSON.stringify(data);
-  return LZString.compressToEncodedURIComponent(jsonString);
+  try {
+    const jsonString = typeof data === 'string' ? data : JSON.stringify(data ?? null);
+    return LZString.compressToEncodedURIComponent(jsonString);
+  } catch (error) {
+    console.error('Data compression failed:', error);
+    return '';
+  }
 };
 
 /**
