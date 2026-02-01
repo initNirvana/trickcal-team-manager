@@ -81,6 +81,25 @@ export const useMyApostleStore = create<MyApostleState>()(
         }
         return persistedState;
       },
+      merge: (persistedState, currentState) => {
+        const state = persistedState as Partial<MyApostleState>;
+        if (state && Array.isArray(state.ownedApostles)) {
+          // 데이터 유효성 검증
+          const validApostles = state.ownedApostles.filter((item) => {
+            return (
+              item &&
+              typeof item === 'object' &&
+              typeof item.id === 'string' &&
+              item.id.length > 0 &&
+              typeof item.asideLevel === 'number' &&
+              item.asideLevel >= 0 &&
+              item.asideLevel <= 3
+            );
+          });
+          return { ...currentState, ...state, ownedApostles: validApostles };
+        }
+        return currentState;
+      },
     },
   ),
 );
