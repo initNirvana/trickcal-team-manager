@@ -210,11 +210,11 @@ export const RecommendedDeckSection = ({ recommendations }: RecommendedDeckSecti
                 </div>
               </div>
             )}
-            {/* 추천 힐러 사도 */}
+            {/* HP 회복/보호막 사도 */}
             {!rec.hasHealer && rec.healerSuggestions && rec.healerSuggestions.length > 0 && (
               <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
                 <input type="checkbox" name={`healer-suggest-${idx}`} />
-                <div className="collapse-title text-sm font-semibold">추천 힐러 사도</div>
+                <div className="collapse-title text-sm font-semibold">추천 HP 회복/보호막 사도</div>
                 <div className="collapse-content">
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
                     {rec.healerSuggestions.map((suggestion, hIdx) => (
@@ -237,7 +237,7 @@ export const RecommendedDeckSection = ({ recommendations }: RecommendedDeckSecti
                     ))}
                   </div>
                   {/* 선택된 힐러 상세 정보 */}
-                  {selectedSuggestions[`healer-${idx}`] &&
+                  {/* {selectedSuggestions[`healer-${idx}`] &&
                     (() => {
                       const selected = rec.healerSuggestions.find(
                         (s) => s.apostle.id === selectedSuggestions[`healer-${idx}`],
@@ -265,7 +265,7 @@ export const RecommendedDeckSection = ({ recommendations }: RecommendedDeckSecti
                           </div>
                         </div>
                       ) : null;
-                    })()}
+                    })()} */}
                   <div className="alert alert-info mt-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +280,9 @@ export const RecommendedDeckSection = ({ recommendations }: RecommendedDeckSecti
                         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <span className="text-xs">보유 사도 내 힐러를 추천합니다.</span>
+                    <span className="text-xs">
+                      다른 사도에게 HP 회복이나 보호막을 부여하는 사도에요
+                    </span>
                   </div>
                 </div>
               </div>
