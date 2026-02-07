@@ -16,8 +16,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 50
     },
     {
       "id": "a002",
@@ -35,8 +38,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a003",
@@ -54,8 +60,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 5
+      },
+      "baseScore": 60
     },
     {
       "id": "a004",
@@ -73,8 +82,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 10
+      },
+      "baseScore": 45
     },
     {
       "id": "a005",
@@ -91,10 +103,13 @@
       },
       "method": "Magical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "필수",
+        "score": 10
+      },
+      "mercenary": true,
+      "baseScore": 60
     },
     {
       "id": "a006",
@@ -112,8 +127,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 5
+      },
+      "baseScore": 60
     },
     {
       "id": "a007",
@@ -131,8 +149,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 30
     },
     {
       "id": "a008",
@@ -149,10 +170,14 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 5,
+        "reason": "망원경 등 조건만 맞춰진다면 보스전 1.5군 딜러 활약"
+      },
+      "mercenary": true,
+      "baseScore": 63
     },
     {
       "id": "a009",
@@ -170,8 +195,12 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 0,
+        "reason": "얼탱"
+      },
+      "baseScore": 45
     },
     {
       "id": "a010",
@@ -189,8 +218,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 30
     },
     {
       "id": "a011",
@@ -208,7 +240,15 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
+        "hasAside": true,
+        "importance": "필수",
+        "score": 10,
+        "reason": "강화 공격 확률 증가, 비취옥 추가 효과, 비취옥 3스택시 범위 피해 추가"
+      },
+      "baseScore": 60,
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 65
       }
     },
     {
@@ -227,8 +267,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 60
     },
     {
       "id": "a013",
@@ -246,8 +289,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a014",
@@ -265,8 +311,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a015",
@@ -284,8 +333,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 60
     },
     {
       "id": "a016",
@@ -303,8 +355,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 2
+      },
+      "baseScore": 50
     },
     {
       "id": "a017",
@@ -322,8 +377,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 0
+      },
+      "baseScore": 60
     },
     {
       "id": "a018",
@@ -341,8 +399,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 50
     },
     {
       "id": "a019",
@@ -359,10 +420,13 @@
       },
       "method": "Physical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 5
+      },
+      "mercenary": true,
+      "baseScore": 60
     },
     {
       "id": "a020",
@@ -380,8 +444,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 2
+      },
+      "baseScore": 45
     },
     {
       "id": "a021",
@@ -399,8 +466,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 2
+      },
+      "baseScore": 45
     },
     {
       "id": "a022",
@@ -418,8 +488,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 55
     },
     {
       "id": "a023",
@@ -437,8 +510,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 55
     },
     {
       "id": "a024",
@@ -456,8 +532,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 2
+      },
+      "baseScore": 45
     },
     {
       "id": "a025",
@@ -475,8 +554,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 2
+      },
+      "baseScore": 30
     },
     {
       "id": "a026",
@@ -494,8 +576,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a027",
@@ -513,8 +598,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 2
+      },
+      "baseScore": 45
     },
     {
       "id": "a028",
@@ -532,8 +620,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 1
+      },
+      "baseScore": 45
     },
     {
       "id": "a029",
@@ -551,8 +642,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a030",
@@ -570,8 +664,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a031",
@@ -589,8 +686,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 1
+      },
+      "baseScore": 25
     },
     {
       "id": "a032",
@@ -608,8 +708,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "필수",
+        "score": 5
+      },
+      "baseScore": 65
     },
     {
       "id": "a033",
@@ -627,8 +730,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a034",
@@ -645,10 +751,14 @@
       },
       "method": "Magical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "필수",
+        "score": 5,
+        "reason": "9인덱(프론티어)에서 활용, 여유 있을 시 투자 추천"
+      },
+      "mercenary": true,
+      "baseScore": 60
     },
     {
       "id": "a035",
@@ -666,8 +776,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a036",
@@ -685,8 +798,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a037",
@@ -704,8 +820,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a038",
@@ -723,8 +842,12 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "기본 공격 시 HP 회복, 스킬 사용후 공격 속도 증가. 우울 유저가 아니라면 투자 우선순위는 낮아요"
+      },
+      "baseScore": 69
     },
     {
       "id": "a039",
@@ -742,8 +865,12 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "기절/변이 면역 추가, 초당 HP 회복효과가 추가. 광기 유저가 아니라면 투자 우선순위는 낮아요"
+      },
+      "baseScore": 67
     },
     {
       "id": "a040",
@@ -761,8 +888,12 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "기본 공격 범위 효과 추가, 저학년 사용시 본인 보호막 + HP회복 효과. 냉정 유저가 아니라면 투자 우선순위는 낮아요"
+      },
+      "baseScore": 68
     },
     {
       "id": "a041",
@@ -779,10 +910,14 @@
       },
       "method": "Physical",
       "position": "mid",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "유일한 7활발 시너지가 가능. 명함 용병으로 많이 사용해요. 어사이드 투자 우선순위는 낮아요"
+      },
+      "mercenary": true,
+      "baseScore": 72
     },
     {
       "id": "a042",
@@ -800,8 +935,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a043",
@@ -819,8 +957,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a044",
@@ -838,8 +979,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a045",
@@ -857,8 +1001,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a046",
@@ -876,8 +1023,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a047",
@@ -895,8 +1045,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a048",
@@ -914,8 +1067,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a049",
@@ -933,8 +1089,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a050",
@@ -952,8 +1111,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a051",
@@ -971,8 +1133,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a052",
@@ -990,8 +1155,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a053",
@@ -1009,8 +1177,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 10
     },
     {
       "id": "a054",
@@ -1028,8 +1199,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 55
     },
     {
       "id": "a055",
@@ -1047,8 +1221,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 63
     },
     {
       "id": "a056",
@@ -1066,8 +1243,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a057",
@@ -1084,10 +1264,14 @@
       },
       "method": "Magical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "기본 공격시 SP 감소 효과가 추가됩니다. 순수 유저가 아니라면 투자 우선순위는 낮아요"
+      },
+      "mercenary": true,
+      "baseScore": 68
     },
     {
       "id": "a058",
@@ -1105,8 +1289,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a059",
@@ -1124,8 +1311,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a060",
@@ -1142,10 +1332,14 @@
       },
       "method": "Physical",
       "position": "mid",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "필수",
+        "score": 10,
+        "reason": "A2가 본체"
+      },
+      "mercenary": true,
+      "baseScore": 68
     },
     {
       "id": "a061",
@@ -1163,8 +1357,11 @@
       "method": "Magical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a062",
@@ -1182,8 +1379,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 2
+      },
+      "baseScore": 55
     },
     {
       "id": "a063",
@@ -1201,8 +1401,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3
+      },
+      "baseScore": 65
     },
     {
       "id": "a064",
@@ -1220,8 +1423,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a065",
@@ -1239,8 +1445,18 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "웨이브 시작시 본인에게 무적. 냉정 유저라면 고난이도 침략 등에 활용"
+      },
+      "baseScore": 68,
+      "pvp": {
+        "score": 5,
+        "aside": "권장",
+        "reason": "아군 사도가 죽기전 보호막으로 생존 시켜줌"
+      },
+      "reason": "서브 탱커 역할, 아군 사도 보호막 부여"
     },
     {
       "id": "a066",
@@ -1257,10 +1473,13 @@
       },
       "method": "Magical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5
+      },
+      "mercenary": true,
+      "baseScore": 60
     },
     {
       "id": "a067",
@@ -1278,8 +1497,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 55
     },
     {
       "id": "a068",
@@ -1296,10 +1518,13 @@
       },
       "method": "Magical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3
+      },
+      "mercenary": true,
+      "baseScore": 65
     },
     {
       "id": "a069",
@@ -1317,8 +1542,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a070",
@@ -1336,8 +1564,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 5
+      },
+      "baseScore": 55
     },
     {
       "id": "a071",
@@ -1355,8 +1586,11 @@
       "method": "Magical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "필수",
+        "score": 5
+      },
+      "baseScore": 63
     },
     {
       "id": "a072",
@@ -1373,10 +1607,14 @@
       },
       "method": "Physical",
       "position": "mid",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "고학년의 스킬 쿨타임 감소. 엘다인 어사이드 투자 1순위"
+      },
+      "mercenary": true,
+      "baseScore": 93
     },
     {
       "id": "a073",
@@ -1394,8 +1632,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a074",
@@ -1413,8 +1654,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a075",
@@ -1431,10 +1675,14 @@
       },
       "method": "Magical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "저학년 11렙을 위해 A1 추천. 여유 있다면 A2-A3 까지 추천함"
+      },
+      "mercenary": true,
+      "baseScore": 71
     },
     {
       "id": "a076",
@@ -1452,8 +1700,18 @@
       "method": "Magical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "줘팸터 시저 어사이드 투자 이후 투자 순위"
+      },
+      "baseScore": 60,
+      "pvp": {
+        "score": 15,
+        "aside": "권장",
+        "reason": "어그로 & 가장 뒤에 있는 적을 공격하는 암살자 포지션"
+      },
+      "reason": "줘팸터에서 잘 활용되는 사도, 9인 덱에서도 활용은 가능하나 우선 순위 낮음"
     },
     {
       "id": "a077",
@@ -1471,8 +1729,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 20
     },
     {
       "id": "a078",
@@ -1489,10 +1750,14 @@
       },
       "method": "Physical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "필수",
+        "score": 10,
+        "reason": "A2가 본체"
+      },
+      "mercenary": true,
+      "baseScore": 58
     },
     {
       "id": "a079",
@@ -1510,8 +1775,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 50
     },
     {
       "id": "a080",
@@ -1529,8 +1797,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": false
-      }
+        "hasAside": false,
+        "importance": null,
+        "score": 0
+      },
+      "baseScore": 25
     },
     {
       "id": "a081",
@@ -1548,8 +1819,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 50
     },
     {
       "id": "a082",
@@ -1566,10 +1840,23 @@
       },
       "method": "Physical",
       "position": ["back", "mid", "front"],
-      "positionPriority": ["back", "mid", "front"],
-      "mercenary": true,
       "aside": {
-        "hasAside": true
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "명함으로도 좋아서 우선 순위가 낮아요"
+      },
+      "mercenary": true,
+      "positionPriority": ["back", "mid", "front"],
+      "baseScore": 75,
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 75
+      },
+      "positionScore": {
+        "back": 75,
+        "front": 60,
+        "mid": 72
       }
     },
     {
@@ -1588,8 +1875,11 @@
       "method": "Magical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 53
     },
     {
       "id": "a084",
@@ -1606,10 +1896,13 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5
+      },
+      "mercenary": true,
+      "baseScore": 73
     },
     {
       "id": "a085",
@@ -1627,8 +1920,11 @@
       "method": "Magical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a086",
@@ -1646,8 +1942,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a087",
@@ -1665,8 +1964,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 58
     },
     {
       "id": "a088",
@@ -1683,10 +1985,13 @@
       },
       "method": "Magical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "mercenary": true,
+      "baseScore": 65
     },
     {
       "id": "a089",
@@ -1703,10 +2008,13 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3
+      },
+      "mercenary": true,
+      "baseScore": 65
     },
     {
       "id": "a090",
@@ -1723,10 +2031,13 @@
       },
       "method": "Magical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3
+      },
+      "mercenary": true,
+      "baseScore": 68
     },
     {
       "id": "a091",
@@ -1744,8 +2055,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3
+      },
+      "baseScore": 63
     },
     {
       "id": "a092",
@@ -1762,10 +2076,14 @@
       },
       "method": "Physical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "명함(저학년 스킬 레벨업)으로도 충분하여 우선 순위 낮음"
+      },
+      "mercenary": true,
+      "baseScore": 72
     },
     {
       "id": "a093",
@@ -1783,8 +2101,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "필수",
+        "score": 5
+      },
+      "baseScore": 60
     },
     {
       "id": "a094",
@@ -1801,10 +2122,14 @@
       },
       "method": "Magical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "탱킹 체급 상향 + 아군 전체 버프. 각종 컨텐츠에 매우 유용하여 투자 권장"
+      },
+      "mercenary": true,
+      "baseScore": 75
     },
     {
       "id": "a095",
@@ -1821,10 +2146,14 @@
       },
       "method": "Physical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "명함으로도 충분해서 추천하지 않아요"
+      },
+      "mercenary": true,
+      "baseScore": 68
     },
     {
       "id": "a096",
@@ -1841,9 +2170,17 @@
       },
       "method": "Physical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "저학년 사용시, 배틀 아이템으로 아군에게 다양한 버프 제공"
+      },
+      "mercenary": true,
+      "baseScore": 73,
+      "scoreBySize": {
+        "size6": 70,
+        "size9": 75
       }
     },
     {
@@ -1861,10 +2198,13 @@
       },
       "method": "Physical",
       "position": "mid",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3
+      },
+      "mercenary": true,
+      "baseScore": 63
     },
     {
       "id": "a098",
@@ -1881,10 +2221,13 @@
       },
       "method": "Magical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3
+      },
+      "mercenary": true,
+      "baseScore": 63
     },
     {
       "id": "a099",
@@ -1901,10 +2244,14 @@
       },
       "method": "Physical",
       "position": "front",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "최강"
+      },
+      "mercenary": true,
+      "baseScore": 80
     },
     {
       "id": "a100",
@@ -1922,8 +2269,12 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "활발 줘팸터의 핵심 딜러"
+      },
+      "baseScore": 60
     },
     {
       "id": "a101",
@@ -1941,8 +2292,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 5
+      },
+      "baseScore": 60
     },
     {
       "id": "a102",
@@ -1959,9 +2313,17 @@
       },
       "method": "Physical",
       "position": "mid",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "9인덱에서만 활용, 명함 사용 후 여유 있을 시 투자 추천"
+      },
+      "mercenary": true,
+      "baseScore": 80,
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 80
       }
     },
     {
@@ -1980,8 +2342,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a104",
@@ -1999,8 +2364,11 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": null,
+        "score": 3
+      },
+      "baseScore": 55
     },
     {
       "id": "a105",
@@ -2018,7 +2386,16 @@
       "method": "Physical",
       "position": "mid",
       "aside": {
-        "hasAside": true
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "웨이브 시작시 공격력 높은 3명을 디버프 및 지정된 3명 처치 혹은 10초 경과시 모든 아군 HP 회복 효과"
+      },
+      "baseScore": 60,
+      "pvp": {
+        "score": 10,
+        "aside": "권장",
+        "reason": "줘팸터에서 상대 고학년의 쿨타임을 증가시키고, 배치한 위치의 앞의 전열 사도의 고학년 쿨타임을 감소시키는 효과"
       }
     },
     {
@@ -2036,9 +2413,17 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "9인덱에서만 활용, 명함 사용 후 여유 있을 시 투자 권장"
+      },
+      "mercenary": true,
+      "baseScore": 75,
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 75
       }
     },
     {
@@ -2056,10 +2441,14 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
+      },
+      "mercenary": true,
+      "baseScore": 80
     },
     {
       "id": "a107_Cool",
@@ -2076,10 +2465,14 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
+      },
+      "mercenary": true,
+      "baseScore": 80
     },
     {
       "id": "a107_Gloomy",
@@ -2096,10 +2489,14 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
+      },
+      "mercenary": true,
+      "baseScore": 80
     },
     {
       "id": "a107_Naive",
@@ -2116,10 +2513,14 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
+      },
+      "mercenary": true,
+      "baseScore": 80
     },
     {
       "id": "a107_Jolly",
@@ -2136,10 +2537,14 @@
       },
       "method": "Physical",
       "position": "back",
-      "mercenary": true,
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
+      },
+      "mercenary": true,
+      "baseScore": 80
     },
     {
       "id": "a108",
@@ -2156,10 +2561,19 @@
       },
       "method": "Physical",
       "position": ["back", "mid", "front"],
-      "positionPriority": ["back", "mid", "front"],
-      "mercenary": true,
       "aside": {
-        "hasAside": true
+        "hasAside": true,
+        "importance": "권장",
+        "score": 5,
+        "reason": "유리한 성격 피해량 50% 추가, 고학년 사용시 기본 공격 1회/2회/3회에 추가 효과 부여"
+      },
+      "mercenary": true,
+      "positionPriority": ["back", "mid", "front"],
+      "baseScore": 78,
+      "positionScore": {
+        "back": 80,
+        "front": 53,
+        "mid": 78
       }
     },
     {
@@ -2178,8 +2592,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a110",
@@ -2197,8 +2614,11 @@
       "method": "Physical",
       "position": "front",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "필수",
+        "score": 5
+      },
+      "baseScore": 63
     },
     {
       "id": "a111",
@@ -2216,8 +2636,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a112",
@@ -2235,8 +2658,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 60
     },
     {
       "id": "a113",
@@ -2254,8 +2680,17 @@
       "method": "Magical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 5
+      },
+      "baseScore": 67,
+      "pvp": {
+        "score": 5,
+        "aside": "권장",
+        "reason": "보호막, 화상, 기절 등 유지력 증가. 어사이드 2성시 고학년 즉시 발동"
+      },
+      "reason": "모든 사도 보호막과 피해감소/기절 등 파티 유지력에 도움 되는 스킬 보유"
     },
     {
       "id": "a114",
@@ -2273,7 +2708,16 @@
       "method": "Magical",
       "position": "mid",
       "aside": {
-        "hasAside": true
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3,
+        "reason": "저학년 장판 지속시간 증가 + 강화 공격 투사체 1개 추가"
+      },
+      "baseScore": 68,
+      "pvp": {
+        "score": 7,
+        "aside": "선택",
+        "reason": "전중열 피감 장판 + 적 SP 감소 + 아군 SP 회복량 증가"
       }
     },
     {
@@ -2292,8 +2736,11 @@
       "method": "Physical",
       "position": "back",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "보류",
+        "score": 3
+      },
+      "baseScore": 63
     },
     {
       "id": "a116",
@@ -2311,8 +2758,11 @@
       "method": "Magical",
       "position": "mid",
       "aside": {
-        "hasAside": true
-      }
+        "hasAside": true,
+        "importance": "선택",
+        "score": 5
+      },
+      "baseScore": 65
     }
   ]
 }

@@ -29,6 +29,9 @@ const RoleSchema = z.discriminatedUnion('main', [
 
 const AsideSchema = z.object({
   hasAside: z.boolean(),
+  importance: z.enum(['선택', '권장', '필수', '보류']).nullable().optional(),
+  score: z.number().int().min(0).max(15).optional(),
+  reason: z.string().min(1).optional(),
 });
 
 export const ApostleSchema = z.object({
@@ -43,8 +46,30 @@ export const ApostleSchema = z.object({
   method: MethodSchema,
   position: z.union([PositionSchema, z.array(PositionSchema)]),
   positionPriority: z.array(PositionSchema).optional(),
+  positionScore: z
+    .object({
+      front: z.number().optional(),
+      mid: z.number().optional(),
+      back: z.number().optional(),
+    })
+    .optional(),
   aside: AsideSchema,
   mercenary: z.boolean().optional(),
+  baseScore: z.number().optional(),
+  scoreBySize: z
+    .object({
+      size6: z.number().optional(),
+      size9: z.number().optional(),
+    })
+    .optional(),
+  pvp: z
+    .object({
+      score: z.number().int().min(0).max(15),
+      aside: z.enum(['선택', '권장', '필수', '보류']).nullable(),
+      reason: z.string().min(1).optional(),
+    })
+    .optional(),
+  reason: z.string().min(1).optional(),
 });
 
 export const ApostlesDataSchema = z.object({

@@ -318,7 +318,6 @@
       "type": ["All"],
       "damage": [{ "Increase": 0, "Reduction": 10 }]
     },
-
     {
       "apostleId": "a055",
       "apostleName": "나이아",
