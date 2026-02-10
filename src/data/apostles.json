@@ -8,13 +8,13 @@
       "rank": 3,
       "race": "용족",
       "persona": "Naive",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -30,16 +30,15 @@
       "rank": 2,
       "race": "정령",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -52,13 +51,13 @@
       "rank": 3,
       "race": "수인",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": []
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -74,13 +73,13 @@
       "rank": 2,
       "race": "엘프",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["Debuff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -93,22 +92,22 @@
       "name": "네르",
       "engName": "Ner",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "요정",
       "persona": "Mad",
+      "method": "Magical",
+      "position": ["front"],
       "role": {
         "main": "Supporter",
         "subRole": "Buffer",
         "trait": []
       },
-      "method": "Magical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "필수",
         "score": 10
       },
-      "mercenary": true,
       "baseScore": 60
     },
     {
@@ -119,13 +118,13 @@
       "rank": 3,
       "race": "유령",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["CC", "Debuff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -141,16 +140,15 @@
       "rank": 2,
       "race": "유령",
       "persona": "Naive",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 30
@@ -160,23 +158,23 @@
       "name": "실라",
       "engName": "Sylla",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "정령",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 5,
         "reason": "망원경 등 조건만 맞춰진다면 보스전 1.5군 딜러 활약"
       },
-      "mercenary": true,
       "baseScore": 63
     },
     {
@@ -187,16 +185,15 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["Defense", "CC"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 0,
         "reason": "얼탱"
       },
@@ -210,16 +207,15 @@
       "rank": 2,
       "race": "정령",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["CC", "Shield"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 30
@@ -232,13 +228,13 @@
       "rank": 3,
       "race": "용족",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "필수",
@@ -259,16 +255,15 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Attacker",
         "trait": ["CC", "Debuff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 0
       },
       "baseScore": 60
@@ -281,16 +276,15 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Mad",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 60
@@ -303,16 +297,15 @@
       "rank": 3,
       "race": "요정",
       "persona": "Naive",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 60
@@ -325,19 +318,18 @@
       "rank": 3,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Assassin",
         "trait": ["Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 0
       },
-      "baseScore": 60
+      "baseScore": 55
     },
     {
       "id": "a016",
@@ -347,16 +339,15 @@
       "rank": 3,
       "race": "요정",
       "persona": "Gloomy",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "CC", "Debuff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 2
       },
       "baseScore": 50
@@ -369,13 +360,13 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -391,16 +382,15 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 50
@@ -410,23 +400,23 @@
       "name": "키디언",
       "engName": "Kidian",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "용족",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Nuker",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "보류",
         "score": 5
       },
-      "mercenary": true,
-      "baseScore": 60
+      "baseScore": 61
     },
     {
       "id": "a020",
@@ -436,16 +426,15 @@
       "rank": 3,
       "race": "용족",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 2
       },
       "baseScore": 45
@@ -458,16 +447,15 @@
       "rank": 3,
       "race": "유령",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Assassin",
         "trait": ["Debuff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 2
       },
       "baseScore": 45
@@ -480,13 +468,13 @@
       "rank": 3,
       "race": "수인",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": ["CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -502,16 +490,15 @@
       "rank": 2,
       "race": "정령",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Shield"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 55
@@ -524,16 +511,15 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "CC"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 2
       },
       "baseScore": 45
@@ -546,16 +532,15 @@
       "rank": 2,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["CC"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 2
       },
       "baseScore": 30
@@ -568,13 +553,13 @@
       "rank": 3,
       "race": "용족",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["Buff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -590,16 +575,15 @@
       "rank": 3,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 2
       },
       "baseScore": 45
@@ -612,13 +596,13 @@
       "rank": 2,
       "race": "엘프",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Debuff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -634,16 +618,15 @@
       "rank": 2,
       "race": "마녀",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Assassin",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -656,16 +639,15 @@
       "rank": 2,
       "race": "요정",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -678,16 +660,15 @@
       "rank": 3,
       "race": "정령",
       "persona": "Cool",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": ["Damage"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 1
       },
       "baseScore": 25
@@ -700,13 +681,13 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Gloomy",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Debuff", "CC", "Heal"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "필수",
@@ -722,16 +703,15 @@
       "rank": 2,
       "race": "정령",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -741,23 +721,23 @@
       "name": "에스피",
       "engName": "Espi",
       "isEldain": false,
+      "mercenary": true,
       "rank": 2,
       "race": "유령",
       "persona": "Cool",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["CC", "Debuff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "필수",
         "score": 5,
         "reason": "9인덱(프론티어)에서 활용, 여유 있을 시 투자 추천"
       },
-      "mercenary": true,
       "baseScore": 60
     },
     {
@@ -768,16 +748,15 @@
       "rank": 2,
       "race": "수인",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": []
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -790,16 +769,15 @@
       "rank": 2,
       "race": "요정",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -812,16 +790,15 @@
       "rank": 2,
       "race": "엘프",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["Buff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -834,13 +811,13 @@
       "rank": 3,
       "race": "유령",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -857,20 +834,20 @@
       "rank": 3,
       "race": "요정",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["CC"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "기절/변이 면역 추가, 초당 HP 회복효과가 추가. 광기 유저가 아니라면 투자 우선순위는 낮아요"
       },
-      "baseScore": 67
+      "baseScore": 68
     },
     {
       "id": "a040",
@@ -880,13 +857,13 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -900,23 +877,23 @@
       "name": "우이",
       "engName": "Ui",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "정령",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": ["Buff", "Heal", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "유일한 7활발 시너지가 가능. 명함 용병으로 많이 사용해요. 어사이드 투자 우선순위는 낮아요"
       },
-      "mercenary": true,
       "baseScore": 72
     },
     {
@@ -927,16 +904,15 @@
       "rank": 1,
       "race": "엘프",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -949,16 +925,15 @@
       "rank": 1,
       "race": "유령",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -971,16 +946,15 @@
       "rank": 1,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -993,16 +967,15 @@
       "rank": 1,
       "race": "유령",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1015,16 +988,15 @@
       "rank": 1,
       "race": "유령",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1037,16 +1009,15 @@
       "rank": 1,
       "race": "엘프",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["Shield", "Damage"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1059,16 +1030,15 @@
       "rank": 1,
       "race": "수인",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1081,16 +1051,15 @@
       "rank": 1,
       "race": "수인",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1103,16 +1072,15 @@
       "rank": 1,
       "race": "요정",
       "persona": "Jolly",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": ["Heal"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1125,16 +1093,15 @@
       "rank": 1,
       "race": "요정",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": ["Heal"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1147,16 +1114,15 @@
       "rank": 1,
       "race": "엘프",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1169,16 +1135,15 @@
       "rank": 1,
       "race": "요정",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 10
@@ -1191,16 +1156,15 @@
       "rank": 3,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 55
@@ -1213,16 +1177,15 @@
       "rank": 3,
       "race": "정령",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": ["Heal"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 63
@@ -1235,16 +1198,15 @@
       "rank": 2,
       "race": "용족",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -1254,23 +1216,23 @@
       "name": "비비",
       "engName": "Vivi",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "용족",
       "persona": "Naive",
+      "method": "Magical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["Shield", "Debuff"]
       },
-      "method": "Magical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "기본 공격시 SP 감소 효과가 추가됩니다. 순수 유저가 아니라면 투자 우선순위는 낮아요"
       },
-      "mercenary": true,
       "baseScore": 68
     },
     {
@@ -1281,13 +1243,13 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": ["Heal", "Debuff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -1303,43 +1265,42 @@
       "rank": 3,
       "race": "유령",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["CC", "Shield"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
-      "baseScore": 60
+      "baseScore": 58
     },
     {
       "id": "a060",
       "name": "에피카",
       "engName": "Epica",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Buff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "필수",
         "score": 10,
         "reason": "A2가 본체"
       },
-      "mercenary": true,
-      "baseScore": 68
+      "baseScore": 60
     },
     {
       "id": "a061",
@@ -1349,13 +1310,13 @@
       "rank": 3,
       "race": "유령",
       "persona": "Mad",
+      "method": "Magical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["CC", "Debuff"]
       },
-      "method": "Magical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -1371,16 +1332,15 @@
       "rank": 3,
       "race": "용족",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["Defense"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 2
       },
       "baseScore": 55
@@ -1393,13 +1353,13 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Cool",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Pure",
         "trait": ["Heal", "Buff", "CC"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -1415,13 +1375,13 @@
       "rank": 3,
       "race": "정령",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -1437,13 +1397,13 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["Shield"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -1463,22 +1423,22 @@
       "name": "슈팡",
       "engName": "Shoupan",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "요정",
       "persona": "Jolly",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Debuff", "Heal", "Buff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5
       },
-      "mercenary": true,
       "baseScore": 60
     },
     {
@@ -1489,16 +1449,15 @@
       "rank": 3,
       "race": "요정",
       "persona": "Naive",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["CC", "Buff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 55
@@ -1508,22 +1467,22 @@
       "name": "롤렛",
       "engName": "Rollett",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "마녀",
       "persona": "Mad",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["CC", "Debuff", "Buff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3
       },
-      "mercenary": true,
       "baseScore": 65
     },
     {
@@ -1534,16 +1493,15 @@
       "rank": 2,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Shield", "Buff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -1556,16 +1514,15 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "CC"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 5
       },
       "baseScore": 55
@@ -1578,13 +1535,13 @@
       "rank": 3,
       "race": "수인",
       "persona": "Cool",
+      "method": "Magical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Heal", "Buff", "CC"]
       },
-      "method": "Magical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "필수",
@@ -1597,23 +1554,23 @@
       "name": "리뉴아",
       "engName": "Renewa",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "엘프",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Utility",
         "trait": ["Buff", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5,
         "reason": "고학년의 스킬 쿨타임 감소. 엘다인 어사이드 투자 1순위"
       },
-      "mercenary": true,
       "baseScore": 93
     },
     {
@@ -1624,13 +1581,13 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -1646,16 +1603,15 @@
       "rank": 2,
       "race": "유령",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["CC"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -1665,23 +1621,23 @@
       "name": "모모",
       "engName": "Momo",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5,
         "reason": "저학년 11렙을 위해 A1 추천. 여유 있다면 A2-A3 까지 추천함"
       },
-      "mercenary": true,
       "baseScore": 71
     },
     {
@@ -1692,13 +1648,13 @@
       "rank": 3,
       "race": "유령",
       "persona": "Cool",
+      "method": "Magical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Assassin",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Magical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -1721,16 +1677,15 @@
       "rank": 2,
       "race": "마녀",
       "persona": "Gloomy",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Shield", "Buff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 20
@@ -1740,23 +1695,23 @@
       "name": "스노키",
       "engName": "Snorky",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "마녀",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["Buff", "Shield", "CC"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "필수",
         "score": 10,
         "reason": "A2가 본체"
       },
-      "mercenary": true,
       "baseScore": 58
     },
     {
@@ -1767,16 +1722,15 @@
       "rank": 3,
       "race": "용족",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 50
@@ -1789,16 +1743,15 @@
       "rank": 2,
       "race": "요정",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": false,
-        "importance": null,
         "score": 0
       },
       "baseScore": 25
@@ -1811,13 +1764,13 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["Buff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -1830,33 +1783,33 @@
       "name": "죠안",
       "engName": "Joanne",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "요정",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["back", "mid", "front"],
+      "positionPriority": ["back", "mid", "front"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Shield", "Buff"]
       },
-      "method": "Physical",
-      "position": ["back", "mid", "front"],
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "명함으로도 좋아서 우선 순위가 낮아요"
       },
-      "mercenary": true,
-      "positionPriority": ["back", "mid", "front"],
       "baseScore": 75,
       "scoreBySize": {
         "size6": 60,
         "size9": 75
       },
       "positionScore": {
-        "back": 75,
         "front": 60,
-        "mid": 72
+        "mid": 72,
+        "back": 75
       }
     },
     {
@@ -1867,16 +1820,15 @@
       "rank": 3,
       "race": "수인",
       "persona": "Cool",
+      "method": "Magical",
+      "position": ["front"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Debuff", "Buff", "CC"]
       },
-      "method": "Magical",
-      "position": "front",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 53
@@ -1886,22 +1838,22 @@
       "name": "폴랑",
       "engName": "Polan",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "요정",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff", "Heal", "CC"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5
       },
-      "mercenary": true,
       "baseScore": 73
     },
     {
@@ -1912,13 +1864,13 @@
       "rank": 3,
       "race": "유령",
       "persona": "Jolly",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -1934,13 +1886,13 @@
       "rank": 3,
       "race": "수인",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["Debuff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -1956,13 +1908,13 @@
       "rank": 3,
       "race": "용족",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff", "Heal", "CC", "Shield"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -1975,22 +1927,22 @@
       "name": "란",
       "engName": "Ran",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Naive",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "보류",
         "score": 3
       },
-      "mercenary": true,
       "baseScore": 65
     },
     {
@@ -1998,22 +1950,22 @@
       "name": "림(혼돈)",
       "engName": "RimChaos",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "유령",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Assassin",
         "trait": ["Damage", "CC"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3
       },
-      "mercenary": true,
       "baseScore": 65
     },
     {
@@ -2021,22 +1973,22 @@
       "name": "아이시아",
       "engName": "Eisia",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "엘프",
       "persona": "Cool",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3
       },
-      "mercenary": true,
       "baseScore": 68
     },
     {
@@ -2047,13 +1999,13 @@
       "rank": 3,
       "race": "요정",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2066,23 +2018,23 @@
       "name": "슈로",
       "engName": "Suro",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff", "Defense", "CC"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "명함(저학년 스킬 레벨업)으로도 충분하여 우선 순위 낮음"
       },
-      "mercenary": true,
       "baseScore": 72
     },
     {
@@ -2093,13 +2045,13 @@
       "rank": 3,
       "race": "정령",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Sub",
         "trait": ["CC"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "필수",
@@ -2112,23 +2064,23 @@
       "name": "벨라",
       "engName": "Vela",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "유령",
       "persona": "Jolly",
+      "method": "Magical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["Buff", "CC", "Heal"]
       },
-      "method": "Magical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5,
         "reason": "탱킹 체급 상향 + 아군 전체 버프. 각종 컨텐츠에 매우 유용하여 투자 권장"
       },
-      "mercenary": true,
       "baseScore": 75
     },
     {
@@ -2136,23 +2088,23 @@
       "name": "네티",
       "engName": "Neti",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "용족",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["Shield", "Buff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "명함으로도 충분해서 추천하지 않아요"
       },
-      "mercenary": true,
       "baseScore": 68
     },
     {
@@ -2160,50 +2112,46 @@
       "name": "리코타",
       "engName": "Ricota",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "요정",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["Damage", "Heal", "Buff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "저학년 사용시, 배틀 아이템으로 아군에게 다양한 버프 제공"
       },
-      "mercenary": true,
-      "baseScore": 73,
-      "scoreBySize": {
-        "size6": 70,
-        "size9": 75
-      }
+      "baseScore": 73
     },
     {
       "id": "a097",
       "name": "마요(멋짐)",
       "engName": "MayoCool",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "요정",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3
       },
-      "mercenary": true,
       "baseScore": 63
     },
     {
@@ -2211,22 +2159,22 @@
       "name": "오르",
       "engName": "Orr",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "엘프",
       "persona": "Gloomy",
+      "method": "Magical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff", "Debuff", "CC"]
       },
-      "method": "Magical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3
       },
-      "mercenary": true,
       "baseScore": 63
     },
     {
@@ -2234,23 +2182,23 @@
       "name": "디아나(왕년)",
       "engName": "DianaYester",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Attacker",
         "subRole": "Melee",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5,
         "reason": "최강"
       },
-      "mercenary": true,
       "baseScore": 80
     },
     {
@@ -2261,13 +2209,13 @@
       "rank": 3,
       "race": "정령",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -2284,13 +2232,13 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2303,23 +2251,23 @@
       "name": "아네트",
       "engName": "Arnet",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "용족",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Buffer",
         "trait": ["Buff", "Heal", "Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5,
         "reason": "9인덱에서만 활용, 명함 사용 후 여유 있을 시 투자 추천"
       },
-      "mercenary": true,
       "baseScore": 80,
       "scoreBySize": {
         "size6": 60,
@@ -2334,13 +2282,13 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -2356,16 +2304,15 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Attacker",
         "trait": ["Damage"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
-        "importance": null,
         "score": 3
       },
       "baseScore": 55
@@ -2378,13 +2325,13 @@
       "rank": 3,
       "race": "정령",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff", "Debuff"]
       },
-      "method": "Physical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "권장",
@@ -2403,23 +2350,23 @@
       "name": "뮤트",
       "engName": "Mute",
       "isEldain": false,
+      "mercenary": true,
       "rank": 3,
       "race": "정령",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Attacker",
         "trait": ["Damage", "CC"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5,
         "reason": "9인덱에서만 활용, 명함 사용 후 여유 있을 시 투자 권장"
       },
-      "mercenary": true,
       "baseScore": 75,
       "scoreBySize": {
         "size6": 60,
@@ -2431,23 +2378,23 @@
       "name": "우로스",
       "engName": "Uros",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       },
-      "mercenary": true,
       "baseScore": 80
     },
     {
@@ -2455,23 +2402,23 @@
       "name": "우로스",
       "engName": "Uros",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       },
-      "mercenary": true,
       "baseScore": 80
     },
     {
@@ -2479,23 +2426,23 @@
       "name": "우로스",
       "engName": "Uros",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       },
-      "mercenary": true,
       "baseScore": 80
     },
     {
@@ -2503,23 +2450,23 @@
       "name": "우로스",
       "engName": "Uros",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Naive",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       },
-      "mercenary": true,
       "baseScore": 80
     },
     {
@@ -2527,23 +2474,23 @@
       "name": "우로스",
       "engName": "Uros",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Buffer",
         "trait": ["Damage", "Buff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "선택",
         "score": 3,
         "reason": "A2 딜링 + 받피증 추가, A3 추가시 동일 성격의 피증(45%)/피감(12%) 추가"
       },
-      "mercenary": true,
       "baseScore": 80
     },
     {
@@ -2551,29 +2498,29 @@
       "name": "티그(영웅)",
       "engName": "TigHero",
       "isEldain": true,
+      "mercenary": true,
       "rank": 3,
       "race": "수인",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back", "mid", "front"],
+      "positionPriority": ["back", "mid", "front"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Buff"]
       },
-      "method": "Physical",
-      "position": ["back", "mid", "front"],
       "aside": {
         "hasAside": true,
         "importance": "권장",
         "score": 5,
         "reason": "유리한 성격 피해량 50% 추가, 고학년 사용시 기본 공격 1회/2회/3회에 추가 효과 부여"
       },
-      "mercenary": true,
-      "positionPriority": ["back", "mid", "front"],
       "baseScore": 78,
       "positionScore": {
-        "back": 80,
         "front": 53,
-        "mid": 78
+        "mid": 78,
+        "back": 80
       }
     },
     {
@@ -2584,13 +2531,13 @@
       "rank": 3,
       "race": "정령",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["CC", "Damage", "Debuff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -2606,13 +2553,13 @@
       "rank": 3,
       "race": "마녀",
       "persona": "Gloomy",
+      "method": "Physical",
+      "position": ["front"],
       "role": {
         "main": "Tanker",
         "subRole": "Main",
         "trait": ["CC", "Shield", "Heal", "Buff"]
       },
-      "method": "Physical",
-      "position": "front",
       "aside": {
         "hasAside": true,
         "importance": "필수",
@@ -2628,13 +2575,13 @@
       "rank": 3,
       "race": "수인",
       "persona": "Cool",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Damage", "Debuff", "CC"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -2650,13 +2597,13 @@
       "rank": 3,
       "race": "엘프",
       "persona": "Mad",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Attacker",
         "subRole": "Ranged",
         "trait": ["Debuff"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -2672,13 +2619,13 @@
       "rank": 3,
       "race": "정령",
       "persona": "Naive",
+      "method": "Magical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff", "Shield", "CC", "Debuff"]
       },
-      "method": "Magical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2700,13 +2647,13 @@
       "rank": 3,
       "race": "미스틱",
       "persona": "Gloomy",
+      "method": "Magical",
+      "position": ["mid"],
       "role": {
         "main": "Attacker",
         "subRole": "Utility",
         "trait": ["Buff", "Debuff"]
       },
-      "method": "Magical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "선택",
@@ -2728,13 +2675,13 @@
       "rank": 3,
       "race": "유령",
       "persona": "Jolly",
+      "method": "Physical",
+      "position": ["back"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff", "Debuff", "CC", "Heal"]
       },
-      "method": "Physical",
-      "position": "back",
       "aside": {
         "hasAside": true,
         "importance": "보류",
@@ -2750,13 +2697,13 @@
       "rank": 3,
       "race": "용족",
       "persona": "Mad",
+      "method": "Magical",
+      "position": ["mid"],
       "role": {
         "main": "Supporter",
         "subRole": "Utility",
         "trait": ["Buff", "Debuff", "CC", "Heal", "Shield"]
       },
-      "method": "Magical",
-      "position": "mid",
       "aside": {
         "hasAside": true,
         "importance": "선택",

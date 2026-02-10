@@ -13,17 +13,17 @@ const RoleSchema = z.discriminatedUnion('main', [
   z.object({
     main: z.literal('Attacker'),
     subRole: AttackerSubRoleSchema,
-    trait: z.array(TraitSchema),
+    trait: z.array(TraitSchema).default([]),
   }),
   z.object({
     main: z.literal('Tanker'),
     subRole: TankerSubRoleSchema,
-    trait: z.array(TraitSchema),
+    trait: z.array(TraitSchema).default([]),
   }),
   z.object({
     main: z.literal('Supporter'),
     subRole: SupporterSubRoleSchema,
-    trait: z.array(TraitSchema),
+    trait: z.array(TraitSchema).default([]),
   }),
 ]);
 

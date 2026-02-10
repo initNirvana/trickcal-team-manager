@@ -219,7 +219,7 @@ function getPvpBonusScore(apostle: Apostle, options?: RecommendOptions): number 
  * @param options RecommendOptions (6인덱/9인덱 모드 옵션)
  * @returns number
  */
-function getEffectiveBaseScore(
+export function getEffectiveBaseScore(
   apostle: Apostle,
   decksize: DeckSize,
   targetPos?: Position,

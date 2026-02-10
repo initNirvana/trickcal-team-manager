@@ -14,7 +14,7 @@ interface SlotProps {
   personality: Personality;
 }
 
-const getLayoutByPosition = (deck: Apostle[], maxPerLine: number) => {
+const getLayoutByPosition = (deck: Apostle[]) => {
   const layout: Record<Position, Apostle[]> = { front: [], mid: [], back: [] };
 
   const sortedDeck = [...deck].sort((a, b) => {
@@ -29,10 +29,9 @@ const getLayoutByPosition = (deck: Apostle[], maxPerLine: number) => {
       (Array.isArray(apostle.position) ? apostle.position : [apostle.position]);
 
     for (const pos of preferredPositions) {
-      if (layout[pos as Position].length < maxPerLine) {
-        layout[pos as Position].push(apostle);
-        break;
-      }
+      // 제한 없이 배치 (렌더링 시에만 줄 맞춤 처리)
+      layout[pos as Position].push(apostle);
+      break;
     }
   });
 
@@ -120,7 +119,7 @@ const PresetDeckGrid = ({ deck, deckSize, personality }: PresetDeckGridProps) =>
   const maxPerLine = deckSize === 9 ? 3 : 2;
 
   const { frontLine, midLine, backLine } = useMemo(() => {
-    const layout = getLayoutByPosition(deck, maxPerLine);
+    const layout = getLayoutByPosition(deck);
 
     const fill = (line: Apostle[]) => [...line, ...Array(maxPerLine - line.length).fill(null)];
 

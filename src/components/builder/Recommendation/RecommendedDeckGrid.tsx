@@ -47,8 +47,8 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
       );
     }
 
-    // Position이 배열이면 Free(자유 배치), 아니면 해당 포지션 사용
-    const position = Array.isArray(apostle.position) ? 'free' : apostle.position;
+    // Position 배열 값이 2개 이상이면 Free(자유 배치), 아니면 해당 포지션 사용
+    const position = apostle.position.length >= 2 ? 'free' : apostle.position[0];
     const positionIcon =
       POSITION_CONFIG[position as keyof typeof POSITION_CONFIG]?.icon || 'Common_PositionFront';
 
