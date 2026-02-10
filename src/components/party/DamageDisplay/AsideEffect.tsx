@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { Apostle } from '@/types/apostle';
 import type { Aside } from '@/types/aside';
-import { calculateAsideEffects, type AsideEffect } from '@/utils/damageProcessor';
+import { calculateAsideEffects, type AsideEffect } from '@/utils/party/damageProcessor';
 
 type PositionKey = 'all' | 'front' | 'mid' | 'back' | 'persona';
 

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
-import { analyzeDeckPersonality, getRecommendedApostles } from '../../utils/deckGuideEngine';
+import { analyzeDeckPersonality, getRecommendedApostles } from '../../utils/party/deckGuideEngine';
 import RecommendedApostleCard from './Guide/RecommendedApostleCard';
 import DeckTipsPanel from './Guide/DeckTipsPanel';
 import AlternativeApostlesPanel from './Guide/AlternativeApostlesPanel';
@@ -21,8 +21,8 @@ const DeckRecommendationGuide = ({
   const analysis = useMemo(() => analyzeDeckPersonality(apostles), [apostles]);
 
   const guide = useMemo(
-    () => getRecommendedApostles(analysis.deckType, gameMode),
-    [analysis.deckType, gameMode],
+    () => getRecommendedApostles(analysis.deckType, gameMode, allApostles),
+    [analysis.deckType, gameMode, allApostles],
   );
 
   if (apostles.filter((a) => a).length === 0) {
