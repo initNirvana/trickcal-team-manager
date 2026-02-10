@@ -12,7 +12,9 @@
     "prepare": "husky",
     "lint-staged": "lint-staged",
     "lint": "eslint . --cache",
-    "lint:fix": "eslint . --fix --cache"
+    "lint:fix": "eslint . --fix --cache",
+    "data:export": "node scripts/sync-apostles.mjs export",
+    "data:import": "node scripts/sync-apostles.mjs import"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
