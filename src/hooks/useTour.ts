@@ -31,7 +31,7 @@ export const useTour = () => {
         text: '보유 사도 분석기 사용법을 알려드릴까요?',
         buttons: [
           {
-            text: '괜찮아요',
+            text: '아니요',
             classes: 'text-gray-500 text-sm mr-4',
 
             action: () => {
@@ -40,7 +40,7 @@ export const useTour = () => {
             },
           },
           {
-            text: '좋아요',
+            text: '다음',
             classes:
               'bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-bold',
             action: () => {
@@ -53,10 +53,10 @@ export const useTour = () => {
         id: 'preset-guide',
         title: '많이 사용되는 조합',
         text: '각 성격별로 추천되는 조합이에요',
-        attachTo: { element: '#preset-combination-section', on: 'bottom' },
+        attachTo: { element: '#preset-personality', on: 'bottom' },
         buttons: [
           {
-            text: '괜찮아요',
+            text: '그만볼게요',
             classes: 'text-gray-500 text-sm mr-4',
 
             action: () => {
@@ -78,10 +78,10 @@ export const useTour = () => {
         id: 'preset-personality-guide',
         title: '성격 아이콘 필터',
         text: '각 성격 아이콘(필터)을 선택해서 성격별 9/4/2 조합을 확인 할 수 있습니다.',
-        attachTo: { element: '#preset-personality-section', on: 'bottom' },
+        attachTo: { element: '#preset-personality', on: 'bottom' },
         buttons: [
           {
-            text: '괜찮아요',
+            text: '그만볼게요',
             classes: 'text-gray-500 text-sm mr-4',
 
             action: () => {

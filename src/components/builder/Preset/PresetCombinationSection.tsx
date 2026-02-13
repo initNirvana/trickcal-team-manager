@@ -23,7 +23,7 @@ export const PresetCombinationSection = () => {
   const deckSize = selectedSlot === '9' ? 9 : 6;
 
   return (
-    <div className="space-y-1.5">
+    <div id="preset-personality" className="space-y-1.5">
       <div className="flex items-center justify-between px-2">
         <div />
         <h3 className="translate-x-10 text-lg font-bold text-black">성격별 추천 사도</h3>
