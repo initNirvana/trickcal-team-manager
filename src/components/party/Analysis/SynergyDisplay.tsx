@@ -41,7 +41,7 @@ const SynergyDisplay = ({ synergies }: { synergies: Synergy[] }) => {
 
       {/* 모든 시너지 표시 (비활성도 포함) */}
       {!hasActiveSynergies ? (
-        <p className="text-center text-sm text-gray-500">같은 성격의 사도 2명 이상을 배치하세요.</p>
+        <p className="text-center text-sm text-gray-500">같은 성격의 사도를 2명 이상 배치하세요.</p>
       ) : (
         <div className="flex flex-wrap justify-center gap-4">
           {synergies
