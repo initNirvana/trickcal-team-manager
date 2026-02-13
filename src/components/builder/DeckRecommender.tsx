@@ -81,7 +81,7 @@ export const DeckRecommender = () => {
           <div className="space-y-3">
             {/* 프리셋 조합 안내 */}
             <div id="preset-combination-section" className="rounded-lg bg-white p-2 shadow">
-              <PresetCombinationSection allApostles={apostles} />
+              <PresetCombinationSection />
             </div>
 
             {/* 추천 조합 (보유 사도만) */}
