@@ -2003,7 +2003,7 @@
         "importance": "선택",
         "score": 3
       },
-      "baseScore": 68
+      "baseScore": 65
     },
     {
       "id": "a091",
@@ -2734,6 +2734,28 @@
         "score": 5
       },
       "baseScore": 65
+    },
+    {
+      "id": "a117",
+      "name": "잉클",
+      "engName": "Inkle",
+      "isEldain": false,
+      "rank": 3,
+      "race": "정령",
+      "persona": "Cool",
+      "method": "Magical",
+      "position": ["back"],
+      "role": {
+        "main": "Attacker",
+        "subRole": "Utility",
+        "trait": ["Buff", "Debuff", "CC"]
+      },
+      "aside": {
+        "hasAside": true,
+        "importance": "선택",
+        "score": 5
+      },
+      "baseScore": 67
     }
   ]
 }

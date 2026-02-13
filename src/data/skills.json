@@ -3391,6 +3391,34 @@
         { "level": 12, "Increase": 0, "Reduction": 25 },
         { "level": 13, "Increase": 0, "Reduction": 25 }
       ]
+    },
+    {
+      "apostleId": "a117",
+      "name": "잉클의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "effectRange": "",
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a117",
+      "name": "잉클의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "effectRange": "",
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     }
   ]
 }

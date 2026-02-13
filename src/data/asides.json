@@ -906,6 +906,15 @@
       "description": "중열 아군이 적에게 받는 피해량이 감소한다.",
       "type": ["Mid"],
       "damage": [{ "Increase": 0, "Reduction": 18 }]
+    },
+    {
+      "apostleId": "a117",
+      "apostleName": "잉클",
+      "name": "나만의 새로운 이야기를",
+      "level": 3,
+      "description": "후열 아군이 적에게 주는 피해량이 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
+      "type": ["Back"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
     }
   ]
 }
