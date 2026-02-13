@@ -1,4 +1,4 @@
-import { Apostle, POSITION_CONFIG } from '@/types/apostle';
+import { Apostle } from '@/types/apostle';
 import {
   getApostleImagePath,
   getPositionIconPath,
@@ -15,11 +15,6 @@ interface SuggestionCardProps {
 }
 
 const SuggestionCard = ({ apostle, type, isSelected = false, onClick }: SuggestionCardProps) => {
-  // 포지션 아이콘 결정 로직
-  const positionKey = Array.isArray(apostle.position) ? 'free' : apostle.position;
-  const positionIcon =
-    POSITION_CONFIG[positionKey as keyof typeof POSITION_CONFIG]?.icon || 'Common_PositionFront';
-
   return (
     <div
       onClick={onClick}
@@ -27,7 +22,7 @@ const SuggestionCard = ({ apostle, type, isSelected = false, onClick }: Suggesti
     >
       {/* 사도 이미지 */}
       <img
-        src={getApostleImagePath(apostle.engName)}
+        src={getApostleImagePath(apostle)}
         className={
           'inline-flex h-full w-full items-center object-cover ' +
           getPersonalityBackground(apostle.persona)
@@ -46,7 +41,7 @@ const SuggestionCard = ({ apostle, type, isSelected = false, onClick }: Suggesti
       {/* 포지션 아이콘 (좌하단) */}
       <div className="absolute bottom-6 left-1 h-6 w-6 drop-shadow-md">
         <img
-          src={getPositionIconPath(positionIcon)}
+          src={getPositionIconPath(apostle)}
           className="h-full w-full object-contain"
           onError={(e) => ((e.currentTarget as HTMLImageElement).style.display = 'none')}
           alt="Position"

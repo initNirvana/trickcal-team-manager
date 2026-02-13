@@ -4,7 +4,7 @@ import type { Skill } from '@/types/skill';
 import type { SkillLevel } from '@/types/branded';
 import { trySkillLevel, toSkillLevel } from '@/types/branded';
 import { HiMinus, HiPlus } from 'react-icons/hi';
-import { calculateSkillDamageReduction } from '@/utils/damageProcessor';
+import { calculateSkillDamageReduction } from '@/utils/party/damageProcessor';
 import { SKILL_LEVELS } from '@/constants/gameConstants';
 
 type SkillLevels = Record<string, SkillLevel | undefined>;

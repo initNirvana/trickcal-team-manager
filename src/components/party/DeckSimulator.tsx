@@ -1,4 +1,5 @@
 import { Activity, useState, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import type { Apostle } from '../../types/apostle';
 import type { Skill } from '@/types/skill';
 import type { Aside } from '@/types/aside';
@@ -123,22 +124,25 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
         <DeckGrid onSelectSlot={handleSlotClick} />
       </div>
 
-      {/* Apostle 선택 모달 */}
-      {showSelector && selectedSlot !== null && (
-        <dialog open className="modal">
-          <ApostleSelector
-            apostles={apostles}
-            selectedSlot={selectedSlot}
-            currentApostle={deck[selectedSlot - 1]}
-            onSelect={handleAddApostle}
-            onRemove={handleRemoveApostle}
-            onClose={() => setShowSelector(false)}
-          />
-          <form method="dialog" className="modal-backdrop">
-            <button onClick={() => setShowSelector(false)}>close</button>
-          </form>
-        </dialog>
-      )}
+      {/* Apostle 선택 모달 - createPortal로 body에 렌더링 */}
+      {showSelector &&
+        selectedSlot !== null &&
+        createPortal(
+          <dialog open className="modal">
+            <ApostleSelector
+              apostles={apostles}
+              selectedSlot={selectedSlot}
+              currentApostle={deck[selectedSlot - 1]}
+              onSelect={handleAddApostle}
+              onRemove={handleRemoveApostle}
+              onClose={() => setShowSelector(false)}
+            />
+            <form method="dialog" className="modal-backdrop">
+              <button onClick={() => setShowSelector(false)}>close</button>
+            </form>
+          </dialog>,
+          document.body,
+        )}
     </div>
   );
 };

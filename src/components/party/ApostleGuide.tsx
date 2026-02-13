@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import type { Apostle } from '../../types/apostle';
-import { analyzeDeckPersonality, getRecommendedApostles } from '../../utils/deckGuideEngine';
+import { analyzeDeckPersonality, getRecommendedApostles } from '../../utils/party/deckGuideEngine';
 import RecommendedApostleCard from './Guide/RecommendedApostleCard';
 import DeckTipsPanel from './Guide/DeckTipsPanel';
 import AlternativeApostlesPanel from './Guide/AlternativeApostlesPanel';
@@ -21,8 +21,8 @@ const DeckRecommendationGuide = ({
   const analysis = useMemo(() => analyzeDeckPersonality(apostles), [apostles]);
 
   const guide = useMemo(
-    () => getRecommendedApostles(analysis.deckType, gameMode),
-    [analysis.deckType, gameMode],
+    () => getRecommendedApostles(analysis.deckType, gameMode, allApostles),
+    [analysis.deckType, gameMode, allApostles],
   );
 
   if (apostles.filter((a) => a).length === 0) {
@@ -111,7 +111,7 @@ const DeckRecommendationGuide = ({
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3">
                 {guide.core.map((member, idx) => {
                   // ✅ 필수 사도 여부 확인
                   const isEssential = member.essential;

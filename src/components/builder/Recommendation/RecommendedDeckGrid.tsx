@@ -1,4 +1,4 @@
-import { Apostle, POSITION_CONFIG } from '@/types/apostle';
+import { Apostle } from '@/types/apostle';
 import { getPersonalityBackground } from '@/utils/apostleUtils';
 import {
   getApostleImagePath,
@@ -47,16 +47,11 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
       );
     }
 
-    // Position이 배열이면 Free(자유 배치), 아니면 해당 포지션 사용
-    const position = Array.isArray(apostle.position) ? 'free' : apostle.position;
-    const positionIcon =
-      POSITION_CONFIG[position as keyof typeof POSITION_CONFIG]?.icon || 'Common_PositionFront';
-
     return (
       <div className="group border-base-200 bg-base-100 hover:border-primary relative aspect-square overflow-hidden rounded-lg border-2 shadow-sm transition hover:shadow-md">
         {/* 사도 이미지 */}
         <img
-          src={getApostleImagePath(apostle.engName)}
+          src={getApostleImagePath(apostle)}
           className={`inline-flex h-full w-full items-center rounded object-cover text-center text-xs ${getPersonalityBackground(apostle.persona)}`}
           alt={apostle.name}
         />
@@ -64,7 +59,7 @@ const RecommendedDeckGrid = ({ deck, deckSize }: RecommendedDeckGridProps) => {
         {/* 위치 아이콘 */}
         <div className="absolute bottom-5 left-0.5 h-6 w-6 rounded-full">
           <img
-            src={getPositionIconPath(positionIcon)}
+            src={getPositionIconPath(apostle)}
             className="h-full w-full object-contain"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).style.display = 'none';

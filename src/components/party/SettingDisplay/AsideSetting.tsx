@@ -107,7 +107,7 @@ const AsideSetting = ({ filledDeck, asidesData }: AsideSettingProps) => {
                 {/* 사도 이미지 */}
                 <td className="px-2 py-3">
                   <Image
-                    src={getApostleImagePath(apostle.engName)}
+                    src={getApostleImagePath(apostle)}
                     alt={apostle.name}
                     className="h-10 w-10 rounded object-cover"
                   />

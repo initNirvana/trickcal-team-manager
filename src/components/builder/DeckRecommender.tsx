@@ -6,14 +6,12 @@ import PresetCombinationSection from './Preset/PresetCombinationSection';
 import RecommendedDeckSection from './Recommendation/RecommendedDeckSection';
 import GrowthGuide from './Recommendation/GrowthGuide';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
+import { useDataLoader } from '@/hooks/useDataLoader';
 import { useTour } from '@/hooks/useTour';
 
-interface DeckRecommenderProps {
-  apostles: Apostle[];
-}
-
-export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
+export const DeckRecommender = () => {
   useTour();
+  const { apostles } = useDataLoader();
   const { ownedApostles, toggleApostle, addApostles, removeApostles } = useMyApostleStore();
 
   const myApostles = useMemo(() => {
@@ -83,7 +81,7 @@ export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
           <div className="space-y-3">
             {/* 프리셋 조합 안내 */}
             <div id="preset-combination-section" className="rounded-lg bg-white p-2 shadow">
-              <PresetCombinationSection allApostles={apostles} />
+              <PresetCombinationSection />
             </div>
 
             {/* 추천 조합 (보유 사도만) */}

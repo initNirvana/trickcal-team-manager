@@ -12,7 +12,9 @@
     "prepare": "husky",
     "lint-staged": "lint-staged",
     "lint": "eslint . --cache",
-    "lint:fix": "eslint . --fix --cache"
+    "lint:fix": "eslint . --fix --cache",
+    "data:export": "node scripts/sync-apostles.mjs export",
+    "data:import": "node scripts/sync-apostles.mjs import"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -25,9 +27,9 @@
   },
   "dependencies": {
     "@ssgoi/react": "^4.2.1",
-    "@supabase/supabase-js": "^2.93.2",
+    "@supabase/supabase-js": "^2.95.3",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/lz-string": "^1.3.34",
+    "@types/lz-string": "^1.5.0",
     "es-hangul": "^2.3.8",
     "html-to-image": "^1.11.13",
     "lodash": "^4.17.23",
@@ -39,7 +41,7 @@
     "react-router-dom": "^7.13.0",
     "shepherd.js": "^14.5.1",
     "zod": "^4.3.6",
-    "zustand": "^5.0.10"
+    "zustand": "^5.0.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
@@ -47,15 +49,15 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/lodash": "^4.17.23",
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react-swc": "^4.2.2",
-    "daisyui": "^5.5.14",
+    "@vitejs/plugin-react-swc": "^4.2.3",
+    "daisyui": "^5.5.18",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "globals": "^17.2.0",
+    "globals": "^17.3.0",
     "husky": "^9.1.7",
     "jsdom": "^27.4.0",
     "lint-staged": "^16.2.7",
@@ -64,10 +66,10 @@
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0",
+    "typescript-eslint": "^8.55.0",
     "vite": "^7.3.1",
     "vite-plugin-pwa": "^1.2.0",
-    "vite-tsconfig-paths": "^6.0.5",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.0.18"
   }
 }

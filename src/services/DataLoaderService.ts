@@ -9,7 +9,6 @@ import type { AsidesData } from '@/types/aside';
 import type { SkillsData } from '@/types/skill';
 import type { SpellsData } from '@/types/spell';
 import { ApostlesDataSchema } from '@/schemas/apostles.schema';
-import { ApostlesRatingsSchema } from '@/schemas/apostles-ratings.schema';
 
 type CacheData = Apostle[] | SkillsData | AsidesData | SpellsData;
 
@@ -34,12 +33,9 @@ export class DataLoaderService {
     }
 
     try {
-      const [apostlesModule, ratingsModule] = await Promise.all([
-        import('@/data/apostles.json'),
-        import('@/data/apostles-ratings.json'),
-      ]);
+      const apostlesModule = await import('@/data/apostles.json');
 
-      const apostlesResult = ApostlesDataSchema.safeParse(apostlesModule);
+      const apostlesResult = ApostlesDataSchema.safeParse(apostlesModule.default ?? apostlesModule);
       if (!apostlesResult.success) {
         return {
           data: null,
@@ -51,44 +47,7 @@ export class DataLoaderService {
         };
       }
 
-      const ratingsResult = ApostlesRatingsSchema.safeParse(ratingsModule);
-      if (!ratingsResult.success) {
-        return {
-          data: null,
-          error: {
-            code: 'VALIDATION_ERROR',
-            message: `Ratings schema validation failed: ${ratingsResult.error.message}`,
-            originalError: ratingsResult.error,
-          },
-        };
-      }
-
-      const apostlesData = apostlesResult.data;
-      const ratingsData = ratingsResult.data;
-
-      const apostlesRaw = apostlesData.apostles;
-      const ratings = ratingsData.ratings;
-
-      const merged: Apostle[] = apostlesRaw.map((a) => {
-        const rating = ratings[a.id];
-        if (!rating) {
-          throw new Error(`Rating missing for apostle ID: ${a.id}`);
-        }
-        return {
-          ...a,
-          baseScore: rating.baseScore,
-          scoreBySize: rating.scoreBySize,
-          positionScore: rating.positionScore,
-          pvp: rating.pvp,
-          reason: rating.reason,
-          aside: {
-            hasAside: a.aside.hasAside,
-            importance: rating.aside.importance,
-            score: rating.aside.score,
-            reason: rating.aside.reason,
-          },
-        } as Apostle;
-      });
+      const merged = apostlesResult.data.apostles as Apostle[];
 
       this.cache.set('apostles', merged);
       return { data: merged, error: null };

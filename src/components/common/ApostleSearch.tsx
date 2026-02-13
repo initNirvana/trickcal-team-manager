@@ -80,7 +80,7 @@ const ApostleSelectorSearch = ({
                 >
                   {/* 사도 이미지 */}
                   <Image
-                    src={getApostleImagePath(apostle.engName)}
+                    src={getApostleImagePath(apostle)}
                     alt={apostle.name}
                     className={`h-10 w-10 rounded ${getPersonalityBackground(apostle.persona)}`}
                   />

@@ -190,10 +190,7 @@ const GrowthGuide = ({ topDecks }: GrowthGuideProps) => {
                         className={`avatar ${getPersonalityBackground(step.apostle.persona)} rounded-xl p-0.5 shadow-sm`}
                       >
                         <div className="w-12 rounded-lg">
-                          <img
-                            src={getApostleImagePath(step.apostle.engName)}
-                            alt={step.apostle.name}
-                          />
+                          <img src={getApostleImagePath(step.apostle)} alt={step.apostle.name} />
                         </div>
                       </div>
                       <div

@@ -9,7 +9,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, '../src/data');
 const TARGET_FILES = [
   'apostles.json',
-  'apostles-ratings.json',
   'skills.json',
   'asides.json',
   'spells.json',

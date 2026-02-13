@@ -1,3 +1,4 @@
+import { Apostle, POSITION_CONFIG } from '@/types/apostle';
 import type { Personality } from '@/types/apostle';
 
 const assetPathMap = import.meta.glob<string>(
@@ -31,11 +32,11 @@ function getAssetPath(originalPath: string): string {
   return path;
 }
 
-export function getApostleImagePath(engName: string): string {
-  if (!engName) return placeholderImagePath;
+export function getApostleImagePath(apostle: Apostle): string {
+  if (!apostle.engName) return placeholderImagePath;
 
-  const pngKey = `/src/assets/apostles/${engName}.png`;
-  const webpKey = `/src/assets/apostles/${engName}.webp`;
+  const pngKey = `/src/assets/apostles/${apostle.engName}.png`;
+  const webpKey = `/src/assets/apostles/${apostle.engName}.webp`;
 
   if (assetPathMap[pngKey]) {
     return getAssetPath(pngKey);
@@ -47,11 +48,11 @@ export function getApostleImagePath(engName: string): string {
   return placeholderImagePath;
 }
 
-export function getAsideIconPath(engName: string): string {
-  if (!engName) return placeholderImagePath;
+export function getAsideIconPath(apostle: Apostle): string {
+  if (!apostle.engName) return placeholderImagePath;
 
-  const pngKey = `/src/assets/asideicons/AsideIcon_${engName}.png`;
-  const webpKey = `/src/assets/asideicons/AsideIcon_${engName}.webp`;
+  const pngKey = `/src/assets/asideicons/AsideIcon_${apostle.engName}.png`;
+  const webpKey = `/src/assets/asideicons/AsideIcon_${apostle.engName}.webp`;
 
   if (assetPathMap[pngKey]) {
     return getAssetPath(pngKey);
@@ -83,8 +84,11 @@ export function getRankIconPath(rank: number): string {
   return getAssetPath(originalPath);
 }
 
-export function getPositionIconPath(iconName: string): string {
-  const originalPath = `/src/assets/icon/${iconName}.png`;
+export function getPositionIconPath(apostle: Apostle): string {
+  const position = apostle.position.length >= 2 ? 'free' : apostle.position[0];
+  const positionIcon =
+    POSITION_CONFIG[position as keyof typeof POSITION_CONFIG]?.icon || 'Common_PositionFront';
+  const originalPath = `/src/assets/icon/${positionIcon}.png`;
   return getAssetPath(originalPath);
 }
 
