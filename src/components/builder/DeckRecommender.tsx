@@ -6,14 +6,12 @@ import PresetCombinationSection from './Preset/PresetCombinationSection';
 import RecommendedDeckSection from './Recommendation/RecommendedDeckSection';
 import GrowthGuide from './Recommendation/GrowthGuide';
 import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
+import { useDataLoader } from '@/hooks/useDataLoader';
 import { useTour } from '@/hooks/useTour';
 
-interface DeckRecommenderProps {
-  apostles: Apostle[];
-}
-
-export const DeckRecommender = ({ apostles }: DeckRecommenderProps) => {
+export const DeckRecommender = () => {
   useTour();
+  const { apostles } = useDataLoader();
   const { ownedApostles, toggleApostle, addApostles, removeApostles } = useMyApostleStore();
 
   const myApostles = useMemo(() => {

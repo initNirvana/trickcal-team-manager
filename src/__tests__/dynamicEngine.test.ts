@@ -141,6 +141,39 @@ describe('Dynamic Engines Verification', () => {
       expect(hasUros9).toBe(true);
     });
 
+    it('pvp 옵션 적용 시 PvP 점수가 반영되어 정렬되어야 함', () => {
+      const pvpMock = [
+        {
+          id: 'p1',
+          name: 'PvP사도1',
+          persona: 'Naive',
+          role: { main: 'Attacker' },
+          baseScore: 50,
+          pvp: { score: 100 },
+          position: 'mid',
+          aside: { hasAside: false, score: 0 },
+        },
+        {
+          id: 'p2',
+          name: 'PvP사도2',
+          persona: 'Naive',
+          role: { main: 'Attacker' },
+          baseScore: 80,
+          pvp: { score: 10 },
+          position: 'mid',
+          aside: { hasAside: false, score: 0 },
+        },
+      ] as unknown as Apostle[];
+
+      // PvP 옵션 없을 때: 점수 높은 PvP사도2가 앞에 옴
+      const presetNormal = getDynamicPreset('Naive', pvpMock, '2');
+      expect(presetNormal.deck[0].name).toBe('PvP사도2');
+
+      // PvP 옵션 있을 때: 보너스 점수 포함 시 PvP사도1(50+100)이 PvP사도2(80+10)보다 높음
+      const presetPvp = getDynamicPreset('Naive', pvpMock, '2', { pvp: true });
+      expect(presetPvp.deck[0].name).toBe('PvP사도1');
+    });
+
     it('9인 조합 시 각 포지션별 3명씩(후3/중3/전3) 강제 배정되는지 확인', () => {
       // 후열 4명, 중열 4명, 전열 2명 등 불균형하게 고득점자가 분포된 상황 모의
       const skewedMock = [
