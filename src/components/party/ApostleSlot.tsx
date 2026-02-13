@@ -20,7 +20,7 @@ const ApostleSlot = ({ apostle, onSelect }: ApostleSlotProps) => {
       >
         <div className="flex flex-1 flex-col items-center justify-center">
           <Image
-            src={getApostleImagePath(apostle.engName)}
+            src={getApostleImagePath(apostle)}
             alt={apostle.name}
             className="h-auto max-h-20 w-auto rounded-md object-cover"
           />

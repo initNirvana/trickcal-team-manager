@@ -1,17 +1,22 @@
 import { useMemo } from 'react';
 import type { Apostle, Personality, Position } from '@/types/apostle';
-import { getApostleImagePath, getAsideIconPath } from '@/utils/apostleImages';
+import {
+  getApostleImagePath,
+  getAsideIconPath,
+  getPositionIconPath,
+  getClassIconPath,
+} from '@/utils/apostleImages';
 import { getPersonalityBackground } from '@/utils/apostleUtils';
 
 interface PresetDeckGridProps {
   deck: Apostle[];
   deckSize: 6 | 9;
-  personality: string;
+  personality?: string;
 }
 
 interface SlotProps {
   apostle: Apostle | null;
-  personality: Personality;
+  personality?: Personality;
 }
 
 const getLayoutByPosition = (deck: Apostle[]) => {
@@ -29,7 +34,6 @@ const getLayoutByPosition = (deck: Apostle[]) => {
       (Array.isArray(apostle.position) ? apostle.position : [apostle.position]);
 
     for (const pos of preferredPositions) {
-      // 제한 없이 배치 (렌더링 시에만 줄 맞춤 처리)
       layout[pos as Position].push(apostle);
       break;
     }
@@ -58,32 +62,61 @@ const getAsideStyle = (importance: string | null) => {
 const Slot = ({ apostle, personality }: SlotProps) => {
   const asideStyle = apostle ? getAsideStyle(apostle.aside.importance) : null;
 
+  const bgClass = apostle
+    ? getPersonalityBackground(apostle.persona)
+    : personality
+      ? getPersonalityBackground(personality)
+      : '';
+
   return (
     <div
       className={`rounded-box aspect-square border-2 transition-all ${
         !apostle
           ? 'border-base-300 bg-base-100 border-dashed'
-          : `group relative overflow-hidden shadow-sm hover:shadow-md ${getPersonalityBackground(personality)}`
+          : `group relative overflow-hidden shadow-sm hover:shadow-md ${bgClass}`
       }`}
     >
       {apostle && (
         <>
           {asideStyle?.visible && (
             <img
-              src={getAsideIconPath(apostle.engName)}
+              src={getAsideIconPath(apostle)}
               alt={apostle.name}
               className={asideStyle.className}
               loading="lazy"
               title={apostle.aside.importance?.toString()}
             />
           )}
+
+          {/* 클래스 아이콘 */}
+          <div className="absolute bottom-11 left-0.5 h-6 w-6 rounded-full">
+            <img
+              src={getClassIconPath(apostle.role.main)}
+              className="h-full w-full object-contain"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).style.display = 'none';
+              }}
+            />
+          </div>
+
+          {/* 위치 아이콘 */}
+          <div className="absolute bottom-5 left-0.5 h-6 w-6 rounded-full">
+            <img
+              src={getPositionIconPath(apostle)}
+              className="h-full w-full object-contain"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).style.display = 'none';
+              }}
+            />
+          </div>
+
           <img
-            src={getApostleImagePath(apostle.engName)}
+            src={getApostleImagePath(apostle)}
             alt={apostle.name}
             className="h-full w-full object-cover"
             loading="lazy"
           />
-          <div className="absolute right-0 bottom-0 left-0 bg-black/60 px-2 py-1 text-center">
+          <div className="absolute right-0 bottom-0 left-0 bg-black/60 px-1 text-center">
             <p className="text-[12px] font-bold text-white sm:text-sm">{apostle.name}</p>
           </div>
         </>
@@ -101,7 +134,7 @@ const Column = ({
   title: string;
   items: (Apostle | null)[];
   colorClass: string;
-  personality: Personality;
+  personality?: Personality;
 }) => (
   <div className="flex flex-col gap-0.5">
     <div className={`${colorClass} rounded-t-lg py-0.5 text-center text-xs font-bold sm:text-sm`}>
@@ -121,7 +154,10 @@ const PresetDeckGrid = ({ deck, deckSize, personality }: PresetDeckGridProps) =>
   const { frontLine, midLine, backLine } = useMemo(() => {
     const layout = getLayoutByPosition(deck);
 
-    const fill = (line: Apostle[]) => [...line, ...Array(maxPerLine - line.length).fill(null)];
+    const fill = (line: Apostle[]) => [
+      ...line,
+      ...Array(Math.max(0, maxPerLine - line.length)).fill(null),
+    ];
 
     return {
       frontLine: fill(layout.front),

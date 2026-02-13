@@ -19,13 +19,6 @@ interface RecommendedApostleCardProps {
   allApostles: Apostle[];
 }
 
-// ===== 위치 설정 (아이콘 이미지) =====
-const positionConfig = {
-  front: { icon: 'Common_PositionFront', label: '전열' },
-  mid: { icon: 'Common_PositionMiddle', label: '중열' },
-  back: { icon: 'Common_PositionBack', label: '후열' },
-};
-
 const RecommendedApostleCard = ({
   name,
   role,
@@ -52,14 +45,14 @@ const RecommendedApostleCard = ({
       {/* 사도 이미지 */}
       <figure className="relative h-24 overflow-hidden bg-black/20">
         <Image
-          src={getApostleImagePath(apostle.engName)}
+          src={getApostleImagePath(apostle)}
           alt={apostle.name}
           className="h-full w-full object-cover"
         />
         {/* 위치 표시 */}
         <div className="absolute bottom-1 left-1 h-5 w-5 rounded-full">
           <Image
-            src={getPositionIconPath(positionConfig[position as keyof typeof positionConfig].icon)}
+            src={getPositionIconPath(apostle)}
             className="h-full w-full object-contain"
             alt={position}
           />

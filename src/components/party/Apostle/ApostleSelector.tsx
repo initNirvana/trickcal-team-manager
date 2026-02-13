@@ -164,7 +164,7 @@ const ApostleSelector = ({
               >
                 {/* 사도 이미지 */}
                 <img
-                  src={getApostleImagePath(apostle.engName)}
+                  src={getApostleImagePath(apostle)}
                   className={`h-full w-full rounded-2xl object-cover`}
                   alt={apostle.name}
                 />
