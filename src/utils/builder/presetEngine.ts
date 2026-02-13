@@ -33,9 +33,10 @@ export function getDynamicPreset(
       return true;
     })
     .sort((a, b) => {
-      const recommendOptions = options?.pvp
-        ? { deckSize: 6 as const, mode6: 'JWOPAEMTEO' as const }
-        : undefined;
+      const recommendOptions =
+        options?.pvp && slot !== '9'
+          ? { deckSize: 6 as const, mode6: 'JWOPAEMTEO' as const }
+          : undefined;
 
       // 어사이드 점수 포함을 위해 asideLevel: 2 전달
       return (
