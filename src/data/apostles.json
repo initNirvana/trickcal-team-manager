@@ -108,7 +108,11 @@
         "importance": "필수",
         "score": 10
       },
-      "baseScore": 60
+      "baseScore": 60,
+      "scoreBySize": {
+        "size6": 60,
+        "size9": 70
+      }
     },
     {
       "id": "a006",
@@ -693,7 +697,12 @@
         "importance": "필수",
         "score": 5
       },
-      "baseScore": 65
+      "pvp": {
+        "score": 7,
+        "aside": "권장",
+        "reason": "우울 줘팸터의 핵심"
+      },
+      "baseScore": 60
     },
     {
       "id": "a033",
@@ -847,7 +856,7 @@
         "score": 3,
         "reason": "기절/변이 면역 추가, 초당 HP 회복효과가 추가. 광기 유저가 아니라면 투자 우선순위는 낮아요"
       },
-      "baseScore": 68
+      "baseScore": 67
     },
     {
       "id": "a040",
@@ -1255,7 +1264,7 @@
         "importance": "보류",
         "score": 3
       },
-      "baseScore": 60
+      "baseScore": 63
     },
     {
       "id": "a059",
@@ -1439,7 +1448,7 @@
         "importance": "권장",
         "score": 5
       },
-      "baseScore": 60
+      "baseScore": 63
     },
     {
       "id": "a067",
@@ -1638,7 +1647,12 @@
         "score": 5,
         "reason": "저학년 11렙을 위해 A1 추천. 여유 있다면 A2-A3 까지 추천함"
       },
-      "baseScore": 71
+      "baseScore": 71,
+      "pvp": {
+        "score": -5,
+        "aside": "권장",
+        "reason": "줘팸에서 좋진 않아요"
+      }
     },
     {
       "id": "a076",
@@ -1663,7 +1677,7 @@
       },
       "baseScore": 60,
       "pvp": {
-        "score": 15,
+        "score": 10,
         "aside": "권장",
         "reason": "어그로 & 가장 뒤에 있는 적을 공격하는 암살자 포지션"
       },
@@ -2129,6 +2143,11 @@
         "score": 3,
         "reason": "저학년 사용시, 배틀 아이템으로 아군에게 다양한 버프 제공"
       },
+      "pvp": {
+        "score": -5,
+        "aside": "보류",
+        "reason": "빠른 템포의 줘팸터에서 좋지 않아요"
+      },
       "baseScore": 73
     },
     {
@@ -2152,7 +2171,7 @@
         "importance": "선택",
         "score": 3
       },
-      "baseScore": 63
+      "baseScore": 62
     },
     {
       "id": "a098",
@@ -2222,7 +2241,12 @@
         "score": 5,
         "reason": "활발 줘팸터의 핵심 딜러"
       },
-      "baseScore": 60
+      "baseScore": 60,
+      "pvp": {
+        "score": 15,
+        "aside": "권장",
+        "reason": "활발 줘팸터의 핵심 딜러"
+      }
     },
     {
       "id": "a101",
@@ -2340,7 +2364,7 @@
       },
       "baseScore": 60,
       "pvp": {
-        "score": 10,
+        "score": 15,
         "aside": "권장",
         "reason": "줘팸터에서 상대 고학년의 쿨타임을 증가시키고, 배치한 위치의 앞의 전열 사도의 고학년 쿨타임을 감소시키는 효과"
       }
@@ -2687,7 +2711,7 @@
         "importance": "보류",
         "score": 3
       },
-      "baseScore": 63
+      "baseScore": 62
     },
     {
       "id": "a116",

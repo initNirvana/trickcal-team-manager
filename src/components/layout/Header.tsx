@@ -50,6 +50,11 @@ function Header() {
               </Link>
             </li>
             <li>
+              <Link to="/tutorial" onClick={handleClick}>
+                간단 조합기
+              </Link>
+            </li>
+            <li>
               <Link to="/settings" onClick={handleClick}>
                 설정
               </Link>

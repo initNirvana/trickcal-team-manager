@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Ssgoi, SsgoiTransition } from '@ssgoi/react';
-import { fade, drill } from '@ssgoi/react/view-transitions';
+import { fade, slide } from '@ssgoi/react/view-transitions';
 import { getNetworkIconPath } from './utils/apostleImages';
 import { useDataLoader } from './hooks/useDataLoader';
 import { useCloudSync } from './hooks/useCloudSync';
@@ -9,13 +9,14 @@ import DeckSimulator from './components/party/DeckSimulator';
 import DeckRecommender from './components/builder/DeckRecommender';
 import Settings from './pages/Settings';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import SimpleBuilder from './components/SimpleBuilder/SimpleBuilder';
 import { Toaster } from 'react-hot-toast';
 
 const ssgoiConfig = {
   experimentalPreserveScroll: true,
   defaultTransition: fade(),
   transitions: [
-    { from: '/', to: '/builder', transition: drill({ direction: 'enter' }), symmetric: true },
+    { from: '/*', to: '/*', transition: slide({ direction: 'left' }), symmetric: true },
   ],
 };
 
@@ -83,7 +84,21 @@ function App() {
               <Layout>
                 <div style={{ position: 'relative', minHeight: '150vh' }}>
                   <SsgoiTransition id="/builder">
-                    <DeckRecommender apostles={apostles} />
+                    <DeckRecommender />
+                  </SsgoiTransition>
+                </div>
+              </Layout>
+            }
+          />
+
+          {/* 간단 조합기 */}
+          <Route
+            path="/tutorial"
+            element={
+              <Layout>
+                <div style={{ position: 'relative', minHeight: '150vh' }}>
+                  <SsgoiTransition id="/tutorial">
+                    <SimpleBuilder />
                   </SsgoiTransition>
                 </div>
               </Layout>
