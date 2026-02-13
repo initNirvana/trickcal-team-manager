@@ -1,4 +1,4 @@
-import { Apostle, Personality } from '@/types/apostle';
+import { Apostle, Personality, Position } from '@/types/apostle';
 import { getEffectiveBaseScore } from './deckRecommendationUtils';
 
 export interface DynamicPreset {
@@ -14,6 +14,7 @@ export function getDynamicPreset(
   persona: Personality,
   allApostles: Apostle[],
   slot: '9' | '4' | '2',
+  options?: { pvp?: boolean },
 ): DynamicPreset {
   const count = parseInt(slot);
   const deckSize = slot === '9' ? 9 : 6;
@@ -32,10 +33,14 @@ export function getDynamicPreset(
       return true;
     })
     .sort((a, b) => {
+      const recommendOptions = options?.pvp
+        ? { deckSize: 6 as const, mode6: 'JWOPAEMTEO' as const }
+        : undefined;
+
       // 어사이드 점수 포함을 위해 asideLevel: 2 전달
       return (
-        getEffectiveBaseScore(b, deckSize, undefined, undefined, 2) -
-        getEffectiveBaseScore(a, deckSize, undefined, undefined, 2)
+        getEffectiveBaseScore(b, deckSize, undefined, recommendOptions, 2) -
+        getEffectiveBaseScore(a, deckSize, undefined, recommendOptions, 2)
       );
     });
 
@@ -56,20 +61,39 @@ export function getDynamicPreset(
       deck.push(...posCandidates);
     });
   } else {
-    // 4인/2인 조합: 기존 로직 유지 (탱커/서포터 우선 + 점수순)
+    // 4인/2인 조합: 기존 로직 유지 (탱커/서포터 우선 + 점수순) + 위치별 2인 제한 추가
+    const counts = { front: 0, mid: 0, back: 0 };
+    const MAX_PER_LINE = 2; // 최대 2명으로 제한
+
+    // 헬퍼 함수: 카운트 체크 후 덱에 추가
+    const tryAdd = (apostle: Apostle) => {
+      // 이미 덱에 있으면 스킵
+      if (deck.find((d) => d.id === apostle.id)) return;
+
+      const pos = (
+        Array.isArray(apostle.position) ? apostle.position[0] : apostle.position
+      ) as Position;
+
+      // 해당 위치가 꽉 찼으면 스킵
+      if (counts[pos] >= MAX_PER_LINE) return;
+
+      deck.push(apostle);
+      counts[pos]++;
+    };
+
     const tankers = candidates.filter((a) => a.role.main === 'Tanker');
     const supporters = candidates.filter((a) => a.role.main === 'Supporter');
 
     if (count >= 4) {
-      if (tankers.length > 0) deck.push(tankers[0]);
-      if (supporters.length > 0) deck.push(supporters[0]);
+      if (tankers.length > 0) tryAdd(tankers[0]);
+      if (supporters.length > 0) tryAdd(supporters[0]);
     }
 
-    const remaining = candidates
-      .filter((a) => !deck.find((d) => d.id === a.id))
-      .slice(0, count - deck.length);
-
-    deck.push(...remaining);
+    // 나머지 점수 높은 순으로 채우기 (위치 제한 고려)
+    for (const candidate of candidates) {
+      if (deck.length >= count) break;
+      tryAdd(candidate);
+    }
   }
 
   // 3. 우로스 성격 적용 (공명 사도 대응) 및 정렬
