@@ -111,7 +111,7 @@ const DeckRecommendationGuide = ({
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3">
                 {guide.core.map((member, idx) => {
                   // ✅ 필수 사도 여부 확인
                   const isEssential = member.essential;

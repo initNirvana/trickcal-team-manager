@@ -83,7 +83,7 @@ const RecommendedApostleCard = ({
         <span className="truncate text-xs font-bold">{name}</span>
 
         {/* 설명 */}
-        <span className="line-clamp-2 text-xs opacity-75">{reason}</span>
+        <span className="line-clamp-3 text-xs opacity-75">{reason}</span>
 
         {/* 어사이드 표시 */}
         <Activity mode={asideRequired ? 'visible' : 'hidden'}>

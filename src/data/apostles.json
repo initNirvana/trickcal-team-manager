@@ -901,7 +901,7 @@
         "hasAside": true,
         "importance": "선택",
         "score": 3,
-        "reason": "유일한 7활발 시너지가 가능. 명함 용병으로 많이 사용해요. 어사이드 투자 우선순위는 낮아요"
+        "reason": "유일한 7활발 시너지 가능. 명함(용병)으로 많이 사용해요. 어사이드 우선순위는 낮아요"
       },
       "baseScore": 72
     },
@@ -2732,6 +2732,11 @@
         "hasAside": true,
         "importance": "선택",
         "score": 5
+      },
+      "pvp": {
+        "score": 7,
+        "aside": "선택",
+        "reason": "각종 CC와 데미지 계수가 좋아요"
       },
       "baseScore": 65
     },
