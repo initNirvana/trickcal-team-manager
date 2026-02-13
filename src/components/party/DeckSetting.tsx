@@ -1,7 +1,6 @@
 import { useDeckStore } from '@/stores/deckStore';
 import type { Apostle } from '@/types/apostle';
 import type { Aside } from '@/types/aside';
-import RecommendedApostlesDisplay from './SettingDisplay/TiersApostlesDisplay';
 import AsideSetting from './SettingDisplay/AsideSetting';
 
 interface DeckSettingProps {
@@ -35,17 +34,6 @@ const DeckSetting = ({ filledDeck, asidesData }: DeckSettingProps) => {
               </label>
             </fieldset>
           </label>
-        </div>
-      </div>
-
-      {/* 추천 사도 섹션 */}
-      <div className="collapse-arrow border-base-300 bg-base-100 collapse border">
-        <input type="checkbox" name="my-accordion-4" />
-        <div className="collapse-title font-semibold">
-          <div>추천 사도 티어표</div>
-        </div>
-        <div className="collapse-content text-sm">
-          <RecommendedApostlesDisplay />
         </div>
       </div>
 
