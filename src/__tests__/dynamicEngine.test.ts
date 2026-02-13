@@ -138,7 +138,6 @@ describe('Dynamic Engines Verification', () => {
       const preset9 = getDynamicPreset('Naive', mockWithUros, '9');
       const hasUros9 = preset9.deck.some((a) => a.name === '우로스');
       expect(hasUros9).toBe(true);
-      expect(hasUros9).toBe(true);
     });
 
     it('pvp 옵션 적용 시 PvP 점수가 반영되어 정렬되어야 함', () => {

@@ -49,6 +49,7 @@ const mockApostles: Apostle[] = [
     role: { main: 'Attacker' },
     baseScore: 10,
     position: 'mid',
+    aside: { hasAside: false, score: 0 },
   },
   {
     id: 'm2',
@@ -57,6 +58,7 @@ const mockApostles: Apostle[] = [
     role: { main: 'Attacker' },
     baseScore: 10,
     position: 'mid',
+    aside: { hasAside: false, score: 0 },
   },
   {
     id: 'm3',
@@ -65,6 +67,7 @@ const mockApostles: Apostle[] = [
     role: { main: 'Attacker' },
     baseScore: 10,
     position: 'mid',
+    aside: { hasAside: false, score: 0 },
   },
   {
     id: 'b1',
@@ -73,6 +76,7 @@ const mockApostles: Apostle[] = [
     role: { main: 'Supporter' },
     baseScore: 10,
     position: 'back',
+    aside: { hasAside: false, score: 0 },
   },
   {
     id: 'b2',
@@ -81,6 +85,7 @@ const mockApostles: Apostle[] = [
     role: { main: 'Supporter' },
     baseScore: 10,
     position: 'back',
+    aside: { hasAside: false, score: 0 },
   },
   {
     id: 'b3',
@@ -89,6 +94,7 @@ const mockApostles: Apostle[] = [
     role: { main: 'Supporter' },
     baseScore: 10,
     position: 'back',
+    aside: { hasAside: false, score: 0 },
   },
 ] as unknown as Apostle[];
 
