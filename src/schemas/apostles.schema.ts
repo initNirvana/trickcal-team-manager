@@ -64,7 +64,7 @@ export const ApostleSchema = z.object({
     .optional(),
   pvp: z
     .object({
-      score: z.number().int().min(0).max(15),
+      score: z.number().int().min(-15).max(15),
       aside: z.enum(['선택', '권장', '필수', '보류']).nullable(),
       reason: z.string().min(1).optional(),
     })
