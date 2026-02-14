@@ -1,4 +1,4 @@
-import { Activity, useState, useEffect, useMemo } from 'react';
+import { Activity, useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { createPortal } from 'react-dom';
 import type { Apostle } from '../../types/apostle';
 import type { Skill } from '@/types/skill';
@@ -7,10 +7,11 @@ import type { SlotNumber } from '@/types/branded';
 import { useDeckStore } from '../../stores/deckStore';
 import DeckGrid from './DeckGrid';
 import DeckAnalysisPanel from './Analysis/AnalysisPanel';
-import ApostleSelector from './Apostle/ApostleSelector';
 import { analyzeDeck } from '../../utils/deckAnalysisUtils';
 import DeckSetting from './DeckSetting';
 import DeckRecommendationGuide from './ApostleGuide';
+
+const ApostleSelector = lazy(() => import('./Apostle/ApostleSelector'));
 
 interface DeckSimulatorProps {
   apostles: Apostle[];
@@ -125,24 +126,32 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
       </div>
 
       {/* Apostle 선택 모달 - createPortal로 body에 렌더링 */}
-      {showSelector &&
-        selectedSlot !== null &&
-        createPortal(
-          <dialog open className="modal">
-            <ApostleSelector
-              apostles={apostles}
-              selectedSlot={selectedSlot}
-              currentApostle={deck[selectedSlot - 1]}
-              onSelect={handleAddApostle}
-              onRemove={handleRemoveApostle}
-              onClose={() => setShowSelector(false)}
-            />
-            <form method="dialog" className="modal-backdrop">
-              <button onClick={() => setShowSelector(false)}>close</button>
-            </form>
-          </dialog>,
-          document.body,
-        )}
+      {showSelector && selectedSlot !== null
+        ? createPortal(
+            <dialog open className="modal">
+              <Suspense
+                fallback={
+                  <div className="modal-box flex items-center justify-center py-20">
+                    <span className="loading loading-spinner loading-lg"></span>
+                  </div>
+                }
+              >
+                <ApostleSelector
+                  apostles={apostles}
+                  selectedSlot={selectedSlot}
+                  currentApostle={deck[selectedSlot - 1]}
+                  onSelect={handleAddApostle}
+                  onRemove={handleRemoveApostle}
+                  onClose={() => setShowSelector(false)}
+                />
+              </Suspense>
+              <form method="dialog" className="modal-backdrop">
+                <button onClick={() => setShowSelector(false)}>close</button>
+              </form>
+            </dialog>,
+            document.body,
+          )
+        : null}
     </div>
   );
 };

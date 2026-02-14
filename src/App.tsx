@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Ssgoi, SsgoiTransition } from '@ssgoi/react';
 import { fade, slide } from '@ssgoi/react/view-transitions';
@@ -5,12 +6,13 @@ import { getNetworkIconPath } from './utils/apostleImages';
 import { useDataLoader } from './hooks/useDataLoader';
 import { useCloudSync } from './hooks/useCloudSync';
 import Layout from './components/layout/Layout';
-import DeckSimulator from './components/party/DeckSimulator';
-import DeckRecommender from './components/builder/DeckRecommender';
-import Settings from './pages/Settings';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import SimpleBuilder from './components/SimpleBuilder/SimpleBuilder';
 import { Toaster } from 'react-hot-toast';
+
+const DeckSimulator = lazy(() => import('./components/party/DeckSimulator'));
+const DeckRecommender = lazy(() => import('./components/builder/DeckRecommender'));
+const Settings = lazy(() => import('./pages/Settings'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const SimpleBuilder = lazy(() => import('./components/SimpleBuilder/SimpleBuilder'));
 
 const ssgoiConfig = {
   experimentalPreserveScroll: true,
@@ -20,6 +22,17 @@ const ssgoiConfig = {
   ],
 };
 
+function LoadingScreen({ message = '데이터 로딩 중...' }: { message?: string }) {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-white text-black">
+      <div className="text-center">
+        <img src={getNetworkIconPath()} alt="로딩 중" className="mb-4 h-16 w-16" />
+        <p>{message}</p>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   // TODO: spells 추가
   const { apostles, skills, asides, isLoading, error } = useDataLoader();
@@ -28,14 +41,7 @@ function App() {
   useCloudSync();
 
   if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-white text-black">
-        <div className="text-center">
-          <img src={getNetworkIconPath()} alt="로딩 중" className="mb-4 h-16 w-16" />
-          <p>데이터 로딩 중...</p>
-        </div>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   if (error) {
@@ -60,91 +66,93 @@ function App() {
     <BrowserRouter>
       <Toaster position="top-center" />
       <Ssgoi config={ssgoiConfig}>
-        <Routes>
-          {/* 덱 시뮬레이터 */}
-          <Route
-            path="/"
-            element={
-              <Layout>
-                <SsgoiTransition id="/">
-                  <DeckSimulator
-                    apostles={apostles}
-                    skillsData={skills.skills}
-                    asidesData={asides.asides}
-                  />
-                </SsgoiTransition>
-              </Layout>
-            }
-          />
-
-          {/* 보유 사도 분석기 */}
-          <Route
-            path="/builder"
-            element={
-              <Layout>
-                <div style={{ position: 'relative', minHeight: '150vh' }}>
-                  <SsgoiTransition id="/builder">
-                    <DeckRecommender />
+        <Suspense fallback={<LoadingScreen message="페이지 로딩 중..." />}>
+          <Routes>
+            {/* 덱 시뮬레이터 */}
+            <Route
+              path="/"
+              element={
+                <Layout>
+                  <SsgoiTransition id="/">
+                    <DeckSimulator
+                      apostles={apostles}
+                      skillsData={skills.skills}
+                      asidesData={asides.asides}
+                    />
                   </SsgoiTransition>
-                </div>
-              </Layout>
-            }
-          />
+                </Layout>
+              }
+            />
 
-          {/* 간단 조합기 */}
-          <Route
-            path="/tutorial"
-            element={
-              <Layout>
-                <div style={{ position: 'relative', minHeight: '150vh' }}>
-                  <SsgoiTransition id="/tutorial">
-                    <SimpleBuilder />
-                  </SsgoiTransition>
-                </div>
-              </Layout>
-            }
-          />
-
-          {/* 404 페이지 (선택사항) */}
-          <Route
-            path="*"
-            element={
-              <Layout>
-                <div className="flex min-h-screen items-center justify-center">
-                  <div className="text-center">
-                    <h1 className="mb-4 text-4xl font-bold">404</h1>
-                    <p className="text-gray-400">페이지를 찾을 수 없습니다</p>
-                    <Link to="/" className="mt-4 inline-block text-blue-500 hover:text-blue-400">
-                      홈으로 돌아가기
-                    </Link>
+            {/* 보유 사도 분석기 */}
+            <Route
+              path="/builder"
+              element={
+                <Layout>
+                  <div style={{ position: 'relative', minHeight: '150vh' }}>
+                    <SsgoiTransition id="/builder">
+                      <DeckRecommender />
+                    </SsgoiTransition>
                   </div>
-                </div>
-              </Layout>
-            }
-          />
-          {/* 설정 페이지 */}
-          <Route
-            path="/settings"
-            element={
-              <Layout>
-                <SsgoiTransition id="/settings">
-                  <Settings />
-                </SsgoiTransition>
-              </Layout>
-            }
-          />
-          {/* 개인정보 처리방침 */}
-          <Route
-            path="/privacy"
-            element={
-              <Layout>
-                <SsgoiTransition id="/privacy">
-                  <PrivacyPolicy />
-                </SsgoiTransition>
-              </Layout>
-            }
-          />
-        </Routes>
+                </Layout>
+              }
+            />
+
+            {/* 간단 조합기 */}
+            <Route
+              path="/tutorial"
+              element={
+                <Layout>
+                  <div style={{ position: 'relative', minHeight: '150vh' }}>
+                    <SsgoiTransition id="/tutorial">
+                      <SimpleBuilder />
+                    </SsgoiTransition>
+                  </div>
+                </Layout>
+              }
+            />
+
+            {/* 404 페이지 (선택사항) */}
+            <Route
+              path="*"
+              element={
+                <Layout>
+                  <div className="flex min-h-screen items-center justify-center">
+                    <div className="text-center">
+                      <h1 className="mb-4 text-4xl font-bold">404</h1>
+                      <p className="text-gray-400">페이지를 찾을 수 없습니다</p>
+                      <Link to="/" className="mt-4 inline-block text-blue-500 hover:text-blue-400">
+                        홈으로 돌아가기
+                      </Link>
+                    </div>
+                  </div>
+                </Layout>
+              }
+            />
+            {/* 설정 페이지 */}
+            <Route
+              path="/settings"
+              element={
+                <Layout>
+                  <SsgoiTransition id="/settings">
+                    <Settings />
+                  </SsgoiTransition>
+                </Layout>
+              }
+            />
+            {/* 개인정보 처리방침 */}
+            <Route
+              path="/privacy"
+              element={
+                <Layout>
+                  <SsgoiTransition id="/privacy">
+                    <PrivacyPolicy />
+                  </SsgoiTransition>
+                </Layout>
+              }
+            />
+          </Routes>
+        </Suspense>
       </Ssgoi>
     </BrowserRouter>
   );

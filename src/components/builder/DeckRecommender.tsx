@@ -15,12 +15,14 @@ export const DeckRecommender = () => {
   const { ownedApostles, toggleApostle, addApostles, removeApostles } = useMyApostleStore();
 
   const myApostles = useMemo(() => {
-    return apostles.filter((a) => ownedApostles.some((oa) => oa.id === a.id));
+    const ownedIds = new Set(ownedApostles.map((oa) => oa.id));
+    return apostles.filter((a) => ownedIds.has(a.id));
   }, [apostles, ownedApostles]);
 
   const handleAddApostle = useCallback(
     (apostle: Apostle) => {
-      if (ownedApostles.some((oa) => oa.id === apostle.id)) return;
+      const isOwned = ownedApostles.some((oa) => oa.id === apostle.id);
+      if (isOwned) return;
       toggleApostle(apostle.id);
     },
     [ownedApostles, toggleApostle],
@@ -28,9 +30,8 @@ export const DeckRecommender = () => {
 
   const handleAddMultipleApostles = useCallback(
     (newApostles: Apostle[]) => {
-      const toAddIds = newApostles
-        .filter((a) => !ownedApostles.some((oa) => oa.id === a.id))
-        .map((a) => a.id);
+      const ownedIds = new Set(ownedApostles.map((oa) => oa.id));
+      const toAddIds = newApostles.filter((a) => !ownedIds.has(a.id)).map((a) => a.id);
 
       if (toAddIds.length > 0) {
         addApostles(toAddIds);
@@ -55,13 +56,10 @@ export const DeckRecommender = () => {
   );
 
   const recommendations = useMemo(() => {
-    const asideLevels = ownedApostles.reduce(
-      (acc, oa) => {
-        acc[oa.id] = oa.asideLevel;
-        return acc;
-      },
-      {} as Record<string, number>,
-    );
+    const asideLevels: Record<string, number> = {};
+    for (const oa of ownedApostles) {
+      asideLevels[oa.id] = oa.asideLevel;
+    }
 
     return generateRecommendations(myApostles, { asideLevels });
   }, [myApostles, ownedApostles]);

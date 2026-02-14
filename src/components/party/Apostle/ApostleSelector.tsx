@@ -23,6 +23,12 @@ interface ApostleSelectorProps {
   onClose: () => void;
 }
 
+// 가능한 성격 목록
+const PERSONALITIES: Personality[] = ['Mad', 'Gloomy', 'Naive', 'Jolly', 'Cool'];
+
+// 가능한 랭크 목록
+const RANKS = [3, 2, 1];
+
 const ApostleSelector = ({
   apostles,
   selectedSlot,
@@ -67,12 +73,6 @@ const ApostleSelector = ({
     return '전열';
   };
 
-  // 가능한 성격 목록
-  const personalities: Personality[] = ['Mad', 'Gloomy', 'Naive', 'Jolly', 'Cool'];
-
-  // 가능한 랭크 목록
-  const ranks = [3, 2, 1];
-
   return (
     <div className="modal-box max-h-[50vh] max-w-xl space-y-1.5 overflow-y-auto rounded-lg">
       {/* 헤더 */}
@@ -104,11 +104,11 @@ const ApostleSelector = ({
       {/* 성격 필터 | 등급 필터 */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1">
-          {personalities.map((personality) => (
+          {PERSONALITIES.map((personality) => (
             <button
               key={personality}
               onClick={() =>
-                setSelectedPersonality(selectedPersonality === personality ? null : personality)
+                setSelectedPersonality((prev) => (prev === personality ? null : personality))
               }
               className={`relative h-9 w-9 transform rounded-lg transition hover:scale-105 ${
                 selectedPersonality === personality
@@ -127,10 +127,10 @@ const ApostleSelector = ({
             </button>
           ))}
           {/* 등급 필터 */}
-          {ranks.map((rank) => (
+          {RANKS.map((rank) => (
             <button
               key={rank}
-              onClick={() => setSelectedRank(selectedRank === rank ? null : rank)}
+              onClick={() => setSelectedRank((prev) => (prev === rank ? null : rank))}
               className={`relative h-9 w-9 transform rounded-lg transition ${
                 selectedRank === rank ? 'scale-110' : 'opacity-60 hover:scale-105 hover:opacity-100'
               }`}
