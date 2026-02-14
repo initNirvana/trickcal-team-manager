@@ -2711,6 +2711,11 @@
         "importance": "보류",
         "score": 3
       },
+      "pvp": {
+        "score": 7,
+        "aside": "선택",
+        "reason": "각종 CC와 데미지 계수가 좋아요"
+      },
       "baseScore": 62
     },
     {
@@ -2732,11 +2737,6 @@
         "hasAside": true,
         "importance": "선택",
         "score": 5
-      },
-      "pvp": {
-        "score": 7,
-        "aside": "선택",
-        "reason": "각종 CC와 데미지 계수가 좋아요"
       },
       "baseScore": 65
     },
