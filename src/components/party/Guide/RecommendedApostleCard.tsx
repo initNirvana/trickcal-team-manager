@@ -14,7 +14,6 @@ interface RecommendedApostleCardProps {
   role: string;
   reason: string;
   position: string;
-  asideRequired?: number | string | null;
   isEssential?: boolean; // ✅ 필수 사도 여부
   allApostles: Apostle[];
 }
@@ -24,7 +23,6 @@ const RecommendedApostleCard = ({
   role,
   reason,
   position,
-  asideRequired,
   isEssential = false,
   allApostles,
 }: RecommendedApostleCardProps) => {
@@ -84,11 +82,6 @@ const RecommendedApostleCard = ({
 
         {/* 설명 */}
         <span className="line-clamp-3 text-xs opacity-75">{reason}</span>
-
-        {/* 어사이드 표시 */}
-        <Activity mode={asideRequired ? 'visible' : 'hidden'}>
-          <span className="badge badge-xs badge-accent"> {asideRequired} </span>
-        </Activity>
       </div>
     </div>
   );

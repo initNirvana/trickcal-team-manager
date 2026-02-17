@@ -28,16 +28,84 @@ interface CoreApostle {
   aside_required: string;
 }
 
+export interface Alternative {
+  replace: string;
+  with: string[];
+  condition: string;
+  tradeoff: string;
+}
+
 interface DeckGuide {
   overview: string;
   difficulty: string;
   pros: string[];
   cons: string[];
   core: CoreApostle[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  alternatives: any[];
+  alternatives: Alternative[];
   tips: string[];
 }
+
+/**
+ * 역할별 기본 트레이드오프 메시지 생성
+ */
+const getRoleTip = (role: string): string => {
+  const tips: Record<string, string> = {
+    Tanker: '유지력 감소 가능',
+    Supporter: '버프/힐 효율 변화',
+    Attacker: '딜 성능 차이',
+  };
+  return tips[role] || '';
+};
+
+/**
+ * Core 사도에 대한 대체 사도 자동 생성
+ * @param coreApostles 핵심 사도 리스트
+ * @param targetPersona 대상 성격
+ * @param allApostles 전체 사도 리스트
+ * @param mode PVE 또는 PVP 모드
+ * @returns 대체 사도 추천 리스트
+ */
+export const generateAlternatives = (
+  coreApostles: Apostle[],
+  targetPersona: Personality,
+  allApostles: Apostle[],
+  mode: 'pve' | 'pvp',
+): Alternative[] => {
+  const alternatives: Alternative[] = [];
+  const recommendOptions =
+    mode === 'pvp'
+      ? { deckSize: 6 as const, mode6: 'JWOPAEMTEO' as const }
+      : { deckSize: 6 as const };
+
+  for (const core of coreApostles) {
+    // 1. 같은 역할의 후보 찾기 (Core에 포함되지 않은 사도만)
+    const coreIds = new Set(coreApostles.map((a) => a.id));
+    const candidates = allApostles
+      .filter(
+        (a) =>
+          a.role.main === core.role.main &&
+          !coreIds.has(a.id) &&
+          (a.persona === targetPersona || a.mercenary),
+      )
+      .sort((a, b) => {
+        const scoreB = getEffectiveBaseScore(b, 6, undefined, recommendOptions, 2);
+        const scoreA = getEffectiveBaseScore(a, 6, undefined, recommendOptions, 2);
+        return scoreB - scoreA;
+      })
+      .slice(0, 3); // 상위 3명만
+
+    if (candidates.length > 0) {
+      alternatives.push({
+        replace: core.name,
+        with: candidates.map((c) => c.name),
+        condition: `${core.name} 미보유 시`,
+        tradeoff: getRoleTip(core.role.main),
+      });
+    }
+  }
+
+  return alternatives;
+};
 
 export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult => {
   const filledSlots = apostles.filter((a) => a).length;
@@ -181,13 +249,20 @@ export const getRecommendedApostles = (
     };
   });
 
+  // Alternatives 생성: JSON에 있으면 사용, 없으면 자동 생성
+  const jsonAlternatives = guideTemplate[mode]?.alternatives;
+  const alternatives =
+    jsonAlternatives && jsonAlternatives.length > 0
+      ? jsonAlternatives
+      : generateAlternatives(coreApostles, targetPersona, allApostles, mode);
+
   return {
     overview: guideTemplate.overview,
     difficulty: guideTemplate.difficulty,
     pros: guideTemplate.pros,
     cons: guideTemplate.cons,
     core: dynamicCore,
-    alternatives: guideTemplate[mode]?.alternatives || [],
+    alternatives,
     tips: guideTemplate[mode]?.tips || [],
   };
 };
