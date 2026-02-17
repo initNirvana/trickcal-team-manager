@@ -122,8 +122,7 @@ const DeckRecommendationGuide = ({
                       role={member.role}
                       reason={member.reason}
                       position={member.position}
-                      asideRequired={member.aside_required}
-                      isEssential={isEssential} // ✅ 필수 여부 전달
+                      isEssential={isEssential}
                       allApostles={allApostles}
                     />
                   );
