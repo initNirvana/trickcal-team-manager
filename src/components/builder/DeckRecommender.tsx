@@ -1,13 +1,13 @@
-import { useMemo, useCallback } from 'react';
-import type { Apostle } from '@/types/apostle';
-import { useMyApostleStore } from '@/stores/myApostleStore';
-import MyApostleList from './Apostle/MyApostleList';
-import PresetCombinationSection from './Preset/PresetCombinationSection';
-import RecommendedDeckSection from './Recommendation/RecommendedDeckSection';
-import GrowthGuide from './Recommendation/GrowthGuide';
-import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
+import { useCallback, useMemo } from 'react';
 import { useDataLoader } from '@/hooks/useDataLoader';
 import { useTour } from '@/hooks/useTour';
+import { useMyApostleStore } from '@/stores/myApostleStore';
+import type { Apostle } from '@/types/apostle';
+import { generateRecommendations } from '@/utils/builder/deckRecommendationUtils';
+import MyApostleList from './Apostle/MyApostleList';
+import PresetCombinationSection from './Preset/PresetCombinationSection';
+import GrowthGuide from './Recommendation/GrowthGuide';
+import RecommendedDeckSection from './Recommendation/RecommendedDeckSection';
 
 export const DeckRecommender = () => {
   useTour();

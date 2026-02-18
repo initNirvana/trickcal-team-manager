@@ -1,11 +1,11 @@
-import type { Apostle } from '../../../types/apostle';
-import type { Skill } from '@/types/skill';
 import type { Aside } from '@/types/aside';
-import type { DeckAnalysis } from '../../../utils/deckAnalysisUtils';
-import { useDeckStore } from '../../../stores/deckStore';
 import type { SkillLevel } from '@/types/branded';
-import SkillEffectDisplay from '../DamageDisplay/SkillEffect';
+import type { Skill } from '@/types/skill';
+import { useDeckStore } from '../../../stores/deckStore';
+import type { Apostle } from '../../../types/apostle';
+import type { DeckAnalysis } from '../../../utils/deckAnalysisUtils';
 import AsideEffectDisplay from '../DamageDisplay/AsideEffect';
+import SkillEffectDisplay from '../DamageDisplay/SkillEffect';
 import SynergyDisplay from './SynergyDisplay';
 
 interface AnalysisPanelProps {

@@ -1,9 +1,9 @@
-import { useState, useMemo, useCallback } from 'react';
-import { Personality, Apostle, Position } from '@/types/apostle';
-import { getEffectiveBaseScore } from '@/utils/builder/deckRecommendationUtils';
-import { analyzeSynergies } from '@/utils/deckAnalysisUtils';
+import { useCallback, useMemo, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDataLoader } from '@/hooks/useDataLoader';
+import { Apostle, Personality, Position } from '@/types/apostle';
+import { getEffectiveBaseScore } from '@/utils/builder/deckRecommendationUtils';
+import { analyzeSynergies } from '@/utils/deckAnalysisUtils';
 import { PERSONALITIES } from '../components/SimpleBuilder/constants';
 
 export const useSimpleBuilder = () => {

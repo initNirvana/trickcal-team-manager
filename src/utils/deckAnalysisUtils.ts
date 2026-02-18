@@ -1,5 +1,5 @@
-import type { Apostle, Personality } from '../types/apostle';
 import { SYNERGY_TIER_CONFIG } from '@/constants/gameConstants';
+import type { Apostle, Personality } from '../types/apostle';
 
 type PersonalityCountMap = {
   Jolly: number;

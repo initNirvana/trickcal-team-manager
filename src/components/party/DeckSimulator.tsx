@@ -1,15 +1,15 @@
-import { Activity, useState, useEffect, useMemo, lazy, Suspense } from 'react';
+import { Activity, lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
-import type { Apostle } from '../../types/apostle';
-import type { Skill } from '@/types/skill';
 import type { Aside } from '@/types/aside';
 import type { SlotNumber } from '@/types/branded';
+import type { Skill } from '@/types/skill';
 import { useDeckStore } from '../../stores/deckStore';
-import DeckGrid from './DeckGrid';
-import DeckAnalysisPanel from './Analysis/AnalysisPanel';
+import type { Apostle } from '../../types/apostle';
 import { analyzeDeck } from '../../utils/deckAnalysisUtils';
-import DeckSetting from './DeckSetting';
+import DeckAnalysisPanel from './Analysis/AnalysisPanel';
 import DeckRecommendationGuide from './ApostleGuide';
+import DeckGrid from './DeckGrid';
+import DeckSetting from './DeckSetting';
 
 const ApostleSelector = lazy(() => import('./Apostle/ApostleSelector'));
 

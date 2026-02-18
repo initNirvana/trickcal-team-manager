@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Apostle } from '@/types/apostle';
-import { getApostleImagePath, getPositionIconPath, getClassIconPath } from '@/utils/apostleImages';
+import { getApostleImagePath, getClassIconPath, getPositionIconPath } from '@/utils/apostleImages';
 import { getPersonalityBackground } from '@/utils/apostleUtils';
 
 interface ApostleCellProps {

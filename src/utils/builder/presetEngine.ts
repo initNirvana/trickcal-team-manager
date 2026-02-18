@@ -16,7 +16,7 @@ export function getDynamicPreset(
   slot: '9' | '4' | '2',
   options?: { pvp?: boolean },
 ): DynamicPreset {
-  const count = parseInt(slot);
+  const count = parseInt(slot, 10);
   const deckSize = slot === '9' ? 9 : 6;
 
   // 1. 해당 성격 사도 필터링 및 점수 정렬

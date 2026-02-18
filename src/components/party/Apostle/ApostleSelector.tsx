@@ -1,18 +1,18 @@
-import { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { Apostle, Personality } from '@/types/apostle';
 import type { SlotNumber } from '@/types/branded';
 import {
-  getPersonalityKoreanName,
-  isValidPosition,
-  getPersonalityBackground,
-} from '@/utils/apostleUtils';
-import {
-  getPersonalityIconPath,
   getApostleImagePath,
+  getPersonalityIconPath,
   getRankIconPath,
 } from '@/utils/apostleImages';
-import Image from '../../common/Image';
+import {
+  getPersonalityBackground,
+  getPersonalityKoreanName,
+  isValidPosition,
+} from '@/utils/apostleUtils';
 import ApostleSelectorSearch from '../../common/ApostleSearch';
+import Image from '../../common/Image';
 
 interface ApostleSelectorProps {
   apostles: Apostle[];

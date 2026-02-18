@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useAuthStore } from '@/stores/authStore';
-import { useCloudSync, type BackupData } from '@/hooks/useCloudSync';
-import { decompressData, restoreData, type OptimizedData } from '@/utils/compression';
-import { FcGoogle } from 'react-icons/fc';
-import { FaCloudUploadAlt, FaHistory, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import { BiLoaderAlt } from 'react-icons/bi';
+import { FaCheckCircle, FaCloudUploadAlt, FaExclamationCircle, FaHistory } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
+import { type BackupData, useCloudSync } from '@/hooks/useCloudSync';
+import { useAuthStore } from '@/stores/authStore';
+import { decompressData, type OptimizedData, restoreData } from '@/utils/compression';
 
 function Settings() {
   const { user, loading, checkUser, signInWithGoogle, signOut } = useAuthStore();

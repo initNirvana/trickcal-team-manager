@@ -1,12 +1,12 @@
 import { memo } from 'react';
-import { PersonalitySelectionStep } from './PersonalitySelectionStep';
-import { ApostleSelectionStep } from './ApostleSelectionStep';
-import SynergyDisplay from '@/components/party/Analysis/SynergyDisplay';
 import { PresetCombinationSection } from '@/components/builder/Preset/PresetCombinationSection';
-import { ApostleCell } from './ApostleCell';
-import { useSimpleBuilder } from '../../hooks/useSimpleBuilder';
-import { STEPS, POSITION_MAP } from './constants';
+import SynergyDisplay from '@/components/party/Analysis/SynergyDisplay';
 import { Apostle } from '@/types/apostle';
+import { useSimpleBuilder } from '../../hooks/useSimpleBuilder';
+import { ApostleCell } from './ApostleCell';
+import { ApostleSelectionStep } from './ApostleSelectionStep';
+import { POSITION_MAP, STEPS } from './constants';
+import { PersonalitySelectionStep } from './PersonalitySelectionStep';
 
 const GridColumn = memo(
   ({

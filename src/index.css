@@ -1,15 +1,15 @@
 /* ./src/index.css */
-@import 'tailwindcss';
-@plugin 'daisyui' {
+@import "tailwindcss";
+@plugin "daisyui" {
   themes: light --default;
 }
 
 /* ONE Mobile POP 폰트 */
 @font-face {
-  font-family: 'ONE Mobile POP';
+  font-family: "ONE Mobile POP";
   src:
-    url('./assets/font/ONEMobilePOPOTFRegular.woff2') format('woff2'),
-    url('./assets/font/ONEMobilePOPRegular.woff2') format('woff2');
+    url("./assets/font/ONEMobilePOPOTFRegular.woff2") format("woff2"),
+    url("./assets/font/ONEMobilePOPRegular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -18,12 +18,12 @@
 body {
   margin: 0;
   font-family:
-    'ONE Mobile POP', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+    "ONE Mobile POP", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: 'ONE Mobile POP', 'Courier New', monospace;
+  font-family: "ONE Mobile POP", "Courier New", monospace;
 }

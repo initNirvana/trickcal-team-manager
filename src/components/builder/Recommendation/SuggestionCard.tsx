@@ -1,8 +1,8 @@
 import { Apostle } from '@/types/apostle';
 import {
   getApostleImagePath,
-  getPositionIconPath,
   getPersonalityIconPath,
+  getPositionIconPath,
 } from '@/utils/apostleImages';
 import { getPersonalityBackground } from '@/utils/apostleUtils';
 

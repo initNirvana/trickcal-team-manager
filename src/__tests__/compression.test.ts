@@ -1,10 +1,10 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import {
   compressData,
   decompressData,
+  type OptimizedData,
   optimizeData,
   restoreData,
-  type OptimizedData,
 } from '../utils/compression';
 
 describe('Compression & Optimization Utility', () => {

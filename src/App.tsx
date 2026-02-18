@@ -1,12 +1,12 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Ssgoi, SsgoiTransition } from '@ssgoi/react';
 import { fade, slide } from '@ssgoi/react/view-transitions';
-import { getNetworkIconPath } from './utils/apostleImages';
-import { useDataLoader } from './hooks/useDataLoader';
-import { useCloudSync } from './hooks/useCloudSync';
-import Layout from './components/layout/Layout';
+import { lazy, Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import { useCloudSync } from './hooks/useCloudSync';
+import { useDataLoader } from './hooks/useDataLoader';
+import { getNetworkIconPath } from './utils/apostleImages';
 
 const DeckSimulator = lazy(() => import('./components/party/DeckSimulator'));
 const DeckRecommender = lazy(() => import('./components/builder/DeckRecommender'));

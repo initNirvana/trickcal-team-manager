@@ -1,8 +1,8 @@
-import { useState, useMemo, useCallback } from 'react';
-import type { Apostle } from '@/types/apostle';
+import { useCallback, useMemo, useState } from 'react';
 import { useUniqueApostles } from '@/hooks/useUniqueApostles';
-import ApostleSelectorSearch from '../../common/ApostleSearch';
 import { useMyApostleStore } from '@/stores/myApostleStore';
+import type { Apostle } from '@/types/apostle';
+import ApostleSelectorSearch from '../../common/ApostleSearch';
 import ApostleItem from './ApostleItem';
 
 interface MyApostleListProps {

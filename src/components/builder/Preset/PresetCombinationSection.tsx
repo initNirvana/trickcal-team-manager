@@ -1,9 +1,9 @@
 import { Fragment, useState } from 'react';
+import { useDataLoader } from '@/hooks/useDataLoader';
 import { Personality } from '@/types/apostle';
 import { getPersonalityIconPath } from '@/utils/apostleImages';
-import PresetDeckGrid from './PresetDeckGrid';
 import { getDynamicPreset } from '@/utils/builder/presetEngine';
-import { useDataLoader } from '@/hooks/useDataLoader';
+import PresetDeckGrid from './PresetDeckGrid';
 
 type PresetSlot = '9' | '4' | '2';
 

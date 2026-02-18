@@ -1,5 +1,5 @@
-import { getPersonalityKoreanName } from '@/utils/apostleUtils';
 import { Personality } from '@/types/apostle';
+import { getPersonalityKoreanName } from '@/utils/apostleUtils';
 
 interface PersonalityDropdownProps {
   personalities: Personality[];
@@ -29,7 +29,7 @@ export const PersonalityDropdown = ({
   return (
     <details className="dropdown dropdown-end">
       <summary className="btn m-1">{getButtonText()}</summary>
-      <ul className="menu dropdown-content rounded-box bg-base-100 z-[1] w-52 p-2 shadow">
+      <ul className="menu dropdown-content rounded-box bg-base-100 z-1 w-52 p-2 shadow">
         {/* 전체 선택 옵션 */}
         <li>
           <label className="flex cursor-pointer items-center gap-3">

@@ -1,5 +1,5 @@
-import { Apostle, POSITION_CONFIG } from '@/types/apostle';
 import type { Personality } from '@/types/apostle';
+import { Apostle, POSITION_CONFIG } from '@/types/apostle';
 
 const assetPathMap = import.meta.glob<string>(
   [

@@ -1,16 +1,16 @@
-import { useEffect, useCallback, useState, useRef } from 'react';
-import { useAuthStore } from '@/stores/authStore';
-import { supabase } from '@/lib/supabase';
-import { useMyApostleStore } from '@/stores/myApostleStore';
-import type { OwnedApostle } from '@/stores/myApostleStore';
-import toast from 'react-hot-toast';
 import isEqual from 'lodash/isEqual';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
+import { supabase } from '@/lib/supabase';
+import { useAuthStore } from '@/stores/authStore';
+import type { OwnedApostle } from '@/stores/myApostleStore';
+import { useMyApostleStore } from '@/stores/myApostleStore';
 import {
   compressData,
   decompressData,
+  type OptimizedData,
   optimizeData,
   restoreData,
-  type OptimizedData,
 } from '@/utils/compression';
 
 /** 자동 저장 대기 시간 (3초) */
