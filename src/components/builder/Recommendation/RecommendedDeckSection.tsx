@@ -1,16 +1,16 @@
-import { useRef, useCallback, useState } from 'react';
-import toast from 'react-hot-toast';
-import { RecommendedDeck } from '@/utils/builder/deckRecommendationUtils';
-import { getPersonalityKoreanName, getPersonalityBackground } from '@/utils/apostleUtils';
 import * as htmlToImage from 'html-to-image';
+import { useCallback, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
+import { FaRegCopy } from 'react-icons/fa6';
 import {
-  getSynergyOnIconPath,
   getSynergyOffIconPath,
+  getSynergyOnIconPath,
   placeholderImagePath,
 } from '@/utils/apostleImages';
+import { getPersonalityBackground, getPersonalityKoreanName } from '@/utils/apostleUtils';
+import { RecommendedDeck } from '@/utils/builder/deckRecommendationUtils';
 import RecommendedDeckGrid from './RecommendedDeckGrid';
 import SuggestionCard from './SuggestionCard';
-import { FaRegCopy } from 'react-icons/fa6';
 
 interface RecommendedDeckSectionProps {
   recommendations: RecommendedDeck[];
@@ -46,7 +46,7 @@ export const RecommendedDeckSection = ({ recommendations }: RecommendedDeckSecti
         const item = new ClipboardItem({ 'image/png': blob });
         return navigator.clipboard.write([item]);
       } catch (err) {
-        throw new Error('클립보드 저장 실패: ' + (err as Error).message);
+        throw new Error(`클립보드 저장 실패: ${(err as Error).message}`);
       }
     });
 

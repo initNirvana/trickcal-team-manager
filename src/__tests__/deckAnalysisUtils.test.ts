@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import type { Apostle } from '@/types/apostle';
-import { analyzeSynergies, SYNERGY_TIERS, analyzeDeck } from '@/utils/deckAnalysisUtils';
+import { analyzeDeck, analyzeSynergies, SYNERGY_TIERS } from '@/utils/deckAnalysisUtils';
 
 /**
  * 테스트용 사도 객체 생성 헬퍼

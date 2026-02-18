@@ -1,10 +1,10 @@
 import { Activity, useMemo, useState } from 'react';
-import { HiSparkles, HiArrowRight, HiMiniExclamationTriangle } from 'react-icons/hi2';
-import { Apostle } from '@/types/apostle';
-import { RecommendedDeck } from '@/utils/builder/deckRecommendationUtils';
+import { HiArrowRight, HiMiniExclamationTriangle, HiSparkles } from 'react-icons/hi2';
 import { useMyApostleStore } from '@/stores/myApostleStore';
+import { Apostle } from '@/types/apostle';
 import { getApostleImagePath } from '@/utils/apostleImages';
 import { getPersonalityBackground } from '@/utils/apostleUtils';
+import { RecommendedDeck } from '@/utils/builder/deckRecommendationUtils';
 
 interface GrowthGuideProps {
   topDecks: RecommendedDeck[];

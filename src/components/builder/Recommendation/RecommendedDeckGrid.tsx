@@ -1,11 +1,11 @@
 import { Apostle } from '@/types/apostle';
-import { getPersonalityBackground } from '@/utils/apostleUtils';
 import {
   getApostleImagePath,
+  getClassIconPath,
   getPersonalityIconPath,
   getPositionIconPath,
-  getClassIconPath,
 } from '@/utils/apostleImages';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
 
 interface RecommendedDeckGridProps {
   deck: Apostle[];

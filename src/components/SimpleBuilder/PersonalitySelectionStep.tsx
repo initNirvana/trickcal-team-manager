@@ -1,8 +1,8 @@
-import { useMemo, memo } from 'react';
-import { Personality, Apostle } from '@/types/apostle';
-import { getPersonalityIconPath } from '@/utils/apostleImages';
-import { useDataLoader } from '@/hooks/useDataLoader';
+import { memo, useMemo } from 'react';
 import PresetDeckGrid from '@/components/builder/Preset/PresetDeckGrid';
+import { useDataLoader } from '@/hooks/useDataLoader';
+import { Apostle, Personality } from '@/types/apostle';
+import { getPersonalityIconPath } from '@/utils/apostleImages';
 import { PERSONALITIES, PRESET_DECKS } from './constants';
 
 interface PersonalitySelectionStepProps {

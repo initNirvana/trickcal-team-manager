@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import type { Apostle } from '@/types/apostle';
-import { useApostleSearch } from '@/utils/apostleSearch';
 import { getApostleImagePath } from '@/utils/apostleImages';
+import { useApostleSearch } from '@/utils/apostleSearch';
 import {
-  getPositionsKorean,
-  getPersonalityKoreanName,
   getPersonalityBackground,
+  getPersonalityKoreanName,
+  getPositionsKorean,
 } from '@/utils/apostleUtils';
 import Image from './Image';
 
@@ -71,32 +71,30 @@ const ApostleSelectorSearch = ({
               {search.trim() ? '검색 결과가 없습니다' : '검색어를 입력해주세요'}
             </div>
           ) : (
-            <>
-              {searchList.map((apostle) => (
-                <div
-                  key={apostle.id}
-                  onClick={() => handleSelectApostle(apostle)}
-                  className="hover:bg-base-200 flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-left transition"
-                >
-                  {/* 사도 이미지 */}
-                  <Image
-                    src={getApostleImagePath(apostle)}
-                    alt={apostle.name}
-                    className={`h-10 w-10 rounded ${getPersonalityBackground(apostle.persona)}`}
-                  />
+            searchList.map((apostle) => (
+              <div
+                key={apostle.id}
+                onClick={() => handleSelectApostle(apostle)}
+                className="hover:bg-base-200 flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-left transition"
+              >
+                {/* 사도 이미지 */}
+                <Image
+                  src={getApostleImagePath(apostle)}
+                  alt={apostle.name}
+                  className={`h-10 w-10 rounded ${getPersonalityBackground(apostle.persona)}`}
+                />
 
-                  {/* 사도 정보 */}
-                  <div className="min-w-0 flex-1">
-                    <div className="text-sm font-medium">
-                      {apostle.name} ({getPersonalityKoreanName(apostle.persona)})
-                    </div>
-                    <div className="text-base-content/60 text-xs">
-                      {getPositionsKorean(apostle).join(', ')}
-                    </div>
+                {/* 사도 정보 */}
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm font-medium">
+                    {apostle.name} ({getPersonalityKoreanName(apostle.persona)})
+                  </div>
+                  <div className="text-base-content/60 text-xs">
+                    {getPositionsKorean(apostle).join(', ')}
                   </div>
                 </div>
-              ))}
-            </>
+              </div>
+            ))
           )}
         </div>
       )}

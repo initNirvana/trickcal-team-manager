@@ -1,10 +1,10 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest';
-import { useCloudSync } from '../hooks/useCloudSync';
+import { beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
 import { supabase } from '@/lib/supabase';
 import { useAuthStore } from '@/stores/authStore';
-import { useMyApostleStore } from '@/stores/myApostleStore';
 import type { OwnedApostle } from '@/stores/myApostleStore';
+import { useMyApostleStore } from '@/stores/myApostleStore';
+import { useCloudSync } from '../hooks/useCloudSync';
 
 // Mock dependencies
 vi.mock('@/lib/supabase');

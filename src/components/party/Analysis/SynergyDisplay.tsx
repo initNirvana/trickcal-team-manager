@@ -1,9 +1,9 @@
-import { getPersonalityBackground } from '@/utils/apostleUtils';
 import {
-  getSynergyOnIconPath,
   getSynergyOffIconPath,
+  getSynergyOnIconPath,
   placeholderImagePath,
 } from '@/utils/apostleImages';
+import { getPersonalityBackground } from '@/utils/apostleUtils';
 import type { Synergy } from '@/utils/deckAnalysisUtils';
 import { calculateTotalSynergyBonus } from '@/utils/deckAnalysisUtils';
 

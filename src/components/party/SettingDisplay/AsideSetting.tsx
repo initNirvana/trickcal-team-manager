@@ -1,9 +1,9 @@
 import { Activity, useMemo } from 'react';
+import { useDeckStore } from '@/stores/deckStore';
 import type { Apostle } from '@/types/apostle';
 import type { Aside } from '@/types/aside';
+import { type AsideRank, toAsideRank } from '@/types/branded';
 import { getApostleImagePath } from '@/utils/apostleImages';
-import { useDeckStore } from '@/stores/deckStore';
-import { toAsideRank, type AsideRank } from '@/types/branded';
 import Image from '../../common/Image';
 
 interface AsideSettingProps {

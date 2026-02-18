@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { DataLoaderService } from '@/services/DataLoaderService';
 import type { Apostle } from '@/types/apostle';
-import type { SkillsData } from '@/types/skill';
 import type { AsidesData } from '@/types/aside';
+import type { SkillsData } from '@/types/skill';
 import type { SpellsData } from '@/types/spell';
 
 interface DataState {

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import asidesData from '@/data/asides.json';
 import { AsidesDataSchema } from '@/schemas/asides.schema';
 import { Personality } from '@/types/apostle';
@@ -59,7 +59,7 @@ describe('asides.json schema validation', () => {
 
     const invalid = parsed.asides
       // "키가 존재하는지" 기준 (값이 undefined여도 키가 있으면 검사)
-      .filter((a) => Object.prototype.hasOwnProperty.call(a, 'persona'))
+      .filter((a) => Object.hasOwn(a, 'persona'))
       .filter((a) => {
         const v = a.persona;
 
@@ -126,8 +126,7 @@ describe('asides.json schema validation', () => {
         const hasNonZero = modifierFields.some((f) => hasAnyNonZeroNumberDeep(a[f]));
 
         // 2) persona가 “존재 + 유효”면(우이 같은 케이스) damage가 0/0이어도 OK
-        const hasValidPersona =
-          Object.prototype.hasOwnProperty.call(a, 'persona') && isValidPersonaValue(a.persona);
+        const hasValidPersona = Object.hasOwn(a, 'persona') && isValidPersonaValue(a.persona);
 
         return !(hasNonZero || hasValidPersona);
       })
@@ -157,7 +156,7 @@ describe('asides.json schema validation', () => {
     const parsed = AsidesDataSchema.parse(asidesData);
 
     const invalid = parsed.asides
-      .filter((a) => Object.prototype.hasOwnProperty.call(a, 'description'))
+      .filter((a) => Object.hasOwn(a, 'description'))
       .filter((a) => !isNonEmptyString(a.description))
       .map((a) => ({
         apostleId: a.apostleId,

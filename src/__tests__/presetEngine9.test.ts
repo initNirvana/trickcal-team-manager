@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { getDynamicPreset } from '../utils/builder/presetEngine';
+import { describe, expect, it } from 'vitest';
 import { Apostle } from '../types/apostle';
+import { getDynamicPreset } from '../utils/builder/presetEngine';
 
 const mockApostles: Apostle[] = [
   {

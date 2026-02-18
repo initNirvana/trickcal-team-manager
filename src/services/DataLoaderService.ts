@@ -4,11 +4,11 @@
  * - safeParse로 에러 안전하게 처리
  */
 
+import { ApostlesDataSchema } from '@/schemas/apostles.schema';
 import type { Apostle } from '@/types/apostle';
 import type { AsidesData } from '@/types/aside';
 import type { SkillsData } from '@/types/skill';
 import type { SpellsData } from '@/types/spell';
-import { ApostlesDataSchema } from '@/schemas/apostles.schema';
 
 type CacheData = Apostle[] | SkillsData | AsidesData | SpellsData;
 
@@ -18,6 +18,7 @@ export interface DataLoaderError {
   originalError?: unknown;
 }
 
+// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 export class DataLoaderService {
   private static cache: Map<string, CacheData> = new Map();
 
@@ -28,8 +29,8 @@ export class DataLoaderService {
     data: Apostle[] | null;
     error: DataLoaderError | null;
   }> {
-    if (this.cache.has('apostles')) {
-      return { data: this.cache.get('apostles') as Apostle[], error: null };
+    if (DataLoaderService.cache.has('apostles')) {
+      return { data: DataLoaderService.cache.get('apostles') as Apostle[], error: null };
     }
 
     try {
@@ -49,7 +50,7 @@ export class DataLoaderService {
 
       const merged = apostlesResult.data.apostles as Apostle[];
 
-      this.cache.set('apostles', merged);
+      DataLoaderService.cache.set('apostles', merged);
       return { data: merged, error: null };
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown error occurred';
@@ -68,7 +69,7 @@ export class DataLoaderService {
    * 기존 API 유지 (에러 발생 시 throw)
    */
   static async loadApostles(): Promise<Apostle[]> {
-    const { data, error } = await this.loadApostlesSafe();
+    const { data, error } = await DataLoaderService.loadApostlesSafe();
     if (error) {
       throw new Error(error.message);
     }
@@ -76,12 +77,13 @@ export class DataLoaderService {
   }
 
   static async loadSkills(): Promise<SkillsData> {
-    if (this.cache.has('skills')) return this.cache.get('skills') as SkillsData;
+    if (DataLoaderService.cache.has('skills'))
+      return DataLoaderService.cache.get('skills') as SkillsData;
 
     try {
       const skillsModule = await import('@/data/skills.json');
       const skillsData = skillsModule.default ?? skillsModule;
-      this.cache.set('skills', skillsData as SkillsData);
+      DataLoaderService.cache.set('skills', skillsData as SkillsData);
       return skillsData as SkillsData;
     } catch (error) {
       console.error('Failed to load skills:', error);
@@ -90,12 +92,13 @@ export class DataLoaderService {
   }
 
   static async loadAsides(): Promise<AsidesData> {
-    if (this.cache.has('asides')) return this.cache.get('asides') as AsidesData;
+    if (DataLoaderService.cache.has('asides'))
+      return DataLoaderService.cache.get('asides') as AsidesData;
 
     try {
       const asidesModule = await import('@/data/asides.json');
       const asidesData = asidesModule.default ?? asidesModule;
-      this.cache.set('asides', asidesData as AsidesData);
+      DataLoaderService.cache.set('asides', asidesData as AsidesData);
       return asidesData as AsidesData;
     } catch (error) {
       console.error('Failed to load asides:', error);
@@ -104,12 +107,13 @@ export class DataLoaderService {
   }
 
   static async loadSpells(): Promise<SpellsData> {
-    if (this.cache.has('spells')) return this.cache.get('spells') as SpellsData;
+    if (DataLoaderService.cache.has('spells'))
+      return DataLoaderService.cache.get('spells') as SpellsData;
 
     try {
       const spellsModule = await import('@/data/spells.json');
       const spellsData = spellsModule.default ?? spellsModule;
-      this.cache.set('spells', spellsData as SpellsData);
+      DataLoaderService.cache.set('spells', spellsData as SpellsData);
       return spellsData as SpellsData;
     } catch (error) {
       console.error('Failed to load spells:', error);
@@ -118,6 +122,6 @@ export class DataLoaderService {
   }
 
   static clearCache(): void {
-    this.cache.clear();
+    DataLoaderService.cache.clear();
   }
 }

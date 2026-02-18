@@ -1,6 +1,6 @@
 import type { Apostle, Personality, Position } from '@/types/apostle';
 import { getPositions } from '@/utils/apostleUtils';
-import { analyzeSynergies, Synergy, calculateTotalSynergyBonus } from '@/utils/deckAnalysisUtils';
+import { analyzeSynergies, calculateTotalSynergyBonus, Synergy } from '@/utils/deckAnalysisUtils';
 
 type DeckSize = 6 | 9;
 type ContentMode9 = 'CRASH' | 'FRONTIER';
@@ -580,12 +580,16 @@ function buildSixDeckWithPattern(
 
   const results: RecommendedDeck[] = [];
   const personalityGroups = new Map<Personality, Apostle[]>();
-  ALL_PERSONALITIES.forEach((p) => personalityGroups.set(p, []));
+  ALL_PERSONALITIES.forEach((p) => {
+    personalityGroups.set(p, []);
+  });
 
   myApostles.forEach((a) => {
     const allowed = getAllowedPersonas(a);
     if (allowed && allowed.length > 0) {
-      allowed.forEach((p) => personalityGroups.get(p)?.push(a));
+      allowed.forEach((p) => {
+        personalityGroups.get(p)?.push(a);
+      });
     } else {
       personalityGroups.get(a.persona)?.push(a);
     }
@@ -815,7 +819,9 @@ function buildDeck(
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const skipNames = new Set<string>();
     if (attempt > 0) {
-      sortedApostles.slice(0, attempt).forEach((a) => skipNames.add(a.engName));
+      sortedApostles.slice(0, attempt).forEach((a) => {
+        skipNames.add(a.engName);
+      });
     }
 
     // 2. 단일 덱 생성 시도 (분리된 함수 호출)

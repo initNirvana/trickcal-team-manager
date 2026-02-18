@@ -2,9 +2,9 @@ import { Activity } from 'react';
 import type { Apostle } from '../../../types/apostle';
 import {
   getApostleImagePath,
-  getPositionIconPath,
   getClassIconPath,
   getIconPath,
+  getPositionIconPath,
 } from '../../../utils/apostleImages';
 
 import Image from '../../common/Image';

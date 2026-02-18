@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import apostlesData from '@/data/apostles.json';
 import asidesData from '@/data/asides.json';
 import skillsData from '@/data/skills.json';

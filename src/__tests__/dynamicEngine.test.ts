@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { getRecommendedApostles } from '../utils/party/deckGuideEngine';
-import { getDynamicPreset } from '../utils/builder/presetEngine';
+import { describe, expect, it } from 'vitest';
 import { Apostle } from '../types/apostle';
+import { getDynamicPreset } from '../utils/builder/presetEngine';
+import { getRecommendedApostles } from '../utils/party/deckGuideEngine';
 
 const mockApostles: Apostle[] = [
   {

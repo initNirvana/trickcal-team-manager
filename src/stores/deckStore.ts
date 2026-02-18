@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import type { Apostle } from '../types/apostle';
-import type { SlotNumber, SkillLevel, AsideRank } from '@/types/branded';
+import { createJSONStorage, persist } from 'zustand/middleware';
 import { GRID_CONFIG } from '@/constants/gameConstants';
+import type { AsideRank, SkillLevel, SlotNumber } from '@/types/branded';
+import type { Apostle } from '../types/apostle';
 
 interface DeckState {
   deck: (Apostle | undefined)[];
@@ -125,7 +125,7 @@ export const useDeckStore = create<DeckState>()(
 
       // 복원 오류 시 초기화
       onRehydrateStorage: () => {
-        return (state, error) => {
+        return (_state, error) => {
           if (error) {
             console.warn('Storage data error, resetting:', error);
             localStorage.removeItem('trickcal-deck-storage');

@@ -1,5 +1,5 @@
-import type { Apostle, Personality } from '../../types/apostle';
 import deckGuides from '../../data/apostles-guides.json';
+import type { Apostle, Personality } from '../../types/apostle';
 import { getEffectiveBaseScore } from '../builder/deckRecommendationUtils';
 
 export interface PersonalityDistribution {
@@ -112,7 +112,9 @@ export const analyzeDeckPersonality = (apostles: Apostle[]): DeckAnalysisResult 
   const personalityCount = new Map<Personality, number>();
   const personalities: Personality[] = ['Jolly', 'Mad', 'Naive', 'Gloomy', 'Cool', 'Resonance'];
 
-  personalities.forEach((p) => personalityCount.set(p, 0));
+  personalities.forEach((p) => {
+    personalityCount.set(p, 0);
+  });
 
   apostles.forEach((apostle) => {
     if (!apostle) return;
@@ -163,7 +165,7 @@ export const getRecommendedApostles = (
   mode: 'pve' | 'pvp',
   allApostles: Apostle[],
 ): DeckGuide | null => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const guideTemplate = (deckGuides as any).decks?.[deckType];
   if (!guideTemplate) return null;
 

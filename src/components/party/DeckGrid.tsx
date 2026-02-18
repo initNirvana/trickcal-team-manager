@@ -1,6 +1,6 @@
-import { useDeckStore } from '../../stores/deckStore';
-import { toSlotNumber } from '@/types/branded';
 import type { SlotNumber } from '@/types/branded';
+import { toSlotNumber } from '@/types/branded';
+import { useDeckStore } from '../../stores/deckStore';
 import ApostleSlot from './ApostleSlot';
 
 interface DeckGridProps {

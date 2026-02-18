@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import skillsData from '@/data/skills.json';
 import { SkillsDataSchema } from '@/schemas/skills.schema';
 

@@ -1,5 +1,5 @@
-import patchNotesData from '../../data/patchNotes.json';
 import versionData from '@/data/version.json';
+import patchNotesData from '../../data/patchNotes.json';
 
 interface PatchSection {
   type: 'added' | 'improved' | 'fixed' | 'removed';

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Personality, Apostle } from '@/types/apostle';
+import { Apostle, Personality } from '@/types/apostle';
 import { getPersonalityIconPath } from '@/utils/apostleImages';
 import { ApostleSelectorItem } from './ApostleSelectorItem';
 import { PERSONALITIES } from './constants';

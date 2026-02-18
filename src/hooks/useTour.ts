@@ -1,6 +1,6 @@
-import { useEffect, useRef, useCallback } from 'react';
-import Shepherd from 'shepherd.js';
+import { useCallback, useEffect, useRef } from 'react';
 import type { Tour } from 'shepherd.js';
+import Shepherd from 'shepherd.js';
 import 'shepherd.js/dist/css/shepherd.css';
 
 const HAS_SEEN_KEY = 'hasSeenMainTour';
@@ -8,7 +8,7 @@ const HAS_SEEN_KEY = 'hasSeenMainTour';
 export const useTour = () => {
   const tourRef = useRef<Tour | null>(null);
 
-  const getOrCreateTour = () => {
+  const getOrCreateTour = useCallback(() => {
     if (tourRef.current) return tourRef.current;
 
     // 인스턴스 생성
@@ -157,7 +157,7 @@ export const useTour = () => {
 
     tourRef.current = tour;
     return tour;
-  };
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -175,7 +175,7 @@ export const useTour = () => {
         tour.complete();
       }
     };
-  }, []);
+  }, [getOrCreateTour]);
 
   const startTour = useCallback(() => {
     if (typeof window !== 'undefined') {
@@ -186,7 +186,7 @@ export const useTour = () => {
     if (tour.isActive()) return;
 
     tour.start();
-  }, []);
+  }, [getOrCreateTour]);
 
   return { startTour };
 };

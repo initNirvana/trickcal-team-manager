@@ -1,12 +1,12 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react-swc';
-import tailwindcss from '@tailwindcss/vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import SsgoiAutoKey from '@ssgoi/react/unplugin/vite';
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react-swc';
 import { VitePWA } from 'vite-plugin-pwa';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vitest/config';
 import { icons } from './src/AppImages/icons.json';
 
 // https://vitejs.dev/config/
@@ -59,8 +59,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      output: {
-      },
+      output: {},
     },
   },
 });

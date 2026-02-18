@@ -1,7 +1,7 @@
 import type { Apostle } from '../../types/apostle';
-import type { AsideTarget, AsideRow } from '../../types/aside';
+import type { AsideRow, AsideTarget } from '../../types/aside';
 import type { SkillLevel } from '../../types/branded';
-import { trySkillLevel, toSkillLevel } from '../../types/branded';
+import { toSkillLevel, trySkillLevel } from '../../types/branded';
 
 type OneOrArray<T> = T | T[];
 
