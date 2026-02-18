@@ -72,7 +72,7 @@ const ApostleSelectorSearch = ({
             </div>
           ) : (
             searchList.map((apostle) => (
-              <div
+              <button
                 key={apostle.id}
                 onClick={() => handleSelectApostle(apostle)}
                 className="hover:bg-base-200 flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-left transition"
@@ -93,7 +93,7 @@ const ApostleSelectorSearch = ({
                     {getPositionsKorean(apostle).join(', ')}
                   </div>
                 </div>
-              </div>
+              </button>
             ))
           )}
         </div>
