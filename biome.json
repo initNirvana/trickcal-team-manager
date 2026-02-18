@@ -7,7 +7,14 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!**/dist", "!**/dev-dist", "!**/node_modules", "!**/*.mjs", "!**/AppImages/**"]
+    "includes": [
+      "**",
+      "!**/dist",
+      "!**/dev-dist",
+      "!**/node_modules",
+      "!**/*.mjs",
+      "!**/AppImages"
+    ]
   },
   "formatter": {
     "enabled": true,
