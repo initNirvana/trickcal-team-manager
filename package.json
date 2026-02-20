@@ -11,21 +11,21 @@
     "test": "vitest",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "lint": "biome lint .",
+    "lint": "biome lint --write .",
     "format": "biome format --write .",
+    "check": "biome check --write .",
     "data:export": "node scripts/sync-apostles.mjs export",
     "data:import": "node scripts/sync-apostles.mjs import"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json,css,scss,html}": [
-      "biome check --write --unsafe"
+      "biome check --write ."
     ]
   },
   "dependencies": {
     "@ssgoi/react": "^4.2.1",
-    "@supabase/supabase-js": "^2.95.3",
-    "@tailwindcss/vite": "^4.1.18",
-    "@types/lz-string": "^1.5.0",
+    "@supabase/supabase-js": "^2.97.0",
+    "@tailwindcss/vite": "^4.2.0",
     "es-hangul": "^2.3.8",
     "html-to-image": "^1.11.13",
     "lodash": "^4.17.23",
@@ -40,8 +40,8 @@
     "zustand": "^5.0.11"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.2",
-    "@tailwindcss/postcss": "^4.1.18",
+    "@biomejs/biome": "2.4.3",
+    "@tailwindcss/postcss": "^4.2.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/lodash": "^4.17.23",
@@ -53,7 +53,7 @@
     "jsdom": "^27.4.0",
     "lint-staged": "^16.2.7",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.2.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
     "vite-plugin-pwa": "^1.2.0",
