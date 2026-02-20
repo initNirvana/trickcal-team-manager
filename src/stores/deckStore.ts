@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { GRID_CONFIG } from '@/constants/gameConstants';
-import type { AsideRank, SkillLevel, SlotNumber } from '@/types/branded';
+import type { AsideRank, CardLevel, SkillLevel, SlotNumber } from '@/types/branded';
 import type { Apostle } from '../types/apostle';
 
 interface DeckState {
@@ -23,6 +23,11 @@ interface DeckState {
   setAsideSelection: (apostleId: string, ranks: AsideRank[]) => void;
   resetAsideSelection: () => void;
 
+  // Card Level 관련
+  cardLevels: Record<string, CardLevel>;
+  setCardLevel: (cardId: string, level: CardLevel) => void;
+  resetCardLevels: () => void;
+
   // 전체 리셋
   resetAll: () => void;
 
@@ -36,6 +41,7 @@ interface PersistedState {
   deckIds: (string | null)[];
   skillLevels: Record<string, SkillLevel>;
   asideSelection: Record<string, AsideRank[]>;
+  cardLevels: Record<string, CardLevel>;
 }
 
 export const useDeckStore = create<DeckState>()(
@@ -44,6 +50,7 @@ export const useDeckStore = create<DeckState>()(
       deck: Array(GRID_CONFIG.SIZE).fill(undefined),
       skillLevels: {},
       asideSelection: {},
+      cardLevels: {},
       showDeckGuide: false,
 
       // Deck 액션
@@ -94,12 +101,24 @@ export const useDeckStore = create<DeckState>()(
 
       resetAsideSelection: () => set({ asideSelection: {} }),
 
+      // Card Level 액션
+      setCardLevel: (cardId, level) =>
+        set((state) => ({
+          cardLevels: {
+            ...state.cardLevels,
+            [cardId]: level,
+          },
+        })),
+
+      resetCardLevels: () => set({ cardLevels: {} }),
+
       // 전체 초기화
       resetAll: () =>
         set({
           deck: Array(9).fill(undefined),
           skillLevels: {},
           asideSelection: {},
+          cardLevels: {},
           showDeckGuide: false,
         }),
 
@@ -121,6 +140,7 @@ export const useDeckStore = create<DeckState>()(
         deckIds: state.deck.map((a) => a?.id || null),
         skillLevels: state.skillLevels,
         asideSelection: state.asideSelection,
+        cardLevels: state.cardLevels,
       }),
 
       // 복원 오류 시 초기화

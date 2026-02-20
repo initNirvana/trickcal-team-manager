@@ -102,6 +102,16 @@ export function getIconPath(iconName: string): string {
   return getAssetPath(originalPath);
 }
 
+export function getArtifactImagePath(artifact: string): string {
+  const originalPath = `/src/assets/artifacts/ArtifactIcon_${artifact}.png`;
+  return getAssetPath(originalPath);
+}
+
+export function getSpellImagePath(spell: string): string {
+  const originalPath = `/src/assets/spells/SpellCardIcon_${spell}.png`;
+  return getAssetPath(originalPath);
+}
+
 export function getNetworkIconPath(): string {
   return getAssetPath('/src/assets/networkicon/NetworkIcon_Elena.png');
 }
