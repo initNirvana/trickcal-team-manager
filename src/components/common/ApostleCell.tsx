@@ -5,7 +5,7 @@ import { getPersonalityBackground } from '@/utils/apostleUtils';
 
 interface ApostleCellProps {
   index: number;
-  apostle: Apostle | null;
+  apostle: Apostle | null | undefined;
   onClick: (idx: number) => void;
 }
 
@@ -64,5 +64,3 @@ export const ApostleCell = memo(({ index, apostle, onClick }: ApostleCellProps) 
     </div>
   );
 });
-
-ApostleCell.displayName = 'ApostleCell';

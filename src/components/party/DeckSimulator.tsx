@@ -116,7 +116,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
       </div>
 
       {/* 초기화 버튼 */}
-      <button onClick={handleReset} className="btn btn-error mb-4 h-full">
+      <button onClick={handleReset} className="btn btn-error h-full">
         초기화
       </button>
 

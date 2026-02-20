@@ -1,43 +1,34 @@
-import { memo } from 'react';
 import { PresetCombinationSection } from '@/components/builder/Preset/PresetCombinationSection';
+import { ApostleCell } from '@/components/common/ApostleCell';
 import SynergyDisplay from '@/components/party/Analysis/SynergyDisplay';
+import { useSimpleBuilder } from '@/hooks/useSimpleBuilder';
 import { Apostle } from '@/types/apostle';
-import { useSimpleBuilder } from '../../hooks/useSimpleBuilder';
-import { ApostleCell } from './ApostleCell';
 import { ApostleSelectionStep } from './ApostleSelectionStep';
 import { POSITION_MAP, STEPS } from './constants';
 import { PersonalitySelectionStep } from './PersonalitySelectionStep';
 
-const GridColumn = memo(
-  ({
-    label,
-    indices,
-    colorClass,
-    placedApostles,
-    onRemove,
-  }: {
-    label: string;
-    indices: readonly number[];
-    colorClass: string;
-    placedApostles: (Apostle | null)[];
-    onRemove: (idx: number) => void;
-  }) => (
-    <div className="flex flex-col gap-1">
-      <div
-        className={`${colorClass} rounded-t-xl py-1 text-center text-xs font-bold shadow-sm sm:text-sm`}
-      >
-        {label}
-      </div>
-      <div className="flex flex-col gap-1">
-        {indices.map((idx) => (
-          <ApostleCell key={idx} index={idx} apostle={placedApostles[idx]} onClick={onRemove} />
-        ))}
-      </div>
-    </div>
-  ),
-);
+interface GridColumnProps {
+  label: string;
+  indices: readonly number[];
+  colorClass: string;
+  placedApostles: (Apostle | null)[];
+  onRemove: (idx: number) => void;
+}
 
-GridColumn.displayName = 'GridColumn';
+const GridColumn = ({ label, indices, colorClass, placedApostles, onRemove }: GridColumnProps) => (
+  <div className="flex flex-col gap-1">
+    <div
+      className={`${colorClass} rounded-t-xl py-1 text-center text-xs font-bold shadow-sm sm:text-sm`}
+    >
+      {label}
+    </div>
+    <div className="flex flex-col gap-1">
+      {indices.map((idx) => (
+        <ApostleCell key={idx} index={idx} apostle={placedApostles[idx]} onClick={onRemove} />
+      ))}
+    </div>
+  </div>
+);
 
 const SimpleBuilder = () => {
   const {
