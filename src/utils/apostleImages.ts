@@ -15,13 +15,14 @@ const assetPathMap = import.meta.glob<string>(
     '/src/assets/icon/Common_Position*.png', // 위치 아이콘
     '/src/assets/icon/Common_UnitClass*.png', // 클래스 아이콘
     '/src/assets/networkicon/*.{png,webp}', // 네트워크 아이콘
+    '/src/assets/ingameui/*.{png,webp}', // 인게임 UI 이미지
   ],
   { eager: true, import: 'default' },
 ) as Record<string, string>;
 
 export const placeholderImagePath = getAssetPath('/src/assets/apostles/placeholder.webp');
 
-function getAssetPath(originalPath: string): string {
+export function getAssetPath(originalPath: string): string {
   const path = assetPathMap[originalPath];
 
   if (!path) {
