@@ -1,7 +1,9 @@
-export interface Artifact {
-  id: string;
-  name: string;
-  tier: 'Common' | 'Rare' | 'Epic' | 'Legendary';
-  effectDescription: string;
-  effectValues: Record<string, number | string>;
+import { CardBase, CardOption } from './card';
+
+export type ArtifactOption = CardOption;
+
+export interface Artifact extends CardBase {}
+
+export interface ArtifactsData {
+  artifacts: Artifact[];
 }
