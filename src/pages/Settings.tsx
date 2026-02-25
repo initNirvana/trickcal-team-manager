@@ -25,10 +25,6 @@ function Settings() {
       <div className="card bg-base-100 mb-6 shadow-xl">
         <div className="card-body">
           <h2 className="card-title text-lg">계정 연동</h2>
-          <p className="text-sm opacity-70">
-            구글 계정을 연동하면 클라우드에 데이터를 안전하게 저장하고, 여러기기에서 편리하게 사용할
-            수 있습니다.
-          </p>
 
           <div className="mt-4 flex items-center justify-between">
             {loading ? (
