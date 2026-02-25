@@ -1,6 +1,11 @@
 import { memo } from 'react';
 import { Apostle } from '@/types/apostle';
-import { getApostleImagePath, getClassIconPath, getPositionIconPath } from '@/utils/apostleImages';
+import {
+  getApostleImagePath,
+  getClassIconPath,
+  getEmptyHeroImagePath,
+  getPositionIconPath,
+} from '@/utils/apostleImages';
 import { getPersonalityBackground } from '@/utils/apostleUtils';
 
 interface ApostleCellProps {
@@ -16,9 +21,9 @@ export const ApostleCell = memo(({ index, apostle, onClick }: ApostleCellProps) 
     return (
       <div
         onClick={handleClick}
-        className="rounded-box border-base-300 bg-base-100 flex aspect-square cursor-pointer items-center justify-center border-2 border-dashed text-2xl opacity-10 transition-all hover:border-solid sm:text-4xl"
+        className="rounded-box bg-base-100 flex aspect-square cursor-pointer items-center justify-center transition-all hover:scale-105 hover:shadow-md active:scale-95"
       >
-        +
+        <img src={getEmptyHeroImagePath()} className="object-cover" alt="빈 슬롯" />
       </div>
     );
   }

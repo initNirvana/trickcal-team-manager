@@ -116,3 +116,19 @@ export function getSpellImagePath(spell: string): string {
 export function getNetworkIconPath(): string {
   return getAssetPath('/src/assets/networkicon/NetworkIcon_Elena.png');
 }
+
+export function getEmptyArtifactImagePath(): string {
+  return getAssetPath('/src/assets/ingameui/Ingame_ArtifactBase_Empty.png');
+}
+
+export function getEmptyHeroImagePath(): string {
+  return getAssetPath('/src/assets/ingameui/Ingame_Artifact_HeroEmpty.png');
+}
+
+export function getArtifactGradeBgPath(gradeNum: number): string {
+  return getAssetPath(`/src/assets/ingameui/Ingame_CardBase_Artifact_Grade_${gradeNum}.png`);
+}
+
+export function getCostBgPath(): string {
+  return getAssetPath('/src/assets/ingameui/Ingame_Cost_Small.png');
+}

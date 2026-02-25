@@ -10,6 +10,11 @@ interface DeckState {
   asideSelection: Record<string, AsideRank[]>;
 
   showDeckGuide: boolean;
+  showArtifactMode: boolean;
+
+  // 장착된 아티팩트 (key: apostleId, value: [아티팩트ID, 아티팩트ID, 아티팩트ID])
+  // null이면 빈 슬롯
+  equippedArtifacts: Record<string, [number | null, number | null, number | null]>;
 
   // Deck 관련
   setDeckMember: (slot: SlotNumber, apostle: Apostle | undefined) => void;
@@ -32,6 +37,11 @@ interface DeckState {
   resetAll: () => void;
 
   setShowDeckGuide: (show: boolean) => void;
+  setShowArtifactMode: (show: boolean) => void;
+
+  // 장착된 아티팩트 관리
+  equipArtifact: (apostleId: string, slotIndex: number, artifactId: number) => void;
+  unequipArtifact: (apostleId: string, slotIndex: number) => void;
 
   // 내부 헬퍼 (persist용)
   hydrateDeck: (apostleIds: (string | null)[], allApostles: Apostle[]) => void;
@@ -42,6 +52,8 @@ interface PersistedState {
   skillLevels: Record<string, SkillLevel>;
   asideSelection: Record<string, AsideRank[]>;
   cardLevels: Record<string, CardLevel>;
+  showArtifactMode: boolean;
+  equippedArtifacts: Record<string, [number | null, number | null, number | null]>;
 }
 
 export const useDeckStore = create<DeckState>()(
@@ -52,6 +64,8 @@ export const useDeckStore = create<DeckState>()(
       asideSelection: {},
       cardLevels: {},
       showDeckGuide: false,
+      showArtifactMode: false,
+      equippedArtifacts: {},
 
       // Deck 액션
       setDeckMember: (slot, apostle) =>
@@ -120,9 +134,47 @@ export const useDeckStore = create<DeckState>()(
           asideSelection: {},
           cardLevels: {},
           showDeckGuide: false,
+          showArtifactMode: false,
+          equippedArtifacts: {},
         }),
 
       setShowDeckGuide: (show) => set({ showDeckGuide: show }),
+      setShowArtifactMode: (show) => set({ showArtifactMode: show }),
+
+      equipArtifact: (apostleId, slotIndex, artifactId) =>
+        set((state) => {
+          const currentArtifacts = state.equippedArtifacts[apostleId] || [null, null, null];
+          const newArtifacts = [...currentArtifacts] as [
+            number | null,
+            number | null,
+            number | null,
+          ];
+          newArtifacts[slotIndex] = artifactId;
+          return {
+            equippedArtifacts: {
+              ...state.equippedArtifacts,
+              [apostleId]: newArtifacts,
+            },
+          };
+        }),
+
+      unequipArtifact: (apostleId, slotIndex) =>
+        set((state) => {
+          if (!state.equippedArtifacts[apostleId]) return state;
+
+          const newArtifacts = [...state.equippedArtifacts[apostleId]] as [
+            number | null,
+            number | null,
+            number | null,
+          ];
+          newArtifacts[slotIndex] = null;
+          return {
+            equippedArtifacts: {
+              ...state.equippedArtifacts,
+              [apostleId]: newArtifacts,
+            },
+          };
+        }),
 
       // 내부 헬퍼: ID 배열을 받아 Apostle 객체로 복원
       hydrateDeck: (apostleIds, allApostles) => {
@@ -141,6 +193,8 @@ export const useDeckStore = create<DeckState>()(
         skillLevels: state.skillLevels,
         asideSelection: state.asideSelection,
         cardLevels: state.cardLevels,
+        showArtifactMode: state.showArtifactMode,
+        equippedArtifacts: state.equippedArtifacts,
       }),
 
       // 복원 오류 시 초기화
