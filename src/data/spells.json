@@ -51,49 +51,76 @@
       "coin": 9
     },
     {
-      "id": 22,
+      "id": 5,
       "level": 1,
-      "grade": "일반",
-      "name": "그건 내 잔상",
-      "options": [
-        {
-          "type": "attackSpeed",
-          "value": 3.17
-        },
-        {
-          "type": "criticalDamageResist",
-          "value": 3.17
-        }
-      ],
-      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
-      "coin": 9
-    },
-    {
-      "id": 49,
-      "level": 1,
-      "grade": "전설",
-      "name": "깜짝 상자",
+      "grade": "고급",
+      "name": "성격의 카드[광기]",
       "coin": 14,
       "options": [
         {
-          "type": "hp",
-          "value": 8.02
+          "type": "physicalAttack",
+          "value": 2.1
         },
         {
-          "type": "criticalRate",
-          "value": 5.96
+          "type": "magicAttack",
+          "value": 2.1
         }
       ],
-      "effectDescription": "웨이브 시작 시 무작위 적 3명에게 4초 동안 기절 상태를 부여하고, 최대 HP의 7%만큼의 피해를 입힌다."
+      "effectDescription": "광기 성격이 1개 더 있는 것으로 간주한다."
     },
     {
-      "id": 36,
+      "id": 6,
+      "level": 1,
+      "grade": "고급",
+      "name": "방탄불괴",
+      "coin": 12,
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 4.44
+        },
+        {
+          "type": "magicDefense",
+          "value": 4.44
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다."
+    },
+    {
+      "id": 7,
       "level": 1,
       "grade": "전설",
-      "name": "단체 월반",
-      "options": [],
-      "effectDescription": "모든 아군의 학년이 1 증가한다.",
-      "coin": 33
+      "name": "전투의 달인",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 5.29
+        },
+        {
+          "type": "magicAttack",
+          "value": 5.29
+        }
+      ],
+      "effectDescription": "모든 아군의 스킬 피해량이 27% 증가한다.",
+      "coin": 18
+    },
+    {
+      "id": 8,
+      "level": 1,
+      "grade": "고급",
+      "name": "성격의 카드[냉정]",
+      "coin": 14,
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 2.1
+        },
+        {
+          "type": "magicDefense",
+          "value": 2.1
+        }
+      ],
+      "effectDescription": "냉정 성격이 1개 더 있는 것으로 간주한다."
     },
     {
       "id": 9,
@@ -108,34 +135,6 @@
         }
       ],
       "effectDescription": "모든 아군의 치유량이 33% 증가한다."
-    },
-    {
-      "id": 25,
-      "level": 1,
-      "grade": "일반",
-      "name": "딸기맛 캡슐",
-      "options": [
-        {
-          "type": "hp",
-          "value": 2
-        }
-      ],
-      "effectDescription": "모든 사도의 HP를 30%만큼 회복한다.",
-      "coin": 6
-    },
-    {
-      "id": 33,
-      "level": 1,
-      "grade": "일반",
-      "name": "랜덤 코인",
-      "options": [
-        {
-          "type": "hp",
-          "value": 2.67
-        }
-      ],
-      "effectDescription": "무작위로 8 ~ 32사이의 코인을 획득한다. (엘리아스 프론티어에서 사용할 수 없다.)",
-      "coin": 20
     },
     {
       "id": 10,
@@ -166,42 +165,6 @@
       "coin": 11
     },
     {
-      "id": 47,
-      "level": 1,
-      "grade": "전설",
-      "name": "명상의 시간",
-      "coin": 15,
-      "options": [
-        {
-          "type": "physicalAttack",
-          "value": 3.47
-        },
-        {
-          "type": "magicAttack",
-          "value": 3.47
-        }
-      ],
-      "effectDescription": "모든 아군의 기본 SP 회복량이 30% 증가한다."
-    },
-    {
-      "id": 6,
-      "level": 1,
-      "grade": "고급",
-      "name": "방탄불괴",
-      "coin": 12,
-      "options": [
-        {
-          "type": "physicalDefense",
-          "value": 4.44
-        },
-        {
-          "type": "magicDefense",
-          "value": 4.44
-        }
-      ],
-      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다."
-    },
-    {
       "id": 13,
       "level": 1,
       "grade": "희귀",
@@ -214,150 +177,6 @@
         }
       ],
       "effectDescription": "모든 아군의 공격 속도가 22% 증가한다."
-    },
-    {
-      "id": 15,
-      "level": 1,
-      "grade": "희귀",
-      "name": "선봉대",
-      "coin": 12,
-      "options": [
-        {
-          "type": "physicalDefense",
-          "value": 3.31
-        },
-        {
-          "type": "magicDefense",
-          "value": 3.31
-        }
-      ],
-      "effectDescription": "전열에 배치된 아군의 피해량이 7% 증가한다. 전열에 배치된 아군의 받는 피해량이 11% 감소한다."
-    },
-    {
-      "id": 5,
-      "level": 1,
-      "grade": "고급",
-      "name": "성격의 카드[광기]",
-      "coin": 14,
-      "options": [
-        {
-          "type": "physicalAttack",
-          "value": 2.1
-        },
-        {
-          "type": "magicAttack",
-          "value": 2.1
-        }
-      ],
-      "effectDescription": "광기 성격이 1개 더 있는 것으로 간주한다."
-    },
-    {
-      "id": 8,
-      "level": 1,
-      "grade": "고급",
-      "name": "성격의 카드[냉정]",
-      "coin": 14,
-      "options": [
-        {
-          "type": "physicalDefense",
-          "value": 2.1
-        },
-        {
-          "type": "magicDefense",
-          "value": 2.1
-        }
-      ],
-      "effectDescription": "냉정 성격이 1개 더 있는 것으로 간주한다."
-    },
-    {
-      "id": 16,
-      "level": 1,
-      "grade": "고급",
-      "name": "성격의 카드[순수]",
-      "coin": 14,
-      "options": [
-        {
-          "type": "hp",
-          "value": 2.1
-        }
-      ],
-      "effectDescription": "순수 성격이 1개 더 있는 것으로 간주한다."
-    },
-    {
-      "id": 20,
-      "level": 1,
-      "grade": "고급",
-      "name": "성격의 카드[우울]",
-      "coin": 14,
-      "options": [
-        {
-          "type": "criticalRate",
-          "value": 2.34
-        },
-        {
-          "type": "criticalDamage",
-          "value": 2.34
-        }
-      ],
-      "effectDescription": "우울 성격이 1개 더 있는 것으로 간주한다."
-    },
-    {
-      "id": 40,
-      "level": 1,
-      "grade": "고급",
-      "name": "성격의 카드[활발]",
-      "coin": 14,
-      "options": [
-        {
-          "type": "attackSpeed",
-          "value": 2.1
-        }
-      ],
-      "effectDescription": "활발 성격이 1개 더 있는 것으로 간주한다."
-    },
-    {
-      "id": 26,
-      "level": 1,
-      "grade": "일반",
-      "name": "소다맛 캡슐",
-      "options": [
-        {
-          "type": "physicalDefense",
-          "value": 1.45
-        },
-        {
-          "type": "magicDefense",
-          "value": 1.45
-        }
-      ],
-      "effectDescription": "모든 사도의 SP를 70만큼 회복한다.",
-      "coin": 6
-    },
-    {
-      "id": 45,
-      "level": 1,
-      "grade": "전설",
-      "name": "소매넣기",
-      "coin": 31,
-      "options": [
-        {
-          "type": "criticalRate",
-          "value": 5.96
-        },
-        {
-          "type": "criticalDamage",
-          "value": 5.96
-        }
-      ],
-      "effectDescription": "아티팩트 장비 2개를 무작위 아군에게 장착한다."
-    },
-    {
-      "id": 34,
-      "level": 1,
-      "grade": "전설",
-      "name": "수상한 물약",
-      "coin": 23,
-      "effectDescription": "웨이브 시작시 물약이 터지며 독 안개가 뿌려진다. 모든 적들에게 9초간 중독을 건다."
     },
     {
       "id": 14,
@@ -378,22 +197,36 @@
       "effectDescription": "가장 학년이 낮은 아군의 학년이 1만큼 증가한다."
     },
     {
-      "id": 46,
+      "id": 15,
       "level": 1,
-      "grade": "전설",
-      "name": "아로마 테라피",
-      "coin": 5,
+      "grade": "희귀",
+      "name": "선봉대",
+      "coin": 12,
       "options": [
         {
           "type": "physicalDefense",
-          "value": 2.98
+          "value": 3.31
         },
         {
           "type": "magicDefense",
-          "value": 2.98
+          "value": 3.31
         }
       ],
-      "effectDescription": "남은 SP 비율이 가장 낮은 아군의 SP를 100% 회복한다."
+      "effectDescription": "전열에 배치된 아군의 피해량이 7% 증가한다. 전열에 배치된 아군의 받는 피해량이 11% 감소한다."
+    },
+    {
+      "id": 16,
+      "level": 1,
+      "grade": "고급",
+      "name": "성격의 카드[순수]",
+      "coin": 14,
+      "options": [
+        {
+          "type": "hp",
+          "value": 2.1
+        }
+      ],
+      "effectDescription": "순수 성격이 1개 더 있는 것으로 간주한다."
     },
     {
       "id": 18,
@@ -432,18 +265,22 @@
       "effectDescription": "모든 아군의 일반 공격 피해량이 7.5% 증가한다."
     },
     {
-      "id": 51,
+      "id": 20,
       "level": 1,
-      "grade": "희귀",
-      "name": "오픈런",
+      "grade": "고급",
+      "name": "성격의 카드[우울]",
+      "coin": 14,
       "options": [
         {
+          "type": "criticalRate",
+          "value": 2.34
+        },
+        {
           "type": "criticalDamage",
-          "value": 7.2
+          "value": 2.34
         }
       ],
-      "effectDescription": "웨이브 시작 시 처음 저학년 스킬을 사용한 아군마다 10초간 스킬 피해량이 88% 증가한다.",
-      "coin": 22
+      "effectDescription": "우울 성격이 1개 더 있는 것으로 간주한다."
     },
     {
       "id": 21,
@@ -464,18 +301,22 @@
       "coin": 8
     },
     {
-      "id": 52,
+      "id": 22,
       "level": 1,
-      "grade": "고급",
-      "name": "저놈 잡아라!",
-      "coin": 8,
+      "grade": "일반",
+      "name": "그건 내 잔상",
       "options": [
         {
           "type": "attackSpeed",
-          "value": 2.81
+          "value": 3.17
+        },
+        {
+          "type": "criticalDamageResist",
+          "value": 3.17
         }
       ],
-      "effectDescription": "이번 웨이브 동안 모든 사도의 피해량이 7% 증가한다."
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 9
     },
     {
       "id": 24,
@@ -496,22 +337,36 @@
       "effectDescription": "모든 아군의 피해량이 25% 증가한다."
     },
     {
-      "id": 7,
+      "id": 25,
       "level": 1,
-      "grade": "전설",
-      "name": "전투의 달인",
+      "grade": "일반",
+      "name": "딸기맛 캡슐",
       "options": [
         {
-          "type": "physicalAttack",
-          "value": 5.29
-        },
-        {
-          "type": "magicAttack",
-          "value": 5.29
+          "type": "hp",
+          "value": 2
         }
       ],
-      "effectDescription": "모든 아군의 스킬 피해량이 27% 증가한다.",
-      "coin": 18
+      "effectDescription": "모든 사도의 HP를 30%만큼 회복한다.",
+      "coin": 6
+    },
+    {
+      "id": 26,
+      "level": 1,
+      "grade": "일반",
+      "name": "소다맛 캡슐",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 1.45
+        },
+        {
+          "type": "magicDefense",
+          "value": 1.45
+        }
+      ],
+      "effectDescription": "모든 사도의 SP를 70만큼 회복한다.",
+      "coin": 6
     },
     {
       "id": 27,
@@ -578,22 +433,36 @@
       "coin": 13
     },
     {
-      "id": 48,
+      "id": 33,
       "level": 1,
-      "grade": "전설",
-      "name": "파스텔빛 소풍",
-      "coin": 49,
+      "grade": "일반",
+      "name": "랜덤 코인",
       "options": [
         {
-          "type": "physicalAttack",
-          "value": 9.76
-        },
-        {
-          "type": "magicAttack",
-          "value": 9.76
+          "type": "hp",
+          "value": 2.67
         }
       ],
-      "effectDescription": "12초마다 꽃잎 바람이 적들에게 600%의 범위 피해를 입히고, 15초마다 맛있는 간식이 떨어져 8초 동안 모든 아군의 HP를 2초마다 2% 회복한다. 배치된 엘다인이 3명 이상인 경우 모든 아군의 사도의 기본 SP 회복량이 20% 증가한다. 배치된 엘다인 1명당 꽃잎 바람의 피해가 90% 추가되고, 맛있는 간식 회복이 1% 추가된다. 꽃잎 바람의 피해는 가장 공격력이 높은 사도의 공격력을 기준으로 한다."
+      "effectDescription": "무작위로 8 ~ 32사이의 코인을 획득한다. (엘리아스 프론티어에서 사용할 수 없다.)",
+      "coin": 20
+    },
+    {
+      "id": 34,
+      "level": 1,
+      "grade": "전설",
+      "name": "수상한 물약",
+      "coin": 23,
+      "options": [],
+      "effectDescription": "웨이브 시작시 물약이 터지며 독 안개가 뿌려진다. 모든 적들에게 9초간 중독을 건다."
+    },
+    {
+      "id": 36,
+      "level": 1,
+      "grade": "전설",
+      "name": "단체 월반",
+      "options": [],
+      "effectDescription": "모든 아군의 학년이 1 증가한다.",
+      "coin": 33
     },
     {
       "id": 37,
@@ -612,6 +481,20 @@
         }
       ],
       "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다."
+    },
+    {
+      "id": 40,
+      "level": 1,
+      "grade": "고급",
+      "name": "성격의 카드[활발]",
+      "coin": 14,
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 2.1
+        }
+      ],
+      "effectDescription": "활발 성격이 1개 더 있는 것으로 간주한다."
     },
     {
       "id": 41,
@@ -658,6 +541,124 @@
         }
       ],
       "effectDescription": "후열에 배치된 아군의 피해량이 14% 증가한다. 후열에 배치된 아군의 받는 피해량이 7% 감소한다."
+    },
+    {
+      "id": 45,
+      "level": 1,
+      "grade": "전설",
+      "name": "소매넣기",
+      "coin": 31,
+      "options": [
+        {
+          "type": "criticalRate",
+          "value": 5.96
+        },
+        {
+          "type": "criticalDamage",
+          "value": 5.96
+        }
+      ],
+      "effectDescription": "아티팩트 장비 2개를 무작위 아군에게 장착한다."
+    },
+    {
+      "id": 46,
+      "level": 1,
+      "grade": "전설",
+      "name": "아로마 테라피",
+      "coin": 5,
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 2.98
+        },
+        {
+          "type": "magicDefense",
+          "value": 2.98
+        }
+      ],
+      "effectDescription": "남은 SP 비율이 가장 낮은 아군의 SP를 100% 회복한다."
+    },
+    {
+      "id": 47,
+      "level": 1,
+      "grade": "전설",
+      "name": "명상의 시간",
+      "coin": 15,
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 3.47
+        },
+        {
+          "type": "magicAttack",
+          "value": 3.47
+        }
+      ],
+      "effectDescription": "모든 아군의 기본 SP 회복량이 30% 증가한다."
+    },
+    {
+      "id": 48,
+      "level": 1,
+      "grade": "전설",
+      "name": "파스텔빛 소풍",
+      "coin": 49,
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 9.76
+        },
+        {
+          "type": "magicAttack",
+          "value": 9.76
+        }
+      ],
+      "effectDescription": "12초마다 꽃잎 바람이 적들에게 600%의 범위 피해를 입히고, 15초마다 맛있는 간식이 떨어져 8초 동안 모든 아군의 HP를 2초마다 2% 회복한다. 배치된 엘다인이 3명 이상인 경우 모든 아군의 사도의 기본 SP 회복량이 20% 증가한다. 배치된 엘다인 1명당 꽃잎 바람의 피해가 90% 추가되고, 맛있는 간식 회복이 1% 추가된다. 꽃잎 바람의 피해는 가장 공격력이 높은 사도의 공격력을 기준으로 한다."
+    },
+    {
+      "id": 49,
+      "level": 1,
+      "grade": "전설",
+      "name": "깜짝 상자",
+      "coin": 14,
+      "options": [
+        {
+          "type": "hp",
+          "value": 8.02
+        },
+        {
+          "type": "criticalRate",
+          "value": 5.96
+        }
+      ],
+      "effectDescription": "웨이브 시작 시 무작위 적 3명에게 4초 동안 기절 상태를 부여하고, 최대 HP의 7%만큼의 피해를 입힌다."
+    },
+    {
+      "id": 51,
+      "level": 1,
+      "grade": "희귀",
+      "name": "오픈런",
+      "options": [
+        {
+          "type": "criticalDamage",
+          "value": 7.2
+        }
+      ],
+      "effectDescription": "웨이브 시작 시 처음 저학년 스킬을 사용한 아군마다 10초간 스킬 피해량이 88% 증가한다.",
+      "coin": 22
+    },
+    {
+      "id": 52,
+      "level": 1,
+      "grade": "고급",
+      "name": "저놈 잡아라!",
+      "coin": 8,
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 2.81
+        }
+      ],
+      "effectDescription": "이번 웨이브 동안 모든 사도의 피해량이 7% 증가한다."
     }
   ]
 }
