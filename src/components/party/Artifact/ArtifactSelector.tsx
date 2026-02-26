@@ -97,7 +97,7 @@ export const ArtifactModal = ({
       <div className="modal-box w-full max-w-xl max-h-[70vh] flex flex-col p-0 overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-base-200">
-          <h2 className="text-xl font-bold">{`${apostleName} 아티팩트 선택`}</h2>
+          <h2 className="text-xl font-bold">{`${apostleName ?? ''} 아티팩트 선택`}</h2>
         </div>
 
         {/* Filters */}
@@ -159,7 +159,7 @@ export const ArtifactModal = ({
                     }}
                   />
                   {/* 동전(비용) 표시 부분 - 필요 시 추가 */}
-                  {artifact.coin && (
+                  {artifact.coin != null && (
                     <div
                       className="absolute top-1 left-1 flex items-center justify-center w-[26px] h-[26px] bg-contain bg-center bg-no-repeat text-[11px] font-black text-white tracking-tighter z-20"
                       style={{

@@ -50,7 +50,8 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
     slotIndex: number,
     currentId: number | null,
   ) => {
-    const artifact = currentId ? artifactData.artifacts.find((a) => a.id === currentId) : null;
+    const artifact =
+      currentId !== null ? artifactData.artifacts.find((a) => a.id === currentId) : null;
 
     return (
       <button
@@ -63,6 +64,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
             artifact ? getArtifactImagePath(artifact.id.toString()) : getEmptyArtifactImagePath()
           }
           className={`h-full w-full object-contain ${artifact ? '' : 'opacity-90'}`}
+          alt={artifact ? artifact.name : '빈 아티팩트'}
         />
       </button>
     );

@@ -129,7 +129,7 @@ export const useDeckStore = create<DeckState>()(
       // 전체 초기화
       resetAll: () =>
         set({
-          deck: Array(9).fill(undefined),
+          deck: Array(GRID_CONFIG.SIZE).fill(undefined),
           skillLevels: {},
           asideSelection: {},
           cardLevels: {},

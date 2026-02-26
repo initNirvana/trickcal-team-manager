@@ -46,14 +46,14 @@ export const StatDisplay = ({ item }: StatDisplayProps) => {
         <div className="flex flex-wrap gap-x-3 gap-y-1">
           {item.options?.map((opt) => (
             <div key={opt.type} className="flex items-center gap-1 font-bold text-gray-800 text-sm">
-              <Activity mode={STAT_ICONS[opt.type] ? 'visible' : 'hidden'}>
+              {STAT_ICONS[opt.type] && (
                 <img
                   src={getIconPath(STAT_ICONS[opt.type])}
                   alt={opt.type}
                   loading="lazy"
                   className="w-4 h-4 object-contain"
                 />
-              </Activity>
+              )}
               <span>{STAT_LABELS[opt.type] || opt.type}</span>
               <span className="text-gray-800">+{opt.value}%</span>
             </div>
