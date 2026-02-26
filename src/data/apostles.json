@@ -2761,6 +2761,28 @@
         "score": 5
       },
       "baseScore": 67
+    },
+    {
+      "id": "a118",
+      "name": "아멜리아(R41)",
+      "engName": "AmeliaR41",
+      "isEldain": false,
+      "rank": 3,
+      "race": "엘프",
+      "persona": "Gloomy",
+      "method": "Magical",
+      "position": ["back"],
+      "role": {
+        "main": "Supporter",
+        "subRole": "Utility",
+        "trait": ["Shield", "Heal", "CC", "Buff"]
+      },
+      "aside": {
+        "hasAside": true,
+        "importance": "선택",
+        "score": 3
+      },
+      "baseScore": 65
     }
   ]
 }

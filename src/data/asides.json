@@ -915,6 +915,15 @@
       "description": "후열 아군이 적에게 주는 피해량이 증가시키며, 후열 아군이 적에게 받는 피해량을 감소시킨다.",
       "type": ["Back"],
       "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
+    },
+    {
+      "apostleId": "a118",
+      "apostleName": "아멜리아(R41)",
+      "name": "떠오른 빈자리",
+      "level": 3,
+      "description": "모든 아군의 스킬 피해량을 증가시킨다.",
+      "type": ["All"],
+      "damage": [{ "Increase": 33, "Reduction": 0 }]
     }
   ]
 }

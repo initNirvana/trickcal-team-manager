@@ -3419,6 +3419,34 @@
           "Reduction": 0
         }
       ]
+    },
+    {
+      "apostleId": "a118",
+      "name": "아멜리아(R41)의 저학년 스킬",
+      "level": "low",
+      "description": "",
+      "effectRange": "",
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
+    },
+    {
+      "apostleId": "a118",
+      "name": "아멜리아(R41)의 고학년 스킬",
+      "level": "high",
+      "description": "",
+      "effectRange": "",
+      "damage": [
+        {
+          "level": 1,
+          "Increase": 0,
+          "Reduction": 0
+        }
+      ]
     }
   ]
 }
