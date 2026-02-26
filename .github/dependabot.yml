@@ -1,4 +1,4 @@
-version: 3
+version: 2
 updates:
   - package-ecosystem: 'npm'
     directory: '/'
@@ -22,4 +22,4 @@ updates:
       - dependency-name: '@testing-library/react'
       - dependency-name: 'vitest'
       - dependency-name: 'zod'
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5

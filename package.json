@@ -9,7 +9,6 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest",
-    "prepare": "husky",
     "lint-staged": "lint-staged",
     "lint": "biome lint --write .",
     "format": "biome format --write .",
