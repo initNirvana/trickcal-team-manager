@@ -23,7 +23,7 @@ export const ApostleCell = memo(({ index, apostle, onClick }: ApostleCellProps) 
         onClick={handleClick}
         className="rounded-box bg-base-100 flex aspect-square cursor-pointer items-center justify-center transition-all hover:scale-105 hover:shadow-md active:scale-95"
       >
-        <img src={getEmptyHeroImagePath()} className="object-cover" alt="빈 슬롯" />
+        <img src={getEmptyHeroImagePath()} className="h-full w-full object-cover" alt="빈 슬롯" />
       </div>
     );
   }

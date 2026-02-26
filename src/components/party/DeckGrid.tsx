@@ -44,6 +44,32 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
     setCurrentArtifactId(null);
   };
 
+  const renderArtifactSlotsForApostle = (slot: number) => {
+    if (!showArtifactMode) return null;
+
+    const apostle = deck[slot - 1];
+
+    return (
+      <div className="flex justify-center gap-1 mt-1">
+        {[0, 1, 2].map((i) => {
+          if (!apostle) {
+            return (
+              <div key={i} className="flex items-center justify-center rounded-full opacity-50">
+                <img
+                  src={getEmptyArtifactImagePath()}
+                  className="h-full w-full object-contain"
+                  alt="빈 슬롯"
+                />
+              </div>
+            );
+          }
+          const currentArtifacts = equippedArtifacts[apostle.id] ?? [null, null, null];
+          return renderArtifactSlot(apostle.id, apostle.name, i, currentArtifacts[i] ?? null);
+        })}
+      </div>
+    );
+  };
+
   const renderArtifactSlot = (
     apostleId: string,
     apostleName: string,
@@ -86,29 +112,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
                   apostle={deck[slot - 1]}
                   onClick={() => onSelectSlot(toSlotNumber(slot))}
                 />
-                {showArtifactMode && (
-                  <div className="flex justify-center gap-1 mt-1">
-                    {[0, 1, 2].map((i) => {
-                      const apostle = deck[slot - 1];
-                      if (!apostle) {
-                        return (
-                          <div
-                            key={i}
-                            className="flex items-center justify-center rounded-full opacity-50"
-                          >
-                            <img
-                              src={getEmptyArtifactImagePath()}
-                              className="h-full w-full object-contain"
-                              alt="빈 슬롯"
-                            />
-                          </div>
-                        );
-                      }
-                      const currentArtifacts = equippedArtifacts[apostle.id] || [null, null, null];
-                      return renderArtifactSlot(apostle.id, apostle.name, i, currentArtifacts[i]);
-                    })}
-                  </div>
-                )}
+                {renderArtifactSlotsForApostle(slot)}
               </div>
             ))}
           </div>
@@ -127,29 +131,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
                   apostle={deck[slot - 1]}
                   onClick={() => onSelectSlot(toSlotNumber(slot))}
                 />
-                {showArtifactMode && (
-                  <div className="flex justify-center gap-1 mt-1">
-                    {[0, 1, 2].map((i) => {
-                      const apostle = deck[slot - 1];
-                      if (!apostle) {
-                        return (
-                          <div
-                            key={i}
-                            className="flex items-center justify-center rounded-full opacity-50"
-                          >
-                            <img
-                              src={getEmptyArtifactImagePath()}
-                              className="h-full w-full object-contain"
-                              alt="빈 슬롯"
-                            />
-                          </div>
-                        );
-                      }
-                      const currentArtifacts = equippedArtifacts[apostle.id] || [null, null, null];
-                      return renderArtifactSlot(apostle.id, apostle.name, i, currentArtifacts[i]);
-                    })}
-                  </div>
-                )}
+                {renderArtifactSlotsForApostle(slot)}
               </div>
             ))}
           </div>
@@ -168,29 +150,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
                   apostle={deck[slot - 1]}
                   onClick={() => onSelectSlot(toSlotNumber(slot))}
                 />
-                {showArtifactMode && (
-                  <div className="flex justify-center gap-1 mt-1">
-                    {[0, 1, 2].map((i) => {
-                      const apostle = deck[slot - 1];
-                      if (!apostle) {
-                        return (
-                          <div
-                            key={i}
-                            className="flex items-center justify-center rounded-full opacity-50"
-                          >
-                            <img
-                              src={getEmptyArtifactImagePath()}
-                              className="h-full w-full object-contain"
-                              alt="빈 슬롯"
-                            />
-                          </div>
-                        );
-                      }
-                      const currentArtifacts = equippedArtifacts[apostle.id] || [null, null, null];
-                      return renderArtifactSlot(apostle.id, apostle.name, i, currentArtifacts[i]);
-                    })}
-                  </div>
-                )}
+                {renderArtifactSlotsForApostle(slot)}
               </div>
             ))}
           </div>

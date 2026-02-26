@@ -11,7 +11,7 @@ export interface CardOption {
 export interface CardBase {
   id: number;
   level: number;
-  grade: string;
+  grade: CardGrade;
   name: string;
   coin?: number;
   options?: CardOption[];
