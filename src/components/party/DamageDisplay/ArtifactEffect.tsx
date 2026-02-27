@@ -210,7 +210,7 @@ const ArtifactEffectDisplay = ({
   }
 
   const hasAnyRowStats = Object.values(effectList.rowEffectsByPosition).some(
-    (arr: unknown) => Array.isArray(arr) && arr.length > 0,
+    (arr) => arr.length > 0,
   );
 
   const totalHasEffect = hasAnyRowStats || effectList.individualEffectsByApostle.length > 0;
