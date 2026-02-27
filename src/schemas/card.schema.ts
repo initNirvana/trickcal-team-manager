@@ -20,12 +20,20 @@ export const CardOptionSchema = z.object({
   value: z.number(),
 });
 
+export const CardEffectSchema = z.object({
+  type: z.string().optional(),
+  target: z.string().optional(),
+  value: z.number(),
+});
+
 export const CardBaseSchema = z.object({
   id: z.number().int().positive(),
   level: z.number().int().min(1),
   grade: CardGradeSchema,
   name: z.string().min(1),
   coin: z.number().int().nonnegative().optional(),
+  affection: z.string().optional(),
   options: z.array(CardOptionSchema).optional(),
+  effect: z.array(CardEffectSchema).optional(),
   effectDescription: z.string().optional(),
 });

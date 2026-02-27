@@ -25,6 +25,13 @@
           "value": 12.35
         }
       ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "hpRecovery",
+          "value": 21
+        }
+      ],
       "effectDescription": "착용자의 HP 회복량이 21% 증가한다.",
       "coin": 11
     },
@@ -172,6 +179,13 @@
         }
       ],
       "coin": 14,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "skillDamage",
+          "value": 16
+        }
+      ],
       "effectDescription": "착용자의 스킬 피해량이 16% 증가한다."
     },
     {
@@ -300,6 +314,13 @@
         }
       ],
       "coin": 14,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "damageReduction",
+          "value": 4
+        }
+      ],
       "effectDescription": "착용자의 받는 피해량이 4% 감소한다."
     },
     {
@@ -314,6 +335,13 @@
         }
       ],
       "coin": 16,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "hpRecovery",
+          "value": 44
+        }
+      ],
       "effectDescription": "착용자의 HP 회복량이 44% 증가한다."
     },
     {
@@ -330,6 +358,13 @@
         {
           "type": "criticalDamage",
           "value": 17.29
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "generalDamage",
+          "value": 25
         }
       ],
       "effectDescription": "착용자의 피해량이 25% 증가한다."
@@ -350,6 +385,13 @@
         }
       ],
       "coin": 19,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "damageReduction",
+          "value": 10
+        }
+      ],
       "effectDescription": "착용자의 받는 피해량이 10% 감소한다."
     },
     {
@@ -573,6 +615,13 @@
           "value": 19.98
         }
       ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "healing",
+          "value": 60
+        }
+      ],
       "coin": 22,
       "effectDescription": "착용자의 치유량이 60% 증가한다."
     },
@@ -609,6 +658,13 @@
           "value": 10.19
         }
       ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "generalDamage",
+          "value": 6
+        }
+      ],
       "effectDescription": "착용자의 피해량이 6% 증가한다.",
       "coin": 12
     },
@@ -639,6 +695,13 @@
         {
           "type": "criticalRate",
           "value": 12.49
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "skillDamage",
+          "value": 16
         }
       ],
       "coin": 14,
@@ -696,6 +759,13 @@
         }
       ],
       "coin": 16,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "skillDamage",
+          "value": 18
+        }
+      ],
       "effectDescription": "착용자의 스킬 피해량이 18% 증가한다."
     },
     {
@@ -735,6 +805,13 @@
         {
           "type": "hp",
           "value": 17.29
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "shield",
+          "value": 52
         }
       ],
       "coin": 14,
@@ -838,7 +915,7 @@
         }
       ],
       "coin": 12,
-      "effectDescription": "(재사용 대기시간 5초)"
+      "effectDescription": "착용자가 적에게 일반 공격으로 입힌 피해량의 178%를 HP로 회복한다.(재사용 대기시간 5초)"
     },
     {
       "id": 69,
@@ -849,6 +926,13 @@
         {
           "type": "magicAttack",
           "value": 5.6
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "healing",
+          "value": 13
         }
       ],
       "effectDescription": "착용자의 치유량이 13% 증가한다.",
@@ -880,7 +964,7 @@
         }
       ],
       "coin": 16,
-      "effectDescription": "(재사용 대기시간 5초)"
+      "effectDescription": "착용자의 일반 공격으로 입힌 피해량의 182%를 HP로 회복한다. (재사용 대기시간 5초)"
     },
     {
       "id": 74,
@@ -891,6 +975,13 @@
         {
           "type": "criticalDamage",
           "value": 12.35
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "commonDamage",
+          "value": 8
         }
       ],
       "effectDescription": "착용자의 일반 공격 피해량이 8% 증가한다.",
@@ -909,6 +1000,18 @@
         {
           "type": "criticalDamage",
           "value": 11.24
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "skillDamage",
+          "value": 52
+        },
+        {
+          "target": "Individual",
+          "type": "attackSpeed",
+          "value": -30
         }
       ],
       "coin": 29,
@@ -973,6 +1076,7 @@
       "level": 1,
       "grade": "희귀",
       "name": "프리클의 여왕 대리 인장",
+      "affection": "프리클",
       "options": [
         {
           "type": "magicAttack",
@@ -983,8 +1087,15 @@
           "value": 17.84
         }
       ],
+      "effect": [
+        {
+          "type": "sameRow",
+          "target": "skillDamage",
+          "value": 49
+        }
+      ],
       "coin": 26,
-      "effectDescription": "단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
+      "effectDescription": "착용자와 동일한 열에 있는 모든 아군의 스킬 피해량이 49% 증가한다. 단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
     },
     {
       "id": 80,
@@ -1043,6 +1154,13 @@
           "value": 22.28
         }
       ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "enhancedAttackDamage",
+          "value": 69
+        }
+      ],
       "coin": 22,
       "effectDescription": "착용자의 강화 공격 피해량이 69% 증가한다."
     },
@@ -1079,8 +1197,15 @@
           "value": 27.85
         }
       ],
+      "effect": [
+        {
+          "target": "sameRow",
+          "type": "damageReduction",
+          "value": 9.33
+        }
+      ],
       "coin": 36,
-      "effectDescription": "단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
+      "effectDescription": "착용자와 동일한 열에 있는 모든 아군의 받는 피해량이 9.33% 감소한다. 단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
     },
     {
       "id": 86,
@@ -1133,6 +1258,23 @@
           "value": 22.47
         }
       ],
+      "effect": [
+        {
+          "type": "",
+          "target": "hp",
+          "value": 46
+        },
+        {
+          "type": "",
+          "target": "hpRecovery",
+          "value": 3
+        },
+        {
+          "type": "",
+          "target": "damage",
+          "value": 15
+        }
+      ],
       "coin": 24,
       "effectDescription": "착용자의 크기가 커지고, 최대 HP가 46% 증가한다. 또한 매 초 최대 HP 비례 3%만큼 HP를 회복하고, 피해량이 15% 증가한다."
     },
@@ -1151,6 +1293,16 @@
           "value": 14.98
         }
       ],
+      "effect": [
+        {
+          "target": "skillDamage",
+          "value": 19
+        },
+        {
+          "target": "attackSpeed",
+          "value": 37
+        }
+      ],
       "coin": 19,
       "effectDescription": "착용자가 피해를 입힌 적이 일정 시간 내에 처치되면 15초 동안 피해량이 19% 증가하고, 공격 속도가 37% 증가한다. 최대 3회까지 획득 가능하다."
     },
@@ -1167,6 +1319,18 @@
         {
           "type": "criticalDamage",
           "value": 25.93
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "highGradeSkillDamage",
+          "value": 63
+        },
+        {
+          "target": "Individual",
+          "type": "generalDamage",
+          "value": -60
         }
       ],
       "coin": 30,
@@ -1201,6 +1365,13 @@
           "value": 14.27
         }
       ],
+      "effect": [
+        {
+          "target": "sameRow",
+          "type": "spRecovery",
+          "value": 11
+        }
+      ],
       "coin": 18,
       "effectDescription": "착용자와 동일한 열에 있는 모든 아군들의 기본 SP 회복량을 11% 증가시킨다. 해당 효과는 중첩되지 않는다."
     },
@@ -1209,6 +1380,7 @@
       "level": 1,
       "grade": "희귀",
       "name": "제이드의 비싼 만년필",
+      "affection": "제이드",
       "options": [
         {
           "type": "magicAttack",
@@ -1219,8 +1391,15 @@
           "value": 12.49
         }
       ],
+      "effect": [
+        {
+          "target": "sameRow",
+          "type": "magicDamage",
+          "value": 21
+        }
+      ],
       "coin": 22,
-      "effectDescription": "단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
+      "effectDescription": "착용자와 동일한 열의 있는 모든 아군의 마법 피해량이 21% 증가한다. 단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
     }
   ]
 }

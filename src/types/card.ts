@@ -8,13 +8,21 @@ export interface CardOption {
   value: number;
 }
 
+export interface CardEffect {
+  type?: string;
+  target?: string;
+  value: number;
+}
+
 export interface CardBase {
   id: number;
   level: number;
   grade: CardGrade;
   name: string;
   coin?: number;
+  affection?: string;
   options?: CardOption[];
+  effect?: CardEffect[];
   effectDescription?: string;
 }
 

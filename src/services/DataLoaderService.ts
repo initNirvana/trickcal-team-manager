@@ -6,11 +6,12 @@
 
 import { ApostlesDataSchema } from '@/schemas/apostles.schema';
 import type { Apostle } from '@/types/apostle';
+import type { ArtifactsData } from '@/types/artifact';
 import type { AsidesData } from '@/types/aside';
 import type { SkillsData } from '@/types/skill';
 import type { SpellsData } from '@/types/spell';
 
-type CacheData = Apostle[] | SkillsData | AsidesData | SpellsData;
+type CacheData = Apostle[] | SkillsData | AsidesData | SpellsData | ArtifactsData;
 
 export interface DataLoaderError {
   code: 'PARSE_ERROR' | 'LOAD_ERROR' | 'VALIDATION_ERROR';
@@ -117,6 +118,21 @@ export class DataLoaderService {
       return spellsData as SpellsData;
     } catch (error) {
       console.error('Failed to load spells:', error);
+      throw error;
+    }
+  }
+
+  static async loadArtifacts(): Promise<ArtifactsData> {
+    if (DataLoaderService.cache.has('artifacts'))
+      return DataLoaderService.cache.get('artifacts') as ArtifactsData;
+
+    try {
+      const artifactsModule = await import('@/data/artifacts.json');
+      const artifactsData = artifactsModule.default ?? artifactsModule;
+      DataLoaderService.cache.set('artifacts', artifactsData as ArtifactsData);
+      return artifactsData as ArtifactsData;
+    } catch (error) {
+      console.error('Failed to load artifacts:', error);
       throw error;
     }
   }
