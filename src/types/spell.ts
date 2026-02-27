@@ -1,9 +1,8 @@
-export interface Spell {
-  spellId: number;
-  level: number;
-  grade: string;
-  name: string;
-}
+import { CardBase, CardOption } from './card';
+
+export type SpellOption = CardOption;
+
+export interface Spell extends CardBase {}
 
 export interface SpellsData {
   spells: Spell[];

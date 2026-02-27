@@ -1,10 +1,10 @@
 {
-  "projectVersion": "20260226-7595c2dd",
-  "lastUpdated": "2026-02-26T10:43:46.835Z",
+  "projectVersion": "20260228-c6931fd9",
+  "lastUpdated": "2026-02-27T16:32:01.679Z",
   "files": {
     "apostles.json": {
-      "hash": "13dac59f",
-      "updated": "2026-02-26T10:43:46.835Z"
+      "hash": "372989a0",
+      "updated": "2026-02-26T17:24:59.435Z"
     },
     "skills.json": {
       "hash": "3237fbd8",
@@ -15,12 +15,12 @@
       "updated": "2026-02-26T10:43:46.835Z"
     },
     "spells.json": {
-      "hash": "8d961c14",
-      "updated": "2026-02-26T10:43:46.835Z"
+      "hash": "8bb9ddd0",
+      "updated": "2026-02-26T17:24:59.435Z"
     },
     "artifacts.json": {
-      "hash": "98ec54d8",
-      "updated": "2026-02-26T10:43:46.835Z"
+      "hash": "6cdbe1bd",
+      "updated": "2026-02-27T16:32:01.679Z"
     }
   }
 }

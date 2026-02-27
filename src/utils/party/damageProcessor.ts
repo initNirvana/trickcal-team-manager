@@ -1,4 +1,5 @@
 import type { Apostle } from '../../types/apostle';
+import type { Artifact } from '../../types/artifact';
 import type { AsideRow, AsideTarget } from '../../types/aside';
 import type { SkillLevel } from '../../types/branded';
 import { toSkillLevel, trySkillLevel } from '../../types/branded';
@@ -407,4 +408,128 @@ export function calculateSkillDamageReduction(
   }
 
   return { totalReduction, details };
+}
+
+export interface DynamicEffect {
+  type: string;
+  value: number;
+}
+
+export interface ArtifactEffectResult {
+  rowEffectsByPosition: Record<'all' | 'front' | 'mid' | 'back', DynamicEffect[]>;
+  individualEffectsByApostle: {
+    apostleId: string;
+    apostleName: string;
+    artifactId: number;
+    artifactName: string;
+    description?: string;
+    effects: DynamicEffect[];
+  }[];
+}
+
+export function calculateArtifactEffects(
+  apostles: Apostle[],
+  artifactsData: Artifact[] | undefined,
+  equippedArtifacts: Record<string, [number | null, number | null, number | null]>,
+): ArtifactEffectResult {
+  const result: ArtifactEffectResult = {
+    rowEffectsByPosition: { all: [], front: [], mid: [], back: [] },
+    individualEffectsByApostle: [],
+  };
+
+  if (!Array.isArray(artifactsData) || artifactsData.length === 0) {
+    return result;
+  }
+
+  const artifactsById = new Map<number, Artifact>();
+  for (const artifact of artifactsData) {
+    artifactsById.set(artifact.id, artifact);
+  }
+
+  // Helper to accumulate dynamic effects
+  const addRowEffect = (
+    positionKey: 'all' | 'front' | 'mid' | 'back',
+    type: string,
+    value: number,
+  ) => {
+    if (!type || typeof value !== 'number') return;
+    const existing = result.rowEffectsByPosition[positionKey].find((e) => e.type === type);
+    if (existing) {
+      existing.value += value;
+    } else {
+      result.rowEffectsByPosition[positionKey].push({ type, value });
+    }
+  };
+
+  for (const apostle of apostles) {
+    if (!apostle?.id) continue;
+
+    const equippedIds = equippedArtifacts[apostle.id];
+    if (!equippedIds) continue;
+
+    const pos = Array.isArray(apostle.position) ? apostle.position[0] : apostle.position;
+    const positionKey = pos === 'front' ? 'front' : pos === 'mid' ? 'mid' : 'back';
+
+    for (const artifactId of equippedIds) {
+      if (!artifactId) continue;
+
+      const artifact = artifactsById.get(artifactId);
+      if (!artifact) continue;
+
+      const individualEffects: DynamicEffect[] = [];
+
+      // Parse individual options (legacy)
+      if (Array.isArray(artifact.options)) {
+        for (const opt of artifact.options) {
+          individualEffects.push({ type: opt.type, value: opt.value });
+        }
+      }
+
+      // Parse dynamic effect array
+      if (Array.isArray(artifact.effect)) {
+        for (const eff of artifact.effect) {
+          const { type = '', target = '', value } = eff;
+          const targetKeywords = ['sameRow', 'all', 'allAllies', 'Individual'];
+
+          let effectTarget = 'Individual';
+          let effectStat = '';
+
+          // Determine target and stat flexibly
+          if (targetKeywords.includes(type)) {
+            effectTarget = type;
+            effectStat = target || '';
+          } else if (targetKeywords.includes(target)) {
+            effectTarget = target;
+            effectStat = type || '';
+          } else {
+            effectStat = type || target || '';
+          }
+
+          if (!effectStat) continue;
+
+          if (effectTarget === 'sameRow') {
+            addRowEffect(positionKey, effectStat, value);
+          } else if (effectTarget === 'all' || effectTarget === 'allAllies') {
+            addRowEffect('all', effectStat, value);
+          } else {
+            individualEffects.push({ type: effectStat, value });
+          }
+        }
+      }
+
+      // Add to individual effects array if there's any effect or a description
+      if (individualEffects.length > 0 || artifact.effectDescription) {
+        result.individualEffectsByApostle.push({
+          apostleId: apostle.id,
+          apostleName: apostle.name,
+          artifactId: artifact.id,
+          artifactName: artifact.name,
+          description: artifact.effectDescription,
+          effects: individualEffects,
+        });
+      }
+    }
+  }
+
+  return result;
 }

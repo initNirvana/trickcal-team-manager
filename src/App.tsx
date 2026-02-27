@@ -12,6 +12,7 @@ const DeckSimulator = lazy(() => import('./components/party/DeckSimulator'));
 const DeckRecommender = lazy(() => import('./components/builder/DeckRecommender'));
 const Settings = lazy(() => import('./pages/Settings'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const PrivacyPolicy260128 = lazy(() => import('./pages/PrivacyPolicy260128'));
 const SimpleBuilder = lazy(() => import('./components/SimpleBuilder/SimpleBuilder'));
 
 const ssgoiConfig = {
@@ -35,7 +36,7 @@ function LoadingScreen({ message = '데이터 로딩 중...' }: { message?: stri
 
 function App() {
   // TODO: spells 추가
-  const { apostles, skills, asides, isLoading, error } = useDataLoader();
+  const { apostles, skills, asides, artifacts, isLoading, error } = useDataLoader();
 
   // 전역 클라우드 동기화 활성화
   useCloudSync();
@@ -78,6 +79,7 @@ function App() {
                       apostles={apostles}
                       skillsData={skills.skills}
                       asidesData={asides.asides}
+                      artifactsData={artifacts.artifacts}
                     />
                   </SsgoiTransition>
                 </Layout>
@@ -147,6 +149,17 @@ function App() {
                 <Layout>
                   <SsgoiTransition id="/privacy">
                     <PrivacyPolicy />
+                  </SsgoiTransition>
+                </Layout>
+              }
+            />
+            {/* (구) 개인정보 처리방침 */}
+            <Route
+              path="/PrivacyPolicy260128"
+              element={
+                <Layout>
+                  <SsgoiTransition id="/PrivacyPolicy260128">
+                    <PrivacyPolicy260128 />
                   </SsgoiTransition>
                 </Layout>
               }

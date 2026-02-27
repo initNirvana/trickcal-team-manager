@@ -15,13 +15,14 @@ const assetPathMap = import.meta.glob<string>(
     '/src/assets/icon/Common_Position*.png', // 위치 아이콘
     '/src/assets/icon/Common_UnitClass*.png', // 클래스 아이콘
     '/src/assets/networkicon/*.{png,webp}', // 네트워크 아이콘
+    '/src/assets/ingameui/*.{png,webp}', // 인게임 UI 이미지
   ],
   { eager: true, import: 'default' },
 ) as Record<string, string>;
 
 export const placeholderImagePath = getAssetPath('/src/assets/apostles/placeholder.webp');
 
-function getAssetPath(originalPath: string): string {
+export function getAssetPath(originalPath: string): string {
   const path = assetPathMap[originalPath];
 
   if (!path) {
@@ -102,6 +103,32 @@ export function getIconPath(iconName: string): string {
   return getAssetPath(originalPath);
 }
 
+export function getArtifactImagePath(artifact: string): string {
+  const originalPath = `/src/assets/artifacts/ArtifactIcon_${artifact}.png`;
+  return getAssetPath(originalPath);
+}
+
+export function getSpellImagePath(spell: string): string {
+  const originalPath = `/src/assets/spells/SpellCardIcon_${spell}.png`;
+  return getAssetPath(originalPath);
+}
+
 export function getNetworkIconPath(): string {
   return getAssetPath('/src/assets/networkicon/NetworkIcon_Elena.png');
+}
+
+export function getEmptyArtifactImagePath(): string {
+  return getAssetPath('/src/assets/ingameui/Ingame_ArtifactBase_Empty.png');
+}
+
+export function getEmptyHeroImagePath(): string {
+  return getAssetPath('/src/assets/ingameui/Ingame_Artifact_HeroEmpty.png');
+}
+
+export function getArtifactGradeBgPath(gradeNum: number): string {
+  return getAssetPath(`/src/assets/ingameui/Ingame_CardBase_Artifact_Grade_${gradeNum}.png`);
+}
+
+export function getCostBgPath(): string {
+  return getAssetPath('/src/assets/ingameui/Ingame_Cost_Small.png');
 }

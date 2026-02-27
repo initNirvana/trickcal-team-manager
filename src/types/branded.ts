@@ -22,6 +22,12 @@ export type SkillLevel = number & { readonly __brand: 'SkillLevel' };
 export type AsideRank = number & { readonly __brand: 'AsideRank' };
 
 /**
+ * 카드 레벨 (1~10)
+ * - 아티팩트 및 스펠의 레벨을 나타냄
+ */
+export type CardLevel = number & { readonly __brand: 'CardLevel' };
+
+/**
  * SlotNumber 생성 헬퍼
  * @param n - 1~9 범위의 숫자
  * @throws {Error} 범위를 벗어난 경우
@@ -86,6 +92,29 @@ export function tryAsideRank(n: number): AsideRank | null {
     return null;
   }
   return n as AsideRank;
+}
+
+/**
+ * CardLevel 생성 헬퍼
+ * @param n - 1~10 범위의 숫자
+ * @throws {Error} 범위를 벗어난 경우
+ */
+export function toCardLevel(n: number): CardLevel {
+  if (!Number.isInteger(n) || n < 1 || n > 10) {
+    throw new Error(`Invalid card level: ${n}. Must be between 1 and 10`);
+  }
+  return n as CardLevel;
+}
+
+/**
+ * CardLevel 안전 생성 (기본값 반환)
+ */
+export function tryCardLevel(n: unknown, fallback: CardLevel = 1 as CardLevel): CardLevel {
+  const num = typeof n === 'string' ? Number(n) : typeof n === 'number' ? n : NaN;
+  if (!Number.isFinite(num) || num < 1 || num > 10) {
+    return fallback;
+  }
+  return Math.floor(num) as CardLevel;
 }
 
 /**

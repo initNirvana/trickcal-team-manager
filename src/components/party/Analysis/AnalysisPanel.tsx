@@ -1,9 +1,11 @@
+import type { Artifact } from '@/types/artifact';
 import type { Aside } from '@/types/aside';
 import type { SkillLevel } from '@/types/branded';
 import type { Skill } from '@/types/skill';
 import { useDeckStore } from '../../../stores/deckStore';
 import type { Apostle } from '../../../types/apostle';
 import type { DeckAnalysis } from '../../../utils/deckAnalysisUtils';
+import ArtifactEffectDisplay from '../DamageDisplay/ArtifactEffect';
 import AsideEffectDisplay from '../DamageDisplay/AsideEffect';
 import SkillEffectDisplay from '../DamageDisplay/SkillEffect';
 import SynergyDisplay from './SynergyDisplay';
@@ -13,12 +15,20 @@ interface AnalysisPanelProps {
   filledDeck: Apostle[];
   skillsData?: Skill[];
   asidesData?: Aside[];
+  artifactsData?: Artifact[];
 }
 
-const AnalysisPanel = ({ analysis, filledDeck, skillsData, asidesData }: AnalysisPanelProps) => {
+const AnalysisPanel = ({
+  analysis,
+  filledDeck,
+  skillsData,
+  asidesData,
+  artifactsData,
+}: AnalysisPanelProps) => {
   const skillLevels = useDeckStore((state) => state.skillLevels);
   const setSkillLevel = useDeckStore((state) => state.setSkillLevel);
   const asideSelection = useDeckStore((state) => state.asideSelection);
+  const equippedArtifacts = useDeckStore((state) => state.equippedArtifacts);
 
   // ✅ 스킬 레벨 변경 핸들러
   const handleSkillLevelChange = (apostleId: string, newLevel: SkillLevel) => {
@@ -48,6 +58,13 @@ const AnalysisPanel = ({ analysis, filledDeck, skillsData, asidesData }: Analysi
         apostles={filledDeck}
         asidesData={asidesData}
         asideSelection={asideSelection}
+      />
+
+      {/* 아티팩트 효과 표시 */}
+      <ArtifactEffectDisplay
+        apostles={filledDeck}
+        artifactsData={artifactsData}
+        equippedArtifacts={equippedArtifacts}
       />
 
       {/* 시너지 표시 */}

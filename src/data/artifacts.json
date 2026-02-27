@@ -1,92 +1,1405 @@
 {
   "artifacts": [
-    { "id": 1, "level": 1, "grade": "전설", "name": "림의 낫" },
-    { "id": 2, "level": 1, "grade": "전설", "name": "벨리타의 지팡이" },
-    { "id": 3, "level": 1, "grade": "전설", "name": "실라의 바람살" },
-    { "id": 4, "level": 1, "grade": "전설", "name": "다야의 다이아몬드 커터" },
-    { "id": 5, "level": 1, "grade": "전설", "name": "네르의 엘드르 깃발" },
-    { "id": 6, "level": 1, "grade": "전설", "name": "레비의 단도" },
-    { "id": 7, "level": 1, "grade": "전설", "name": "버터의 옐로카드" },
+    {
+      "id": 1,
+      "level": 1,
+      "grade": "고급",
+      "name": "가시 왕관",
+      "options": [
+        {
+          "type": "hp",
+          "value": 12.35
+        }
+      ],
+      "coin": 9,
+      "effectDescription": "착용자가 적에게 치명 피해를 받았을 경우, 받은 피해량이 6% 감소한다."
+    },
+    {
+      "id": 2,
+      "level": 1,
+      "grade": "고급",
+      "name": "가죽 갑옷",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 12.35
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "hpRecovery",
+          "value": 21
+        }
+      ],
+      "effectDescription": "착용자의 HP 회복량이 21% 증가한다.",
+      "coin": 11
+    },
+    {
+      "id": 5,
+      "level": 1,
+      "grade": "일반",
+      "name": "고목나무 비수",
+      "options": [
+        {
+          "type": "criticalRate",
+          "value": 7.14
+        },
+        {
+          "type": "criticalDamage",
+          "value": 7.14
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 5
+    },
+    {
+      "id": 6,
+      "level": 1,
+      "grade": "일반",
+      "name": "골판지 갑옷",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 9.24
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 7
+    },
+    {
+      "id": 7,
+      "level": 1,
+      "grade": "고급",
+      "name": "광기의 가면",
+      "options": [
+        {
+          "type": "hp",
+          "value": 15.88
+        }
+      ],
+      "coin": 15,
+      "effectDescription": "착용자의 주변의 적들에게 최대 HP 비례 2%만큼 매 초 반사 피해를 입힌다."
+    },
     {
       "id": 8,
       "level": 1,
-      "grade": "전설",
-      "name": "아멜리아의 E-Pad 클래식"
+      "grade": "일반",
+      "name": "급조한 목검",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 10.78
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 8
     },
-    { "id": 9, "level": 1, "grade": "전설", "name": "리츠의 대지 뽀개기" },
-    { "id": 10, "level": 1, "grade": "전설", "name": "블랑셰의 유리 파랑새" },
-    { "id": 11, "level": 1, "grade": "전설", "name": "셰이디의 차원 사슬낫" },
-    { "id": 12, "level": 1, "grade": "전설", "name": "날씨는 맑음 카드" },
-    { "id": 13, "level": 1, "grade": "전설", "name": "엘다인 램프" },
-    { "id": 14, "level": 1, "grade": "전설", "name": "생명의 보석" },
-    { "id": 15, "level": 1, "grade": "전설", "name": "말랑말랑한 조끼" },
-    { "id": 16, "level": 1, "grade": "전설", "name": "암살자의 비급" },
-    { "id": 17, "level": 1, "grade": "전설", "name": "KG 케틀벨" },
-    { "id": 18, "level": 1, "grade": "전설", "name": "용광검" },
-    { "id": 19, "level": 1, "grade": "전설", "name": "녹슨 붉은 검" },
-    { "id": 20, "level": 1, "grade": "전설", "name": "장난감 망원경" },
-    { "id": 21, "level": 1, "grade": "전설", "name": "거대화 물약" },
-    { "id": 22, "level": 1, "grade": "희귀", "name": "코미의 베개" },
-    { "id": 23, "level": 1, "grade": "희귀", "name": "루드의 운동 교본" },
+    {
+      "id": 9,
+      "coin": 16,
+      "level": 1,
+      "grade": "희귀",
+      "name": "기원의 성배",
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 12.49
+        },
+        {
+          "type": "criticalDamage",
+          "value": 12.49
+        }
+      ],
+      "effectDescription": "착용자의 일반 공격 적중 시 SP를 3 회복한다."
+    },
+    {
+      "id": 10,
+      "level": 1,
+      "grade": "희귀",
+      "name": "긴급 보호 벨트",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 12.49
+        },
+        {
+          "type": "magicDefense",
+          "value": 12.49
+        }
+      ],
+      "coin": 14,
+      "effectDescription": "전투 시작 시 착용자와 동일한 열에 있는 모든 아군들에게 보호막을 부여한다. 보호막은 대상의 최대 HP의 26%만큼 피해를 흡수하며 6초간 지속된다."
+    },
+    {
+      "id": 11,
+      "level": 1,
+      "grade": "희귀",
+      "name": "코미의 베개",
+      "options": [
+        {
+          "type": "hp",
+          "value": 22.23
+        }
+      ],
+      "coin": 18,
+      "effectDescription": "착용자의 HP가 30% 이하가 될 경우 5초 동안 최대 HP의 44%를 매 초마다 회복한다."
+    },
+    {
+      "id": 12,
+      "level": 1,
+      "grade": "전설",
+      "name": "날씨는 맑음 카드",
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 17.98
+        },
+        {
+          "type": "criticalRate",
+          "value": 17.98
+        }
+      ],
+      "coin": 22,
+      "effectDescription": "착용자의 일반 공격이 3회 적중할 때마다 번개가 발사된다. 번개는 착용자의 공격력 150%의 추가 피해를 입힌다."
+    },
+    {
+      "id": 13,
+      "level": 1,
+      "grade": "희귀",
+      "name": "날카로운 지팡이",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 12.49
+        },
+        {
+          "type": "criticalDamage",
+          "value": 12.49
+        }
+      ],
+      "coin": 14,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "skillDamage",
+          "value": 16
+        }
+      ],
+      "effectDescription": "착용자의 스킬 피해량이 16% 증가한다."
+    },
+    {
+      "id": 14,
+      "level": 1,
+      "grade": "고급",
+      "name": "낡은 화살",
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 12.94
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 9
+    },
+    {
+      "id": 15,
+      "level": 1,
+      "grade": "일반",
+      "name": "녹슨 송곳",
+      "options": [
+        {
+          "type": "criticalRate",
+          "value": 9.24
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 5
+    },
+    {
+      "id": 16,
+      "level": 1,
+      "grade": "일반",
+      "name": "슬라임 쿠션",
+      "options": [
+        {
+          "type": "criticalDamageResist",
+          "value": 10.78
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 5
+    },
+    {
+      "id": 18,
+      "level": 1,
+      "grade": "고급",
+      "name": "다이아몬드 팔찌",
+      "options": [
+        {
+          "type": "criticalResist",
+          "value": 14.99
+        },
+        {
+          "type": "criticalDamageResist",
+          "value": 14.99
+        }
+      ],
+      "coin": 10,
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다."
+    },
+    {
+      "id": 19,
+      "level": 1,
+      "grade": "일반",
+      "name": "덧댄 지팡이",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 10.78
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 8
+    },
+    {
+      "id": 20,
+      "level": 1,
+      "grade": "희귀",
+      "name": "도깨비 감투",
+      "options": [
+        {
+          "type": "hp",
+          "value": 14.27
+        },
+        {
+          "type": "criticalRate",
+          "value": 14.27
+        }
+      ],
+      "coin": 16,
+      "effectDescription": "착용자의 HP가 15% 이하가 될 경우 적의 타겟 대상에서 해체되며 5초간 무적 상태가 된다."
+    },
+    {
+      "id": 22,
+      "level": 1,
+      "grade": "전설",
+      "name": "레비의 단도",
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 17.48
+        },
+        {
+          "type": "criticalRate",
+          "value": 17.48
+        }
+      ],
+      "coin": 19,
+      "effectDescription": "착용자의 HP가 25% 이하가 될 경우 7초간 무적 상태가 된다. 또한 피해량이 40% 증가하며 공격 속도가 79% 증가한다."
+    },
+    {
+      "id": 23,
+      "level": 1,
+      "grade": "고급",
+      "name": "로네의 건틀릿",
+      "options": [
+        {
+          "type": "criticalResist",
+          "value": 11.47
+        },
+        {
+          "type": "criticalDamageResist",
+          "value": 11.47
+        }
+      ],
+      "coin": 14,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "damageReduction",
+          "value": 4
+        }
+      ],
+      "effectDescription": "착용자의 받는 피해량이 4% 감소한다."
+    },
     {
       "id": 24,
       "level": 1,
       "grade": "희귀",
-      "name": "프리클의 여왕 대리 인장"
+      "name": "루드의 운동 교본",
+      "options": [
+        {
+          "type": "hp",
+          "value": 24.34
+        }
+      ],
+      "coin": 16,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "hpRecovery",
+          "value": 44
+        }
+      ],
+      "effectDescription": "착용자의 HP 회복량이 44% 증가한다."
     },
     {
       "id": 25,
+      "coin": 24,
+      "level": 1,
+      "grade": "전설",
+      "name": "벨리타의 지팡이",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 17.29
+        },
+        {
+          "type": "criticalDamage",
+          "value": 17.29
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "generalDamage",
+          "value": 25
+        }
+      ],
+      "effectDescription": "착용자의 피해량이 25% 증가한다."
+    },
+    {
+      "id": 27,
+      "level": 1,
+      "grade": "전설",
+      "name": "말랑말랑한 조끼",
+      "options": [
+        {
+          "type": "hp",
+          "value": 17.48
+        },
+        {
+          "type": "physicalDefense",
+          "value": 17.48
+        }
+      ],
+      "coin": 19,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "damageReduction",
+          "value": 10
+        }
+      ],
+      "effectDescription": "착용자의 받는 피해량이 10% 감소한다."
+    },
+    {
+      "id": 28,
       "level": 1,
       "grade": "희귀",
-      "name": "셀리네의 미드나잇 미라주"
+      "name": "망토와 단검",
+      "options": [
+        {
+          "type": "criticalDamage",
+          "value": 14.82
+        }
+      ],
+      "coin": 12,
+      "effectDescription": "착용자의 5번째 일반 공격마다 치명타가 발생한다."
     },
-    { "id": 26, "level": 1, "grade": "희귀", "name": "도깨비 감투" },
-    { "id": 27, "level": 1, "grade": "희귀", "name": "기원의 성배" },
-    { "id": 28, "level": 1, "grade": "희귀", "name": "옥빛 마법서" },
-    { "id": 29, "level": 1, "grade": "희귀", "name": "날카로운 지팡이" },
-    { "id": 30, "level": 1, "grade": "희귀", "name": "황금 왕관" },
-    { "id": 31, "level": 1, "grade": "희귀", "name": "전투 지침서" },
-    { "id": 32, "level": 1, "grade": "희귀", "name": "치유의 펜던트" },
-    { "id": 33, "level": 1, "grade": "희귀", "name": "축복받은 견갑" },
-    { "id": 34, "level": 1, "grade": "희귀", "name": "참회의 메이스" },
-    { "id": 35, "level": 1, "grade": "희귀", "name": "긴급 보호 벨트" },
-    { "id": 36, "level": 1, "grade": "희귀", "name": "제사장의 향로" },
-    { "id": 37, "level": 1, "grade": "희귀", "name": "비늘 갑옷" },
-    { "id": 38, "level": 1, "grade": "희귀", "name": "망토와 단검" },
-    { "id": 39, "level": 1, "grade": "희귀", "name": "풍선 갑옷" },
-    { "id": 40, "level": 1, "grade": "희귀", "name": "고무고무 건틀릿" },
-    { "id": 41, "level": 1, "grade": "고급", "name": "로네의 건틀릿" },
-    { "id": 42, "level": 1, "grade": "고급", "name": "광기의 가면" },
-    { "id": 43, "level": 1, "grade": "고급", "name": "행운의 주사위" },
-    { "id": 44, "level": 1, "grade": "고급", "name": "엘프산 요술봉" },
-    { "id": 45, "level": 1, "grade": "고급", "name": "찬란한 티아라" },
-    { "id": 46, "level": 1, "grade": "고급", "name": "다이아몬드 팔찌" },
-    { "id": 47, "level": 1, "grade": "고급", "name": "가시 왕관" },
-    { "id": 48, "level": 1, "grade": "고급", "name": "탐욕의 반지" },
-    { "id": 49, "level": 1, "grade": "고급", "name": "강철 대검" },
-    { "id": 50, "level": 1, "grade": "고급", "name": "불타는 가지" },
-    { "id": 51, "level": 1, "grade": "고급", "name": "가죽 갑옷" },
-    { "id": 52, "level": 1, "grade": "고급", "name": "흑요석 수리검" },
-    { "id": 53, "level": 1, "grade": "고급", "name": "안개 비수" },
-    { "id": 54, "level": 1, "grade": "고급", "name": "낡은 화살" },
-    { "id": 55, "level": 1, "grade": "고급", "name": "여우 단검" },
-    { "id": 56, "level": 1, "grade": "고급", "name": "숭배용 액자" },
-    { "id": 57, "level": 1, "grade": "일반", "name": "덧댄 지팡이" },
-    { "id": 58, "level": 1, "grade": "일반", "name": "급조한 목검" },
-    { "id": 59, "level": 1, "grade": "일반", "name": "알루미늄 골무" },
-    { "id": 60, "level": 1, "grade": "일반", "name": "녹슨 송곳" },
-    { "id": 61, "level": 1, "grade": "일반", "name": "잎사귀 로브" },
-    { "id": 62, "level": 1, "grade": "일반", "name": "보석 반지" },
-    { "id": 63, "level": 1, "grade": "일반", "name": "골판지 갑옷" },
-    { "id": 64, "level": 1, "grade": "일반", "name": "보자기 로브" },
-    { "id": 65, "level": 1, "grade": "일반", "name": "수건 머리띠" },
-    { "id": 66, "level": 1, "grade": "일반", "name": "고목나무 비수" },
-    { "id": 67, "level": 1, "grade": "일반", "name": "슬라임 쿠션" },
-    { "id": 68, "level": 1, "grade": "일반", "name": "오븐 장갑" },
-    { "id": 69, "level": 1, "grade": "일반", "name": "중량 조끼" },
-    { "id": 70, "level": 1, "grade": "일반", "name": "치유의 호롱불" },
-    { "id": 71, "level": 1, "grade": "일반", "name": "묘수" },
-    { "id": 72, "level": 1, "grade": "일반", "name": "요정 로브" },
-    { "id": 73, "level": 1, "grade": "희귀", "name": "제이드의 비싼 만년필" }
+    {
+      "id": 30,
+      "level": 1,
+      "grade": "일반",
+      "name": "묘수",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 6.37
+        },
+        {
+          "type": "magicAttack",
+          "value": 6.37
+        }
+      ],
+      "effectDescription": "전투 시작 시 5초 동안 고양이 기운이 충전된다. 충전이 완료되면 착용자의 다음 일반 공격의 피해량이 38% 증가한다. 해당 효과는 중첩되지 않는다.",
+      "coin": 8
+    },
+    {
+      "id": 32,
+      "level": 1,
+      "grade": "일반",
+      "name": "보석 반지",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 6.37
+        },
+        {
+          "type": "magicAttack",
+          "value": 6.37
+        }
+      ],
+      "effectDescription": "착용자가 스킬을 사용한 다음 일반 공격의 피해량이 30% 증가한다.",
+      "coin": 8
+    },
+    {
+      "id": 33,
+      "level": 1,
+      "grade": "일반",
+      "name": "보자기 로브",
+      "options": [
+        {
+          "type": "magicDefense",
+          "value": 9.24
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 7
+    },
+    {
+      "id": 35,
+      "level": 1,
+      "grade": "고급",
+      "name": "불타는 가지",
+      "options": [
+        {
+          "type": "criticalDamage",
+          "value": 14.11
+        }
+      ],
+      "coin": 12,
+      "effectDescription": "전투 시작 시 5초 동안 불의 기운이 충전된다. 충전이 완료되면 착용자의 다음 일반 공격의 피해량이 80% 증가하고 대상에게 4초간 화상 상태를 만든다."
+    },
+    {
+      "id": 37,
+      "level": 1,
+      "grade": "희귀",
+      "name": "비늘 갑옷",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 13.99
+        },
+        {
+          "type": "magicDefense",
+          "value": 13.99
+        }
+      ],
+      "coin": 12,
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다."
+    },
+    {
+      "id": 38,
+      "level": 1,
+      "grade": "전설",
+      "name": "생명의 보석",
+      "options": [
+        {
+          "type": "hp",
+          "value": 17.48
+        },
+        {
+          "type": "criticalResist",
+          "value": 17.48
+        }
+      ],
+      "coin": 19,
+      "effectDescription": "착용자의 HP가 30% 이하가 될 경우 5초 동안 최대 HP의 58%를 매 초마다 회복한다."
+    },
+    {
+      "id": 40,
+      "coin": 24,
+      "level": 1,
+      "grade": "전설",
+      "name": "림의 낫",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 22.47
+        },
+        {
+          "type": "criticalRate",
+          "value": 27.66
+        }
+      ],
+      "effectDescription": "착용자의 일반 공격 적중 시, 공격한 적의 현재 HP가 18% 이하일 경우 대상을 즉시 처치한다. (해당 효과는 일반 몬스터만 적용한다.)"
+    },
+    {
+      "id": 41,
+      "level": 1,
+      "grade": "일반",
+      "name": "수건 머리띠",
+      "options": [
+        {
+          "type": "hp",
+          "value": 9.24
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 7
+    },
+    {
+      "id": 42,
+      "level": 1,
+      "grade": "전설",
+      "name": "실라의 바람살",
+      "options": [
+        {
+          "type": "criticalRate",
+          "value": 24.2
+        }
+      ],
+      "effectDescription": "착용자의 공격 속도가 60% 증가한다.",
+      "coin": 19
+    },
+    {
+      "id": 43,
+      "level": 1,
+      "grade": "고급",
+      "name": "안개 비수",
+      "options": [
+        {
+          "type": "criticalDamage",
+          "value": 19.4
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 10
+    },
+    {
+      "id": 44,
+      "level": 1,
+      "grade": "일반",
+      "name": "알루미늄 골무",
+      "options": [
+        {
+          "type": "criticalDamageResist",
+          "value": 15.12
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 8
+    },
+    {
+      "id": 45,
+      "level": 1,
+      "grade": "전설",
+      "name": "암살자의 비급",
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 12.24
+        },
+        {
+          "type": "criticalDamage",
+          "value": 8.74
+        }
+      ],
+      "coin": 13,
+      "effectDescription": "착용자는 일반 공격 5회 마다 숨을 죽인다. 다음 일반 공격에서 눈속임을 2.5초간 사용한다. (재사용 대기시간 6초)"
+    },
+    {
+      "id": 47,
+      "level": 1,
+      "grade": "전설",
+      "name": "엘다인 램프",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 19.98
+        },
+        {
+          "type": "magicDefense",
+          "value": 19.98
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "healing",
+          "value": 60
+        }
+      ],
+      "coin": 22,
+      "effectDescription": "착용자의 치유량이 60% 증가한다."
+    },
+    {
+      "id": 48,
+      "level": 1,
+      "grade": "고급",
+      "name": "엘프산 요술봉",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 5.49
+        },
+        {
+          "type": "magicDefense",
+          "value": 5.49
+        }
+      ],
+      "coin": 13,
+      "effectDescription": "전투 시작 시 착용자와 동일한 열에 있는 모든 아군들에게 보호막을 부여한다. 보호막은 대상 최대 HP 비례 16%만큼 피해를 흡수하며 6초간 지속된다."
+    },
+    {
+      "id": 49,
+      "level": 1,
+      "grade": "고급",
+      "name": "여우 단검",
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 10.19
+        },
+        {
+          "type": "criticalRate",
+          "value": 10.19
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "generalDamage",
+          "value": 6
+        }
+      ],
+      "effectDescription": "착용자의 피해량이 6% 증가한다.",
+      "coin": 12
+    },
+    {
+      "id": 51,
+      "level": 1,
+      "grade": "일반",
+      "name": "오븐 장갑",
+      "options": [
+        {
+          "type": "criticalResist",
+          "value": 10.78
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 5
+    },
+    {
+      "id": 52,
+      "level": 1,
+      "grade": "희귀",
+      "name": "옥빛 마법서",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 12.49
+        },
+        {
+          "type": "criticalRate",
+          "value": 12.49
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "skillDamage",
+          "value": 16
+        }
+      ],
+      "coin": 14,
+      "effectDescription": "착용자의 스킬 피해량이 16% 증가한다."
+    },
+    {
+      "id": 53,
+      "level": 1,
+      "grade": "일반",
+      "name": "요정 로브",
+      "options": [
+        {
+          "type": "hp",
+          "value": 7.14
+        },
+        {
+          "type": "magicDefense",
+          "value": 7.14
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 7
+    },
+    {
+      "id": 54,
+      "level": 1,
+      "grade": "전설",
+      "name": "용광검",
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 8.74
+        },
+        {
+          "type": "criticalDamage",
+          "value": 17.48
+        }
+      ],
+      "coin": 24,
+      "effectDescription": "착용자의 매 초당 공격 속도가 8% 증가한다. 저학년 스킬을 사용하면 초기화된다."
+    },
+    {
+      "id": 55,
+      "level": 1,
+      "grade": "희귀",
+      "name": "황금 왕관",
+      "options": [
+        {
+          "type": "criticalRate",
+          "value": 14.27
+        },
+        {
+          "type": "criticalDamage",
+          "value": 14.27
+        }
+      ],
+      "coin": 16,
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "skillDamage",
+          "value": 18
+        }
+      ],
+      "effectDescription": "착용자의 스킬 피해량이 18% 증가한다."
+    },
+    {
+      "id": 57,
+      "level": 1,
+      "grade": "일반",
+      "name": "잎사귀 로브",
+      "options": [
+        {
+          "type": "magicDefense",
+          "value": 12.32
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 9
+    },
+    {
+      "id": 59,
+      "level": 1,
+      "grade": "희귀",
+      "name": "전투 지침서",
+      "options": [
+        {
+          "type": "criticalDamage",
+          "value": 17.29
+        }
+      ],
+      "coin": 13,
+      "effectDescription": "착용자의 치명 피해량이 10% 증가한다."
+    },
+    {
+      "id": 61,
+      "level": 1,
+      "grade": "희귀",
+      "name": "제사장의 향로",
+      "options": [
+        {
+          "type": "hp",
+          "value": 17.29
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "shield",
+          "value": 52
+        }
+      ],
+      "coin": 14,
+      "effectDescription": "착용자가 받는 보호막의 효과가 52% 증가한다."
+    },
+    {
+      "id": 63,
+      "level": 1,
+      "grade": "일반",
+      "name": "중량 조끼",
+      "options": [
+        {
+          "type": "criticalResist",
+          "value": 7.14
+        },
+        {
+          "type": "criticalDamageResist",
+          "value": 7.14
+        }
+      ],
+      "effectDescription": "특별한 기능이 존재하지는 않지만 기본에 충실하다.",
+      "coin": 5
+    },
+    {
+      "id": 64,
+      "level": 1,
+      "grade": "고급",
+      "name": "찬란한 티아라",
+      "options": [
+        {
+          "type": "hp",
+          "value": 12.35
+        }
+      ],
+      "coin": 11,
+      "effectDescription": "착용자가 받는 보호막 효과가 28% 증가한다."
+    },
+    {
+      "id": 65,
+      "level": 1,
+      "grade": "희귀",
+      "name": "참회의 메이스",
+      "options": [
+        {
+          "type": "hp",
+          "value": 22.23
+        }
+      ],
+      "coin": 18,
+      "effectDescription": "공격을 6회 받을 때마다 분노의 기운이 모인다. 분노의 기운이 모두 모였을 때 착용자의 다음 일반 공격은 133% 추가 피해를 입히며 4초간 기절을 건다."
+    },
+    {
+      "id": 66,
+      "level": 1,
+      "grade": "고급",
+      "name": "강철 대검",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 10.19
+        },
+        {
+          "type": "criticalDamage",
+          "value": 10.19
+        }
+      ],
+      "coin": 12,
+      "effectDescription": "착용자의 일반 공격이 6회 적중할 때마다 치명타가 발생한다."
+    },
+    {
+      "id": 67,
+      "level": 1,
+      "grade": "희귀",
+      "name": "축복받은 견갑",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 8.64
+        },
+        {
+          "type": "magicDefense",
+          "value": 8.64
+        }
+      ],
+      "coin": 20,
+      "effectDescription": "착용자가 매 초 최대 HP 비례 2%만큼 HP를 회복한다."
+    },
+    {
+      "id": 68,
+      "level": 1,
+      "grade": "희귀",
+      "name": "치유의 펜던트",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 10.7
+        },
+        {
+          "type": "magicAttack",
+          "value": 10.7
+        }
+      ],
+      "coin": 12,
+      "effectDescription": "착용자가 적에게 일반 공격으로 입힌 피해량의 178%를 HP로 회복한다.(재사용 대기시간 5초)"
+    },
+    {
+      "id": 69,
+      "level": 1,
+      "grade": "일반",
+      "name": "치유의 호롱불",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 5.6
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "healing",
+          "value": 13
+        }
+      ],
+      "effectDescription": "착용자의 치유량이 13% 증가한다.",
+      "coin": 9
+    },
+    {
+      "id": 70,
+      "level": 1,
+      "grade": "고급",
+      "name": "탐욕의 반지",
+      "options": [
+        {
+          "type": "criticalDamage",
+          "value": 12.35
+        }
+      ],
+      "coin": 8,
+      "effectDescription": "상태이상이 주는 피해량이 35% 증가한다."
+    },
+    {
+      "id": 73,
+      "level": 1,
+      "grade": "고급",
+      "name": "행운의 주사위",
+      "options": [
+        {
+          "type": "criticalRate",
+          "value": 14.11
+        }
+      ],
+      "coin": 16,
+      "effectDescription": "착용자의 일반 공격으로 입힌 피해량의 182%를 HP로 회복한다. (재사용 대기시간 5초)"
+    },
+    {
+      "id": 74,
+      "level": 1,
+      "grade": "고급",
+      "name": "흑요석 수리검",
+      "options": [
+        {
+          "type": "criticalDamage",
+          "value": 12.35
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "commonDamage",
+          "value": 8
+        }
+      ],
+      "effectDescription": "착용자의 일반 공격 피해량이 8% 증가한다.",
+      "coin": 11
+    },
+    {
+      "id": 75,
+      "level": 1,
+      "grade": "전설",
+      "name": "30KG 케틀벨",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 22.47
+        },
+        {
+          "type": "criticalDamage",
+          "value": 11.24
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "skillDamage",
+          "value": 52
+        },
+        {
+          "target": "Individual",
+          "type": "attackSpeed",
+          "value": -30
+        }
+      ],
+      "coin": 29,
+      "effectDescription": "착용자의 스킬 피해량이 52% 증가한다. 하지만 공격 속도가 30% 감소한다."
+    },
+    {
+      "id": 76,
+      "level": 1,
+      "grade": "희귀",
+      "name": "고무고무 건틀릿",
+      "options": [
+        {
+          "type": "hp",
+          "value": 14.27
+        },
+        {
+          "type": "criticalDamageResist",
+          "value": 14.27
+        }
+      ],
+      "coin": 16,
+      "effectDescription": "착용자가 기절에 걸릴 경우, 기절을 해제한다. 이후 8초간 착용자의 받는 피해를 30% 감소시키고 최대 HP의 35%를 회복한다. (재사용 대기 시간 40초)"
+    },
+    {
+      "id": 77,
+      "level": 1,
+      "grade": "희귀",
+      "name": "풍선 갑옷",
+      "options": [
+        {
+          "type": "hp",
+          "value": 14.27
+        },
+        {
+          "type": "criticalDamageResist",
+          "value": 14.27
+        }
+      ],
+      "coin": 17,
+      "effectDescription": "착용자의 HP가 50% 이하가 될 경우 7초간 최대 HP의 52%에 해당하는 보호막을 획득한다."
+    },
+    {
+      "id": 78,
+      "level": 1,
+      "grade": "전설",
+      "name": "다야의 다이아몬드 커터",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 22.47
+        },
+        {
+          "type": "criticalRate",
+          "value": 27.66
+        }
+      ],
+      "effectDescription": "착용자는 디버프에 걸린 적에게 피해량이 35% 증가한다.",
+      "coin": 31
+    },
+    {
+      "id": 79,
+      "level": 1,
+      "grade": "희귀",
+      "name": "프리클의 여왕 대리 인장",
+      "affection": "프리클",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 17.84
+        },
+        {
+          "type": "criticalDamage",
+          "value": 17.84
+        }
+      ],
+      "effect": [
+        {
+          "type": "sameRow",
+          "target": "skillDamage",
+          "value": 49
+        }
+      ],
+      "coin": 26,
+      "effectDescription": "착용자와 동일한 열에 있는 모든 아군의 스킬 피해량이 49% 증가한다. 단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
+    },
+    {
+      "id": 80,
+      "level": 1,
+      "grade": "전설",
+      "name": "녹슨 붉은 검",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 30.25
+        }
+      ],
+      "coin": 21,
+      "effectDescription": "착용자의 HP가 100% 미만이 되는 경우, 6초 동안 공격 속도가 70% 증가하고 피해량이 21% 증가한다. (재사용 대기 시간 8초)"
+    },
+    {
+      "id": 81,
+      "level": 1,
+      "grade": "전설",
+      "name": "네르의 엘드르 깃발",
+      "options": [
+        {
+          "type": "hp",
+          "value": 34.57
+        }
+      ],
+      "coin": 23,
+      "effectDescription": "착용자가 저학년 스킬을 사용하면 HP를 21% 회복한다."
+    },
+    {
+      "id": 82,
+      "level": 1,
+      "grade": "고급",
+      "name": "숭배용 액자",
+      "options": [
+        {
+          "type": "hp",
+          "value": 23.52
+        }
+      ],
+      "effectDescription": "웨이브 종료 시 착용자의 최대 HP의 30% 회복하고 최대 SP의 25%를 회복한다.",
+      "coin": 15
+    },
+    {
+      "id": 83,
+      "level": 1,
+      "grade": "전설",
+      "name": "버터의 옐로카드",
+      "options": [
+        {
+          "type": "attackSpeed",
+          "value": 22.28
+        },
+        {
+          "type": "physicalAttack",
+          "value": 22.28
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "enhancedAttackDamage",
+          "value": 69
+        }
+      ],
+      "coin": 22,
+      "effectDescription": "착용자의 강화 공격 피해량이 69% 증가한다."
+    },
+    {
+      "id": 84,
+      "level": 1,
+      "grade": "전설",
+      "name": "아멜리아의 E-Pad 클래식",
+      "options": [
+        {
+          "type": "criticalRate",
+          "value": 33.61
+        },
+        {
+          "type": "criticalDamage",
+          "value": 33.61
+        }
+      ],
+      "coin": 28,
+      "effectDescription": "착용자는 감전된 적에게 주는 스킬 피해량이 108% 증가한다."
+    },
+    {
+      "id": 85,
+      "level": 1,
+      "grade": "전설",
+      "name": "리츠의 대지 뽀개기",
+      "options": [
+        {
+          "type": "hp",
+          "value": 27.85
+        },
+        {
+          "type": "physicalAttack",
+          "value": 27.85
+        }
+      ],
+      "effect": [
+        {
+          "target": "sameRow",
+          "type": "damageReduction",
+          "value": 9.33
+        }
+      ],
+      "coin": 36,
+      "effectDescription": "착용자와 동일한 열에 있는 모든 아군의 받는 피해량이 9.33% 감소한다. 단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
+    },
+    {
+      "id": 86,
+      "level": 1,
+      "grade": "전설",
+      "name": "장난감 망원경",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 24.97
+        },
+        {
+          "type": "attackSpeed",
+          "value": 24.97
+        }
+      ],
+      "coin": 27,
+      "effectDescription": "착용자와 공격 대상이 일정 사거리 이상이면 사거리에 따라 기본 공격 피해량이 40~400%증가하고 강화 공격 피해량이 10~100%증가한다. 착용자가 엘다인이면 기본 공격 피해량 수치가 2배 증가한다."
+    },
+    {
+      "id": 87,
+      "level": 1,
+      "grade": "희귀",
+      "name": "셀리네의 미드나잇 미라주",
+      "options": [
+        {
+          "type": "criticalResist",
+          "value": 24.01
+        },
+        {
+          "type": "criticalDamageResist",
+          "value": 24.01
+        }
+      ],
+      "coin": 33,
+      "effectDescription": "착용자가 스킬을 사용하면 최대 HP의 25%를 회복한다. 최대 HP를 초과한 HP 회복량은 6초간 보호막으로 전환된다."
+    },
+    {
+      "id": 88,
+      "level": 1,
+      "grade": "전설",
+      "name": "거대화 물약",
+      "options": [
+        {
+          "type": "physicalDefense",
+          "value": 22.47
+        },
+        {
+          "type": "magicDefense",
+          "value": 22.47
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "hp",
+          "value": 46
+        },
+        {
+          "target": "Individual",
+          "type": "hpRecovery",
+          "value": 3
+        },
+        {
+          "target": "Individual",
+          "type": "generalDamage",
+          "value": 15
+        }
+      ],
+      "coin": 24,
+      "effectDescription": "착용자의 크기가 커지고, 최대 HP가 46% 증가한다. 또한 매 초 최대 HP 비례 3%만큼 HP를 회복하고, 피해량이 15% 증가한다."
+    },
+    {
+      "id": 89,
+      "level": 1,
+      "grade": "전설",
+      "name": "슈슈슈슉 글러브",
+      "options": [
+        {
+          "type": "physicalAttack",
+          "value": 14.98
+        },
+        {
+          "type": "criticalRate",
+          "value": 14.98
+        }
+      ],
+      "effect": [
+        {
+          "target": "skillDamage",
+          "value": 19
+        },
+        {
+          "target": "attackSpeed",
+          "value": 37
+        }
+      ],
+      "coin": 19,
+      "effectDescription": "착용자가 피해를 입힌 적이 일정 시간 내에 처치되면 15초 동안 피해량이 19% 증가하고, 공격 속도가 37% 증가한다. 최대 3회까지 획득 가능하다."
+    },
+    {
+      "id": 90,
+      "level": 1,
+      "grade": "전설",
+      "name": "블랑셰의 유리 파랑새",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 33.61
+        },
+        {
+          "type": "criticalDamage",
+          "value": 25.93
+        }
+      ],
+      "effect": [
+        {
+          "target": "Individual",
+          "type": "highGradeSkillDamage",
+          "value": 63
+        },
+        {
+          "target": "Individual",
+          "type": "commonDamage",
+          "value": -60
+        }
+      ],
+      "coin": 30,
+      "effectDescription": "착용자의 고학년 스킬 피해량이 63% 증가한다. 하지만 일반 공격 피해량이 60% 감소한다."
+    },
+    {
+      "id": 91,
+      "level": 1,
+      "grade": "전설",
+      "name": "셰이디의 차원 사슬낫",
+      "options": [
+        {
+          "type": "hp",
+          "value": 24.97
+        },
+        {
+          "type": "criticalRate",
+          "value": 24.97
+        }
+      ],
+      "coin": 26,
+      "effectDescription": "착용자의 저학년 스킬, 고학년 스킬이 직접 피해로 13회 적중할 때마다 인형이 떨어져 착용자의 공격력 1166%의 추가 피해를 입힌다."
+    },
+    {
+      "id": 92,
+      "level": 1,
+      "grade": "희귀",
+      "name": "캬롯의 사탕수수",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 14.27
+        }
+      ],
+      "effect": [
+        {
+          "target": "sameRow",
+          "type": "spRecovery",
+          "value": 11
+        }
+      ],
+      "coin": 18,
+      "effectDescription": "착용자와 동일한 열에 있는 모든 아군들의 기본 SP 회복량을 11% 증가시킨다. 해당 효과는 중첩되지 않는다."
+    },
+    {
+      "id": 93,
+      "level": 1,
+      "grade": "희귀",
+      "name": "제이드의 비싼 만년필",
+      "affection": "제이드",
+      "options": [
+        {
+          "type": "magicAttack",
+          "value": 12.49
+        },
+        {
+          "type": "attackSpeed",
+          "value": 12.49
+        }
+      ],
+      "effect": [
+        {
+          "target": "sameRow",
+          "type": "magicDamage",
+          "value": 21
+        }
+      ],
+      "coin": 22,
+      "effectDescription": "착용자와 동일한 열의 있는 모든 아군의 마법 피해량이 21% 증가한다. 단일 사도가 중복 장착한 카드 효과는 중첩되지 않는다."
+    }
   ]
 }
