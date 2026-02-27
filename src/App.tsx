@@ -35,7 +35,7 @@ function LoadingScreen({ message = '데이터 로딩 중...' }: { message?: stri
 
 function App() {
   // TODO: spells 추가
-  const { apostles, skills, asides, isLoading, error } = useDataLoader();
+  const { apostles, skills, asides, artifacts, isLoading, error } = useDataLoader();
 
   // 전역 클라우드 동기화 활성화
   useCloudSync();
@@ -78,6 +78,7 @@ function App() {
                       apostles={apostles}
                       skillsData={skills.skills}
                       asidesData={asides.asides}
+                      artifactsData={artifacts.artifacts}
                     />
                   </SsgoiTransition>
                 </Layout>

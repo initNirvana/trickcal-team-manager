@@ -1,5 +1,6 @@
 import { Activity, lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
+import type { Artifact } from '@/types/artifact';
 import type { Aside } from '@/types/aside';
 import type { SlotNumber } from '@/types/branded';
 import type { Skill } from '@/types/skill';
@@ -17,9 +18,10 @@ interface DeckSimulatorProps {
   apostles: Apostle[];
   skillsData?: Skill[];
   asidesData?: Aside[];
+  artifactsData?: Artifact[];
 }
 
-const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps) => {
+const DeckSimulator = ({ apostles, skillsData, asidesData, artifactsData }: DeckSimulatorProps) => {
   // Zustand 구독: Deck 상태
   const deck = useDeckStore((state) => state.deck);
   const setDeckMember = useDeckStore((state) => state.setDeckMember);
@@ -112,6 +114,7 @@ const DeckSimulator = ({ apostles, skillsData, asidesData }: DeckSimulatorProps)
           filledDeck={filledDeck}
           skillsData={skillsData}
           asidesData={asidesData}
+          artifactsData={artifactsData}
         />
       </div>
 

@@ -71,9 +71,11 @@ export const ArtifactModal = ({
       );
     }
 
-    // 전설 -> 희귀 -> 고급 순으로 정렬 (id가 작을수록 좋지 않으므로 등급 정보 활용)
-    // 혹은 원본 JSON 배열 순서 유지
-    return artifacts;
+    return [...artifacts].sort((a, b) => {
+      const coinDiff = (b.coin || 0) - (a.coin || 0);
+      if (coinDiff !== 0) return coinDiff;
+      return a.id - b.id;
+    });
   }, [selectedFilters]);
 
   const handleApply = () => {

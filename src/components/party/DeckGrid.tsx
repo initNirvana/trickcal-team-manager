@@ -57,7 +57,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
               <div key={i} className="flex items-center justify-center rounded-full opacity-50">
                 <img
                   src={getEmptyArtifactImagePath()}
-                  className="h-full w-full object-contain"
+                  className="h-10 w-10 object-contain"
                   alt="빈 슬롯"
                 />
               </div>
@@ -89,7 +89,7 @@ const DeckGrid = ({ onSelectSlot }: DeckGridProps) => {
           src={
             artifact ? getArtifactImagePath(artifact.id.toString()) : getEmptyArtifactImagePath()
           }
-          className={`h-full w-full object-contain ${artifact ? '' : 'opacity-90'}`}
+          className={`h-10 w-10 object-contain ${artifact ? '' : 'opacity-90'}`}
           alt={artifact ? artifact.name : '빈 아티팩트'}
         />
       </button>
