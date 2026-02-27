@@ -1260,18 +1260,18 @@
       ],
       "effect": [
         {
-          "type": "",
-          "target": "hp",
+          "target": "Individual",
+          "type": "hp",
           "value": 46
         },
         {
-          "type": "",
-          "target": "hpRecovery",
+          "target": "Individual",
+          "type": "hpRecovery",
           "value": 3
         },
         {
-          "type": "",
-          "target": "damage",
+          "target": "Individual",
+          "type": "generalDamage",
           "value": 15
         }
       ],
@@ -1329,7 +1329,7 @@
         },
         {
           "target": "Individual",
-          "type": "generalDamage",
+          "type": "commonDamage",
           "value": -60
         }
       ],
