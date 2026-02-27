@@ -12,6 +12,7 @@ const DeckSimulator = lazy(() => import('./components/party/DeckSimulator'));
 const DeckRecommender = lazy(() => import('./components/builder/DeckRecommender'));
 const Settings = lazy(() => import('./pages/Settings'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const PrivacyPolicy260128 = lazy(() => import('./pages/PrivacyPolicy260128'));
 const SimpleBuilder = lazy(() => import('./components/SimpleBuilder/SimpleBuilder'));
 
 const ssgoiConfig = {
@@ -148,6 +149,17 @@ function App() {
                 <Layout>
                   <SsgoiTransition id="/privacy">
                     <PrivacyPolicy />
+                  </SsgoiTransition>
+                </Layout>
+              }
+            />
+            {/* (구) 개인정보 처리방침 */}
+            <Route
+              path="/PrivacyPolicy260128"
+              element={
+                <Layout>
+                  <SsgoiTransition id="/PrivacyPolicy260128">
+                    <PrivacyPolicy260128 />
                   </SsgoiTransition>
                 </Layout>
               }
