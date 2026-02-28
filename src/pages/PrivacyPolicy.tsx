@@ -2,7 +2,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 function PrivacyPolicy() {
-  const effectiveDate = '2026년 1월 28일';
+  const effectiveDate = '2026년 2월 27일';
 
   return (
     <div className="container mx-auto max-w-3xl p-6 pb-20">
@@ -205,7 +205,7 @@ function PrivacyPolicy() {
             제공합니다.
           </p>
           <ul className="mt-2 list-none pl-0">
-            <li>현재 버전: {effectiveDate} 익명 통계 처리, 가명정보 처리 기준 추가</li>
+            <li>현재 버전: {effectiveDate}</li>
             <li>
               이전 버전: <Link to="/PrivacyPolicy260128">2026-01-28</Link> — 최초 게시
             </li>
