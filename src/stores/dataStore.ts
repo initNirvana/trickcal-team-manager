@@ -3,6 +3,7 @@ import { DataLoaderService } from '@/services/DataLoaderService';
 import type { Apostle } from '@/types/apostle';
 import type { ArtifactsData } from '@/types/artifact';
 import type { AsidesData } from '@/types/aside';
+import type { BossConfig } from '@/types/boss';
 import type { SkillsData } from '@/types/skill';
 import type { SpellsData } from '@/types/spell';
 
@@ -12,6 +13,7 @@ interface DataState {
   asides: AsidesData;
   spells: SpellsData;
   artifacts: ArtifactsData;
+  bosses: BossConfig[];
   isLoading: boolean;
   error: string | null;
   initialized: boolean;
@@ -24,6 +26,7 @@ export const useDataStore = create<DataState>((set, get) => ({
   asides: { asides: [] },
   spells: { spells: [] },
   artifacts: { artifacts: [] },
+  bosses: [],
   isLoading: false,
   error: null,
   initialized: false,
@@ -34,12 +37,13 @@ export const useDataStore = create<DataState>((set, get) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const [apostles, skills, asides, spells, artifacts] = await Promise.all([
+      const [apostles, skills, asides, spells, artifacts, bosses] = await Promise.all([
         DataLoaderService.loadApostles(),
         DataLoaderService.loadSkills(),
         DataLoaderService.loadAsides(),
         DataLoaderService.loadSpells(),
         DataLoaderService.loadArtifacts(),
+        DataLoaderService.loadBosses(),
       ]);
 
       set({
@@ -48,6 +52,7 @@ export const useDataStore = create<DataState>((set, get) => ({
         asides,
         spells,
         artifacts,
+        bosses,
         isLoading: false,
         initialized: true,
       });

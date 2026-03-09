@@ -10,6 +10,7 @@ export const useSimpleBuilder = () => {
   const { apostles } = useDataLoader();
   const [currentStep, setCurrentStep] = useState(1);
   const [currentTab, setCurrentTab] = useState<Personality>('Gloomy');
+  const [selectedBossId, setSelectedBossId] = useState<string | null>(null);
   const [placedApostles, setPlacedApostles] = useState<(Apostle | null)[]>(Array(9).fill(null));
 
   const getBestApostleScore = useCallback((a: Apostle) => {
@@ -171,6 +172,8 @@ export const useSimpleBuilder = () => {
     setCurrentStep,
     currentTab,
     setCurrentTab,
+    selectedBossId,
+    setSelectedBossId,
     placedApostles,
     topApostlesByPersona,
     handleRemove,

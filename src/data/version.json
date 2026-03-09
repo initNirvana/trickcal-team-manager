@@ -1,6 +1,6 @@
 {
-  "projectVersion": "20260228-c6931fd9",
-  "lastUpdated": "2026-02-27T16:32:01.679Z",
+  "projectVersion": "20260309-boss-update",
+  "lastUpdated": "2026-03-09T11:00:00.000Z",
   "files": {
     "apostles.json": {
       "hash": "372989a0",
@@ -19,8 +19,12 @@
       "updated": "2026-02-26T17:24:59.435Z"
     },
     "artifacts.json": {
-      "hash": "6cdbe1bd",
-      "updated": "2026-02-27T16:32:01.679Z"
+      "hash": "02a46e19",
+      "updated": "2026-03-05T10:30:05.813Z"
+    },
+    "boss.json": {
+      "hash": "b055-new",
+      "updated": "2026-03-09T11:00:00.000Z"
     }
   }
 }

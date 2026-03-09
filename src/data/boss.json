@@ -1,0 +1,154 @@
+[
+  {
+    "id": "lil1li",
+    "name": "릴1리",
+    "content": "dimension",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "분신",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["잡몹정리", "레이저차단", "근거리탱커"],
+    "memo": "체력 25% 이하 페이즈 전환 시 SP봉인 불필요, 어그로분산 중요도 급상승"
+  },
+  {
+    "id": "cerberus",
+    "name": "크르브르스",
+    "content": "dimension",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "분신",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["잡몹정리", "광역딜", "레이저차단"],
+    "memo": "SP 스킬이 후열 드랍 공격, SP봉인 최우선"
+  },
+  {
+    "id": "crayonWarrior",
+    "name": "크레용사용",
+    "content": "dimension",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "분신",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["단일딜", "단일탱", "침묵", "SP제거"],
+    "memo": "크브/릴리 쫄몹 다수 소환, 소환된 크브가 후열 드랍 → 어그로분산으로 차단"
+  },
+  {
+    "id": "meow",
+    "name": "M.E.O.W",
+    "content": "frontier",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "분신",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["잡몹정리", "레이저차단", "후열보호"],
+    "memo": "미사일 비 패턴에 모모 분신 어그로분산 유효, SP스킬 봉인 필수"
+  },
+  {
+    "id": "renewableDark",
+    "name": "리뉴아(흑)",
+    "content": "frontier",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "분신",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["단일딜", "단일탱", "저속딜러"],
+    "memo": "고구마 소환 즉시 처리 필요, 레이저 방향전환은 모모 분신 어그로로 해결"
+  },
+  {
+    "id": "crayonFrontier",
+    "name": "프론티어 크레용사용",
+    "content": "frontier",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "분신",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["단일딜", "단일탱", "침묵", "SP제거"],
+    "memo": "쫄몹 다수 소환, 무적 패턴 시 타임로스 회피 중요"
+  },
+  {
+    "id": "UrosFrontier",
+    "name": "우로스",
+    "content": "frontier",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["잡몹정리", "SP제거", "침묵", "단일탱", "분신"],
+    "memo": "열반 게이지 파훼가 핵심, 기절/변이/넉백 등 CC 사도 필수 채용. SP스킬이 역할군별 디버프(서포터 SP회복↓ / 탱커 스킬피해↓ / 딜러 공속↓)를 부여하므로 특정 역할군 과다 편성 주의. 50초 내 게이지 미파훼 시 병력 일섬 발동."
+  },
+  {
+    "id": "YoungchunDimension",
+    "name": "흑화 영춘",
+    "content": "dimension",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "분신",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["단일딜", "단일탱", "침묵", "SP제거"],
+    "memo": "쫄몹 다수 소환, 무적 패턴 시 타임로스 회피 중요"
+  },
+  {
+    "id": "NyangmanTower",
+    "name": "냥만타워",
+    "content": "dimension",
+    "recommendedTags": [
+      "SP감소",
+      "침묵",
+      "분신",
+      "광역보호막",
+      "광역힐",
+      "시간정지",
+      "방어력감소",
+      "피해량감소"
+    ],
+    "notRecommendedTags": ["단일딜", "단일탱", "침묵", "SP제거"],
+    "memo": "쫄몹 다수 소환, 무적 패턴 시 타임로스 회피 중요"
+  }
+]

@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useDataStore } from '@/stores/dataStore';
 
 export function useDataLoader() {
-  const { apostles, skills, asides, spells, artifacts, isLoading, error, loadAllData } =
+  const { apostles, skills, asides, spells, artifacts, bosses, isLoading, error, loadAllData } =
     useDataStore();
 
   useEffect(() => {
     loadAllData();
   }, [loadAllData]);
 
-  return { apostles, skills, asides, spells, artifacts, isLoading, error };
+  return { apostles, skills, asides, spells, artifacts, bosses, isLoading, error };
 }

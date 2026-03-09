@@ -12,9 +12,10 @@ export const PRESET_DECKS: Record<Exclude<Personality, 'Resonance'>, string[]> =
 };
 
 export const STEPS = [
-  { id: 1, label: '성격 선택', desc: '메인으로 사용하고 싶은 성격의 조합을 확인해요' },
-  { id: 2, label: '추천 확인', desc: '성격별 베스트 조합을 확인해요' },
-  { id: 3, label: '사도 배치', desc: '사도를 직접 배치해보세요' },
+  { id: 1, label: '보스 선택', desc: '상대할 보스를 선택하고 추천 태그를 확인하세요' },
+  { id: 2, label: '성격 선택', desc: '메인으로 사용하고 싶은 성격의 조합을 확인해요' },
+  { id: 3, label: '추천 확인', desc: '성격별 베스트 조합을 확인해요' },
+  { id: 4, label: '사도 배치', desc: '사도를 직접 배치해보세요' },
 ] as const;
 
 export const POSITION_MAP = {

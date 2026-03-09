@@ -5,13 +5,15 @@
  */
 
 import { ApostlesDataSchema } from '@/schemas/apostles.schema';
+import { BossesDataSchema } from '@/schemas/boss.schema';
 import type { Apostle } from '@/types/apostle';
 import type { ArtifactsData } from '@/types/artifact';
 import type { AsidesData } from '@/types/aside';
+import type { BossConfig } from '@/types/boss';
 import type { SkillsData } from '@/types/skill';
 import type { SpellsData } from '@/types/spell';
 
-type CacheData = Apostle[] | SkillsData | AsidesData | SpellsData | ArtifactsData;
+type CacheData = Apostle[] | SkillsData | AsidesData | SpellsData | ArtifactsData | BossConfig[];
 
 export interface DataLoaderError {
   code: 'PARSE_ERROR' | 'LOAD_ERROR' | 'VALIDATION_ERROR';
@@ -133,6 +135,29 @@ export class DataLoaderService {
       return artifactsData as ArtifactsData;
     } catch (error) {
       console.error('Failed to load artifacts:', error);
+      throw error;
+    }
+  }
+
+  static async loadBosses(): Promise<BossConfig[]> {
+    if (DataLoaderService.cache.has('bosses'))
+      return DataLoaderService.cache.get('bosses') as BossConfig[];
+
+    try {
+      const bossesModule = await import('@/data/boss.json');
+      const bossesData = bossesModule.default ?? bossesModule;
+
+      const bossesResult = BossesDataSchema.safeParse(bossesData);
+      if (!bossesResult.success) {
+        console.error('Bosses schema validation failed:', bossesResult.error.message);
+        return bossesData as BossConfig[]; // 검증 실패 시 원본 데이터 반환 (점진적 적용)
+      }
+
+      const validatedData = bossesResult.data as BossConfig[];
+      DataLoaderService.cache.set('bosses', validatedData);
+      return validatedData;
+    } catch (error) {
+      console.error('Failed to load bosses:', error);
       throw error;
     }
   }

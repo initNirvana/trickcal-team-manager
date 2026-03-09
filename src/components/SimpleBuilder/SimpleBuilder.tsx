@@ -4,6 +4,7 @@ import SynergyDisplay from '@/components/party/Analysis/SynergyDisplay';
 import { useSimpleBuilder } from '@/hooks/useSimpleBuilder';
 import { Apostle } from '@/types/apostle';
 import { ApostleSelectionStep } from './ApostleSelectionStep';
+import { BossSelectionStep } from './BossSelectionStep';
 import { POSITION_MAP, STEPS } from './constants';
 import { PersonalitySelectionStep } from './PersonalitySelectionStep';
 
@@ -36,6 +37,8 @@ const SimpleBuilder = () => {
     setCurrentStep,
     currentTab,
     setCurrentTab,
+    selectedBossId,
+    setSelectedBossId,
     placedApostles,
     topApostlesByPersona,
     handleRemove,
@@ -108,6 +111,14 @@ const SimpleBuilder = () => {
         <div className="flex flex-col gap-4 md:col-span-5">
           <div className="min-h-[400px]">
             {currentStep === 1 && (
+              <BossSelectionStep
+                selectedBossId={selectedBossId}
+                onBossSelect={setSelectedBossId}
+                stepNumber={currentStep}
+              />
+            )}
+
+            {currentStep === 2 && (
               <PersonalitySelectionStep
                 currentTab={currentTab}
                 onTabChange={setCurrentTab}
@@ -115,9 +126,9 @@ const SimpleBuilder = () => {
               />
             )}
 
-            {currentStep === 2 && <PresetCombinationSection />}
+            {currentStep === 3 && <PresetCombinationSection />}
 
-            {currentStep === 3 && (
+            {currentStep === 4 && (
               <>
                 {balanceReport && balanceReport.length > 0 && (
                   <div className="mt-4 mb-4 flex flex-col gap-2">
@@ -165,12 +176,12 @@ const SimpleBuilder = () => {
             <button className="btn flex-1" disabled={currentStep === 1} onClick={prevStep}>
               이전
             </button>
-            {currentStep < 3 ? (
+            {currentStep < 4 ? (
               <button className="btn btn-primary flex-1" onClick={nextStep}>
                 다음 단계
               </button>
             ) : (
-              <button />
+              <div className="flex-1" />
             )}
           </div>
         </div>
