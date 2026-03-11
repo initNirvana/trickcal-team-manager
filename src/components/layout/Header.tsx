@@ -46,7 +46,7 @@ function Header() {
             </li>
             <li>
               <Link to="/builder" onClick={handleClick}>
-                보유 사도 분석기
+                추천 조합기
               </Link>
             </li>
             <li>
