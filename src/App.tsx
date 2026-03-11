@@ -86,7 +86,7 @@ function App() {
               }
             />
 
-            {/* 보유 사도 분석기 */}
+            {/* 추천 조합기 */}
             <Route
               path="/builder"
               element={

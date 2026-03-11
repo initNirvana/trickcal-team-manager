@@ -68,7 +68,7 @@ export const DeckRecommender = () => {
     <div className="bg-base-100 flex min-h-screen flex-col items-center justify-start p-4">
       {/* 헤더 */}
       <div className="mb-4 text-center">
-        <h1 className="text-3xl font-bold">보유 사도 분석기</h1>
+        <h1 className="text-3xl font-bold">추천 조합기</h1>
         <p className="text-sm opacity-70">보유 사도를 선택하고 추천 조합을 확인하세요</p>
       </div>
 

@@ -28,7 +28,7 @@ export const useTour = () => {
       {
         id: 'intro',
         title: '환영합니다!',
-        text: '보유 사도 분석기 사용법을 알려드릴까요?',
+        text: '추천 조합기 사용법을 알려드릴까요?',
         buttons: [
           {
             text: '아니요',
