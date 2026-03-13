@@ -924,6 +924,24 @@
       "description": "모든 아군의 스킬 피해량을 증가시킨다.",
       "type": ["All"],
       "damage": [{ "Increase": 33, "Reduction": 0 }]
+    },
+    {
+      "apostleId": "a119",
+      "apostleName": "델리아",
+      "name": "민트 초코 펭좋아",
+      "level": 2,
+      "description": "일반 공격 10회 적중 시 펭귄이 날아와 적에게 물리 피해를 입힌다. \n 웨이브 당 한 번 자신의 HP가 50% 미만이 될 경우 모든 디버프를 해제하고, 이글루로 도망친다. 주변 아군의 받는 피해량을 감소시키고, 일정 시간 동안 자신의 모든 HP를 회복한다. \n도망친 동안에는 적의 타겟 대상이 되지 않고, 무적 상태가 된다. \n회복을 마치면 이글루에서 나와 배치기로 적에게 물리 피해를 입힌다. \n무적 : 모든 피해 및 디버프에 면역이 된다.",
+      "type": ["Skill"],
+      "damage": [{ "Increase": 0, "Reduction": 50, "Duration": 20 }]
+    },
+    {
+      "apostleId": "a119",
+      "apostleName": "델리아",
+      "name": "일어나! 탐험 가야지!",
+      "level": 3,
+      "description": "전열 아군이 적에게 주는 피해량이 증가하며, 전열 아군이 적에게 받는 피해량이 감소한다.",
+      "type": ["Front"],
+      "damage": [{ "Increase": 19.5, "Reduction": 9.75 }]
     }
   ]
 }

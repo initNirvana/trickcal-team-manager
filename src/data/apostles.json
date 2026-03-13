@@ -2783,6 +2783,28 @@
         "score": 3
       },
       "baseScore": 65
+    },
+    {
+      "id": "a119",
+      "name": "델리아",
+      "engName": "Delia",
+      "isEldain": false,
+      "rank": 3,
+      "race": "수인",
+      "persona": "Naive",
+      "method": "Physical",
+      "position": ["front"],
+      "role": {
+        "main": "Attacker",
+        "subRole": "Utility",
+        "trait": ["CC", "Debuff"]
+      },
+      "aside": {
+        "hasAside": true,
+        "importance": "선택",
+        "score": 5
+      },
+      "baseScore": 60
     }
   ]
 }
