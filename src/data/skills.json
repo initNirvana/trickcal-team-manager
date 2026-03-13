@@ -3447,6 +3447,36 @@
           "Reduction": 0
         }
       ]
+    },
+    {
+      "apostleId": "a119",
+      "name": "델리아의 저학년 스킬",
+      "level": "low",
+      "description": "폴짝 뛰어 주변 적들에게 범위 물리 피해를 입히고, 수족열증을 건다. 그리고 날아차기로 적에게 물리 피해를 입히고 침묵을 건다. 수족열증 : 매초 물리 피해를 입으며, 대상이 델리아에게 받는 피해량이 증가한다. 침묵 : 모든 스킬을 사용할 수 없게 된다.",
+      "effectRange": "자신만",
+      "damage": [
+        { "level": 1, "Increase": 50, "Reduction": 0 },
+        { "level": 2, "Increase": 50, "Reduction": 0 },
+        { "level": 3, "Increase": 50, "Reduction": 0 },
+        { "level": 4, "Increase": 50, "Reduction": 0 },
+        { "level": 5, "Increase": 50, "Reduction": 0 },
+        { "level": 6, "Increase": 50, "Reduction": 0 },
+        { "level": 7, "Increase": 50, "Reduction": 0 },
+        { "level": 8, "Increase": 50, "Reduction": 0 },
+        { "level": 9, "Increase": 50, "Reduction": 0 },
+        { "level": 10, "Increase": 50, "Reduction": 0 },
+        { "level": 11, "Increase": 50, "Reduction": 0 },
+        { "level": 12, "Increase": 50, "Reduction": 0 },
+        { "level": 13, "Increase": 50, "Reduction": 0 }
+      ]
+    },
+    {
+      "apostleId": "a119",
+      "name": "도와줘 친구들아!",
+      "level": "high",
+      "description": "여정의 파동을 발사해 적들에게 범위 물리 피해를 입히고, 기절을 건다. 자신의 일반 공격 피해량이 증가한다. 기절 : 행동불가 상태가 된다.",
+      "effectRange": "",
+      "damage": []
     }
   ]
 }
